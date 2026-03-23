@@ -1,0 +1,59 @@
+name: Verify Living Constitution
+
+on:
+  push:
+    branches: [main, "feature/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify base camp structure exists
+        run: |
+          echo "=== Checking base camp structure ==="
+          test -f CLAUDE.md || (echo "FAIL: CLAUDE.md missing" && exit 1)
+          test -f THE_LIVING_CONSTITUTION.md || (echo "FAIL: THE_LIVING_CONSTITUTION.md missing" && exit 1)
+          test -f tasks/todo.md || (echo "FAIL: tasks/todo.md missing" && exit 1)
+          test -f tasks/lessons.md || (echo "FAIL: tasks/lessons.md missing" && exit 1)
+          test -f config/domains.ts || (echo "FAIL: config/domains.ts missing" && exit 1)
+          test -f config/projects.ts || (echo "FAIL: config/projects.ts missing" && exit 1)
+          test -f verification/MATRIX.md || (echo "FAIL: verification/MATRIX.md missing" && exit 1)
+          echo "PASS: Base camp structure verified"
+
+      - name: Verify all project folders have CLAUDE.md and BUILD_CONTRACT.md
+        run: |
+          echo "=== Checking project folders ==="
+          FAIL=0
+          for project in sentinelos proactive consentchain uicare teaser-video; do
+            if [ ! -f "projects/$project/CLAUDE.md" ]; then
+              echo "FAIL: projects/$project/CLAUDE.md missing"
+              FAIL=1
+            fi
+            if [ ! -f "projects/$project/BUILD_CONTRACT.md" ]; then
+              echo "FAIL: projects/$project/BUILD_CONTRACT.md missing"
+              FAIL=1
+            fi
+          done
+          if [ $FAIL -eq 0 ]; then
+            echo "PASS: All project folders have CLAUDE.md + BUILD_CONTRACT.md"
+          else
+            exit 1
+          fi
+
+      - name: Verify 4 safety domains defined
+        run: |
+          DOMAIN_COUNT=$(grep -c '"id":' config/domains.ts)
+          echo "Found $DOMAIN_COUNT domains"
+          test "$DOMAIN_COUNT" -eq 4 || (echo "FAIL: Expected 4 domains, found $DOMAIN_COUNT" && exit 1)
+          echo "PASS: 4 safety domains defined"
+
+      - name: Verify verification matrix has claims
+        run: |
+          CLAIM_COUNT=$(grep -c "^| [0-9]" verification/MATRIX.md)
+          echo "Found $CLAIM_COUNT claims in verification matrix"
+          test "$CLAIM_COUNT" -ge 20 || (echo "FAIL: Expected 20+ claims, found $CLAIM_COUNT" && exit 1)
+          echo "PASS: Verification matrix has $CLAIM_COUNT claims"
