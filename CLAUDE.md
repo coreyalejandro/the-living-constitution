@@ -1,0 +1,89 @@
+# CLAUDE.md — The Living Constitution Base Camp
+
+## What This Repo Is
+
+This is the **governance overlay** for the Safety Systems Design Commonwealth. It is NOT a code repository. It is the operational hub that:
+- Holds the constitutional specification (`THE_LIVING_CONSTITUTION.md`)
+- Manages zero-shot build contracts for every project in the Commonwealth
+- Tracks verification evidence for every resume/application claim
+- Coordinates sprint execution across all project repos
+
+## Repo Structure
+
+```
+the-living-constitution/
+  THE_LIVING_CONSTITUTION.md    <- The specification (source of truth)
+  CLAUDE.md                     <- This file (operational controls)
+  tasks/
+    todo.md                     <- Sprint tracker
+    lessons.md                  <- Amendment log (feeds Article V)
+  projects/
+    teaser-video/               <- Video deliverable
+    sentinelos/                 <- SentinelOS build contract
+    proactive/                  <- PROACTIVE build contract
+    consentchain/               <- ConsentChain build contract
+    uicare/                     <- UICare build contract
+  verification/
+    MATRIX.md                   <- Every claim -> evidence mapping
+    *.md                        <- Per-project V&T statements
+  config/
+    projects.ts                 <- Domain mapping (4 safety domains)
+    domains.ts                  <- Domain definitions
+```
+
+## Rules
+
+1. **Every work item gets its own folder** under `projects/` with:
+   - `CLAUDE.md` (inherits Living Constitution controls + project-specific rules)
+   - `BUILD_CONTRACT.md` (zero-shot build contract: machine-actionable spec)
+
+2. **No building until the build contract is reviewed.** The contract IS the spec. Write it right, build it once.
+
+3. **Build contracts point to external repos.** This base camp does NOT duplicate code. Each `projects/<name>/BUILD_CONTRACT.md` references the actual repo path where implementation lives.
+
+4. **Verification is mandatory.** Every claim in the resume/cover letter must have a corresponding entry in `verification/MATRIX.md` with evidence.
+
+5. **The Living Constitution governs all work.** Articles I-V apply to every project folder, every build contract, every commit.
+
+## Project Registry
+
+| Project | Domain | Repo Path | Resume Status |
+|---------|--------|-----------|---------------|
+| PROACTIVE | Epistemic Safety | `/Users/coreyalejandro/Projects/proactive-gitlab-agent` | Operational |
+| SentinelOS | All 4 Domains | `/Users/coreyalejandro/Projects/sentinelos` (to create) | Partial |
+| ConsentChain | Empirical Safety | `/Users/coreyalejandro/Projects/consentchain` | Partial |
+| UICare-System | Human Safety | `/Users/coreyalejandro/Projects/uicare-system` | Partial |
+| Docen | N/A (demo) | `/Users/coreyalejandro/Projects/docen` | Deployed |
+| Portfolio | All 4 Domains | `/Users/coreyalejandro/Projects/coreys-agentic-portfolio` | Live |
+
+## Zero-Shot Build Contract Format
+
+Every `BUILD_CONTRACT.md` follows this structure:
+
+```markdown
+# Build Contract: [Project Name]
+
+## Current State (Honest)
+[What actually exists right now — verified, not assumed]
+
+## Target State (What Resume Claims)
+[Exact claims from resume/cover letter]
+
+## Acceptance Criteria
+[What "done" looks like — measurable, verifiable]
+
+## Evidence Required
+[How to prove each claim — commands to run, files to check]
+
+## Implementation Spec
+[Machine-actionable build instructions — zero ambiguity]
+
+## Repo Path
+[Where the actual code lives]
+```
+
+## Sprint Context
+
+- **Application:** Anthropic Safety Fellows Program (July 2026 cohort)
+- **Deadline:** Monday March 23, 2026 at 7:00 AM
+- **Success criteria:** Every resume claim truthful at stated status level, backed by evidence
