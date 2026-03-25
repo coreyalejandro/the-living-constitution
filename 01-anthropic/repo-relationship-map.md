@@ -25,9 +25,10 @@ the-living-constitution (BASE CAMP)
 │   └── proactive-gitlab-agent/
 │       Python epistemic enforcement engine
 │       Domain: Epistemic Safety
-│       Status: Operational (validated 2026-01-24)
+│       Status: Validated — 212/212 tests passing, submitted to GitLab hackathon (2026-03-25)
 │       Depends on: TLC specification (Article I, invariants I1, I3, I5)
 │       Implements: MR scanning for epistemic violations
+│       Repos: GitLab (submission) + GitHub (active dev)
 │
 ├── PRODUCT LAYER (domain-specific applications)
 │   │
@@ -45,12 +46,21 @@ the-living-constitution (BASE CAMP)
 │   │   Depends on: TLC governance (Article I bill of rights)
 │   │   Implements: Absence-over-presence signal detection
 │   │
-│   └── docen/
-│       Document processing service
-│       Domain: Cognitive Safety
-│       Status: Operational (deployed on GCR)
-│       Depends on: TLC governance (Article II execution law)
-│       Implements: Safety-aware document transformation
+│   ├── docen/
+│   │   Document processing service
+│   │   Domain: Cognitive Safety
+│   │   Status: Operational (deployed on GCR)
+│   │   Depends on: TLC governance (Article II execution law)
+│   │   Implements: Safety-aware document transformation
+│   │
+│   └── MADMall-Production/
+│       Virtual luxury mall & teaching clinic for Black women with Graves' disease
+│       Domain: Human Safety, Cognitive Safety (primary); Empirical Safety (secondary)
+│       Status: Partial — infrastructure mature (152K LOC), features Phase 1 of 4
+│       Depends on: TLC governance (all Articles); ConsentChain (data consent);
+│                   PROACTIVE (ML claims validation); UICare (cognitive load)
+│       Implements: Healthcare AI with constitutional governance as primary TLC use case
+│       Stack: Next.js 16, Turborepo, Prisma/PostgreSQL, Clerk, Stripe, Python ML
 │
 └── PRESENTATION LAYER
     │
@@ -97,7 +107,8 @@ No arrows between products (no cross-dependencies)
 |-----------|----------|-------------|----------|-----------|
 | the-living-constitution | GitHub | github.com/coreyalejandro/the-living-constitution | Markdown, TypeScript (config) | N/A (governance overlay) |
 | sentinelos | GitHub | github.com/coreyalejandro/sentinelos | TypeScript | Turborepo + pnpm |
-| proactive-gitlab-agent | GitLab | gitlab.com (AI Hackathon participant) | Python | pip + pytest |
+| proactive-gitlab-agent | GitLab (submission) + GitHub (active dev) | gitlab.com/gitlab-ai-hackathon/participants/28441830 + github.com/coreyalejandro/proactive-gitlab-agent | Python | pip + pytest |
+| MADMall-Production | GitHub | github.com/coreyalejandro/MADMall-Production | TypeScript/Python | Turborepo + pnpm |
 | consentchain | GitHub | github.com/coreyalejandro/consentchain | TypeScript | Turborepo + pnpm |
 | uicare-system | GitHub | github.com/coreyalejandro/uicare-system | JavaScript/TypeScript | npm |
 | docen | GitHub | github.com/coreyalejandro/docen | (deployed) | Google Cloud Run |
@@ -116,10 +127,11 @@ Which repos serve which safety domains:
 | proactive-gitlab-agent | X | | | |
 | consentchain | | | | X |
 | uicare-system | | X | | |
+| MADMall-Production | | X | X | X |
 | docen | | | X | |
 | coreys-agentic-portfolio | X | X | X | X |
 
-**Coverage gaps**: No dedicated product for Cognitive Safety beyond Docen (which is primarily a document processing service). The Cognitive Safety domain is the thinnest in terms of product implementation. This is an honest gap.
+**Coverage update**: MADMall-Production strengthens Human Safety (healthcare UX for chronically ill users), Cognitive Safety (ML-backed health education), and Empirical Safety (consent-governed data collection). Cognitive Safety domain is now covered by both Docen and MADMall.
 
 ---
 
@@ -175,8 +187,9 @@ The build contract points to the external repo where implementation lives. The b
 | Repository | Status | Last Verified |
 |-----------|--------|--------------|
 | the-living-constitution | Operational | Active (governance hub) |
-| sentinelos | Partial | Scaffold + adapters built |
-| proactive-gitlab-agent | Operational | Validated 2026-01-24 (test env broken) |
+| sentinelos | Partial | 9 packages, 1,037 LOC, hexagonal arch. Build verification pending. |
+| proactive-gitlab-agent | Validated | 212/212 tests passing. Submitted to GitLab hackathon 2026-03-25. |
+| MADMall-Production | Partial | Infrastructure mature (152K LOC). Features Phase 1 of 4. |
 | consentchain | Partial | Gateway curl-tested, last commit 2026-03-17 |
 | uicare-system | Partial | Components exist, last commit 2026-03-17 |
 | docen | Operational | Deployed on GCR |

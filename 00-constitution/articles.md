@@ -107,7 +107,7 @@ Define what each agent can and cannot do without human review. No single agent h
 | Sentinel | `sentinelos/packages/core` + agent instructions | Partial — SentinelOS packages exist, runtime sentinel agent pending |
 | TDD Guide | `~/.claude/agents/tdd-guide` | Implemented — agent instruction file exists |
 | Code Reviewer | `~/.claude/agents/code-reviewer` | Implemented — agent instruction file exists |
-| Data Scientist | Agent specification in CLAUDE.md | Planned — agent instruction file not yet created |
+| Data Scientist | Agent specification in CLAUDE.md | Pending — agent instruction file not yet created |
 
 ---
 

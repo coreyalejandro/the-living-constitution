@@ -16,8 +16,8 @@ TLC (The Living Constitution)
 │
 ├── SentinelOS — Governance-as-Code Engine
 │   │   TypeScript Turborepo monorepo, hexagonal architecture (hex8)
-│   │   8 packages: core, sentinel-config, sentinel-runtime, adapters, etc.
-│   │   ~1,500 LOC TypeScript. Defines invariants I1-I6.
+│   │   9 packages: core, article-i through article-v, incident, safety-case
+│   │   1,037 LOC source + 994 LOC tests. Defines invariants I1-I6.
 │   │   Lives in: sentinelos repo
 │   │
 │   │   Role: Encodes constitutional rules into executable code.
@@ -32,8 +32,8 @@ TLC (The Living Constitution)
 ├── PROACTIVE — Epistemic Enforcement Engine
 │   │   Python agent, GitLab CI integration
 │   │   100% detection rate, 0% false positive rate (validated 2026-01-24)
-│   │   8 test cases, n=19 violations detected
-│   │   Lives in: proactive-gitlab-agent repo
+│   │   212/212 tests passing. Submitted to GitLab AI Hackathon 2026-03-25.
+│   │   Lives in: proactive-gitlab-agent repo (GitLab submission + GitHub active dev)
 │   │
 │   │   Role: Enforces epistemic safety in CI/CD pipelines.
 │   │   Scans code, commits, and pipeline outputs for constitutional
@@ -78,19 +78,22 @@ TLC (The Living Constitution)
 │       bypass the consent chain. The 7-stage pipeline is the
 │       runtime enforcement of "needs human approval" boundaries.
 │
-├── MADMall — Applied Product Layer
-│   │   Healthcare and wellness product platform (planned)
-│   │   Will demonstrate TLC governance in a consumer-facing context
+├── MADMall-Production — Applied Product Layer (Primary TLC Use Case)
+│   │   Virtual luxury mall & teaching clinic for Black women with Graves' disease
+│   │   Next.js 16 (next-forge), Turborepo, 6 apps, 22 packages, ~152K LOC
+│   │   Clerk auth, Stripe payments, Prisma/PostgreSQL, Python ML (CRISP-DM)
+│   │   Lives in: MADMall-Production repo
 │   │
 │   │   Role: The applied layer where constitutional governance meets
 │   │   real users with real needs. Healthcare decisions require the
-│   │   highest epistemic safety standards. Wellness recommendations
-│   │   require cognitive safety to avoid false understanding.
+│   │   highest epistemic safety standards. Consent-governed data collection.
+│   │   ML claims validated through PROACTIVE invariants.
 │   │
-│   └── Relationship to TLC: MADMall is the proof that constitutional
-│       governance works in production. It is not a demo — it is the
-│       product that demonstrates every safety domain under real load.
-│       Status: Planned — specification exists, implementation pending.
+│   └── Relationship to TLC: MADMall is the primary use case for constitutional
+│       governance in production. ConsentChain gates every data touch.
+│       PROACTIVE validates every ML claim. UICare monitors cognitive load
+│       for chronically ill users. SentinelOS enforces invariants at API boundaries.
+│       Status: Partial — infrastructure mature, features Phase 1 of 4.
 │
 └── AutoResearch Sidecar — Controlled Experimentation Engine
     │   Colab Pro runtime, Python notebooks and scripts
@@ -170,10 +173,10 @@ Each system maps to one or more of the four safety domains:
 |--------|----------------|------------|
 | TLC | `/Users/coreyalejandro/Projects/the-living-constitution` | Markdown, TypeScript config |
 | SentinelOS | `/Users/coreyalejandro/Projects/sentinelos` | TypeScript, Turborepo, hexagonal architecture |
-| PROACTIVE | `/Users/coreyalejandro/Projects/proactive-gitlab-agent` | Python, GitLab CI |
+| PROACTIVE | `/Users/coreyalejandro/Projects/proactive-gitlab-agent` | Python, GitLab CI (submission) + GitHub (active dev) |
 | UICare | `/Users/coreyalejandro/Projects/uicare-system` | Next.js, Kubernetes, Docker, GPT-4o-mini |
 | ConsentChain | `/Users/coreyalejandro/Projects/consentchain` | TypeScript, Turborepo, Prisma |
-| MADMall | Pending — not yet created | Planned |
+| MADMall | `/Users/coreyalejandro/Projects/MADMall-Production` | Next.js 16, Turborepo, Python ML |
 | AutoResearch | Pending — sidecar spec in this repo | Python, Colab Pro |
 
 ---

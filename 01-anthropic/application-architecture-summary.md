@@ -76,9 +76,9 @@ SentinelOS is the enforcement engine. It translates constitutional articles into
 | I5 | Fluency Conflict Detection | Fluent language does not mask uncertainty |
 | I6 | Fail-Closed Behavior | Ambiguous cases block rather than pass |
 
-**What exists**: Build contract with full specification, package structure defined, port interfaces designed. Scaffold and adapters built. Build passes; types verified.
+**What exists**: 9 packages (core + 7 adapters), 1,037 LOC source, 994 LOC tests. Hexagonal architecture correctly implemented with zero cross-adapter dependencies. 180+ Object.freeze calls enforcing immutability. 7 of 8 adapters implemented with comprehensive tests.
 
-**What does not exist**: Production deployment, full integration test suite across all packages, external API surface.
+**What does not exist**: DomainRegistry adapter (port defined, no implementation). Integration tests across adapters. Production deployment. API documentation. Build verification pending (node PATH issue in worktree).
 
 ---
 
@@ -99,10 +99,12 @@ Every project maps to one or more domains. Unmapped projects are ungoverned.
 
 ### PROACTIVE — Constitutional AI Safety Agent
 - **Domain**: Epistemic Safety
-- **Status**: Operational (validated 2026-01-24)
+- **Status**: Validated — 212/212 tests passing, submitted to GitLab AI Hackathon (2026-03-25)
 - **Stack**: Python, GitLab CI, Claude Code agents
 - **What it does**: Scans merge requests for epistemic safety violations. Detects claims without evidence, confidence inflation, missing uncertainty markers.
-- **Evidence**: 100% detection rate across 8 test cases (n=19 violations), 0% false positive rate. Validation report VR-V-15C6.
+- **Evidence**: 100% detection rate across 8 test cases (n=19 violations), 0% false positive rate. Validation report VR-V-15C6. 212/212 tests passing (verified 2026-03-25).
+- **Known issue**: `httpx` missing from `pyproject.toml` — works in dev but fails clean install.
+- **Repos**: GitLab (hackathon submission): gitlab.com/gitlab-ai-hackathon/participants/28441830 | GitHub (active dev): github.com/coreyalejandro/proactive-gitlab-agent
 
 ### ConsentChain — Cryptographic Consent Ledger
 - **Domain**: Empirical Safety
@@ -124,6 +126,14 @@ Every project maps to one or more domains. Unmapped projects are ungoverned.
 - **Stack**: Google Cloud Run
 - **What it does**: Document processing with safety-aware transformations.
 - **Evidence**: Deployed at Google Cloud Run, returns HTTP 200.
+
+### MADMall-Production — Virtual Luxury Mall & Teaching Clinic
+- **Domain**: Human Safety, Cognitive Safety (primary); Empirical Safety (secondary)
+- **Status**: Partial — infrastructure mature, features Phase 1 of 4
+- **Stack**: Next.js 16 (next-forge), Turborepo, React 19, Prisma/PostgreSQL, Clerk, Stripe, Python ML
+- **What it does**: Virtual luxury outdoor mall and teaching clinic for Black women living with Graves' disease. Combines dignified UX modeled after real luxury malls with healthcare AI/ML infrastructure. The primary TLC use case: constitutional governance integrated into data collection, ML claims validation, and user-facing consent flows.
+- **Evidence**: 6 apps, 22 packages, ~152K LOC. Clerk auth, Stripe payments, Prisma DB, Sentry observability all wired. ML Python package with CRISP-DM methodology. Infinite canvas with cursor-centered zoom. Phase 3 specs: 1,200+ lines covering Sisterhood Lounge, Event Scheduling, Service Booking, User Profiles, Content Moderation.
+- **Repo**: github.com/coreyalejandro/MADMall-Production
 
 ### Portfolio — coreyalejandro.com
 - **Domain**: All four
@@ -186,16 +196,16 @@ The key architectural insight: the Constitution does not live in one place. It i
 | Database | Prisma + SQLite (ConsentChain) |
 | Deployment targets | Vercel (portfolio), Google Cloud Run (Docen), GitLab CI (PROACTIVE) |
 | Agent orchestration | Claude Code with CLAUDE.md constitutional enforcement |
-| Total GitHub repos | 257 (verified count) |
+| Total GitHub repos | 257 (verified via API 2026-03-25; resume claims ~340, discrepancy under investigation) |
 
 ---
 
 ## V&T Statement
 
-Exists: The Living Constitution specification (Articles I-V, all doctrines). Four safety domain definitions with TypeScript types. Project registry mapping every product to domains. PROACTIVE with validated detection results. ConsentChain with 7-stage gateway and Prisma schema. UICare with GPT-4o-mini integration and Kubernetes config. Docen deployed on GCR. Portfolio live on Vercel. Agent republic defined with power boundaries. SentinelOS build contract with full package specification.
+Exists: The Living Constitution specification (Articles I-V, all doctrines). Four safety domain definitions with TypeScript types. Project registry mapping every product to domains. PROACTIVE validated with 212/212 tests passing, submitted to GitLab hackathon. ConsentChain with 7-stage gateway and Prisma schema. UICare with GPT-4o-mini integration and Kubernetes config. Docen deployed on GCR. Portfolio live on Vercel. Agent republic defined with power boundaries. SentinelOS with 9 packages, 1,037 LOC, hexagonal architecture. MADMall-Production with 6 apps, 22 packages, ~152K LOC, production infrastructure wired.
 
-Non-existent: SentinelOS production deployment. MADMall (healthcare/wellness product layer). Formal Lean 4 proofs of constitutional invariants. Automated Tier 2 verification of V&T statements across all projects.
+Non-existent: SentinelOS production deployment and DomainRegistry adapter. MADMall Phase 2-4 features. Formal Lean 4 proofs of constitutional invariants. Automated Tier 2 verification. TLC→MADMall governance integration layer.
 
-Unverified: PROACTIVE test suite (pytest currently broken due to Python version mismatch). SentinelOS LOC count against 1,500 target. Full integration test coverage across all packages.
+Unverified: SentinelOS full build (node PATH issue). Full integration test coverage across all packages.
 
-Functional status: The Commonwealth architecture is specified and partially implemented. Two products are operational and deployed. Three products are partial with working components. The constitutional specification is complete and actively enforced through CLAUDE.md files.
+Functional status: The Commonwealth architecture is specified and partially implemented. PROACTIVE is validated and submitted. MADMall is the primary TLC use case with mature infrastructure. Three products are partial with working components. The constitutional specification is complete and actively enforced through CLAUDE.md files.

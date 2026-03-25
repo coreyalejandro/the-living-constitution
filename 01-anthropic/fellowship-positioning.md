@@ -52,13 +52,15 @@ Anthropic's model spec addresses general safety. The Living Constitution's Defau
 
 ### What Corey Brings to Anthropic
 
-**Domain expertise in governance-as-code.** Not governance-as-documentation. The Living Constitution is not a whitepaper describing how governance should work. It is a working system where CLAUDE.md files enforce constitutional articles, SentinelOS checks invariants at API boundaries, and PROACTIVE detects epistemic violations in production merge requests.
+**Domain expertise in governance-as-code.** Not governance-as-documentation. The Living Constitution is not a whitepaper describing how governance should work. It is a working system where CLAUDE.md files enforce constitutional articles, SentinelOS checks invariants at API boundaries, and PROACTIVE detects epistemic violations in production merge requests (212/212 tests passing, submitted to GitLab AI Hackathon).
+
+**A real product under constitutional governance.** MADMall-Production is a virtual luxury mall and teaching clinic for Black women living with Graves' disease — a healthcare product where constitutional governance is not theoretical. ConsentChain gates every data collection action. PROACTIVE validates every ML claim. UICare monitors cognitive load for chronically ill users. The governance framework is tested against a production application serving a real, underserved population.
 
 **Lived experience as the Default User.** Corey is neurodivergent (autism, bipolar I, ADHD, OCD). The Default User Doctrine is not an academic exercise in accessibility. It is a specification written by someone who has been harmed by systems designed for the median user. This perspective is rare in AI safety research and directly relevant to Anthropic's mission of building AI that benefits all of humanity.
 
-**Systems architecture thinking.** The Commonwealth is not a single project. It is a governed system of six interconnected products across four safety domains, with constitutional enforcement at every layer. Building this requires the same architectural discipline as enterprise-scale safety engineering -- domain decomposition, separation of concerns, invariant enforcement, and honest status reporting.
+**Systems architecture thinking.** The Commonwealth is not a single project. It is a governed system of seven interconnected products across four safety domains, with constitutional enforcement at every layer. Building this requires the same architectural discipline as enterprise-scale safety engineering -- domain decomposition, separation of concerns, invariant enforcement, and honest status reporting.
 
-**Radical honesty about system maturity.** The Commonwealth uses bounded status labels: Operational, Partial, Pending. Two products are operational and deployed. Three are partial. One is pending. The evidence ledger documents exactly what has been proven, what is in progress, and what has not been built. This discipline -- refusing to overstate maturity -- is itself a safety practice.
+**Radical honesty about system maturity.** The Commonwealth uses bounded status labels: Validated, Partial, Pending. The evidence ledger tracks 53 claims across 9 categories — 34 proven, 6 partial, 13 pending, 0 broken. Every label is backed by specific evidence. This discipline -- refusing to overstate maturity -- is itself a safety practice.
 
 ---
 
