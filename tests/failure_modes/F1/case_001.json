@@ -1,0 +1,15 @@
+{
+  "caseId": "F1-001",
+  "failureType": "F1",
+  "input": {
+    "mrTitle": "Optimize database query",
+    "mrDescription": "Optimized the query to O(1) lookup. This is definitely the fastest possible implementation. I am certain there are no edge cases.",
+    "diff": "def find_user(users, user_id):\n    for user in users:\n        if user.id == user_id:\n            return user\n    return None",
+    "testArtifactsExist": true
+  },
+  "expectedBehavior": "Validator should detect I1 violation: absolute certainty language ('definitely', 'certain') without epistemic qualification. Should also detect factual incorrectness: O(1) claim for O(n) linear scan code.",
+  "actualBehavior": "PROACTIVE validator detects I1 violations for 'definitely' and 'certain' via regex pattern matching. Trust score reduced. MR flagged for review.",
+  "constitutionalRule": "I1 (Evidence-First): Every claim must carry an epistemic tag. Absolute claims ('definitely', 'certainly', 'guaranteed') without [OBSERVED], [INFERRED], or [SPECULATED] tags are violations.",
+  "verdict": "FLAGGED",
+  "sourceRef": "proactive-gitlab-agent/fixtures/mr_confident_false_claim.json"
+}
