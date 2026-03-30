@@ -1,7 +1,7 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-03-30  
-**Status:** PASS 14 — **local governance repair complete** (INVARIANT_21/42 + `.c-rsp/`); **remote closure** requires green `verify.yml` + artifact download after push. TLC CI may still need `SUBMODULES_PAT` for private submodules.
+**Status:** PASS 14 — **local governance repair complete** and pushed (`8534272`); **remote CI still red** — latest `verify.yml` run [23773602359](https://github.com/coreyalejandro/the-living-constitution/actions/runs/23773602359) fails at `actions/checkout` (cannot clone private submodule `projects/consent-gateway-auth0`). **AC-1 / PASS 14 remote closure blocked** until `SUBMODULES_PAT` (or repo access / visibility fix).
 
 ## What Was Just Completed
 
@@ -13,7 +13,8 @@
 
 ## Recommended Next Steps
 
-- **Commit and push** this governance repair; confirm GitHub Actions `verify.yml` **success**; **download** `governance-verification-runs-*` and `supply-chain-attestation-*`; restore under `verification/`; run `verify_attestation.py` per run id; optionally update `ci-remote-evidence/record.json` when promoting verified state.
+- **Unblock checkout:** configure `SUBMODULES_PAT` on `the-living-constitution` (contents:read on `consent-gateway-auth0` + other private submodules) or adjust submodule repo settings; re-run workflow.
+- After **green** `verify.yml`: **download** `governance-verification-runs-*` and `supply-chain-attestation-*`; restore under `verification/`; run `verify_attestation.py` per run id; optionally update `ci-remote-evidence/record.json` when promoting verified state.
 - Add `SUBMODULES_PAT` to `the-living-constitution` (or adjust repo access) if checkout still fails on private submodules; rerun TLC `verify.yml`; then download TLC artifacts and repeat attestation verification for TLC.
 - Optional: remove stale tracked `verification/runs/*-governance.json` from ConsentChain if you want fewer duplicate files in artifacts (script fix already prefers newest by filename).
 
