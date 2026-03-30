@@ -15,10 +15,12 @@ jobs:
     permissions:
       contents: read
     steps:
+      # Private submodule repos may deny the default GITHUB_TOKEN ("Repository not found").
+      # Optional: repo secret SUBMODULES_PAT (fine-grained PAT, contents:read on submodule repos).
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SUBMODULES_PAT || secrets.GITHUB_TOKEN }}
 
       - name: Bootstrap repository
         run: ./scripts/bootstrap_repo.sh
