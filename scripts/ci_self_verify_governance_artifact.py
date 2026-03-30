@@ -57,7 +57,10 @@ def main() -> None:
 
     prefer = [p for p in json_files if p.name.endswith("-governance.json")]
     pick_from = prefer if prefer else json_files
-    artifact_path = max(pick_from, key=lambda p: p.stat().st_mtime)
+    # Zip extraction often yields identical mtimes; tie-break by filename so the newest
+    # run (lexicographic UTC stamp prefix) wins over stale committed runs in the same dir.
+    pick_from.sort(key=lambda p: (p.stat().st_mtime, p.name))
+    artifact_path = pick_from[-1]
 
     schema_path = root / "verification" / "governance-verification-run.schema.json"
     if not schema_path.is_file():
