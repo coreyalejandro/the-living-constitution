@@ -13,257 +13,538 @@
     {
       "path": "THE_LIVING_CONSTITUTION.md",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify", "mutate"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify",
+        "mutate"
+      ]
     },
     {
       "path": "00-constitution/invariant-registry.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "00-constitution/doctrine-to-invariant.map.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "00-constitution/role-registry.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "00-constitution/constitution.md",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "00-constitution/articles.md",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "02-agents/agent-capabilities.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "03-enforcement/enforcement-map.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "03-enforcement/consentchain-mapping.md",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "03-enforcement/proactive-integration.md",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "MASTER_PROJECT_INVENTORY.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "verify"
+      ]
     },
     {
       "path": "MASTER_PROJECT_INVENTORY.md",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "verify"
+      ]
     },
     {
       "path": "verification/evidence-ledger.schema.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/governance-verification-run.schema.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/regression-ledger.schema.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/governance-verification.template.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/tip-state-policy.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/pass7-branch-verification-policy.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/review-escalation-policy.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": "verification/closed-epistemics-open-interfaces-policy.json",
       "role": "LEGISLATIVE",
-      "allowed_actions": ["read", "define_law"],
-      "forbidden_actions": ["execute", "verify"]
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     },
     {
       "path": ".github/workflows/verify.yml",
       "role": "EXECUTIVE",
-      "allowed_actions": ["read", "execute"],
-      "forbidden_actions": ["define_invariant", "verify"]
+      "allowed_actions": [
+        "read",
+        "execute"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "verify"
+      ]
     },
     {
       "path": "scripts/append_regression_ledger.py",
       "role": "EXECUTIVE",
-      "allowed_actions": ["read", "execute", "mutate"],
-      "forbidden_actions": ["define_invariant", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/sync_ci_provenance_tip_state.py",
       "role": "EXECUTIVE",
-      "allowed_actions": ["read", "execute", "mutate"],
-      "forbidden_actions": ["define_invariant", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/governance_failure_injection_tests.py",
       "role": "EXECUTIVE",
-      "allowed_actions": ["read", "execute"],
-      "forbidden_actions": ["define_invariant"]
+      "allowed_actions": [
+        "read",
+        "execute"
+      ],
+      "forbidden_actions": [
+        "define_invariant"
+      ]
     },
     {
       "path": "scripts/verify_governance_chain.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["define_invariant", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/verify_project_topology.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["write", "mutate", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/verify_institutionalization.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["write", "mutate", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/verify_cross_repo_consistency.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["write", "mutate", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/verify_consentchain_family.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["define_invariant", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/tip_state_helpers.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["write", "mutate", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/ci_self_verify_governance_artifact.py",
       "role": "JUDICIAL",
-      "allowed_actions": ["read", "verify"],
-      "forbidden_actions": ["write", "mutate", "declare_status"]
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
     },
     {
       "path": "scripts/render_status_surface.py",
       "role": "INTERFACE",
-      "allowed_actions": ["read", "declare_status", "render"],
-      "forbidden_actions": ["define_invariant", "verify"]
+      "allowed_actions": [
+        "read",
+        "declare_status",
+        "render"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "verify"
+      ]
     },
     {
       "path": "verification/evidence-ledger/",
       "path_kind": "tree",
       "role": "RECORD",
-      "allowed_actions": ["read", "store"],
-      "forbidden_actions": ["interpret", "execute", "define_law"]
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "execute",
+        "define_law"
+      ]
     },
     {
       "path": "verification/runs/",
       "path_kind": "tree",
       "role": "RECORD",
-      "allowed_actions": ["read", "store"],
-      "forbidden_actions": ["interpret", "execute"]
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "execute"
+      ]
     },
     {
       "path": "verification/regression-ledger/ledger.json",
       "role": "RECORD",
-      "allowed_actions": ["read", "store"],
-      "forbidden_actions": ["interpret", "verify"]
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "verify"
+      ]
     },
     {
       "path": "verification/ci-remote-evidence/record.json",
       "role": "RECORD",
-      "allowed_actions": ["read", "store"],
-      "forbidden_actions": ["interpret", "execute"]
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "execute"
+      ]
     },
     {
       "path": "verification/consentchain-family/",
       "path_kind": "tree",
       "role": "RECORD",
-      "allowed_actions": ["read", "store"],
-      "forbidden_actions": ["interpret", "define_law"]
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "define_law"
+      ]
     },
     {
       "path": "verification/independent-review/last-review.json",
       "role": "RECORD",
-      "allowed_actions": ["read", "store"],
-      "forbidden_actions": ["interpret", "execute"]
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "execute"
+      ]
     },
     {
       "path": "STATUS.json",
       "role": "INTERFACE",
-      "allowed_actions": ["read", "declare_status"],
-      "forbidden_actions": ["verify", "define_invariant"]
+      "allowed_actions": [
+        "read",
+        "declare_status"
+      ],
+      "forbidden_actions": [
+        "verify",
+        "define_invariant"
+      ]
     },
     {
       "path": "STATUS.md",
       "role": "INTERFACE",
-      "allowed_actions": ["read", "declare_status"],
-      "forbidden_actions": ["verify", "derive_truth_independently"]
+      "allowed_actions": [
+        "read",
+        "declare_status"
+      ],
+      "forbidden_actions": [
+        "verify",
+        "derive_truth_independently"
+      ]
     },
     {
       "path": "verification/MATRIX.md",
       "role": "INTERFACE",
-      "allowed_actions": ["read", "declare_status"],
-      "forbidden_actions": ["verify"]
+      "allowed_actions": [
+        "read",
+        "declare_status"
+      ],
+      "forbidden_actions": [
+        "verify"
+      ]
     },
     {
       "path": "verification/GOVERNANCE_SYSTEM_CARD.md",
       "role": "INTERFACE",
-      "allowed_actions": ["read", "declare_status"],
-      "forbidden_actions": ["verify"]
+      "allowed_actions": [
+        "read",
+        "declare_status"
+      ],
+      "forbidden_actions": [
+        "verify"
+      ]
+    },
+    {
+      "path": "verification/invariant-failure-map.json",
+      "role": "LEGISLATIVE",
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
+    },
+    {
+      "path": "verification/invariant-risk-model.json",
+      "role": "LEGISLATIVE",
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
     }
   ]
 }

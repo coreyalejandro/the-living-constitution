@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "tlc-invariant-risk-model",
+  "severity_levels": {
+    "critical": "Immediate governance failure; merge or verified status must not proceed.",
+    "high": "Material evidence or CI integrity risk; requires remediation before verified claims.",
+    "medium": "Operational drift or coverage gaps; track and fix under institutionalization.",
+    "low": "Minor consistency risk; schedule cleanup."
+  },
+  "impact_axes": [
+    "integrity",
+    "availability",
+    "separation_of_powers",
+    "epistemic_closure"
+  ]
+}

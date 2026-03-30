@@ -13,7 +13,13 @@
       "description": "Every constitutional doctrine or operative governance rule referenced as binding must map to at least one machine-readable invariant or enforcement artifact.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (doctrine map completeness)",
       "evidence_path_or_rule": "00-constitution/doctrine-to-invariant.map.json lists doctrines/articles with non-empty invariant_ids",
-      "breach_taxonomy": "BREACH-A"
+      "breach_taxonomy": "BREACH-A",
+      "domain": "Governance",
+      "failure_mode": "unmapped_doctrine_or_rule",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/doctrine-to-invariant.map.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_02",
@@ -21,7 +27,13 @@
       "description": "Every machine-readable invariant must declare an enforcement mechanism and evidence path or evidence generation rule.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (registry field validation)",
       "evidence_path_or_rule": "This file; each invariants[] entry must include enforcement_mechanism and evidence_path_or_rule",
-      "breach_taxonomy": "BREACH-B"
+      "breach_taxonomy": "BREACH-B",
+      "domain": "Provenance",
+      "failure_mode": "incomplete_registry_enforcement_fields",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/invariant-registry.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_03",
@@ -29,7 +41,13 @@
       "description": "MASTER_PROJECT_INVENTORY.json must reflect all canonical governance artifacts required by the C-RSP governance chain.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (inventory governance_artifacts block)",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.canonical_paths",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "inventory_governance_manifest_drift",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_04",
@@ -37,7 +55,13 @@
       "description": "MASTER_PROJECT_INVENTORY.md must be synchronized with MASTER_PROJECT_INVENTORY.json after remediation (same meta.generated_at_utc token).",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (timestamp token match)",
       "evidence_path_or_rule": "META generated_at_utc string appears in both JSON meta and MD header",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "inventory_json_md_token_mismatch",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_05",
@@ -45,7 +69,13 @@
       "description": "Agent definitions must declare explicit allowed actions, forbidden actions, and required output constraints in machine-readable form where agent specifications exist.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (agent-capabilities.json schema)",
       "evidence_path_or_rule": "02-agents/agent-capabilities.json",
-      "breach_taxonomy": "BREACH-F"
+      "breach_taxonomy": "BREACH-F",
+      "domain": "Execution",
+      "failure_mode": "agent_capabilities_schema_violation",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "02-agents/agent-capabilities.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_06",
@@ -53,7 +83,13 @@
       "description": "Enforcement under 03-enforcement must include at least one executable verification path that can fail on governance drift.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; CI workflow step",
       "evidence_path_or_rule": "03-enforcement/enforcement-map.json lists executable hooks; scripts return non-zero on failure",
-      "breach_taxonomy": "BREACH-C"
+      "breach_taxonomy": "BREACH-C",
+      "domain": "Provenance",
+      "failure_mode": "enforcement_map_missing_executable_path",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "03-enforcement/enforcement-map.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_07",
@@ -61,7 +97,13 @@
       "description": "Evidence records must distinguish verified, unverified, and missing states; absence of evidence must never be represented as success.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (evidence ledger seed enum)",
       "evidence_path_or_rule": "verification/evidence-ledger.schema.json; verification/evidence-ledger/seed.json",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "evidence_state_misrepresentation",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/evidence-ledger/seed.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_08",
@@ -69,7 +111,13 @@
       "description": "Truth-status or implementation-status claims for governance components must be backed by concrete evidence references or verification output.",
       "enforcement_mechanism": "Human + verification/MATRIX.md; ledger records link to artifacts",
       "evidence_path_or_rule": "verification/evidence-ledger/seed.json evidence_ref fields",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "unsubstantiated_truth_claim",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/evidence-ledger/seed.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_09",
@@ -77,7 +125,13 @@
       "description": "Governance artifact naming must be canonical and non-duplicative across constitution, enforcement, and inventory layers.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (single canonical path per artifact class in inventory)",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json governance_artifacts.canonical_paths uniqueness",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "noncanonical_or_duplicate_artifact_path",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_10",
@@ -85,7 +139,13 @@
       "description": "Repository topology checks must include governance-critical paths, not just structural existence under projects/.",
       "enforcement_mechanism": "scripts/verify_project_topology.py --with-governance; scripts/verify_governance_chain.py",
       "evidence_path_or_rule": "governance_required_paths in verify_governance_chain.py",
-      "breach_taxonomy": "BREACH-C"
+      "breach_taxonomy": "BREACH-C",
+      "domain": "Execution",
+      "failure_mode": "topology_missing_governance_paths",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_project_topology.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_11",
@@ -93,7 +153,13 @@
       "description": "All evidence ledger JSON records must pass JSON Schema validation against verification/evidence-ledger.schema.json at verification runtime.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (Draft 2020-12 validation via jsonschema)",
       "evidence_path_or_rule": "verification/evidence-ledger.schema.json; verification/evidence-ledger/*.json",
-      "breach_taxonomy": "BREACH-B"
+      "breach_taxonomy": "BREACH-B",
+      "domain": "Governance",
+      "failure_mode": "evidence_ledger_schema_validation_failure",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/evidence-ledger.schema.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_12",
@@ -101,7 +167,13 @@
       "description": "Every governance verification run must emit a commit-bound artifact under verification/runs/ populated with real git HEAD and run outcomes.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (writes verification/runs/<timestamp>-governance.json)",
       "evidence_path_or_rule": "verification/governance-verification-run.schema.json; verification/runs/*.json",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "governance_run_artifact_missing_or_stale",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/runs/",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_13",
@@ -109,7 +181,13 @@
       "description": "CI and local verification must invoke the same topology and governance commands with identical flags (no skipped governance checks in CI).",
       "enforcement_mechanism": ".github/workflows/verify.yml; parity enforced by workflow inspection + verify_governance_chain.py",
       "evidence_path_or_rule": ".github/workflows/verify.yml steps; documented command block in MASTER_PROJECT_INVENTORY.md",
-      "breach_taxonomy": "BREACH-C"
+      "breach_taxonomy": "BREACH-C",
+      "domain": "Execution",
+      "failure_mode": "ci_local_verifier_command_parity_failure",
+      "severity": "high",
+      "enforcement_hook": ".github/workflows/verify.yml",
+      "evidence_hook": ".github/workflows/verify.yml",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_14",
@@ -117,7 +195,13 @@
       "description": "Doctrine to invariant to enforcement to evidence to inventory chain must be referentially complete with no dangling nodes.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (full-chain referential checks)",
       "evidence_path_or_rule": "00-constitution/doctrine-to-invariant.map.json; 03-enforcement/enforcement-map.json; MASTER_PROJECT_INVENTORY.json#governance_artifacts",
-      "breach_taxonomy": "BREACH-A"
+      "breach_taxonomy": "BREACH-A",
+      "domain": "Governance",
+      "failure_mode": "broken_doctrine_enforcement_evidence_chain",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "03-enforcement/enforcement-map.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_15",
@@ -125,7 +209,13 @@
       "description": "Remote GitHub Actions execution evidence must exist for governance verification (not workflow file inspection alone).",
       "enforcement_mechanism": "verification/ci-remote-evidence/record.json; GitHub Actions run logs",
       "evidence_path_or_rule": "verification/ci-remote-evidence/record.json updated after each provenance run; gh run view",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "missing_remote_ci_execution_evidence",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_16",
@@ -133,7 +223,13 @@
       "description": "Remote workflow conclusion must be success for governance CI correctness to be claimed.",
       "enforcement_mechanism": "Human + ci-remote-evidence record; gh run view conclusion",
       "evidence_path_or_rule": "record.json workflow_conclusion field",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "remote_workflow_not_success",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_17",
@@ -141,7 +237,13 @@
       "description": "Artifact upload step must succeed remotely for cloud governance run artifact behavior to be claimed.",
       "enforcement_mechanism": "GitHub Actions upload-artifact step logs; gh run view",
       "evidence_path_or_rule": "record.json artifact_upload_succeeded",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "artifact_upload_not_success",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_18",
@@ -149,7 +251,13 @@
       "description": "Uploaded remote governance artifact must correspond to the executed commit SHA and contain a non-empty commit_hash matching validated HEAD.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (commit_hash, GITHUB_SHA parity in CI)",
       "evidence_path_or_rule": "governance run JSON commit_hash; record.json artifact_commit_hash",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "artifact_commit_mismatch",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_19",
@@ -157,7 +265,13 @@
       "description": "Remote workflow must not weaken or omit the canonical governance verification commands.",
       "enforcement_mechanism": "verify_governance_chain.py EXPECTED_CI_COMMAND_LINES; verify.yml substring checks",
       "evidence_path_or_rule": ".github/workflows/verify.yml; MASTER_PROJECT_INVENTORY ci_verification_commands",
-      "breach_taxonomy": "BREACH-C"
+      "breach_taxonomy": "BREACH-C",
+      "domain": "Execution",
+      "failure_mode": "remote_workflow_weakens_verifier_commands",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": ".github/workflows/verify.yml",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_20",
@@ -165,7 +279,13 @@
       "description": "Verification and truth reporting must distinguish remote-verified facts from local-only facts and not-claimed items.",
       "enforcement_mechanism": "Human V&T discipline; ci-remote-evidence record schema",
       "evidence_path_or_rule": "Pass 3 V&T output; verification/ci-remote-evidence/record.json",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "remote_vs_local_truth_confusion",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_21",
@@ -173,7 +293,13 @@
       "description": "Every CI run must produce a governance artifact whose commit_hash matches GITHUB_SHA and is downloadable via artifact upload; inventory ci_provenance must track verify.yml hash and align with remote record when verified.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; .github/workflows/verify.yml upload + download self-verify; MASTER_PROJECT_INVENTORY.json ci_provenance",
       "evidence_path_or_rule": "verification/runs/*-governance.json; governance-verification-run.schema.json; verification/ci-remote-evidence/record.json; GitHub Actions artifacts",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "ci_provenance_or_github_sha_mismatch",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_22",
@@ -181,7 +307,13 @@
       "description": "A scheduled remote evaluation path must exist for governance and provenance verification.",
       "enforcement_mechanism": "scripts/verify_institutionalization.py (verify.yml schedule inspection)",
       "evidence_path_or_rule": ".github/workflows/verify.yml schedule block",
-      "breach_taxonomy": "BREACH-G"
+      "breach_taxonomy": "BREACH-G",
+      "domain": "Execution",
+      "failure_mode": "missing_scheduled_verification_path",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": ".github/workflows/verify.yml",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_23",
@@ -189,7 +321,13 @@
       "description": "Every scheduled run must write a regression-ledger record that is schema-valid when CI append runs.",
       "enforcement_mechanism": "scripts/append_regression_ledger.py; verification/regression-ledger.schema.json",
       "evidence_path_or_rule": "verification/regression-ledger/ledger.json",
-      "breach_taxonomy": "BREACH-H"
+      "breach_taxonomy": "BREACH-H",
+      "domain": "Provenance",
+      "failure_mode": "regression_ledger_row_invalid_or_missing",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "verification/regression-ledger/ledger.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_24",
@@ -197,7 +335,13 @@
       "description": "Governance or provenance failure must downgrade or block verified status according to explicit escalation thresholds.",
       "enforcement_mechanism": "scripts/verify_institutionalization.py; MASTER_PROJECT_INVENTORY.json ci_provenance",
       "evidence_path_or_rule": "verification/review-escalation-policy.json; ci_provenance.status and escalation_state",
-      "breach_taxonomy": "BREACH-I"
+      "breach_taxonomy": "BREACH-I",
+      "domain": "Provenance",
+      "failure_mode": "escalation_threshold_not_respected",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "verification/review-escalation-policy.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_25",
@@ -205,7 +349,13 @@
       "description": "Workflow identity drift requires a fresh green run before status may remain verified.",
       "enforcement_mechanism": "scripts/verify_institutionalization.py (verify.yml sha256 vs inventory)",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance.verify_workflow_sha256",
-      "breach_taxonomy": "BREACH-J"
+      "breach_taxonomy": "BREACH-J",
+      "domain": "Governance",
+      "failure_mode": "workflow_identity_drift_without_green_run",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_26",
@@ -213,7 +363,13 @@
       "description": "Adversarial or failure-injection tests must exist for core governance-chain break conditions.",
       "enforcement_mechanism": "scripts/governance_failure_injection_tests.py",
       "evidence_path_or_rule": "scripts/governance_failure_injection_tests.py; CI step",
-      "breach_taxonomy": "BREACH-K"
+      "breach_taxonomy": "BREACH-K",
+      "domain": "Execution",
+      "failure_mode": "missing_or_weak_failure_injection_coverage",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "scripts/governance_failure_injection_tests.py",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_27",
@@ -221,7 +377,13 @@
       "description": "Review state for drift or failure handling must be machine-readable.",
       "enforcement_mechanism": "scripts/verify_institutionalization.py; verification/independent-review/last-review.json",
       "evidence_path_or_rule": "verification/independent-review/last-review.json; ci_provenance.reviewer_status",
-      "breach_taxonomy": "BREACH-K"
+      "breach_taxonomy": "BREACH-K",
+      "domain": "Provenance",
+      "failure_mode": "review_state_not_machine_readable",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "verification/independent-review/last-review.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_28",
@@ -229,7 +391,13 @@
       "description": "A governance system card or risk report must exist and must not overclaim beyond current evidence.",
       "enforcement_mechanism": "scripts/verify_institutionalization.py (required headings)",
       "evidence_path_or_rule": "verification/GOVERNANCE_SYSTEM_CARD.md",
-      "breach_taxonomy": "BREACH-L"
+      "breach_taxonomy": "BREACH-L",
+      "domain": "Provenance",
+      "failure_mode": "governance_system_card_missing_or_overclaim",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "verification/GOVERNANCE_SYSTEM_CARD.md",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_29",
@@ -237,7 +405,13 @@
       "description": "Institutionalization artifacts must be tracked in MASTER_PROJECT_INVENTORY.json and reflected in MASTER_PROJECT_INVENTORY.md.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (governance_artifacts manifest)",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json governance_artifacts; MASTER_PROJECT_INVENTORY.md",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "institutionalization_paths_not_tracked_in_inventory",
+      "severity": "medium",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_30",
@@ -245,7 +419,13 @@
       "description": "Protected-surface drift after the last verified remote run must prevent tip-state verified status.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; protected_surface_paths in verification/tip-state-policy.json",
       "evidence_path_or_rule": "ci_provenance; git diff vs last_remote_qualifying_commit",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Provenance",
+      "failure_mode": "protected_surface_drift_after_verified_run",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/tip-state-policy.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_31",
@@ -253,7 +433,13 @@
       "description": "Only a qualifying remote GitHub Actions run may restore tip-state verified.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; human-updated record.json; CI does not auto-commit inventory",
       "evidence_path_or_rule": "verification/ci-remote-evidence/record.json; verification/tip-state-policy.json qualifying_remote_run",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Execution",
+      "failure_mode": "tip_verified_without_qualifying_remote_run",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/ci-remote-evidence/record.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_32",
@@ -261,7 +447,13 @@
       "description": "ci_provenance must distinguish historical remote verification from current tip truth via tip_state_truth and aligned status.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance.tip_state_truth; last_remote_qualifying_commit",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "tip_state_truth_inconsistent_with_status",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_33",
@@ -269,7 +461,13 @@
       "description": "Workflow identity drift without a fresh green qualifying remote run must force pending or stronger.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; scripts/verify_institutionalization.py",
       "evidence_path_or_rule": "ci_provenance.verify_workflow_sha256 vs live verify.yml",
-      "breach_taxonomy": "BREACH-J"
+      "breach_taxonomy": "BREACH-J",
+      "domain": "Governance",
+      "failure_mode": "workflow_drift_forces_pending_not_enforced",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_34",
@@ -277,7 +475,13 @@
       "description": "Regression ledger rows must encode whether they establish historical verification only or tip-level truth.",
       "enforcement_mechanism": "verification/regression-ledger.schema.json; scripts/append_regression_ledger.py",
       "evidence_path_or_rule": "verification/regression-ledger/ledger.json tip_state_truth",
-      "breach_taxonomy": "BREACH-H"
+      "breach_taxonomy": "BREACH-H",
+      "domain": "Governance",
+      "failure_mode": "regression_row_missing_tip_state_truth_semantics",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/regression-ledger/ledger.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_35",
@@ -285,7 +489,13 @@
       "description": "Review/escalation policy must define machine-readable tip transitions and alignment with tip_state_truth.",
       "enforcement_mechanism": "scripts/verify_institutionalization.py; verification/review-escalation-policy.json",
       "evidence_path_or_rule": "tip_state_transition_policy; escalation_state vs tip_state_truth",
-      "breach_taxonomy": "BREACH-I"
+      "breach_taxonomy": "BREACH-I",
+      "domain": "Provenance",
+      "failure_mode": "review_escalation_policy_drift_vs_tip_truth",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "verification/review-escalation-policy.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_36",
@@ -293,7 +503,13 @@
       "description": "Inventory and markdown must not overclaim current tip verification beyond evidence.",
       "enforcement_mechanism": "MASTER_PROJECT_INVENTORY.md; scripts/verify_governance_chain.py",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance; meta timestamps",
-      "breach_taxonomy": "BREACH-L"
+      "breach_taxonomy": "BREACH-L",
+      "domain": "Provenance",
+      "failure_mode": "inventory_overclaims_tip_verification",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "ci_failure"
     },
     {
       "id": "INVARIANT_37",
@@ -301,7 +517,13 @@
       "description": "Mutable development branch tips must not claim inventory tip_verified; only frozen verification targets (detached HEAD, provenance branch, or release tag at anchor) may align verified tip-state with record.json.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; verification/pass7-branch-verification-policy.json; scripts/tip_state_helpers.py",
       "evidence_path_or_rule": "ci_provenance.status; git context vs last_verified_commit; record.json artifact_commit_hash",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Execution",
+      "failure_mode": "mutable_branch_claims_tip_verified",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_38",
@@ -309,7 +531,13 @@
       "description": "STATUS.json is the sole authoritative current-status artifact for the repository; no other file may assert authoritative current status.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; verification/closed-epistemics-open-interfaces-policy.json",
       "evidence_path_or_rule": "STATUS.json; aggregate_status() in scripts/render_status_surface.py",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "status_authority_fragmentation",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "STATUS.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_39",
@@ -317,7 +545,13 @@
       "description": "STATUS.md must be a faithful rendered mirror of STATUS.json; manual divergence is prohibited.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; scripts/render_status_surface.py",
       "evidence_path_or_rule": "render_markdown_from_status(STATUS.json) byte-stable compare",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "status_md_diverges_from_status_json",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "STATUS.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_40",
@@ -325,7 +559,13 @@
       "description": "README and documentation may link to status surfaces but must not independently assert conflicting current operational status.",
       "enforcement_mechanism": "Human review; policy in verification/closed-epistemics-open-interfaces-policy.json",
       "evidence_path_or_rule": "README.md defers to STATUS.md / STATUS.json",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "readme_conflicting_operational_status",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "README.md",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_41",
@@ -333,7 +573,13 @@
       "description": "External interfaces must consume exported proofs, schemas, and committed artifacts — not undocumented internal assumptions.",
       "enforcement_mechanism": "verification/closed-epistemics-open-interfaces-policy.json",
       "evidence_path_or_rule": "open_interfaces.consumed_artifacts in policy JSON",
-      "breach_taxonomy": "BREACH-F"
+      "breach_taxonomy": "BREACH-F",
+      "domain": "Execution",
+      "failure_mode": "interface_consumes_undocumented_assumptions",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/closed-epistemics-open-interfaces-policy.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_42",
@@ -341,7 +587,13 @@
       "description": "Verification must fail on any contradiction between STATUS.json, MASTER_PROJECT_INVENTORY ci_provenance, ci-remote record, regression ledger tail, and git HEAD.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_status_surface)",
       "evidence_path_or_rule": "aggregate_status vs committed STATUS.json; tip-state checks vs inventory",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "aggregate_status_contradiction",
+      "severity": "high",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "STATUS.json",
+      "escalation": "status_downgrade_or_block"
     },
     {
       "id": "INVARIANT_43",
@@ -349,7 +601,13 @@
       "description": "A machine-readable role registry must exist at 00-constitution/role-registry.json enumerating governance-scoped paths with exactly one constitutional power each.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_role_registry)",
       "evidence_path_or_rule": "00-constitution/role-registry.json; entries[].path, role, allowed_actions, forbidden_actions",
-      "breach_taxonomy": "BREACH-F"
+      "breach_taxonomy": "BREACH-F",
+      "domain": "Execution",
+      "failure_mode": "role_registry_missing_or_invalid",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_44",
@@ -357,7 +615,13 @@
       "description": "Separation-of-powers constraints must be encoded in 03-enforcement/enforcement-map.json and verified by the governance chain (role module + INVARIANT_45 through INVARIANT_50).",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; 03-enforcement/enforcement-map.json module tlc_separation_of_powers",
       "evidence_path_or_rule": "enforcement-map modules; role-registry parity in verify_governance_chain",
-      "breach_taxonomy": "BREACH-C"
+      "breach_taxonomy": "BREACH-C",
+      "domain": "Execution",
+      "failure_mode": "separation_of_powers_not_encoded_in_enforcement_map",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "03-enforcement/enforcement-map.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_45",
@@ -365,7 +629,13 @@
       "description": "Every governance-scoped path required by inventory, scripts, and workflows must appear in role-registry.json with exactly one role (no missing paths, no duplicate path assignments).",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_role_registry completeness)",
       "evidence_path_or_rule": "Expanded registry paths vs MASTER_PROJECT_INVENTORY canonical_paths + scripts/*.py + .github/workflows/verify.yml",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "governance_path_missing_or_duplicate_role",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_46",
@@ -373,7 +643,13 @@
       "description": "No file may perform actions outside its declared role; static checks flag cross-power leakage (forbidden actions vs observed writes).",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_role_registry static actions)",
       "evidence_path_or_rule": "Heuristic scan of JUDICIAL and EXECUTIVE Python against role-registry forbidden_actions",
-      "breach_taxonomy": "BREACH-F"
+      "breach_taxonomy": "BREACH-F",
+      "domain": "Execution",
+      "failure_mode": "cross_power_leakage_detected",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_47",
@@ -381,7 +657,13 @@
       "description": "INTERFACE surfaces (STATUS.json / STATUS.md) must not derive authoritative current status independently of the aggregate contract (scripts/render_status_surface.py); STATUS.md must mirror STATUS.json.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_status_surface); scripts/render_status_surface.py",
       "evidence_path_or_rule": "INVARIANT_38 through INVARIANT_42; closed-epistemics-open-interfaces-policy.json",
-      "breach_taxonomy": "BREACH-D"
+      "breach_taxonomy": "BREACH-D",
+      "domain": "Governance",
+      "failure_mode": "interface_derives_status_outside_aggregate",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "STATUS.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_48",
@@ -389,7 +671,13 @@
       "description": "JUDICIAL Python components must not write repository state outside approved verification evidence paths (verification/runs/, verification/consentchain-family/).",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (judicial write heuristic)",
       "evidence_path_or_rule": "Source scan of scripts registered as JUDICIAL in role-registry",
-      "breach_taxonomy": "BREACH-C"
+      "breach_taxonomy": "BREACH-C",
+      "domain": "Execution",
+      "failure_mode": "judicial_write_outside_evidence_paths",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_49",
@@ -397,7 +685,13 @@
       "description": "EXECUTIVE components must not define or override invariants by writing canonical law files (00-constitution invariant/doctrine/role registry, 03-enforcement/enforcement-map.json).",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (executive legislative write scan)",
       "evidence_path_or_rule": "Forbidden write targets for EXECUTIVE scripts",
-      "breach_taxonomy": "BREACH-A"
+      "breach_taxonomy": "BREACH-A",
+      "domain": "Execution",
+      "failure_mode": "executive_writes_legislative_surface",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "escalation": "governance_separation_violation"
     },
     {
       "id": "INVARIANT_50",
@@ -405,7 +699,13 @@
       "description": "RECORD artifacts must be modified only through designated execution flows (append_regression_ledger, CI, INTERFACE render pipeline) — not by JUDICIAL verifiers except approved evidence directories.",
       "enforcement_mechanism": "Human + INVARIANT_48/INVARIANT_49; CI workflow boundaries",
       "evidence_path_or_rule": "role-registry RECORD paths; append_regression_ledger.py; verify.yml",
-      "breach_taxonomy": "BREACH-E"
+      "breach_taxonomy": "BREACH-E",
+      "domain": "Provenance",
+      "failure_mode": "record_mutation_outside_designated_flows",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "escalation": "governance_separation_violation"
     }
   ],
   "failure_class_artifacts": [

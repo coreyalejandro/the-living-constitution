@@ -18,9 +18,9 @@
 ## Invariant system (PASS 11)
 
 INVARIANTS: 50 total
-- Critical: 19
-- High: 23
-- Medium: 8
+- Critical: 14
+- High: 21
+- Medium: 15
 - Low: 0
 Violations: 0
 
@@ -33,13 +33,7 @@ Violations: 0
 
 ## Cross-repo consistency (ConsentChain submodule)
 
-- **state:** `drift`
-- **detail:** verify_cross_repo_consistency: FAIL
-  - JSON drift (normalized): 00-constitution/invariant-registry.json
-  - JSON drift (normalized): 00-constitution/role-registry.json
-  - JSON drift (normalized): 03-enforcement/enforcement-map.json
-  - target missing: verification/invariant-failure-map.json
-  - target missing: verification/invariant-risk-model.json
+- **state:** `aligned`
 
 ## Truth boundary
 

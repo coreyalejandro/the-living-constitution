@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "tlc-invariant-failure-map",
+  "entries": [
+    {
+      "invariant_id": "INVARIANT_01",
+      "failure_mode": "unmapped_doctrine_or_rule"
+    },
+    {
+      "invariant_id": "INVARIANT_02",
+      "failure_mode": "incomplete_registry_enforcement_fields"
+    },
+    {
+      "invariant_id": "INVARIANT_03",
+      "failure_mode": "inventory_governance_manifest_drift"
+    },
+    {
+      "invariant_id": "INVARIANT_04",
+      "failure_mode": "inventory_json_md_token_mismatch"
+    },
+    {
+      "invariant_id": "INVARIANT_05",
+      "failure_mode": "agent_capabilities_schema_violation"
+    },
+    {
+      "invariant_id": "INVARIANT_06",
+      "failure_mode": "enforcement_map_missing_executable_path"
+    },
+    {
+      "invariant_id": "INVARIANT_07",
+      "failure_mode": "evidence_state_misrepresentation"
+    },
+    {
+      "invariant_id": "INVARIANT_08",
+      "failure_mode": "unsubstantiated_truth_claim"
+    },
+    {
+      "invariant_id": "INVARIANT_09",
+      "failure_mode": "noncanonical_or_duplicate_artifact_path"
+    },
+    {
+      "invariant_id": "INVARIANT_10",
+      "failure_mode": "topology_missing_governance_paths"
+    },
+    {
+      "invariant_id": "INVARIANT_11",
+      "failure_mode": "evidence_ledger_schema_validation_failure"
+    },
+    {
+      "invariant_id": "INVARIANT_12",
+      "failure_mode": "governance_run_artifact_missing_or_stale"
+    },
+    {
+      "invariant_id": "INVARIANT_13",
+      "failure_mode": "ci_local_verifier_command_parity_failure"
+    },
+    {
+      "invariant_id": "INVARIANT_14",
+      "failure_mode": "broken_doctrine_enforcement_evidence_chain"
+    },
+    {
+      "invariant_id": "INVARIANT_15",
+      "failure_mode": "missing_remote_ci_execution_evidence"
+    },
+    {
+      "invariant_id": "INVARIANT_16",
+      "failure_mode": "remote_workflow_not_success"
+    },
+    {
+      "invariant_id": "INVARIANT_17",
+      "failure_mode": "artifact_upload_not_success"
+    },
+    {
+      "invariant_id": "INVARIANT_18",
+      "failure_mode": "artifact_commit_mismatch"
+    },
+    {
+      "invariant_id": "INVARIANT_19",
+      "failure_mode": "remote_workflow_weakens_verifier_commands"
+    },
+    {
+      "invariant_id": "INVARIANT_20",
+      "failure_mode": "remote_vs_local_truth_confusion"
+    },
+    {
+      "invariant_id": "INVARIANT_21",
+      "failure_mode": "ci_provenance_or_github_sha_mismatch"
+    },
+    {
+      "invariant_id": "INVARIANT_22",
+      "failure_mode": "missing_scheduled_verification_path"
+    },
+    {
+      "invariant_id": "INVARIANT_23",
+      "failure_mode": "regression_ledger_row_invalid_or_missing"
+    },
+    {
+      "invariant_id": "INVARIANT_24",
+      "failure_mode": "escalation_threshold_not_respected"
+    },
+    {
+      "invariant_id": "INVARIANT_25",
+      "failure_mode": "workflow_identity_drift_without_green_run"
+    },
+    {
+      "invariant_id": "INVARIANT_26",
+      "failure_mode": "missing_or_weak_failure_injection_coverage"
+    },
+    {
+      "invariant_id": "INVARIANT_27",
+      "failure_mode": "review_state_not_machine_readable"
+    },
+    {
+      "invariant_id": "INVARIANT_28",
+      "failure_mode": "governance_system_card_missing_or_overclaim"
+    },
+    {
+      "invariant_id": "INVARIANT_29",
+      "failure_mode": "institutionalization_paths_not_tracked_in_inventory"
+    },
+    {
+      "invariant_id": "INVARIANT_30",
+      "failure_mode": "protected_surface_drift_after_verified_run"
+    },
+    {
+      "invariant_id": "INVARIANT_31",
+      "failure_mode": "tip_verified_without_qualifying_remote_run"
+    },
+    {
+      "invariant_id": "INVARIANT_32",
+      "failure_mode": "tip_state_truth_inconsistent_with_status"
+    },
+    {
+      "invariant_id": "INVARIANT_33",
+      "failure_mode": "workflow_drift_forces_pending_not_enforced"
+    },
+    {
+      "invariant_id": "INVARIANT_34",
+      "failure_mode": "regression_row_missing_tip_state_truth_semantics"
+    },
+    {
+      "invariant_id": "INVARIANT_35",
+      "failure_mode": "review_escalation_policy_drift_vs_tip_truth"
+    },
+    {
+      "invariant_id": "INVARIANT_36",
+      "failure_mode": "inventory_overclaims_tip_verification"
+    },
+    {
+      "invariant_id": "INVARIANT_37",
+      "failure_mode": "mutable_branch_claims_tip_verified"
+    },
+    {
+      "invariant_id": "INVARIANT_38",
+      "failure_mode": "status_authority_fragmentation"
+    },
+    {
+      "invariant_id": "INVARIANT_39",
+      "failure_mode": "status_md_diverges_from_status_json"
+    },
+    {
+      "invariant_id": "INVARIANT_40",
+      "failure_mode": "readme_conflicting_operational_status"
+    },
+    {
+      "invariant_id": "INVARIANT_41",
+      "failure_mode": "interface_consumes_undocumented_assumptions"
+    },
+    {
+      "invariant_id": "INVARIANT_42",
+      "failure_mode": "aggregate_status_contradiction"
+    },
+    {
+      "invariant_id": "INVARIANT_43",
+      "failure_mode": "role_registry_missing_or_invalid"
+    },
+    {
+      "invariant_id": "INVARIANT_44",
+      "failure_mode": "separation_of_powers_not_encoded_in_enforcement_map"
+    },
+    {
+      "invariant_id": "INVARIANT_45",
+      "failure_mode": "governance_path_missing_or_duplicate_role"
+    },
+    {
+      "invariant_id": "INVARIANT_46",
+      "failure_mode": "cross_power_leakage_detected"
+    },
+    {
+      "invariant_id": "INVARIANT_47",
+      "failure_mode": "interface_derives_status_outside_aggregate"
+    },
+    {
+      "invariant_id": "INVARIANT_48",
+      "failure_mode": "judicial_write_outside_evidence_paths"
+    },
+    {
+      "invariant_id": "INVARIANT_49",
+      "failure_mode": "executive_writes_legislative_surface"
+    },
+    {
+      "invariant_id": "INVARIANT_50",
+      "failure_mode": "record_mutation_outside_designated_flows"
+    }
+  ]
+}

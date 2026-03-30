@@ -57,7 +57,10 @@
     {
       "id": "tlc_project_topology",
       "constitutional_reference": "00-constitution/constitution.md#Census Doctrine",
-      "invariant_ids": ["INVARIANT_03", "INVARIANT_10"],
+      "invariant_ids": [
+        "INVARIANT_03",
+        "INVARIANT_10"
+      ],
       "enforcement_hook": "scripts/verify_project_topology.py",
       "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
       "inventory_presence": "MASTER_PROJECT_INVENTORY.json#tlc_projects_overlay",
@@ -66,7 +69,9 @@
     {
       "id": "consentchain_family",
       "constitutional_reference": "03-enforcement/consentchain-mapping.md",
-      "invariant_ids": ["INVARIANT_06"],
+      "invariant_ids": [
+        "INVARIANT_06"
+      ],
       "enforcement_hook": "scripts/verify_consentchain_family.py",
       "evidence_hook": "verification/consentchain-family/report.json",
       "inventory_presence": "MASTER_PROJECT_INVENTORY.json#consentchain_family_script",
@@ -132,5 +137,257 @@
       "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.canonical_paths.role_registry",
       "failure_exit_code": 1
     }
-  ]
+  ],
+  "invariant_risk_bindings": {
+    "INVARIANT_01": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_02": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_03": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_04": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_05": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_06": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_07": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_08": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_09": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_10": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_project_topology.py"
+    },
+    "INVARIANT_11": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_12": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_13": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": ".github/workflows/verify.yml"
+    },
+    "INVARIANT_14": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_15": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_16": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_17": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_18": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_19": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_20": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_21": {
+      "severity": "critical",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_22": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_23": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_24": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_25": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_26": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_27": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_28": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_29": {
+      "severity": "medium",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_30": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_31": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_32": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_33": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_34": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_35": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_institutionalization.py"
+    },
+    "INVARIANT_36": {
+      "severity": "high",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_37": {
+      "severity": "critical",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_38": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_39": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_40": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_41": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_42": {
+      "severity": "high",
+      "escalation": "status_downgrade_or_block",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_43": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_44": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_45": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_46": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_47": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_48": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_49": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_50": {
+      "severity": "critical",
+      "escalation": "governance_separation_violation",
+      "verification_hook": "scripts/verify_governance_chain.py"
+    }
+  }
 }
