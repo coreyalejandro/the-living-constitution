@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/schemas/supply-chain-attestation.json",
+  "title": "Supply-chain attestation (PASS 14)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "github_repository",
+    "commit",
+    "workflow_sha256",
+    "github_run_id",
+    "github_run_attempt",
+    "artifacts",
+    "invariants_verified",
+    "timestamp"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "github_repository": {
+      "type": "string",
+      "minLength": 3
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "workflow_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "github_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "github_run_attempt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verification_runs_aggregate_sha256", "governance_run_basename"],
+      "properties": {
+        "verification_runs_aggregate_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "governance_run_basename": {
+          "type": "string",
+          "minLength": 5
+        }
+      }
+    },
+    "invariants_verified": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^INVARIANT_[0-9]{2}$"
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 10
+    }
+  }
+}

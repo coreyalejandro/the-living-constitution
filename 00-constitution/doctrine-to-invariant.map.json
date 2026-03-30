@@ -28,7 +28,10 @@
         "INVARIANT_53",
         "INVARIANT_54",
         "INVARIANT_55",
-        "INVARIANT_56"
+        "INVARIANT_56",
+        "INVARIANT_57",
+        "INVARIANT_58",
+        "INVARIANT_59"
       ],
       "failure_class_ids": ["F2", "F3"],
       "notes": "Machine-checkable layers: deterministic verification scripts and synchronized inventory."
@@ -97,7 +100,10 @@
         "INVARIANT_15",
         "INVARIANT_16",
         "INVARIANT_17",
-        "INVARIANT_21"
+        "INVARIANT_21",
+        "INVARIANT_57",
+        "INVARIANT_58",
+        "INVARIANT_59"
       ],
       "failure_class_ids": ["F2"],
       "notes": "Verification-before-done requires executable checks and ledger evidence."

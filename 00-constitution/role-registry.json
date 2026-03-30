@@ -178,6 +178,18 @@
       ]
     },
     {
+      "path": "verification/supply-chain-attestation.schema.json",
+      "role": "LEGISLATIVE",
+      "allowed_actions": [
+        "read",
+        "define_law"
+      ],
+      "forbidden_actions": [
+        "execute",
+        "verify"
+      ]
+    },
+    {
       "path": "verification/regression-ledger.schema.json",
       "role": "LEGISLATIVE",
       "allowed_actions": [
@@ -388,6 +400,32 @@
       ]
     },
     {
+      "path": "scripts/generate_attestation.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/verify_attestation.py",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
       "path": "scripts/render_status_surface.py",
       "role": "INTERFACE",
       "allowed_actions": [
@@ -416,6 +454,19 @@
     },
     {
       "path": "verification/runs/",
+      "path_kind": "tree",
+      "role": "RECORD",
+      "allowed_actions": [
+        "read",
+        "store"
+      ],
+      "forbidden_actions": [
+        "interpret",
+        "execute"
+      ]
+    },
+    {
+      "path": "verification/attestations/",
       "path_kind": "tree",
       "role": "RECORD",
       "allowed_actions": [

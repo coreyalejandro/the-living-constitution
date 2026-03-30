@@ -790,6 +790,48 @@
       "enforcement_hook": "scripts/tip_state_helpers.py",
       "evidence_hook": "CI logs; local git state",
       "escalation": "ci_failure"
+    },
+    {
+      "id": "INVARIANT_57",
+      "category": "Provenance / Supply chain",
+      "description": "Attestation presence: each successful CI verification MUST emit a supply-chain attestation JSON and that file MUST verify against the committed workflow and verification/runs aggregate (PASS 14).",
+      "enforcement_mechanism": "scripts/generate_attestation.py; scripts/verify_attestation.py; .github/workflows/verify.yml",
+      "evidence_path_or_rule": "verification/attestations/<GITHUB_RUN_ID>-<GITHUB_RUN_ATTEMPT>.json; workflow artifact supply-chain-attestation-*",
+      "breach_taxonomy": "BREACH-B",
+      "domain": "Provenance",
+      "failure_mode": "supply_chain_attestation_missing_or_invalid",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_attestation.py",
+      "evidence_hook": "verification/attestations/README.md",
+      "escalation": "ci_failure"
+    },
+    {
+      "id": "INVARIANT_58",
+      "category": "Provenance / Supply chain",
+      "description": "Workflow hash binding: the attestation MUST record SHA256 of `.github/workflows/verify.yml` at verification time; any mismatch with the workflow file on disk HALTs.",
+      "enforcement_mechanism": "scripts/generate_attestation.py; scripts/verify_attestation.py",
+      "evidence_path_or_rule": "supply-chain attestation workflow_sha256 field; byte-identical hash of verify.yml",
+      "breach_taxonomy": "BREACH-B",
+      "domain": "Provenance",
+      "failure_mode": "supply_chain_workflow_hash_mismatch",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_attestation.py",
+      "evidence_hook": ".github/workflows/verify.yml",
+      "escalation": "ci_failure"
+    },
+    {
+      "id": "INVARIANT_59",
+      "category": "Provenance / Supply chain",
+      "description": "Artifact integrity: the attestation MUST bind a deterministic aggregate hash over `verification/runs/*.json`; tampering with those files after attestation HALTs verification.",
+      "enforcement_mechanism": "scripts/generate_attestation.py; scripts/verify_attestation.py",
+      "evidence_path_or_rule": "artifacts.verification_runs_aggregate_sha256; sorted basename + per-file sha256 lines",
+      "breach_taxonomy": "BREACH-B",
+      "domain": "Provenance",
+      "failure_mode": "supply_chain_runs_aggregate_mismatch",
+      "severity": "critical",
+      "enforcement_hook": "scripts/verify_attestation.py",
+      "evidence_hook": "verification/runs/",
+      "escalation": "ci_failure"
     }
   ],
   "failure_class_artifacts": [

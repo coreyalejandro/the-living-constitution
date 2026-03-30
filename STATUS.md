@@ -7,14 +7,14 @@
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
 | `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
-| `head_sha` | `5708e976d8146cbde29ab646bc5c454e5235b10c` |
+| `head_sha` | `85e7bc5df8b9fcad0a215b8d5e8de62b850694a6` |
 | `last_verified_commit` | `f0414d36a9a9a4e39acb2fee4c62c910069b88a4` |
 | `last_verified_run_id` | `23761679469` |
 | `tip_state_truth` | `tip_pending` |
-| `workflow_sha` | `cf39062ffcdb21ac557a5b45efb79efc9b8d4b847695064964f61dfd3c23ca81` |
+| `workflow_sha` | `e9fef7851e1e7f748aff6d5b241f29bb98d79287548706fd2ac7d724a02c483b` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
-| `governance_contract_version` | `v1.8.0` |
+| `governance_contract_version` | `v1.9.0` |
 | `inventory_meta_generated_at_utc` | `2026-03-30T19:00:00Z` |
 
 ## Immutable truth anchor (PASS 11)

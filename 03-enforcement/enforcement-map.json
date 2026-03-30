@@ -142,6 +142,19 @@
       "verification_hook": "scripts/verify_governance_chain.py#_check_role_registry",
       "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.canonical_paths.role_registry",
       "failure_exit_code": 1
+    },
+    {
+      "id": "pass14_supply_chain_attestation",
+      "constitutional_reference": "00-constitution/doctrine-to-invariant.map.json#DOCTRINE_IDEMPOTENCY",
+      "invariant_ids": [
+        "INVARIANT_57",
+        "INVARIANT_58",
+        "INVARIANT_59"
+      ],
+      "enforcement_hook": "scripts/verify_attestation.py",
+      "evidence_hook": "verification/attestations/README.md",
+      "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.canonical_paths.supply_chain_attestation_schema",
+      "failure_exit_code": 1
     }
   ],
   "invariant_risk_bindings": {
@@ -424,6 +437,21 @@
       "severity": "critical",
       "escalation": "ci_failure",
       "verification_hook": "scripts/tip_state_helpers.py; scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_57": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/generate_attestation.py; scripts/verify_attestation.py; .github/workflows/verify.yml"
+    },
+    "INVARIANT_58": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_attestation.py"
+    },
+    "INVARIANT_59": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_attestation.py"
     }
   }
 }

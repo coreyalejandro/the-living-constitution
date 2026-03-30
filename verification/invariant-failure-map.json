@@ -201,6 +201,42 @@
     {
       "invariant_id": "INVARIANT_50",
       "failure_mode": "record_mutation_outside_designated_flows"
+    },
+    {
+      "invariant_id": "INVARIANT_51",
+      "failure_mode": "anchor_tag_unresolvable"
+    },
+    {
+      "invariant_id": "INVARIANT_52",
+      "failure_mode": "anchor_tag_remote_mismatch"
+    },
+    {
+      "invariant_id": "INVARIANT_53",
+      "failure_mode": "anchor_preflight_or_tag_surface_missing"
+    },
+    {
+      "invariant_id": "INVARIANT_54",
+      "failure_mode": "incomplete_or_drift_submodule_checkout"
+    },
+    {
+      "invariant_id": "INVARIANT_55",
+      "failure_mode": "missing_or_misordered_bootstrap_in_ci"
+    },
+    {
+      "invariant_id": "INVARIANT_56",
+      "failure_mode": "shallow_clone_blocks_tag_and_history_resolution"
+    },
+    {
+      "invariant_id": "INVARIANT_57",
+      "failure_mode": "supply_chain_attestation_missing_or_invalid"
+    },
+    {
+      "invariant_id": "INVARIANT_58",
+      "failure_mode": "supply_chain_workflow_hash_mismatch"
+    },
+    {
+      "invariant_id": "INVARIANT_59",
+      "failure_mode": "supply_chain_runs_aggregate_mismatch"
     }
   ]
 }

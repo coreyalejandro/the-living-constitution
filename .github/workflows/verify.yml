@@ -119,12 +119,30 @@ jobs:
         if: success()
         run: python3 scripts/governance_failure_injection_tests.py
 
+      - name: Generate supply-chain attestation
+        if: success()
+        run: python3 scripts/generate_attestation.py --root .
+
+      - name: Verify supply-chain attestation
+        if: success()
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_attestation.py --root . --attestation verification/attestations/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json
+
       - name: Upload governance verification run artifacts
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: governance-verification-runs-${{ github.run_id }}-${{ github.run_attempt }}
           path: verification/runs/*.json
+          if-no-files-found: error
+
+      - name: Upload supply-chain attestation
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: supply-chain-attestation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verification/attestations/*.json
           if-no-files-found: error
 
       - name: Download governance artifact for CI self-verification

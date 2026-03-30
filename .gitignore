@@ -44,6 +44,7 @@ next-env.d.ts
 
 # Governance run artifacts (regenerated locally / in CI; upload via workflow artifact)
 verification/runs/*.json
+verification/attestations/*.json
 
 # Playwright MCP artifacts (screenshots, recordings, etc.)
 .playwright-mcp/

@@ -27,8 +27,8 @@
     "last_verified_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
     "last_remote_qualifying_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
     "artifact_name": "governance-verification-runs-23761679469-1",
-    "verify_workflow_sha256": "cf39062ffcdb21ac557a5b45efb79efc9b8d4b847695064964f61dfd3c23ca81",
-    "verify_workflow_sha256_at_last_remote_run": "cf39062ffcdb21ac557a5b45efb79efc9b8d4b847695064964f61dfd3c23ca81",
+    "verify_workflow_sha256": "e9fef7851e1e7f748aff6d5b241f29bb98d79287548706fd2ac7d724a02c483b",
+    "verify_workflow_sha256_at_last_remote_run": "e9fef7851e1e7f748aff6d5b241f29bb98d79287548706fd2ac7d724a02c483b",
     "status": "pending",
     "tip_state_truth": "tip_pending",
     "escalation_state": "review_required",
@@ -37,7 +37,7 @@
     "verification_anchor_commit": "e56fc0753955901ee18bca44ae73181f9999b9db"
   },
   "governance_artifacts": {
-    "contract_version": "v1.8.0",
+    "contract_version": "v1.9.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -61,7 +61,8 @@
       "governance_system_card": "verification/GOVERNANCE_SYSTEM_CARD.md",
       "independent_review_record": "verification/independent-review/last-review.json",
       "invariant_failure_map": "verification/invariant-failure-map.json",
-      "invariant_risk_model": "verification/invariant-risk-model.json"
+      "invariant_risk_model": "verification/invariant-risk-model.json",
+      "supply_chain_attestation_schema": "verification/supply-chain-attestation.schema.json"
     },
     "institutionalization": {
       "regression_ledger_schema": "verification/regression-ledger.schema.json",
@@ -202,6 +203,12 @@
         "relative_path": "verification/invariant-risk-model.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "supply_chain_attestation_schema",
+        "relative_path": "verification/supply-chain-attestation.schema.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
       }
     ],
     "enforcement_scripts": [
@@ -213,13 +220,17 @@
       "scripts/tip_state_helpers.py",
       "scripts/sync_ci_provenance_tip_state.py",
       "scripts/verify_cross_repo_consistency.py",
-      "scripts/render_status_surface.py"
+      "scripts/render_status_surface.py",
+      "scripts/generate_attestation.py",
+      "scripts/verify_attestation.py"
     ],
     "ci_verification_commands": [
       "python3 scripts/verify_project_topology.py --root . --with-governance",
       "python3 scripts/verify_governance_chain.py --root .",
       "python3 scripts/verify_institutionalization.py --root .",
-      "python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain"
+      "python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain",
+      "python3 scripts/generate_attestation.py --root .",
+      "python3 scripts/verify_attestation.py --root . --attestation verification/attestations/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
     ]
   },
   "tlc_projects_overlay": {

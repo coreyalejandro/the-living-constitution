@@ -73,6 +73,8 @@ EXPECTED_CI_COMMAND_LINES = (
     "python3 scripts/verify_governance_chain.py --root .",
     "python3 scripts/verify_institutionalization.py --root .",
     "python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain",
+    "python3 scripts/generate_attestation.py --root .",
+    "python3 scripts/verify_attestation.py --root . --attestation verification/attestations/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json",
 )
 
 
@@ -780,6 +782,7 @@ def _collect_errors(root: Path) -> Tuple[
         root / "verification" / "evidence-ledger" / "seed.json",
         root / "verification" / "governance-verification.template.json",
         root / "verification" / "governance-verification-run.schema.json",
+        root / "verification" / "supply-chain-attestation.schema.json",
         root / "verification" / "ci-remote-evidence" / "record.json",
         root / "verification" / "regression-ledger.schema.json",
         root / "verification" / "regression-ledger" / "ledger.json",
@@ -837,10 +840,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 57)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 60)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_56; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_59; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:
