@@ -1,25 +1,28 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-03-30  
-**Status:** PASS 13 closed on `origin/main` — remote + fresh-clone proof executed
+**Status:** PASS 14 — **local governance repair complete** (INVARIANT_21/42 + `.c-rsp/`); **remote closure** requires green `verify.yml` + artifact download after push. TLC CI may still need `SUBMODULES_PAT` for private submodules.
 
 ## What Was Just Completed
 
-- **Published PASS 13:** TLC `51bcc28` (PASS 13 bundle per sprint scope); ConsentChain `cd6bb24` on `https://github.com/coreyalejandro/consentchain.git`; submodule pointer updated in TLC.
-- **Bootstrap unblockers (post-push):** Removed accidental gitlinks (`.claude/worktrees/*`, `.claud (old)/worktrees/unruffled-liskov`) that made `git submodule update` fail with “No url found for submodule path”; committed `8f06a28`. Narrowed `.gitignore` to `/CLAUDE.md` and `/AGENTS.md` (root only) so `projects/**/CLAUDE.md` can be tracked; added missing `projects/buildlattice/CLAUDE.md`; committed `8ab468a`.
-- **External proof (fresh clone):** `git clone --depth 1` + `./scripts/bootstrap_repo.sh` + all four verifiers exit 0 on `/tmp/tlc-pass13-prove`. Shallow clone **without** bootstrap: `verify_governance_chain.py` fails with `SHALLOW_CLONE_DETECTED` as expected.
+- **PASS 14 C-RSP local repair (this session):** Fixed **INVARIANT_21** by setting `MASTER_PROJECT_INVENTORY.json` `ci_provenance.verify_workflow_sha256` to `sha256(.github/workflows/verify.yml)` (`567a70ac…`). Fixed **INVARIANT_42** by regenerating `STATUS.json` / `STATUS.md` with `scripts/render_status_surface.py`. Added **`.c-rsp/governance-map.json`** and **`.c-rsp/CONFLICT_LOG.md`**. `verify_governance_chain.py` + `verify_project_topology.py --with-governance` exit **0** locally after `./scripts/bootstrap_repo.sh`.
+- **PASS 14 published (initial):** ConsentChain `da35765` (attestation schema, generators, verifiers, CI); TLC `95088f8` with submodule parity.
+- **Follow-on CI repairs:** ConsentChain `inventory_kind` satellite (`fac7e93`); tracked `verification/attestations/README.md` + STATUS render (`43606c7`); `ci_self_verify_governance_artifact.py` tie-break when zip mtimes collide (`3caa7d4`). TLC: checkout `SUBMODULES_PAT || GITHUB_TOKEN`, submodule bumps, same self-verify fix (`f13091a`).
+- **ConsentChain remote proof:** Workflow run [23767731991](https://github.com/coreyalejandro/consentchain/actions/runs/23767731991) **success**; artifacts `governance-verification-runs-23767731991-1` and `supply-chain-attestation-23767731991-1`; downloaded + restored runs + attestation on clean clone at `3caa7d4` + bootstrap → `verify_attestation.py` **exit 0**.
+- **TLC blocker:** `projects/consent-gateway-auth0` is private; default `GITHUB_TOKEN` cannot clone → checkout fails. **Remediation:** add repo secret `SUBMODULES_PAT` (fine-grained PAT, contents read on `consent-gateway-auth0` + `consentchain`), *or* allow workflow access from `the-living-constitution` in the submodule repo settings, *or* make `consent-gateway-auth0` public.
 
 ## Recommended Next Steps
 
-- Let GitHub Actions `verify.yml` run on `8ab468a`; update `ci-remote-evidence/record.json` if promoting to verified.
-- Optional: commit local `scripts/render_status_surface.py` if it is part of a follow-on pass (left unstaged; outside the user’s original PASS 13 stage list).
+- **Commit and push** this governance repair; confirm GitHub Actions `verify.yml` **success**; **download** `governance-verification-runs-*` and `supply-chain-attestation-*`; restore under `verification/`; run `verify_attestation.py` per run id; optionally update `ci-remote-evidence/record.json` when promoting verified state.
+- Add `SUBMODULES_PAT` to `the-living-constitution` (or adjust repo access) if checkout still fails on private submodules; rerun TLC `verify.yml`; then download TLC artifacts and repeat attestation verification for TLC.
+- Optional: remove stale tracked `verification/runs/*-governance.json` from ConsentChain if you want fewer duplicate files in artifacts (script fix already prefers newest by filename).
 
 ## Quick Reference
 
-- **Bootstrap:** `./scripts/bootstrap_repo.sh` then verifiers.
-- **Cross-repo:** `python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain`
-- **Latest TLC main:** `8ab468a` (includes PASS 13 + bootstrap fixes)
+- **ConsentChain tip:** `3caa7d486e0a6ee048942b53064924607fa1c141`
+- **TLC tip:** `f13091a48ed9bf86569a8cdf59fb0b366a4354de` (CI failing until submodule auth fixed)
+- **Attestation verify (after full clone + bootstrap):** `python3 scripts/verify_attestation.py --root . --attestation verification/attestations/<RUN_ID>-<ATTEMPT>.json`
 
 ---
 
-**Confidence:** High for remote closure — fresh shallow clone + bootstrap + verifier suite reproduced locally after push.
+**Confidence:** High for ConsentChain end-to-end; TLC pending secrets/settings only.

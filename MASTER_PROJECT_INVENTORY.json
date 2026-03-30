@@ -27,7 +27,7 @@
     "last_verified_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
     "last_remote_qualifying_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
     "artifact_name": "governance-verification-runs-23761679469-1",
-    "verify_workflow_sha256": "e9fef7851e1e7f748aff6d5b241f29bb98d79287548706fd2ac7d724a02c483b",
+    "verify_workflow_sha256": "567a70acb3cc4db659b9a2e29d25834c8bcfded829fa3b04381df9496bf54781",
     "verify_workflow_sha256_at_last_remote_run": "e9fef7851e1e7f748aff6d5b241f29bb98d79287548706fd2ac7d724a02c483b",
     "status": "pending",
     "tip_state_truth": "tip_pending",
