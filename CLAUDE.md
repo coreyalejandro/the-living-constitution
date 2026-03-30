@@ -52,7 +52,7 @@ the-living-constitution/
 | PROACTIVE | Epistemic Safety | `/Users/coreyalejandro/Projects/proactive-gitlab-agent` | Validated — 212/212 tests, submitted to GitLab hackathon |
 | SentinelOS | All 4 Domains | `/Users/coreyalejandro/Projects/sentinelos` | Partial — 9 packages, 1,037 LOC, hex arch |
 | MADMall-Production | Human/Cognitive/Empirical | `/Users/coreyalejandro/Projects/MADMall-Production` | Partial — infrastructure mature, features Phase 1/4 |
-| ConsentChain | Empirical Safety | `/Users/coreyalejandro/Projects/consentchain` | Partial |
+| ConsentChain | Empirical Safety | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (path semantics: `04-consentchain/REGISTRY_PATH_MIGRATION.md`) | Partial |
 | UICare-System | Human Safety | `/Users/coreyalejandro/Projects/uicare-system` | Partial |
 | Docen | Cognitive Safety | `/Users/coreyalejandro/Projects/docen` | Deployed on GCR |
 | Portfolio | All 4 Domains | `/Users/coreyalejandro/Projects/coreys-agentic-portfolio` | Live on Vercel |

@@ -1,0 +1,6 @@
+[submodule "projects/consentchain"]
+	path = projects/consentchain
+	url = https://github.com/coreyalejandro/consentchain.git
+[submodule "projects/consent-gateway-auth0"]
+	path = projects/consent-gateway-auth0
+	url = https://github.com/coreyalejandro/consent-gateway-auth0.git

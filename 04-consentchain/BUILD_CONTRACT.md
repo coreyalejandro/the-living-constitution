@@ -26,7 +26,8 @@
 ## Evidence Required
 
 ```bash
-cd /Users/coreyalejandro/Projects/consentchain
+cd /Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain
+# Path semantics: see REGISTRY_PATH_MIGRATION.md in this folder.
 pnpm install
 ls packages/  # 7 packages
 ls apps/      # 1 app (web)
@@ -42,4 +43,4 @@ No new code needed. Verification only.
 
 ## Repo Path
 
-`/Users/coreyalejandro/Projects/consentchain/`
+`/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain/` (see `REGISTRY_PATH_MIGRATION.md` for prior sibling path vs TLC submodule)

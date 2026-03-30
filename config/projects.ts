@@ -42,12 +42,13 @@ export const COMMONWEALTH_PROJECTS: readonly CommonwealthProject[] = [
     resumeClaim:
       "Partial, ~1,500 LOC TypeScript, invariant enforcement platform",
   },
+  // ConsentChain repoPath: see 04-consentchain/REGISTRY_PATH_MIGRATION.md (TLC submodule vs prior sibling checkout).
   {
     id: "consentchain",
     name: "ConsentChain",
     domainIds: ["empirical"],
     status: "partial",
-    repoPath: "/Users/coreyalejandro/Projects/consentchain",
+    repoPath: "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain",
     resumeClaim:
       "Partial, 7-stage action gateway, Turborepo 8 packages, Prisma",
   },

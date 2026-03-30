@@ -1,0 +1,382 @@
+{
+  "timestamp_utc": "2026-03-30T07:42:11Z",
+  "project_family": "ConsentChain",
+  "root": "/Users/coreyalejandro/Projects/the-living-constitution",
+  "overall_status": "PASS",
+  "summary": {
+    "PASS": 41,
+    "FAIL": 0,
+    "WARN": 0,
+    "SKIP": 1
+  },
+  "results": [
+    {
+      "name": "tool-check",
+      "status": "PASS",
+      "detail": "Tool available: git",
+      "repo": null,
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "tool-check",
+      "status": "PASS",
+      "detail": "Tool available: python3",
+      "repo": null,
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "tool-check",
+      "status": "PASS",
+      "detail": "Tool available: pnpm",
+      "repo": null,
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/CLAUDE.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/CLAUDE.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/BUILD_CONTRACT.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/BUILD_CONTRACT.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/ARCHITECTURE.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/ARCHITECTURE.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/REPO_TOPOLOGY.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/REPO_TOPOLOGY.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/COMPONENT_REGISTRY.json",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/COMPONENT_REGISTRY.json"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/CRYPTO_SPEC.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/CRYPTO_SPEC.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/THREAT_MODEL.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/THREAT_MODEL.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/EMPIRICAL_SAFETY.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/EMPIRICAL_SAFETY.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/EVAL_PLAN.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/EVAL_PLAN.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/VERIFICATION.md",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/VERIFICATION.md"
+    },
+    {
+      "name": "required-file",
+      "status": "PASS",
+      "detail": "Found required file: 04-consentchain/REPO_MAP.json",
+      "repo": "TLC",
+      "command": null,
+      "path": "04-consentchain/REPO_MAP.json"
+    },
+    {
+      "name": "cross-repo-reference",
+      "status": "PASS",
+      "detail": "04-consentchain/REPO_MAP.json includes required entries.",
+      "repo": null,
+      "command": null,
+      "path": "04-consentchain/REPO_MAP.json"
+    },
+    {
+      "name": "cross-repo-reference",
+      "status": "PASS",
+      "detail": "04-consentchain/COMPONENT_REGISTRY.json includes required entries.",
+      "repo": null,
+      "command": null,
+      "path": "04-consentchain/COMPONENT_REGISTRY.json"
+    },
+    {
+      "name": "submodule-check",
+      "status": "PASS",
+      "detail": "All required submodule paths found in .gitmodules.",
+      "repo": null,
+      "command": null,
+      "path": ".gitmodules"
+    },
+    {
+      "name": "repo-present",
+      "status": "PASS",
+      "detail": "Repository path exists: /Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain",
+      "repo": "consentchain",
+      "command": null,
+      "path": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain"
+    },
+    {
+      "name": "git-remote",
+      "status": "PASS",
+      "detail": "Origin remote matches expected: https://github.com/coreyalejandro/consentchain.git",
+      "repo": "consentchain",
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "repo-required-file",
+      "status": "PASS",
+      "detail": "Found README.md",
+      "repo": "consentchain",
+      "command": null,
+      "path": "README.md"
+    },
+    {
+      "name": "repo-required-file",
+      "status": "PASS",
+      "detail": "Found package.json",
+      "repo": "consentchain",
+      "command": null,
+      "path": "package.json"
+    },
+    {
+      "name": "repo-required-file",
+      "status": "PASS",
+      "detail": "Found tsconfig.json",
+      "repo": "consentchain",
+      "command": null,
+      "path": "tsconfig.json"
+    },
+    {
+      "name": "package-identity",
+      "status": "PASS",
+      "detail": "package.json name is valid: consentchain",
+      "repo": "consentchain",
+      "command": null,
+      "path": "package.json"
+    },
+    {
+      "name": "readme-identity",
+      "status": "PASS",
+      "detail": "README contains required identity terms.",
+      "repo": "consentchain",
+      "command": null,
+      "path": "README.md"
+    },
+    {
+      "name": "forbidden-patterns",
+      "status": "PASS",
+      "detail": "No forbidden identity drift patterns found.",
+      "repo": "consentchain",
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm install --frozen-lockfile",
+      "repo": "consentchain",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm lint",
+      "repo": "consentchain",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm typecheck",
+      "repo": "consentchain",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm test",
+      "repo": "consentchain",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm build",
+      "repo": "consentchain",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-present",
+      "status": "PASS",
+      "detail": "Repository path exists: /Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0"
+    },
+    {
+      "name": "git-remote",
+      "status": "PASS",
+      "detail": "Origin remote matches expected: https://github.com/coreyalejandro/consent-gateway-auth0.git",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "repo-required-file",
+      "status": "PASS",
+      "detail": "Found README.md",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": "README.md"
+    },
+    {
+      "name": "repo-required-file",
+      "status": "PASS",
+      "detail": "Found package.json",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": "package.json"
+    },
+    {
+      "name": "package-identity",
+      "status": "PASS",
+      "detail": "package.json name is valid: consent-gateway-auth0",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": "package.json"
+    },
+    {
+      "name": "readme-identity",
+      "status": "PASS",
+      "detail": "README contains required identity terms.",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": "README.md"
+    },
+    {
+      "name": "forbidden-patterns",
+      "status": "SKIP",
+      "detail": "No forbidden patterns configured.",
+      "repo": "consent-gateway-auth0",
+      "command": null,
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm install --frozen-lockfile",
+      "repo": "consent-gateway-auth0",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm lint",
+      "repo": "consent-gateway-auth0",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm typecheck",
+      "repo": "consent-gateway-auth0",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm test",
+      "repo": "consent-gateway-auth0",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "path": null
+    },
+    {
+      "name": "repo-command",
+      "status": "PASS",
+      "detail": "Command passed: pnpm build",
+      "repo": "consent-gateway-auth0",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "path": null
+    }
+  ]
+}

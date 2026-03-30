@@ -21,12 +21,9 @@ Recommended usage:
 
 Assumptions:
 - TLC is the current super-repo root or passed via --root
-- consentchain and consent-gateway-auth0 are available under TLC/projects/
+- consentchain and consent-gateway-auth0 are git submodules under TLC/projects/ (see .gitmodules)
 - pnpm is used for JS/TS repos
 - git is installed
-
-Stricter TLC artifact lists (e.g. REPO_MAP.json, COMPONENT_REGISTRY.json, full spec pack)
-can be enforced by passing --config pointing at a JSON file that overrides DEFAULT_CONFIG.
 """
 
 from __future__ import annotations
@@ -51,13 +48,20 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 DEFAULT_CONFIG: Dict[str, Any] = {
     "project_family": "ConsentChain",
     "tlc": {
-        # Matches Living Constitution layout: projects/<name>/ (see repo CLAUDE.md).
-        "project_folder": "projects/consentchain",
+        "project_folder": "04-consentchain",
         "projects_folder": "projects",
-        # Minimal default: extend via --config JSON when full constitutional pack exists.
         "required_files": [
-            "projects/consentchain/CLAUDE.md",
-            "projects/consentchain/BUILD_CONTRACT.md",
+            "04-consentchain/CLAUDE.md",
+            "04-consentchain/BUILD_CONTRACT.md",
+            "04-consentchain/ARCHITECTURE.md",
+            "04-consentchain/REPO_TOPOLOGY.md",
+            "04-consentchain/COMPONENT_REGISTRY.json",
+            "04-consentchain/CRYPTO_SPEC.md",
+            "04-consentchain/THREAT_MODEL.md",
+            "04-consentchain/EMPIRICAL_SAFETY.md",
+            "04-consentchain/EVAL_PLAN.md",
+            "04-consentchain/VERIFICATION.md",
+            "04-consentchain/REPO_MAP.json",
         ],
     },
     "repos": [
@@ -72,16 +76,16 @@ DEFAULT_CONFIG: Dict[str, Any] = {
             ],
             "forbidden_patterns": [
                 {
-                    "pattern": r"AWS Agentic AI",
-                    "reason": "Stale v0 scaffold branding found.",
+                    "pattern": r"AWS\s+Agentic\s+AI",
+                    "reason": "Stale v0/AWS portfolio branding; not ConsentChain identity",
                 },
                 {
-                    "pattern": r"Creative Chaos",
-                    "reason": "Stale legacy branding found.",
+                    "pattern": r"Creative\s+Chaos",
+                    "reason": "Legacy portfolio design-system name; not ConsentChain identity",
                 },
                 {
                     "pattern": r"coreys-agentic-portfolio",
-                    "reason": "Legacy package identity found.",
+                    "reason": "Wrong package/repo identity; use consentchain",
                 },
             ],
             "expected_identity": {
@@ -119,11 +123,19 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         },
     ],
     "cross_repo_checks": {
-        "require_submodule_entries": False,
+        "require_submodule_entries": True,
         "require_repo_map_entries": True,
         "require_component_registry_entries": True,
-        # Empty by default: add REPO_MAP.json / COMPONENT_REGISTRY.json paths when present.
-        "require_references": [],
+        "require_references": [
+            {
+                "file": "04-consentchain/REPO_MAP.json",
+                "must_include_keys": ["consentchain", "consent-gateway-auth0"],
+            },
+            {
+                "file": "04-consentchain/COMPONENT_REGISTRY.json",
+                "must_include_keys": ["consentchain", "consent-gateway-auth0"],
+            },
+        ],
     },
     "reports": {
         "output_dir": "verification/consentchain-family",

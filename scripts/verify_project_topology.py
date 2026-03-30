@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""
+verify_project_topology.py
+
+Validates TLC workspace layout against MASTER_PROJECT_INVENTORY.json.
+Does not assume repo relationships beyond what the inventory records.
+Exit codes:
+  0 — checks passed
+  1 — validation failure (inventory missing, drift, or probe mismatch)
+  2 — usage / file read error
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+
+def _parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument(
+        "--root",
+        type=Path,
+        default=None,
+        help="TLC repository root (default: parent of scripts/)",
+    )
+    p.add_argument(
+        "--inventory",
+        type=Path,
+        default=None,
+        help="Path to MASTER_PROJECT_INVENTORY.json (default: <root>/MASTER_PROJECT_INVENTORY.json)",
+    )
+    p.add_argument(
+        "--no-probes",
+        action="store_true",
+        help="Skip filesystem existence probes (only compare projects/ slugs to JSON).",
+    )
+    return p.parse_args()
+
+
+def _load_json(path: Path) -> Dict[str, Any]:
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"ERROR: cannot read JSON: {path}: {e}", file=sys.stderr)
+        sys.exit(2)
+
+
+def _norm_abs(p: str, projects_parent: Path) -> Path:
+    """Resolve a path string that may be absolute or relative."""
+    x = Path(p).expanduser()
+    if x.is_absolute():
+        return x
+    return (projects_parent / x).resolve()
+
+
+def _exists_dir(p: Optional[str]) -> Optional[bool]:
+    if p is None:
+        return None
+    path = Path(p).expanduser()
+    if not path.is_absolute():
+        return None
+    return path.is_dir()
+
+
+def main() -> None:
+    args = _parse_args()
+    script_dir = Path(__file__).resolve().parent
+    root = (args.root or (script_dir.parent)).resolve()
+    inv_path = args.inventory or (root / "MASTER_PROJECT_INVENTORY.json")
+
+    data = _load_json(inv_path)
+    meta = data.get("meta") or {}
+    recorded_root = meta.get("tlc_root")
+    if recorded_root and Path(recorded_root).resolve() != root:
+        print(
+            f"WARNING: --root {root} != meta.tlc_root {recorded_root} "
+            f"(inventory may be stale).",
+            file=sys.stderr,
+        )
+
+    overlay = data.get("tlc_projects_overlay") or {}
+    expected: List[str] = list(overlay.get("expected_slugs") or [])
+    if not expected:
+        print("ERROR: tlc_projects_overlay.expected_slugs is empty or missing.", file=sys.stderr)
+        sys.exit(1)
+
+    projects_dir = root / "projects"
+    if not projects_dir.is_dir():
+        print(f"ERROR: missing directory {projects_dir}", file=sys.stderr)
+        sys.exit(1)
+
+    on_disk: Set[str] = {p.name for p in projects_dir.iterdir() if p.is_dir()}
+    expected_set = set(expected)
+    if on_disk != expected_set:
+        only_disk = sorted(on_disk - expected_set)
+        only_json = sorted(expected_set - on_disk)
+        print("ERROR: projects/ slugs do not match inventory.", file=sys.stderr)
+        if only_disk:
+            print(f"  On disk only: {only_disk}", file=sys.stderr)
+        if only_json:
+            print(f"  In JSON only: {only_json}", file=sys.stderr)
+        sys.exit(1)
+
+    errors: List[str] = []
+    if not args.no_probes:
+        entries: List[Dict[str, Any]] = list(overlay.get("entries") or [])
+        by_slug = {e["slug"]: e for e in entries if "slug" in e}
+        for slug in sorted(expected_set):
+            ent = by_slug.get(slug)
+            if not ent:
+                errors.append(f"Missing overlay entry for slug {slug!r} in entries[]")
+                continue
+
+            recorded = ent.get("path_exists_probe")
+            if recorded is None:
+                continue
+
+            bc = ent.get("implementation_repo_path_build_contract")
+            cfg = ent.get("implementation_repo_path_config_ts")
+            chosen: Optional[str] = None
+            if bc is not None:
+                chosen = bc
+            elif cfg is not None:
+                chosen = cfg
+
+            if chosen is None:
+                errors.append(
+                    f"{slug}: path_exists_probe is set but no implementation path recorded"
+                )
+                continue
+
+            actual = _exists_dir(chosen)
+            if actual is None:
+                errors.append(f"{slug}: non-absolute or unresolvable path {chosen!r}")
+                continue
+            if actual != bool(recorded):
+                errors.append(
+                    f"{slug}: probe mismatch — inventory says path_exists_probe={recorded} "
+                    f"but directory exists={actual} for {chosen}"
+                )
+
+        cf = data.get("consentchain_family_script") or {}
+        if "projects_consent_gateway_auth0_overlay_exists" in cf:
+            gw = root / "projects" / "consent-gateway-auth0"
+            exists = gw.is_dir()
+            if bool(cf["projects_consent_gateway_auth0_overlay_exists"]) != exists:
+                errors.append(
+                    "consent-gateway-auth0: inventory flag "
+                    f"projects_consent_gateway_auth0_overlay_exists="
+                    f"{cf['projects_consent_gateway_auth0_overlay_exists']} "
+                    f"but on_disk={exists} at {gw}"
+                )
+
+    if errors:
+        print("ERROR: topology probes failed:", file=sys.stderr)
+        for e in errors:
+            print(f"  - {e}", file=sys.stderr)
+        print(
+            "\nRefresh MASTER_PROJECT_INVENTORY.json / .md after verifying facts, "
+            "or pass --no-probes to only check projects/ slug list.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    print("OK: project topology matches MASTER_PROJECT_INVENTORY.json")
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()

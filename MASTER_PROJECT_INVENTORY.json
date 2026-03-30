@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "phase": "0",
+    "inventory_kind": "master_project_inventory",
+    "generated_at_utc": "2026-03-30T07:28:13Z",
+    "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
+    "migration_docs": [
+      "04-consentchain/REGISTRY_PATH_MIGRATION.md"
+    ],
+    "tlc_root": "/Users/coreyalejandro/Projects/the-living-constitution",
+    "sources": [
+      "filesystem: projects/",
+      "filesystem: sibling paths under /Users/coreyalejandro/Projects (existence probe)",
+      "CLAUDE.md Project Registry table",
+      "config/projects.ts COMMONWEALTH_PROJECTS",
+      "per-overlay BUILD_CONTRACT.md Repo Path sections where present",
+      "scripts/verify_consentchain_family.py embedded paths",
+      "04-consentchain/REGISTRY_PATH_MIGRATION.md"
+    ],
+    "notes": [
+      "Paths are absolute where recorded; unknown or not applicable use explicit null or unknown token.",
+      "Do not infer repo identity from similar folder names (e.g. build-lattice-guard vs buildlattice)."
+    ]
+  },
+  "tlc_projects_overlay": {
+    "root_relative": "projects",
+    "expected_slugs": [
+      "buildlattice",
+      "c-rsp",
+      "consentchain",
+      "consent-gateway-auth0",
+      "empirical-guard",
+      "epistemic-guard",
+      "evidence-observatory",
+      "frostbyte-etl",
+      "human-guard",
+      "proactive",
+      "sentinelos",
+      "teaser-video",
+      "uicare"
+    ],
+    "entries": [
+      {
+        "slug": "buildlattice",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/buildlattice",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/buildlattice",
+        "path_exists_probe": false,
+        "path_exists_status": "missing_on_disk",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md table; CLAUDE.md; config/projects.ts"
+      },
+      {
+        "slug": "c-rsp",
+        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_config_ts": null,
+        "path_exists_probe": null,
+        "path_exists_status": "unknown",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "none — meta template (C-RSP framework); no Repo Path section"
+      },
+      {
+        "slug": "consentchain",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md Repo Path; TLC git submodule projects/consentchain"
+      },
+      {
+        "slug": "consent-gateway-auth0",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "Rollout #1 — TLC git submodule projects/consent-gateway-auth0; REPO_MAP.json"
+      },
+      {
+        "slug": "empirical-guard",
+        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/empirical-guard",
+        "path_exists_probe": false,
+        "path_exists_status": "missing_on_disk",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
+      },
+      {
+        "slug": "epistemic-guard",
+        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/epistemic-guard",
+        "path_exists_probe": false,
+        "path_exists_status": "missing_on_disk",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
+      },
+      {
+        "slug": "evidence-observatory",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/tlc-evidence-observatory/",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/tlc-evidence-observatory",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      },
+      {
+        "slug": "frostbyte-etl",
+        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/frostbyte-etl",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "config/projects.ts — BUILD_CONTRACT.md has no Repo Path"
+      },
+      {
+        "slug": "human-guard",
+        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/human-guard",
+        "path_exists_probe": false,
+        "path_exists_status": "missing_on_disk",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
+      },
+      {
+        "slug": "proactive",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/proactive-gitlab-agent/",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/proactive-gitlab-agent",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      },
+      {
+        "slug": "sentinelos",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/sentinelos/",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/sentinelos",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      },
+      {
+        "slug": "teaser-video",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video/",
+        "implementation_repo_path_config_ts": null,
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md Repo Path (in-TLC)"
+      },
+      {
+        "slug": "uicare",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/uicare-system/",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/uicare-system",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      }
+    ]
+  },
+  "tlc_other_roots": [
+    {
+      "path_relative": "04-consentchain",
+      "role": "consentchain_constitutional_pack",
+      "relationship_to_projects_consentchain": "distinct_overlay — canonical pack vs projects/consentchain build contract overlay; see openmemory.md"
+    },
+    {
+      "path_relative": "05-madmall",
+      "role": "planning_and_vt_docs_only",
+      "implementation_repo_path": null,
+      "repo_path_status": "unknown — madmall-status-vt.md states no repository exists yet"
+    }
+  ],
+  "commonwealth_registry_only": [
+    {
+      "id": "instructional-integrity-studio",
+      "name": "Instructional Integrity Studio",
+      "repo_path_config_ts": "/Users/coreyalejandro/Projects/instructional-integrity-ui",
+      "path_exists_probe": true,
+      "tlc_projects_overlay_slug": null,
+      "notes": "Listed in config/projects.ts; no matching folder under TLC projects/"
+    },
+    {
+      "id": "portfolio",
+      "name": "Portfolio (coreyalejandro.com)",
+      "repo_path_config_ts": "/Users/coreyalejandro/Projects/coreys-agentic-portfolio",
+      "path_exists_probe": true,
+      "tlc_projects_overlay_slug": null,
+      "notes": "CLAUDE.md registry; no projects/portfolio overlay"
+    },
+    {
+      "id": "docen",
+      "name": "Docen",
+      "repo_path_config_ts": "/Users/coreyalejandro/Projects/docen",
+      "path_exists_probe": true,
+      "tlc_projects_overlay_slug": null,
+      "notes": "CLAUDE.md registry; no projects/docen overlay"
+    }
+  ],
+  "claude_md_registry_paths": [
+    {
+      "project": "PROACTIVE",
+      "repo_path": "/Users/coreyalejandro/Projects/proactive-gitlab-agent",
+      "path_exists_probe": true
+    },
+    {
+      "project": "SentinelOS",
+      "repo_path": "/Users/coreyalejandro/Projects/sentinelos",
+      "path_exists_probe": true
+    },
+    {
+      "project": "MADMall-Production",
+      "repo_path": "/Users/coreyalejandro/Projects/MADMall-Production",
+      "path_exists_probe": false,
+      "path_exists_status": "missing_on_disk"
+    },
+    {
+      "project": "ConsentChain",
+      "repo_path": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain",
+      "path_exists_probe": true
+    },
+    {
+      "project": "UICare-System",
+      "repo_path": "/Users/coreyalejandro/Projects/uicare-system",
+      "path_exists_probe": true
+    },
+    {
+      "project": "Docen",
+      "repo_path": "/Users/coreyalejandro/Projects/docen",
+      "path_exists_probe": true
+    },
+    {
+      "project": "Portfolio",
+      "repo_path": "/Users/coreyalejandro/Projects/coreys-agentic-portfolio",
+      "path_exists_probe": true
+    },
+    {
+      "project": "TLC Evidence Observatory",
+      "repo_path": "/Users/coreyalejandro/Projects/tlc-evidence-observatory",
+      "path_exists_probe": true
+    }
+  ],
+  "consentchain_family_script": {
+    "script_relative": "scripts/verify_consentchain_family.py",
+    "expects_tlc_relative_paths": [
+      "04-consentchain/CLAUDE.md",
+      "projects/consentchain",
+      "projects/consent-gateway-auth0"
+    ],
+    "projects_consent_gateway_auth0_overlay_exists": true,
+    "notes": "projects/consent-gateway-auth0 exists under TLC as a git submodule (see .gitmodules). Optional sibling checkout at /Users/coreyalejandro/Projects/consent-gateway-auth0 is not equivalent to the TLC path."
+  },
+  "sibling_named_not_equated": [
+    {
+      "path": "/Users/coreyalejandro/Projects/MADMall",
+      "exists": true,
+      "relationship_to_claude_madmall_production": "unknown — different name; not assumed same as MADMall-Production"
+    },
+    {
+      "path": "/Users/coreyalejandro/Projects/build-lattice-guard",
+      "exists": true,
+      "relationship_to_config_buildlattice": "unknown — not assumed same as buildlattice repo path"
+    }
+  ],
+  "unknowns": [
+    "Whether /Users/coreyalejandro/Projects/MADMall corresponds to any future MADMall-Production checkout",
+    "Whether build-lattice-guard is related to BuildLattice Guard / buildlattice path",
+    "Implementation repo for c-rsp (meta-template only in TLC)"
+  ],
+  "anomalies": [
+    "CLAUDE.md lists MADMall-Production at /Users/coreyalejandro/Projects/MADMall-Production — path missing on disk at inventory time",
+    "config/projects.ts repoPath for buildlattice points to /Users/coreyalejandro/Projects/buildlattice — path missing on disk at inventory time",
+    "empirical-guard, epistemic-guard, human-guard: config/projects.ts lists repo paths; directories absent under ~/Projects at inventory time",
+    "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md)"
+  ]
+}

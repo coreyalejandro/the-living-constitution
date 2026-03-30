@@ -1,0 +1,16 @@
+{
+  "components": [
+    {
+      "name": "consentchain",
+      "repo": "consentchain",
+      "role": "umbrella-product-repo",
+      "domain": "Empirical Safety"
+    },
+    {
+      "name": "consent-gateway-auth0",
+      "repo": "consent-gateway-auth0",
+      "role": "standalone-governed-component",
+      "domain": "Empirical Safety"
+    }
+  ]
+}

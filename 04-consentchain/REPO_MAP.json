@@ -1,0 +1,20 @@
+{
+  "consentchain": {
+    "name": "consentchain",
+    "role": "umbrella-product-repo",
+    "path": "projects/consentchain",
+    "tlc_overlay_path": "projects/consentchain",
+    "registry_path_note": "See REGISTRY_PATH_MIGRATION.md — prior sibling ~/Projects/consentchain vs current TLC submodule path below.",
+    "implementation_repo_path": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain",
+    "remote_url": "https://github.com/coreyalejandro/consentchain.git"
+  },
+  "consent-gateway-auth0": {
+    "name": "consent-gateway-auth0",
+    "role": "standalone-governed-component",
+    "path": "projects/consent-gateway-auth0",
+    "tlc_overlay_path": "projects/consent-gateway-auth0",
+    "registry_path_note": "TLC submodule only; see REGISTRY_PATH_MIGRATION.md.",
+    "implementation_repo_path": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0",
+    "remote_url": "https://github.com/coreyalejandro/consent-gateway-auth0.git"
+  }
+}
