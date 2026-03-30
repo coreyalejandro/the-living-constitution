@@ -1,29 +1,23 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-03-30  
-**Status:** Governance chain remediation applied (C-RSP)
+**Status:** PASS 6 tip-state exactness implemented (C-RSP v1.4.0)
 
 ## What Was Just Completed
 
-- **Pass 4 (continuous provenance):** INVARIANT_21; `ci_provenance` on `MASTER_PROJECT_INVENTORY.json`; `verify_governance_chain.py` CI bindings + workflow hash drift; `.github/workflows/verify.yml` upload then download + `scripts/ci_self_verify_governance_artifact.py`; `governance-verification-run.schema.json` adds `verify_workflow_sha256`.
-- Added machine-readable governance artifacts under `00-constitution/`, `02-agents/`, `03-enforcement/`, `verification/`.
-- Added `scripts/verify_governance_chain.py` and extended `scripts/verify_project_topology.py` with `--with-governance`.
-- **C-RSP Pass 2 (hardening):** INVARIANT_11–INVARIANT_14; runtime JSON Schema validation for all `verification/evidence-ledger/*.json` via `jsonschema` + `requirements-verify.txt`; commit-bound run artifacts under `verification/runs/<timestamp>-governance.json` validated against `governance-verification-run.schema.json`; full-chain referential checks; `governance_artifacts.artifact_manifest` + `ci_verification_commands`; CI parity (`pip install -r requirements-verify.txt`, same two python commands as inventory) and `upload-artifact` for `verification/runs/*.json`.
-- Updated `MASTER_PROJECT_INVENTORY.json` / `.md` with `governance_artifacts` and synchronized `meta.generated_at_utc`.
-- Wired `.github/workflows/verify.yml` to run topology + governance with identical commands to local.
-- Updated `openmemory.md` components for governance.
+- **PASS 6 (tip-state exactness):** `ci_provenance.tip_state_truth`, `last_remote_qualifying_commit`, INVARIANT_30–INVARIANT_36; `verification/tip-state-policy.json`; `scripts/tip_state_helpers.py`; `scripts/sync_ci_provenance_tip_state.py`; regression ledger schema 1.1.0 with `tip_state_truth` per row; `verify_governance_chain.py` checks HEAD vs anchor and protected-surface drift when `status=pending`; `review-escalation-policy.json` tip_state_transition_policy + R6/R7; inventory contract v1.4.0; governance artifacts include `tip_state_policy`.
+- **Current tip posture:** `MASTER_PROJECT_INVENTORY.json` `ci_provenance` is `pending` / `tip_pending` with `review_required` while HEAD advances beyond last remote qualifying commit until the next green Actions run and manual record + inventory promotion per policy (no CI writeback).
 
 ## Recommended Next Steps
 
-- Run `pip install -r requirements-verify.txt` then `python3 scripts/verify_governance_chain.py --root .` after any inventory or governance file edit.
-- Keep `MASTER_PROJECT_INVENTORY.md` header timestamp aligned with `meta.generated_at_utc` in JSON.
+- After a qualifying green `Verify Living Constitution` run on the commit to certify: update `verification/ci-remote-evidence/record.json` and `MASTER_PROJECT_INVENTORY.json` `ci_provenance` to match that run, then set `status`/`tip_state_truth` to `verified`/`tip_verified` only when `HEAD` equals `last_verified_commit`.
+- Optional: `python3 scripts/sync_ci_provenance_tip_state.py --root .` to refresh pending fields from git + record (does not set verified).
 
 ## Quick Reference
 
-- **Repository:** the-living-constitution  
-- **Governance verifier:** `scripts/verify_governance_chain.py`  
-- **Topology verifier:** `scripts/verify_project_topology.py`  
+- **Tip policy:** `verification/tip-state-policy.json`  
+- **Verifiers:** `verify_governance_chain.py`, `verify_institutionalization.py`, `verify_project_topology.py --with-governance`  
 
 ---
 
-**Confidence:** High — verifiers executed locally with exit code 0.
+**Confidence:** High — full verifier pipeline exited 0 locally after PASS 6.

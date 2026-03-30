@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T13:30:00Z",
+    "generated_at_utc": "2026-03-30T22:45:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -25,14 +25,17 @@
   "ci_provenance": {
     "last_verified_run_id": "23746990542",
     "last_verified_commit": "1a0e60a47dfd907421c10291d185abb0d5c4c830",
+    "last_remote_qualifying_commit": "1a0e60a47dfd907421c10291d185abb0d5c4c830",
     "artifact_name": "governance-verification-runs-23746990542-1",
     "verify_workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
-    "status": "verified",
-    "escalation_state": "none",
-    "reviewer_status": "acknowledged"
+    "verify_workflow_sha256_at_last_remote_run": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
+    "status": "pending",
+    "tip_state_truth": "tip_pending",
+    "escalation_state": "review_required",
+    "reviewer_status": "pending"
   },
   "governance_artifacts": {
-    "contract_version": "v1.3.0",
+    "contract_version": "v1.4.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -47,6 +50,7 @@
       "regression_ledger_schema": "verification/regression-ledger.schema.json",
       "regression_ledger": "verification/regression-ledger/ledger.json",
       "review_escalation_policy": "verification/review-escalation-policy.json",
+      "tip_state_policy": "verification/tip-state-policy.json",
       "governance_system_card": "verification/GOVERNANCE_SYSTEM_CARD.md",
       "independent_review_record": "verification/independent-review/last-review.json"
     },
@@ -131,6 +135,12 @@
         "evidence_ledger_record_id": null
       },
       {
+        "canonical_key": "tip_state_policy",
+        "relative_path": "verification/tip-state-policy.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
         "canonical_key": "governance_system_card",
         "relative_path": "verification/GOVERNANCE_SYSTEM_CARD.md",
         "verification_status": "verified",
@@ -148,7 +158,9 @@
       "scripts/verify_project_topology.py",
       "scripts/verify_institutionalization.py",
       "scripts/append_regression_ledger.py",
-      "scripts/governance_failure_injection_tests.py"
+      "scripts/governance_failure_injection_tests.py",
+      "scripts/tip_state_helpers.py",
+      "scripts/sync_ci_provenance_tip_state.py"
     ],
     "ci_verification_commands": [
       "python3 scripts/verify_project_topology.py --root . --with-governance",

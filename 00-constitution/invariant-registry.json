@@ -238,6 +238,62 @@
       "enforcement_mechanism": "scripts/verify_governance_chain.py (governance_artifacts manifest)",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json governance_artifacts; MASTER_PROJECT_INVENTORY.md",
       "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_30",
+      "category": "Observability / Evidence",
+      "description": "Protected-surface drift after the last verified remote run must prevent tip-state verified status.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; protected_surface_paths in verification/tip-state-policy.json",
+      "evidence_path_or_rule": "ci_provenance; git diff vs last_remote_qualifying_commit",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_31",
+      "category": "Isolation Boundary",
+      "description": "Only a qualifying remote GitHub Actions run may restore tip-state verified.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; human-updated record.json; CI does not auto-commit inventory",
+      "evidence_path_or_rule": "verification/ci-remote-evidence/record.json; verification/tip-state-policy.json qualifying_remote_run",
+      "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_32",
+      "category": "Observability / Evidence",
+      "description": "ci_provenance must distinguish historical remote verification from current tip truth via tip_state_truth and aligned status.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py",
+      "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance.tip_state_truth; last_remote_qualifying_commit",
+      "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_33",
+      "category": "Determinism / Idempotency",
+      "description": "Workflow identity drift without a fresh green qualifying remote run must force pending or stronger.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; scripts/verify_institutionalization.py",
+      "evidence_path_or_rule": "ci_provenance.verify_workflow_sha256 vs live verify.yml",
+      "breach_taxonomy": "BREACH-J"
+    },
+    {
+      "id": "INVARIANT_34",
+      "category": "Type / Schema Discipline",
+      "description": "Regression ledger rows must encode whether they establish historical verification only or tip-level truth.",
+      "enforcement_mechanism": "verification/regression-ledger.schema.json; scripts/append_regression_ledger.py",
+      "evidence_path_or_rule": "verification/regression-ledger/ledger.json tip_state_truth",
+      "breach_taxonomy": "BREACH-H"
+    },
+    {
+      "id": "INVARIANT_35",
+      "category": "Observability / Evidence",
+      "description": "Review/escalation policy must define machine-readable tip transitions and alignment with tip_state_truth.",
+      "enforcement_mechanism": "scripts/verify_institutionalization.py; verification/review-escalation-policy.json",
+      "evidence_path_or_rule": "tip_state_transition_policy; escalation_state vs tip_state_truth",
+      "breach_taxonomy": "BREACH-I"
+    },
+    {
+      "id": "INVARIANT_36",
+      "category": "Observability / Evidence",
+      "description": "Inventory and markdown must not overclaim current tip verification beyond evidence.",
+      "enforcement_mechanism": "MASTER_PROJECT_INVENTORY.md; scripts/verify_governance_chain.py",
+      "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance; meta timestamps",
+      "breach_taxonomy": "BREACH-L"
     }
   ],
   "failure_class_artifacts": [

@@ -141,10 +141,40 @@ def case_stale_inventory_provenance_pointer() -> Tuple[str, Callable[[Path], int
         inv_path = tmp / "MASTER_PROJECT_INVENTORY.json"
         inv = json.loads(inv_path.read_text(encoding="utf-8"))
         inv["ci_provenance"]["verify_workflow_sha256"] = "deadbeef" * 8
+        inv["ci_provenance"]["status"] = "verified"
+        inv["ci_provenance"]["tip_state_truth"] = "tip_verified"
         inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
         return 0 if _run_py(["scripts/verify_institutionalization.py", "--root", "."], tmp) != 0 else 1
 
     return ("stale inventory workflow hash fails verify_institutionalization", _fn)
+
+
+def case_tip_verified_without_matching_head() -> Tuple[str, Callable[[Path], int]]:
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        subprocess.run(["git", "-C", str(tmp), "init"], check=True)
+        subprocess.run(
+            ["git", "-C", str(tmp), "config", "user.email", "tip-state@example.com"],
+            check=True,
+        )
+        subprocess.run(["git", "-C", str(tmp), "config", "user.name", "tip-state"], check=True)
+        subprocess.run(["git", "-C", str(tmp), "add", "-A"], check=True)
+        subprocess.run(["git", "-C", str(tmp), "commit", "-m", "init", "--allow-empty"], check=True)
+        fake = "0" * 40
+        rec_path = tmp / "verification" / "ci-remote-evidence" / "record.json"
+        rec = json.loads(rec_path.read_text(encoding="utf-8"))
+        rec["artifact_commit_hash"] = fake
+        rec_path.write_text(json.dumps(rec, indent=2), encoding="utf-8")
+        inv_path = tmp / "MASTER_PROJECT_INVENTORY.json"
+        inv = json.loads(inv_path.read_text(encoding="utf-8"))
+        inv["ci_provenance"]["status"] = "verified"
+        inv["ci_provenance"]["tip_state_truth"] = "tip_verified"
+        inv["ci_provenance"]["last_verified_commit"] = fake
+        inv["ci_provenance"]["last_remote_qualifying_commit"] = fake
+        inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
+        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+
+    return ("tip verified without HEAD == last_verified_commit fails verify_governance_chain", _fn)
 
 
 def main() -> None:
@@ -155,6 +185,7 @@ def main() -> None:
         case_broken_doctrine_invariant_link(),
         case_broken_invariant_enforcement_link(),
         case_stale_inventory_provenance_pointer(),
+        case_tip_verified_without_matching_head(),
     ]
     failed = 0
     with tempfile.TemporaryDirectory() as td:

@@ -142,7 +142,16 @@ def _check_ci_provenance_escalation(root: Path, errors: List[str]) -> None:
                         "ci_provenance.status cannot remain verified"
                     )
     esc = str(cp.get("escalation_state") or "none").strip()
+    tst = str(cp.get("tip_state_truth") or "").strip()
     rev = str(cp.get("reviewer_status") or "pending").strip()
+    if esc == "blocking" and tst != "tip_blocked":
+        errors.append(
+            "INVARIANT_35: escalation_state blocking requires ci_provenance.tip_state_truth tip_blocked"
+        )
+    if esc == "critical" and tst != "tip_critical":
+        errors.append(
+            "INVARIANT_35: escalation_state critical requires ci_provenance.tip_state_truth tip_critical"
+        )
     if esc in ("blocking", "critical") and rev not in ("acknowledged", "waived"):
         errors.append(
             "INVARIANT_27: escalation_state is blocking or critical but reviewer_status not acknowledged/waived"

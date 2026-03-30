@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "records": [
     {
       "run_id": "bootstrap-pass5",
@@ -16,6 +16,7 @@
       "reviewer_status": "not_required",
       "escalation_state": "none",
       "github_event_name": "workflow_dispatch",
+      "tip_state_truth": "historical_verified_run",
       "notes": "Bootstrap row aligned with MASTER_PROJECT_INVENTORY ci_provenance verify_workflow_sha256 at PASS5 institutionalization commit; CI appends real run rows after each green verify."
     },
     {
@@ -33,6 +34,7 @@
       "reviewer_status": "not_required",
       "escalation_state": "none",
       "github_event_name": "push",
+      "tip_state_truth": "tip_verified",
       "notes": "appended by scripts/append_regression_ledger.py on GitHub Actions; remote log: OK: appended regression ledger record for run 23746990542"
     }
   ]

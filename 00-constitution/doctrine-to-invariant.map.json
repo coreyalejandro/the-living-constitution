@@ -9,7 +9,17 @@
     {
       "id": "DOCTRINE_IDEMPOTENCY",
       "title": "The Idempotency Doctrine",
-      "invariant_ids": ["INVARIANT_02", "INVARIANT_04", "INVARIANT_10", "INVARIANT_12", "INVARIANT_18", "INVARIANT_21"],
+      "invariant_ids": [
+        "INVARIANT_02",
+        "INVARIANT_04",
+        "INVARIANT_10",
+        "INVARIANT_12",
+        "INVARIANT_18",
+        "INVARIANT_21",
+        "INVARIANT_30",
+        "INVARIANT_31",
+        "INVARIANT_32"
+      ],
       "failure_class_ids": ["F2", "F3"],
       "notes": "Machine-checkable layers: deterministic verification scripts and synchronized inventory."
     },
@@ -89,7 +99,14 @@
         "INVARIANT_26",
         "INVARIANT_27",
         "INVARIANT_28",
-        "INVARIANT_29"
+        "INVARIANT_29",
+        "INVARIANT_30",
+        "INVARIANT_31",
+        "INVARIANT_32",
+        "INVARIANT_33",
+        "INVARIANT_34",
+        "INVARIANT_35",
+        "INVARIANT_36"
       ],
       "failure_class_ids": ["F2"],
       "notes": "Continuous remote evaluation, regression ledger, escalation, adversarial checks, and evidence-bounded public summary."

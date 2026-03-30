@@ -10,8 +10,10 @@ Purpose: Machine-checkable governance overlay for the Safety Systems Design Comm
 
 Escalation thresholds (machine-readable): `verification/review-escalation-policy.json` — provenance or upload failure must not leave `ci_provenance.status=verified`; three consecutive scheduled failures require `blocking` escalation state; workflow file hash change without a fresh green run requires `pending` status; broken governance chain links require `critical` escalation; blocking or critical escalation requires reviewer acknowledgment or waiver per policy.
 
+Tip-state exactness (PASS 6): `ci_provenance.tip_state_truth` must align with `status`. Tip `verified` requires `git HEAD` equals `last_verified_commit` and agreement with `verification/ci-remote-evidence/record.json`. Protected governance paths are listed in `verification/tip-state-policy.json`; drift since `last_remote_qualifying_commit` with `status=pending` requires `escalation_state` at least `review_required` when protected files changed. Qualifying remote runs and the no-CI-writeback boundary are machine-readable in `verification/tip-state-policy.json` and `tip_state_transition_policy` inside `review-escalation-policy.json`.
+
 Current evidence boundary: Claims in this card are bounded by files in this repo at verification time and `verification/ci-remote-evidence/record.json` when `claimed_remote` is true. GitHub Actions run URLs and artifact bytes are external; only references and recorded fields are in-repo evidence.
 
 Not claimed: Correctness of sibling repos, production uptime, security of third-party services, or completeness of future work not listed in `verification/MATRIX.md`.
 
-**Contract:** C-RSP PASS 5 institutionalization layer v1.3.0.
+**Contract:** C-RSP institutionalization + tip-state layer v1.4.0.

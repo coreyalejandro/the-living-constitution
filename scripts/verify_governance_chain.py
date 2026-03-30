@@ -25,6 +25,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
+
+from tip_state_helpers import (  # noqa: E402
+    load_tip_policy,
+    protected_surfaces_changed,
+    tip_truth_aligned_with_status,
+)
+
 try:
     from jsonschema import Draft202012Validator
     from jsonschema.exceptions import ValidationError
@@ -168,7 +178,15 @@ def _check_ci_provenance_inventory(root: Path, data: Dict[str, Any], errors: Lis
             f"INVARIANT_21: ci_provenance.status must be verified|pending|blocked|critical (got {st!r})"
         )
         return
-    for k in ("last_verified_run_id", "last_verified_commit", "artifact_name", "verify_workflow_sha256", "status"):
+    for k in (
+        "last_verified_run_id",
+        "last_verified_commit",
+        "last_remote_qualifying_commit",
+        "artifact_name",
+        "verify_workflow_sha256",
+        "status",
+        "tip_state_truth",
+    ):
         v = cp.get(k)
         if v is None or (isinstance(v, str) and not str(v).strip()):
             errors.append(f"INVARIANT_21: ci_provenance missing or empty {k!r}")
@@ -191,6 +209,68 @@ def _check_ci_provenance_inventory(root: Path, data: Dict[str, Any], errors: Lis
         errors.append(
             "INVARIANT_21: ci_provenance.artifact_name must match record.json artifact_name when status=verified"
         )
+
+
+def _check_tip_state_exactness(root: Path, cp: Dict[str, Any], errors: List[str]) -> None:
+    """INVARIANT_30–INVARIANT_36: tip-state truth, HEAD alignment, protected-surface drift."""
+    tst = str(cp.get("tip_state_truth") or "").strip()
+    if not tst:
+        errors.append(
+            "INVARIANT_32: ci_provenance.tip_state_truth is required "
+            "(tip_verified|tip_pending|tip_blocked|tip_critical)"
+        )
+        return
+    if tst not in ("tip_verified", "tip_pending", "tip_blocked", "tip_critical"):
+        errors.append(f"INVARIANT_32: invalid ci_provenance.tip_state_truth {tst!r}")
+    st = str(cp.get("status") or "").strip()
+    if st and not tip_truth_aligned_with_status(st, tst):
+        errors.append(
+            f"INVARIANT_32: ci_provenance.status {st!r} must map to tip_state_truth "
+            f"(verified→tip_verified, pending→tip_pending, blocked→tip_blocked, critical→tip_critical)"
+        )
+    lrq = str(cp.get("last_remote_qualifying_commit") or "").strip()
+    lvc = str(cp.get("last_verified_commit") or "").strip()
+    if not lrq:
+        errors.append("INVARIANT_32: ci_provenance.last_remote_qualifying_commit is required")
+    elif lvc and lrq != lvc:
+        errors.append(
+            "INVARIANT_32: last_verified_commit must equal last_remote_qualifying_commit "
+            f"({lvc!r} vs {lrq!r})"
+        )
+    rec_path = root / "verification" / "ci-remote-evidence" / "record.json"
+    if rec_path.is_file():
+        rec = _load_json(rec_path)
+        ach = str(rec.get("artifact_commit_hash") or "").strip()
+        if ach and lrq and lrq != ach:
+            errors.append(
+                "INVARIANT_21: ci_provenance.last_remote_qualifying_commit must match "
+                f"record.json artifact_commit_hash ({lrq!r} vs {ach!r})"
+            )
+    head = _git_head(root)
+    if st == "verified":
+        if tst != "tip_verified":
+            errors.append("INVARIANT_30: status=verified requires tip_state_truth=tip_verified")
+        if lvc and lvc != head:
+            errors.append(
+                "INVARIANT_30: status=verified requires git HEAD == ci_provenance.last_verified_commit "
+                f"(HEAD={head!r} last_verified_commit={lvc!r})"
+            )
+        if lrq and lrq != head:
+            errors.append(
+                "INVARIANT_30: status=verified requires HEAD == last_remote_qualifying_commit "
+                f"(HEAD={head!r} last_remote_qualifying_commit={lrq!r})"
+            )
+    elif st == "pending":
+        if head != lrq and lrq:
+            pol = load_tip_policy(root)
+            changed, paths = protected_surfaces_changed(root, lrq, "HEAD", pol)
+            esc = str(cp.get("escalation_state") or "none").strip()
+            if changed and esc == "none":
+                errors.append(
+                    "INVARIANT_30: protected surfaces changed since last_remote_qualifying_commit "
+                    f"({paths[:5]}{'...' if len(paths) > 5 else ''}) but escalation_state is none; "
+                    "use review_required or stronger per verification/review-escalation-policy.json"
+                )
 
 
 def _check_ci_remote_record(root: Path, errors: List[str]) -> None:
@@ -360,10 +440,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 30)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 37)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_29; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_36; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:
@@ -463,6 +543,9 @@ def _collect_errors(root: Path) -> Tuple[
     _check_ci_parity(root, errors)
     _check_ci_remote_record(root, errors)
     _check_ci_provenance_inventory(root, data, errors)
+    cp2 = data.get("ci_provenance")
+    if isinstance(cp2, dict):
+        _check_tip_state_exactness(root, cp2, errors)
 
     gov = data.get("governance_artifacts") or {}
     canonical = gov.get("canonical_paths") or {}

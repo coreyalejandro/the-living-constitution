@@ -115,6 +115,13 @@ def main() -> None:
     esc = _escalation_for_inventory(conclusion, event_name, fail_streak, threshold)
     reviewer = "not_required" if esc in ("none",) else "pending"
 
+    if esc == "blocking":
+        tip_truth = "tip_blocked"
+    elif conclusion == "success":
+        tip_truth = "tip_verified"
+    else:
+        tip_truth = "tip_pending"
+
     record: Dict[str, Any] = {
         "run_id": run_id,
         "run_attempt": attempt,
@@ -130,6 +137,7 @@ def main() -> None:
         "reviewer_status": reviewer,
         "escalation_state": esc,
         "github_event_name": event_name,
+        "tip_state_truth": tip_truth,
         "notes": "appended by scripts/append_regression_ledger.py",
     }
     records.append(record)
