@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Tuple
 JSON_RELPATHS: Tuple[str, ...] = (
     "00-constitution/invariant-registry.json",
     "00-constitution/doctrine-to-invariant.map.json",
+    "00-constitution/role-registry.json",
     "03-enforcement/enforcement-map.json",
     "verification/evidence-ledger.schema.json",
     "verification/governance-verification-run.schema.json",
@@ -43,6 +44,7 @@ CARD_ANCHORS: Tuple[str, ...] = (
     "**Known failure modes:**",
     "Escalation thresholds (machine-readable):",
     "Tip-state exactness (PASS 6 / PASS 7):",
+    "## Separation of Powers",
     "Current evidence boundary:",
     "Not claimed:",
     "**Contract:**",

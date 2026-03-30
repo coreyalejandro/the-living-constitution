@@ -18,4 +18,16 @@ Not claimed: Correctness of sibling repos, production uptime, security of third-
 
 **Canonical status surface (PASS 10A):** `STATUS.json` is the sole authoritative current-status artifact; `STATUS.md` is machine-rendered from it. Policy: `verification/closed-epistemics-open-interfaces-policy.json`. Do not assert conflicting status in README or docs; link to `STATUS.md`.
 
-**Contract:** C-RSP institutionalization + tip-state + PASS 7 branch policy + closed/open epistemic boundary v1.6.0.
+## Separation of Powers
+
+The system enforces five constitutional roles:
+
+- **Legislative** — defines truth (constitution, invariants, schemas, census manifests).
+- **Executive** — executes workflows and mutating operational scripts (CI, ledger append, sync helpers, adversarial harness).
+- **Judicial** — verifies truth (`verify_*` scripts and supporting libraries).
+- **Record** — stores evidence (ledgers, remote CI records, verification run artifacts, family reports).
+- **Interface** — exposes declared truth (`STATUS.json` / `STATUS.md`, `MATRIX.md`, this card).
+
+No component may define, execute, verify, and declare truth simultaneously. Violations fail verification (`INVARIANT_45` through `INVARIANT_50`). The formal mapping lives in `00-constitution/role-registry.json`; static leakage checks run in `scripts/verify_governance_chain.py`.
+
+**Contract:** C-RSP institutionalization + tip-state + PASS 7 branch policy + closed/open epistemic boundary + PASS 10B separation of powers v1.7.0.

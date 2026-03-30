@@ -12,8 +12,8 @@
 | `workflow_sha` | `0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
-| `governance_contract_version` | `v1.6.0` |
-| `inventory_meta_generated_at_utc` | `2026-03-30T18:40:00Z` |
+| `governance_contract_version` | `v1.7.0` |
+| `inventory_meta_generated_at_utc` | `2026-03-30T22:05:00Z` |
 
 ## Historical / evidence anchors
 

@@ -342,6 +342,70 @@
       "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_status_surface)",
       "evidence_path_or_rule": "aggregate_status vs committed STATUS.json; tip-state checks vs inventory",
       "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_43",
+      "category": "Isolation Boundary",
+      "description": "A machine-readable role registry must exist at 00-constitution/role-registry.json enumerating governance-scoped paths with exactly one constitutional power each.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_role_registry)",
+      "evidence_path_or_rule": "00-constitution/role-registry.json; entries[].path, role, allowed_actions, forbidden_actions",
+      "breach_taxonomy": "BREACH-F"
+    },
+    {
+      "id": "INVARIANT_44",
+      "category": "Isolation Boundary",
+      "description": "Separation-of-powers constraints must be encoded in 03-enforcement/enforcement-map.json and verified by the governance chain (role module + INVARIANT_45 through INVARIANT_50).",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; 03-enforcement/enforcement-map.json module tlc_separation_of_powers",
+      "evidence_path_or_rule": "enforcement-map modules; role-registry parity in verify_governance_chain",
+      "breach_taxonomy": "BREACH-C"
+    },
+    {
+      "id": "INVARIANT_45",
+      "category": "Type / Schema Discipline",
+      "description": "Every governance-scoped path required by inventory, scripts, and workflows must appear in role-registry.json with exactly one role (no missing paths, no duplicate path assignments).",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_role_registry completeness)",
+      "evidence_path_or_rule": "Expanded registry paths vs MASTER_PROJECT_INVENTORY canonical_paths + scripts/*.py + .github/workflows/verify.yml",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_46",
+      "category": "Isolation Boundary",
+      "description": "No file may perform actions outside its declared role; static checks flag cross-power leakage (forbidden actions vs observed writes).",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_role_registry static actions)",
+      "evidence_path_or_rule": "Heuristic scan of JUDICIAL and EXECUTIVE Python against role-registry forbidden_actions",
+      "breach_taxonomy": "BREACH-F"
+    },
+    {
+      "id": "INVARIANT_47",
+      "category": "Determinism / Idempotency",
+      "description": "INTERFACE surfaces (STATUS.json / STATUS.md) must not derive authoritative current status independently of the aggregate contract (scripts/render_status_surface.py); STATUS.md must mirror STATUS.json.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_status_surface); scripts/render_status_surface.py",
+      "evidence_path_or_rule": "INVARIANT_38 through INVARIANT_42; closed-epistemics-open-interfaces-policy.json",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_48",
+      "category": "Isolation Boundary",
+      "description": "JUDICIAL Python components must not write repository state outside approved verification evidence paths (verification/runs/, verification/consentchain-family/).",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (judicial write heuristic)",
+      "evidence_path_or_rule": "Source scan of scripts registered as JUDICIAL in role-registry",
+      "breach_taxonomy": "BREACH-C"
+    },
+    {
+      "id": "INVARIANT_49",
+      "category": "Isolation Boundary",
+      "description": "EXECUTIVE components must not define or override invariants by writing canonical law files (00-constitution invariant/doctrine/role registry, 03-enforcement/enforcement-map.json).",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (executive legislative write scan)",
+      "evidence_path_or_rule": "Forbidden write targets for EXECUTIVE scripts",
+      "breach_taxonomy": "BREACH-A"
+    },
+    {
+      "id": "INVARIANT_50",
+      "category": "Observability / Evidence",
+      "description": "RECORD artifacts must be modified only through designated execution flows (append_regression_ledger, CI, INTERFACE render pipeline) — not by JUDICIAL verifiers except approved evidence directories.",
+      "enforcement_mechanism": "Human + INVARIANT_48/INVARIANT_49; CI workflow boundaries",
+      "evidence_path_or_rule": "role-registry RECORD paths; append_regression_ledger.py; verify.yml",
+      "breach_taxonomy": "BREACH-E"
     }
   ],
   "failure_class_artifacts": [

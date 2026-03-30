@@ -43,6 +43,22 @@
       "notes": "Claim calibration maps to evidence ledger states and MATRIX-backed evidence refs."
     },
     {
+      "id": "DOCTRINE_SEPARATION_OF_POWERS",
+      "title": "Separation of Powers (PASS 10B)",
+      "invariant_ids": [
+        "INVARIANT_43",
+        "INVARIANT_44",
+        "INVARIANT_45",
+        "INVARIANT_46",
+        "INVARIANT_47",
+        "INVARIANT_48",
+        "INVARIANT_49",
+        "INVARIANT_50"
+      ],
+      "failure_class_ids": ["F2"],
+      "notes": "Five constitutional roles — Legislative, Executive, Judicial, Record, Interface — with machine-enforced role registry and static leakage checks."
+    },
+    {
       "id": "DOCTRINE_CENSUS",
       "title": "The Census Doctrine",
       "invariant_ids": ["INVARIANT_03", "INVARIANT_09", "INVARIANT_14"],
@@ -83,9 +99,20 @@
     {
       "id": "ARTICLE_IV",
       "title": "Separation of Powers",
-      "invariant_ids": ["INVARIANT_05", "INVARIANT_06"],
+      "invariant_ids": [
+        "INVARIANT_05",
+        "INVARIANT_06",
+        "INVARIANT_43",
+        "INVARIANT_44",
+        "INVARIANT_45",
+        "INVARIANT_46",
+        "INVARIANT_47",
+        "INVARIANT_48",
+        "INVARIANT_49",
+        "INVARIANT_50"
+      ],
       "failure_class_ids": [],
-      "notes": "Agent republic: machine-readable capabilities and executable enforcement."
+      "notes": "Agent republic plus PASS 10B: formal role registry, enforcement map module, and static cross-power leakage checks."
     },
     {
       "id": "ARTICLE_V",

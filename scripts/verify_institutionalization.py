@@ -105,6 +105,7 @@ def _check_system_card(root: Path, errors: List[str]) -> None:
     for needle in (
         "Purpose:",
         "Escalation thresholds",
+        "Separation of Powers",
         "Not claimed:",
         "evidence boundary",
     ):

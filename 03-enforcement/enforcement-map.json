@@ -112,6 +112,25 @@
       "verification_hook": "scripts/governance_failure_injection_tests.py",
       "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.institutionalization",
       "failure_exit_code": 1
+    },
+    {
+      "id": "tlc_separation_of_powers",
+      "constitutional_reference": "00-constitution/role-registry.json",
+      "invariant_ids": [
+        "INVARIANT_43",
+        "INVARIANT_44",
+        "INVARIANT_45",
+        "INVARIANT_46",
+        "INVARIANT_47",
+        "INVARIANT_48",
+        "INVARIANT_49",
+        "INVARIANT_50"
+      ],
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "00-constitution/role-registry.json",
+      "verification_hook": "scripts/verify_governance_chain.py#_check_role_registry",
+      "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.canonical_paths.role_registry",
+      "failure_exit_code": 1
     }
   ]
 }

@@ -17,6 +17,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import platform
 import shutil
 import subprocess
@@ -443,6 +444,207 @@ def _check_inventory_manifest(
             errors.append(f"artifact_manifest[{ck}]: evidence_ledger_record_id must be string or null")
 
 
+_VALID_ROLES = frozenset({"LEGISLATIVE", "EXECUTIVE", "JUDICIAL", "RECORD", "INTERFACE"})
+
+_JUDICIAL_WRITE_CALL = re.compile(r"\.write_text\s*\(|\.open\s*\([^)]*[\"']w[\"']")
+
+_EXECUTIVE_FORBIDDEN_LEGISLATIVE_TARGETS = (
+    "00-constitution/invariant-registry.json",
+    "00-constitution/role-registry.json",
+    "00-constitution/doctrine-to-invariant.map.json",
+    "03-enforcement/enforcement-map.json",
+)
+
+
+def _expand_role_registry_path(root: Path, entry: Dict[str, Any]) -> List[str]:
+    """Expand a role-registry entry to concrete repo-relative file paths."""
+    path_spec = str(entry.get("path") or "").strip().replace("\\", "/")
+    if not path_spec:
+        return []
+    if entry.get("path_kind") == "tree" or path_spec.endswith("/"):
+        base = root / path_spec.rstrip("/")
+        if not base.is_dir():
+            return []
+        out: List[str] = []
+        for p in base.rglob("*"):
+            if p.is_file():
+                out.append(str(p.relative_to(root)).replace("\\", "/"))
+        return sorted(out)
+    return [path_spec]
+
+
+def _governance_paths_requiring_roles(root: Path, inventory_data: Dict[str, Any]) -> Set[str]:
+    """Paths that must appear in the role registry (INVARIANT_45)."""
+    req: Set[str] = set()
+    gov = inventory_data.get("governance_artifacts") or {}
+    for rel in (gov.get("canonical_paths") or {}).values():
+        if isinstance(rel, str):
+            req.add(rel.replace("\\", "/"))
+    inv_md = root / "MASTER_PROJECT_INVENTORY.md"
+    if inv_md.is_file():
+        req.add("MASTER_PROJECT_INVENTORY.md")
+    inv_json = root / "MASTER_PROJECT_INVENTORY.json"
+    if inv_json.is_file():
+        req.add("MASTER_PROJECT_INVENTORY.json")
+    for p in sorted((root / "scripts").glob("*.py")):
+        req.add(str(p.relative_to(root)).replace("\\", "/"))
+    wf = root / ".github" / "workflows" / "verify.yml"
+    if wf.is_file():
+        req.add(".github/workflows/verify.yml")
+    tc = root / "THE_LIVING_CONSTITUTION.md"
+    if tc.is_file():
+        req.add("THE_LIVING_CONSTITUTION.md")
+    mx = root / "verification" / "MATRIX.md"
+    if mx.is_file():
+        req.add("verification/MATRIX.md")
+    inst = gov.get("institutionalization") or {}
+    for v in inst.values():
+        if isinstance(v, str) and "/" in v:
+            req.add(v.replace("\\", "/"))
+    for es in gov.get("enforcement_scripts") or []:
+        if isinstance(es, str):
+            req.add(es.replace("\\", "/"))
+    enf_path = root / "03-enforcement" / "enforcement-map.json"
+    if enf_path.is_file():
+        try:
+            em = _load_json(enf_path)
+            for mod in em.get("modules", []) or []:
+                if not isinstance(mod, dict):
+                    continue
+                hook = mod.get("enforcement_hook")
+                if isinstance(hook, str) and hook.endswith((".py", ".yml", ".yaml")):
+                    req.add(hook.replace("\\", "/"))
+        except (OSError, json.JSONDecodeError, ValueError):
+            pass
+    return req
+
+
+def _line_allows_judicial_write(line: str) -> bool:
+    low = line.lower()
+    markers = (
+        "verification/runs",
+        "verification/consentchain-family",
+        "artifact_path",
+        "runs_dir",
+        "json_path",
+        "md_path",
+        "out_dir",
+        "tmp/",
+        "tmp ",
+        "tempfile",
+        "temporarydirectory",
+        "tmpdir",
+    )
+    return any(m in low for m in markers)
+
+
+def _check_judicial_write_heuristic(root: Path, script_rel: str, errors: List[str]) -> None:
+    p = root / script_rel
+    if not p.is_file():
+        return
+    text = p.read_text(encoding="utf-8", errors="replace")
+    for line_no, line in enumerate(text.splitlines(), 1):
+        s = line.strip()
+        if s.startswith("#") or not s:
+            continue
+        if s.startswith("if ") or s.startswith("elif "):
+            continue
+        if not _JUDICIAL_WRITE_CALL.search(line):
+            continue
+        if _line_allows_judicial_write(line):
+            continue
+        errors.append(
+            f"INVARIANT_48: JUDICIAL {script_rel} line {line_no} may write outside approved paths: {s[:200]}"
+        )
+
+
+def _check_executive_legislative_writes(root: Path, script_rel: str, errors: List[str]) -> None:
+    p = root / script_rel
+    if not p.is_file():
+        return
+    text = p.read_text(encoding="utf-8", errors="replace")
+    for line_no, line in enumerate(text.splitlines(), 1):
+        s = line.strip()
+        if s.startswith("#") or not s:
+            continue
+        if "write_text" not in line and ".open(" not in line:
+            continue
+        if '"w"' not in line and "'w'" not in line and "write_text" not in line:
+            continue
+        low = line.lower()
+        if "tmp" in low or "temp" in low:
+            continue
+        for tgt in _EXECUTIVE_FORBIDDEN_LEGISLATIVE_TARGETS:
+            if tgt in line:
+                errors.append(
+                    f"INVARIANT_49: EXECUTIVE {script_rel} line {line_no} must not write legislative path {tgt}: {s[:200]}"
+                )
+
+
+def _check_role_registry(root: Path, inventory_data: Dict[str, Any], errors: List[str]) -> None:
+    """INVARIANT_43, INVARIANT_45, INVARIANT_46, INVARIANT_48, INVARIANT_49 — role registry completeness and static leakage."""
+    reg_path = root / "00-constitution" / "role-registry.json"
+    if not reg_path.is_file():
+        errors.append("INVARIANT_43: 00-constitution/role-registry.json missing")
+        return
+    try:
+        data = _load_json(reg_path)
+    except (OSError, json.JSONDecodeError):
+        errors.append("INVARIANT_43: cannot parse role-registry.json")
+        return
+    entries = data.get("entries")
+    if not isinstance(entries, list) or not entries:
+        errors.append("INVARIANT_43: role-registry.entries must be a non-empty array")
+        return
+
+    path_to_role: Dict[str, str] = {}
+    script_roles: Dict[str, str] = {}
+    for i, e in enumerate(entries):
+        if not isinstance(e, dict):
+            errors.append(f"INVARIANT_43: entries[{i}] must be object")
+            continue
+        rel = str(e.get("path", "")).strip().replace("\\", "/")
+        role = str(e.get("role", "")).strip()
+        if not rel or not role:
+            errors.append(f"INVARIANT_43: entries[{i}] requires path and role")
+            continue
+        if role not in _VALID_ROLES:
+            errors.append(f"INVARIANT_43: entries[{i}] invalid role {role!r}")
+            continue
+        is_tree = e.get("path_kind") == "tree" or rel.endswith("/")
+        expanded = _expand_role_registry_path(root, e)
+        if is_tree:
+            base = root / rel.rstrip("/")
+            if not base.is_dir():
+                errors.append(f"INVARIANT_43: role-registry tree {rel!r} directory missing")
+                continue
+        elif not expanded:
+            rp = root / rel
+            if not rp.is_file():
+                errors.append(f"INVARIANT_43: role-registry path {rel!r} not found on disk")
+                continue
+            expanded = [rel]
+        for ex in expanded:
+            if ex in path_to_role and path_to_role[ex] != role:
+                errors.append(
+                    f"INVARIANT_45: path {ex!r} has multiple roles ({path_to_role[ex]} vs {role})"
+                )
+            path_to_role[ex] = role
+            if ex.endswith(".py"):
+                script_roles[ex] = role
+
+    required = _governance_paths_requiring_roles(root, inventory_data)
+    for r in sorted(required):
+        if r not in path_to_role:
+            errors.append(f"INVARIANT_45: governance-scoped path missing from role-registry: {r}")
+
+    for srel, srole in script_roles.items():
+        if srole == "JUDICIAL":
+            _check_judicial_write_heuristic(root, srel, errors)
+        elif srole == "EXECUTIVE":
+            _check_executive_legislative_writes(root, srel, errors)
+
+
 def _collect_errors(root: Path) -> Tuple[
     List[str],
     List[str],
@@ -462,6 +664,7 @@ def _collect_errors(root: Path) -> Tuple[
     required_paths = [
         root / "00-constitution" / "invariant-registry.json",
         root / "00-constitution" / "doctrine-to-invariant.map.json",
+        root / "00-constitution" / "role-registry.json",
         root / "03-enforcement" / "enforcement-map.json",
         root / "02-agents" / "agent-capabilities.json",
         root / "verification" / "evidence-ledger.schema.json",
@@ -520,10 +723,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 43)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 51)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_42; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_50; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:
@@ -628,6 +831,7 @@ def _collect_errors(root: Path) -> Tuple[
         _check_tip_state_exactness(root, cp2, errors)
 
     _check_status_surface(root, errors)
+    _check_role_registry(root, data, errors)
 
     gov = data.get("governance_artifacts") or {}
     canonical = gov.get("canonical_paths") or {}
