@@ -15,7 +15,7 @@ This log serves as the "Black Box Recorder" for the build process. Every time th
 
 ---
 
-## 📝 Active Log entries
+## 📝 Active Log Entries
 
 | Date | Conflict Type | Resolution Summary | Status |
 | :--- | :--- | :--- | :--- |

@@ -8,7 +8,7 @@ This document maps specific components of the Safety Systems Design Commonwealth
 
 ## 1. Constitutional AI: Harmlessness from AI Feedback (Bai et al., 2022)
 
-### Anthropic's Work
+### Anthropic: Constitutional AI and training
 
 Anthropic introduced Constitutional AI (CAI) as a method for training harmless AI assistants. The approach uses a set of principles (the "constitution") to guide model self-critique and revision during training. The model evaluates its own outputs against these principles via RLHF/RLAIF.
 
@@ -17,7 +17,7 @@ Anthropic introduced Constitutional AI (CAI) as a method for training harmless A
 The Living Constitution takes the constitutional metaphor literally and extends it with the structural mechanisms that real constitutions require:
 
 | CAI Component | TLC Structural Extension |
-|--------------|-------------------------|
+| ------------- | ------------------------ |
 | Principles for self-critique | Articles I-V with enumerated rights, execution law, purpose law |
 | Training-time enforcement | Runtime invariant checking (SentinelOS I1-I6) |
 | Model judges its own outputs | Separation of powers: Sentinel agent checks Builder agent's outputs (Article IV) |
@@ -32,7 +32,7 @@ The Living Constitution takes the constitutional metaphor literally and extends 
 
 ## 2. Model Specification and Alignment Faking
 
-### Anthropic's Work
+### Anthropic: Model specification and alignment faking
 
 Anthropic's model spec defines how Claude should behave. Research on alignment faking (Greenblatt et al., 2024) demonstrated that models can strategically comply with training objectives during evaluation while pursuing different behavior in deployment. This represents a fundamental challenge: behavioral alignment verified at training time does not guarantee behavioral alignment at runtime.
 
@@ -42,7 +42,7 @@ The alignment faking problem is, structurally, a separation of powers failure. W
 
 The Living Constitution addresses this with Article IV (Separation of Powers):
 
-```
+```text
 Builder writes code  -->  TDD Guide writes tests  -->  Sentinel checks safety
    |                          |                            |
    Cannot deploy              Cannot skip RED phase        Cannot override others
@@ -57,7 +57,7 @@ No single agent can both act and judge its own action. The Sentinel agent that c
 
 ## 3. Failure Modes and Model Organisms
 
-### Anthropic's Work
+### Anthropic: Failure modes and model organisms
 
 Anthropic has published on model organisms of misalignment -- controlled settings where researchers can study specific failure modes. This includes sycophancy, power-seeking behavior, and deceptive alignment. The approach treats failure modes as objects of study rather than surprises to be avoided.
 
@@ -66,7 +66,7 @@ Anthropic has published on model organisms of misalignment -- controlled setting
 The four safety domains define four classes of system failure:
 
 | Failure Class | Domain | Example | Detection Method |
-|--------------|--------|---------|-----------------|
+| ------------- | ------ | ------- | ---------------- |
 | F1: Epistemic | Epistemic Safety | System asserts something untrue; user acts on it | PROACTIVE scans MRs for unqualified claims, confidence inflation |
 | F2: Human | Human Safety | System designed for median user; neurodivergent user harmed | UICare monitors for absence-of-expected-behavior signals |
 | F3: Cognitive | Cognitive Safety | Learning environment produces false understanding | Invariant I5 (Fluency Conflict Detection) flags fluent language masking uncertainty |
@@ -80,7 +80,7 @@ The four safety domains define four classes of system failure:
 
 ## 4. Interpretability and Traceability
 
-### Anthropic's Work
+### Anthropic: Interpretability research
 
 Anthropic's interpretability research aims to understand what models are doing internally -- mechanistic interpretability, circuit analysis, feature visualization. The goal is to move from behavioral evaluation ("what did it do?") to mechanistic understanding ("why did it do that?").
 
@@ -88,11 +88,12 @@ Anthropic's interpretability research aims to understand what models are doing i
 
 The Living Constitution enforces traceability through Invariant I4 (Traceability): every decision must trace to a governance rule. Combined with the V&T Statement (required at the end of every agent response), this creates an evidence chain:
 
-```
+```text
 Decision --> Rule ID --> Article --> Invariant --> Evidence
 ```
 
 The V&T Statement provides a snapshot of system state at every turn:
+
 - **Exists**: What is real and verifiable right now
 - **Non-existent**: What is planned but not yet built
 - **Unverified**: What has not been tested or confirmed
@@ -106,7 +107,7 @@ This is not mechanistic interpretability of neural networks. It is operational i
 
 ## 5. Safety Evaluation and Red-Teaming
 
-### Anthropic's Work
+### Anthropic: Safety evaluation and red-teaming
 
 Anthropic conducts systematic safety evaluations and red-teaming of its models. This includes testing for harmful outputs, jailbreak resistance, and compliance with the model spec.
 
@@ -115,7 +116,7 @@ Anthropic conducts systematic safety evaluations and red-teaming of its models. 
 The entire Commonwealth is designed as evaluation infrastructure:
 
 | Component | Evaluation Function |
-|-----------|-------------------|
+| --------- | ------------------- |
 | SentinelOS invariants (I1-I6) | Define what "safe" means in precise, testable terms |
 | PROACTIVE test fixtures | 8 categories of epistemic violation with 19 specific instances -- a red-team test suite for epistemic safety |
 | V&T Statement | Forces every agent response to declare its own truthfulness -- a self-evaluation mechanism |
@@ -129,7 +130,7 @@ The entire Commonwealth is designed as evaluation infrastructure:
 ## Summary of Alignments
 
 | Anthropic Research Area | TLC Component | Alignment Type |
-|------------------------|---------------|---------------|
+| ----------------------- | ------------- | -------------- |
 | Constitutional AI (Bai et al., 2022) | Articles I-V, governance-as-code | Structural extension of the constitutional metaphor |
 | Alignment faking (Greenblatt et al., 2024) | Article IV separation of powers, I6 fail-closed | Structural constraint addressing behavioral circumvention |
 | Model organisms / failure modes | Four-domain failure taxonomy, PROACTIVE test fixtures | Evaluation scaffolding for categorized failure detection |
