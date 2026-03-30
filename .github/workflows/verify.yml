@@ -12,8 +12,13 @@ on:
 jobs:
   verify-structure:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Bootstrap repository
         run: ./scripts/bootstrap_repo.sh
