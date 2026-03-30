@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T15:45:00Z",
+    "generated_at_utc": "2026-03-30T13:30:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -23,9 +23,9 @@
     ]
   },
   "ci_provenance": {
-    "last_verified_run_id": "23746097728",
-    "last_verified_commit": "c2e043e1ec43aee6df5154e47c80a9e9f39b2923",
-    "artifact_name": "governance-verification-runs-23746097728-1",
+    "last_verified_run_id": "23746990542",
+    "last_verified_commit": "1a0e60a47dfd907421c10291d185abb0d5c4c830",
+    "artifact_name": "governance-verification-runs-23746990542-1",
     "verify_workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
     "status": "verified",
     "escalation_state": "none",

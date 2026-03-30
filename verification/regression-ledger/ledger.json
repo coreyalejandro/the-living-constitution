@@ -17,6 +17,23 @@
       "escalation_state": "none",
       "github_event_name": "workflow_dispatch",
       "notes": "Bootstrap row aligned with MASTER_PROJECT_INVENTORY ci_provenance verify_workflow_sha256 at PASS5 institutionalization commit; CI appends real run rows after each green verify."
+    },
+    {
+      "run_id": "23746990542",
+      "run_attempt": "1",
+      "workflow_name": "Verify Living Constitution",
+      "workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
+      "commit_sha": "1a0e60a47dfd907421c10291d185abb0d5c4c830",
+      "branch_ref": "refs/heads/feature/c-rsp-pass3-ci-provenance",
+      "timestamp_utc": "2026-03-30T13:23:50Z",
+      "conclusion": "success",
+      "artifact_name": "governance-verification-runs-23746990542-1",
+      "artifact_path": "verification/runs/20260330T132350Z-governance.json",
+      "artifact_retrieval_ref": "actions artifact name=governance-verification-runs-23746990542-1; run_url=https://github.com/coreyalejandro/the-living-constitution/actions/runs/23746990542",
+      "reviewer_status": "not_required",
+      "escalation_state": "none",
+      "github_event_name": "push",
+      "notes": "appended by scripts/append_regression_ledger.py on GitHub Actions; remote log: OK: appended regression ledger record for run 23746990542"
     }
   ]
 }
