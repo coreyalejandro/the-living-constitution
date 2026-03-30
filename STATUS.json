@@ -5,31 +5,29 @@
   },
   "escalation_state": "review_required",
   "governance_contract_version": "v1.8.0",
-  "head_sha": "df206fe61b11158d158901fca6bc7d1b07ee8922",
+  "head_sha": "e56fc0753955901ee18bca44ae73181f9999b9db",
   "historical_state": {
     "ci_remote_record_captured_at_utc": "2026-03-30T19:00:00Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
     "regression_ledger_last_run_id": "23757979228",
     "regression_ledger_last_timestamp_utc": "2026-03-30T17:25:00Z"
   },
-  "invariant_summary": {
-    "critical": 14,
-    "high": 21,
-    "low": 0,
-    "medium": 15,
-    "total": 50,
-    "violations": 0
-  },
   "inventory_meta_generated_at_utc": "2026-03-30T19:00:00Z",
   "last_verified_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
   "last_verified_run_id": "23761679469",
   "project": "coreyalejandro/the-living-constitution",
   "reviewer_status": "pending",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "tip_state_truth": "tip_pending",
+  "truth_anchor": {
+    "commit": "e56fc0753955901ee18bca44ae73181f9999b9db",
+    "type": "git_tag",
+    "value": "tlc-gov-verified-e56fc07"
+  },
   "truth_boundary": {
     "policy_reference": "verification/closed-epistemics-open-interfaces-policy.json",
     "reason": "Epistemic closure inside the repo: current operational status is synthesized into STATUS.json from inventory ci_provenance, git HEAD, workflow identity, regression ledger tail, and remote evidence record; STATUS.md is a deterministic render. External parties receive only exported proofs and schema-valid artifacts listed under open_interfaces."
   },
+  "verification_target": "e56fc0753955901ee18bca44ae73181f9999b9db",
   "workflow_sha": "0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63"
 }

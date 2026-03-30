@@ -31,6 +31,8 @@ if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
 from tip_state_helpers import (  # noqa: E402
+    git_is_ancestor,
+    git_resolve_ref,
     is_frozen_verification_context,
     load_pass7_policy,
     load_tip_policy,
@@ -202,10 +204,25 @@ def _check_ci_provenance_inventory(root: Path, data: Dict[str, Any], errors: Lis
         "verify_workflow_sha256",
         "status",
         "tip_state_truth",
+        "verification_anchor_tag",
+        "verification_anchor_commit",
     ):
         v = cp.get(k)
         if v is None or (isinstance(v, str) and not str(v).strip()):
             errors.append(f"INVARIANT_21: ci_provenance missing or empty {k!r}")
+    vat = str(cp.get("verification_anchor_tag") or "").strip()
+    vac = str(cp.get("verification_anchor_commit") or "").strip()
+    if vat and vac:
+        resolved = git_resolve_ref(root, vat)
+        if not resolved:
+            errors.append(
+                f"INVARIANT_21: verification_anchor_tag {vat!r} does not resolve in this repository"
+            )
+        elif resolved != vac:
+            errors.append(
+                f"INVARIANT_21: verification_anchor_tag resolves to {resolved!r}, "
+                f"must equal verification_anchor_commit {vac!r}"
+            )
     if st != "verified":
         return
     rec_path = root / "verification" / "ci-remote-evidence" / "record.json"
@@ -264,16 +281,35 @@ def _check_tip_state_exactness(root: Path, cp: Dict[str, Any], errors: List[str]
             )
     head = _git_head(root)
     p7 = load_pass7_policy(root)
+    vat = str(cp.get("verification_anchor_tag") or "").strip()
+    vac = str(cp.get("verification_anchor_commit") or "").strip()
+    pass11 = bool(vat and vac and git_resolve_ref(root, vat) == vac)
     if st == "verified":
         if tst != "tip_verified":
             errors.append("INVARIANT_30: status=verified requires tip_state_truth=tip_verified")
-        if not is_frozen_verification_context(root, lvc, p7):
+        if pass11:
+            if not git_is_ancestor(root, vac, head):
+                errors.append(
+                    "INVARIANT_30: status=verified requires verification_anchor_commit to be an ancestor of "
+                    f"HEAD (anchor={vac!r} HEAD={head!r})"
+                )
+            elif lvc and not git_is_ancestor(root, lvc, head):
+                errors.append(
+                    "INVARIANT_30: status=verified requires last_verified_commit to be an ancestor of HEAD "
+                    f"(last_verified_commit={lvc!r} HEAD={head!r})"
+                )
+            elif lrq and not git_is_ancestor(root, lrq, head):
+                errors.append(
+                    "INVARIANT_30: status=verified requires last_remote_qualifying_commit to be an ancestor of "
+                    f"HEAD (lrq={lrq!r} HEAD={head!r})"
+                )
+        elif not is_frozen_verification_context(root, lvc, p7):
             errors.append(
                 "INVARIANT_37: inventory must not claim verified tip-state on a mutable branch tip; "
                 "use pending+tip_pending at development tips. tip_verified is only valid on a frozen "
                 "verification target (detached HEAD, provenance/verified-* branch, or tlc-gov-verified-* tag) "
                 "with HEAD == last_verified_commit == record artifact_commit_hash "
-                "(verification/pass7-branch-verification-policy.json)"
+                "(verification/pass7-branch-verification-policy.json), or use PASS 11 verification_anchor_*"
             )
         elif lvc and lvc != head:
             errors.append(
@@ -330,7 +366,7 @@ def _check_ci_remote_record(root: Path, errors: List[str]) -> None:
 
 
 def _check_status_surface(root: Path, errors: List[str]) -> None:
-    """INVARIANT_38–INVARIANT_42: STATUS.json sole authority; STATUS.md mirror; consistency with sources."""
+    """INVARIANT_38–INVARIANT_42: STATUS.json sole authority; STATUS.md mirror; PASS 11 anchor truth."""
     status_json = root / "STATUS.json"
     status_md = root / "STATUS.md"
     policy = root / "verification" / "closed-epistemics-open-interfaces-policy.json"
@@ -361,19 +397,62 @@ def _check_status_surface(root: Path, errors: List[str]) -> None:
     except (OSError, json.JSONDecodeError) as e:
         errors.append(f"INVARIANT_38: cannot read STATUS.json: {e}")
         return
-    # head_sha cannot equal the containing commit id (self-hash paradox); bind to live HEAD for compare.
     head = _git_head(root)
+    tag = ""
+    tcom = ""
+    ta = on_disk.get("truth_anchor")
+    vt = str(on_disk.get("verification_target") or "").strip()
+    if not isinstance(ta, dict) or not ta:
+        errors.append("INVARIANT_42: STATUS.json must include truth_anchor (PASS 11)")
+    else:
+        if str(ta.get("type") or "").strip() != "git_tag":
+            errors.append("INVARIANT_42: truth_anchor.type must be git_tag")
+        tag = str(ta.get("value") or "").strip()
+        tcom = str(ta.get("commit") or "").strip()
+        if not tag or not tcom:
+            errors.append("INVARIANT_42: truth_anchor.value and truth_anchor.commit are required")
+        else:
+            resolved = git_resolve_ref(root, tag)
+            if not resolved:
+                errors.append(f"INVARIANT_42: truth_anchor tag {tag!r} does not resolve")
+            elif resolved != tcom:
+                errors.append(
+                    f"INVARIANT_42: truth_anchor tag {tag!r} resolves to {resolved!r}, expected commit {tcom!r}"
+                )
+            if vt != tcom:
+                errors.append("INVARIANT_42: verification_target must equal truth_anchor.commit")
+            if not git_is_ancestor(root, tcom, head):
+                errors.append(
+                    "INVARIANT_42: verification anchor commit must be an ancestor of HEAD (or equal) "
+                    f"(anchor={tcom!r} HEAD={head!r})"
+                )
+        inv_path = root / "MASTER_PROJECT_INVENTORY.json"
+        if inv_path.is_file():
+            try:
+                inv = _load_json(inv_path)
+                cp = inv.get("ci_provenance") if isinstance(inv.get("ci_provenance"), dict) else {}
+                it = str(cp.get("verification_anchor_tag") or "").strip()
+                ic = str(cp.get("verification_anchor_commit") or "").strip()
+                if tag and tcom and (it != tag or ic != tcom):
+                    errors.append(
+                        "INVARIANT_42: STATUS truth_anchor must match MASTER_PROJECT_INVENTORY "
+                        "ci_provenance verification_anchor_tag / verification_anchor_commit"
+                    )
+            except (OSError, json.JSONDecodeError):
+                pass
+
     agg_n = dict(aggregated)
     disk_n = dict(on_disk)
-    agg_n["head_sha"] = head
-    disk_n["head_sha"] = head
+    agg_n.pop("head_sha", None)
+    disk_n.pop("head_sha", None)
     if json.dumps(agg_n, sort_keys=True) != json.dumps(disk_n, sort_keys=True):
         errors.append(
             "INVARIANT_42: STATUS.json disagrees with aggregate from inventory, record, ledger, "
-            "and policy (head_sha normalized to git HEAD) — run: python3 scripts/render_status_surface.py --root ."
+            "and policy (PASS 11: informational head_sha excluded) — run: "
+            "python3 scripts/render_status_surface.py --root ."
         )
     md_text = status_md.read_text(encoding="utf-8")
-    expected_md = mod.render_markdown_from_status(disk_n)
+    expected_md = mod.render_markdown_from_status(on_disk)
     if md_text.replace("\r\n", "\n") != expected_md.replace("\r\n", "\n"):
         errors.append(
             "INVARIANT_39: STATUS.md is not a faithful render of STATUS.json — run: "

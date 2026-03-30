@@ -143,6 +143,38 @@ def git_abbrev_ref_head(root: Path) -> str:
     return ((r.stdout or "").strip() or "HEAD")
 
 
+def git_resolve_ref(root: Path, ref: str) -> Optional[str]:
+    """Return full commit SHA for ref (peels annotated tags), or None if unknown."""
+    if not _git_ok() or not ref.strip():
+        return None
+    r = ref.strip()
+    # Peel tags to commits (annotated tags otherwise resolve to the tag object, not the commit).
+    for spec in (f"{r}^{{commit}}", r):
+        p = subprocess.run(
+            ["git", "-C", str(root), "rev-parse", spec],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        h = (p.stdout or "").strip()
+        if p.returncode == 0 and len(h) >= 7:
+            return h
+    return None
+
+
+def git_is_ancestor(root: Path, ancestor: str, descendant: str) -> bool:
+    """True if ancestor is an ancestor of descendant (or equal)."""
+    if not _git_ok() or len(ancestor) < 7 or len(descendant) < 7:
+        return False
+    r = subprocess.run(
+        ["git", "-C", str(root), "merge-base", "--is-ancestor", ancestor, descendant],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return r.returncode == 0
+
+
 def git_exact_tag_at_head(root: Path) -> Optional[str]:
     if not _git_ok():
         return None

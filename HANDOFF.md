@@ -1,25 +1,23 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-03-30  
-**Status:** PASS 10C remote adjudication aligned (TLC `f0414d3`, ConsentChain `d6371f6`); provenance + STATUS updated locally
+**Status:** PASS 11 complete — immutable tag-based verification anchor; STATUS no longer self-referential for truth
 
 ## What Was Just Completed
 
-- **PASS 10C (C-RSP):** Confirmed GitHub Actions success on target SHAs: TLC run `23761679469` (`f0414d36a9a9a4e39acb2fee4c62c910069b88a4`), ConsentChain run `23761674094` (`d6371f645d7d68a9238441ccdc4be27da0c88470`). Downloaded artifacts: `invariants_verified` includes `INVARIANT_43` through `INVARIANT_50`; `commit_hash` matches each `GITHUB_SHA`.
-- **Provenance:** Updated `verification/ci-remote-evidence/record.json`, `MASTER_PROJECT_INVENTORY.json` / `.md` (TLC); same three files under `projects/consentchain/` (submodule). Regenerated `STATUS.json` / `STATUS.md` via `render_status_surface.py`.
-- **ConsentChain inventory fix:** `governance_artifacts.ci_verification_commands` in `projects/consentchain/MASTER_PROJECT_INVENTORY.json` aligned with `EXPECTED_CI_COMMAND_LINES` and `.github/workflows/verify.yml` (`verify_cross_repo_consistency.py --canonical-root the-living-constitution --target-root .`).
-- **Local verification:** `verify_governance_chain.py`, `verify_institutionalization.py`, `verify_cross_repo_consistency.py`, `render_status_surface.py --check` green at TLC root; same for ConsentChain submodule root after the ci_commands fix.
+- **PASS 11 (C-RSP):** `MASTER_PROJECT_INVENTORY.json` `ci_provenance` adds `verification_anchor_tag` / `verification_anchor_commit`; `STATUS.json` adds `truth_anchor`, `verification_target`, schema `1.1.0`; `head_sha` informational only.
+- **Scripts:** `tip_state_helpers.git_resolve_ref` peels annotated tags to commits; `verify_governance_chain.py` INVARIANT_21/30/42 anchor-aware; `verify_cross_repo_consistency.py` validates anchors in both repos; `render_status_surface.py` aggregate + `--check` exclude `head_sha` from equality.
+- **Tags (local):** TLC `tlc-gov-verified-e56fc07` → `e56fc0753955901ee18bca44ae73181f9999b9db`; ConsentChain `tlc-gov-verified-fd149cf` → `fd149cf8c2a9cc3e746322c90cfab507f8cc0be1`. **Push:** `git push origin tlc-gov-verified-e56fc07` (TLC) and in ConsentChain repo `git push origin tlc-gov-verified-fd149cf`.
+- **ConsentChain:** Commit `433e6aa` on `main` (PASS 11 message); submodule pointer updated from TLC; `verify_governance_chain` keeps ConsentChain-specific `EXPECTED_CI_COMMAND_LINES` (canonical-root `the-living-constitution`).
 
 ## Recommended Next Steps
 
-- **Commit and push:** ConsentChain repo (submodule) with provenance + `ci_verification_commands` fix; then TLC with updated submodule pointer + TLC provenance files.
-- Optional: commit or ignore new local `verification/runs/*-governance.json` from workstation reruns.
+- Push both repos and both tags; confirm clean-clone CI: `verify_governance_chain` + `verify_cross_repo_consistency` exit 0 **without** running `render_status_surface.py` first.
 
 ## Quick Reference
 
-- **Remote evidence:** `verification/ci-remote-evidence/record.json`  
-- **Runs:** TLC https://github.com/coreyalejandro/the-living-constitution/actions/runs/23761679469 — ConsentChain https://github.com/coreyalejandro/consentchain/actions/runs/23761674094  
+- **Verification:** `python3 scripts/verify_governance_chain.py --root .` and `python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain`
 
 ---
 
-**Confidence:** High for remote run IDs, artifact hashes, and local verifier closure after edits.
+**Confidence:** High — verifiers run green at TLC root with submodule at PASS 11 commit; `render_status_surface.py --check` passes.

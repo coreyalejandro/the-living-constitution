@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-PASS 10A: Single-entry truth surface.
+PASS 10A / PASS 11: Single-entry truth surface.
 
-Aggregates MASTER_PROJECT_INVENTORY ci_provenance, git HEAD, workflow SHA,
-regression ledger tail, remote evidence record, and cross-repo check into
-STATUS.json; renders deterministic STATUS.md from STATUS.json.
+Aggregates MASTER_PROJECT_INVENTORY ci_provenance, immutable verification anchor
+(tag + commit), informational git HEAD, workflow SHA, regression ledger tail,
+remote evidence record, and cross-repo check into STATUS.json; renders
+deterministic STATUS.md from STATUS.json.
 
 Manual edits to STATUS.md are prohibited; regenerate with this script.
 """
@@ -115,8 +116,14 @@ def aggregate_status(root: Path) -> Dict[str, Any]:
         else:
             project = "coreyalejandro/the-living-constitution"
 
-    return {
-        "schema_version": "1.0.0",
+    vac = str(cp.get("verification_anchor_commit") or "").strip()
+    vat = str(cp.get("verification_anchor_tag") or "").strip()
+    truth_anchor: Dict[str, Any] = {}
+    if vac and vat:
+        truth_anchor = {"type": "git_tag", "value": vat, "commit": vac}
+
+    out: Dict[str, Any] = {
+        "schema_version": "1.1.0",
         "project": project,
         "head_sha": head,
         "last_verified_commit": str(cp.get("last_verified_commit") or ""),
@@ -139,6 +146,10 @@ def aggregate_status(root: Path) -> Dict[str, Any]:
         "inventory_meta_generated_at_utc": str((inv.get("meta") or {}).get("generated_at_utc") or ""),
         "governance_contract_version": str((inv.get("governance_artifacts") or {}).get("contract_version") or ""),
     }
+    if truth_anchor:
+        out["truth_anchor"] = truth_anchor
+        out["verification_target"] = vac
+    return out
 
 
 def _status_doc_title(project: str) -> str:
@@ -156,13 +167,15 @@ def render_markdown_from_status(data: Dict[str, Any]) -> str:
         f"# {title}",
         "",
         "> **Canonical JSON:** [`STATUS.json`](STATUS.json) — sole authoritative current-status artifact (PASS 10A).",
-        "> **Git HEAD:** use `git rev-parse HEAD` at checkout; `head_sha` in JSON is render-time (verifier normalizes to live HEAD for INVARIANT_42).",
+        "> **PASS 11:** Governance truth is anchored to `truth_anchor` / `verification_target` (immutable tag + commit). `head_sha` is informational only.",
         "",
         "| Field | Value |",
         "|-------|-------|",
     ]
     rows = [
         ("project", data.get("project")),
+        ("verification_target", data.get("verification_target")),
+        ("head_sha", data.get("head_sha")),
         ("last_verified_commit", data.get("last_verified_commit")),
         ("last_verified_run_id", data.get("last_verified_run_id")),
         ("tip_state_truth", data.get("tip_state_truth")),
@@ -174,6 +187,13 @@ def render_markdown_from_status(data: Dict[str, Any]) -> str:
     ]
     for k, v in rows:
         lines.append(f"| `{k}` | `{v}` |")
+
+    ta = data.get("truth_anchor")
+    if isinstance(ta, dict) and ta:
+        lines.extend(["", "## Immutable truth anchor (PASS 11)", ""])
+        lines.append(f"- **type:** `{ta.get('type')}`")
+        lines.append(f"- **tag:** `{ta.get('value')}`")
+        lines.append(f"- **commit:** `{ta.get('commit')}`")
 
     lines.extend(
         [
@@ -245,13 +265,14 @@ def main() -> int:
             print("CHECK FAIL: STATUS.json missing", file=sys.stderr)
             return 1
         on_disk = _load_json(status_path)
-        head = _git_head(root)
         agg_n = dict(aggregated)
         disk_n = dict(on_disk)
-        agg_n["head_sha"] = head
-        disk_n["head_sha"] = head
-        if json.dumps(disk_n, sort_keys=True) != json.dumps(agg_n, sort_keys=True):
-            errs.append("STATUS.json does not match aggregate_status (head_sha normalized to git HEAD)")
+        agg_x = {k: v for k, v in agg_n.items() if k != "head_sha"}
+        disk_x = {k: v for k, v in disk_n.items() if k != "head_sha"}
+        if json.dumps(disk_x, sort_keys=True) != json.dumps(agg_x, sort_keys=True):
+            errs.append(
+                "STATUS.json does not match aggregate_status (PASS 11: equality excludes informational head_sha)"
+            )
         if not md_path.is_file():
             errs.append("STATUS.md missing")
         else:

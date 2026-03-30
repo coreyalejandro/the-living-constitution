@@ -19,6 +19,12 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
+
+from tip_state_helpers import git_resolve_ref  # noqa: E402
+
 
 JSON_RELPATHS: Tuple[str, ...] = (
     "00-constitution/invariant-registry.json",
@@ -105,6 +111,35 @@ def _matrix_header_line(text: str) -> str:
     return ""
 
 
+def _check_verification_anchors(canon: Path, target: Path, errors: List[str]) -> None:
+    """PASS 11: both repos must declare resolvable immutable anchors in inventory."""
+    for label, root in (("canonical", canon), ("target", target)):
+        invp = root / "MASTER_PROJECT_INVENTORY.json"
+        if not invp.is_file():
+            errors.append(f"{label}: MASTER_PROJECT_INVENTORY.json missing")
+            continue
+        try:
+            inv = _load_json(invp)
+        except (OSError, json.JSONDecodeError, ValueError) as e:
+            errors.append(f"{label}: MASTER_PROJECT_INVENTORY.json: {e}")
+            continue
+        cp = inv.get("ci_provenance") if isinstance(inv.get("ci_provenance"), dict) else {}
+        t = str(cp.get("verification_anchor_tag") or "").strip()
+        c = str(cp.get("verification_anchor_commit") or "").strip()
+        if not t or not c:
+            errors.append(
+                f"{label}: ci_provenance must include verification_anchor_tag and verification_anchor_commit (PASS 11)"
+            )
+            continue
+        resolved = git_resolve_ref(root, t)
+        if not resolved:
+            errors.append(f"{label}: verification_anchor_tag {t!r} does not resolve in repository")
+        elif resolved != c:
+            errors.append(
+                f"{label}: verification_anchor_tag {t!r} resolves to {resolved!r}, expected {c!r}"
+            )
+
+
 def _check_card(path: Path, errors: List[str]) -> None:
     if not path.is_file():
         errors.append(f"missing {path}")
@@ -120,6 +155,8 @@ def main() -> int:
     target = args.target_root.resolve()
     canon = _resolve_canonical_root(args.canonical_root, args.target_root)
     errors: List[str] = []
+
+    _check_verification_anchors(canon, target, errors)
 
     for rel in JSON_RELPATHS:
         a = canon / rel

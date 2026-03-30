@@ -32,7 +32,9 @@
     "status": "pending",
     "tip_state_truth": "tip_pending",
     "escalation_state": "review_required",
-    "reviewer_status": "pending"
+    "reviewer_status": "pending",
+    "verification_anchor_tag": "tlc-gov-verified-e56fc07",
+    "verification_anchor_commit": "e56fc0753955901ee18bca44ae73181f9999b9db"
   },
   "governance_artifacts": {
     "contract_version": "v1.8.0",

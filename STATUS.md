@@ -1,11 +1,13 @@
 # TLC repository status
 
 > **Canonical JSON:** [`STATUS.json`](STATUS.json) — sole authoritative current-status artifact (PASS 10A).
-> **Git HEAD:** use `git rev-parse HEAD` at checkout; `head_sha` in JSON is render-time (verifier normalizes to live HEAD for INVARIANT_42).
+> **PASS 11:** Governance truth is anchored to `truth_anchor` / `verification_target` (immutable tag + commit). `head_sha` is informational only.
 
 | Field | Value |
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
+| `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
+| `head_sha` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
 | `last_verified_commit` | `f0414d36a9a9a4e39acb2fee4c62c910069b88a4` |
 | `last_verified_run_id` | `23761679469` |
 | `tip_state_truth` | `tip_pending` |
@@ -15,14 +17,11 @@
 | `governance_contract_version` | `v1.8.0` |
 | `inventory_meta_generated_at_utc` | `2026-03-30T19:00:00Z` |
 
-## Invariant system (PASS 11)
+## Immutable truth anchor (PASS 11)
 
-INVARIANTS: 50 total
-- Critical: 14
-- High: 21
-- Medium: 15
-- Low: 0
-Violations: 0
+- **type:** `git_tag`
+- **tag:** `tlc-gov-verified-e56fc07`
+- **commit:** `e56fc0753955901ee18bca44ae73181f9999b9db`
 
 ## Historical / evidence anchors
 
