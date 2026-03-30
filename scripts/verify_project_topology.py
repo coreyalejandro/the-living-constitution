@@ -20,6 +20,16 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
+
+from tip_state_helpers import (  # noqa: E402
+    GovernanceError,
+    assert_not_shallow,
+    git_preflight_fetch_tags_or_error,
+)
+
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__)
@@ -126,6 +136,18 @@ def main() -> None:
         )
     script_dir = Path(__file__).resolve().parent
     root = (args.root or (script_dir.parent)).resolve()
+
+    try:
+        assert_not_shallow(root)
+    except GovernanceError as e:
+        print(f"ERROR: {e.code}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    fe = git_preflight_fetch_tags_or_error(root)
+    if fe:
+        print(f"ERROR: INVARIANT_53: {fe}", file=sys.stderr)
+        sys.exit(1)
+
     inv_path = args.inventory or (root / "MASTER_PROJECT_INVENTORY.json")
 
     data = _load_json(inv_path)

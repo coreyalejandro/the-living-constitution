@@ -26,6 +26,16 @@ except ImportError:
     )
     sys.exit(2)
 
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
+
+from tip_state_helpers import (  # noqa: E402
+    GovernanceError,
+    assert_not_shallow,
+    git_preflight_fetch_tags_or_error,
+)
+
 
 def _load_json(path: Path) -> Dict[str, Any]:
     with path.open("r", encoding="utf-8") as f:
@@ -198,6 +208,18 @@ def main() -> None:
     args = _parse_args()
     script_dir = Path(__file__).resolve().parent
     root = (args.root or script_dir.parent).resolve()
+
+    try:
+        assert_not_shallow(root)
+    except GovernanceError as e:
+        print(f"ERROR: {e.code}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    fe = git_preflight_fetch_tags_or_error(root)
+    if fe:
+        print(f"ERROR: INVARIANT_53: {fe}", file=sys.stderr)
+        sys.exit(1)
+
     errors: List[str] = []
     _check_schedule_in_verify_yml(root, errors)
     _validate_ledger(root, errors)

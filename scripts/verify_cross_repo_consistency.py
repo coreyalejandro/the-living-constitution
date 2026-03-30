@@ -23,7 +23,13 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from tip_state_helpers import git_resolve_ref  # noqa: E402
+from tip_state_helpers import (  # noqa: E402
+    GovernanceError,
+    assert_not_shallow,
+    git_preflight_fetch_tags_or_error,
+    git_resolve_anchor_commit_strict,
+    verification_anchor_pass12_errors,
+)
 
 
 JSON_RELPATHS: Tuple[str, ...] = (
@@ -131,10 +137,12 @@ def _check_verification_anchors(canon: Path, target: Path, errors: List[str]) ->
                 f"{label}: ci_provenance must include verification_anchor_tag and verification_anchor_commit (PASS 11)"
             )
             continue
-        resolved = git_resolve_ref(root, t)
-        if not resolved:
-            errors.append(f"{label}: verification_anchor_tag {t!r} does not resolve in repository")
-        elif resolved != c:
+        errs = verification_anchor_pass12_errors(root, t)
+        errors.extend(f"{label}: {e}" for e in errs)
+        if errs:
+            continue
+        resolved = git_resolve_anchor_commit_strict(root, t)
+        if resolved != c:
             errors.append(
                 f"{label}: verification_anchor_tag {t!r} resolves to {resolved!r}, expected {c!r}"
             )
@@ -155,6 +163,22 @@ def main() -> int:
     target = args.target_root.resolve()
     canon = _resolve_canonical_root(args.canonical_root, args.target_root)
     errors: List[str] = []
+
+    for repo_root, label in ((canon, "canonical"), (target, "target")):
+        try:
+            assert_not_shallow(repo_root)
+        except GovernanceError as e:
+            errors.append(f"{label}: INVARIANT_56: {e.code} — {e}")
+    for repo_root, label in ((canon, "canonical"), (target, "target")):
+        fe = git_preflight_fetch_tags_or_error(repo_root)
+        if fe:
+            errors.append(f"{label}: INVARIANT_53: {fe}")
+
+    if errors:
+        print("verify_cross_repo_consistency: FAIL", file=sys.stderr)
+        for e in errors:
+            print(f"  - {e}", file=sys.stderr)
+        return 1
 
     _check_verification_anchors(canon, target, errors)
 

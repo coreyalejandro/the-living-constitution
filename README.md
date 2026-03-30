@@ -5,3 +5,13 @@
 This repository is the **governance overlay** for the Safety Systems Design Commonwealth: the constitutional specification (`THE_LIVING_CONSTITUTION.md`), zero-shot build contracts under `projects/`, verification evidence (`verification/MATRIX.md`), and sprint coordination. Operational controls are in root `CLAUDE.md`.
 
 Do **not** assert operational status here independently of `STATUS.json`; this README links to the single-entry truth surface only.
+
+## Verification bootstrap
+
+Before running verification:
+
+```bash
+./scripts/bootstrap_repo.sh
+```
+
+No alternatives — shallow clones are rejected until deepened, tags are fetched, and submodules are initialized (PASS 13 / INVARIANT_54–56).

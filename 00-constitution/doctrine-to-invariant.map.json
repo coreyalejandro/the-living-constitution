@@ -22,7 +22,13 @@
         "INVARIANT_37",
         "INVARIANT_38",
         "INVARIANT_39",
-        "INVARIANT_42"
+        "INVARIANT_42",
+        "INVARIANT_51",
+        "INVARIANT_52",
+        "INVARIANT_53",
+        "INVARIANT_54",
+        "INVARIANT_55",
+        "INVARIANT_56"
       ],
       "failure_class_ids": ["F2", "F3"],
       "notes": "Machine-checkable layers: deterministic verification scripts and synchronized inventory."

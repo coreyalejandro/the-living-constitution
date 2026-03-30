@@ -15,8 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Initialize public overlay submodule (consentchain)
-        run: git submodule update --init --depth 1 projects/consentchain
+      - name: Bootstrap repository
+        run: ./scripts/bootstrap_repo.sh
+
+      - name: Verify anchor availability
+        run: |
+          echo "=== TLC tags ==="
+          git tag --list
+          echo "=== consentchain submodule tags ==="
+          git -C projects/consentchain tag --list
 
       - uses: actions/setup-python@v5
         with:

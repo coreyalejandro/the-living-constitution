@@ -47,7 +47,13 @@
         "INVARIANT_39",
         "INVARIANT_40",
         "INVARIANT_41",
-        "INVARIANT_42"
+        "INVARIANT_42",
+        "INVARIANT_51",
+        "INVARIANT_52",
+        "INVARIANT_53",
+        "INVARIANT_54",
+        "INVARIANT_55",
+        "INVARIANT_56"
       ],
       "enforcement_hook": "scripts/verify_governance_chain.py",
       "evidence_hook": "verification/evidence-ledger/",
@@ -388,6 +394,36 @@
       "severity": "critical",
       "escalation": "governance_separation_violation",
       "verification_hook": "scripts/verify_governance_chain.py"
+    },
+    "INVARIANT_51": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py; scripts/verify_cross_repo_consistency.py"
+    },
+    "INVARIANT_52": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py; scripts/verify_cross_repo_consistency.py"
+    },
+    "INVARIANT_53": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": ".github/workflows/verify.yml; scripts/tip_state_helpers.py"
+    },
+    "INVARIANT_54": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py; scripts/tip_state_helpers.py"
+    },
+    "INVARIANT_55": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/verify_governance_chain.py; .github/workflows/verify.yml"
+    },
+    "INVARIANT_56": {
+      "severity": "critical",
+      "escalation": "ci_failure",
+      "verification_hook": "scripts/tip_state_helpers.py; scripts/verify_governance_chain.py"
     }
   }
 }

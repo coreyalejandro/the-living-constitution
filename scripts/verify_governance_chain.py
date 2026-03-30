@@ -31,13 +31,18 @@ if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
 from tip_state_helpers import (  # noqa: E402
+    GovernanceError,
+    assert_not_shallow,
     git_is_ancestor,
+    git_preflight_fetch_tags_or_error,
     git_resolve_ref,
+    git_submodule_drift_errors,
     is_frozen_verification_context,
     load_pass7_policy,
     load_tip_policy,
     protected_surfaces_changed,
     tip_truth_aligned_with_status,
+    verification_anchor_pass12_errors,
 )
 
 # PASS 10A: STATUS surface (import after path setup)
@@ -172,6 +177,18 @@ def _evidence_hook_is_checkable(path_str: str) -> bool:
     if "/" not in s:
         return False
     return True
+
+
+def _check_anchor_availability_pass12(root: Path, data: Dict[str, Any], errors: List[str]) -> None:
+    """INVARIANT_51–53: fetch tags, local anchor peel, remote parity (PASS 12)."""
+    cp = data.get("ci_provenance")
+    if not isinstance(cp, dict):
+        return
+    vat = str(cp.get("verification_anchor_tag") or "").strip()
+    if not vat:
+        return
+    for line in verification_anchor_pass12_errors(root, vat):
+        errors.append(line)
 
 
 def _check_ci_provenance_inventory(root: Path, data: Dict[str, Any], errors: List[str]) -> None:
@@ -466,6 +483,19 @@ def _check_ci_parity(root: Path, errors: List[str]) -> None:
         errors.append("INVARIANT_13: missing .github/workflows/verify.yml")
         return
     text = wf.read_text(encoding="utf-8")
+    bootstrap_needle = "./scripts/bootstrap_repo.sh"
+    if bootstrap_needle not in text:
+        errors.append(
+            "INVARIANT_55: verify.yml must run ./scripts/bootstrap_repo.sh before verification (PASS 13)"
+        )
+    else:
+        idx_b = text.find(bootstrap_needle)
+        idx_v = text.find("verify_project_topology.py")
+        if idx_v != -1 and idx_b > idx_v:
+            errors.append(
+                "INVARIANT_55: ./scripts/bootstrap_repo.sh must appear before "
+                "verify_project_topology.py in verify.yml"
+            )
     for line in EXPECTED_CI_COMMAND_LINES:
         if line not in text:
             errors.append(
@@ -768,6 +798,11 @@ def _collect_errors(root: Path) -> Tuple[
     if errors:
         return errors, broken, inv_fail, missing_ev, schema_err, inv_ok
 
+    for sub_err in git_submodule_drift_errors(root):
+        errors.append(f"INVARIANT_54: clone incomplete — {sub_err}")
+    if errors:
+        return errors, broken, inv_fail, missing_ev, schema_err, inv_ok
+
     ev_schema_path = root / "verification" / "evidence-ledger.schema.json"
     run_schema_path = root / "verification" / "governance-verification-run.schema.json"
     try:
@@ -802,10 +837,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 51)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 57)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_50; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_56; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:
@@ -901,6 +936,7 @@ def _collect_errors(root: Path) -> Tuple[
                 broken.append(f"record {rid}: unknown related_invariant_ids {inv}")
 
     data = _load_json(inventory_path)
+    _check_anchor_availability_pass12(root, data, errors)
     _check_inventory_manifest(root, data, errors, broken)
     _check_ci_parity(root, errors)
     _check_ci_remote_record(root, errors)
@@ -1013,6 +1049,17 @@ def main() -> None:
     args = _parse_args()
     script_dir = Path(__file__).resolve().parent
     root = (args.root or script_dir.parent).resolve()
+
+    try:
+        assert_not_shallow(root)
+    except GovernanceError as e:
+        print(f"ERROR: {e.code}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    fe = git_preflight_fetch_tags_or_error(root)
+    if fe:
+        print(f"ERROR: INVARIANT_53: {fe}", file=sys.stderr)
+        sys.exit(1)
 
     runs_dir = root / "verification" / "runs"
     runs_dir.mkdir(parents=True, exist_ok=True)
