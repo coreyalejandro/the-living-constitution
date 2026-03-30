@@ -1,24 +1,25 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-03-30  
-**Status:** PASS 13 complete — distribution integrity (clone + bootstrap determinism, shallow rejection, submodule completeness)
+**Status:** PASS 13 closed on `origin/main` — remote + fresh-clone proof executed
 
 ## What Was Just Completed
 
-- **PASS 13 (distribution):** INVARIANT_54–56 — `scripts/bootstrap_repo.sh` (unshallow, fetch tags, `submodule update --init --recursive`, non-empty tags); CI runs bootstrap before Python verifiers; `tip_state_helpers.py`: `git_is_shallow`, `assert_not_shallow`, `_gitmodules_declared_paths`, `git_submodule_drift_errors` (per-path `git submodule status` to avoid orphan submodule metadata); PASS12 path calls `assert_not_shallow` before tag preflight; entrypoints `verify_governance_chain`, `verify_project_topology`, `verify_institutionalization`, `verify_cross_repo_consistency` call `assert_not_shallow`.
-- **INVARIANT_55:** `verify_governance_chain._check_ci_parity` requires `./scripts/bootstrap_repo.sh` in `.github/workflows/verify.yml` before `verify_project_topology.py`.
-- **Law / parity:** Registry `INVARIANT_01..56`, doctrine idempotency + enforcement map + risk bindings; TLC and `projects/consentchain` workflows + `MASTER_PROJECT_INVENTORY.json` `verify_workflow_sha256` aligned; `README.md` bootstrap section (TLC + ConsentChain).
-- **ConsentChain:** `scripts/bootstrap_repo.sh` also bootstraps sibling `the-living-constitution/` when present (CI layout).
+- **Published PASS 13:** TLC `51bcc28` (PASS 13 bundle per sprint scope); ConsentChain `cd6bb24` on `https://github.com/coreyalejandro/consentchain.git`; submodule pointer updated in TLC.
+- **Bootstrap unblockers (post-push):** Removed accidental gitlinks (`.claude/worktrees/*`, `.claud (old)/worktrees/unruffled-liskov`) that made `git submodule update` fail with “No url found for submodule path”; committed `8f06a28`. Narrowed `.gitignore` to `/CLAUDE.md` and `/AGENTS.md` (root only) so `projects/**/CLAUDE.md` can be tracked; added missing `projects/buildlattice/CLAUDE.md`; committed `8ab468a`.
+- **External proof (fresh clone):** `git clone --depth 1` + `./scripts/bootstrap_repo.sh` + all four verifiers exit 0 on `/tmp/tlc-pass13-prove`. Shallow clone **without** bootstrap: `verify_governance_chain.py` fails with `SHALLOW_CLONE_DETECTED` as expected.
 
 ## Recommended Next Steps
 
-- Commit and push TLC + ConsentChain; run CI green; update `ci-remote-evidence/record.json` if promoting to `verified`.
+- Let GitHub Actions `verify.yml` run on `8ab468a`; update `ci-remote-evidence/record.json` if promoting to verified.
+- Optional: commit local `scripts/render_status_surface.py` if it is part of a follow-on pass (left unstaged; outside the user’s original PASS 13 stage list).
 
 ## Quick Reference
 
-- **Bootstrap:** `./scripts/bootstrap_repo.sh` then `python3 scripts/verify_governance_chain.py --root .`
+- **Bootstrap:** `./scripts/bootstrap_repo.sh` then verifiers.
 - **Cross-repo:** `python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain`
+- **Latest TLC main:** `8ab468a` (includes PASS 13 + bootstrap fixes)
 
 ---
 
-**Confidence:** High — governance, topology, institutionalization, cross-repo, failure-injection exit 0 at TLC root after bootstrap-equivalent state.
+**Confidence:** High for remote closure — fresh shallow clone + bootstrap + verifier suite reproduced locally after push.
