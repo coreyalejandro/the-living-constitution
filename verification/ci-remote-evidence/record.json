@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
-  "workflow_run_id": "23745629659",
-  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23745629659",
+  "workflow_run_id": "23746064493",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23746064493",
   "workflow_run_attempt": "1",
-  "artifact_name": "governance-verification-runs-23745629659-1",
-  "artifact_commit_hash": "feeacf4f985360a7474f113945bcbe296bfb45a9",
+  "artifact_name": "governance-verification-runs-23746064493-1",
+  "artifact_commit_hash": "28d2bf9e8005b4463251cd78dc80fab82629f14d",
   "artifact_upload_succeeded": true,
-  "captured_at_utc": "2026-03-30T12:52:30Z",
-  "notes": "Pass 3: conclusion=success from gh run view; upload step success in job log; artifact downloaded via gh run download; governance JSON commit_hash matches headSha and GITHUB_SHA in artifact."
+  "captured_at_utc": "2026-03-30T13:05:00Z",
+  "notes": "PASS 4 closure: push 28d2bf9; run 23746064493 success; upload + download-artifact + ci_self_verify_governance_artifact.py OK; downloaded artifact commit_hash matches GITHUB_SHA/headSha; verify_workflow_sha256 137cc0657e2802c94b48c5a2d1b94ae46ee388f0ac38e1f967f094faa6fd92ba."
 }
