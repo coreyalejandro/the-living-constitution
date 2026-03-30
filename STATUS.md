@@ -7,7 +7,7 @@
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
 | `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
-| `head_sha` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
+| `head_sha` | `123223dd39577fc1a6c97aab1092e20091c2bc05` |
 | `last_verified_commit` | `f0414d36a9a9a4e39acb2fee4c62c910069b88a4` |
 | `last_verified_run_id` | `23761679469` |
 | `tip_state_truth` | `tip_pending` |
