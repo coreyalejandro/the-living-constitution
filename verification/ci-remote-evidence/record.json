@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
-  "workflow_run_id": "23746064493",
-  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23746064493",
+  "workflow_run_id": "23746097728",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23746097728",
   "workflow_run_attempt": "1",
-  "artifact_name": "governance-verification-runs-23746064493-1",
-  "artifact_commit_hash": "28d2bf9e8005b4463251cd78dc80fab82629f14d",
+  "artifact_name": "governance-verification-runs-23746097728-1",
+  "artifact_commit_hash": "c2e043e1ec43aee6df5154e47c80a9e9f39b2923",
   "artifact_upload_succeeded": true,
-  "captured_at_utc": "2026-03-30T13:05:00Z",
-  "notes": "PASS 4 closure: push 28d2bf9; run 23746064493 success; upload + download-artifact + ci_self_verify_governance_artifact.py OK; downloaded artifact commit_hash matches GITHUB_SHA/headSha; verify_workflow_sha256 137cc0657e2802c94b48c5a2d1b94ae46ee388f0ac38e1f967f094faa6fd92ba."
+  "captured_at_utc": "2026-03-30T13:10:00Z",
+  "notes": "PASS 4 closure: self-verify steps first observed green on run 23746064493 (commit 28d2bf9). This record points to the latest green run 23746097728 on the evidence commit c2e043e (record + ci_provenance refresh); upload + download + ci_self_verify_governance_artifact.py OK; artifact commit_hash matches GITHUB_SHA; verify_workflow_sha256 unchanged."
 }
