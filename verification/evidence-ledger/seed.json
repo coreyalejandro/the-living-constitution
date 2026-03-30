@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "tlc-evidence-ledger-seed",
+  "records": [
+    {
+      "record_id": "gov-ledger-invariant-registry",
+      "subject": "Canonical governance invariant registry present and parseable",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "00-constitution/invariant-registry.json",
+        "scripts/verify_governance_chain.py"
+      ],
+      "verification_output": "JSON parse + registry field checks",
+      "related_invariant_ids": ["INVARIANT_02", "INVARIANT_07"],
+      "last_updated_utc": "2026-03-30T18:30:00Z"
+    },
+    {
+      "record_id": "gov-ledger-doctrine-map",
+      "subject": "Doctrine/article to invariant mapping covers binding doctrines",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "00-constitution/doctrine-to-invariant.map.json",
+        "scripts/verify_governance_chain.py"
+      ],
+      "verification_output": "Doctrine entries non-empty invariant_ids",
+      "related_invariant_ids": ["INVARIANT_01"],
+      "last_updated_utc": "2026-03-30T18:30:00Z"
+    },
+    {
+      "record_id": "gov-ledger-inventory-sync",
+      "subject": "MASTER_PROJECT_INVENTORY.json and .md share generated_at_utc",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "MASTER_PROJECT_INVENTORY.json",
+        "MASTER_PROJECT_INVENTORY.md",
+        "scripts/verify_governance_chain.py"
+      ],
+      "verification_output": "Token match enforced by verify_governance_chain.py",
+      "related_invariant_ids": ["INVARIANT_04"],
+      "last_updated_utc": "2026-03-30T18:30:00Z"
+    },
+    {
+      "record_id": "gov-ledger-external-buildlattice",
+      "subject": "Implementation repo at /Users/coreyalejandro/Projects/buildlattice exists",
+      "evidence_state": "missing",
+      "evidence_ref": [],
+      "verification_output": "No directory at recorded path at last inventory probe",
+      "related_invariant_ids": ["INVARIANT_08"],
+      "last_updated_utc": "2026-03-30T18:30:00Z"
+    }
+  ]
+}

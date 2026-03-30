@@ -57,3 +57,11 @@ jobs:
           echo "Found $CLAIM_COUNT claims in verification matrix"
           test "$CLAIM_COUNT" -ge 20 || (echo "FAIL: Expected 20+ claims, found $CLAIM_COUNT" && exit 1)
           echo "PASS: Verification matrix has $CLAIM_COUNT claims"
+
+      - name: Verify project topology matches inventory
+        run: |
+          python3 scripts/verify_project_topology.py --root .
+
+      - name: Verify governance chain (invariants, inventory sync, ledger seed)
+        run: |
+          python3 scripts/verify_governance_chain.py --root .

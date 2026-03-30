@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T12:00:00Z",
+    "generated_at_utc": "2026-03-30T18:30:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -20,6 +20,23 @@
     "notes": [
       "Paths are absolute where recorded; unknown or not applicable use explicit null or unknown token.",
       "Do not infer repo identity from similar folder names (e.g. build-lattice-guard vs buildlattice)."
+    ]
+  },
+  "governance_artifacts": {
+    "contract_version": "v1.0.0",
+    "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
+    "canonical_paths": {
+      "invariant_registry": "00-constitution/invariant-registry.json",
+      "doctrine_to_invariant_map": "00-constitution/doctrine-to-invariant.map.json",
+      "enforcement_map": "03-enforcement/enforcement-map.json",
+      "agent_capabilities": "02-agents/agent-capabilities.json",
+      "evidence_ledger_schema": "verification/evidence-ledger.schema.json",
+      "evidence_ledger_seed": "verification/evidence-ledger/seed.json",
+      "governance_verification_template": "verification/governance-verification.template.json"
+    },
+    "enforcement_scripts": [
+      "scripts/verify_governance_chain.py",
+      "scripts/verify_project_topology.py"
     ]
   },
   "tlc_projects_overlay": {
@@ -92,13 +109,13 @@
       },
       {
         "slug": "epistemic-guard",
-        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/epistemic-guard",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/epistemic-guard",
         "path_exists_probe": false,
         "path_exists_status": "missing_on_disk",
-        "has_claude_md": false,
+        "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
+        "repo_path_source": "Rollout #5 (B.5) — TLC overlay projects/epistemic-guard; implementation `/Users/coreyalejandro/Projects/epistemic-guard` (BUILD_CONTRACT Repo Path + CLAUDE.md + config/projects.ts); epistemic_guard_overlay_script"
       },
       {
         "slug": "evidence-observatory",
@@ -282,6 +299,15 @@
     "projects_empirical_guard_overlay_exists": true,
     "notes": "TLC overlay `projects/empirical-guard` is governance-only. Implementation checkout per BUILD_CONTRACT Repo Path and config/projects.ts: `/Users/coreyalejandro/Projects/empirical-guard`."
   },
+  "epistemic_guard_overlay_script": {
+    "script_relative": "scripts/verify_project_topology.py",
+    "expects_tlc_relative_paths": [
+      "projects/epistemic-guard/CLAUDE.md",
+      "projects/epistemic-guard/BUILD_CONTRACT.md"
+    ],
+    "projects_epistemic_guard_overlay_exists": true,
+    "notes": "TLC overlay `projects/epistemic-guard` is governance-only. Implementation checkout per BUILD_CONTRACT Repo Path and config/projects.ts: `/Users/coreyalejandro/Projects/epistemic-guard`."
+  },
   "sibling_named_not_equated": [
     {
       "path": "/Users/coreyalejandro/Projects/MADMall",
@@ -302,8 +328,9 @@
   "anomalies": [
     "CLAUDE.md lists MADMall-Production at /Users/coreyalejandro/Projects/MADMall-Production — path missing on disk at inventory time",
     "config/projects.ts repoPath for buildlattice points to /Users/coreyalejandro/Projects/buildlattice — path missing on disk at inventory time",
-    "epistemic-guard, human-guard: config/projects.ts lists repo paths; directories absent under ~/Projects at inventory time",
+    "human-guard: config/projects.ts lists repo path; directory absent under ~/Projects at inventory time",
     "empirical-guard: implementation path `/Users/coreyalejandro/Projects/empirical-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
-    "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md)"
+    "epistemic-guard: implementation path `/Users/coreyalejandro/Projects/epistemic-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
+    "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md; governance chain artifacts are repo-root — see governance_artifacts)"
   ]
 }

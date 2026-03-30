@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/schemas/evidence-ledger-record.json",
+  "title": "TLC Evidence Ledger Record",
+  "type": "object",
+  "required": [
+    "record_id",
+    "subject",
+    "evidence_state",
+    "last_updated_utc"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Stable identifier for this evidence row."
+    },
+    "subject": {
+      "type": "string",
+      "description": "What claim or component this evidence supports or refutes."
+    },
+    "evidence_state": {
+      "type": "string",
+      "enum": ["verified", "unverified", "missing"],
+      "description": "verified = evidence present and checked; unverified = partial or pending; missing = no evidence (must not be treated as success)."
+    },
+    "evidence_ref": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Paths to logs, MATRIX rows, reports, or commands."
+    },
+    "verification_output": {
+      "type": "string",
+      "description": "Short summary of last command or review outcome."
+    },
+    "related_invariant_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "last_updated_utc": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

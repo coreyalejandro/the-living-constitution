@@ -1,8 +1,10 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-03-30T12:00:00Z  
+**Generated (UTC):** 2026-03-30T18:30:00Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (source of truth for the verifier)
+
+**Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths for the invariant registry, doctrine map, enforcement map, agent capabilities, evidence ledger schema/seed, and governance verification template. **Executable checks:** `scripts/verify_governance_chain.py` (required); `scripts/verify_project_topology.py --with-governance` runs topology then governance.
 
 **Registry path migration (ConsentChain):** `04-consentchain/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
 
@@ -26,7 +28,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (TLC submodule) | yes |
 | consent-gateway-auth0 | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0` (TLC submodule) | yes |
 | empirical-guard | yes | yes | `/Users/coreyalejandro/Projects/empirical-guard` (contract Repo Path + CLAUDE + config) | no |
-| epistemic-guard | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/epistemic-guard` | no |
+| epistemic-guard | yes | yes | `/Users/coreyalejandro/Projects/epistemic-guard` (contract Repo Path + CLAUDE + config) | no |
 | evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/tlc-evidence-observatory` | yes |
 | frostbyte-etl | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
 | human-guard | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/human-guard` | no |
@@ -40,7 +42,8 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 - **c-rsp:** Meta **C-RSP template** — not a normal executable build contract; no Repo Path.
 - **c-rsp:** Contains `openmemory.md`; **no** `CLAUDE.md` (differs from base-camp rule for overlays).
 - **consentchain / consent-gateway-auth0:** TLC **git submodules** (see `.gitmodules`).
-- **Guards (epistemic / human):** Contracts reference canonical docs under `docs/prompts/...` in a repository **once created**; TLC contracts do **not** declare a `## Repo Path` block (config-only paths).
+- **human-guard:** Contract references canonical docs under `docs/prompts/...` in a repository **once created**; TLC overlay does **not** yet declare a `## Repo Path` block (config-only path).
+- **epistemic-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/epistemic-guard` (aligned with `config/projects.ts`).
 - **empirical-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/empirical-guard` (aligned with `config/projects.ts`).
 - **teaser-video:** Implementation path is **inside TLC** per its `BUILD_CONTRACT.md`.
 
@@ -114,6 +117,17 @@ Implementation checkout for EmpiricalGuard remains `/Users/coreyalejandro/Projec
 
 ---
 
+## 5d. `epistemic_guard_overlay_script` (`scripts/verify_project_topology.py`)
+
+Machine-readable fields in `MASTER_PROJECT_INVENTORY.json`:
+
+- `projects_epistemic_guard_overlay_exists` must match the `projects/epistemic-guard/` directory on disk.
+- `expects_tlc_relative_paths` lists `projects/epistemic-guard/CLAUDE.md` and `projects/epistemic-guard/BUILD_CONTRACT.md`; each must exist as a file.
+
+Implementation checkout for EpistemicGuard remains `/Users/coreyalejandro/Projects/epistemic-guard` per overlay `BUILD_CONTRACT.md` **Repo Path**, `CLAUDE.md`, and `config/projects.ts`.
+
+---
+
 ## 6. Sibling folders (name similarity — not assumed equivalent)
 
 | Path | Exists | Note |
@@ -136,8 +150,25 @@ Implementation checkout for EmpiricalGuard remains `/Users/coreyalejandro/Projec
 - `CLAUDE.md` registry path `MADMall-Production` → directory **missing** on disk at inventory time.
 - `config/projects.ts` and build contract cite `buildlattice` at `/Users/coreyalejandro/Projects/buildlattice` → directory **missing** on disk at inventory time.
 - `empirical-guard` implementation path `/Users/coreyalejandro/Projects/empirical-guard` → directory **missing** on disk at inventory time (recorded in contract + inventory).
-- Guard repos in config (`epistemic-guard`, `human-guard`) → paths **missing** on disk at inventory time.
+- `human-guard` in config → path **missing** on disk at inventory time.
+- `epistemic-guard` implementation path `/Users/coreyalejandro/Projects/epistemic-guard` → directory **missing** on disk at inventory time (recorded in contract + inventory).
 - `projects/c-rsp` lacks `CLAUDE.md` (per base-camp convention for overlays).
+
+---
+
+## 9. Governance artifacts (machine-readable chain)
+
+| Artifact | Path |
+|----------|------|
+| Invariant registry | `00-constitution/invariant-registry.json` |
+| Doctrine / article → invariant map | `00-constitution/doctrine-to-invariant.map.json` |
+| Enforcement hooks map | `03-enforcement/enforcement-map.json` |
+| Agent capabilities (JSON) | `02-agents/agent-capabilities.json` |
+| Evidence ledger schema | `verification/evidence-ledger.schema.json` |
+| Evidence ledger seed | `verification/evidence-ledger/seed.json` |
+| Governance verification template | `verification/governance-verification.template.json` |
+
+`meta.generated_at_utc` in this JSON **must** appear in this Markdown file header (INVARIANT_04).
 
 ---
 
@@ -145,6 +176,8 @@ Implementation checkout for EmpiricalGuard remains `/Users/coreyalejandro/Projec
 
 ```bash
 python3 scripts/verify_project_topology.py --root .
+python3 scripts/verify_governance_chain.py --root .
+python3 scripts/verify_project_topology.py --root . --with-governance
 python3 scripts/verify_consentchain_family.py --root .
 ```
 
@@ -154,7 +187,7 @@ Exit non-zero on drift between disk and `MASTER_PROJECT_INVENTORY.json` (see scr
 
 ## V&T
 
-**Exists (verified present):** `MASTER_PROJECT_INVENTORY.md`, `MASTER_PROJECT_INVENTORY.json`, `scripts/verify_project_topology.py`; TLC `projects/` thirteen slugs; `04-consentchain/`, `05-madmall/`; cited sibling probes as stated.  
-**Verified against:** filesystem listings and grep of `BUILD_CONTRACT.md` / `CLAUDE.md` / `config/projects.ts` / `verify_consentchain_family.py` in this session.  
-**Not claimed:** Future repo layouts; equivalence of similarly named folders; completeness of every doc under each overlay.  
-**Functional status:** Inventory and verifier are **Phase 0 documentation and checks** — they do not change project architecture or create repos.
+**Exists (verified present):** `MASTER_PROJECT_INVENTORY.md`, `MASTER_PROJECT_INVENTORY.json`, `scripts/verify_project_topology.py`, `scripts/verify_governance_chain.py`, `governance_artifacts` and paths in section 9; TLC `projects/` thirteen slugs; `04-consentchain/`, `05-madmall/`; cited sibling probes as stated.  
+**Verified against:** `python3 scripts/verify_governance_chain.py --root .`; filesystem listings and cited config/contract sources.  
+**Not claimed:** Full JSON Schema validation of every ledger field (stdlib checks `evidence_state` enum only); future repo layouts; equivalence of similarly named folders; completeness of every doc under each overlay.  
+**Functional status:** Topology and governance verifiers exit non-zero on drift; governance verifier enforces inventory JSON/MD timestamp sync (INVARIANT_04) and canonical governance file presence.

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -38,6 +38,11 @@ def _parse_args() -> argparse.Namespace:
         "--no-probes",
         action="store_true",
         help="Skip filesystem existence probes (only compare projects/ slugs to JSON).",
+    )
+    p.add_argument(
+        "--with-governance",
+        action="store_true",
+        help="After topology checks pass, run scripts/verify_governance_chain.py on the same root.",
     )
     return p.parse_args()
 
@@ -193,6 +198,24 @@ def main() -> None:
                     f"empirical-guard overlay: expected file missing at {rel!r} (resolved {p})"
                 )
 
+        epg = data.get("epistemic_guard_overlay_script") or {}
+        if "projects_epistemic_guard_overlay_exists" in epg:
+            epg_dir = root / "projects" / "epistemic-guard"
+            exists_epg = epg_dir.is_dir()
+            if bool(epg["projects_epistemic_guard_overlay_exists"]) != exists_epg:
+                errors.append(
+                    "epistemic-guard: inventory flag "
+                    f"projects_epistemic_guard_overlay_exists="
+                    f"{epg['projects_epistemic_guard_overlay_exists']} "
+                    f"but on_disk={exists_epg} at {epg_dir}"
+                )
+        for rel in epg.get("expects_tlc_relative_paths") or []:
+            p = root / rel
+            if not p.is_file():
+                errors.append(
+                    f"epistemic-guard overlay: expected file missing at {rel!r} (resolved {p})"
+                )
+
     if errors:
         print("ERROR: topology probes failed:", file=sys.stderr)
         for e in errors:
@@ -205,6 +228,18 @@ def main() -> None:
         sys.exit(1)
 
     print("OK: project topology matches MASTER_PROJECT_INVENTORY.json")
+
+    if getattr(args, "with_governance", False):
+        gov_script = root / "scripts" / "verify_governance_chain.py"
+        if not gov_script.is_file():
+            print(f"ERROR: governance verifier missing: {gov_script}", file=sys.stderr)
+            sys.exit(2)
+        r = subprocess.run(
+            [sys.executable, str(gov_script), "--root", str(root)],
+            check=False,
+        )
+        sys.exit(r.returncode)
+
     sys.exit(0)
 
 

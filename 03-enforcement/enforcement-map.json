@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "map_id": "tlc-enforcement-hooks",
+  "modules": [
+    {
+      "id": "tlc_governance_chain",
+      "constitutional_reference": "THE_LIVING_CONSTITUTION.md",
+      "invariant_ids": [
+        "INVARIANT_01",
+        "INVARIANT_02",
+        "INVARIANT_03",
+        "INVARIANT_04",
+        "INVARIANT_05",
+        "INVARIANT_06",
+        "INVARIANT_07",
+        "INVARIANT_08",
+        "INVARIANT_09",
+        "INVARIANT_10"
+      ],
+      "enforcement_hook": "scripts/verify_governance_chain.py",
+      "evidence_hook": "verification/evidence-ledger/",
+      "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts",
+      "failure_exit_code": 1
+    },
+    {
+      "id": "tlc_project_topology",
+      "constitutional_reference": "00-constitution/constitution.md#Census Doctrine",
+      "invariant_ids": ["INVARIANT_03", "INVARIANT_10"],
+      "enforcement_hook": "scripts/verify_project_topology.py",
+      "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
+      "inventory_presence": "MASTER_PROJECT_INVENTORY.json#tlc_projects_overlay",
+      "failure_exit_code": 1
+    },
+    {
+      "id": "consentchain_family",
+      "constitutional_reference": "03-enforcement/consentchain-mapping.md",
+      "invariant_ids": ["INVARIANT_06"],
+      "enforcement_hook": "scripts/verify_consentchain_family.py",
+      "evidence_hook": "verification/consentchain-family/report.json",
+      "inventory_presence": "MASTER_PROJECT_INVENTORY.json#consentchain_family_script",
+      "failure_exit_code": 1
+    },
+    {
+      "id": "github_ci_verify_workflow",
+      "constitutional_reference": "CLAUDE.md",
+      "invariant_ids": ["INVARIANT_06", "INVARIANT_10"],
+      "enforcement_hook": ".github/workflows/verify.yml",
+      "evidence_hook": "GitHub Actions run logs",
+      "inventory_presence": "N/A — platform evidence external to repo clone",
+      "failure_exit_code": 1
+    }
+  ]
+}

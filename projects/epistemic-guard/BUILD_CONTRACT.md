@@ -120,3 +120,11 @@ It does not own: cognitive evaluation (D3), session safety (D2), behavioral tele
 | P2 Epistemic Integrity | Primary domain |
 | H1 Epistemic Harm class | Primary harm class prevented |
 | I2 Status Honesty | Cannot claim T3 without test evidence |
+
+---
+
+## Repo Path
+
+Implementation checkout: `/Users/coreyalejandro/Projects/epistemic-guard`
+
+TLC overlay `projects/epistemic-guard` is governance-only; implementation lives at the path above per this contract and `config/projects.ts`.
