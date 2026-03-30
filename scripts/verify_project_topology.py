@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -75,6 +76,14 @@ def _exists_dir(p: Optional[str]) -> Optional[bool]:
 
 def main() -> None:
     args = _parse_args()
+    # Inventory embeds absolute sibling paths from the machine that generated it; GitHub
+    # runners cannot see those paths. Skip probes in CI without changing CLI flags.
+    if os.environ.get("GITHUB_ACTIONS", "").lower() == "true":
+        args.no_probes = True
+        print(
+            "NOTE: GITHUB_ACTIONS=true — skipping workstation path probes (same as --no-probes).",
+            file=sys.stderr,
+        )
     script_dir = Path(__file__).resolve().parent
     root = (args.root or (script_dir.parent)).resolve()
     inv_path = args.inventory or (root / "MASTER_PROJECT_INVENTORY.json")
