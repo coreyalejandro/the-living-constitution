@@ -126,13 +126,13 @@ def render_markdown_from_status(data: Dict[str, Any]) -> str:
         "# TLC repository status",
         "",
         "> **Canonical JSON:** [`STATUS.json`](STATUS.json) — sole authoritative current-status artifact (PASS 10A).",
+        "> **Git HEAD:** use `git rev-parse HEAD` at checkout; `head_sha` in JSON is render-time (verifier normalizes to live HEAD for INVARIANT_42).",
         "",
         "| Field | Value |",
         "|-------|-------|",
     ]
     rows = [
         ("project", data.get("project")),
-        ("head_sha", data.get("head_sha")),
         ("last_verified_commit", data.get("last_verified_commit")),
         ("last_verified_run_id", data.get("last_verified_run_id")),
         ("tip_state_truth", data.get("tip_state_truth")),

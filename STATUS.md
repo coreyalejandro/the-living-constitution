@@ -1,11 +1,11 @@
 # TLC repository status
 
 > **Canonical JSON:** [`STATUS.json`](STATUS.json) — sole authoritative current-status artifact (PASS 10A).
+> **Git HEAD:** use `git rev-parse HEAD` at checkout; `head_sha` in JSON is render-time (verifier normalizes to live HEAD for INVARIANT_42).
 
 | Field | Value |
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
-| `head_sha` | `a76f024f430b6d1e12bfb19876465d9ad6b87f6d` |
 | `last_verified_commit` | `1a2ef808478b71e8bdbe40c86406ccc180180276` |
 | `last_verified_run_id` | `23757979228` |
 | `tip_state_truth` | `tip_pending` |
