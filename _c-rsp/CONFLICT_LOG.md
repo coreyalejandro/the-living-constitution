@@ -19,5 +19,15 @@ This log serves as the "Black Box Recorder" for the build process. Every time th
 
 | Date | Conflict Type | Resolution Summary | Status |
 | :--- | :--- | :--- | :--- |
-| *Example* | *Dependency Unavailability* | *Pinned v1.2.3 unreachable; incremented to v1.2.4 (Patch).* | *RESOLVED* |
-| | | | |
+| 2026-03-29 | Platform Entropy | Renamed `.c-rsp/` to `_c-rsp/` for macOS Finder visibility. | **RESOLVED** |
+
+### Entry Details: ID-20260329-2200
+>
+> **ID:** 20260329-2200
+> **Conflict Type:** Platform Entropy (UI Visibility)
+> **Affected Component:** Governance Folder Naming
+> **Protocol Applied:** Platform Entropy Mitigation
+> **Resolution Details:** The original hidden directory prefix (`.`) caused a collision with macOS default file visibility settings, hindering human-in-the-loop oversight. The directory was renamed to `_c-rsp/`.
+> **Safety Impact:** Zero impact on execution logic; significantly improves auditability and ensures the Agent does not encounter "File Not Found" errors due to OS-level hiding.
+
+---
