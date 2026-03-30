@@ -210,13 +210,19 @@ def main() -> int:
             print("CHECK FAIL: STATUS.json missing", file=sys.stderr)
             return 1
         on_disk = _load_json(status_path)
-        if json.dumps(on_disk, sort_keys=True) != json.dumps(aggregated, sort_keys=True):
-            errs.append("STATUS.json does not match aggregate_status(root) — run without --check to refresh")
+        head = _git_head(root)
+        agg_n = dict(aggregated)
+        disk_n = dict(on_disk)
+        agg_n["head_sha"] = head
+        disk_n["head_sha"] = head
+        if json.dumps(disk_n, sort_keys=True) != json.dumps(agg_n, sort_keys=True):
+            errs.append("STATUS.json does not match aggregate_status (head_sha normalized to git HEAD)")
         if not md_path.is_file():
             errs.append("STATUS.md missing")
         else:
             existing = md_path.read_text(encoding="utf-8")
-            if existing.replace("\r\n", "\n") != rendered_md.replace("\r\n", "\n"):
+            expected_check_md = render_markdown_from_status(disk_n)
+            if existing.replace("\r\n", "\n") != expected_check_md.replace("\r\n", "\n"):
                 errs.append("STATUS.md does not match render_markdown_from_status(STATUS.json)")
         for e in errs:
             print(f"CHECK FAIL: {e}", file=sys.stderr)

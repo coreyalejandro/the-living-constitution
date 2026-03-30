@@ -360,13 +360,19 @@ def _check_status_surface(root: Path, errors: List[str]) -> None:
     except (OSError, json.JSONDecodeError) as e:
         errors.append(f"INVARIANT_38: cannot read STATUS.json: {e}")
         return
-    if json.dumps(aggregated, sort_keys=True) != json.dumps(on_disk, sort_keys=True):
+    # head_sha cannot equal the containing commit id (self-hash paradox); bind to live HEAD for compare.
+    head = _git_head(root)
+    agg_n = dict(aggregated)
+    disk_n = dict(on_disk)
+    agg_n["head_sha"] = head
+    disk_n["head_sha"] = head
+    if json.dumps(agg_n, sort_keys=True) != json.dumps(disk_n, sort_keys=True):
         errors.append(
-            "INVARIANT_42: STATUS.json disagrees with aggregate from inventory, record, ledger, HEAD, "
-            "and policy — run: python3 scripts/render_status_surface.py --root ."
+            "INVARIANT_42: STATUS.json disagrees with aggregate from inventory, record, ledger, "
+            "and policy (head_sha normalized to git HEAD) — run: python3 scripts/render_status_surface.py --root ."
         )
     md_text = status_md.read_text(encoding="utf-8")
-    expected_md = mod.render_markdown_from_status(on_disk)
+    expected_md = mod.render_markdown_from_status(disk_n)
     if md_text.replace("\r\n", "\n") != expected_md.replace("\r\n", "\n"):
         errors.append(
             "INVARIANT_39: STATUS.md is not a faithful render of STATUS.json — run: "
