@@ -47,5 +47,5 @@ verification/runs/*.json
 
 # Playwright MCP artifacts (screenshots, recordings, etc.)
 .playwright-mcp/
-AGENTS.md
-CLAUDE.md
+/AGENTS.md
+/CLAUDE.md
