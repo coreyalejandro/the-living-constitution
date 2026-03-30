@@ -16,6 +16,7 @@ import hashlib
 import json
 import subprocess
 import sys
+from json import JSONDecodeError
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -49,6 +50,18 @@ def _workflow_sha256(root: Path) -> str:
 
 
 def _cross_repo_state(root: Path) -> Dict[str, Any]:
+    inv_path = root / "MASTER_PROJECT_INVENTORY.json"
+    try:
+        inv = _load_json(inv_path) if inv_path.is_file() else {}
+    except (OSError, ValueError, JSONDecodeError):
+        inv = {}
+    meta = inv.get("meta") if isinstance(inv.get("meta"), dict) else {}
+    if str(meta.get("inventory_kind") or "") == "consentchain_governance_inventory":
+        return {
+            "state": "aligned",
+            "exit_code": 0,
+            "detail": "Satellite repo; canonical↔satellite cross-repo verification runs in The Living Constitution CI.",
+        }
     target = root / "projects" / "consentchain" / "00-constitution" / "invariant-registry.json"
     if not target.is_file():
         return {
@@ -93,10 +106,18 @@ def aggregate_status(root: Path) -> Dict[str, Any]:
 
     head = _git_head(root)
     wf_sha = _workflow_sha256(root)
+    meta = inv.get("meta") if isinstance(inv.get("meta"), dict) else {}
+    project = str(meta.get("repo") or "").strip()
+    if not project:
+        ik = str(meta.get("inventory_kind") or "")
+        if ik == "consentchain_governance_inventory":
+            project = "coreyalejandro/consentchain"
+        else:
+            project = "coreyalejandro/the-living-constitution"
 
     return {
         "schema_version": "1.0.0",
-        "project": "coreyalejandro/the-living-constitution",
+        "project": project,
         "head_sha": head,
         "last_verified_commit": str(cp.get("last_verified_commit") or ""),
         "last_verified_run_id": str(cp.get("last_verified_run_id") or ""),
@@ -120,10 +141,19 @@ def aggregate_status(root: Path) -> Dict[str, Any]:
     }
 
 
+def _status_doc_title(project: str) -> str:
+    pl = (project or "").lower()
+    if "consentchain" in pl:
+        return "ConsentChain repository status"
+    return "TLC repository status"
+
+
 def render_markdown_from_status(data: Dict[str, Any]) -> str:
     """Deterministic Markdown mirror of STATUS.json (INVARIANT_39)."""
+    proj = str(data.get("project") or "")
+    title = _status_doc_title(proj)
     lines: List[str] = [
-        "# TLC repository status",
+        f"# {title}",
         "",
         "> **Canonical JSON:** [`STATUS.json`](STATUS.json) — sole authoritative current-status artifact (PASS 10A).",
         "> **Git HEAD:** use `git rev-parse HEAD` at checkout; `head_sha` in JSON is render-time (verifier normalizes to live HEAD for INVARIANT_42).",
@@ -159,7 +189,12 @@ def render_markdown_from_status(data: Dict[str, Any]) -> str:
     else:
         lines.append("- *(none)*")
 
-    lines.extend(["", "## Cross-repo consistency (ConsentChain submodule)", ""])
+    cr_heading = (
+        "## Cross-repo consistency (canonical TLC CI)"
+        if "consentchain" in proj.lower()
+        else "## Cross-repo consistency (ConsentChain submodule)"
+    )
+    lines.extend(["", cr_heading, ""])
     cr = data.get("cross_repo_consistency")
     if isinstance(cr, dict):
         lines.append(f"- **state:** `{cr.get('state')}`")
