@@ -157,6 +157,42 @@ def main() -> None:
                     f"but on_disk={exists} at {gw}"
                 )
 
+        bl = data.get("buildlattice_overlay_script") or {}
+        if "projects_buildlattice_overlay_exists" in bl:
+            bl_dir = root / "projects" / "buildlattice"
+            exists_bl = bl_dir.is_dir()
+            if bool(bl["projects_buildlattice_overlay_exists"]) != exists_bl:
+                errors.append(
+                    "buildlattice: inventory flag "
+                    f"projects_buildlattice_overlay_exists="
+                    f"{bl['projects_buildlattice_overlay_exists']} "
+                    f"but on_disk={exists_bl} at {bl_dir}"
+                )
+        for rel in bl.get("expects_tlc_relative_paths") or []:
+            p = root / rel
+            if not p.is_file():
+                errors.append(
+                    f"buildlattice overlay: expected file missing at {rel!r} (resolved {p})"
+                )
+
+        eg = data.get("empirical_guard_overlay_script") or {}
+        if "projects_empirical_guard_overlay_exists" in eg:
+            eg_dir = root / "projects" / "empirical-guard"
+            exists_eg = eg_dir.is_dir()
+            if bool(eg["projects_empirical_guard_overlay_exists"]) != exists_eg:
+                errors.append(
+                    "empirical-guard: inventory flag "
+                    f"projects_empirical_guard_overlay_exists="
+                    f"{eg['projects_empirical_guard_overlay_exists']} "
+                    f"but on_disk={exists_eg} at {eg_dir}"
+                )
+        for rel in eg.get("expects_tlc_relative_paths") or []:
+            p = root / rel
+            if not p.is_file():
+                errors.append(
+                    f"empirical-guard overlay: expected file missing at {rel!r} (resolved {p})"
+                )
+
     if errors:
         print("ERROR: topology probes failed:", file=sys.stderr)
         for e in errors:

@@ -14,6 +14,7 @@ This is the **governance overlay** for the Safety Systems Design Commonwealth. I
 the-living-constitution/
   THE_LIVING_CONSTITUTION.md    <- The specification (source of truth)
   CLAUDE.md                     <- This file (operational controls)
+  04-consentchain/              <- ConsentChain constitutional pack (docs/spec; not app source)
   tasks/
     todo.md                     <- Sprint tracker
     lessons.md                  <- Amendment log (feeds Article V)
@@ -21,7 +22,9 @@ the-living-constitution/
     teaser-video/               <- Video deliverable
     sentinelos/                 <- SentinelOS build contract
     proactive/                  <- PROACTIVE build contract
-    consentchain/               <- ConsentChain build contract
+    consentchain/               <- ConsentChain implementation (git submodule)
+    consent-gateway-auth0/      <- Consent Gateway Auth0 (git submodule)
+    buildlattice/               <- BuildLattice Guard governance overlay (implementation: see BUILD_CONTRACT Repo Path)
     uicare/                     <- UICare build contract
   verification/
     MATRIX.md                   <- Every claim -> evidence mapping

@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T07:28:13Z",
+    "generated_at_utc": "2026-03-30T12:00:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -48,7 +48,7 @@
         "path_exists_status": "missing_on_disk",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "BUILD_CONTRACT.md table; CLAUDE.md; config/projects.ts"
+        "repo_path_source": "Rollout #3 (B.1) — TLC overlay projects/buildlattice; implementation `/Users/coreyalejandro/Projects/buildlattice` (BUILD_CONTRACT + config/projects.ts); buildlattice_overlay_script"
       },
       {
         "slug": "c-rsp",
@@ -82,13 +82,13 @@
       },
       {
         "slug": "empirical-guard",
-        "implementation_repo_path_build_contract": null,
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/empirical-guard",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/empirical-guard",
         "path_exists_probe": false,
         "path_exists_status": "missing_on_disk",
-        "has_claude_md": false,
+        "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
+        "repo_path_source": "Rollout #4 (B.4) — TLC overlay projects/empirical-guard; implementation `/Users/coreyalejandro/Projects/empirical-guard` (BUILD_CONTRACT Repo Path + config/projects.ts); empirical_guard_overlay_script"
       },
       {
         "slug": "epistemic-guard",
@@ -264,6 +264,24 @@
     "projects_consent_gateway_auth0_overlay_exists": true,
     "notes": "projects/consent-gateway-auth0 exists under TLC as a git submodule (see .gitmodules). Optional sibling checkout at /Users/coreyalejandro/Projects/consent-gateway-auth0 is not equivalent to the TLC path."
   },
+  "buildlattice_overlay_script": {
+    "script_relative": "scripts/verify_project_topology.py",
+    "expects_tlc_relative_paths": [
+      "projects/buildlattice/CLAUDE.md",
+      "projects/buildlattice/BUILD_CONTRACT.md"
+    ],
+    "projects_buildlattice_overlay_exists": true,
+    "notes": "TLC overlay `projects/buildlattice` is governance-only. Implementation checkout per BUILD_CONTRACT and config/projects.ts: `/Users/coreyalejandro/Projects/buildlattice`. Relationship of sibling `/Users/coreyalejandro/Projects/build-lattice-guard` to this path is unknown unless inventory is updated with evidence."
+  },
+  "empirical_guard_overlay_script": {
+    "script_relative": "scripts/verify_project_topology.py",
+    "expects_tlc_relative_paths": [
+      "projects/empirical-guard/CLAUDE.md",
+      "projects/empirical-guard/BUILD_CONTRACT.md"
+    ],
+    "projects_empirical_guard_overlay_exists": true,
+    "notes": "TLC overlay `projects/empirical-guard` is governance-only. Implementation checkout per BUILD_CONTRACT Repo Path and config/projects.ts: `/Users/coreyalejandro/Projects/empirical-guard`."
+  },
   "sibling_named_not_equated": [
     {
       "path": "/Users/coreyalejandro/Projects/MADMall",
@@ -284,7 +302,8 @@
   "anomalies": [
     "CLAUDE.md lists MADMall-Production at /Users/coreyalejandro/Projects/MADMall-Production — path missing on disk at inventory time",
     "config/projects.ts repoPath for buildlattice points to /Users/coreyalejandro/Projects/buildlattice — path missing on disk at inventory time",
-    "empirical-guard, epistemic-guard, human-guard: config/projects.ts lists repo paths; directories absent under ~/Projects at inventory time",
+    "epistemic-guard, human-guard: config/projects.ts lists repo paths; directories absent under ~/Projects at inventory time",
+    "empirical-guard: implementation path `/Users/coreyalejandro/Projects/empirical-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
     "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md)"
   ]
 }

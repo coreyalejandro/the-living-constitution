@@ -148,3 +148,11 @@ Default on startup: `unknown` at 0.0 confidence. Never assume `calm` without evi
 | P6 Idempotency | Same telemetry → same MoodSignal (deterministic) |
 | H4 Empirical Harm class | Primary harm class prevented |
 | I2 Status Honesty | `crisis` must be evidence-backed; never assumed |
+
+---
+
+## Repo Path
+
+Implementation checkout: `/Users/coreyalejandro/Projects/empirical-guard`
+
+TLC overlay `projects/empirical-guard` is governance-only; implementation lives at the path above per this contract and `config/projects.ts`.
