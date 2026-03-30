@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T13:10:00Z",
+    "generated_at_utc": "2026-03-30T15:45:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -26,11 +26,13 @@
     "last_verified_run_id": "23746097728",
     "last_verified_commit": "c2e043e1ec43aee6df5154e47c80a9e9f39b2923",
     "artifact_name": "governance-verification-runs-23746097728-1",
-    "verify_workflow_sha256": "137cc0657e2802c94b48c5a2d1b94ae46ee388f0ac38e1f967f094faa6fd92ba",
-    "status": "verified"
+    "verify_workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
+    "status": "verified",
+    "escalation_state": "none",
+    "reviewer_status": "acknowledged"
   },
   "governance_artifacts": {
-    "contract_version": "v1.2.0",
+    "contract_version": "v1.3.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -41,7 +43,19 @@
       "evidence_ledger_seed": "verification/evidence-ledger/seed.json",
       "governance_verification_template": "verification/governance-verification.template.json",
       "governance_verification_run_schema": "verification/governance-verification-run.schema.json",
-      "ci_remote_evidence_record": "verification/ci-remote-evidence/record.json"
+      "ci_remote_evidence_record": "verification/ci-remote-evidence/record.json",
+      "regression_ledger_schema": "verification/regression-ledger.schema.json",
+      "regression_ledger": "verification/regression-ledger/ledger.json",
+      "review_escalation_policy": "verification/review-escalation-policy.json",
+      "governance_system_card": "verification/GOVERNANCE_SYSTEM_CARD.md",
+      "independent_review_record": "verification/independent-review/last-review.json"
+    },
+    "institutionalization": {
+      "regression_ledger_schema": "verification/regression-ledger.schema.json",
+      "regression_ledger": "verification/regression-ledger/ledger.json",
+      "review_escalation_policy": "verification/review-escalation-policy.json",
+      "failure_injection_tests": "scripts/governance_failure_injection_tests.py",
+      "append_ledger_script": "scripts/append_regression_ledger.py"
     },
     "artifact_manifest": [
       {
@@ -97,15 +111,49 @@
         "relative_path": "verification/ci-remote-evidence/record.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": "gov-ledger-remote-ci-provenance"
+      },
+      {
+        "canonical_key": "regression_ledger_schema",
+        "relative_path": "verification/regression-ledger.schema.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "regression_ledger",
+        "relative_path": "verification/regression-ledger/ledger.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "review_escalation_policy",
+        "relative_path": "verification/review-escalation-policy.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "governance_system_card",
+        "relative_path": "verification/GOVERNANCE_SYSTEM_CARD.md",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "independent_review_record",
+        "relative_path": "verification/independent-review/last-review.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
       }
     ],
     "enforcement_scripts": [
       "scripts/verify_governance_chain.py",
-      "scripts/verify_project_topology.py"
+      "scripts/verify_project_topology.py",
+      "scripts/verify_institutionalization.py",
+      "scripts/append_regression_ledger.py",
+      "scripts/governance_failure_injection_tests.py"
     ],
     "ci_verification_commands": [
       "python3 scripts/verify_project_topology.py --root . --with-governance",
-      "python3 scripts/verify_governance_chain.py --root ."
+      "python3 scripts/verify_governance_chain.py --root .",
+      "python3 scripts/verify_institutionalization.py --root ."
     ]
   },
   "tlc_projects_overlay": {

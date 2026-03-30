@@ -26,7 +26,15 @@
         "INVARIANT_18",
         "INVARIANT_19",
         "INVARIANT_20",
-        "INVARIANT_21"
+        "INVARIANT_21",
+        "INVARIANT_22",
+        "INVARIANT_23",
+        "INVARIANT_24",
+        "INVARIANT_25",
+        "INVARIANT_26",
+        "INVARIANT_27",
+        "INVARIANT_28",
+        "INVARIANT_29"
       ],
       "enforcement_hook": "scripts/verify_governance_chain.py",
       "evidence_hook": "verification/evidence-ledger/",
@@ -69,6 +77,26 @@
       "enforcement_hook": ".github/workflows/verify.yml",
       "evidence_hook": "GitHub Actions run logs",
       "inventory_presence": "N/A — platform evidence external to repo clone",
+      "failure_exit_code": 1
+    },
+    {
+      "id": "tlc_institutionalization",
+      "constitutional_reference": "00-constitution/doctrine-to-invariant.map.json#ARTICLE_VI",
+      "invariant_ids": [
+        "INVARIANT_22",
+        "INVARIANT_23",
+        "INVARIANT_24",
+        "INVARIANT_25",
+        "INVARIANT_26",
+        "INVARIANT_27",
+        "INVARIANT_28",
+        "INVARIANT_29"
+      ],
+      "enforcement_hook": "scripts/verify_institutionalization.py",
+      "evidence_hook": "verification/regression-ledger/ledger.json",
+      "escalation_hook": "verification/review-escalation-policy.json",
+      "verification_hook": "scripts/governance_failure_injection_tests.py",
+      "inventory_presence": "MASTER_PROJECT_INVENTORY.json#governance_artifacts.institutionalization",
       "failure_exit_code": 1
     }
   ]

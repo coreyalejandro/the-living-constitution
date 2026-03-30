@@ -174,6 +174,70 @@
       "enforcement_mechanism": "scripts/verify_governance_chain.py; .github/workflows/verify.yml upload + download self-verify; MASTER_PROJECT_INVENTORY.json ci_provenance",
       "evidence_path_or_rule": "verification/runs/*-governance.json; governance-verification-run.schema.json; verification/ci-remote-evidence/record.json; GitHub Actions artifacts",
       "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_22",
+      "category": "Environment Constraints",
+      "description": "A scheduled remote evaluation path must exist for governance and provenance verification.",
+      "enforcement_mechanism": "scripts/verify_institutionalization.py (verify.yml schedule inspection)",
+      "evidence_path_or_rule": ".github/workflows/verify.yml schedule block",
+      "breach_taxonomy": "BREACH-G"
+    },
+    {
+      "id": "INVARIANT_23",
+      "category": "Observability / Evidence",
+      "description": "Every scheduled run must write a regression-ledger record that is schema-valid when CI append runs.",
+      "enforcement_mechanism": "scripts/append_regression_ledger.py; verification/regression-ledger.schema.json",
+      "evidence_path_or_rule": "verification/regression-ledger/ledger.json",
+      "breach_taxonomy": "BREACH-H"
+    },
+    {
+      "id": "INVARIANT_24",
+      "category": "Observability / Evidence",
+      "description": "Governance or provenance failure must downgrade or block verified status according to explicit escalation thresholds.",
+      "enforcement_mechanism": "scripts/verify_institutionalization.py; MASTER_PROJECT_INVENTORY.json ci_provenance",
+      "evidence_path_or_rule": "verification/review-escalation-policy.json; ci_provenance.status and escalation_state",
+      "breach_taxonomy": "BREACH-I"
+    },
+    {
+      "id": "INVARIANT_25",
+      "category": "Determinism / Idempotency",
+      "description": "Workflow identity drift requires a fresh green run before status may remain verified.",
+      "enforcement_mechanism": "scripts/verify_institutionalization.py (verify.yml sha256 vs inventory)",
+      "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance.verify_workflow_sha256",
+      "breach_taxonomy": "BREACH-J"
+    },
+    {
+      "id": "INVARIANT_26",
+      "category": "Isolation Boundary",
+      "description": "Adversarial or failure-injection tests must exist for core governance-chain break conditions.",
+      "enforcement_mechanism": "scripts/governance_failure_injection_tests.py",
+      "evidence_path_or_rule": "scripts/governance_failure_injection_tests.py; CI step",
+      "breach_taxonomy": "BREACH-K"
+    },
+    {
+      "id": "INVARIANT_27",
+      "category": "Observability / Evidence",
+      "description": "Review state for drift or failure handling must be machine-readable.",
+      "enforcement_mechanism": "scripts/verify_institutionalization.py; verification/independent-review/last-review.json",
+      "evidence_path_or_rule": "verification/independent-review/last-review.json; ci_provenance.reviewer_status",
+      "breach_taxonomy": "BREACH-K"
+    },
+    {
+      "id": "INVARIANT_28",
+      "category": "Observability / Evidence",
+      "description": "A governance system card or risk report must exist and must not overclaim beyond current evidence.",
+      "enforcement_mechanism": "scripts/verify_institutionalization.py (required headings)",
+      "evidence_path_or_rule": "verification/GOVERNANCE_SYSTEM_CARD.md",
+      "breach_taxonomy": "BREACH-L"
+    },
+    {
+      "id": "INVARIANT_29",
+      "category": "Type / Schema Discipline",
+      "description": "Institutionalization artifacts must be tracked in MASTER_PROJECT_INVENTORY.json and reflected in MASTER_PROJECT_INVENTORY.md.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (governance_artifacts manifest)",
+      "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json governance_artifacts; MASTER_PROJECT_INVENTORY.md",
+      "breach_taxonomy": "BREACH-D"
     }
   ],
   "failure_class_artifacts": [

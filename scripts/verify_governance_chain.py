@@ -39,6 +39,7 @@ except ImportError:
 EXPECTED_CI_COMMAND_LINES = (
     "python3 scripts/verify_project_topology.py --root . --with-governance",
     "python3 scripts/verify_governance_chain.py --root .",
+    "python3 scripts/verify_institutionalization.py --root .",
 )
 
 
@@ -162,8 +163,10 @@ def _check_ci_provenance_inventory(root: Path, data: Dict[str, Any], errors: Lis
             f"(inventory {inv_h!r} vs current {wh!r})"
         )
     st = str(cp.get("status") or "").strip()
-    if st not in ("verified", "pending"):
-        errors.append(f"INVARIANT_21: ci_provenance.status must be verified|pending (got {st!r})")
+    if st not in ("verified", "pending", "blocked", "critical"):
+        errors.append(
+            f"INVARIANT_21: ci_provenance.status must be verified|pending|blocked|critical (got {st!r})"
+        )
         return
     for k in ("last_verified_run_id", "last_verified_commit", "artifact_name", "verify_workflow_sha256", "status"):
         v = cp.get(k)
@@ -310,6 +313,11 @@ def _collect_errors(root: Path) -> Tuple[
         root / "verification" / "governance-verification.template.json",
         root / "verification" / "governance-verification-run.schema.json",
         root / "verification" / "ci-remote-evidence" / "record.json",
+        root / "verification" / "regression-ledger.schema.json",
+        root / "verification" / "regression-ledger" / "ledger.json",
+        root / "verification" / "review-escalation-policy.json",
+        root / "verification" / "GOVERNANCE_SYSTEM_CARD.md",
+        root / "verification" / "independent-review" / "last-review.json",
     ]
     for p in required_paths:
         if not p.is_file():
@@ -352,10 +360,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 22)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 30)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_21; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_29; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:

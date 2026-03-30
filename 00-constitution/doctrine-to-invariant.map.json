@@ -77,6 +77,22 @@
       "invariant_ids": ["INVARIANT_01", "INVARIANT_04", "INVARIANT_12"],
       "failure_class_ids": [],
       "notes": "Amendments must update mappings and keep inventory synchronized."
+    },
+    {
+      "id": "ARTICLE_VI",
+      "title": "Institutionalization",
+      "invariant_ids": [
+        "INVARIANT_22",
+        "INVARIANT_23",
+        "INVARIANT_24",
+        "INVARIANT_25",
+        "INVARIANT_26",
+        "INVARIANT_27",
+        "INVARIANT_28",
+        "INVARIANT_29"
+      ],
+      "failure_class_ids": ["F2"],
+      "notes": "Continuous remote evaluation, regression ledger, escalation, adversarial checks, and evidence-bounded public summary."
     }
   ]
 }

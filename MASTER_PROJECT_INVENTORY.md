@@ -1,10 +1,10 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-03-30T13:10:00Z  
+**Generated (UTC):** 2026-03-30T15:45:00Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (source of truth for the verifier)
 
-**Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths, `artifact_manifest` (path + verification_status + evidence linkage), run schema, and `ci_verification_commands` (must match CI). **Executable checks:** `pip install -r requirements-verify.txt` then `python3 scripts/verify_project_topology.py --root . --with-governance` and `python3 scripts/verify_governance_chain.py --root .`; run artifacts under `verification/runs/*-governance.json`.
+**Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths, `artifact_manifest` (path + verification_status + evidence linkage), run schema, institutionalization block (regression ledger, review/escalation policy, system card), and `ci_verification_commands` (must match CI). **Executable checks:** `pip install -r requirements-verify.txt` then `python3 scripts/verify_project_topology.py --root . --with-governance`, `python3 scripts/verify_governance_chain.py --root .`, and `python3 scripts/verify_institutionalization.py --root .`; adversarial checks `python3 scripts/governance_failure_injection_tests.py`; run artifacts under `verification/runs/*-governance.json`; scheduled verify workflow per `.github/workflows/verify.yml` `schedule`.
 
 **Registry path migration (ConsentChain):** `04-consentchain/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
 

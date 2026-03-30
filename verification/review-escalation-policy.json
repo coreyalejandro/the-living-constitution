@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "tlc-review-escalation-pass5",
+  "scheduled_consecutive_failure_threshold": 3,
+  "workflow_files_sha256": [".github/workflows/verify.yml"],
+  "escalation_rules": [
+    {
+      "id": "R1",
+      "breach_code": "BREACH-I",
+      "condition": "ci_provenance.status is verified while remote record workflow_conclusion is not success or artifact_upload_succeeded is false",
+      "required_escalation": "ci_provenance.status must not remain verified; use pending or blocked"
+    },
+    {
+      "id": "R2",
+      "breach_code": "BREACH-J",
+      "condition": "verify_workflow_sha256 in inventory differs from live sha256 of .github/workflows/verify.yml without a fresh green run recorded after the change",
+      "required_ci_provenance_status": "pending"
+    },
+    {
+      "id": "R3",
+      "breach_code": "BREACH-H",
+      "condition": "regression ledger record fails schema validation",
+      "required_escalation": "blocking"
+    },
+    {
+      "id": "R4",
+      "breach_code": "BREACH-K",
+      "condition": "escalation_state is blocking or critical",
+      "required_reviewer_status": "acknowledged or waived"
+    },
+    {
+      "id": "R5",
+      "breach_code": "BREACH-G",
+      "condition": "no schedule stanza in verify.yml",
+      "required_escalation": "critical"
+    }
+  ],
+  "review_independent_record": "verification/independent-review/last-review.json"
+}

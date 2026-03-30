@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "run_id": "bootstrap-pass5",
+      "run_attempt": "1",
+      "workflow_name": "Verify Living Constitution",
+      "workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
+      "commit_sha": "c2e043e1ec43aee6df5154e47c80a9e9f39b2923",
+      "branch_ref": "refs/heads/main",
+      "timestamp_utc": "2026-03-30T14:00:00Z",
+      "conclusion": "success",
+      "artifact_name": "bootstrap",
+      "artifact_path": "verification/regression-ledger/ledger.json",
+      "artifact_retrieval_ref": "in-repo ledger file; CI runs append additional rows as artifacts",
+      "reviewer_status": "not_required",
+      "escalation_state": "none",
+      "github_event_name": "workflow_dispatch",
+      "notes": "Bootstrap row aligned with MASTER_PROJECT_INVENTORY ci_provenance verify_workflow_sha256 at PASS5 institutionalization commit; CI appends real run rows after each green verify."
+    }
+  ]
+}
