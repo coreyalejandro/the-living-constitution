@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "claimed_remote": false,
-  "workflow_conclusion": null,
-  "workflow_run_id": null,
-  "workflow_run_url": null,
-  "workflow_run_attempt": null,
-  "artifact_name": null,
-  "artifact_commit_hash": null,
-  "artifact_upload_succeeded": null,
-  "captured_at_utc": null,
-  "notes": "Set claimed_remote true only after a successful GitHub Actions run with governance verification and artifact upload; fill fields from gh run view and downloaded artifact."
+  "claimed_remote": true,
+  "workflow_conclusion": "success",
+  "workflow_run_id": "23745629659",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23745629659",
+  "workflow_run_attempt": "1",
+  "artifact_name": "governance-verification-runs-23745629659-1",
+  "artifact_commit_hash": "feeacf4f985360a7474f113945bcbe296bfb45a9",
+  "artifact_upload_succeeded": true,
+  "captured_at_utc": "2026-03-30T12:52:30Z",
+  "notes": "Pass 3: conclusion=success from gh run view; upload step success in job log; artifact downloaded via gh run download; governance JSON commit_hash matches headSha and GITHUB_SHA in artifact."
 }

@@ -113,12 +113,12 @@
     {
       "record_id": "gov-ledger-remote-ci-provenance",
       "subject": "GitHub Actions remote execution and artifact upload provenance for governance verification",
-      "evidence_state": "unverified",
+      "evidence_state": "verified",
       "evidence_ref": [
         "verification/ci-remote-evidence/record.json",
         ".github/workflows/verify.yml"
       ],
-      "verification_output": "Update record.json after successful remote run; set claimed_remote true",
+      "verification_output": "record.json claimed_remote; run 23745629659 success; artifact downloaded",
       "related_invariant_ids": [
         "INVARIANT_15",
         "INVARIANT_16",
@@ -127,7 +127,7 @@
         "INVARIANT_19",
         "INVARIANT_20"
       ],
-      "last_updated_utc": "2026-03-30T23:58:00Z"
+      "last_updated_utc": "2026-03-30T23:59:30Z"
     }
   ]
 }
