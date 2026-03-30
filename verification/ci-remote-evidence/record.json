@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
-  "workflow_run_id": "23760899476",
-  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23760899476",
+  "workflow_run_id": "23761679469",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23761679469",
   "workflow_run_attempt": "1",
-  "artifact_name": "governance-verification-runs-23760899476-1",
-  "artifact_commit_hash": "84b21f360c6baef31883e5d197016a4069282cea",
+  "artifact_name": "governance-verification-runs-23761679469-1",
+  "artifact_commit_hash": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
   "artifact_upload_succeeded": true,
-  "captured_at_utc": "2026-03-30T18:40:00Z",
-  "notes": "Mainline convergence (C-RSP): green run 23760899476 on 84b21f3 (main); full pipeline including verify_cross_repo_consistency vs projects/consentchain submodule; topology, governance chain (parity), institutionalization, failure-injection, artifact upload+self-verify. ConsentChain CI checks out TLC main."
+  "captured_at_utc": "2026-03-30T19:00:00Z",
+  "notes": "PASS 10C (C-RSP): adjudicated green run 23761679469 on f0414d3 (main). Governance artifact lists INVARIANT_01–INVARIANT_50 including INVARIANT_43–50 (separation of powers / role registry). Steps: topology+gov chain, parity second pass, institutionalization, verify_cross_repo_consistency, failure-injection, artifact upload, CI self-verify. Paired ConsentChain run 23761674094 @ d6371f6."
 }

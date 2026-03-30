@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T22:05:00Z",
+    "generated_at_utc": "2026-03-30T19:00:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -23,10 +23,10 @@
     ]
   },
   "ci_provenance": {
-    "last_verified_run_id": "23760899476",
-    "last_verified_commit": "84b21f360c6baef31883e5d197016a4069282cea",
-    "last_remote_qualifying_commit": "84b21f360c6baef31883e5d197016a4069282cea",
-    "artifact_name": "governance-verification-runs-23760899476-1",
+    "last_verified_run_id": "23761679469",
+    "last_verified_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
+    "last_remote_qualifying_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
+    "artifact_name": "governance-verification-runs-23761679469-1",
     "verify_workflow_sha256": "0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63",
     "verify_workflow_sha256_at_last_remote_run": "0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63",
     "status": "pending",
@@ -35,7 +35,7 @@
     "reviewer_status": "pending"
   },
   "governance_artifacts": {
-    "contract_version": "v1.7.0",
+    "contract_version": "v1.8.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -57,7 +57,9 @@
       "status_json": "STATUS.json",
       "status_md": "STATUS.md",
       "governance_system_card": "verification/GOVERNANCE_SYSTEM_CARD.md",
-      "independent_review_record": "verification/independent-review/last-review.json"
+      "independent_review_record": "verification/independent-review/last-review.json",
+      "invariant_failure_map": "verification/invariant-failure-map.json",
+      "invariant_risk_model": "verification/invariant-risk-model.json"
     },
     "institutionalization": {
       "regression_ledger_schema": "verification/regression-ledger.schema.json",
@@ -184,6 +186,18 @@
       {
         "canonical_key": "independent_review_record",
         "relative_path": "verification/independent-review/last-review.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "invariant_failure_map",
+        "relative_path": "verification/invariant-failure-map.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "invariant_risk_model",
+        "relative_path": "verification/invariant-risk-model.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": null
       }

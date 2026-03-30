@@ -1,20 +1,29 @@
 {
   "cross_repo_consistency": {
-    "exit_code": 0,
-    "state": "aligned"
+    "detail": "verify_cross_repo_consistency: FAIL\n  - JSON drift (normalized): 00-constitution/invariant-registry.json\n  - JSON drift (normalized): 00-constitution/role-registry.json\n  - JSON drift (normalized): 03-enforcement/enforcement-map.json\n  - target missing: verification/invariant-failure-map.json\n  - target missing: verification/invariant-risk-model.json",
+    "exit_code": 1,
+    "state": "drift"
   },
   "escalation_state": "review_required",
-  "governance_contract_version": "v1.7.0",
-  "head_sha": "c2afb3db3ec7631f748eda02bc14013fcd711e78",
+  "governance_contract_version": "v1.8.0",
+  "head_sha": "05d134431b01ee586caf76d7d3a816cd3268e10e",
   "historical_state": {
-    "ci_remote_record_captured_at_utc": "2026-03-30T18:40:00Z",
+    "ci_remote_record_captured_at_utc": "2026-03-30T19:00:00Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
     "regression_ledger_last_run_id": "23757979228",
     "regression_ledger_last_timestamp_utc": "2026-03-30T17:25:00Z"
   },
-  "inventory_meta_generated_at_utc": "2026-03-30T22:05:00Z",
-  "last_verified_commit": "84b21f360c6baef31883e5d197016a4069282cea",
-  "last_verified_run_id": "23760899476",
+  "invariant_summary": {
+    "critical": 19,
+    "high": 23,
+    "low": 0,
+    "medium": 8,
+    "total": 50,
+    "violations": 0
+  },
+  "inventory_meta_generated_at_utc": "2026-03-30T19:00:00Z",
+  "last_verified_commit": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
+  "last_verified_run_id": "23761679469",
   "project": "coreyalejandro/the-living-constitution",
   "reviewer_status": "pending",
   "schema_version": "1.0.0",

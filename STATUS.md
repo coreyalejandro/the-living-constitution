@@ -6,25 +6,40 @@
 | Field | Value |
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
-| `last_verified_commit` | `84b21f360c6baef31883e5d197016a4069282cea` |
-| `last_verified_run_id` | `23760899476` |
+| `last_verified_commit` | `f0414d36a9a9a4e39acb2fee4c62c910069b88a4` |
+| `last_verified_run_id` | `23761679469` |
 | `tip_state_truth` | `tip_pending` |
 | `workflow_sha` | `0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
-| `governance_contract_version` | `v1.7.0` |
-| `inventory_meta_generated_at_utc` | `2026-03-30T22:05:00Z` |
+| `governance_contract_version` | `v1.8.0` |
+| `inventory_meta_generated_at_utc` | `2026-03-30T19:00:00Z` |
+
+## Invariant system (PASS 11)
+
+INVARIANTS: 50 total
+- Critical: 19
+- High: 23
+- Medium: 8
+- Low: 0
+Violations: 0
 
 ## Historical / evidence anchors
 
-- **ci_remote_record_captured_at_utc:** `2026-03-30T18:40:00Z`
+- **ci_remote_record_captured_at_utc:** `2026-03-30T19:00:00Z`
 - **regression_ledger_last_commit_sha:** `1a2ef808478b71e8bdbe40c86406ccc180180276`
 - **regression_ledger_last_run_id:** `23757979228`
 - **regression_ledger_last_timestamp_utc:** `2026-03-30T17:25:00Z`
 
 ## Cross-repo consistency (ConsentChain submodule)
 
-- **state:** `aligned`
+- **state:** `drift`
+- **detail:** verify_cross_repo_consistency: FAIL
+  - JSON drift (normalized): 00-constitution/invariant-registry.json
+  - JSON drift (normalized): 00-constitution/role-registry.json
+  - JSON drift (normalized): 03-enforcement/enforcement-map.json
+  - target missing: verification/invariant-failure-map.json
+  - target missing: verification/invariant-risk-model.json
 
 ## Truth boundary
 
