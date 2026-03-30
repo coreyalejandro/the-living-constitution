@@ -56,6 +56,7 @@ the-living-constitution/
 | UICare-System | Human Safety | `/Users/coreyalejandro/Projects/uicare-system` | Partial |
 | Docen | Cognitive Safety | `/Users/coreyalejandro/Projects/docen` | Deployed on GCR |
 | Portfolio | All 4 Domains | `/Users/coreyalejandro/Projects/coreys-agentic-portfolio` | Live on Vercel |
+| TLC Evidence Observatory | Epistemic/Empirical Safety | `/Users/coreyalejandro/Projects/tlc-evidence-observatory` | Building — zero-shot contract executing |
 
 ## Zero-Shot Build Contract Format
 

@@ -12,7 +12,7 @@ ConsentChain is the **authorization gateway** for AI agent actions within the Sa
 ## Constitutional Invariants Enforced
 
 | Invariant | How ConsentChain Enforces It |
-|-----------|------------------------------|
+| --------- | ------------------------------ |
 | I1: Evidence-First | Consent requires evidence (ledger entry), not assumption. Every action produces a signed record. |
 | I4: Traceability Mandatory | Every agent action flows through a 7-stage pipeline and is recorded in the cryptographic ledger. |
 | I6: Fail Closed | Missing consent blocks the action. Missing agent key returns 401. Revoked service returns 403. Missing scopes return 403. |
@@ -34,7 +34,7 @@ The planned Empirical Safety Engine (ESE) is the "read" side — it would analyz
 
 Every agent request flows through the following pipeline. No stage is skippable. Each stage either passes the request forward or terminates it with an explicit error.
 
-```
+```text
 Stage 1: Agent Validation
   Input:  x-agent-key header
   Action: SHA-256 hash the key, look up Agent record in Prisma
@@ -86,7 +86,7 @@ Stage 7: Ledger Write
 ConsentChain is a Turborepo monorepo with pnpm workspaces. The architecture separates concerns into 8 focused packages:
 
 | Package | Role | Key File |
-|---------|------|----------|
+| ------- | ---- | -------- |
 | `@consentchain/shared` | Types and constants shared across all packages | `types.ts`, `constants.ts` |
 | `@consentchain/ledger` | Cryptographic consent ledger: canonical JSON, SHA-256, HMAC signing | `signer.ts` |
 | `@consentchain/policy-engine` | Rules-based authorization: allowlists, risk classification, scope checks | `rules.ts` |
@@ -101,7 +101,7 @@ ConsentChain is a Turborepo monorepo with pnpm workspaces. The architecture sepa
 Prisma ORM with SQLite (better-sqlite3 driver adapter). Five models:
 
 | Model | Purpose | Key Fields |
-|-------|---------|------------|
+| ----- | ------- | ---------- |
 | `Agent` | Registered agent identity | id, name, status (ACTIVE/DISABLED), apiKeyHash, allowedServices |
 | `LedgerEntry` | Cryptographic consent record | actionId, agentId, service, operation, requestHash, responseHash, signature |
 | `RevocationState` | Per-agent per-service revocation | agentId, service, revokedAt, reason |
@@ -111,7 +111,7 @@ Prisma ORM with SQLite (better-sqlite3 driver adapter). Five models:
 ### API Surface
 
 | Route | Method | Purpose |
-|-------|--------|---------|
+| ----- | ------ | ------- |
 | `/api/agent/action` | POST | Full 7-stage gateway pipeline |
 | `/api/auth/step-up` | POST | Initiate step-up authentication challenge |
 | `/api/auth/step-up/verify` | POST | Verify step-up challenge with JWT proof |
@@ -122,7 +122,7 @@ Prisma ORM with SQLite (better-sqlite3 driver adapter). Five models:
 ## Relationship to Other Commonwealth Systems
 
 | System | Relationship |
-|--------|-------------|
+| ------ | -------------- |
 | **SentinelOS** | ConsentChain provides the authorization evidence that SentinelOS governance requires for agent orchestration |
 | **UICare** | UICare's cognitive safety patterns inform how consent prompts and step-up challenges are presented to users |
 | **ProActive** | ProActive agents would route actions through ConsentChain before executing on behalf of users |

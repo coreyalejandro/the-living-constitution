@@ -7,8 +7,17 @@
 ### Phase 1: Base Camp Setup
 - [x] Create CLAUDE.md with Living Constitution controls
 - [x] Create directory structure
-- [ ] Write zero-shot build contracts for each project
-- [ ] Create teaser-video project folder with CLAUDE.md + BUILD_CONTRACT.md
+- [x] Write zero-shot build contracts for each project
+- [x] Create teaser-video project folder with CLAUDE.md + BUILD_CONTRACT.md
+- [x] Create evidence-observatory project folder with CLAUDE.md + BUILD_CONTRACT.md
+
+### Phase 1.5: TLC Evidence Observatory (NEW)
+- [ ] Build Evidence Observatory from zero-shot contract
+- [ ] Python pipeline: ingest → normalize → extract → admissibility → adjudicate
+- [ ] Case file + benchmark + eval generation
+- [ ] Next.js research UI shell
+- [ ] Seed data end-to-end demonstration
+- [ ] Documentation (README, research-methodology, architecture)
 
 ### Phase 2: SentinelOS Turborepo Monorepo (hex8)
 - [ ] Write build contract (spec before build)

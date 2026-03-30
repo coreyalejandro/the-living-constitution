@@ -41,3 +41,4 @@ next-env.d.ts
 # Playwright MCP artifacts (screenshots, recordings, etc.)
 .playwright-mcp/
 AGENTS.md
+CLAUDE.md

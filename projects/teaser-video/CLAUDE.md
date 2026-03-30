@@ -1,23 +1,16 @@
-# CLAUDE.md — Teaser Video
+# Project Constitution: Teaser Video
 
-## What This Is
+## Parent: [The Living Constitution (TLC)](file:///Users/coreyalejandro/Projects/the-living-constitution/CLAUDE.md)
 
-Project folder for the teaser video deliverable. This is primarily creative work driven by Corey.
+## ⚖️ Operational Invariants
 
-## Purpose
+1. **Tech Stack:** Remotion (React) only.
+2. **Style:** 1970s "Schoolhouse Rock" (Mustard #E1AD01, Parchment #FEF9E7, Orange #CC5500, Olive #4B5320).
+3. **Framerate:** Strictly 12fps (hand-drawn jitter effect).
+4. **Execution:** Single-pass. No manual intervention.
 
-Teaser video for:
-1. LinkedIn release (Sunday March 22)
-2. Anthropic Safety Fellows application (Monday March 23)
+## 🛠 Commands
 
-## Assets
-
-Store video files, scripts, and any code-generated assets in `assets/`.
-
-## Dependencies
-
-May need code-generated assets from other projects:
-- Portfolio screenshots
-- SentinelOS architecture diagrams
-- PROACTIVE validation results
-- Demo recordings
+- Install: `npm install`
+- Preview: `npm start`
+- Render: `npm run build`
