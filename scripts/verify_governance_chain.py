@@ -30,6 +30,8 @@ if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
 from tip_state_helpers import (  # noqa: E402
+    is_frozen_verification_context,
+    load_pass7_policy,
     load_tip_policy,
     protected_surfaces_changed,
     tip_truth_aligned_with_status,
@@ -50,6 +52,7 @@ EXPECTED_CI_COMMAND_LINES = (
     "python3 scripts/verify_project_topology.py --root . --with-governance",
     "python3 scripts/verify_governance_chain.py --root .",
     "python3 scripts/verify_institutionalization.py --root .",
+    "python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain",
 )
 
 
@@ -247,15 +250,24 @@ def _check_tip_state_exactness(root: Path, cp: Dict[str, Any], errors: List[str]
                 f"record.json artifact_commit_hash ({lrq!r} vs {ach!r})"
             )
     head = _git_head(root)
+    p7 = load_pass7_policy(root)
     if st == "verified":
         if tst != "tip_verified":
             errors.append("INVARIANT_30: status=verified requires tip_state_truth=tip_verified")
-        if lvc and lvc != head:
+        if not is_frozen_verification_context(root, lvc, p7):
+            errors.append(
+                "INVARIANT_37: inventory must not claim verified tip-state on a mutable branch tip; "
+                "use pending+tip_pending at development tips. tip_verified is only valid on a frozen "
+                "verification target (detached HEAD, provenance/verified-* branch, or tlc-gov-verified-* tag) "
+                "with HEAD == last_verified_commit == record artifact_commit_hash "
+                "(verification/pass7-branch-verification-policy.json)"
+            )
+        elif lvc and lvc != head:
             errors.append(
                 "INVARIANT_30: status=verified requires git HEAD == ci_provenance.last_verified_commit "
                 f"(HEAD={head!r} last_verified_commit={lvc!r})"
             )
-        if lrq and lrq != head:
+        elif lrq and lrq != head:
             errors.append(
                 "INVARIANT_30: status=verified requires HEAD == last_remote_qualifying_commit "
                 f"(HEAD={head!r} last_remote_qualifying_commit={lrq!r})"
@@ -398,6 +410,7 @@ def _collect_errors(root: Path) -> Tuple[
         root / "verification" / "review-escalation-policy.json",
         root / "verification" / "GOVERNANCE_SYSTEM_CARD.md",
         root / "verification" / "independent-review" / "last-review.json",
+        root / "verification" / "pass7-branch-verification-policy.json",
     ]
     for p in required_paths:
         if not p.is_file():
@@ -440,7 +453,7 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 37)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 38)}
     if inv_ids != expected:
         inv_fail.append(
             f"invariant-registry must define exactly INVARIANT_01..INVARIANT_36; got {sorted(inv_ids)}"

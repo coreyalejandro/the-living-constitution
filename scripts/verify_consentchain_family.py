@@ -587,8 +587,47 @@ def load_config(config_path: str) -> Dict[str, Any]:
     return data
 
 
+def satellite_consentchain_governance_self_check(root: Path, inv: Dict[str, Any]) -> int:
+    """
+    Standalone ConsentChain repo (same governance kit as TLC): skip TLC family topology;
+    verify inventory canonical_paths and key scripts exist.
+    """
+    ga = inv.get("governance_artifacts") or {}
+    canonical = ga.get("canonical_paths") or {}
+    missing: List[str] = []
+    if not isinstance(canonical, dict):
+        print(f"[fatal] satellite: governance_artifacts.canonical_paths missing", file=sys.stderr)
+        return 1
+    for key, rel in sorted(canonical.items()):
+        if not isinstance(rel, str):
+            continue
+        p = root / rel
+        if not p.is_file():
+            missing.append(f"{key}: {rel}")
+    for script in ga.get("enforcement_scripts") or []:
+        if not isinstance(script, str):
+            continue
+        sp = root / script
+        if not sp.is_file():
+            missing.append(f"enforcement_script: {script}")
+    if missing:
+        print("[fatal] satellite consentchain governance self-check failed:", file=sys.stderr)
+        for m in missing:
+            print(f"  - {m}", file=sys.stderr)
+        return 1
+    print("OK: satellite ConsentChain governance self-check (inventory + scripts)")
+    return 0
+
+
 def main() -> int:
     args = parse_args()
+
+    root = Path(args.root).resolve()
+    inv_path = root / "MASTER_PROJECT_INVENTORY.json"
+    if inv_path.is_file():
+        inv = load_json_safe(inv_path)
+        if isinstance(inv, dict) and (inv.get("meta") or {}).get("inventory_kind") == "consentchain_governance_inventory":
+            return satellite_consentchain_governance_self_check(root, inv)
 
     try:
         config = load_config(args.config)
@@ -596,7 +635,6 @@ def main() -> int:
         print(f"[fatal] Could not load config: {exc}", file=sys.stderr)
         return 2
 
-    root = Path(args.root).resolve()
     ctx = RunContext(
         root=root,
         strict=args.strict,

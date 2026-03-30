@@ -177,6 +177,42 @@ def case_tip_verified_without_matching_head() -> Tuple[str, Callable[[Path], int
     return ("tip verified without HEAD == last_verified_commit fails verify_governance_chain", _fn)
 
 
+def case_verified_on_mutable_branch_at_anchor_fails_pass7() -> Tuple[str, Callable[[Path], int]]:
+    """INVARIANT_37: status=verified on a symbolic branch is invalid even when HEAD == anchor."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        subprocess.run(["git", "-C", str(tmp), "init"], check=True)
+        subprocess.run(
+            ["git", "-C", str(tmp), "config", "user.email", "pass7@example.com"],
+            check=True,
+        )
+        subprocess.run(["git", "-C", str(tmp), "config", "user.name", "pass7"], check=True)
+        subprocess.run(["git", "-C", str(tmp), "add", "-A"], check=True)
+        subprocess.run(["git", "-C", str(tmp), "commit", "-m", "init", "--allow-empty"], check=True)
+        r = subprocess.run(
+            ["git", "-C", str(tmp), "rev-parse", "HEAD"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        sha = (r.stdout or "").strip()
+        rec_path = tmp / "verification" / "ci-remote-evidence" / "record.json"
+        rec = json.loads(rec_path.read_text(encoding="utf-8"))
+        rec["artifact_commit_hash"] = sha
+        rec_path.write_text(json.dumps(rec, indent=2), encoding="utf-8")
+        inv_path = tmp / "MASTER_PROJECT_INVENTORY.json"
+        inv = json.loads(inv_path.read_text(encoding="utf-8"))
+        inv["ci_provenance"]["status"] = "verified"
+        inv["ci_provenance"]["tip_state_truth"] = "tip_verified"
+        inv["ci_provenance"]["last_verified_commit"] = sha
+        inv["ci_provenance"]["last_remote_qualifying_commit"] = sha
+        inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
+        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+
+    return ("PASS7 verified on mutable branch at anchor fails verify_governance_chain", _fn)
+
+
 def main() -> None:
     cases: List[Tuple[str, Callable[[Path], int]]] = [
         case_invalid_artifact_schema(),
@@ -186,6 +222,7 @@ def main() -> None:
         case_broken_invariant_enforcement_link(),
         case_stale_inventory_provenance_pointer(),
         case_tip_verified_without_matching_head(),
+        case_verified_on_mutable_branch_at_anchor_fails_pass7(),
     ]
     failed = 0
     with tempfile.TemporaryDirectory() as td:

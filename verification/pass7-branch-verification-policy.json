@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "tlc-pass7-branch-verification",
+  "contract_version": "v1.5.0",
+  "description": "Distinguishes mutable development branch tips from frozen verification targets. Breaks the evidence-commit loop: advancing HEAD on a named branch no longer implies inventory must chase tip_verified; ledger and ci-remote record remain canonical verified history.",
+  "canonical_verified_history_sources": [
+    "verification/ci-remote-evidence/record.json",
+    "verification/regression-ledger/ledger.json"
+  ],
+  "mutable_branch_detection": {
+    "expected_inventory_at_tip": {
+      "status": "pending",
+      "tip_state_truth": "tip_pending"
+    },
+    "rule": "Any symbolic branch ref (non-detached) that does not match exempt_as_frozen_tip is a mutable tip. Inventory ci_provenance must use pending + tip_pending at those tips even when HEAD equals last_remote_qualifying_commit.",
+    "branch_ref_globs": ["**"],
+    "exempt_as_frozen_tip": [
+      "provenance/verified-*"
+    ]
+  },
+  "frozen_verification_context": {
+    "description": "Only in these git contexts may MASTER_PROJECT_INVENTORY ci_provenance claim status=verified and tip_state_truth=tip_verified (still requiring agreement with record.json and last_* fields).",
+    "modes": [
+      {
+        "id": "detached_head_at_anchor",
+        "rule": "git rev-parse --abbrev-ref HEAD == \"HEAD\" (detached) and HEAD == last_verified_commit == record artifact_commit_hash"
+      },
+      {
+        "id": "provenance_branch",
+        "rule": "Branch name matches exempt_as_frozen_tip and HEAD == last_verified_commit"
+      },
+      {
+        "id": "release_tag",
+        "rule": "git describe --tags --exact-match matches tag_glob and HEAD == last_verified_commit"
+      }
+    ],
+    "tag_glob": "tlc-gov-verified-*"
+  },
+  "deterministic_promotion_path": {
+    "primary": "After a qualifying green GitHub Actions run on commit S, create an annotated or lightweight tag matching tag_glob at S (example: tlc-gov-verified-<workflow_run_id>). Alternatively fast-forward or reset a provenance/verified-<shortsha> branch to S. Inventory on the default or feature branch stays pending+tip_pending; auditors checkout the tag, detached HEAD, or provenance branch to read verified tip-state.",
+    "secondary_manual_record": "Optional file verification/promotion/tip-verified-snapshot.json may record run id and sha for humans; it does not substitute frozen git context for INVENTORY verified claims.",
+    "not_allowed": "Claiming inventory verified+tip_verified solely because HEAD matches the anchor while still on a mutable symbolic branch (e.g. main, feature/*)."
+  }
+}

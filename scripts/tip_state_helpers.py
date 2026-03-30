@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Shared tip-state / protected-surface helpers (PASS 6).
+Shared tip-state / protected-surface helpers (PASS 6 / PASS 7).
 
 Used by verify_governance_chain.py and sync_ci_provenance_tip_state.py.
 """
@@ -12,9 +12,10 @@ import json
 import shutil
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Tuple
 
 DEFAULT_POLICY = "verification/tip-state-policy.json"
+PASS7_POLICY = "verification/pass7-branch-verification-policy.json"
 
 
 def load_tip_policy(root: Path) -> Dict[str, Any]:
@@ -118,3 +119,79 @@ def tip_truth_aligned_with_status(status: str, tip_state_truth: str) -> bool:
         "critical": "tip_critical",
     }
     return m.get(status.strip()) == tip_state_truth.strip()
+
+
+def load_pass7_policy(root: Path) -> Dict[str, Any]:
+    p = root / PASS7_POLICY
+    if not p.is_file():
+        return {}
+    with p.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data if isinstance(data, dict) else {}
+
+
+def git_abbrev_ref_head(root: Path) -> str:
+    """Current branch short name, or 'HEAD' when detached."""
+    if not _git_ok():
+        return "HEAD"
+    r = subprocess.run(
+        ["git", "-C", str(root), "rev-parse", "--abbrev-ref", "HEAD"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return ((r.stdout or "").strip() or "HEAD")
+
+
+def git_exact_tag_at_head(root: Path) -> Optional[str]:
+    if not _git_ok():
+        return None
+    r = subprocess.run(
+        ["git", "-C", str(root), "describe", "--tags", "--exact-match"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if r.returncode != 0:
+        return None
+    t = (r.stdout or "").strip()
+    return t if t else None
+
+
+def is_frozen_verification_context(
+    root: Path,
+    anchor_full: str,
+    pass7: Optional[Dict[str, Any]] = None,
+) -> bool:
+    """
+    True only when HEAD == anchor and checkout is detached, provenance branch, or release tag.
+    Mutable symbolic branches (main, feature/*, etc.) are never frozen even at the anchor commit.
+    """
+    pol = pass7 if pass7 is not None else load_pass7_policy(root)
+    if not pol:
+        return False
+    if not _git_ok() or len(anchor_full) < 7:
+        return False
+    r = subprocess.run(
+        ["git", "-C", str(root), "rev-parse", "HEAD"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    head = (r.stdout or "").strip()
+    if r.returncode != 0 or head != anchor_full:
+        return False
+    ref = git_abbrev_ref_head(root)
+    if ref == "HEAD":
+        return True
+    exempt = pol.get("mutable_branch_detection", {}).get("exempt_as_frozen_tip") or []
+    for pattern in exempt:
+        if fnmatch.fnmatch(ref, pattern):
+            return True
+    tag_glob = str(
+        (pol.get("frozen_verification_context") or {}).get("tag_glob") or "tlc-gov-verified-*"
+    )
+    tag = git_exact_tag_at_head(root)
+    if tag and fnmatch.fnmatch(tag, tag_glob):
+        return True
+    return False

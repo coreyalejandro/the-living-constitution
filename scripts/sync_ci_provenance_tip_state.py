@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
 Offline alignment helper: set ci_provenance tip fields from git HEAD, record.json,
-and protected-surface diff (PASS 6).
+and protected-surface diff (PASS 6 / PASS 7).
 
 Does not claim remote success; does not push. Use after local commits until the next
-qualifying GitHub Actions run updates verification/ci-remote-evidence/record.json
-and you manually promote inventory to verified per verification/tip-state-policy.json.
+qualifying GitHub Actions run updates verification/ci-remote-evidence/record.json.
+PASS 7: inventory stays pending+tip_pending on mutable branch tips; use a tag or
+frozen checkout per verification/pass7-branch-verification-policy.json to assert
+tip_verified — do not set status=verified on feature/main from this script alone.
 
 Exit: 0 wrote file, 1 error, 2 missing dependency
 """

@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T14:15:00Z",
+    "generated_at_utc": "2026-03-30T18:00:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -27,15 +27,15 @@
     "last_verified_commit": "a0d548f6f285cd26ab5df51ecc1147f4047c296d",
     "last_remote_qualifying_commit": "a0d548f6f285cd26ab5df51ecc1147f4047c296d",
     "artifact_name": "governance-verification-runs-23749268730-1",
-    "verify_workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
-    "verify_workflow_sha256_at_last_remote_run": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
+    "verify_workflow_sha256": "0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63",
+    "verify_workflow_sha256_at_last_remote_run": "0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63",
     "status": "pending",
     "tip_state_truth": "tip_pending",
     "escalation_state": "review_required",
     "reviewer_status": "pending"
   },
   "governance_artifacts": {
-    "contract_version": "v1.4.0",
+    "contract_version": "v1.5.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -51,6 +51,7 @@
       "regression_ledger": "verification/regression-ledger/ledger.json",
       "review_escalation_policy": "verification/review-escalation-policy.json",
       "tip_state_policy": "verification/tip-state-policy.json",
+      "pass7_branch_verification_policy": "verification/pass7-branch-verification-policy.json",
       "governance_system_card": "verification/GOVERNANCE_SYSTEM_CARD.md",
       "independent_review_record": "verification/independent-review/last-review.json"
     },
@@ -141,6 +142,12 @@
         "evidence_ledger_record_id": null
       },
       {
+        "canonical_key": "pass7_branch_verification_policy",
+        "relative_path": "verification/pass7-branch-verification-policy.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
         "canonical_key": "governance_system_card",
         "relative_path": "verification/GOVERNANCE_SYSTEM_CARD.md",
         "verification_status": "verified",
@@ -160,12 +167,14 @@
       "scripts/append_regression_ledger.py",
       "scripts/governance_failure_injection_tests.py",
       "scripts/tip_state_helpers.py",
-      "scripts/sync_ci_provenance_tip_state.py"
+      "scripts/sync_ci_provenance_tip_state.py",
+      "scripts/verify_cross_repo_consistency.py"
     ],
     "ci_verification_commands": [
       "python3 scripts/verify_project_topology.py --root . --with-governance",
       "python3 scripts/verify_governance_chain.py --root .",
-      "python3 scripts/verify_institutionalization.py --root ."
+      "python3 scripts/verify_institutionalization.py --root .",
+      "python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain"
     ]
   },
   "tlc_projects_overlay": {

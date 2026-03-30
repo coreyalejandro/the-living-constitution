@@ -294,6 +294,14 @@
       "enforcement_mechanism": "MASTER_PROJECT_INVENTORY.md; scripts/verify_governance_chain.py",
       "evidence_path_or_rule": "MASTER_PROJECT_INVENTORY.json ci_provenance; meta timestamps",
       "breach_taxonomy": "BREACH-L"
+    },
+    {
+      "id": "INVARIANT_37",
+      "category": "Isolation Boundary",
+      "description": "Mutable development branch tips must not claim inventory tip_verified; only frozen verification targets (detached HEAD, provenance branch, or release tag at anchor) may align verified tip-state with record.json.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; verification/pass7-branch-verification-policy.json; scripts/tip_state_helpers.py",
+      "evidence_path_or_rule": "ci_provenance.status; git context vs last_verified_commit; record.json artifact_commit_hash",
+      "breach_taxonomy": "BREACH-E"
     }
   ],
   "failure_class_artifacts": [

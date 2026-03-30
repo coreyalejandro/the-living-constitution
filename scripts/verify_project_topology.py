@@ -74,6 +74,46 @@ def _exists_dir(p: Optional[str]) -> Optional[bool]:
     return path.is_dir()
 
 
+def _satellite_governance_topology(root: Path, data: Dict[str, Any], with_governance: bool) -> int:
+    """
+    ConsentChain (and other satellite) repos use inventory_kind consentchain_governance_inventory:
+    no projects/ overlay — verify governance_artifacts.canonical_paths exist, then optional governance chain.
+    """
+    ga = data.get("governance_artifacts") or {}
+    canonical = ga.get("canonical_paths") or {}
+    if not isinstance(canonical, dict) or not canonical:
+        print(
+            "ERROR: satellite inventory requires governance_artifacts.canonical_paths",
+            file=sys.stderr,
+        )
+        return 1
+    errs: List[str] = []
+    for key, rel in sorted(canonical.items()):
+        if not isinstance(rel, str) or not rel.strip():
+            errs.append(f"canonical_paths[{key!r}]: invalid path")
+            continue
+        p = root / rel
+        if not p.is_file():
+            errs.append(f"satellite governance: missing file {key} -> {rel}")
+    if errs:
+        print("ERROR: satellite governance topology failed:", file=sys.stderr)
+        for e in errs:
+            print(f"  - {e}", file=sys.stderr)
+        return 1
+    print("OK: satellite governance topology (canonical_paths) verified")
+    if with_governance:
+        gov_script = root / "scripts" / "verify_governance_chain.py"
+        if not gov_script.is_file():
+            print(f"ERROR: governance verifier missing: {gov_script}", file=sys.stderr)
+            return 2
+        r = subprocess.run(
+            [sys.executable, str(gov_script), "--root", str(root)],
+            check=False,
+        )
+        return int(r.returncode)
+    return 0
+
+
 def main() -> None:
     args = _parse_args()
     # Inventory embeds absolute sibling paths from the machine that generated it; GitHub
@@ -89,6 +129,10 @@ def main() -> None:
     inv_path = args.inventory or (root / "MASTER_PROJECT_INVENTORY.json")
 
     data = _load_json(inv_path)
+    inv_kind = (data.get("meta") or {}).get("inventory_kind")
+    if inv_kind == "consentchain_governance_inventory":
+        rc = _satellite_governance_topology(root, data, getattr(args, "with_governance", False))
+        sys.exit(rc)
     meta = data.get("meta") or {}
     recorded_root = meta.get("tlc_root")
     if recorded_root and Path(recorded_root).resolve() != root:

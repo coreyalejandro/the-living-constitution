@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "policy_id": "tlc-tip-state-pass6",
-  "contract_version": "v1.4.0",
+  "contract_version": "v1.5.0",
   "tip_state_truth_enum": [
     "tip_verified",
     "tip_pending",
@@ -28,6 +28,7 @@
     "verification/regression-ledger.schema.json",
     "verification/governance-verification-run.schema.json",
     "verification/evidence-ledger.schema.json",
+    "verification/pass7-branch-verification-policy.json",
     "MASTER_PROJECT_INVENTORY.json",
     "00-constitution/invariant-registry.json",
     "03-enforcement/enforcement-map.json"
@@ -53,7 +54,8 @@
   },
   "docs_only_commits": {
     "rule": "Commits that touch no protected_surface_paths may leave historical remote evidence intact; tip_state_truth must still not be tip_verified until HEAD equals last_remote_qualifying_commit after a new qualifying run updates the anchor.",
-    "tip_claim": "tip_verified requires HEAD == last_verified_commit == record artifact_commit_hash with status verified"
+    "tip_claim": "tip_verified requires HEAD == last_verified_commit == record artifact_commit_hash with status verified on a frozen verification target (PASS 7: not on a mutable symbolic branch tip)",
+    "pass7_reference": "verification/pass7-branch-verification-policy.json"
   },
   "escalation_hints": {
     "protected_surface_drift_without_fresh_remote": "tip_pending with escalation_state at least review_required when protected surfaces changed since last_remote_qualifying_commit",
