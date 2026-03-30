@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Initialize required git submodules (overlay repos)
-        run: git submodule update --init --depth 1 projects/consentchain projects/consent-gateway-auth0
+      - name: Initialize public overlay submodule (consentchain)
+        run: git submodule update --init --depth 1 projects/consentchain
 
       - uses: actions/setup-python@v5
         with:
