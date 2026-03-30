@@ -38,6 +38,10 @@ next-env.d.ts
 # Cursor / IDE artifacts
 .cursor/
 
+# Claude Code ephemeral worktrees (never gitlink into TLC)
+.claude/worktrees/
+.claud (old)/
+
 # Governance run artifacts (regenerated locally / in CI; upload via workflow artifact)
 verification/runs/*.json
 
