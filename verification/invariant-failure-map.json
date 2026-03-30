@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.0.0",
+  "map_id": "tlc-invariant-failure-map",
+  "entries": [
+    {
+      "invariant_id": "INVARIANT_01",
+      "failure_mode": "Doctrine maps to no invariant or empty ids",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_01",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_02",
+      "failure_mode": "Invariant row missing enforcement or evidence declaration",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_02",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_03",
+      "failure_mode": "Inventory omits required governance artifact paths",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_03",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_04",
+      "failure_mode": "JSON and MD inventory meta timestamps diverge",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_04",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_05",
+      "failure_mode": "Agent capabilities missing required lists or schema invalid",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_05",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_06",
+      "failure_mode": "No executable verifier path registered for governance drift",
+      "detectable": true,
+      "test_case": "case_broken_invariant_enforcement_link",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_07",
+      "failure_mode": "Evidence state not in verified|unverified|missing",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_07",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_08",
+      "failure_mode": "Truth claim without evidence reference in ledger",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_08",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_09",
+      "failure_mode": "Duplicate or non-canonical governance artifact path in inventory",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_09",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_10",
+      "failure_mode": "Topology check skips governance-critical paths",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_10",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_11",
+      "failure_mode": "Ledger record fails JSON Schema validation",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_11",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_12",
+      "failure_mode": "Governance run artifact missing or not commit-bound",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_12",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_13",
+      "failure_mode": "CI omits canonical verify command lines",
+      "detectable": true,
+      "test_case": "case_broken_invariant_enforcement_link",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_14",
+      "failure_mode": "Dangling doctrine, invariant, enforcement, or inventory reference",
+      "detectable": true,
+      "test_case": "case_broken_doctrine_invariant_link",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_15",
+      "failure_mode": "Remote CI evidence record missing when claimed",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_15",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_16",
+      "failure_mode": "Recorded workflow conclusion not success when claimed",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_16",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_17",
+      "failure_mode": "Artifact upload not recorded as succeeded when claimed",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_17",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_18",
+      "failure_mode": "Remote artifact commit hash mismatch vs HEAD",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_18",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_19",
+      "failure_mode": "Workflow weakens or omits governance commands",
+      "detectable": true,
+      "test_case": "case_broken_invariant_enforcement_link",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_20",
+      "failure_mode": "Remote-verified vs local-only facts conflated",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_20",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_21",
+      "failure_mode": "CI provenance, GITHUB_SHA, or artifact binding inconsistent",
+      "detectable": true,
+      "test_case": "case_commit_mismatch_ci_self_verify",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_22",
+      "failure_mode": "No scheduled governance evaluation in workflow",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_22",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_23",
+      "failure_mode": "Regression ledger row invalid when CI append runs",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_23",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_24",
+      "failure_mode": "Escalation thresholds not honored for governance failure",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_24",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_25",
+      "failure_mode": "Workflow hash drift without fresh green run still verified",
+      "detectable": true,
+      "test_case": "case_stale_inventory_provenance_pointer",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_26",
+      "failure_mode": "Adversarial governance harness missing or not failing on break",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_26",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_27",
+      "failure_mode": "Independent review state not machine-readable",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_27",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_28",
+      "failure_mode": "Governance system card missing required headings",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_28",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_29",
+      "failure_mode": "Institutionalization artifacts not in inventory manifest",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_29",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_30",
+      "failure_mode": "Protected-surface drift with verified tip_state",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_30",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_31",
+      "failure_mode": "Tip verified without qualifying remote run alignment",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_31",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_32",
+      "failure_mode": "tip_state_truth inconsistent with ci_provenance status",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_32",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_33",
+      "failure_mode": "Workflow drift without pending or stronger tip state",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_33",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_34",
+      "failure_mode": "Regression ledger row missing tip_state_truth semantics",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_34",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_35",
+      "failure_mode": "Review policy missing machine-readable tip transitions",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_35",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_36",
+      "failure_mode": "Inventory or MD overclaims verification beyond evidence",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_36",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_37",
+      "failure_mode": "Verified tip on mutable branch or misaligned Pass7 policy",
+      "detectable": true,
+      "test_case": "case_verified_on_mutable_branch_at_anchor_fails_pass7",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_38",
+      "failure_mode": "Authoritative status asserted outside STATUS.json",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_38",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_39",
+      "failure_mode": "STATUS.md diverges from deterministic render of STATUS.json",
+      "detectable": true,
+      "test_case": "case_stale_status_md_fails_pass10a",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_40",
+      "failure_mode": "README or docs assert conflicting operational status",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_40",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_41",
+      "failure_mode": "External party relies on undocumented internal assumptions",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_41",
+      "expected_behavior": "warning or verification fails per policy"
+    },
+    {
+      "invariant_id": "INVARIANT_42",
+      "failure_mode": "STATUS aggregate contradicts inventory, record, ledger, or HEAD",
+      "detectable": true,
+      "test_case": "case_tip_verified_without_matching_head",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_43",
+      "failure_mode": "role-registry.json missing, invalid, or empty",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_43",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_44",
+      "failure_mode": "Separation-of-powers module missing or mislinked in enforcement map",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_44",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_45",
+      "failure_mode": "Governance path missing from role registry or duplicate assignment",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_45",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_46",
+      "failure_mode": "Script performs action forbidden for its constitutional role",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_46",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_47",
+      "failure_mode": "STATUS derived outside aggregate_status contract",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_47",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_48",
+      "failure_mode": "JUDICIAL script writes outside approved evidence paths",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_48",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_49",
+      "failure_mode": "EXECUTIVE script writes canonical law files",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_49",
+      "expected_behavior": "verification fails"
+    },
+    {
+      "invariant_id": "INVARIANT_50",
+      "failure_mode": "RECORD artifacts mutated outside designated flows",
+      "detectable": true,
+      "test_case": "governance_chain_implicit:INVARIANT_50",
+      "expected_behavior": "verification fails"
+    }
+  ]
+}
