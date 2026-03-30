@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
-  "workflow_run_id": "23757979228",
-  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23757979228",
+  "workflow_run_id": "23760899476",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23760899476",
   "workflow_run_attempt": "1",
-  "artifact_name": "governance-verification-runs-23757979228-1",
-  "artifact_commit_hash": "1a2ef808478b71e8bdbe40c86406ccc180180276",
+  "artifact_name": "governance-verification-runs-23760899476-1",
+  "artifact_commit_hash": "84b21f360c6baef31883e5d197016a4069282cea",
   "artifact_upload_succeeded": true,
-  "captured_at_utc": "2026-03-30T17:25:00Z",
-  "notes": "PASS 9 remote closure: green run 23757979228 on 1a2ef80 (feature/c-rsp-pass3-ci-provenance); full pipeline including verify_cross_repo_consistency (TLC vs projects/consentchain submodule); append_regression_ledger, institutionalization, failure-injection, artifact upload+self-verify. Prior PASS 6 record: run 23749268730 / a0d548f."
+  "captured_at_utc": "2026-03-30T18:40:00Z",
+  "notes": "Mainline convergence (C-RSP): green run 23760899476 on 84b21f3 (main); full pipeline including verify_cross_repo_consistency vs projects/consentchain submodule; topology, governance chain (parity), institutionalization, failure-injection, artifact upload+self-verify. ConsentChain CI checks out TLC main."
 }
