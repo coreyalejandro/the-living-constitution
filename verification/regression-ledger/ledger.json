@@ -54,6 +54,24 @@
       "github_event_name": "push",
       "tip_state_truth": "tip_verified",
       "notes": "PASS 6 closure: committed ledger row after green run 23748772543 on 5e13e09; tip_state_truth tip_verified aligns with promoted ci_provenance."
+    },
+    {
+      "run_id": "23749268730",
+      "run_attempt": "1",
+      "workflow_name": "Verify Living Constitution",
+      "workflow_sha256": "7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818",
+      "commit_sha": "a0d548f6f285cd26ab5df51ecc1147f4047c296d",
+      "branch_ref": "refs/heads/feature/c-rsp-pass3-ci-provenance",
+      "timestamp_utc": "2026-03-30T14:12:05Z",
+      "conclusion": "success",
+      "artifact_name": "governance-verification-runs-23749268730-1",
+      "artifact_path": "verification/runs/*-governance.json (within uploaded artifact zip)",
+      "artifact_retrieval_ref": "actions artifact name=governance-verification-runs-23749268730-1; run_url=https://github.com/coreyalejandro/the-living-constitution/actions/runs/23749268730",
+      "reviewer_status": "not_required",
+      "escalation_state": "none",
+      "github_event_name": "push",
+      "tip_state_truth": "tip_verified",
+      "notes": "PASS 6 closure: green run 23749268730 on evidence commit a0d548f; full qualifying pipeline; tip_state_truth tip_verified for artifact commit per INVARIANT_34."
     }
   ]
 }

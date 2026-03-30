@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
-  "workflow_run_id": "23748772543",
-  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23748772543",
+  "workflow_run_id": "23749268730",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23749268730",
   "workflow_run_attempt": "1",
-  "artifact_name": "governance-verification-runs-23748772543-1",
-  "artifact_commit_hash": "5e13e095521f319595e145ec10ed311d133ec313",
+  "artifact_name": "governance-verification-runs-23749268730-1",
+  "artifact_commit_hash": "a0d548f6f285cd26ab5df51ecc1147f4047c296d",
   "artifact_upload_succeeded": true,
-  "captured_at_utc": "2026-03-30T14:10:00Z",
-  "notes": "PASS 6 closure: push 5e13e09 on feature/c-rsp-pass3-ci-provenance; verify workflow includes topology+governance+append_regression_ledger+verify_institutionalization+governance_failure_injection_tests+upload+download+ci_self_verify; artifact governance-verification-runs-23748772543-1; headSha matches GITHUB_SHA; verify_workflow_sha256 7fa20a1f7e3fb844943b2e5be5cd5fe4b09a42e15900e64d750296a70d8bd818; INVARIANT_31 qualifying remote promotion."
+  "captured_at_utc": "2026-03-30T14:15:00Z",
+  "notes": "PASS 6 closure (tip evidence commit): green run 23749268730 on a0d548f after push of record+ledger+inventory closure; full pipeline including append_regression_ledger, institutionalization, failure-injection, artifact upload+self-verify; INVARIANT_31 qualifying remote; prior run 23748772543 verified code commit 5e13e09."
 }
