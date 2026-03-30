@@ -1,12 +1,14 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-03-30T22:45:00Z  
+**Generated (UTC):** 2026-03-30T14:10:00Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (source of truth for the verifier)
 
 **Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths, `artifact_manifest` (path + verification_status + evidence linkage), run schema, institutionalization block (regression ledger, review/escalation policy, system card), and `ci_verification_commands` (must match CI). **Executable checks:** `pip install -r requirements-verify.txt` then `python3 scripts/verify_project_topology.py --root . --with-governance`, `python3 scripts/verify_governance_chain.py --root .`, and `python3 scripts/verify_institutionalization.py --root .`; adversarial checks `python3 scripts/governance_failure_injection_tests.py`; run artifacts under `verification/runs/*-governance.json`; scheduled verify workflow per `.github/workflows/verify.yml` `schedule`.
 
 **Tip-state (PASS 6):** `ci_provenance.status` is tip-truth, not merely “last green run somewhere in history.” `last_remote_qualifying_commit` and `record.json` `artifact_commit_hash` must agree. `tip_state_truth` (`tip_verified` | `tip_pending` | `tip_blocked` | `tip_critical`) must align with `status`. Tip `verified` requires `git HEAD` equals `last_verified_commit` and the committed remote evidence row. **Workflow identity at last remote run:** `verify_workflow_sha256_at_last_remote_run`. **Policy:** `verification/tip-state-policy.json`. **Offline alignment helper (does not promote to verified):** `python3 scripts/sync_ci_provenance_tip_state.py --root .`. **Promotion:** only after a qualifying GitHub Actions run; then update `verification/ci-remote-evidence/record.json` and inventory to match that run (no automatic repo writeback from CI).
+
+**PASS 6 closure (this generation):** Qualifying remote run `23748772543` (INVARIANT_31) succeeded on commit `5e13e095521f319595e145ec10ed311d133ec313`. `verification/ci-remote-evidence/record.json` and `verification/regression-ledger/ledger.json` record that run with `tip_verified` for the verified artifact commit. `ci_provenance` stays `tip_pending` at branch tip while HEAD includes closure documentation after that commit until a subsequent qualifying run covers the new tip (or policy reviewer path).
 
 **Registry path migration (ConsentChain):** `04-consentchain/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
 
