@@ -19,7 +19,10 @@
         "INVARIANT_30",
         "INVARIANT_31",
         "INVARIANT_32",
-        "INVARIANT_37"
+        "INVARIANT_37",
+        "INVARIANT_38",
+        "INVARIANT_39",
+        "INVARIANT_42"
       ],
       "failure_class_ids": ["F2", "F3"],
       "notes": "Machine-checkable layers: deterministic verification scripts and synchronized inventory."
@@ -32,7 +35,9 @@
         "INVARIANT_07",
         "INVARIANT_08",
         "INVARIANT_11",
-        "INVARIANT_20"
+        "INVARIANT_20",
+        "INVARIANT_40",
+        "INVARIANT_41"
       ],
       "failure_class_ids": ["F1"],
       "notes": "Claim calibration maps to evidence ledger states and MATRIX-backed evidence refs."
@@ -108,7 +113,12 @@
         "INVARIANT_34",
         "INVARIANT_35",
         "INVARIANT_36",
-        "INVARIANT_37"
+        "INVARIANT_37",
+        "INVARIANT_38",
+        "INVARIANT_39",
+        "INVARIANT_40",
+        "INVARIANT_41",
+        "INVARIANT_42"
       ],
       "failure_class_ids": ["F2"],
       "notes": "Continuous remote evaluation, regression ledger, escalation, adversarial checks, and evidence-bounded public summary."

@@ -72,6 +72,24 @@
       "github_event_name": "push",
       "tip_state_truth": "tip_verified",
       "notes": "PASS 6 closure: green run 23749268730 on evidence commit a0d548f; full qualifying pipeline; tip_state_truth tip_verified for artifact commit per INVARIANT_34."
+    },
+    {
+      "run_id": "23757979228",
+      "run_attempt": "1",
+      "workflow_name": "Verify Living Constitution",
+      "workflow_sha256": "0e5bb8c32d13ba351441ee8ae0258d2dc684ca5e7c77b2277cce6d7512f99a63",
+      "commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
+      "branch_ref": "refs/heads/feature/c-rsp-pass3-ci-provenance",
+      "timestamp_utc": "2026-03-30T17:25:00Z",
+      "conclusion": "success",
+      "artifact_name": "governance-verification-runs-23757979228-1",
+      "artifact_path": "verification/runs/*-governance.json (within uploaded artifact zip)",
+      "artifact_retrieval_ref": "actions artifact name=governance-verification-runs-23757979228-1; run_url=https://github.com/coreyalejandro/the-living-constitution/actions/runs/23757979228",
+      "reviewer_status": "pending",
+      "escalation_state": "review_required",
+      "github_event_name": "push",
+      "tip_state_truth": "tip_verified",
+      "notes": "PASS 9 remote closure: green run 23757979228 on 1a2ef80; full pipeline including verify_cross_repo_consistency; aligns record.json and inventory ci_provenance; PASS 10A STATUS surface anchor."
     }
   ]
 }

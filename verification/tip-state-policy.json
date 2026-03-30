@@ -30,6 +30,10 @@
     "verification/evidence-ledger.schema.json",
     "verification/pass7-branch-verification-policy.json",
     "MASTER_PROJECT_INVENTORY.json",
+    "STATUS.json",
+    "STATUS.md",
+    "scripts/render_status_surface.py",
+    "verification/closed-epistemics-open-interfaces-policy.json",
     "00-constitution/invariant-registry.json",
     "03-enforcement/enforcement-map.json"
   ],

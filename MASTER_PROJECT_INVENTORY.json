@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T17:25:00Z",
+    "generated_at_utc": "2026-03-30T18:00:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -35,7 +35,7 @@
     "reviewer_status": "pending"
   },
   "governance_artifacts": {
-    "contract_version": "v1.5.0",
+    "contract_version": "v1.6.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -52,6 +52,9 @@
       "review_escalation_policy": "verification/review-escalation-policy.json",
       "tip_state_policy": "verification/tip-state-policy.json",
       "pass7_branch_verification_policy": "verification/pass7-branch-verification-policy.json",
+      "closed_epistemics_open_interfaces_policy": "verification/closed-epistemics-open-interfaces-policy.json",
+      "status_json": "STATUS.json",
+      "status_md": "STATUS.md",
       "governance_system_card": "verification/GOVERNANCE_SYSTEM_CARD.md",
       "independent_review_record": "verification/independent-review/last-review.json"
     },
@@ -148,6 +151,24 @@
         "evidence_ledger_record_id": null
       },
       {
+        "canonical_key": "closed_epistemics_open_interfaces_policy",
+        "relative_path": "verification/closed-epistemics-open-interfaces-policy.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "status_json",
+        "relative_path": "STATUS.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "status_md",
+        "relative_path": "STATUS.md",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
         "canonical_key": "governance_system_card",
         "relative_path": "verification/GOVERNANCE_SYSTEM_CARD.md",
         "verification_status": "verified",
@@ -168,7 +189,8 @@
       "scripts/governance_failure_injection_tests.py",
       "scripts/tip_state_helpers.py",
       "scripts/sync_ci_provenance_tip_state.py",
-      "scripts/verify_cross_repo_consistency.py"
+      "scripts/verify_cross_repo_consistency.py",
+      "scripts/render_status_surface.py"
     ],
     "ci_verification_commands": [
       "python3 scripts/verify_project_topology.py --root . --with-governance",

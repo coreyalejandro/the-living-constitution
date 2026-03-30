@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "tlc-closed-epistemics-open-interfaces-pass10a",
+  "contract_version": "v1.6.0",
+  "description": "Machine-readable boundary: internal governance truth is closed and single-sourced; external systems and humans consume only exported proofs, schemas, and committed evidence artifacts.",
+  "internal_truth": {
+    "single_authoritative_current_status": "STATUS.json",
+    "derived_human_mirror": "STATUS.md",
+    "supporting_authority_chain": [
+      "MASTER_PROJECT_INVENTORY.json",
+      "verification/ci-remote-evidence/record.json",
+      "verification/regression-ledger/ledger.json",
+      "00-constitution/invariant-registry.json"
+    ],
+    "rule": "No repository file other than STATUS.json may assert authoritative current repo status; other documents may summarize or link but must not contradict STATUS.json + inventory + committed evidence."
+  },
+  "open_interfaces": {
+    "consumed_artifacts": [
+      "verification/governance-verification-run.schema.json",
+      "verification/regression-ledger/ledger.json",
+      "verification/ci-remote-evidence/record.json",
+      "verification/evidence-ledger.schema.json",
+      "verification/runs/*-governance.json",
+      "GitHub Actions workflow logs and artifact names referenced from record.json"
+    ],
+    "rule": "External automation and downstream repos must depend only on committed JSON/Markdown artifacts and documented schemas; they must not infer undocumented internal state."
+  },
+  "non_override": {
+    "rule": "No external claim, dashboard, or out-of-band communication may override internal authoritative state recorded in STATUS.json and verified against HEAD, inventory, record, and ledger."
+  },
+  "truth_boundary": {
+    "reason": "Epistemic closure inside the repo: current operational status is synthesized into STATUS.json from inventory ci_provenance, git HEAD, workflow identity, regression ledger tail, and remote evidence record; STATUS.md is a deterministic render. External parties receive only exported proofs and schema-valid artifacts listed under open_interfaces."
+  }
+}

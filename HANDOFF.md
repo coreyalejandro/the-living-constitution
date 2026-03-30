@@ -1,23 +1,24 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-03-30  
-**Status:** PASS 6 tip-state exactness implemented (C-RSP v1.4.0)
+**Status:** PASS 10A single-entry truth surface (C-RSP v1.6.0)
 
 ## What Was Just Completed
 
-- **PASS 6 (tip-state exactness):** `ci_provenance.tip_state_truth`, `last_remote_qualifying_commit`, INVARIANT_30–INVARIANT_36; `verification/tip-state-policy.json`; `scripts/tip_state_helpers.py`; `scripts/sync_ci_provenance_tip_state.py`; regression ledger schema 1.1.0 with `tip_state_truth` per row; `verify_governance_chain.py` checks HEAD vs anchor and protected-surface drift when `status=pending`; `review-escalation-policy.json` tip_state_transition_policy + R6/R7; inventory contract v1.4.0; governance artifacts include `tip_state_policy`.
-- **Current tip posture:** `MASTER_PROJECT_INVENTORY.json` `ci_provenance` is `pending` / `tip_pending` with `review_required` while HEAD advances beyond last remote qualifying commit until the next green Actions run and manual record + inventory promotion per policy (no CI writeback).
+- **PASS 10A:** Root `STATUS.json` (authoritative) + `STATUS.md` (rendered); `scripts/render_status_surface.py`; `verification/closed-epistemics-open-interfaces-policy.json`; INVARIANT_38–INVARIANT_42; `verify_governance_chain.py` enforces aggregate vs committed STATUS + MD mirror; root `README.md` links to status; inventory + system card reference `STATUS.json`; regression ledger row for run `23757979228` aligned with `record.json`; consentchain submodule synced for cross-repo governance parity.
+- **Prior:** PASS 7 branch verification; PASS 6 tip-state; inventory `pending`/`tip_pending` on mutable branch tips.
 
 ## Recommended Next Steps
 
-- After a qualifying green `Verify Living Constitution` run on the commit to certify: update `verification/ci-remote-evidence/record.json` and `MASTER_PROJECT_INVENTORY.json` `ci_provenance` to match that run, then set `status`/`tip_state_truth` to `verified`/`tip_verified` only when `HEAD` equals `last_verified_commit`.
-- Optional: `python3 scripts/sync_ci_provenance_tip_state.py --root .` to refresh pending fields from git + record (does not set verified).
+- After governance/inventory changes: `python3 scripts/render_status_surface.py --root .` then commit `STATUS.json` + `STATUS.md` with the same commit as `HEAD`.
+- Commit submodule `projects/consentchain` updates from this session if you maintain a separate ConsentChain remote.
 
 ## Quick Reference
 
-- **Tip policy:** `verification/tip-state-policy.json`  
-- **Verifiers:** `verify_governance_chain.py`, `verify_institutionalization.py`, `verify_project_topology.py --with-governance`  
+- **Status:** `STATUS.json`, `STATUS.md`  
+- **Policy:** `verification/closed-epistemics-open-interfaces-policy.json`  
+- **Verifiers:** `verify_governance_chain.py`, `verify_institutionalization.py`, `verify_project_topology.py --with-governance`, `python3 scripts/render_status_surface.py --root . --check`  
 
 ---
 
-**Confidence:** High — full verifier pipeline exited 0 locally after PASS 6.
+**Confidence:** High — governance, topology, institutionalization, failure-injection, and render `--check` passed locally after PASS 10A.

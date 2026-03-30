@@ -16,4 +16,6 @@ Current evidence boundary: Claims in this card are bounded by files in this repo
 
 Not claimed: Correctness of sibling repos, production uptime, security of third-party services, or completeness of future work not listed in `verification/MATRIX.md`.
 
-**Contract:** C-RSP institutionalization + tip-state + PASS 7 branch policy v1.5.0.
+**Canonical status surface (PASS 10A):** `STATUS.json` is the sole authoritative current-status artifact; `STATUS.md` is machine-rendered from it. Policy: `verification/closed-epistemics-open-interfaces-policy.json`. Do not assert conflicting status in README or docs; link to `STATUS.md`.
+
+**Contract:** C-RSP institutionalization + tip-state + PASS 7 branch policy + closed/open epistemic boundary v1.6.0.

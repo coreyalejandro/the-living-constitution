@@ -42,7 +42,12 @@
         "INVARIANT_34",
         "INVARIANT_35",
         "INVARIANT_36",
-        "INVARIANT_37"
+        "INVARIANT_37",
+        "INVARIANT_38",
+        "INVARIANT_39",
+        "INVARIANT_40",
+        "INVARIANT_41",
+        "INVARIANT_42"
       ],
       "enforcement_hook": "scripts/verify_governance_chain.py",
       "evidence_hook": "verification/evidence-ledger/",

@@ -37,6 +37,18 @@ from tip_state_helpers import (  # noqa: E402
     tip_truth_aligned_with_status,
 )
 
+# PASS 10A: STATUS surface (import after path setup)
+def _load_status_surface_module(root: Path):
+    import importlib.util
+
+    p = root / "scripts" / "render_status_surface.py"
+    spec = importlib.util.spec_from_file_location("_tlc_render_status_surface", p)
+    if spec is None or spec.loader is None:
+        return None
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
 try:
     from jsonschema import Draft202012Validator
     from jsonschema.exceptions import ValidationError
@@ -316,6 +328,52 @@ def _check_ci_remote_record(root: Path, errors: List[str]) -> None:
             errors.append(f"INVARIANT_18: claimed_remote record requires non-empty artifact_commit_hash (got {ach!r})")
 
 
+def _check_status_surface(root: Path, errors: List[str]) -> None:
+    """INVARIANT_38–INVARIANT_42: STATUS.json sole authority; STATUS.md mirror; consistency with sources."""
+    status_json = root / "STATUS.json"
+    status_md = root / "STATUS.md"
+    policy = root / "verification" / "closed-epistemics-open-interfaces-policy.json"
+    if not status_json.is_file():
+        errors.append("INVARIANT_38: STATUS.json missing (sole authoritative current-status artifact)")
+        return
+    if not status_md.is_file():
+        errors.append("INVARIANT_39: STATUS.md missing (human mirror of STATUS.json)")
+        return
+    if not policy.is_file():
+        errors.append("INVARIANT_41: verification/closed-epistemics-open-interfaces-policy.json missing")
+        return
+    mod = _load_status_surface_module(root)
+    if mod is None:
+        errors.append("INVARIANT_38: cannot load scripts/render_status_surface.py")
+        return
+    try:
+        aggregated = mod.aggregate_status(root)
+    except Exception as e:
+        errors.append(f"INVARIANT_42: aggregate_status failed: {e}")
+        return
+    try:
+        with status_json.open("r", encoding="utf-8") as f:
+            on_disk = json.load(f)
+        if not isinstance(on_disk, dict):
+            errors.append("INVARIANT_38: STATUS.json root must be an object")
+            return
+    except (OSError, json.JSONDecodeError) as e:
+        errors.append(f"INVARIANT_38: cannot read STATUS.json: {e}")
+        return
+    if json.dumps(aggregated, sort_keys=True) != json.dumps(on_disk, sort_keys=True):
+        errors.append(
+            "INVARIANT_42: STATUS.json disagrees with aggregate from inventory, record, ledger, HEAD, "
+            "and policy — run: python3 scripts/render_status_surface.py --root ."
+        )
+    md_text = status_md.read_text(encoding="utf-8")
+    expected_md = mod.render_markdown_from_status(on_disk)
+    if md_text.replace("\r\n", "\n") != expected_md.replace("\r\n", "\n"):
+        errors.append(
+            "INVARIANT_39: STATUS.md is not a faithful render of STATUS.json — run: "
+            "python3 scripts/render_status_surface.py --root ."
+        )
+
+
 def _check_ci_parity(root: Path, errors: List[str]) -> None:
     wf = root / ".github" / "workflows" / "verify.yml"
     if not wf.is_file():
@@ -411,6 +469,9 @@ def _collect_errors(root: Path) -> Tuple[
         root / "verification" / "GOVERNANCE_SYSTEM_CARD.md",
         root / "verification" / "independent-review" / "last-review.json",
         root / "verification" / "pass7-branch-verification-policy.json",
+        root / "STATUS.json",
+        root / "STATUS.md",
+        root / "verification" / "closed-epistemics-open-interfaces-policy.json",
     ]
     for p in required_paths:
         if not p.is_file():
@@ -453,10 +514,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 38)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 43)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_36; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_42; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:
@@ -559,6 +620,8 @@ def _collect_errors(root: Path) -> Tuple[
     cp2 = data.get("ci_provenance")
     if isinstance(cp2, dict):
         _check_tip_state_exactness(root, cp2, errors)
+
+    _check_status_surface(root, errors)
 
     gov = data.get("governance_artifacts") or {}
     canonical = gov.get("canonical_paths") or {}

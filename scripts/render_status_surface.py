@@ -1,0 +1,232 @@
+#!/usr/bin/env python3
+"""
+PASS 10A: Single-entry truth surface.
+
+Aggregates MASTER_PROJECT_INVENTORY ci_provenance, git HEAD, workflow SHA,
+regression ledger tail, remote evidence record, and cross-repo check into
+STATUS.json; renders deterministic STATUS.md from STATUS.json.
+
+Manual edits to STATUS.md are prohibited; regenerate with this script.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+from typing import Any, Dict, List, Tuple
+
+
+def _load_json(path: Path) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+    if not isinstance(data, dict):
+        raise ValueError(f"expected object: {path}")
+    return data
+
+
+def _git_head(root: Path) -> str:
+    r = subprocess.run(
+        ["git", "-C", str(root), "rev-parse", "HEAD"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    h = (r.stdout or "").strip()
+    if r.returncode != 0 or len(h) < 7:
+        raise RuntimeError("git rev-parse HEAD failed; repository required for STATUS.json")
+    return h
+
+
+def _workflow_sha256(root: Path) -> str:
+    p = root / ".github" / "workflows" / "verify.yml"
+    if not p.is_file():
+        return ""
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def _cross_repo_state(root: Path) -> Dict[str, Any]:
+    target = root / "projects" / "consentchain" / "00-constitution" / "invariant-registry.json"
+    if not target.is_file():
+        return {
+            "state": "target_incomplete",
+            "detail": "projects/consentchain governance tree not present (init submodule for full check)",
+        }
+    r = subprocess.run(
+        [
+            sys.executable,
+            str(root / "scripts" / "verify_cross_repo_consistency.py"),
+            "--canonical-root",
+            str(root),
+            "--target-root",
+            str(root / "projects" / "consentchain"),
+        ],
+        cwd=str(root),
+        capture_output=True,
+        text=True,
+    )
+    if r.returncode == 0:
+        return {"state": "aligned", "exit_code": 0}
+    if r.returncode == 1:
+        return {"state": "drift", "exit_code": 1, "detail": (r.stderr or r.stdout or "").strip()[:500]}
+    return {"state": "error", "exit_code": r.returncode, "detail": (r.stderr or r.stdout or "").strip()[:500]}
+
+
+def aggregate_status(root: Path) -> Dict[str, Any]:
+    inv = _load_json(root / "MASTER_PROJECT_INVENTORY.json")
+    cp = inv.get("ci_provenance") or {}
+    if not isinstance(cp, dict):
+        raise ValueError("MASTER_PROJECT_INVENTORY.json: ci_provenance missing")
+    rec = _load_json(root / "verification" / "ci-remote-evidence" / "record.json")
+    ledger = _load_json(root / "verification" / "regression-ledger" / "ledger.json")
+    records: List[Dict[str, Any]] = [x for x in (ledger.get("records") or []) if isinstance(x, dict)]
+    last_ledger = records[-1] if records else {}
+    policy_path = root / "verification" / "closed-epistemics-open-interfaces-policy.json"
+    policy = _load_json(policy_path) if policy_path.is_file() else {}
+    tb = policy.get("truth_boundary") if isinstance(policy, dict) else {}
+    truth_reason = ""
+    if isinstance(tb, dict):
+        truth_reason = str(tb.get("reason") or "").strip()
+
+    head = _git_head(root)
+    wf_sha = _workflow_sha256(root)
+
+    return {
+        "schema_version": "1.0.0",
+        "project": "coreyalejandro/the-living-constitution",
+        "head_sha": head,
+        "last_verified_commit": str(cp.get("last_verified_commit") or ""),
+        "last_verified_run_id": str(cp.get("last_verified_run_id") or ""),
+        "tip_state_truth": str(cp.get("tip_state_truth") or ""),
+        "historical_state": {
+            "regression_ledger_last_run_id": str(last_ledger.get("run_id") or ""),
+            "regression_ledger_last_commit_sha": str(last_ledger.get("commit_sha") or ""),
+            "regression_ledger_last_timestamp_utc": str(last_ledger.get("timestamp_utc") or ""),
+            "ci_remote_record_captured_at_utc": str(rec.get("captured_at_utc") or ""),
+        },
+        "workflow_sha": wf_sha,
+        "cross_repo_consistency": _cross_repo_state(root),
+        "escalation_state": str(cp.get("escalation_state") or ""),
+        "reviewer_status": str(cp.get("reviewer_status") or ""),
+        "truth_boundary": {
+            "reason": truth_reason,
+            "policy_reference": "verification/closed-epistemics-open-interfaces-policy.json",
+        },
+        "inventory_meta_generated_at_utc": str((inv.get("meta") or {}).get("generated_at_utc") or ""),
+        "governance_contract_version": str((inv.get("governance_artifacts") or {}).get("contract_version") or ""),
+    }
+
+
+def render_markdown_from_status(data: Dict[str, Any]) -> str:
+    """Deterministic Markdown mirror of STATUS.json (INVARIANT_39)."""
+    lines: List[str] = [
+        "# TLC repository status",
+        "",
+        "> **Canonical JSON:** [`STATUS.json`](STATUS.json) — sole authoritative current-status artifact (PASS 10A).",
+        "",
+        "| Field | Value |",
+        "|-------|-------|",
+    ]
+    rows = [
+        ("project", data.get("project")),
+        ("head_sha", data.get("head_sha")),
+        ("last_verified_commit", data.get("last_verified_commit")),
+        ("last_verified_run_id", data.get("last_verified_run_id")),
+        ("tip_state_truth", data.get("tip_state_truth")),
+        ("workflow_sha", data.get("workflow_sha")),
+        ("escalation_state", data.get("escalation_state")),
+        ("reviewer_status", data.get("reviewer_status")),
+        ("governance_contract_version", data.get("governance_contract_version")),
+        ("inventory_meta_generated_at_utc", data.get("inventory_meta_generated_at_utc")),
+    ]
+    for k, v in rows:
+        lines.append(f"| `{k}` | `{v}` |")
+
+    lines.extend(
+        [
+            "",
+            "## Historical / evidence anchors",
+            "",
+        ]
+    )
+    hist = data.get("historical_state")
+    if isinstance(hist, dict):
+        for key in sorted(hist.keys()):
+            lines.append(f"- **{key}:** `{hist.get(key)}`")
+    else:
+        lines.append("- *(none)*")
+
+    lines.extend(["", "## Cross-repo consistency (ConsentChain submodule)", ""])
+    cr = data.get("cross_repo_consistency")
+    if isinstance(cr, dict):
+        lines.append(f"- **state:** `{cr.get('state')}`")
+        if cr.get("detail"):
+            lines.append(f"- **detail:** {cr.get('detail')}")
+    else:
+        lines.append("- *(missing)*")
+
+    lines.extend(["", "## Truth boundary", ""])
+    tb = data.get("truth_boundary")
+    if isinstance(tb, dict):
+        reason = str(tb.get("reason") or "").strip()
+        pref = str(tb.get("policy_reference") or "").strip()
+        lines.append(reason)
+        lines.append("")
+        lines.append(f"Policy: `{pref}`")
+    else:
+        lines.append("*(see STATUS.json)*")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--root", type=Path, default=None, help="Repository root")
+    p.add_argument(
+        "--check",
+        action="store_true",
+        help="Exit 1 if STATUS.json or STATUS.md differs from aggregate/render (no writes)",
+    )
+    return p.parse_args()
+
+
+def main() -> int:
+    args = _parse_args()
+    script_dir = Path(__file__).resolve().parent
+    root = (args.root or script_dir.parent).resolve()
+
+    aggregated = aggregate_status(root)
+    status_path = root / "STATUS.json"
+    md_path = root / "STATUS.md"
+    rendered_md = render_markdown_from_status(aggregated)
+
+    if args.check:
+        errs: List[str] = []
+        if not status_path.is_file():
+            print("CHECK FAIL: STATUS.json missing", file=sys.stderr)
+            return 1
+        on_disk = _load_json(status_path)
+        if json.dumps(on_disk, sort_keys=True) != json.dumps(aggregated, sort_keys=True):
+            errs.append("STATUS.json does not match aggregate_status(root) — run without --check to refresh")
+        if not md_path.is_file():
+            errs.append("STATUS.md missing")
+        else:
+            existing = md_path.read_text(encoding="utf-8")
+            if existing.replace("\r\n", "\n") != rendered_md.replace("\r\n", "\n"):
+                errs.append("STATUS.md does not match render_markdown_from_status(STATUS.json)")
+        for e in errs:
+            print(f"CHECK FAIL: {e}", file=sys.stderr)
+        return 1 if errs else 0
+
+    status_path.write_text(json.dumps(aggregated, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    md_path.write_text(rendered_md, encoding="utf-8")
+    print(f"OK: wrote {status_path.relative_to(root)} and {md_path.relative_to(root)}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

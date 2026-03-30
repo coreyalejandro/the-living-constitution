@@ -302,6 +302,46 @@
       "enforcement_mechanism": "scripts/verify_governance_chain.py; verification/pass7-branch-verification-policy.json; scripts/tip_state_helpers.py",
       "evidence_path_or_rule": "ci_provenance.status; git context vs last_verified_commit; record.json artifact_commit_hash",
       "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_38",
+      "category": "Determinism / Idempotency",
+      "description": "STATUS.json is the sole authoritative current-status artifact for the repository; no other file may assert authoritative current status.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; verification/closed-epistemics-open-interfaces-policy.json",
+      "evidence_path_or_rule": "STATUS.json; aggregate_status() in scripts/render_status_surface.py",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_39",
+      "category": "Determinism / Idempotency",
+      "description": "STATUS.md must be a faithful rendered mirror of STATUS.json; manual divergence is prohibited.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; scripts/render_status_surface.py",
+      "evidence_path_or_rule": "render_markdown_from_status(STATUS.json) byte-stable compare",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_40",
+      "category": "Observability / Evidence",
+      "description": "README and documentation may link to status surfaces but must not independently assert conflicting current operational status.",
+      "enforcement_mechanism": "Human review; policy in verification/closed-epistemics-open-interfaces-policy.json",
+      "evidence_path_or_rule": "README.md defers to STATUS.md / STATUS.json",
+      "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_41",
+      "category": "Isolation Boundary",
+      "description": "External interfaces must consume exported proofs, schemas, and committed artifacts — not undocumented internal assumptions.",
+      "enforcement_mechanism": "verification/closed-epistemics-open-interfaces-policy.json",
+      "evidence_path_or_rule": "open_interfaces.consumed_artifacts in policy JSON",
+      "breach_taxonomy": "BREACH-F"
+    },
+    {
+      "id": "INVARIANT_42",
+      "category": "Observability / Evidence",
+      "description": "Verification must fail on any contradiction between STATUS.json, MASTER_PROJECT_INVENTORY ci_provenance, ci-remote record, regression ledger tail, and git HEAD.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (_check_status_surface)",
+      "evidence_path_or_rule": "aggregate_status vs committed STATUS.json; tip-state checks vs inventory",
+      "breach_taxonomy": "BREACH-E"
     }
   ],
   "failure_class_artifacts": [

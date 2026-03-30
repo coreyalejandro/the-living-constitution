@@ -177,6 +177,19 @@ def case_tip_verified_without_matching_head() -> Tuple[str, Callable[[Path], int
     return ("tip verified without HEAD == last_verified_commit fails verify_governance_chain", _fn)
 
 
+def case_stale_status_md_fails_pass10a() -> Tuple[str, Callable[[Path], int]]:
+    """INVARIANT_39: STATUS.md must match render(STATUS.json)."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        p = tmp / "STATUS.md"
+        if p.is_file():
+            p.write_text(p.read_text(encoding="utf-8") + "\n<!-- stale -->\n", encoding="utf-8")
+        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+
+    return ("stale STATUS.md fails verify_governance_chain (INVARIANT_39)", _fn)
+
+
 def case_verified_on_mutable_branch_at_anchor_fails_pass7() -> Tuple[str, Callable[[Path], int]]:
     """INVARIANT_37: status=verified on a symbolic branch is invalid even when HEAD == anchor."""
 
@@ -221,6 +234,7 @@ def main() -> None:
         case_broken_doctrine_invariant_link(),
         case_broken_invariant_enforcement_link(),
         case_stale_inventory_provenance_pointer(),
+        case_stale_status_md_fails_pass10a(),
         case_tip_verified_without_matching_head(),
         case_verified_on_mutable_branch_at_anchor_fails_pass7(),
     ]
