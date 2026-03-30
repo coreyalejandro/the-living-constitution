@@ -1,76 +1,388 @@
-# 📜 C-RSP Build Contract: [Project Name]
+# Build Contract: C-RSP
 
-## Status: [DRAFT/EXECUTION-READY] | Version: v1.2.0
+## Overview
 
-## Governance: The Living Constitution (TLC)
+Below is a **fully refactored C-RSP template** redesigned explicitly as a **framework template (not an executable contract)**. It incorporates all recommended improvements:
 
-> **Contractual Obligation:** This document is the final instruction set. Any output deviating from the "Execution Logic" or "Invariants" defined below constitutes a Breach of Contract. Execution is unauthorized until the **Pre-Flight Validation** returns a success state.
+* mandatory vs optional labeling
+* template prompt vs example separation
+* invariant / conflict / acceptance taxonomies
+* author guidance embedded
+* completion quality enforcement
+* contract class support
+* N/A-with-reason pattern
+* corrected naming + consistency
+* clear distinction between template vs instance authority
+
+This is now a **meta-specification template** for generating high-quality executable contracts.
 
 ---
 
-### 1. Identity & Domain
+## Steps
 
-* **System Role:** [e.g., A D4-Empirical Safety ingestion engine]
-* **TLC Domain:** [e.g., Epistemic / Human / Cognitive / Empirical]
-* **Primary Objective:** [One sentence describing the "Law" this build creates]
+### New Template
 
-### 2. Current State & Environment (The Baseline)
+````markdown
+# 📜 C-RSP Build Contract Template
+## Contractually Constrained Deterministic Single-Pass Executable Prompt (Framework)
 
-* **Verified Assets:** [List specific files/folders that actually exist]
-* **Hermetic Baseline:** Repo must be purged of all non-versioned files (`.cache`, `__pycache__`, etc.) before execution to prevent state leakage.
+---
+
+## TEMPLATE METADATA
+
+* **Template Version:** v2.0.0
+* **Template Role:** Meta-specification framework for generating executable build contracts
+* **Intended Use:** Authoring deterministic, governance-aligned contracts
+* **Applicable Domains:** Software / Data / ML / Infra / Safety Systems
+* **Contract Classes Supported:**
+  - Application Build
+  - Data Pipeline
+  - Evaluation Pipeline
+  - Infrastructure Provisioning
+  - Migration
+  - Safety Enforcement Layer
+  - Research Workflow
+
+> **Template Rule:** This document defines structure, completion standards, and governance grammar.  
+> It is NOT executable until fully instantiated with concrete values.
+
+---
+
+## STATUS
+
+* **Status:** [DRAFT | SPEC-COMPLETE | PREFLIGHT-READY | EXECUTION-READY | EXECUTED | VERIFIED | BREACHED]
+* **Contract Version:** [vX.X.X]
+
+---
+
+## COMPLETION STANDARD (MANDATORY)
+
+A contract instance is INVALID if it contains:
+
+- unresolved placeholders `[ ... ]`
+- vague or non-concrete nouns
+- unverifiable claims
+- missing verification methods
+- undefined conflict resolutions
+- evidence references without paths
+- contradictions across sections
+
+---
+
+## FIELD SYNTAX CONVENTIONS
+
+- `[Required Value]`
+- `(Choose one: A | B | C)`
+- `N/A — reason required`
+- `Example:` indicates non-binding sample
+
+---
+
+## 1. IDENTITY & DOMAIN
+
+**Requirement Level:** REQUIRED
+
+**Template Prompt:** Define the system identity and governing purpose.
+
+* **System Role:** [Concrete system description]
+* **Contract Class:** (Choose one from metadata list)
+* **TLC Domain:** (Choose: Epistemic | Human | Cognitive | Empirical)
+* **Primary Objective:** [Single sentence describing system law]
+
+<!-- Author Guidance:
+Use exact system type. Avoid aspirational language.
+Objective must be testable or observable.
+-->
+
+---
+
+## 2. CURRENT STATE & ENVIRONMENT (BASELINE)
+
+**Requirement Level:** REQUIRED
+
+**Template Prompt:** Define the verified starting state.
+
+* **Verified Assets (Must Exist):**
+  - [Exact file paths]
+* **Must NOT Exist:**
+  - [Forbidden artifacts]
+* **Generated Artifacts (Expected):**
+  - [Outputs of build]
+
+* **Hermetic Baseline Policy:**
+  - [Describe cleaning strategy OR N/A — reason]
+
 * **Hard Dependencies:**
-  * **Runtime:** [e.g., Node v20.11.0, Python 3.11.5]
-  * **Core Packages:** [Pinned to MAJOR.MINOR.PATCH]
-* **Dependency Resilience Protocol:**
-  * **Conflict:** Prioritize versions satisfying the **TLC Safety Layer**.
-  * **Availability:** If unreachable, Agent may increment to the nearest **Patch** version ($X.Y.Z+1$) only if API parity is maintained.
-  * **Vulnerability:** Known CVEs trigger a "Stop-Build" unless isolation wrappers are used.
+  - **Runtime:** [Exact versions]
+  - **Core Packages:** [Pinned versions]
 
-### 3. Execution Logic (The "Single-Pass" Path)
+---
 
-1. **Initialize & Clean:** Verify environment parity via `.c-rsp/preflight.py`; wipe orphaned state.
-2. **Layered Implementation:** Construct Hexagonal Architecture layers. **Strict Invariant:** No logic leakage between Domain and Infrastructure.
-3. **Dependency Synthesis:** Install via Lockfile Primacy. Resolve namespace collisions by aliasing conflicting modules.
-4. **Governance Integration:** Map code symbols to `THE_LIVING_CONSTITUTION.md` requirements.
-5. **Verification & Hash:** Generate `Verification_Receipt.json` and calculate the Idempotency Checksum.
+### 2A. Dependency Policy
 
-### 4. Constitutional Invariants (Regulated Boundaries)
+**Requirement Level:** REQUIRED
 
-* **INVARIANT_01 (Isolation):** No external network calls during build unless whitelisted.
-* **INVARIANT_02 (Type Safety):** Every function must have a Pydantic/TypeScript schema; no `Any` types.
-* **INVARIANT_03 (Idempotency):** Build must be deterministic. Strip timestamps/metadata from artifacts.
-* **INVARIANT_04 (Hardware):** Must validate hardware primitive compatibility (e.g., AVX-512) before logic execution.
+* **Conflict Resolution Rule:** [Define]
+* **Availability Rule:** [Exact fallback OR "halt"]
+* **Vulnerability Rule:** [Define CVE policy]
 
-### 5. Conflict Resolution Matrix (The "Break-Glass" Rules)
+<!-- Author Guidance:
+Do not allow implicit upgrades unless explicitly defined.
+-->
 
-| Conflict Type | Protocol |
-| :--- | :--- |
-| **Namespace Collision** | Rename internal modules; do not modify 3rd party source. |
-| **Schema Circularity** | Abstract shared types to a `primordial/` or `types/` layer. |
-| **Transitive License Breach** | Abort build; report to Compliance Officer. |
-| **Platform Entropy** | Force build via Container/Docker to ensure OS-level parity. |
-| **Idempotency Drift** | Strip non-deterministic headers (timestamps) from build output. |
+---
 
-### 6. Acceptance Criteria (The "Gavel")
+### 2B. Target Environment Profile
 
-| ID | Requirement | Verification Method |
-| :--- | :--- | :--- |
-| AC-1 | [Feature A] | [e.g., Run `npm test`] |
-| AC-2 | Safety Proof | Match `Verification_Receipt.json` against Constitutional Invariants. |
-| AC-3 | Determinism | Compare bit-for-bit hash of two consecutive build outputs. |
+**Requirement Level:** CONDITIONAL
 
-### 7. Pre-Flight Validation (The Gatekeeper)
+* **OS / Platform:** [e.g., Linux x86_64]
+* **Hardware Constraints:** [e.g., AVX2 | GPU | N/A — reason]
 
-* **Validator Path:** `./.c-rsp/preflight.py`
-* **Mandate:** The Agent **must** run this script first. If it returns a non-zero exit code, the Agent must halt and resolve the environment conflict.
-* **Logging:** All overrides must be recorded in `./.c-rsp/CONFLIC_LOG.md`.
-* **Verification Logic:**
+---
 
-  * [ ] `git clean -fdx` has been considered/executed.
-  * [ ] Lockfile matches current environment architecture.
-  * [ ] Hardware primitives verified for target execution.
+## 3. EXECUTION LOGIC (SINGLE-PASS PATH)
 
-### 8. Verification Mapping (The Matrix)
+**Requirement Level:** REQUIRED
 
-* **Claim:** "System is resilient to dependency drift."
-* **Evidence Required:** `logs/dependency_resolution.log` proving parity checks passed.
+**Template Prompt:** Define ordered execution steps.
+
+**Allowed Forms:**
+- Layered (Hexagonal)
+- Pipeline
+- DAG
+- Event-driven
+- Migration
+- Service bootstrap
+
+**Execution Steps:**
+
+1. [Step 1]
+2. [Step 2]
+3. [Step N]
+
+---
+
+### 3A. Decision Closure
+
+**Requirement Level:** REQUIRED
+
+* **Allowed Decisions:**
+  - [Explicit list]
+* **Prohibited Decisions:**
+  - [Explicit list]
+* **Default on Ambiguity:** [HALT | PROCEED WITH RULE]
+* **Retry Policy:** [Allowed | Forbidden]
+
+---
+
+## 4. CONSTITUTIONAL INVARIANTS
+
+---
+
+### 4A. Invariant Categories (TEMPLATE TAXONOMY)
+
+* Isolation Boundary
+* Type / Schema Discipline
+* Determinism / Idempotency
+* Environment Constraints
+* Security / Network Policy
+* Licensing / Compliance
+* Data Handling / Privacy
+* Observability / Evidence
+
+---
+
+### 4B. Project-Specific Invariants
+
+**Requirement Level:** REQUIRED
+
+* **INVARIANT_01:** [Define]
+* **INVARIANT_02:** [Define]
+* **INVARIANT_N:** [Define]
+
+<!-- Author Guidance:
+Each invariant must be enforceable and testable.
+-->
+
+---
+
+## 5. CONFLICT RESOLUTION MATRIX
+
+**Requirement Level:** REQUIRED
+
+### Conflict Categories (Template)
+
+- Dependency Conflict
+- Schema Conflict
+- Architecture Conflict
+- Runtime / Infra Conflict
+- Security / Compliance Conflict
+- Verification Conflict
+- Truth-State Conflict
+- Contract Drift
+
+---
+
+### Resolution Table
+
+| Conflict Type | Protocol | Severity | Action |
+|---------------|----------|----------|--------|
+| [Type] | [Resolution] | [Critical/Warning] | [Halt/Continue] |
+
+---
+
+## 6. ACCEPTANCE CRITERIA (THE GAVEL)
+
+---
+
+### Required Categories
+
+- Functional
+- Verification
+- Safety / Governance
+- Determinism
+- Evidence
+
+---
+
+### Optional Categories
+
+- Performance
+- Accessibility
+- Security
+- Cost
+- Migration Integrity
+
+---
+
+### Criteria Table
+
+| ID | Category | Requirement | Verification Method |
+|----|----------|------------|---------------------|
+| AC-1 | Functional | [Define] | [Command/Test] |
+| AC-2 | Determinism | [Define] | [Hash comparison] |
+
+---
+
+## 7. PRE-FLIGHT VALIDATION (GATEKEEPER)
+
+**Requirement Level:** REQUIRED
+
+* **Validator Path:** [Path]
+* **Execution Rule:** Must run before build
+
+---
+
+### Preflight Checks
+
+- [ ] Environment parity verified
+- [ ] Dependency lock verified
+- [ ] Required assets exist
+- [ ] Forbidden artifacts absent
+
+---
+
+### Cleaning Policy
+
+* **Dry Run Required:** YES / NO
+* **Protected Paths:** [List]
+* **Backup Required:** YES / NO
+
+---
+
+### Logging
+
+* **Log Path:** `./.c-rsp/CONFLICT_LOG.md`
+
+---
+
+## 8. VERIFICATION MAPPING (EVIDENCE MATRIX)
+
+**Requirement Level:** REQUIRED
+
+| Claim | Evidence | Artifact Path |
+|------|----------|--------------|
+| [Claim] | [Proof] | [Path] |
+
+---
+
+## 9. GOVERNANCE MAPPING
+
+**Requirement Level:** REQUIRED
+
+* **Mapping File:** `./.c-rsp/governance-map.json`
+
+Each module must define:
+- constitutional reference
+- invariant mapping
+- verification hook
+
+---
+
+## 10. VERIFICATION ARTIFACT SCHEMA
+
+**Requirement Level:** REQUIRED
+
+Example:
+
+```json
+{
+  "contract_version": "",
+  "project_name": "",
+  "commit_hash": "",
+  "environment": {},
+  "preflight_passed": true,
+  "acceptance_results": [],
+  "invariants_verified": [],
+  "artifact_hashes": {},
+  "exceptions": []
+}
+```
+
+---
+
+## 11. BREACH TAXONOMY
+
+| Code     | Description            |
+| -------- | ---------------------- |
+| BREACH-A | Unauthorized execution |
+| BREACH-B | Invariant violation    |
+| BREACH-C | Unverifiable claim     |
+| BREACH-D | Dependency deviation   |
+| BREACH-E | Non-determinism        |
+
+---
+
+## 12. HALT / PROCEED MATRIX
+
+| Condition                   | Severity | Action   |
+| --------------------------- | -------- | -------- |
+| Placeholder present         | Critical | Halt     |
+| Lockfile mismatch           | Critical | Halt     |
+| Optional constraint missing | Warning  | Continue |
+
+---
+
+## 13. N/A DECLARATION RULE
+
+All omitted sections must be filled as:
+
+`N/A — [explicit reason]`
+
+---
+
+## 14. AUTHOR GUIDELINES (APPENDIX)
+
+* Use concrete paths and values
+* Avoid vague language
+* Separate current vs intended state
+* Ensure every claim has evidence
+* Prefer measurable verification
+* Record uncertainty explicitly
+
+---
+
+## END OF TEMPLATE
+
+````
