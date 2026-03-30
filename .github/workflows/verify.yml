@@ -57,8 +57,8 @@ jobs:
 
       - name: Verify 4 safety domains defined
         run: |
-          DOMAIN_COUNT=$(grep -c '"id":' config/domains.ts)
-          echo "Found $DOMAIN_COUNT domains"
+          DOMAIN_COUNT=$(grep -E 'id: "(epistemic|human|cognitive|empirical)"' config/domains.ts | wc -l | tr -d ' ')
+          echo "Found $DOMAIN_COUNT domain entries"
           test "$DOMAIN_COUNT" -eq 4 || (echo "FAIL: Expected 4 domains, found $DOMAIN_COUNT" && exit 1)
           echo "PASS: 4 safety domains defined"
 
