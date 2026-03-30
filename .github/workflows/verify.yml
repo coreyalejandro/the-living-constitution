@@ -1,6 +1,7 @@
 name: Verify Living Constitution
 
 on:
+  workflow_dispatch:
   push:
     branches: [main, "feature/**"]
   pull_request:
@@ -11,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python verification dependencies
+        run: pip install -r requirements-verify.txt
 
       - name: Verify base camp structure exists
         run: |
@@ -58,10 +66,33 @@ jobs:
           test "$CLAIM_COUNT" -ge 20 || (echo "FAIL: Expected 20+ claims, found $CLAIM_COUNT" && exit 1)
           echo "PASS: Verification matrix has $CLAIM_COUNT claims"
 
-      - name: Verify project topology matches inventory
+      - name: Emit GitHub Actions provenance (stdout)
         run: |
-          python3 scripts/verify_project_topology.py --root .
+          echo "=== GitHub Actions provenance ==="
+          echo "GITHUB_RUN_ID=$GITHUB_RUN_ID"
+          echo "GITHUB_RUN_ATTEMPT=$GITHUB_RUN_ATTEMPT"
+          echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+          echo "GITHUB_WORKFLOW=$GITHUB_WORKFLOW"
+          echo "GITHUB_JOB=$GITHUB_JOB"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "RUNNER_OS=$RUNNER_OS"
+          date -u +"%Y-%m-%dT%H:%M:%SZ"
 
-      - name: Verify governance chain (invariants, inventory sync, ledger seed)
+      - name: Verify project topology (with governance chain)
         run: |
+          set -euo pipefail
+          python3 scripts/verify_project_topology.py --root . --with-governance
+
+      - name: Verify governance chain (parity second pass)
+        run: |
+          set -euo pipefail
           python3 scripts/verify_governance_chain.py --root .
+
+      - name: Upload governance verification run artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-verification-runs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verification/runs/*.json
+          if-no-files-found: error

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "claimed_remote": false,
+  "workflow_conclusion": null,
+  "workflow_run_id": null,
+  "workflow_run_url": null,
+  "workflow_run_attempt": null,
+  "artifact_name": null,
+  "artifact_commit_hash": null,
+  "artifact_upload_succeeded": null,
+  "captured_at_utc": null,
+  "notes": "Set claimed_remote true only after a successful GitHub Actions run with governance verification and artifact upload; fill fields from gh run view and downloaded artifact."
+}

@@ -12,7 +12,7 @@
       ],
       "verification_output": "JSON parse + registry field checks",
       "related_invariant_ids": ["INVARIANT_02", "INVARIANT_07"],
-      "last_updated_utc": "2026-03-30T18:30:00Z"
+      "last_updated_utc": "2026-03-30T22:45:00Z"
     },
     {
       "record_id": "gov-ledger-doctrine-map",
@@ -24,7 +24,7 @@
       ],
       "verification_output": "Doctrine entries non-empty invariant_ids",
       "related_invariant_ids": ["INVARIANT_01"],
-      "last_updated_utc": "2026-03-30T18:30:00Z"
+      "last_updated_utc": "2026-03-30T22:45:00Z"
     },
     {
       "record_id": "gov-ledger-inventory-sync",
@@ -37,7 +37,7 @@
       ],
       "verification_output": "Token match enforced by verify_governance_chain.py",
       "related_invariant_ids": ["INVARIANT_04"],
-      "last_updated_utc": "2026-03-30T18:30:00Z"
+      "last_updated_utc": "2026-03-30T22:45:00Z"
     },
     {
       "record_id": "gov-ledger-external-buildlattice",
@@ -46,7 +46,88 @@
       "evidence_ref": [],
       "verification_output": "No directory at recorded path at last inventory probe",
       "related_invariant_ids": ["INVARIANT_08"],
-      "last_updated_utc": "2026-03-30T18:30:00Z"
+      "last_updated_utc": "2026-03-30T22:45:00Z"
+    },
+    {
+      "record_id": "gov-ledger-seed-file",
+      "subject": "Evidence ledger seed JSON present and validated against evidence-ledger.schema.json",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "verification/evidence-ledger/seed.json",
+        "verification/evidence-ledger.schema.json",
+        "scripts/verify_governance_chain.py"
+      ],
+      "verification_output": "Runtime JSON Schema validation of all ledger records",
+      "related_invariant_ids": ["INVARIANT_07", "INVARIANT_11"],
+      "last_updated_utc": "2026-03-30T22:45:00Z"
+    },
+    {
+      "record_id": "gov-ledger-schema-runtime",
+      "subject": "Evidence ledger schema enforced at runtime via jsonschema Draft 2020-12",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "verification/evidence-ledger.schema.json",
+        "requirements-verify.txt"
+      ],
+      "verification_output": "verify_governance_chain.py validates each record",
+      "related_invariant_ids": ["INVARIANT_11"],
+      "last_updated_utc": "2026-03-30T22:45:00Z"
+    },
+    {
+      "record_id": "gov-ledger-run-artifact",
+      "subject": "Commit-bound governance verification artifact under verification/runs/",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "verification/governance-verification-run.schema.json",
+        "verification/runs/"
+      ],
+      "verification_output": "Per-run JSON written and validated against governance-verification-run.schema.json",
+      "related_invariant_ids": ["INVARIANT_12"],
+      "last_updated_utc": "2026-03-30T22:45:00Z"
+    },
+    {
+      "record_id": "gov-ledger-ci-parity",
+      "subject": "CI workflow runs same topology and governance commands as local",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        ".github/workflows/verify.yml",
+        "MASTER_PROJECT_INVENTORY.json#governance_artifacts.ci_verification_commands"
+      ],
+      "verification_output": "Workflow step matches ci_verification_commands block",
+      "related_invariant_ids": ["INVARIANT_13"],
+      "last_updated_utc": "2026-03-30T22:45:00Z"
+    },
+    {
+      "record_id": "gov-ledger-chain-closure",
+      "subject": "Referential closure of doctrine, invariant registry, enforcement map, evidence, inventory",
+      "evidence_state": "verified",
+      "evidence_ref": [
+        "scripts/verify_governance_chain.py",
+        "00-constitution/doctrine-to-invariant.map.json",
+        "03-enforcement/enforcement-map.json"
+      ],
+      "verification_output": "Full-chain checks in verify_governance_chain.py",
+      "related_invariant_ids": ["INVARIANT_14"],
+      "last_updated_utc": "2026-03-30T22:45:00Z"
+    },
+    {
+      "record_id": "gov-ledger-remote-ci-provenance",
+      "subject": "GitHub Actions remote execution and artifact upload provenance for governance verification",
+      "evidence_state": "unverified",
+      "evidence_ref": [
+        "verification/ci-remote-evidence/record.json",
+        ".github/workflows/verify.yml"
+      ],
+      "verification_output": "Update record.json after successful remote run; set claimed_remote true",
+      "related_invariant_ids": [
+        "INVARIANT_15",
+        "INVARIANT_16",
+        "INVARIANT_17",
+        "INVARIANT_18",
+        "INVARIANT_19",
+        "INVARIANT_20"
+      ],
+      "last_updated_utc": "2026-03-30T23:58:00Z"
     }
   ]
 }

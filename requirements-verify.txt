@@ -1,0 +1,2 @@
+# Used by scripts/verify_governance_chain.py (JSON Schema validation).
+jsonschema>=4.22.0

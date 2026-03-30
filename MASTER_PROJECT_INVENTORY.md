@@ -1,10 +1,10 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-03-30T18:30:00Z  
+**Generated (UTC):** 2026-03-30T23:58:00Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (source of truth for the verifier)
 
-**Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths for the invariant registry, doctrine map, enforcement map, agent capabilities, evidence ledger schema/seed, and governance verification template. **Executable checks:** `scripts/verify_governance_chain.py` (required); `scripts/verify_project_topology.py --with-governance` runs topology then governance.
+**Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths, `artifact_manifest` (path + verification_status + evidence linkage), run schema, and `ci_verification_commands` (must match CI). **Executable checks:** `pip install -r requirements-verify.txt` then `python3 scripts/verify_project_topology.py --root . --with-governance` and `python3 scripts/verify_governance_chain.py --root .`; run artifacts under `verification/runs/*-governance.json`.
 
 **Registry path migration (ConsentChain):** `04-consentchain/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
 

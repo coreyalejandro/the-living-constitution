@@ -86,6 +86,86 @@
       "enforcement_mechanism": "scripts/verify_project_topology.py --with-governance; scripts/verify_governance_chain.py",
       "evidence_path_or_rule": "governance_required_paths in verify_governance_chain.py",
       "breach_taxonomy": "BREACH-C"
+    },
+    {
+      "id": "INVARIANT_11",
+      "category": "Type / Schema Discipline",
+      "description": "All evidence ledger JSON records must pass JSON Schema validation against verification/evidence-ledger.schema.json at verification runtime.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (Draft 2020-12 validation via jsonschema)",
+      "evidence_path_or_rule": "verification/evidence-ledger.schema.json; verification/evidence-ledger/*.json",
+      "breach_taxonomy": "BREACH-B"
+    },
+    {
+      "id": "INVARIANT_12",
+      "category": "Determinism / Idempotency",
+      "description": "Every governance verification run must emit a commit-bound artifact under verification/runs/ populated with real git HEAD and run outcomes.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (writes verification/runs/<timestamp>-governance.json)",
+      "evidence_path_or_rule": "verification/governance-verification-run.schema.json; verification/runs/*.json",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_13",
+      "category": "Isolation Boundary",
+      "description": "CI and local verification must invoke the same topology and governance commands with identical flags (no skipped governance checks in CI).",
+      "enforcement_mechanism": ".github/workflows/verify.yml; parity enforced by workflow inspection + verify_governance_chain.py",
+      "evidence_path_or_rule": ".github/workflows/verify.yml steps; documented command block in MASTER_PROJECT_INVENTORY.md",
+      "breach_taxonomy": "BREACH-C"
+    },
+    {
+      "id": "INVARIANT_14",
+      "category": "Type / Schema Discipline",
+      "description": "Doctrine to invariant to enforcement to evidence to inventory chain must be referentially complete with no dangling nodes.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (full-chain referential checks)",
+      "evidence_path_or_rule": "00-constitution/doctrine-to-invariant.map.json; 03-enforcement/enforcement-map.json; MASTER_PROJECT_INVENTORY.json#governance_artifacts",
+      "breach_taxonomy": "BREACH-A"
+    },
+    {
+      "id": "INVARIANT_15",
+      "category": "Observability / Evidence",
+      "description": "Remote GitHub Actions execution evidence must exist for governance verification (not workflow file inspection alone).",
+      "enforcement_mechanism": "verification/ci-remote-evidence/record.json; GitHub Actions run logs",
+      "evidence_path_or_rule": "verification/ci-remote-evidence/record.json updated after each provenance run; gh run view",
+      "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_16",
+      "category": "Observability / Evidence",
+      "description": "Remote workflow conclusion must be success for governance CI correctness to be claimed.",
+      "enforcement_mechanism": "Human + ci-remote-evidence record; gh run view conclusion",
+      "evidence_path_or_rule": "record.json workflow_conclusion field",
+      "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_17",
+      "category": "Observability / Evidence",
+      "description": "Artifact upload step must succeed remotely for cloud governance run artifact behavior to be claimed.",
+      "enforcement_mechanism": "GitHub Actions upload-artifact step logs; gh run view",
+      "evidence_path_or_rule": "record.json artifact_upload_succeeded",
+      "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_18",
+      "category": "Determinism / Idempotency",
+      "description": "Uploaded remote governance artifact must correspond to the executed commit SHA and contain a non-empty commit_hash matching validated HEAD.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py (commit_hash, GITHUB_SHA parity in CI)",
+      "evidence_path_or_rule": "governance run JSON commit_hash; record.json artifact_commit_hash",
+      "breach_taxonomy": "BREACH-D"
+    },
+    {
+      "id": "INVARIANT_19",
+      "category": "Isolation Boundary",
+      "description": "Remote workflow must not weaken or omit the canonical governance verification commands.",
+      "enforcement_mechanism": "verify_governance_chain.py EXPECTED_CI_COMMAND_LINES; verify.yml substring checks",
+      "evidence_path_or_rule": ".github/workflows/verify.yml; MASTER_PROJECT_INVENTORY ci_verification_commands",
+      "breach_taxonomy": "BREACH-C"
+    },
+    {
+      "id": "INVARIANT_20",
+      "category": "Observability / Evidence",
+      "description": "Verification and truth reporting must distinguish remote-verified facts from local-only facts and not-claimed items.",
+      "enforcement_mechanism": "Human V&T discipline; ci-remote-evidence record schema",
+      "evidence_path_or_rule": "Pass 3 V&T output; verification/ci-remote-evidence/record.json",
+      "breach_taxonomy": "BREACH-E"
     }
   ],
   "failure_class_artifacts": [

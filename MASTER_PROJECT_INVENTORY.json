@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T18:30:00Z",
+    "generated_at_utc": "2026-03-30T23:58:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -23,7 +23,7 @@
     ]
   },
   "governance_artifacts": {
-    "contract_version": "v1.0.0",
+    "contract_version": "v1.2.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
       "invariant_registry": "00-constitution/invariant-registry.json",
@@ -32,11 +32,73 @@
       "agent_capabilities": "02-agents/agent-capabilities.json",
       "evidence_ledger_schema": "verification/evidence-ledger.schema.json",
       "evidence_ledger_seed": "verification/evidence-ledger/seed.json",
-      "governance_verification_template": "verification/governance-verification.template.json"
+      "governance_verification_template": "verification/governance-verification.template.json",
+      "governance_verification_run_schema": "verification/governance-verification-run.schema.json",
+      "ci_remote_evidence_record": "verification/ci-remote-evidence/record.json"
     },
+    "artifact_manifest": [
+      {
+        "canonical_key": "invariant_registry",
+        "relative_path": "00-constitution/invariant-registry.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": "gov-ledger-invariant-registry"
+      },
+      {
+        "canonical_key": "doctrine_to_invariant_map",
+        "relative_path": "00-constitution/doctrine-to-invariant.map.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": "gov-ledger-doctrine-map"
+      },
+      {
+        "canonical_key": "enforcement_map",
+        "relative_path": "03-enforcement/enforcement-map.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "agent_capabilities",
+        "relative_path": "02-agents/agent-capabilities.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "evidence_ledger_schema",
+        "relative_path": "verification/evidence-ledger.schema.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": "gov-ledger-schema-runtime"
+      },
+      {
+        "canonical_key": "evidence_ledger_seed",
+        "relative_path": "verification/evidence-ledger/seed.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": "gov-ledger-seed-file"
+      },
+      {
+        "canonical_key": "governance_verification_template",
+        "relative_path": "verification/governance-verification.template.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": null
+      },
+      {
+        "canonical_key": "governance_verification_run_schema",
+        "relative_path": "verification/governance-verification-run.schema.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": "gov-ledger-run-artifact"
+      },
+      {
+        "canonical_key": "ci_remote_evidence_record",
+        "relative_path": "verification/ci-remote-evidence/record.json",
+        "verification_status": "verified",
+        "evidence_ledger_record_id": "gov-ledger-remote-ci-provenance"
+      }
+    ],
     "enforcement_scripts": [
       "scripts/verify_governance_chain.py",
       "scripts/verify_project_topology.py"
+    ],
+    "ci_verification_commands": [
+      "python3 scripts/verify_project_topology.py --root . --with-governance",
+      "python3 scripts/verify_governance_chain.py --root ."
     ]
   },
   "tlc_projects_overlay": {

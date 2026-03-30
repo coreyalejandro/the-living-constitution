@@ -15,7 +15,17 @@
         "INVARIANT_07",
         "INVARIANT_08",
         "INVARIANT_09",
-        "INVARIANT_10"
+        "INVARIANT_10",
+        "INVARIANT_11",
+        "INVARIANT_12",
+        "INVARIANT_13",
+        "INVARIANT_14",
+        "INVARIANT_15",
+        "INVARIANT_16",
+        "INVARIANT_17",
+        "INVARIANT_18",
+        "INVARIANT_19",
+        "INVARIANT_20"
       ],
       "enforcement_hook": "scripts/verify_governance_chain.py",
       "evidence_hook": "verification/evidence-ledger/",
@@ -43,7 +53,17 @@
     {
       "id": "github_ci_verify_workflow",
       "constitutional_reference": "CLAUDE.md",
-      "invariant_ids": ["INVARIANT_06", "INVARIANT_10"],
+      "invariant_ids": [
+        "INVARIANT_06",
+        "INVARIANT_10",
+        "INVARIANT_13",
+        "INVARIANT_15",
+        "INVARIANT_16",
+        "INVARIANT_17",
+        "INVARIANT_18",
+        "INVARIANT_19",
+        "INVARIANT_20"
+      ],
       "enforcement_hook": ".github/workflows/verify.yml",
       "evidence_hook": "GitHub Actions run logs",
       "inventory_presence": "N/A — platform evidence external to repo clone",
