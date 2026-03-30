@@ -14,6 +14,7 @@ Exit codes: 0 OK, 1 validation failure, 2 usage/read/dependency error
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import platform
@@ -86,6 +87,13 @@ def _github_actions_provenance() -> Dict[str, Any]:
     }
 
 
+def _workflow_sha256(root: Path) -> str:
+    p = root / ".github" / "workflows" / "verify.yml"
+    if not p.is_file():
+        return ""
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
 def _git_head(root: Path) -> str:
     git = shutil.which("git")
     if not git:
@@ -135,6 +143,51 @@ def _evidence_hook_is_checkable(path_str: str) -> bool:
     if "/" not in s:
         return False
     return True
+
+
+def _check_ci_provenance_inventory(root: Path, data: Dict[str, Any], errors: List[str]) -> None:
+    """INVARIANT_21: inventory ci_provenance vs verify.yml hash; verified vs remote record."""
+    cp = data.get("ci_provenance")
+    if not isinstance(cp, dict):
+        errors.append("INVARIANT_21: MASTER_PROJECT_INVENTORY.json must include ci_provenance object")
+        return
+    wh = _workflow_sha256(root)
+    if not wh:
+        errors.append("INVARIANT_21: cannot compute .github/workflows/verify.yml sha256")
+        return
+    inv_h = str(cp.get("verify_workflow_sha256") or "").strip()
+    if inv_h != wh:
+        errors.append(
+            "INVARIANT_21: ci_provenance.verify_workflow_sha256 must equal sha256(.github/workflows/verify.yml) "
+            f"(inventory {inv_h!r} vs current {wh!r})"
+        )
+    st = str(cp.get("status") or "").strip()
+    if st not in ("verified", "pending"):
+        errors.append(f"INVARIANT_21: ci_provenance.status must be verified|pending (got {st!r})")
+        return
+    for k in ("last_verified_run_id", "last_verified_commit", "artifact_name", "verify_workflow_sha256", "status"):
+        v = cp.get(k)
+        if v is None or (isinstance(v, str) and not str(v).strip()):
+            errors.append(f"INVARIANT_21: ci_provenance missing or empty {k!r}")
+    if st != "verified":
+        return
+    rec_path = root / "verification" / "ci-remote-evidence" / "record.json"
+    if not rec_path.is_file():
+        errors.append("INVARIANT_21: status=verified requires verification/ci-remote-evidence/record.json")
+        return
+    rec = _load_json(rec_path)
+    if str(cp.get("last_verified_run_id")) != str(rec.get("workflow_run_id")):
+        errors.append(
+            "INVARIANT_21: ci_provenance.last_verified_run_id must match record.json workflow_run_id when status=verified"
+        )
+    if str(cp.get("last_verified_commit")) != str(rec.get("artifact_commit_hash")):
+        errors.append(
+            "INVARIANT_21: ci_provenance.last_verified_commit must match record.json artifact_commit_hash when status=verified"
+        )
+    if str(cp.get("artifact_name")) != str(rec.get("artifact_name")):
+        errors.append(
+            "INVARIANT_21: ci_provenance.artifact_name must match record.json artifact_name when status=verified"
+        )
 
 
 def _check_ci_remote_record(root: Path, errors: List[str]) -> None:
@@ -299,10 +352,10 @@ def _collect_errors(root: Path) -> Tuple[
     reg = _load_json(inv_path)
     inv_rows = reg.get("invariants", [])
     inv_ids = {x["id"] for x in inv_rows if isinstance(x, dict) and "id" in x}
-    expected = {f"INVARIANT_{i:02d}" for i in range(1, 21)}
+    expected = {f"INVARIANT_{i:02d}" for i in range(1, 22)}
     if inv_ids != expected:
         inv_fail.append(
-            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_20; got {sorted(inv_ids)}"
+            f"invariant-registry must define exactly INVARIANT_01..INVARIANT_21; got {sorted(inv_ids)}"
         )
 
     for row in inv_rows:
@@ -401,6 +454,7 @@ def _collect_errors(root: Path) -> Tuple[
     _check_inventory_manifest(root, data, errors, broken)
     _check_ci_parity(root, errors)
     _check_ci_remote_record(root, errors)
+    _check_ci_provenance_inventory(root, data, errors)
 
     gov = data.get("governance_artifacts") or {}
     canonical = gov.get("canonical_paths") or {}
@@ -450,6 +504,41 @@ def _collect_errors(root: Path) -> Tuple[
     return errors, broken, inv_fail, missing_ev, schema_err, inv_ok
 
 
+def _github_actions_post_write_checks(
+    runs_dir: Path,
+    artifact_path: Path,
+    errors: List[str],
+) -> None:
+    """INVARIANT_21: in CI, run artifact must be present, latest, and bound to this workflow run id."""
+    if os.environ.get("GITHUB_ACTIONS", "").lower() != "true":
+        return
+    json_files = sorted(runs_dir.glob("*.json"), key=lambda p: p.stat().st_mtime)
+    if not json_files:
+        errors.append(
+            "INVARIANT_21: GITHUB_ACTIONS requires at least one verification/runs/*.json after governance write"
+        )
+        return
+    latest = json_files[-1]
+    if latest.resolve() != artifact_path.resolve():
+        errors.append(
+            f"INVARIANT_21: newest verification/runs artifact must be this run ({artifact_path.name}); newest is {latest.name}"
+        )
+    rid = (os.environ.get("GITHUB_RUN_ID") or "").strip()
+    if not rid:
+        errors.append("INVARIANT_21: GITHUB_RUN_ID must be non-empty in GitHub Actions for provenance binding")
+        return
+    try:
+        data = _load_json(artifact_path)
+    except (OSError, json.JSONDecodeError):
+        errors.append("INVARIANT_21: cannot re-read run artifact for run-id check")
+        return
+    gh = data.get("github_actions_provenance") or {}
+    if str(gh.get("workflow_run_id") or "") != rid:
+        errors.append(
+            "INVARIANT_21: artifact github_actions_provenance.workflow_run_id must match GITHUB_RUN_ID"
+        )
+
+
 def _build_acceptance_results(
     has_fail: bool,
 ) -> List[Dict[str, Any]]:
@@ -483,12 +572,21 @@ def main() -> None:
 
     gh_prov = _github_actions_provenance()
     gsha = (gh_prov.get("sha") or "").strip()
-    if gsha and gsha != commit_hash:
+    if os.environ.get("GITHUB_ACTIONS", "").lower() == "true":
+        if not gsha:
+            merged.append("INVARIANT_21: GITHUB_SHA must be non-empty in GitHub Actions")
+        elif gsha != commit_hash:
+            merged.append(
+                f"INVARIANT_21: governance artifact commit_hash must match GITHUB_SHA "
+                f"(GITHUB_SHA={gsha!r} git_HEAD={commit_hash!r})"
+            )
+    elif gsha and gsha != commit_hash:
         merged.append(
             f"github_actions provenance GITHUB_SHA ({gsha}) != git rev-parse HEAD ({commit_hash})"
         )
 
     has_fail = len(merged) > 0
+    wf_sha = _workflow_sha256(root)
 
     run_payload: Dict[str, Any] = {
         "commit_hash": commit_hash,
@@ -509,6 +607,7 @@ def main() -> None:
         "artifact_path": artifact_rel,
         "github_actions_provenance": gh_prov,
         "commit_matches_github_sha": (not gsha) or (gsha == commit_hash),
+        "verify_workflow_sha256": wf_sha,
     }
 
     run_schema_path = root / "verification" / "governance-verification-run.schema.json"
@@ -528,6 +627,28 @@ def main() -> None:
     except OSError as e:
         print(f"ERROR: cannot write {artifact_path}: {e}", file=sys.stderr)
         sys.exit(2)
+
+    post: List[str] = []
+    _github_actions_post_write_checks(runs_dir, artifact_path, post)
+    if post:
+        merged.extend(post)
+        has_fail = True
+        run_payload["failures"] = merged
+        run_payload["run_status"] = "failed"
+        run_payload["acceptance_results"] = _build_acceptance_results(True)
+        try:
+            run_validator = _validator_for(run_schema_path)
+            run_validator.validate(run_payload)
+        except Exception as e:
+            print(f"ERROR: run artifact failed schema validation after post-checks: {e}", file=sys.stderr)
+            sys.exit(2)
+        try:
+            with artifact_path.open("w", encoding="utf-8") as f:
+                json.dump(run_payload, f, indent=2, sort_keys=False)
+                f.write("\n")
+        except OSError as e:
+            print(f"ERROR: cannot rewrite {artifact_path}: {e}", file=sys.stderr)
+            sys.exit(2)
 
     if has_fail:
         print("ERROR: governance chain validation failed:", file=sys.stderr)

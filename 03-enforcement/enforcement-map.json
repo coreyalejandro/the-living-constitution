@@ -25,7 +25,8 @@
         "INVARIANT_17",
         "INVARIANT_18",
         "INVARIANT_19",
-        "INVARIANT_20"
+        "INVARIANT_20",
+        "INVARIANT_21"
       ],
       "enforcement_hook": "scripts/verify_governance_chain.py",
       "evidence_hook": "verification/evidence-ledger/",
@@ -62,7 +63,8 @@
         "INVARIANT_17",
         "INVARIANT_18",
         "INVARIANT_19",
-        "INVARIANT_20"
+        "INVARIANT_20",
+        "INVARIANT_21"
       ],
       "enforcement_hook": ".github/workflows/verify.yml",
       "evidence_hook": "GitHub Actions run logs",

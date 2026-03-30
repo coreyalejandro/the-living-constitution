@@ -86,6 +86,10 @@
     "commit_matches_github_sha": {
       "type": "boolean",
       "description": "True if GITHUB_SHA matches git HEAD, or not in GitHub Actions."
+    },
+    "verify_workflow_sha256": {
+      "type": "string",
+      "description": "sha256 hex of .github/workflows/verify.yml at verification time (drift detection)."
     }
   },
   "additionalProperties": true

@@ -5,6 +5,7 @@
 
 ## What Was Just Completed
 
+- **Pass 4 (continuous provenance):** INVARIANT_21; `ci_provenance` on `MASTER_PROJECT_INVENTORY.json`; `verify_governance_chain.py` CI bindings + workflow hash drift; `.github/workflows/verify.yml` upload then download + `scripts/ci_self_verify_governance_artifact.py`; `governance-verification-run.schema.json` adds `verify_workflow_sha256`.
 - Added machine-readable governance artifacts under `00-constitution/`, `02-agents/`, `03-enforcement/`, `verification/`.
 - Added `scripts/verify_governance_chain.py` and extended `scripts/verify_project_topology.py` with `--with-governance`.
 - **C-RSP Pass 2 (hardening):** INVARIANT_11–INVARIANT_14; runtime JSON Schema validation for all `verification/evidence-ledger/*.json` via `jsonschema` + `requirements-verify.txt`; commit-bound run artifacts under `verification/runs/<timestamp>-governance.json` validated against `governance-verification-run.schema.json`; full-chain referential checks; `governance_artifacts.artifact_manifest` + `ci_verification_commands`; CI parity (`pip install -r requirements-verify.txt`, same two python commands as inventory) and `upload-artifact` for `verification/runs/*.json`.

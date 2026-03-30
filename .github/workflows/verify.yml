@@ -99,3 +99,18 @@ jobs:
           name: governance-verification-runs-${{ github.run_id }}-${{ github.run_attempt }}
           path: verification/runs/*.json
           if-no-files-found: error
+
+      - name: Download governance artifact for CI self-verification
+        if: success()
+        uses: actions/download-artifact@v4
+        with:
+          name: governance-verification-runs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verification/_ci_download_governance
+
+      - name: CI self-verify governance artifact (schema + GITHUB_SHA)
+        if: success()
+        env:
+          GITHUB_ARTIFACT_DIR: verification/_ci_download_governance
+        run: |
+          set -euo pipefail
+          python3 scripts/ci_self_verify_governance_artifact.py

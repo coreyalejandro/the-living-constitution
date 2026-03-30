@@ -166,6 +166,14 @@
       "enforcement_mechanism": "Human V&T discipline; ci-remote-evidence record schema",
       "evidence_path_or_rule": "Pass 3 V&T output; verification/ci-remote-evidence/record.json",
       "breach_taxonomy": "BREACH-E"
+    },
+    {
+      "id": "INVARIANT_21",
+      "category": "Observability / Evidence",
+      "description": "Every CI run must produce a governance artifact whose commit_hash matches GITHUB_SHA and is downloadable via artifact upload; inventory ci_provenance must track verify.yml hash and align with remote record when verified.",
+      "enforcement_mechanism": "scripts/verify_governance_chain.py; .github/workflows/verify.yml upload + download self-verify; MASTER_PROJECT_INVENTORY.json ci_provenance",
+      "evidence_path_or_rule": "verification/runs/*-governance.json; governance-verification-run.schema.json; verification/ci-remote-evidence/record.json; GitHub Actions artifacts",
+      "breach_taxonomy": "BREACH-E"
     }
   ],
   "failure_class_artifacts": [

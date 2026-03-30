@@ -9,7 +9,7 @@
     {
       "id": "DOCTRINE_IDEMPOTENCY",
       "title": "The Idempotency Doctrine",
-      "invariant_ids": ["INVARIANT_02", "INVARIANT_04", "INVARIANT_10", "INVARIANT_12", "INVARIANT_18"],
+      "invariant_ids": ["INVARIANT_02", "INVARIANT_04", "INVARIANT_10", "INVARIANT_12", "INVARIANT_18", "INVARIANT_21"],
       "failure_class_ids": ["F2", "F3"],
       "notes": "Machine-checkable layers: deterministic verification scripts and synchronized inventory."
     },
@@ -58,7 +58,8 @@
         "INVARIANT_13",
         "INVARIANT_15",
         "INVARIANT_16",
-        "INVARIANT_17"
+        "INVARIANT_17",
+        "INVARIANT_21"
       ],
       "failure_class_ids": ["F2"],
       "notes": "Verification-before-done requires executable checks and ledger evidence."

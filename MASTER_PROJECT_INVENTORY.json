@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-03-30T23:59:30Z",
+    "generated_at_utc": "2026-03-31T12:00:00Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -21,6 +21,13 @@
       "Paths are absolute where recorded; unknown or not applicable use explicit null or unknown token.",
       "Do not infer repo identity from similar folder names (e.g. build-lattice-guard vs buildlattice)."
     ]
+  },
+  "ci_provenance": {
+    "last_verified_run_id": "23745629659",
+    "last_verified_commit": "feeacf4f985360a7474f113945bcbe296bfb45a9",
+    "artifact_name": "governance-verification-runs-23745629659-1",
+    "verify_workflow_sha256": "137cc0657e2802c94b48c5a2d1b94ae46ee388f0ac38e1f967f094faa6fd92ba",
+    "status": "verified"
   },
   "governance_artifacts": {
     "contract_version": "v1.2.0",
