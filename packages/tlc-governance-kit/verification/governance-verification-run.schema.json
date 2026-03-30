@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/schemas/governance-verification-run.json",
+  "title": "TLC Governance Verification Run Artifact",
+  "type": "object",
+  "required": [
+    "commit_hash",
+    "timestamp",
+    "invariants_verified",
+    "acceptance_results",
+    "failures",
+    "environment",
+    "run_status",
+    "broken_chain_links",
+    "invariant_failures",
+    "missing_evidence_explicit",
+    "schema_validation_errors"
+  ],
+  "properties": {
+    "commit_hash": {
+      "type": "string",
+      "minLength": 7,
+      "description": "git rev-parse HEAD in the repo under verification."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC ISO-8601 instant when the run artifact was written."
+    },
+    "invariants_verified": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Invariant ids that passed this run (subset when partial failure before exit)."
+    },
+    "acceptance_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "passed"],
+        "properties": {
+          "id": { "type": "string" },
+          "passed": { "type": "boolean" },
+          "detail": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Human-readable failure lines (full set on exit 1)."
+    },
+    "environment": {
+      "type": "object",
+      "description": "Python version, platform, working directory."
+    },
+    "run_status": {
+      "type": "string",
+      "enum": ["passed", "failed"]
+    },
+    "broken_chain_links": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "invariant_failures": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "missing_evidence_explicit": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence ledger rows with evidence_state missing or related gaps."
+    },
+    "schema_validation_errors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "artifact_path": {
+      "type": "string",
+      "description": "Relative path of this run file under repo root."
+    },
+    "github_actions_provenance": {
+      "type": "object",
+      "description": "Populated when GITHUB_ACTIONS=true; empty object locally."
+    },
+    "commit_matches_github_sha": {
+      "type": "boolean",
+      "description": "True if GITHUB_SHA matches git HEAD, or not in GitHub Actions."
+    },
+    "verify_workflow_sha256": {
+      "type": "string",
+      "description": "sha256 hex of .github/workflows/verify.yml at verification time (drift detection)."
+    }
+  },
+  "additionalProperties": true
+}

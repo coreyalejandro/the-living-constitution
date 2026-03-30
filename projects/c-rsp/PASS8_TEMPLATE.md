@@ -1,0 +1,67 @@
+# PASS 8 — Replication + standardization template
+
+Use this contract when institutionalizing C-RSP governance in a **satellite** repository using `packages/tlc-governance-kit/` from The Living Constitution. TLC itself keeps its own `scripts/` and full topology verifier; satellites omit `verify_project_topology.py` unless they adopt TLC-style `projects/` overlays.
+
+## 1. Minimal required files
+
+- `00-constitution/invariant-registry.json` — INVARIANT_01 through INVARIANT_37  
+- `00-constitution/doctrine-to-invariant.map.json`  
+- `00-constitution/invariants/F1–F5` markdown (failure-class artifacts referenced by registry)  
+- `03-enforcement/enforcement-map.json` — use kit `enforcement-map.satellite.json` as a base; every invariant id must appear in some module  
+- `02-agents/agent-capabilities.json`  
+- `verification/evidence-ledger.schema.json`, `verification/evidence-ledger/seed.json`  
+- `verification/governance-verification.template.json`, `verification/governance-verification-run.schema.json`  
+- `verification/ci-remote-evidence/record.json`  
+- `verification/regression-ledger.schema.json`, `verification/regression-ledger/ledger.json`  
+- `verification/review-escalation-policy.json`  
+- `verification/tip-state-policy.json`  
+- `verification/pass7-branch-verification-policy.json`  
+- `verification/GOVERNANCE_SYSTEM_CARD.md` (must contain: `Purpose:`, `Escalation thresholds`, `Not claimed:`, `evidence boundary`)  
+- `verification/independent-review/last-review.json`  
+- `verification/MATRIX.md` (claims ↔ evidence; template in kit)  
+- `MASTER_PROJECT_INVENTORY.json` and `MASTER_PROJECT_INVENTORY.md` with matching `meta.generated_at_utc`  
+- `requirements-verify.txt`  
+- `scripts/` from the kit (including generalized `verify_governance_chain.py`)  
+- `.github/workflows/verify.yml` — must include **every** line listed in `governance_artifacts.ci_verification_commands` (exact substring match)
+
+## 2. Required CI steps (typical satellite)
+
+Install: `pip install -r requirements-verify.txt`.
+
+Minimum commands recorded in inventory and present in the workflow:
+
+1. `python3 scripts/verify_governance_chain.py --root .`  
+2. `python3 scripts/verify_institutionalization.py --root .`
+
+Recommended full pipeline (same order as TLC governance lane):
+
+- `verify_governance_chain.py`  
+- `append_regression_ledger.py` (GitHub Actions only; no-ops locally)  
+- `verify_institutionalization.py`  
+- `governance_failure_injection_tests.py`  
+- Upload `verification/runs/*.json` as an artifact  
+- Download artifact and run `ci_self_verify_governance_artifact.py` with `GITHUB_ARTIFACT_DIR` set  
+
+Include `workflow_dispatch`, `push`, `pull_request`, and `schedule` with `cron` for institutionalization (INVARIANT_22).
+
+## 3. Required invariants (01–37)
+
+The invariant registry must define **exactly** `INVARIANT_01` … `INVARIANT_37` with non-empty `enforcement_mechanism` and `evidence_path_or_rule`. Enforcement modules must cover all 37 ids (union across modules).
+
+## 4. Promotion model (PASS 7 frozen-context rule)
+
+- `ci_provenance.status=verified` and `tip_state_truth=tip_verified` are valid **only** on a **frozen verification context**: detached `HEAD` at the anchor, a branch matching `provenance/verified-*`, or a tag matching `tag_glob` in `pass7-branch-verification-policy.json` (default `tlc-gov-verified-*`), with `HEAD == last_verified_commit == record.json artifact_commit_hash`.  
+- On **mutable** branch tips (`main`, `feature/*`, …), inventory must use `pending` + `tip_pending` even if `HEAD` equals the last qualifying commit.  
+- Canonical verified **history** remains `verification/ci-remote-evidence/record.json` and `verification/regression-ledger/ledger.json`.
+
+## 5. No-CI-writeback rule
+
+Do **not** configure CI to commit or push updates to `MASTER_PROJECT_INVENTORY.json`, `verification/ci-remote-evidence/record.json`, or other governance anchors on the default branch. Humans promote provenance after a qualifying green run by editing those files in a normal commit. Policy text: `tip-state-policy.json` and `review-escalation-policy.json`.
+
+## 6. Bootstrap tip (satellite)
+
+If `HEAD` has moved past the anchor commit in `last_remote_qualifying_commit` and protected governance files changed, set `escalation_state` to at least `review_required` until a new qualifying remote run updates the anchor (see `verify_governance_chain` INVARIANT_30).
+
+---
+
+**Reference implementation:** `coreyalejandro/consentchain` after PASS 8 (governance workflow + kit scripts).

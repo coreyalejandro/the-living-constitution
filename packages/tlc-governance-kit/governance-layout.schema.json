@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/governance-layout.schema.json",
+  "title": "Governance layout (optional future use)",
+  "description": "Satellite repos currently use the default paths documented in README.md (00-constitution, 02-agents, 03-enforcement, verification/, MASTER_PROJECT_INVENTORY.json). A repo-root governance-layout.json could override these without forking scripts; not required for PASS 8.",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "layout_id": { "type": "string" },
+    "paths": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

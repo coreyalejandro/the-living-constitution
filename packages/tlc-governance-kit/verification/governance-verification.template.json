@@ -1,0 +1,11 @@
+{
+  "contract_version": "v1.0.0",
+  "project_name": "the-living-constitution",
+  "commit_hash": "",
+  "environment": {},
+  "preflight_passed": true,
+  "acceptance_results": [],
+  "invariants_verified": [],
+  "artifact_hashes": {},
+  "exceptions": []
+}

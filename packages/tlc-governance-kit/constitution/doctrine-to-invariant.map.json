@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "map_id": "tlc-doctrine-to-invariant",
+  "source_prose": [
+    "THE_LIVING_CONSTITUTION.md",
+    "00-constitution/constitution.md"
+  ],
+  "doctrines": [
+    {
+      "id": "DOCTRINE_IDEMPOTENCY",
+      "title": "The Idempotency Doctrine",
+      "invariant_ids": [
+        "INVARIANT_02",
+        "INVARIANT_04",
+        "INVARIANT_10",
+        "INVARIANT_12",
+        "INVARIANT_18",
+        "INVARIANT_21",
+        "INVARIANT_30",
+        "INVARIANT_31",
+        "INVARIANT_32",
+        "INVARIANT_37"
+      ],
+      "failure_class_ids": ["F2", "F3"],
+      "notes": "Machine-checkable layers: deterministic verification scripts and synchronized inventory."
+    },
+    {
+      "id": "DOCTRINE_CALIBRATED_TRUTH",
+      "title": "The Calibrated Truth Doctrine",
+      "invariant_ids": [
+        "INVARIANT_01",
+        "INVARIANT_07",
+        "INVARIANT_08",
+        "INVARIANT_11",
+        "INVARIANT_20"
+      ],
+      "failure_class_ids": ["F1"],
+      "notes": "Claim calibration maps to evidence ledger states and MATRIX-backed evidence refs."
+    },
+    {
+      "id": "DOCTRINE_CENSUS",
+      "title": "The Census Doctrine",
+      "invariant_ids": ["INVARIANT_03", "INVARIANT_09", "INVARIANT_14"],
+      "failure_class_ids": [],
+      "notes": "Inventory is the canonical census for governance artifacts and project overlays."
+    }
+  ],
+  "articles": [
+    {
+      "id": "ARTICLE_I",
+      "title": "Bill of Rights",
+      "invariant_ids": ["INVARIANT_05", "INVARIANT_07", "INVARIANT_08", "INVARIANT_11"],
+      "failure_class_ids": ["F1", "F4"],
+      "notes": "Rights to truth and safety tie to agent constraints and evidence states."
+    },
+    {
+      "id": "ARTICLE_II",
+      "title": "Execution Law",
+      "invariant_ids": ["INVARIANT_01", "INVARIANT_02", "INVARIANT_09", "INVARIANT_14", "INVARIANT_19"],
+      "failure_class_ids": ["F1", "F2"],
+      "notes": "Code governance and truth-status tie to registry and enforcement map."
+    },
+    {
+      "id": "ARTICLE_III",
+      "title": "Purpose Law",
+      "invariant_ids": [
+        "INVARIANT_06",
+        "INVARIANT_08",
+        "INVARIANT_13",
+        "INVARIANT_15",
+        "INVARIANT_16",
+        "INVARIANT_17",
+        "INVARIANT_21"
+      ],
+      "failure_class_ids": ["F2"],
+      "notes": "Verification-before-done requires executable checks and ledger evidence."
+    },
+    {
+      "id": "ARTICLE_IV",
+      "title": "Separation of Powers",
+      "invariant_ids": ["INVARIANT_05", "INVARIANT_06"],
+      "failure_class_ids": [],
+      "notes": "Agent republic: machine-readable capabilities and executable enforcement."
+    },
+    {
+      "id": "ARTICLE_V",
+      "title": "Amendment Process",
+      "invariant_ids": ["INVARIANT_01", "INVARIANT_04", "INVARIANT_12"],
+      "failure_class_ids": [],
+      "notes": "Amendments must update mappings and keep inventory synchronized."
+    },
+    {
+      "id": "ARTICLE_VI",
+      "title": "Institutionalization",
+      "invariant_ids": [
+        "INVARIANT_22",
+        "INVARIANT_23",
+        "INVARIANT_24",
+        "INVARIANT_25",
+        "INVARIANT_26",
+        "INVARIANT_27",
+        "INVARIANT_28",
+        "INVARIANT_29",
+        "INVARIANT_30",
+        "INVARIANT_31",
+        "INVARIANT_32",
+        "INVARIANT_33",
+        "INVARIANT_34",
+        "INVARIANT_35",
+        "INVARIANT_36",
+        "INVARIANT_37"
+      ],
+      "failure_class_ids": ["F2"],
+      "notes": "Continuous remote evaluation, regression ledger, escalation, adversarial checks, and evidence-bounded public summary."
+    }
+  ]
+}
