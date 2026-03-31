@@ -1,0 +1,10 @@
+flowchart TD
+  A[Developer clone] --> B[./scripts/bootstrap_repo.sh]
+  B --> C[Local verifiers]
+  C --> D{PASS?}
+  D -->|yes| E[Commit / push]
+  D -->|no| F[Fix governance or evidence]
+  F --> C
+  E --> G[CI: verify workflow]
+  G --> H[Attestation and artifacts]
+  H --> I[Maintenance-mode: no new open-ended pass unless gap raised]

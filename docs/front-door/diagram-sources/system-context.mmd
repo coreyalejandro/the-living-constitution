@@ -1,0 +1,19 @@
+flowchart LR
+  subgraph External["External reviewers"]
+    R[Reviewer / auditor]
+  end
+
+  subgraph Commonwealth["Safety Systems Design Commonwealth"]
+    P[Project repos and implementations]
+  end
+
+  subgraph TLC["TLC governance overlay"]
+    C[Control plane: contracts + verification + constitution]
+    S[Status / truth surface: STATUS.json]
+    O[Open interfaces: exported proofs and schema-valid artifacts]
+  end
+
+  R -->|reads exported evidence| O
+  C --> S
+  P -->|build contracts reference| C
+  C -->|coordinates| P

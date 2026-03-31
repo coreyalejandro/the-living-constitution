@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph Domains["TLC domains"]
+    EPI[Epistemic]
+    EMP[Empirical]
+    HUM[Human]
+    COG[Cognitive]
+  end
+
+  subgraph Repo["Repository areas"]
+    PR[projects/]
+    VER[verification/]
+    CON[00-constitution/]
+    DOC[docs/]
+  end
+
+  EPI --- DOC
+  PR --- VER
+  CON --- VER

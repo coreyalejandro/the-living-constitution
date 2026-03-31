@@ -73,3 +73,13 @@
 | **Residual gap** | N/A — explicit reason: all six capabilities evidenced. |
 
 **Protocol:** `append-only` row; does not rewrite prior PASS rows.
+
+## 2026-03-30 — Front-door transition package (C-RSP instance)
+
+| Field | Value |
+|-------|--------|
+| **Contract** | TLC front-door transition package — documentation + optional `apps/tlc-control-plane/` scaffold |
+| **Conflict** | N/A — explicit reason: no collision with protected paths; root `README.md` not overwritten per contract |
+| **Artifacts** | `docs/front-door/*`, `docs/front-door/diagram-sources/*.mmd`, `apps/tlc-control-plane/*` |
+| **Governance** | No new TLC pass; `STATUS.json` not modified; maintenance-mode preserved |
+| **Scaffold** | Created self-contained Next.js app under `apps/tlc-control-plane/` with pnpm and pinned dependencies |

@@ -6,6 +6,10 @@ Governance overlay / super-repo for Safety Systems Design Commonwealth: constitu
 
 ## Components
 
+- **`docs/front-door/`** — TLC transition package: front-door strategy, UI strategy, information architecture, sequencing (UI first, teaser video second, integration third), golden README blueprint, golden diagram set (five Mermaid sources under `diagram-sources/`), public positioning, execution roadmap. Indexes `README.md`. Does not supersede `STATUS.json`.
+
+- **`apps/tlc-control-plane/`** — Next.js App Router scaffold: four panels (system graph, status/truth panel, execution pane, verification stream), static snapshot in `lib/tlc-snapshot.ts`, explicit scaffold labels. Not a live backend.
+
 - **`04-consentchain/`** — Canonical ConsentChain constitutional pack: `REPO_MAP.json`, `COMPONENT_REGISTRY.json`, CLAUDE/BUILD_CONTRACT, architecture and safety stubs. Distinct from `projects/consentchain/` git submodule. Registry path semantics (prior sibling vs TLC submodule): `04-consentchain/REGISTRY_PATH_MIGRATION.md`.
 
 - **`MASTER_PROJECT_INVENTORY.json`** / **`MASTER_PROJECT_INVENTORY.md`** — Phase 0 master inventory: TLC `projects/` overlays (**13** slugs including `buildlattice` and `consent-gateway-auth0`), registry cross-refs, sibling path probes, explicit unknowns/anomalies. Source of truth for `scripts/verify_project_topology.py`. Rollout #3 (B.1): `buildlattice_overlay_script` (`projects_buildlattice_overlay_exists`, `expects_tlc_relative_paths` for `projects/buildlattice/*`).

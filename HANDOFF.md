@@ -5,6 +5,8 @@
 
 ## What Was Just Completed
 
+- **Front-door transition package (C-RSP instance):** Added `docs/front-door/` — index README plus strategy, UI, IA, sequencing, golden README blueprint, golden diagram set, public positioning, execution roadmap; five Mermaid sources under `docs/front-door/diagram-sources/`. Extended `.c-rsp/governance-map.json` (INTERFACE entries) and appended `.c-rsp/CONFLICT_LOG.md`. Updated `openmemory.md` with `docs/front-door/` and `apps/tlc-control-plane/` components. Root `README.md` **not** replaced (per contract).
+- **`apps/tlc-control-plane/`:** New Next.js App Router scaffold (Next.js **15.2.9**, React 18.3.1, Tailwind 3.4.17): four panels — **system graph**, **status/truth panel**, **execution pane**, **verification stream** — with static snapshot in `lib/tlc-snapshot.ts` and explicit scaffold labels. Verified: `npm run build` exit **0** from `apps/tlc-control-plane/`. Install with `npm install` or `pnpm install` inside that directory (root has no workspace package for this app).
 - **FINAL_STOP_CONDITION (C-RSP):** Stop-condition adjudication appended to `.c-rsp/CONFLICT_LOG.md`; `verification/ci-remote-evidence/record.json` extended with `stop_condition_adjudication` (additive). `STATUS.json` / `STATUS.md` are renderer-only — **never** hand-edit; regenerate with `python3 scripts/render_status_surface.py --root .`.
 - **Evidence:** Six-capability table in conflict log; `verify_governance_chain.py` and `verify_project_topology.py --with-governance` exit 0 post-adjudication; deterministic replay verified via worktree at `30805eed` + `--verification-runs-dir` + PASS 16 `verify_attestation.py` (stdout `OK: supply-chain attestation verified`).
 

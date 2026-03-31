@@ -1,0 +1,11 @@
+flowchart TB
+  subgraph Shell["TLC control-plane shell"]
+    SG[System graph panel]
+    ST[Status / truth panel]
+    EX[Execution pane]
+    VS[Verification stream]
+  end
+
+  SG --- ST
+  ST --- EX
+  EX --- VS

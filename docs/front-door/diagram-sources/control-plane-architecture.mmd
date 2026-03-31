@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph Truth["Truth surface"]
+    SJ[STATUS.json authoritative]
+    SM[STATUS.md rendered mirror]
+  end
+
+  subgraph Gov["Governance artifacts"]
+    IR[Invariant registry]
+    RR[Role registry]
+    BC[projects/*/BUILD_CONTRACT.md]
+  end
+
+  subgraph Verify["Verification chain"]
+    VG[verify_governance_chain.py]
+    VT[verify_project_topology.py]
+    VM[verification/MATRIX.md]
+  end
+
+  SJ --> SM
+  BC --> VG
+  IR --> VG
+  VG --> VM
+  VT --> VM

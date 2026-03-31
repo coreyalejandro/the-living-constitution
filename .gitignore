@@ -46,6 +46,10 @@ next-env.d.ts
 verification/runs/*.json
 verification/attestations/*.json
 
+# Python
+__pycache__/
+*.pyc
+
 # Playwright MCP artifacts (screenshots, recordings, etc.)
 .playwright-mcp/
 /AGENTS.md
