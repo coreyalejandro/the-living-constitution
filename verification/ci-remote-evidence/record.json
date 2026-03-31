@@ -2,12 +2,26 @@
   "schema_version": "1.0.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
-  "workflow_run_id": "23761679469",
-  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23761679469",
+  "workflow_run_id": "23774310879",
+  "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23774310879",
   "workflow_run_attempt": "1",
-  "artifact_name": "governance-verification-runs-23761679469-1",
-  "artifact_commit_hash": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
+  "artifact_name": "governance-verification-runs-23774310879-1",
+  "supply_chain_attestation_artifact_name": "supply-chain-attestation-23774310879-1",
+  "artifact_commit_hash": "30805eed1d51ca78107294376c1b783275e484aa",
   "artifact_upload_succeeded": true,
-  "captured_at_utc": "2026-03-30T19:00:00Z",
-  "notes": "PASS 10C (C-RSP): adjudicated green run 23761679469 on f0414d3 (main). Governance artifact lists INVARIANT_01–INVARIANT_50 including INVARIANT_43–50 (separation of powers / role registry). Steps: topology+gov chain, parity second pass, institutionalization, verify_cross_repo_consistency, failure-injection, artifact upload, CI self-verify. Paired ConsentChain run 23761674094 @ d6371f6."
+  "captured_at_utc": "2026-03-31T01:15:00Z",
+  "notes": "PASS 14 closure (C-RSP): green run 23774310879 on 30805eed1d51ca78107294376c1b783275e484aa. SUBMODULES_PAT remediated private submodule checkout. scripts/verify_attestation.py exit 0 against committed verification/attestations/23774310879-1.json after temporary verification/runs swap to CI artifact contents; workspace restored. prior_remote_evidence preserves PASS 10C snapshot without deletion.",
+  "prior_remote_evidence": {
+    "schema_version": "1.0.0",
+    "claimed_remote": true,
+    "workflow_conclusion": "success",
+    "workflow_run_id": "23761679469",
+    "workflow_run_url": "https://github.com/coreyalejandro/the-living-constitution/actions/runs/23761679469",
+    "workflow_run_attempt": "1",
+    "artifact_name": "governance-verification-runs-23761679469-1",
+    "artifact_commit_hash": "f0414d36a9a9a4e39acb2fee4c62c910069b88a4",
+    "artifact_upload_succeeded": true,
+    "captured_at_utc": "2026-03-30T19:00:00Z",
+    "notes": "PASS 10C (C-RSP): adjudicated green run 23761679469 on f0414d3 (main). Preserved as append-only history at PASS 14 promotion."
+  }
 }

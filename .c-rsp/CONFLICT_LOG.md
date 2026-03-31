@@ -26,3 +26,16 @@
 | **Secret inventory** | `gh secret list --repo coreyalejandro/the-living-constitution` returned no rows in this environment (either no secrets configured or listing not permitted). **Required for CI:** repository secret `SUBMODULES_PAT` — fine-grained PAT with `contents:read` on `coreyalejandro/consent-gateway-auth0` (and any other private submodules). |
 | **PASS 14** | **NOT CLOSED** — no successful remote run; no `governance-verification-runs` / `supply-chain-attestation` artifacts; `scripts/verify_attestation.py` not executed against a CI-produced attestation file. |
 | **Retry** | One bounded re-run after access repair: push `main` after `SUBMODULES_PAT` is present, then re-download artifacts and run `verify_attestation.py` per contract. |
+
+## 2026-03-31 — PASS 14 closure (green CI + attestation verified)
+
+| Field | Value |
+|-------|--------|
+| **Closure anchor** | GitHub Actions run `23774310879` — **success** — head SHA `30805eed1d51ca78107294376c1b783275e484aa` ([run URL](https://github.com/coreyalejandro/the-living-constitution/actions/runs/23774310879)). |
+| **Submodule access blocker** | Prior runs (`23773602359`, `23773613714`, `23773617617`) failed at `actions/checkout` — private submodule `projects/consent-gateway-auth0` not cloneable with default `GITHUB_TOKEN`. |
+| **Remediation** | Repository secret `SUBMODULES_PAT` (or equivalent) — workflow uses `token: ${{ secrets.SUBMODULES_PAT \|\| secrets.GITHUB_TOKEN }}`; green run confirms checkout path unblocked. |
+| **Artifacts (closure)** | `governance-verification-runs-23774310879-1`, `supply-chain-attestation-23774310879-1` (verified via `gh api .../actions/runs/23774310879/artifacts`). |
+| **Attestation verification** | `python3 scripts/verify_attestation.py --root . --attestation verification/attestations/23774310879-1.json` → **exit 0**, stdout `OK: supply-chain attestation verified` (after temporary swap of `verification/runs/*.json` to CI artifact contents matching attested aggregate; then **restored** full local `verification/runs/` tree). |
+| **Workspace restoration** | Confirmed: `verification/runs/` repopulated from backup after attestation step; no permanent CI-only substitution remains. |
+| **PASS 14** | **CLOSED** — closure anchored to successful run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. |
+| **PASS 15** | Normalization / constitutional record update (this commit); continuity CI observed post-push. |
