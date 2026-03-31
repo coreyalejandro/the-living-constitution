@@ -47,7 +47,7 @@
     },
     "capabilities_truth_state": "all_met",
     "preflight_passed": true,
-    "new_commit_hash": "",
-    "new_run_id": ""
+    "new_commit_hash": "6d0f565ba2b313fd640a1e854618e6bac9993421",
+    "new_run_id": "23775230932"
   }
 }
