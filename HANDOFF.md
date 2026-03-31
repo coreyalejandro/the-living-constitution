@@ -16,6 +16,7 @@
 
 ## Quick Reference
 
+- **PASS 15 normalization commit:** `e22d37bc0f65e42efceca37d7e0ff97642dadc25` — continuity CI [23774580455](https://github.com/coreyalejandro/the-living-constitution/actions/runs/23774580455) **success**
 - **PASS 14 closure run:** `23774310879` @ `30805eed1d51ca78107294376c1b783275e484aa`
 - **Attestation verify (repro):** `python3 scripts/verify_attestation.py --root . --attestation verification/attestations/23774310879-1.json` (requires `verification/runs/` content matching CI aggregate for that attestation — use CI `governance-verification-runs-*` artifact files only for that recompute step, then restore full runs tree)
 - **Bootstrap:** `./scripts/bootstrap_repo.sh`

@@ -38,4 +38,4 @@
 | **Attestation verification** | `python3 scripts/verify_attestation.py --root . --attestation verification/attestations/23774310879-1.json` → **exit 0**, stdout `OK: supply-chain attestation verified` (after temporary swap of `verification/runs/*.json` to CI artifact contents matching attested aggregate; then **restored** full local `verification/runs/` tree). |
 | **Workspace restoration** | Confirmed: `verification/runs/` repopulated from backup after attestation step; no permanent CI-only substitution remains. |
 | **PASS 14** | **CLOSED** — closure anchored to successful run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. |
-| **PASS 15** | Normalization / constitutional record update (this commit); continuity CI observed post-push. |
+| **PASS 15 continuity** | Post-normalization push `e22d37bc0f65e42efceca37d7e0ff97642dadc25`: GitHub Actions run `23774580455` — **success** ([run URL](https://github.com/coreyalejandro/the-living-constitution/actions/runs/23774580455)). |
