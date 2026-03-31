@@ -13,7 +13,7 @@
 **Registry path migration (ConsentChain):** `04-consentchain/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
 
 | Surface | Prior | Current |
-|--------|-------|---------|
+| ------- | ----- | ------- |
 | Implementation checkout | `/Users/coreyalejandro/Projects/consentchain` (historical sibling) | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (TLC git submodule) |
 | Authority | — | `config/projects.ts`, root `CLAUDE.md`, inventory JSON fields listed in that doc |
 
@@ -26,7 +26,7 @@ This inventory records what was **verified on disk or in cited files** at genera
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
-|------|-------------|---------------------|--------------------------------------|-------------------------|
+| ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
 | buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` (contract table + CLAUDE + config) | no |
 | c-rsp | no | yes | *none in contract* | n/a |
 | consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (TLC submodule) | yes |
@@ -56,7 +56,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 ## 2. Other TLC roots (not under `projects/`)
 
 | Path | Role |
-|------|------|
+| --- | --- |
 | `04-consentchain/` | ConsentChain **constitutional pack** (architecture, crypto, maps, etc.). Distinct from `projects/consentchain/` submodule. |
 | `05-madmall/` | MADMall **planning / V&T** documents only. Status docs state **no** implementation repository yet. |
 
@@ -65,7 +65,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 ## 3. Commonwealth registry (`config/projects.ts`) without `projects/<slug>/`
 
 | id | repoPath (config) | Overlay folder | Disk probe |
-|----|-------------------|----------------|------------|
+| -- | ----------------- | -------------- | ---------- |
 | instructional-integrity-studio | `/Users/coreyalejandro/Projects/instructional-integrity-ui` | none | exists |
 | portfolio | `/Users/coreyalejandro/Projects/coreys-agentic-portfolio` | none | exists |
 | docen | `/Users/coreyalejandro/Projects/docen` | none | exists |
@@ -75,7 +75,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 ## 4. `CLAUDE.md` Project Registry table (paths cited)
 
 | Project | Repo path in table | Disk probe |
-|---------|-------------------|------------|
+| ------- | ------------------ | ---------- |
 | PROACTIVE | `.../proactive-gitlab-agent` | exists |
 | SentinelOS | `.../sentinelos` | exists |
 | MADMall-Production | `.../MADMall-Production` | **missing** |
@@ -135,7 +135,7 @@ Implementation checkout for EpistemicGuard remains `/Users/coreyalejandro/Projec
 ## 6. Sibling folders (name similarity — not assumed equivalent)
 
 | Path | Exists | Note |
-|------|--------|------|
+| --- | ------ | ---- |
 | `/Users/coreyalejandro/Projects/MADMall` | yes | **Unknown** relation to `MADMall-Production` registry path |
 | `/Users/coreyalejandro/Projects/build-lattice-guard` | yes | **Unknown** relation to `buildlattice` registry path |
 
@@ -163,7 +163,7 @@ Implementation checkout for EpistemicGuard remains `/Users/coreyalejandro/Projec
 ## 9. Governance artifacts (machine-readable chain)
 
 | Artifact | Path |
-|----------|------|
+| -------- | ---- |
 | Invariant registry | `00-constitution/invariant-registry.json` |
 | Doctrine / article → invariant map | `00-constitution/doctrine-to-invariant.map.json` |
 | Enforcement hooks map | `03-enforcement/enforcement-map.json` |
