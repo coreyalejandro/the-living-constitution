@@ -39,6 +39,11 @@ jobs:
       - name: Install Python verification dependencies
         run: pip install -r requirements-verify.txt
 
+      # INVARIANT_42: aggregate_status() can differ between developer machines and CI (e.g. cross-repo
+      # subprocess). Re-render on the runner so committed STATUS matches CI aggregate before checks.
+      - name: Render STATUS surface (CI parity)
+        run: python3 scripts/render_status_surface.py --root .
+
       - name: Verify base camp structure exists
         run: |
           echo "=== Checking base camp structure ==="
