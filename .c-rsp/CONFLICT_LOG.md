@@ -39,3 +39,13 @@
 | **Workspace restoration** | Confirmed: `verification/runs/` repopulated from backup after attestation step; no permanent CI-only substitution remains. |
 | **PASS 14** | **CLOSED** — closure anchored to successful run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. |
 | **PASS 15 continuity** | Post-normalization push `e22d37bc0f65e42efceca37d7e0ff97642dadc25`: GitHub Actions run `23774580455` — **success** ([run URL](https://github.com/coreyalejandro/the-living-constitution/actions/runs/23774580455)). |
+
+## 2026-03-30 — PASS 16 attestation replay determinism (C-RSP)
+
+| Field | Value |
+|-------|--------|
+| **Weakness** | `scripts/verify_attestation.py` always read `verification/runs/*.json`; replaying CI attestation required **temporary replacement** of that tree with CI artifact contents (see PASS 14 closure notes). |
+| **Resolution** | Added `--verification-runs-dir` to `scripts/verify_attestation.py` so aggregate and `governance_run_basename` resolve against an **explicit** directory (default unchanged: `verification/runs`). Canonical committed inputs: `verification/ci-remote-evidence/replay/23774310879/*.json` from artifact `governance-verification-runs-23774310879-1`. |
+| **Rationale** | INVARIANT_57–59 unchanged; PASS 16 satisfies C-RSP **isolated staging / explicit inputs** without mutating ambient historical `verification/runs/`. |
+| **record.json** | `schema_version` `1.1.0`; `attestation_replay` block with `verify_command` and paths. |
+| **Enforcement** | Local: `verify_attestation.py` exit 0 with `--verification-runs-dir` at closure commit `30805eed` (HEAD must match attestation `commit`; see `replay/README.md`). CI: workflow unchanged — uses default runs dir on fresh CI `verification/runs`. |

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "claimed_remote": true,
   "workflow_conclusion": "success",
   "workflow_run_id": "23774310879",
@@ -10,7 +10,15 @@
   "artifact_commit_hash": "30805eed1d51ca78107294376c1b783275e484aa",
   "artifact_upload_succeeded": true,
   "captured_at_utc": "2026-03-31T01:15:00Z",
-  "notes": "PASS 14 closure (C-RSP): green run 23774310879 on 30805eed1d51ca78107294376c1b783275e484aa. SUBMODULES_PAT remediated private submodule checkout. scripts/verify_attestation.py exit 0 against committed verification/attestations/23774310879-1.json after temporary verification/runs swap to CI artifact contents; workspace restored. prior_remote_evidence preserves PASS 10C snapshot without deletion.",
+  "attestation_replay": {
+    "pass14_run_id": "23774310879",
+    "artifact_commit_hash": "30805eed1d51ca78107294376c1b783275e484aa",
+    "governance_artifact_name": "governance-verification-runs-23774310879-1",
+    "canonical_replay_directory": "verification/ci-remote-evidence/replay/23774310879",
+    "verify_command": "python3 scripts/verify_attestation.py --root . --attestation verification/attestations/23774310879-1.json --verification-runs-dir verification/ci-remote-evidence/replay/23774310879",
+    "pass16_note": "PASS 16: replay JSON committed under canonical_replay_directory; use --verification-runs-dir (no manual swap of verification/runs). HEAD must match artifact_commit_hash for INVARIANT_57."
+  },
+  "notes": "PASS 14 closure (C-RSP): green run 23774310879 on 30805eed1d51ca78107294376c1b783275e484aa. SUBMODULES_PAT remediated private submodule checkout. PASS 16 supersedes temporary verification/runs swap: use attestation_replay.verify_command with replay directory. prior_remote_evidence preserves PASS 10C snapshot without deletion.",
   "prior_remote_evidence": {
     "schema_version": "1.0.0",
     "claimed_remote": true,

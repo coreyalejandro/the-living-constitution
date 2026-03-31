@@ -1,0 +1,131 @@
+{
+  "commit_hash": "30805eed1d51ca78107294376c1b783275e484aa",
+  "timestamp": "2026-03-31T00:22:53Z",
+  "invariants_verified": [
+    "INVARIANT_01",
+    "INVARIANT_02",
+    "INVARIANT_03",
+    "INVARIANT_04",
+    "INVARIANT_05",
+    "INVARIANT_06",
+    "INVARIANT_07",
+    "INVARIANT_08",
+    "INVARIANT_09",
+    "INVARIANT_10",
+    "INVARIANT_11",
+    "INVARIANT_12",
+    "INVARIANT_13",
+    "INVARIANT_14",
+    "INVARIANT_15",
+    "INVARIANT_16",
+    "INVARIANT_17",
+    "INVARIANT_18",
+    "INVARIANT_19",
+    "INVARIANT_20",
+    "INVARIANT_21",
+    "INVARIANT_22",
+    "INVARIANT_23",
+    "INVARIANT_24",
+    "INVARIANT_25",
+    "INVARIANT_26",
+    "INVARIANT_27",
+    "INVARIANT_28",
+    "INVARIANT_29",
+    "INVARIANT_30",
+    "INVARIANT_31",
+    "INVARIANT_32",
+    "INVARIANT_33",
+    "INVARIANT_34",
+    "INVARIANT_35",
+    "INVARIANT_36",
+    "INVARIANT_37",
+    "INVARIANT_38",
+    "INVARIANT_39",
+    "INVARIANT_40",
+    "INVARIANT_41",
+    "INVARIANT_42",
+    "INVARIANT_43",
+    "INVARIANT_44",
+    "INVARIANT_45",
+    "INVARIANT_46",
+    "INVARIANT_47",
+    "INVARIANT_48",
+    "INVARIANT_49",
+    "INVARIANT_50",
+    "INVARIANT_51",
+    "INVARIANT_52",
+    "INVARIANT_53",
+    "INVARIANT_54",
+    "INVARIANT_55",
+    "INVARIANT_56",
+    "INVARIANT_57",
+    "INVARIANT_58",
+    "INVARIANT_59"
+  ],
+  "acceptance_results": [
+    {
+      "id": "AC-1",
+      "passed": true,
+      "detail": "Evidence ledger JSON Schema validation"
+    },
+    {
+      "id": "AC-2",
+      "passed": true,
+      "detail": "Commit-bound verification artifact generated"
+    },
+    {
+      "id": "AC-3",
+      "passed": true,
+      "detail": "commit_hash non-empty from git"
+    },
+    {
+      "id": "AC-4",
+      "passed": true,
+      "detail": "Referential governance chain complete"
+    },
+    {
+      "id": "AC-5",
+      "passed": true,
+      "detail": "CI commands match EXPECTED_CI_COMMAND_LINES"
+    },
+    {
+      "id": "AC-6",
+      "passed": true,
+      "detail": "Inventory manifest + MD timestamp sync"
+    },
+    {
+      "id": "AC-7",
+      "passed": true,
+      "detail": "Failures yield non-zero exit"
+    }
+  ],
+  "failures": [],
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Linux-6.17.0-1008-azure-x86_64-with-glibc2.39",
+    "cwd": "/home/runner/work/the-living-constitution/the-living-constitution"
+  },
+  "run_status": "passed",
+  "broken_chain_links": [],
+  "invariant_failures": [],
+  "missing_evidence_explicit": [],
+  "schema_validation_errors": [],
+  "artifact_path": "verification/runs/20260331T002253Z-governance.json",
+  "github_actions_provenance": {
+    "github_actions": true,
+    "workflow": "Verify Living Constitution",
+    "workflow_run_id": "23774310879",
+    "workflow_run_attempt": "1",
+    "workflow_run_number": "82",
+    "job": "verify-structure",
+    "repository": "coreyalejandro/the-living-constitution",
+    "ref": "refs/heads/main",
+    "sha": "30805eed1d51ca78107294376c1b783275e484aa",
+    "github_event_name": "push",
+    "runner_os": "Linux",
+    "runner_arch": "X64",
+    "actor": "coreyalejandro"
+  },
+  "commit_matches_github_sha": true,
+  "verify_workflow_sha256": "43c0d69d69713e3b1070befaf9c6e51cb55b066ac4692b721746e798f434d3ca"
+}

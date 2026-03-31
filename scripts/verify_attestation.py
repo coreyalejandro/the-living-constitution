@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """
-PASS 14: Verify supply-chain attestation (INVARIANT_57–59).
+PASS 14 / PASS 16: Verify supply-chain attestation (INVARIANT_57–59).
 
-Recomputes workflow and verification/runs aggregate hashes and compares to attestation.
+Recomputes workflow and a deterministic aggregate over *.json in the verification-runs
+directory (default: verification/runs) and compares to attestation.
+
+PASS 16: use --verification-runs-dir to point at CI governance JSON staged under
+verification/ci-remote-evidence/replay/<run_id>/ without replacing ambient
+verification/runs/*.json.
+
 Fails if commit != git HEAD, workflow_sha256 mismatches, or artifact aggregate mismatches.
 """
 
@@ -34,6 +40,16 @@ def _parse_args() -> argparse.Namespace:
         type=Path,
         required=True,
         help="Path to attestation JSON (e.g. verification/attestations/<run>-<attempt>.json)",
+    )
+    p.add_argument(
+        "--verification-runs-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Directory containing governance run JSON files for aggregate recomputation "
+            "(default: <root>/verification/runs). Use for CI replay, e.g. "
+            "verification/ci-remote-evidence/replay/<run_id>/"
+        ),
     )
     return p.parse_args()
 
@@ -138,12 +154,16 @@ def main() -> None:
         print("ERROR: INVARIANT_59: attestation artifacts missing", file=sys.stderr)
         sys.exit(1)
     exp_agg = str(arts.get("verification_runs_aggregate_sha256") or "")
-    runs_dir = root / "verification" / "runs"
+    if args.verification_runs_dir is None:
+        runs_dir = (root / "verification" / "runs").resolve()
+    else:
+        vr = args.verification_runs_dir
+        runs_dir = vr.resolve() if vr.is_absolute() else (root / vr).resolve()
     got_agg = _verification_runs_aggregate_sha256(runs_dir)
     if exp_agg != got_agg:
         print(
-            f"ERROR: INVARIANT_59: verification/runs aggregate mismatch "
-            f"attestation={exp_agg!r} recomputed={got_agg!r}",
+            f"ERROR: INVARIANT_59: verification runs aggregate mismatch "
+            f"(dir={runs_dir}) attestation={exp_agg!r} recomputed={got_agg!r}",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -165,6 +185,8 @@ def main() -> None:
         sys.exit(1)
 
     print("OK: supply-chain attestation verified")
+    if args.verification_runs_dir is not None:
+        print(f"OK: used verification runs directory: {runs_dir}")
 
 
 if __name__ == "__main__":

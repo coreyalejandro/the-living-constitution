@@ -1,5 +1,5 @@
 {
-  "contract_version": "v1.1.0",
+  "contract_version": "v1.2.0",
   "mapping_file_role": "C-RSP governance separation-of-powers map",
   "tlc_domain": "epistemic",
   "modules": {
@@ -7,11 +7,12 @@
     "scripts/verify_attestation.py": "JUDICIAL",
     "verification/supply-chain-attestation.schema.json": "LEGISLATIVE",
     "verification/runs/*.json": "RECORD",
+    "verification/ci-remote-evidence/replay/*/": "RECORD",
     "verification/attestations/*.json": "RECORD"
   },
   "notes": [
     "EXECUTIVE: attestation generation binds repo state to workflow and invariant closure.",
-    "JUDICIAL: attestation verification recomputes hashes and halts on drift.",
+    "JUDICIAL: attestation verification recomputes hashes and halts on drift; PASS 16 --verification-runs-dir for isolated CI replay.",
     "LEGISLATIVE: JSON Schema defines admissible attestation shape.",
     "RECORD: persisted run and attestation JSON under verification/."
   ]

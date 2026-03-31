@@ -11,4 +11,6 @@ Third parties verify a downloaded attestation with:
 python3 scripts/verify_attestation.py --root . --attestation verification/attestations/<file>.json
 ```
 
+PASS 16 — replay CI governance evidence **without** replacing `verification/runs/`: pass `--verification-runs-dir` to a directory containing the same `*.json` set the CI run attested (e.g. committed under `verification/ci-remote-evidence/replay/<run_id>/`). `git HEAD` must equal the attestation `commit` field. See `verification/ci-remote-evidence/replay/README.md` and `verification/ci-remote-evidence/record.json` (`attestation_replay`).
+
 Schema: `verification/supply-chain-attestation.schema.json`.
