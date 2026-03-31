@@ -49,3 +49,27 @@
 | **Rationale** | INVARIANT_57–59 unchanged; PASS 16 satisfies C-RSP **isolated staging / explicit inputs** without mutating ambient historical `verification/runs/`. |
 | **record.json** | `schema_version` `1.1.0`; `attestation_replay` block with `verify_command` and paths. |
 | **Enforcement** | Local: `verify_attestation.py` exit 0 with `--verification-runs-dir` at closure commit `30805eed` (HEAD must match attestation `commit`; see `replay/README.md`). CI: workflow unchanged — uses default runs dir on fresh CI `verification/runs`. |
+
+## 2026-03-30 — FINAL_STOP_CONDITION (C-RSP v1.0.0) adjudication
+
+| Field | Value |
+|-------|--------|
+| **Contract** | `projects/c-rsp/BUILD_CONTRACT.md` v1.0.0 — executable stop-condition pass |
+| **Baseline verified** | PASS 14 anchored to run `23774310879` / commit `30805eed1d51ca78107294376c1b783275e484aa` (`verification/ci-remote-evidence/record.json`, prior log entries). PASS 15 continuity recorded in PASS 14 closure row. PASS 16 anchored to commit `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3`, CI run `23774969505` **success** (`gh run view 23774969505`). |
+| **Stop-condition capabilities** | See adjudication table below. |
+
+### Adjudication table (six capabilities)
+
+| # | Capability | Governing evidence | Verification | Truth-state |
+|---|------------|-------------------|--------------|-------------|
+| 1 | Source of truth stabilized | `THE_LIVING_CONSTITUTION.md`, `MASTER_PROJECT_INVENTORY.json`, renderer output `STATUS.json` / `STATUS.md` (not hand-edited) | Files present; `render_status_surface.py` is canonical generator | **met** |
+| 2 | Invariant enforcement stabilized | `scripts/verify_governance_chain.py`, `scripts/verify_project_topology.py` | `python3 scripts/verify_governance_chain.py --root .` exit 0; `python3 scripts/verify_project_topology.py --root . --with-governance` exit 0 | **met** |
+| 3 | Remote CI and attestation proven | `verification/ci-remote-evidence/record.json`; PASS 14 / PASS 16 anchors | `gh run view 23774310879` (historical success); `gh run view 23774969505` conclusion success | **met** |
+| 4 | Canonical remote-evidence record established | `verification/ci-remote-evidence/record.json` | File exists; schema_version 1.1.0 | **met** |
+| 5 | Deterministic replay path established | `scripts/verify_attestation.py` `--verification-runs-dir`; `verification/ci-remote-evidence/replay/23774310879/` | `git worktree` at `30805eed` + PASS 16 script from tip + absolute `--attestation` + replay dir: **exit 0** (`OK: supply-chain attestation verified`) | **met** |
+| 6 | Build-readiness adjudication without manual repair | This pass | `./scripts/bootstrap_repo.sh` exit 0; verifiers + renderer run without workaround | **met** |
+
+| **Outcome** | **STOP CONDITION MET — GOVERNANCE FREEZE** (transition to maintenance-mode governance for product/repo buildout; no residual constitutional gap named). |
+| **Residual gap** | N/A — explicit reason: all six capabilities evidenced. |
+
+**Protocol:** `append-only` row; does not rewrite prior PASS rows.

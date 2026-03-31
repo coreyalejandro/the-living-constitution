@@ -31,5 +31,23 @@
     "artifact_upload_succeeded": true,
     "captured_at_utc": "2026-03-30T19:00:00Z",
     "notes": "PASS 10C (C-RSP): adjudicated green run 23761679469 on f0414d3 (main). Preserved as append-only history at PASS 14 promotion."
+  },
+  "stop_condition_adjudication": {
+    "contract_version": "v1.0.0",
+    "project_name": "the-living-constitution",
+    "pass_target": "FINAL_STOP_CONDITION",
+    "adjudicated_at_utc": "2026-03-30T12:00:00Z",
+    "outcome": "STOP_CONDITION_MET_GOVERNANCE_FREEZE",
+    "residual_gap": "",
+    "baseline": {
+      "pass14_run_id": "23774310879",
+      "pass14_commit": "30805eed1d51ca78107294376c1b783275e484aa",
+      "pass16_commit": "4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3",
+      "pass16_run_id": "23774969505"
+    },
+    "capabilities_truth_state": "all_met",
+    "preflight_passed": true,
+    "new_commit_hash": "",
+    "new_run_id": ""
   }
 }
