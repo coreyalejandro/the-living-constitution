@@ -1,10 +1,14 @@
 # Agent Handoff: The Living Constitution (base camp)
 
-**Date:** 2026-03-30  
+**Date:** 2026-03-31  
 **Status:** **TLC GOVERNANCE FROZEN FOR PRODUCT BUILDOUT** — final stop-condition adjudication (C-RSP v1.0.0) concluded all six capabilities **met**; no residual constitutional gap. **PASS 14** closure remains anchored to run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. **PASS 16** (canonical replay) remains anchored to commit `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3`, CI run `23774969505` **success**.
 
 ## What Was Just Completed
 
+- **`projects/teaser-video-remotion/` (2026-03-31) — dual packaging + README hardening:** Source archive renamed to `im-just-a-build-source.zip` (same exclusions as legacy `im-just-a-build-crsp-package.zip`: no `dist/`). New `scripts/package-release-zip.sh` + `npm run package:release-zip` → `im-just-a-build-release.zip` (MP4 + `verification/RENDER_REPORT.md` + `verification/*.sha256` + `README.md` + `LICENSE`); digest in `verification/RELEASE_ZIP_SHA256.txt`. Added `LICENSE`, `verification/im-just-a-build.mp4.sha256`. README: render block, verification scope (spot-check default), proxy root cause + mitigation, packaging section, checklist marked complete. `.c-rsp/governance-map.json` extended for packaging scripts and `LICENSE`. `openmemory.md` teaser line updated.
+- **`projects/teaser-video-remotion/` (2026-03-31) — C-RSP render stabilization pass:** Host-verified `dist/im-just-a-build.mp4` (SHA-256 in `verification/OUTPUT_SHA256.txt`). First render failed: Remotion could not reach `http://localhost:3001/...` (HTTP proxy intercepting localhost). **Fix:** `scripts/render.sh` sets `NO_PROXY`/`no_proxy` for `127.0.0.1,localhost`, adds `--ipv4`, `--timeout=120000`, `--concurrency=1`, optional `--browser-executable`. Added `scripts/preflight-render-check.sh`, `npm run preflight`, `.c-rsp/governance-map.json`, `verification/*` (RENDER_REPORT, RENDER_EVIDENCE.json, FRAME_HASHES, ENVIRONMENT, COMMAND_LOG). JSDoc in `deterministic.ts` adjusted so `Math.random` does not appear in source text. Legacy ZIP filename may still exist alongside `im-just-a-build-source.zip` (excludes `dist` by design).
+- **C-RSP control-plane UI MVP (2026-03-31):** Wired `apps/tlc-control-plane` to read-only repo adapters (`lib/adapters/`, `lib/repo-root.ts`): live `STATUS.json` read when root resolves, inventory-backed system graph, verification path presence checks; `force-dynamic` on home route; truth + functional badges on all panels; `docs/front-door/UI_MVP_READINESS_REPORT.md`; README updated; `.c-rsp/CONFLICT_LOG.md` append; `openmemory.md` Components line updated. Verified `npm run build` in `apps/tlc-control-plane` exit 0.
+- **C-RSP canonical terminology (C-RSP-TS-v2.0):** Authoritative expansion is **Constitutionally-Regulated Single Pass** executable prompt only. Updated `projects/c-rsp/BUILD_CONTRACT.md` (template v2.1.0: INVARIANT_TERM_01, terminology conflict + halt + AC-GOV-TERM + verification row), `docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md`, `docs/2026-03-29_DOCUMENTATION-GOVERNANCE-RULE.md`, `docs/2026-03-29_BLIND-MANS-TEST.md`, `projects/teaser-video/BUILD_CONTRACT.md`, `verification/MATRIX.md` claim 27, `openmemory.md`.
 - **Front-door transition package (C-RSP instance):** Added `docs/front-door/` — index README plus strategy, UI, IA, sequencing, golden README blueprint, golden diagram set, public positioning, execution roadmap; five Mermaid sources under `docs/front-door/diagram-sources/`. Extended `.c-rsp/governance-map.json` (INTERFACE entries) and appended `.c-rsp/CONFLICT_LOG.md`. Updated `openmemory.md` with `docs/front-door/` and `apps/tlc-control-plane/` components. Root `README.md` **not** replaced (per contract).
 - **`apps/tlc-control-plane/`:** New Next.js App Router scaffold (Next.js **15.2.9**, React 18.3.1, Tailwind 3.4.17): four panels — **system graph**, **status/truth panel**, **execution pane**, **verification stream** — with static snapshot in `lib/tlc-snapshot.ts` and explicit scaffold labels. Verified: `npm run build` exit **0** from `apps/tlc-control-plane/`. Install with `npm install` or `pnpm install` inside that directory (root has no workspace package for this app).
 - **FINAL_STOP_CONDITION (C-RSP):** Stop-condition adjudication appended to `.c-rsp/CONFLICT_LOG.md`; `verification/ci-remote-evidence/record.json` extended with `stop_condition_adjudication` (additive). `STATUS.json` / `STATUS.md` are renderer-only — **never** hand-edit; regenerate with `python3 scripts/render_status_surface.py --root .`.
@@ -12,11 +16,21 @@
 
 ## Recommended Next Steps
 
+- **`projects/teaser-video-remotion/` — publishable release candidate:** Authoritative distributables: `im-just-a-build-source.zip` (governance / source / reproducibility; excludes `dist/`) and `im-just-a-build-release.zip` (rendered MP4 + designated evidence). **Canonical verified identities:** MP4 SHA-256 `35c28f8f0fb82a51ceba7c89415afc91c8dd739dec034eb54982809dfd8cb6ff`; release ZIP SHA-256 `78cc64e96219fffa43058bb79bbf0007efe624ad18cb42edd327b1aaf2d8f05c` (freeze-time; **current** digest after re-package: `projects/teaser-video-remotion/verification/RELEASE_ZIP_SHA256.txt`). Policy: source ZIP excludes `dist/`; release ZIP includes MP4 + evidence; spot-check frames default; cross-machine reproducibility explicitly unverified. Packaging:
+
+```bash
+cd projects/teaser-video-remotion
+npm run package:zip
+npm run package:release-zip
+```
+
 - Execute product work under **maintenance-mode governance** (no new open-ended governance passes unless a future gap is explicitly raised).
 - Keep `MASTER_PROJECT_INVENTORY.json` and `ci_provenance` aligned with `.github/workflows/verify.yml` when workflow changes.
 - For mutable `main` tip-state claims, follow `verification/tip-state-policy.json`.
 
 ## Quick Reference
+
+- **I’m Just a Build (Remotion) release ZIP / source ZIP:** See `projects/teaser-video-remotion/verification/RENDER_REPORT.md` (canonical posture + release decision record). Commands above.
 
 - **PASS 16 replay verify (historical):** `git worktree add /tmp/tlc-308 30805eed1d51ca78107294376c1b783275e484aa` then run PASS 16 `verify_attestation.py` from `main` with `--root /tmp/tlc-308`, absolute `--attestation` path, and `--verification-runs-dir` pointing to `verification/ci-remote-evidence/replay/23774310879` on tip — see `verification/ci-remote-evidence/replay/README.md`.
 - **PASS 14 closure run:** `23774310879` @ `30805eed1d51ca78107294376c1b783275e484aa`

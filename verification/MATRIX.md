@@ -1,7 +1,7 @@
 # Verification Matrix
 ## Every Resume Claim -> Evidence
 
-Last updated: 2026-03-30
+Last updated: 2026-03-31
 
 | # | Resume Claim | Project | Evidence Location | Verification Method | Status | Result |
 |---|-------------|---------|-------------------|-------------------|--------|--------|
@@ -31,14 +31,15 @@ Last updated: 2026-03-30
 | 24 | MADMall: Healthcare focus (Graves' disease) | MADMall | Notebooks, PROJECT.md | Content review | VERIFIED | Black women with Graves' disease — core product mission |
 | 25 | TLC: Institutionalization layer (scheduled verify, regression ledger, escalation, adversarial tests, system card) | TLC | `.github/workflows/verify.yml`; `verification/regression-ledger/`; `scripts/verify_institutionalization.py`; `verification/GOVERNANCE_SYSTEM_CARD.md` | CI + local scripts per inventory `ci_verification_commands` | VERIFIED | PASS 5 — local verify 2026-03-30 (governance + institutionalization + failure-injection harness) |
 | 26 | TLC: PASS 7 branch policy — mutable tips vs frozen verification targets (INVARIANT_37) | TLC | `verification/pass7-branch-verification-policy.json`; `scripts/tip_state_helpers.py`; `scripts/verify_governance_chain.py` | Local `verify_governance_chain` + failure-injection | VERIFIED | PASS 7 — policy + verifier wired 2026-03-30 |
+| 27 | TLC: C-RSP canonical terminology (Constitutionally-Regulated Single Pass executable prompt) | TLC | `docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md`; `projects/c-rsp/BUILD_CONTRACT.md` (INVARIANT_TERM_01, conflict + halt + AC-GOV-TERM) | String audit: prohibited expansions absent as authoritative phrasing | VERIFIED | Governance normalization 2026-03-31 |
 
 ## Verification Progress
 
-- Total claims: 26
-- Verified: 23
+- Total claims: 27
+- Verified: 24
 - Partial: 1 (GitHub repo count discrepancy)
 - Pending: 1 (SentinelOS build)
 - Failed: 0
 - **Claims requiring resume update**: SentinelOS LOC (1,037 actual, not ~1,500), GitHub repos (257 verified, not ~340)
 
-*Updated 2026-03-30 — added claim 25 (TLC institutionalization PASS 5); claim 26 (PASS 7 branch verification).*
+*Updated 2026-03-31 — added claim 27 (C-RSP canonical terminology per C-RSP-TS-v2.0). Prior: 2026-03-30 — claim 25 (TLC institutionalization PASS 5); claim 26 (PASS 7 branch verification).*

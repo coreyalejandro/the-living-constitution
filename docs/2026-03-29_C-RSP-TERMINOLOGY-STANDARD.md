@@ -1,31 +1,38 @@
 # 2026-03-29 — C-RSP Terminology Standard
 ## Canonical Naming Convention for TLC Build Methodology
 
-**Version:** C-RSP-TS-v1.0
+**Version:** C-RSP-TS-v2.0
 **Author:** Corey Alejandro, Constitutional Operator
 **Scope:** All projects, contracts, and documentation across the Safety Systems Design Commonwealth
 **Authority:** THE_LIVING_CONSTITUTION.md — ratified under Article V
-**Effective:** Immediately upon ratification
+**Effective:** Immediately upon ratification (supersedes C-RSP-TS-v1.0 for expansion authority)
 
 ---
 
-## 1. Definition
+## 1. Definition (Authoritative)
 
-**C-RSP** stands for **Contractually-Restrained Single-Pass**. It is the name of the deterministic prompt engineering methodology used across the Safety Systems Design Commonwealth to transform natural language instructions into machine-executable build contracts.
+**C-RSP** = **Constitutionally-Regulated Single Pass** executable prompt.
+
+**INVARIANT_TERM_01 — C-RSP Canonical Expansion Authority:** The term **C-RSP** must only expand to **Constitutionally-Regulated Single Pass** executable prompt. The following expansions are prohibited everywhere as authoritative meaning unless quoted and marked `Deprecated historical terminology — not authoritative`:
+
+* Contractually Constrained
+* Contractually Restrained
+* Constitutionally Constrained
+* Any variant combining those phrases with deterministic / executable / prompt language as canonical meaning
 
 C-RSP is inspired by and gives a structural nod to **CRISP-DM** (Cross-Industry Standard Process for Data Mining), the industry-standard methodology for data science project management. Where CRISP-DM governs the lifecycle of data projects, C-RSP governs the lifecycle of agentic build execution.
 
 ---
 
-## 2. The Three Properties
+## 2. Load-Bearing Properties
 
-A C-RSP build contract has exactly three properties. All three must be present. A contract missing any one property is not a C-RSP contract.
+A C-RSP executable prompt / build contract instance encodes these properties. All must be present for a valid C-RSP-class artifact.
 
-| Property | Definition | Enforcement |
-|----------|-----------|-------------|
-| **Contractual** | Every output obligation is explicitly stated, verifiable, and enforceable. There are no implied deliverables. What the contract says is what gets built — nothing more, nothing less. | BMT-1 (Sequential Completeness), BMT-3 (Decision Elimination), DGR-1 (One Canonical Location) |
-| **Restrained** | Hard-coded constraints and behavioral boundaries with defined and detectable violations. The contract tells the builder what they cannot do, not just what they must do. Violation patterns are enumerated. | BMT-5 (Failure Path Coverage), I1 (Evidence-First), I5 (Safety Over Fluency) |
-| **Single-Pass** | The contract is executable in one pass — top to bottom, no iteration required, no clarification needed. It is repeatable (same input → same output), versioned (every change increments the version), and transmissible (any operator or agent can execute it without prior context). | BMT-1 (Sequential Completeness), BMT-2 (Named Concreteness), BMT-4 (State Explicitness), Doctrine 1 (Idempotency) |
+| Property | Definition | Enforcement (examples) |
+|----------|-----------|------------------------|
+| **Constitutionally-Regulated** | Obligations and boundaries are explicit, verifiable, and aligned with TLC governance — not implied or ad hoc. | BMT-1 (Sequential Completeness), BMT-3 (Decision Elimination), DGR-1 (One Canonical Location) |
+| **Single Pass** | Executable in one ordered pass — repeatable (same input → same output), versioned, transmissible without prior context. | BMT-1, BMT-2 (Named Concreteness), BMT-4 (State Explicitness), Doctrine 1 (Idempotency) |
+| **Executable prompt** | The artifact is machine-executable instruction form (deterministic builder/agent input), not aspirational prose alone. | Preflight, verification mapping, evidence paths |
 
 ---
 
@@ -35,7 +42,7 @@ C-RSP replaces the legacy term **"Zero-Shot Build Contract" (ZSB)**. The followi
 
 | Legacy Term | C-RSP Equivalent | Notes |
 |------------|-------------------|-------|
-| Zero-Shot Build Contract | C-RSP Build Contract | Full replacement. "Zero-shot" described only the single-pass property. C-RSP captures all three properties. |
+| Zero-Shot Build Contract | C-RSP Build Contract | Full replacement. "Zero-shot" described only the single-pass property. C-RSP captures governance + single-pass + executable form. |
 | ZSB-TLC-v1.0 | C-RSP-TLC-v1.0 | Master contract version identifier. Version number preserved. |
 | ZSB-EPG-v1.0 | C-RSP-EPG-v1.0 | EpistemicGuard contract. |
 | ZSB-HMG-v1.0 | C-RSP-HMG-v1.0 | HumanGuard contract. |
@@ -48,17 +55,11 @@ C-RSP replaces the legacy term **"Zero-Shot Build Contract" (ZSB)**. The followi
 
 ---
 
-## 4. Why the Name Changed
+## 4. Why the Name (C-RSP)
 
-"Zero-Shot Build Contract" described only one of three properties — the single-pass execution model (no iteration, no clarification). It said nothing about the contractual obligations or the behavioral restraints. The name was technically incomplete.
+"Zero-Shot Build Contract" described only one property — single-pass execution. C-RSP-TS-v2.0 fixes **expansion authority**: the acronym **C-RSP** expands only to **Constitutionally-Regulated Single Pass** executable prompt, so terminology cannot drift into prohibited paraphrases as canonical meaning.
 
-C-RSP encodes all three load-bearing properties in the name itself:
-
-- **Contractually** → obligations are explicit and enforceable (not just "instructions")
-- **Restrained** → constraints and violation boundaries are defined (not just "do this")
-- **Single-Pass** → one execution, repeatable, versioned, transmissible (the "zero-shot" property, stated precisely)
-
-The CRISP-DM nod is intentional. CRISP-DM established that data projects need a governed methodology, not ad hoc execution. C-RSP establishes the same for agentic builds.
+The CRISP-DM nod remains intentional: governed methodology for agentic builds, not ad hoc execution.
 
 ---
 
@@ -66,22 +67,13 @@ The CRISP-DM nod is intentional. CRISP-DM established that data projects need a 
 
 ### Phase 1: Canonical Documents (Immediate)
 
-All new documents authored from 2026-03-29 onward use C-RSP terminology exclusively. The three documents authored in this session have been updated:
-
-- `docs/2026-03-29_BLIND-MANS-TEST.md` — uses C-RSP
-- `docs/2026-03-29_DOCUMENTATION-GOVERNANCE-RULE.md` — uses C-RSP
-- `docs/2026-03-29_TLC-PROJECT-REPORT.md` — uses C-RSP
+All new documents authored from 2026-03-29 onward use C-RSP terminology exclusively per this standard.
 
 ### Phase 2: Base Camp Legacy Files (Next Sprint)
 
-The TLC base camp repository contains 94 occurrences of ZSB/zero-shot terminology across 34 files. These will be migrated in a governed pass:
+The TLC base camp repository may still contain ZSB/zero-shot references in older files. These will be migrated in a governed pass per the mapping table in Section 3.
 
-1. Each file is read, the ZSB references are replaced with C-RSP equivalents per the mapping table in Section 3.
-2. Each modified file gets a `Last Verified` date update per DGR-4 (Staleness Detection).
-3. The CDR is updated to reflect the current canonical state.
-4. A single commit captures the entire migration with the message: `refactor: ZSB → C-RSP terminology migration per C-RSP-TS-v1.0`.
-
-Until Phase 2 is complete, any document containing "ZSB" or "zero-shot build contract" should be read as synonymous with C-RSP. The terminology is different; the methodology is identical.
+Until Phase 2 is complete, any document containing "ZSB" or "zero-shot build contract" should be read as synonymous with the C-RSP artifact class. The terminology is different; the methodology is aligned.
 
 ### Interim Compatibility Rule
 
@@ -89,12 +81,23 @@ Until Phase 2 is complete, any document containing "ZSB" or "zero-shot build con
 
 ---
 
-## 6. V&T Statement
+## 6. Deprecated Historical Terminology — Not Authoritative
 
-**Exists:** Complete C-RSP Terminology Standard with definition, three properties (Contractual, Restrained, Single-Pass), legacy ZSB → C-RSP mapping table (9 contract identifiers + 1 SOP), rationale for the name change, CRISP-DM lineage, and two-phase migration plan.
+The following described **C-RSP-TS-v1.0** expansion and three-word breakdown. It is **not** authoritative for C-RSP acronym expansion under C-RSP-TS-v2.0:
 
-**Non-existent:** Phase 2 migration (34 files, 94 occurrences in the base camp repo). Updated SOP-004 title. Formal Article V ratification.
+* **C-RSP** ~~stands for **Contractually-Restrained Single-Pass**~~ (superseded; prohibited as canonical expansion).
+* The v1.0 rationale bullets **Contractually** / **Restrained** / **Single-Pass** as the spelled meaning of **C-RSP** — **Deprecated historical terminology — not authoritative.**
 
-**Unverified:** Whether any Commonwealth documents outside the audited directories contain ZSB references (e.g., project repos at `/Users/coreyalejandro/Projects/*`). Whether the 9-contract mapping table is exhaustive.
+Historical documents may retain v1.0 wording only when marked explicitly as above.
 
-**Functional status:** C-RSP is the canonical term effective immediately for all new documents. Legacy ZSB terminology remains valid until Phase 2 migration. No existing contract is invalidated by this change.
+---
+
+## 7. V&T Statement
+
+**Exists:** C-RSP-TS-v2.0 with authoritative definition (Constitutionally-Regulated Single Pass executable prompt), INVARIANT_TERM_01, load-bearing properties table, legacy ZSB mapping, deprecated v1.0 expansion block, and migration notes.
+
+**Non-existent:** Exhaustive migration of every legacy file in all Commonwealth repos.
+
+**Unverified:** Whether every external Commonwealth document outside this audit scope has been updated.
+
+**Functional status:** C-RSP canonical expansion is **Constitutionally-Regulated Single Pass** executable prompt for all authoritative new and updated documentation.

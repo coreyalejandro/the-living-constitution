@@ -1,4 +1,6 @@
-# Build Contract: C-RSP
+# 📜 C-RSP Build Contract Template
+
+## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
 
 ## Overview
 
@@ -24,13 +26,13 @@ This is now a **meta-specification template** for generating high-quality execut
 
 ````markdown
 # 📜 C-RSP Build Contract Template
-## Contractually Constrained Deterministic Single-Pass Executable Prompt (Framework)
+## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
 
 ---
 
 ## TEMPLATE METADATA
 
-* **Template Version:** v2.0.0
+* **Template Version:** v2.1.0
 * **Template Role:** Meta-specification framework for generating executable build contracts
 * **Intended Use:** Authoring deterministic, governance-aligned contracts
 * **Applicable Domains:** Software / Data / ML / Infra / Safety Systems
@@ -197,6 +199,7 @@ Do not allow implicit upgrades unless explicitly defined.
 
 **Requirement Level:** REQUIRED
 
+* **INVARIANT_TERM_01 — C-RSP Canonical Expansion Authority:** The term **C-RSP** must only expand to **Constitutionally-Regulated Single Pass** executable prompt. Prohibited expansions (including Contractually Constrained, Contractually Restrained, Constitutionally Constrained, and variants combining those phrases with deterministic / executable / prompt language as canonical meaning) must not appear as authoritative terminology unless explicitly marked: `Deprecated historical terminology — not authoritative`.
 * **INVARIANT_01:** [Define]
 * **INVARIANT_02:** [Define]
 * **INVARIANT_N:** [Define]
@@ -221,6 +224,7 @@ Each invariant must be enforceable and testable.
 - Verification Conflict
 - Truth-State Conflict
 - Contract Drift
+- Terminology Authority Conflict
 
 ---
 
@@ -228,6 +232,7 @@ Each invariant must be enforceable and testable.
 
 | Conflict Type | Protocol | Severity | Action |
 |---------------|----------|----------|--------|
+| Terminology Authority Conflict | If C-RSP is expanded using any non-canonical phrase, halt and restore the canonical expansion. | Critical | Halt |
 | [Type] | [Resolution] | [Critical/Warning] | [Halt/Continue] |
 
 ---
@@ -260,6 +265,7 @@ Each invariant must be enforceable and testable.
 
 | ID | Category | Requirement | Verification Method |
 |----|----------|------------|---------------------|
+| AC-GOV-TERM | Governance | All authoritative references expand C-RSP only as **Constitutionally-Regulated Single Pass** executable prompt. | Repository-wide string audit over modified scope; fail if prohibited expansions remain as authoritative terminology. |
 | AC-1 | Functional | [Define] | [Command/Test] |
 | AC-2 | Determinism | [Define] | [Hash comparison] |
 
@@ -303,6 +309,7 @@ Each invariant must be enforceable and testable.
 
 | Claim | Evidence | Artifact Path |
 |------|----------|--------------|
+| C-RSP canonical terminology is preserved | INVARIANT_TERM_01 entry, Terminology Authority Conflict rule, halt rule, AC-GOV-TERM, and string-audit results | All modified prompt/template/contract files |
 | [Claim] | [Proof] | [Path] |
 
 ---
@@ -358,6 +365,7 @@ Example:
 
 | Condition                   | Severity | Action   |
 | --------------------------- | -------- | -------- |
+| Non-canonical C-RSP expansion detected | Critical | Halt     |
 | Placeholder present         | Critical | Halt     |
 | Lockfile mismatch           | Critical | Halt     |
 | Optional constraint missing | Warning  | Continue |

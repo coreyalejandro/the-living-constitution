@@ -149,7 +149,7 @@ Every TLC project organizes documents into these standard directories. This is n
 |-----------|----------|----------|
 | `/` (root) | Project identity files only | `CLAUDE.md`, `CANONICAL_REGISTRY.md`, `README.md`, `package.json` |
 | `docs/` | All authored documents — reports, research, governance rules, dated deliverables | `2026-03-29_BLIND-MANS-TEST.md`, `research-methodology.md` |
-| `docs/contracts/` | All C-RSP build contracts (Contractually-Restrained Single-Pass) | `C-RSP-TLC-v1.0.md`, `C-RSP-EO-v1.0.md` |
+| `docs/contracts/` | All C-RSP build contracts (**Constitutionally-Regulated Single Pass** executable prompt class; see `docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md`) | `C-RSP-TLC-v1.0.md`, `C-RSP-EO-v1.0.md` |
 | `docs/sops/` | Standard operating procedures | `SOP-001.md` through `SOP-015.md` |
 | `docs/deprecated/` | Superseded documents with deprecation notices | Any document moved out of active use |
 | `schemas/` | JSON schemas and machine-readable governance registries | `ingestion_index.schema.json`, `tlc_principles.json` |

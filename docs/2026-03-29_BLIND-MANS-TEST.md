@@ -25,7 +25,7 @@ Three reasons. All of them are load-bearing.
 
 **Reason 1: Neurodivergent-first governance.** The Living Constitution's default user has ADHD, OCD, autism, and bipolar I. This user cannot rely on "you'll figure it out" or "see the existing code for reference." If the spec requires the reader to hold unstated context in working memory, it fails the default user. BMT eliminates implicit context.
 
-**Reason 2: Agentic execution.** Claude Code agents, subagents, and automated builders execute C-RSP build contracts (Contractually-Restrained Single-Pass builds) as deterministic instructions. An agent has no prior context beyond what the contract provides. If the contract is ambiguous, the agent will guess. Guessing is a constitutional violation (P2 — Epistemic Integrity). BMT makes guessing unnecessary.
+**Reason 2: Agentic execution.** Claude Code agents, subagents, and automated builders execute C-RSP build contracts (**Constitutionally-Regulated Single Pass** executable prompts) as deterministic instructions. An agent has no prior context beyond what the contract provides. If the contract is ambiguous, the agent will guess. Guessing is a constitutional violation (P2 — Epistemic Integrity). BMT makes guessing unnecessary.
 
 **Reason 3: The Census Doctrine demands it.** You cannot govern what you have not described. A specification that relies on "obvious" context or "standard practice" has ungoverned gaps. Those gaps are where phantom completion (F2), instruction drift (F3), and confident false claims (F1) originate. BMT closes the gaps.
 

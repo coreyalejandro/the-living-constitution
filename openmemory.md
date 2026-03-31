@@ -6,9 +6,13 @@ Governance overlay / super-repo for Safety Systems Design Commonwealth: constitu
 
 ## Components
 
+- **`projects/teaser-video-remotion/`** — Isolated Remotion 4 package: composition `ImJustABuild` (1080x1080, 12fps, 720f), four act scenes (`Act1Concept`–`Act4Validation`), `BuildCharacter` + `SiliconHill` + `CaptionCard` + `PillarGrid`, seeded jitter in `src/lib/deterministic.ts` (no `Math.random` in source). CLI via `@remotion/cli`. Scripts: `scripts/render.sh` exports `NO_PROXY`/`no_proxy` for localhost, passes `--ipv4`, `--timeout=120000`, `--concurrency=1`, optional `--browser-executable` → `dist/im-just-a-build.mp4`; `scripts/preflight-render-check.sh` + `npm run preflight`; `scripts/package-zip.sh` → `im-just-a-build-source.zip` (excludes `node_modules`, `dist`; legacy zip name `im-just-a-build-crsp-package.zip`); `scripts/package-release-zip.sh` → `im-just-a-build-release.zip` (MP4 + verification + README + `LICENSE`, digest in `verification/RELEASE_ZIP_SHA256.txt`). `verification/im-just-a-build.mp4.sha256` for release checks. `.c-rsp/governance-map.json` maps scripts and evidence paths.
+
+- **`projects/c-rsp/BUILD_CONTRACT.md` (C-RSP-TS-v2.0)** — Meta **C-RSP** template: **Constitutionally-Regulated Single Pass** executable prompt; includes **INVARIANT_TERM_01**, Terminology Authority Conflict row, halt on non-canonical expansion, AC-GOV-TERM, verification mapping row. Paired doc: `docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md`.
+
 - **`docs/front-door/`** — TLC transition package: front-door strategy, UI strategy, information architecture, sequencing (UI first, teaser video second, integration third), golden README blueprint, golden diagram set (five Mermaid sources under `diagram-sources/`), public positioning, execution roadmap. Indexes `README.md`. Does not supersede `STATUS.json`.
 
-- **`apps/tlc-control-plane/`** — Next.js App Router scaffold: four panels (system graph, status/truth panel, execution pane, verification stream), static snapshot in `lib/tlc-snapshot.ts`, explicit scaffold labels. Not a live backend.
+- **`apps/tlc-control-plane/`** — Next.js App Router **MVP**: four panels; **read-only adapters** in `lib/adapters/` read `STATUS.json` (when repo root resolves), `MASTER_PROJECT_INVENTORY.json` for graph slugs, and verification path presence; `lib/tlc-snapshot.ts` is fallback only; `app/page.tsx` uses `force-dynamic` for request-time reads; panels expose truth-source + functional-status badges. Subordinate to `STATUS.json`; no governance writes.
 
 - **`04-consentchain/`** — Canonical ConsentChain constitutional pack: `REPO_MAP.json`, `COMPONENT_REGISTRY.json`, CLAUDE/BUILD_CONTRACT, architecture and safety stubs. Distinct from `projects/consentchain/` git submodule. Registry path semantics (prior sibling vs TLC submodule): `04-consentchain/REGISTRY_PATH_MIGRATION.md`.
 

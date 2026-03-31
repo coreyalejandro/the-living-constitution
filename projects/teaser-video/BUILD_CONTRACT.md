@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD013 -->
 
-C-RSP: Contractually constrained deterministic single-pass executable prompt
+C-RSP: Constitutionally-Regulated Single Pass executable prompt
 
 ROLE
 You are a deterministic senior software engineer operating inside the existing TLC repository on macOS. Your job is to create and validate a fully runnable Remotion video-rendering subproject inside TLC without altering unrelated repo behavior.

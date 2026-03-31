@@ -1,0 +1,21 @@
+{
+  "contract_version": "v1.0.0",
+  "project_name": "I'm Just a Build",
+  "subproject_path": "projects/teaser-video-remotion",
+  "composition_id": "ImJustABuild",
+  "expected_output": "dist/im-just-a-build.mp4",
+  "environment": {
+    "node": "v22.17.0",
+    "npm": "10.9.2",
+    "ffmpeg": "ffmpeg version 8.0.1 (Homebrew)",
+    "browser_runtime": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "preflight_passed": true,
+  "lint_passed": true,
+  "composition_verified": true,
+  "determinism_verified": true,
+  "render_attempted": true,
+  "render_succeeded": true,
+  "output_sha256": "35c28f8f0fb82a51ceba7c89415afc91c8dd739dec034eb54982809dfd8cb6ff",
+  "exceptions": []
+}

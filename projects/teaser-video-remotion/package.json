@@ -1,0 +1,24 @@
+{
+  "name": "teaser-video-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render": "bash scripts/render.sh",
+    "preflight": "bash scripts/preflight-render-check.sh",
+    "lint": "tsc --noEmit",
+    "package:zip": "bash scripts/package-zip.sh",
+    "package:release-zip": "bash scripts/package-release-zip.sh"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.140",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "remotion": "4.0.140"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.66",
+    "@types/react-dom": "18.2.22",
+    "typescript": "5.4.5"
+  }
+}

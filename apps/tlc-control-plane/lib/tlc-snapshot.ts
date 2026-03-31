@@ -1,6 +1,7 @@
 /**
- * Static snapshot aligned to repository STATUS.json at front-door package execution.
- * Not a live fetch. Regenerate manually when status semantics change.
+ * Fallback snapshot and static lists used when repo root cannot be resolved or
+ * files are unreadable. Prefer `lib/adapters/status-json-adapter` live read of
+ * STATUS.json when the app runs with the monorepo root discoverable.
  */
 export const TLC_STATUS_SNAPSHOT = {
   project: "coreyalejandro/the-living-constitution",

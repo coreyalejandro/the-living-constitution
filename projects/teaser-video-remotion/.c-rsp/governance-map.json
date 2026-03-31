@@ -1,0 +1,46 @@
+{
+  "contract_version": "v1.0.0",
+  "project": "teaser-video-remotion",
+  "mappings": [
+    {
+      "path": "scripts/render.sh",
+      "roles": ["environment_constraint", "output_proof"],
+      "notes": "Invokes Remotion CLI render to dist/im-just-a-build.mp4; requires Node, npm, FFmpeg on PATH."
+    },
+    {
+      "path": "scripts/preflight-render-check.sh",
+      "roles": ["preflight_gate", "truth_discipline"],
+      "notes": "Validates cwd, assets, toolchain, lint, compositions, and no Math.random under src/."
+    },
+    {
+      "path": "verification/",
+      "roles": ["observability", "evidence"],
+      "notes": "RENDER_REPORT, RENDER_EVIDENCE.json, hashes, environment and command logs from host pass."
+    },
+    {
+      "path": "src/lib/deterministic.ts",
+      "roles": ["determinism_invariant"],
+      "notes": "Seeded jitter; no Math.random or wall-clock entropy in composition logic."
+    },
+    {
+      "path": "README.md",
+      "roles": ["user_facing_truth"],
+      "notes": "Documents format, runtime requirements, render/verification/packaging/proxy, and distinguishes source from release deliverables."
+    },
+    {
+      "path": "scripts/package-zip.sh",
+      "roles": ["distribution", "truth_discipline"],
+      "notes": "Writes im-just-a-build-source.zip; excludes node_modules and dist (legacy name im-just-a-build-crsp-package.zip)."
+    },
+    {
+      "path": "scripts/package-release-zip.sh",
+      "roles": ["distribution", "evidence"],
+      "notes": "Writes im-just-a-build-release.zip with MP4, verification/*.sha256, RENDER_REPORT, README, LICENSE; records RELEASE_ZIP_SHA256.txt."
+    },
+    {
+      "path": "LICENSE",
+      "roles": ["user_facing_truth"],
+      "notes": "Release packaging pointer to repository charter; not a standalone license regime."
+    }
+  ]
+}

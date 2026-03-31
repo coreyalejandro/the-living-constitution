@@ -5,7 +5,7 @@
 ## 2026-03-30 — PASS 14 governance integrity repair (pre-CI)
 
 | Field | Value |
-|-------|--------|
+| ----- | ----- |
 | **Conflict** | INVARIANT_21 — `ci_provenance.verify_workflow_sha256` drifted from `sha256(.github/workflows/verify.yml)` after workflow updates |
 | **Resolution** | Updated `MASTER_PROJECT_INVENTORY.json` `ci_provenance.verify_workflow_sha256` to match current workflow file on disk |
 | **Conflict** | INVARIANT_42 — `STATUS.json` / `STATUS.md` behind `aggregate_status()` (workflow SHA and related aggregate fields) |
@@ -18,7 +18,7 @@
 ## 2026-03-31 — PASS 14 remote CI blocked (submodule access)
 
 | Field | Value |
-|-------|--------|
+| ----- | ----- |
 | **Evidence** | GitHub Actions run `23773602359` (and subsequent pushes `23773613714`, `23773617617`) failed at `actions/checkout@v4` before any verifier or attestation steps. |
 | **Root cause** | Submodule `projects/consent-gateway-auth0` → `https://github.com/coreyalejandro/consent-gateway-auth0.git` is **private**. Default `GITHUB_TOKEN` cannot clone private sibling repos; error text: `repository 'https://github.com/coreyalejandro/consent-gateway-auth0.git/' not found` / clone failed. |
 | **Workflow binding** | `.github/workflows/verify.yml` uses `token: ${{ secrets.SUBMODULES_PAT \|\| secrets.GITHUB_TOKEN }}`. |
@@ -30,7 +30,7 @@
 ## 2026-03-31 — PASS 14 closure (green CI + attestation verified)
 
 | Field | Value |
-|-------|--------|
+| ----- | ----- |
 | **Closure anchor** | GitHub Actions run `23774310879` — **success** — head SHA `30805eed1d51ca78107294376c1b783275e484aa` ([run URL](https://github.com/coreyalejandro/the-living-constitution/actions/runs/23774310879)). |
 | **Submodule access blocker** | Prior runs (`23773602359`, `23773613714`, `23773617617`) failed at `actions/checkout` — private submodule `projects/consent-gateway-auth0` not cloneable with default `GITHUB_TOKEN`. |
 | **Remediation** | Repository secret `SUBMODULES_PAT` (or equivalent) — workflow uses `token: ${{ secrets.SUBMODULES_PAT \|\| secrets.GITHUB_TOKEN }}`; green run confirms checkout path unblocked. |
@@ -43,7 +43,7 @@
 ## 2026-03-30 — PASS 16 attestation replay determinism (C-RSP)
 
 | Field | Value |
-|-------|--------|
+| ----- | ----- |
 | **Weakness** | `scripts/verify_attestation.py` always read `verification/runs/*.json`; replaying CI attestation required **temporary replacement** of that tree with CI artifact contents (see PASS 14 closure notes). |
 | **Resolution** | Added `--verification-runs-dir` to `scripts/verify_attestation.py` so aggregate and `governance_run_basename` resolve against an **explicit** directory (default unchanged: `verification/runs`). Canonical committed inputs: `verification/ci-remote-evidence/replay/23774310879/*.json` from artifact `governance-verification-runs-23774310879-1`. |
 | **Rationale** | INVARIANT_57–59 unchanged; PASS 16 satisfies C-RSP **isolated staging / explicit inputs** without mutating ambient historical `verification/runs/`. |
@@ -53,7 +53,7 @@
 ## 2026-03-30 — FINAL_STOP_CONDITION (C-RSP v1.0.0) adjudication
 
 | Field | Value |
-|-------|--------|
+| ----- | ----- |
 | **Contract** | `projects/c-rsp/BUILD_CONTRACT.md` v1.0.0 — executable stop-condition pass |
 | **Baseline verified** | PASS 14 anchored to run `23774310879` / commit `30805eed1d51ca78107294376c1b783275e484aa` (`verification/ci-remote-evidence/record.json`, prior log entries). PASS 15 continuity recorded in PASS 14 closure row. PASS 16 anchored to commit `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3`, CI run `23774969505` **success** (`gh run view 23774969505`). |
 | **Stop-condition capabilities** | See adjudication table below. |
@@ -61,7 +61,7 @@
 ### Adjudication table (six capabilities)
 
 | # | Capability | Governing evidence | Verification | Truth-state |
-|---|------------|-------------------|--------------|-------------|
+| --- | --- | --- | --- | --- |
 | 1 | Source of truth stabilized | `THE_LIVING_CONSTITUTION.md`, `MASTER_PROJECT_INVENTORY.json`, renderer output `STATUS.json` / `STATUS.md` (not hand-edited) | Files present; `render_status_surface.py` is canonical generator | **met** |
 | 2 | Invariant enforcement stabilized | `scripts/verify_governance_chain.py`, `scripts/verify_project_topology.py` | `python3 scripts/verify_governance_chain.py --root .` exit 0; `python3 scripts/verify_project_topology.py --root . --with-governance` exit 0 | **met** |
 | 3 | Remote CI and attestation proven | `verification/ci-remote-evidence/record.json`; PASS 14 / PASS 16 anchors | `gh run view 23774310879` (historical success); `gh run view 23774969505` conclusion success | **met** |
@@ -77,9 +77,18 @@
 ## 2026-03-30 — Front-door transition package (C-RSP instance)
 
 | Field | Value |
-|-------|--------|
+| ----- | ----- |
 | **Contract** | TLC front-door transition package — documentation + optional `apps/tlc-control-plane/` scaffold |
 | **Conflict** | N/A — explicit reason: no collision with protected paths; root `README.md` not overwritten per contract |
 | **Artifacts** | `docs/front-door/*`, `docs/front-door/diagram-sources/*.mmd`, `apps/tlc-control-plane/*` |
 | **Governance** | No new TLC pass; `STATUS.json` not modified; maintenance-mode preserved |
 | **Scaffold** | Created self-contained Next.js app under `apps/tlc-control-plane/` with pnpm and pinned dependencies |
+
+## 2026-03-31 — C-RSP control-plane UI MVP wiring (no governance artifact mutation)
+
+| Field | Value |
+| ----- | ----- |
+| **Contract** | Executable C-RSP — TLC control-plane wired MVP; read-only adapters; four canonical panels |
+| **Conflict** | N/A — explicit reason: file-backed `STATUS.json` preferred over snapshot; no snapshot/display contradiction requiring halt |
+| **Artifacts** | `apps/tlc-control-plane/lib/adapters/*`, `lib/repo-root.ts`, panel updates, `docs/front-door/UI_MVP_READINESS_REPORT.md` |
+| **Governance** | No new TLC pass; no write path to `STATUS.json` or other governance artifacts; product name unchanged (TLC AI Governance System) |
