@@ -5,7 +5,7 @@
   },
   "escalation_state": "review_required",
   "governance_contract_version": "v1.9.0",
-  "head_sha": "f13091a48ed9bf86569a8cdf59fb0b366a4354de",
+  "head_sha": "bbec6f50734ba6c3722f87230363e190c323b0f2",
   "historical_state": {
     "ci_remote_record_captured_at_utc": "2026-03-30T19:00:00Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",

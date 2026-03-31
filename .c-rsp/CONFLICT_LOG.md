@@ -14,3 +14,15 @@
 | **Historical field** | `verify_workflow_sha256_at_last_remote_run` left documenting workflow identity at last recorded remote run (`record.json`); not overwritten by tip repair |
 
 **Protocol:** Per conflict matrix — workflow SHA mismatch → update inventory to current workflow; STATUS drift → run render script. No CI skip; remote proof required for PASS 14 closure post-push.
+
+## 2026-03-31 — PASS 14 remote CI blocked (submodule access)
+
+| Field | Value |
+|-------|--------|
+| **Evidence** | GitHub Actions run `23773602359` (and subsequent pushes `23773613714`, `23773617617`) failed at `actions/checkout@v4` before any verifier or attestation steps. |
+| **Root cause** | Submodule `projects/consent-gateway-auth0` → `https://github.com/coreyalejandro/consent-gateway-auth0.git` is **private**. Default `GITHUB_TOKEN` cannot clone private sibling repos; error text: `repository 'https://github.com/coreyalejandro/consent-gateway-auth0.git/' not found` / clone failed. |
+| **Workflow binding** | `.github/workflows/verify.yml` uses `token: ${{ secrets.SUBMODULES_PAT \|\| secrets.GITHUB_TOKEN }}`. |
+| **Local verification** | After `./scripts/bootstrap_repo.sh`: `python3 scripts/verify_governance_chain.py` exit 0; `python3 scripts/verify_project_topology.py --with-governance` exit 0; `python3 scripts/render_status_surface.py --root .` updated `STATUS.json` / `STATUS.md` (`head_sha` → current `HEAD`). |
+| **Secret inventory** | `gh secret list --repo coreyalejandro/the-living-constitution` returned no rows in this environment (either no secrets configured or listing not permitted). **Required for CI:** repository secret `SUBMODULES_PAT` — fine-grained PAT with `contents:read` on `coreyalejandro/consent-gateway-auth0` (and any other private submodules). |
+| **PASS 14** | **NOT CLOSED** — no successful remote run; no `governance-verification-runs` / `supply-chain-attestation` artifacts; `scripts/verify_attestation.py` not executed against a CI-produced attestation file. |
+| **Retry** | One bounded re-run after access repair: push `main` after `SUBMODULES_PAT` is present, then re-download artifacts and run `verify_attestation.py` per contract. |

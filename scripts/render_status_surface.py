@@ -7,6 +7,9 @@ Aggregates MASTER_PROJECT_INVENTORY ci_provenance, immutable verification anchor
 remote evidence record, and cross-repo check into STATUS.json; renders
 deterministic STATUS.md from STATUS.json.
 
+PASS 12: Anchor tag availability and remote parity are enforced only by
+verify_governance_chain.py / verify_cross_repo_consistency.py (not here).
+
 Manual edits to STATUS.md are prohibited; regenerate with this script.
 """
 
