@@ -1,0 +1,11 @@
+{
+  "project_id": "sandbox-runtime-001",
+  "version": "1.2.0",
+  "topology_role": "execution_substrate",
+  "paths": {
+    "integrated": "projects/sandbox-runtime",
+    "standalone": "standalone/tlc-sandbox-app"
+  },
+  "invariants": ["INVARIANT_04", "INVARIANT_06", "INVARIANT_10", "INVARIANT_16"],
+  "parity_interfaces": ["governance_api", "evidence_stream", "halt_authority", "sandbox_log"]
+}

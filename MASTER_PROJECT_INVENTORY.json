@@ -245,9 +245,12 @@
       "evidence-observatory",
       "frostbyte-etl",
       "human-guard",
+      "im-just-a-build",
       "proactive",
+      "sandbox-runtime",
       "sentinelos",
       "teaser-video",
+      "teaser-video-remotion",
       "uicare"
     ],
     "entries": [
@@ -342,6 +345,16 @@
         "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
       },
       {
+        "slug": "im-just-a-build",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/im-just-a-build",
+        "implementation_repo_path_config_ts": null,
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "TLC in-repo deliverable; Remotion package sibling to teaser-video; BUILD_CONTRACT.md"
+      },
+      {
         "slug": "proactive",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/proactive-gitlab-agent/",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/proactive-gitlab-agent",
@@ -350,6 +363,16 @@
         "has_claude_md": true,
         "has_build_contract_md": true,
         "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      },
+      {
+        "slug": "sandbox-runtime",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "TLC Golden Sandbox dual topology — integrated projects/sandbox-runtime; standalone standalone/tlc-sandbox-app; scripts/verify_topology.py"
       },
       {
         "slug": "sentinelos",
@@ -370,6 +393,16 @@
         "has_claude_md": true,
         "has_build_contract_md": true,
         "repo_path_source": "BUILD_CONTRACT.md Repo Path (in-TLC)"
+      },
+      {
+        "slug": "teaser-video-remotion",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video-remotion",
+        "implementation_repo_path_config_ts": null,
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "TLC in-repo Remotion 4 package; see projects/teaser-video-remotion/README.md"
       },
       {
         "slug": "uicare",
@@ -526,5 +559,19 @@
     "empirical-guard: implementation path `/Users/coreyalejandro/Projects/empirical-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
     "epistemic-guard: implementation path `/Users/coreyalejandro/Projects/epistemic-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
     "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md; governance chain artifacts are repo-root — see governance_artifacts)"
+  ],
+  "dual_topology_registry": [
+    {
+      "project_id": "sandbox-runtime-001",
+      "dual_topology": {
+        "integrated_path": "projects/sandbox-runtime",
+        "standalone_repo_path": "standalone/tlc-sandbox-app",
+        "topology_status": "complete",
+        "governance_link": "TLC-SUPREME-001",
+        "evidence_ledger_path": "verification/SANDBOX_LOG.md",
+        "halt_authority_status_key": "sandbox_operational_state",
+        "phase_2_3_notes": "INVARIANT_04 jail (src/jail.py); STATUS.json halt (src/governance_connector.py); INVARIANT_06 ledger (verification/SANDBOX_LOG.md); propose_invariant.py; verify_topology.py --strict"
+      }
+    }
   ]
 }
