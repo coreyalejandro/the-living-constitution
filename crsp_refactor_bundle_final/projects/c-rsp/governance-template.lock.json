@@ -1,0 +1,27 @@
+{
+  "lock_version": "1.0.0",
+  "base_template": {
+    "path": "projects/c-rsp/BUILD_CONTRACT.md",
+    "version": "1.0.0"
+  },
+  "profile_overlay": {
+    "path": "projects/c-rsp/PASS8_TEMPLATE.md",
+    "version": "1.0.0"
+  },
+  "schema": {
+    "path": "projects/c-rsp/contract-schema.json",
+    "version": "1.0.0"
+  },
+  "verifier": {
+    "class": "satellite-verifier",
+    "version": "1.0.0"
+  },
+  "dependency_graph": {
+    "parent_constitutional_source": "the-living-constitution",
+    "linked_repos": [],
+    "shared_profiles": [
+      "PASS8_TEMPLATE.md"
+    ],
+    "drift_detection_cadence": "weekly"
+  }
+}

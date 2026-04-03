@@ -1,0 +1,146 @@
+{
+  "schema_name": "crsp_contract_schema",
+  "schema_version": "1.0.0",
+  "canonical_expansion": "Constitutionally-Regulated Single Pass",
+  "core_sections": [
+    {
+      "id": "template_governance",
+      "title": "Template Governance",
+      "immutable": true,
+      "order": 0
+    },
+    {
+      "id": "contract_identity",
+      "title": "Contract Identity",
+      "immutable": true,
+      "order": 1
+    },
+    {
+      "id": "contract_topology_profile",
+      "title": "Contract Topology + Profile",
+      "immutable": true,
+      "order": 2
+    },
+    {
+      "id": "baseline_state",
+      "title": "Baseline State",
+      "immutable": true,
+      "order": 3
+    },
+    {
+      "id": "dependencies_inputs",
+      "title": "Dependencies and Inputs",
+      "immutable": true,
+      "order": 4
+    },
+    {
+      "id": "risk_control_classification",
+      "title": "Risk + Control Classification",
+      "immutable": true,
+      "order": 5
+    },
+    {
+      "id": "execution_model",
+      "title": "Execution Model",
+      "immutable": true,
+      "order": 6
+    },
+    {
+      "id": "lifecycle_state_machine",
+      "title": "Lifecycle State Machine",
+      "immutable": true,
+      "order": 7
+    },
+    {
+      "id": "invariants",
+      "title": "Invariants",
+      "immutable": true,
+      "order": 8
+    },
+    {
+      "id": "acceptance_criteria",
+      "title": "Acceptance Criteria",
+      "immutable": true,
+      "order": 9
+    },
+    {
+      "id": "rollback_recovery",
+      "title": "Rollback & Recovery",
+      "immutable": true,
+      "order": 10
+    },
+    {
+      "id": "evidence_truth_surface",
+      "title": "Evidence + Truth Surface",
+      "immutable": true,
+      "order": 11
+    },
+    {
+      "id": "conflict_matrix",
+      "title": "Conflict Matrix",
+      "immutable": true,
+      "order": 12
+    },
+    {
+      "id": "halt_matrix",
+      "title": "Halt Matrix",
+      "immutable": true,
+      "order": 13
+    },
+    {
+      "id": "preflight",
+      "title": "Preflight",
+      "immutable": true,
+      "order": 14
+    },
+    {
+      "id": "adoption_tiers",
+      "title": "Adoption Tiers",
+      "immutable": true,
+      "order": 15
+    },
+    {
+      "id": "output_format",
+      "title": "Output Format",
+      "immutable": true,
+      "order": 16
+    },
+    {
+      "id": "instance_declaration",
+      "title": "Instance Declaration",
+      "immutable": true,
+      "order": 17
+    }
+  ],
+  "customization_zones": [
+    "profile_specific_invariants",
+    "domain_acceptance_criteria",
+    "implementation_controls",
+    "evidence_paths",
+    "execution_plan_payload",
+    "domain_product_context",
+    "linked_repo_dependency_payload"
+  ],
+  "required_fields": [
+    "Contract Title",
+    "Contract ID",
+    "Version",
+    "Schema Version",
+    "Status",
+    "Adoption Tier",
+    "Topology Mode",
+    "Profile Type",
+    "Verifier Class",
+    "Authoritative Truth Surface"
+  ],
+  "validation_model": {
+    "preserve_core_section_order": true,
+    "preserve_core_section_titles": true,
+    "forbid_core_section_rename": true,
+    "forbid_core_section_removal": true,
+    "forbid_core_section_insertion_between_ordered_sections": true,
+    "allow_customization_only_in_declared_zones": true,
+    "reject_unresolved_placeholders_in_executable_instances": true,
+    "require_canonical_terminology": true
+  }
+}
