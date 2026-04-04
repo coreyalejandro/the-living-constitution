@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "tlc-review-escalation-pass6",
+  "scheduled_consecutive_failure_threshold": 3,
+  "workflow_files_sha256": [".github/workflows/verify.yml"],
+  "tip_state_transition_policy": {
+    "machine_readable_statuses": ["verified", "pending", "blocked", "critical"],
+    "parallel_tip_state_truth": [
+      "tip_verified",
+      "tip_pending",
+      "tip_blocked",
+      "tip_critical"
+    ],
+    "mapping": {
+      "verified": "tip_verified",
+      "pending": "tip_pending",
+      "blocked": "tip_blocked",
+      "critical": "tip_critical"
+    },
+    "promotion_to_verified_requires": [
+      "successful GitHub Actions run of Verify Living Constitution on the same commit as HEAD",
+      "verification/ci-remote-evidence/record.json updated to that run with claimed_remote consistency",
+      "MASTER_PROJECT_INVENTORY.json ci_provenance fields aligned to record and live verify.yml sha256",
+      "human commit of inventory + record (CI does not silently write these on success by default)"
+    ],
+    "docs_only_without_protected_touch": {
+      "rule": "If git diff since last_remote_qualifying_commit touches no path in verification/tip-state-policy.json protected_surface_paths, escalation may remain none while tip_state_truth stays tip_pending until a new qualifying run refreshes anchors."
+    },
+    "protected_surface_change_without_fresh_remote": {
+      "rule": "ci_provenance.status must not be verified; escalation_state at least review_required when protected surfaces changed since last_remote_qualifying_commit and HEAD differs."
+    },
+    "governance_chain_break": {
+      "required_escalation": "critical per existing enforcement and GOVERNANCE_SYSTEM_CARD"
+    }
+  },
+  "escalation_rules": [
+    {
+      "id": "R1",
+      "breach_code": "BREACH-I",
+      "condition": "ci_provenance.status is verified while remote record workflow_conclusion is not success or artifact_upload_succeeded is false",
+      "required_escalation": "ci_provenance.status must not remain verified; use pending or blocked"
+    },
+    {
+      "id": "R2",
+      "breach_code": "BREACH-J",
+      "condition": "verify_workflow_sha256 in inventory differs from live sha256 of .github/workflows/verify.yml without a fresh green run recorded after the change",
+      "required_ci_provenance_status": "pending"
+    },
+    {
+      "id": "R3",
+      "breach_code": "BREACH-H",
+      "condition": "regression ledger record fails schema validation",
+      "required_escalation": "blocking"
+    },
+    {
+      "id": "R4",
+      "breach_code": "BREACH-K",
+      "condition": "escalation_state is blocking or critical",
+      "required_reviewer_status": "acknowledged or waived"
+    },
+    {
+      "id": "R5",
+      "breach_code": "BREACH-G",
+      "condition": "no schedule stanza in verify.yml",
+      "required_escalation": "critical"
+    },
+    {
+      "id": "R6",
+      "breach_code": "BREACH-M",
+      "condition": "ci_provenance.status is verified while git HEAD differs from last_verified_commit or from record artifact_commit_hash",
+      "required_ci_provenance_status": "pending"
+    },
+    {
+      "id": "R7",
+      "breach_code": "BREACH-N",
+      "condition": "protected governance surfaces changed since last_remote_qualifying_commit without a new qualifying green remote run",
+      "required_escalation": "review_required or stronger; tip_state_truth must not be tip_verified until promotion"
+    }
+  ],
+  "review_independent_record": "verification/independent-review/last-review.json"
+}

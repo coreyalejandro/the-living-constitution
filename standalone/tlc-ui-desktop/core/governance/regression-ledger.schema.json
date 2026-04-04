@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/schemas/regression-ledger.json",
+  "title": "TLC Governance Regression Ledger",
+  "type": "object",
+  "required": ["schema_version", "records"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.1.0" },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ledger_record" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ledger_record": {
+      "type": "object",
+      "required": [
+        "run_id",
+        "run_attempt",
+        "workflow_name",
+        "workflow_sha256",
+        "commit_sha",
+        "branch_ref",
+        "timestamp_utc",
+        "conclusion",
+        "artifact_name",
+        "artifact_retrieval_ref",
+        "reviewer_status",
+        "escalation_state",
+        "github_event_name",
+        "tip_state_truth"
+      ],
+      "properties": {
+        "run_id": { "type": "string", "minLength": 1 },
+        "run_attempt": { "type": "string", "minLength": 1 },
+        "workflow_name": { "type": "string", "minLength": 1 },
+        "workflow_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "commit_sha": { "type": "string", "minLength": 7 },
+        "branch_ref": { "type": "string", "minLength": 1 },
+        "timestamp_utc": { "type": "string", "format": "date-time" },
+        "conclusion": { "type": "string", "enum": ["success", "failure", "cancelled", "skipped"] },
+        "artifact_name": { "type": "string", "minLength": 1 },
+        "artifact_path": {
+          "type": "string",
+          "description": "Relative path under repo root when artifact exists in-tree"
+        },
+        "artifact_retrieval_ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Artifact name, URL, or retrieval hint"
+        },
+        "reviewer_status": {
+          "type": "string",
+          "enum": ["pending", "acknowledged", "waived", "not_required"]
+        },
+        "escalation_state": {
+          "type": "string",
+          "enum": ["none", "review_required", "blocking", "critical"]
+        },
+        "github_event_name": { "type": "string", "minLength": 1 },
+        "tip_state_truth": {
+          "type": "string",
+          "enum": [
+            "historical_verified_run",
+            "tip_verified",
+            "tip_pending",
+            "tip_blocked",
+            "tip_critical"
+          ],
+          "description": "Whether the row is historical-only or establishes tip-level truth at append time"
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

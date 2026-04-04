@@ -21,10 +21,12 @@ from typing import Any, Dict, FrozenSet, Optional, Tuple
 _ALLOWED_ROOT_SEGMENTS: Tuple[Tuple[str, ...], ...] = (
     ("projects", "sandbox-runtime"),
     ("standalone", "tlc-sandbox-app"),
+    ("projects", "tlc-control-plane"),
+    ("standalone", "tlc-ui-desktop"),
 )
 
 # Execution cell may only import these top-level modules (plus whitelisted stdlib used by jail).
-_IMPORT_WHITELIST: FrozenSet[str] = frozenset({"math", "json", "time"})
+_IMPORT_WHITELIST: FrozenSet[str] = frozenset({"math", "json", "time", "pathlib"})
 
 
 class SandboxJailError(ValueError):
@@ -54,8 +56,9 @@ def _is_under(root: Path, candidate: Path) -> bool:
 
 def resolve_safe_script_path(relative: str, tlc_root: Path) -> Path:
     """
-    Resolve a script path that must live under projects/sandbox-runtime/ or
-    standalone/tlc-sandbox-app/ relative to tlc_root.
+    Resolve a script path that must live under an allowed Lower Sandbox root
+    (sandbox-runtime, tlc-sandbox-app, tlc-control-plane, tlc-ui-desktop)
+    relative to tlc_root.
     """
     _reject_traversal(relative)
     rel = Path(relative)
@@ -114,6 +117,7 @@ def _safe_builtins() -> Dict[str, Any]:
         "float",
         "format",
         "frozenset",
+        "globals",
         "hash",
         "hex",
         "int",
@@ -139,6 +143,7 @@ def _safe_builtins() -> Dict[str, Any]:
         "str",
         "sum",
         "tuple",
+        "type",
         "zip",
         "print",
         "Exception",

@@ -5,6 +5,7 @@
 
 ## What Was Just Completed
 
+- **TLC Control Plane sandbox satellite (2026-04-03) — TLC-CONTROL-PLANE-INIT-001:** `projects/tlc-control-plane/` + `standalone/tlc-ui-desktop/` dual topology (`control-plane-001`); `governance/` PASS 8 schemas/policies + `enforcement-map.json` (INVARIANT_01–59 ↔ `00-constitution/invariant-registry.json`); `src/app.py` / `core/app.py` (STATUS.json + constitution preview; `INTERACTION_ENABLED` off when `sandbox_operational_state` is `OFF`/`QUARANTINE`; direct run raises `SandboxEngineInvocationRequired`). Extended Lower Sandbox: `jail.py` roots + `pathlib` whitelist + builtins `type`/`globals`; `engine.py` injects `__SANDBOX_ENGINE_INVOKED__` / `__TLC_ROOT__`. `scripts/verify_topology.py` now drives all pairs from `MASTER_PROJECT_INVENTORY.json#dual_topology_registry`; new `scripts/verify_ui_governance.py`. Inventory: slug `tlc-control-plane`, second `dual_topology_registry` row. `verification/SANDBOX_LOG.md` append. Verified: `verify_topology.py --strict`, `verify_ui_governance.py`, `SandboxEngine.execute_script('src/app.py')`, `samples/safe.py` unchanged. **Note:** `apps/tlc-control-plane/` (Next.js) remains separate from this governed sandbox entry.
 - **MADMall V&T (2026-04-03):** Added **Verified against** and **Not claimed** lines to the closing `V&T Statement` blocks in `05-madmall/madmall-tlc-alignment.md`, `madmall-status-vt.md`, `madmall-positioning.md`, and `madmall-zero-shot-prebuild-contract.md` so each block follows Exists → Verified against → Not claimed → Non-existent → Unverified → Functional status (UPOS V&T alignment).
 - **C-RSP canonical placement (2026-04-03):** Copied the seven governance artifacts from `crsp_refactor_bundle_final/projects/c-rsp/` into canonical `projects/c-rsp/`. Pre-existing `BUILD_CONTRACT.md` and `PASS8_TEMPLATE.md` were renamed in place to `*.pre-refactor.bak` before replace. `cmp` verified byte-identical copy for all seven targets vs bundle sources.
 - **`crsp_refactor_bundle_final/` (2026-04-03):** Reviewed ChatGPT export vs bundle; confirmed on-disk `BUILD_CONTRACT.md` and `PASS8_TEMPLATE.md` were already full (assessment had targeted truncated chat excerpts). Completed bundle gaps: `README.md` expanded (was literal `\n`); `BUILD_CONTRACT.instance.template.md` and `BUILD_CONTRACT.instance.example.md` gained schema-aligned **§0 Instance Governance** and **§17 Instance Declaration**, **§5A** conditional stop/override, lifecycle edge text, truth discipline; `contract-schema.json` extended with `allowed_values`, `topology_verifier_alignment`, `lifecycle_transitions`, `tier_minimums`, stronger `validation_model`, and `instance_heading_note` on section 0; `governance-template.lock.json` gained `invariant_sets`, verifier `scope`, optional `integrity`; `INSTANCE_PROCESS.md` gained topology branching, verifier invocation, failure branches, rollback flow.
@@ -41,6 +42,8 @@ npm run package:release-zip
 - **PASS 14 closure run:** `23774310879` @ `30805eed1d51ca78107294376c1b783275e484aa`
 - **PASS 16 tip commit:** `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3` — run `23774969505`
 - **Bootstrap:** `./scripts/bootstrap_repo.sh`
+- **Dual topology (all registry pairs):** `python3 scripts/verify_topology.py --strict`
+- **Control plane UI governance:** `python3 scripts/verify_ui_governance.py`
 
 ---
 

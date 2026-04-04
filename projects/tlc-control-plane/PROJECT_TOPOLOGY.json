@@ -1,0 +1,11 @@
+{
+  "project_id": "control-plane-001",
+  "version": "1.0.0",
+  "topology_role": "governed_ui_satellite",
+  "paths": {
+    "integrated": "projects/tlc-control-plane",
+    "standalone": "standalone/tlc-ui-desktop"
+  },
+  "invariants": ["INVARIANT_04", "INVARIANT_10", "INVARIANT_16"],
+  "parity_interfaces": ["governance_api", "halt_authority", "pass8_evidence", "sandbox_log"]
+}

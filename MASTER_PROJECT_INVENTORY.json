@@ -251,6 +251,7 @@
       "sentinelos",
       "teaser-video",
       "teaser-video-remotion",
+      "tlc-control-plane",
       "uicare"
     ],
     "entries": [
@@ -373,6 +374,16 @@
         "has_claude_md": true,
         "has_build_contract_md": true,
         "repo_path_source": "TLC Golden Sandbox dual topology — integrated projects/sandbox-runtime; standalone standalone/tlc-sandbox-app; scripts/verify_topology.py"
+      },
+      {
+        "slug": "tlc-control-plane",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "TLC Control Plane UI dual topology — integrated projects/tlc-control-plane; standalone standalone/tlc-ui-desktop; TLC-CONTROL-PLANE-INIT-001; scripts/verify_topology.py --strict"
       },
       {
         "slug": "sentinelos",
@@ -571,6 +582,18 @@
         "evidence_ledger_path": "verification/SANDBOX_LOG.md",
         "halt_authority_status_key": "sandbox_operational_state",
         "phase_2_3_notes": "INVARIANT_04 jail (src/jail.py); STATUS.json halt (src/governance_connector.py); INVARIANT_06 ledger (verification/SANDBOX_LOG.md); propose_invariant.py; verify_topology.py --strict"
+      }
+    },
+    {
+      "project_id": "control-plane-001",
+      "dual_topology": {
+        "integrated_path": "projects/tlc-control-plane",
+        "standalone_repo_path": "standalone/tlc-ui-desktop",
+        "topology_status": "complete",
+        "governance_link": "TLC-CONTROL-PLANE-INIT-001",
+        "evidence_ledger_path": "verification/SANDBOX_LOG.md",
+        "halt_authority_status_key": "sandbox_operational_state",
+        "phase_2_3_notes": "PASS 8 governance/; SandboxEngine.execute_script(src/app.py); scripts/verify_ui_governance.py; read-only CI vs MASTER_PROJECT_INVENTORY per contract"
       }
     }
   ]

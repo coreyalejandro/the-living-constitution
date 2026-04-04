@@ -152,7 +152,14 @@ class SandboxEngine:
         try:
             path = jail.resolve_safe_script_path(relative_script, root)
             source = path.read_text(encoding="utf-8")
-            jail.safe_exec_script(source, path.name)
+            jail.safe_exec_script(
+                source,
+                path.name,
+                extra_globals={
+                    "__SANDBOX_ENGINE_INVOKED__": True,
+                    "__TLC_ROOT__": str(root),
+                },
+            )
             evidence_ledger.append_entry(root, action, "Success", constitutional_hash_value=ch)
             self.emit_evidence({"event": "script_executed", "path": relative_script, "result": "success"})
             return "success"
