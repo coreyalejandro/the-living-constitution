@@ -1,3 +1,5 @@
+<!-- markdownlint-disable --><!-- ChatGPT export: Prompt/Response structure, duplicate headings, setext, bare URLs are intentional; see .markdownlintignore -->
+
 # AI Governance Frameworks
 
 **User:** Corey Alejandro (corey@coreyalejandro.com)  
