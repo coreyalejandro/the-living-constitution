@@ -1,5 +1,8 @@
 <!-- markdownlint-disable MD013 -->
-# C-RSP Outcome Report
+# C-RSP Build Contract : `<BUILD_CONTRACT_TITLE>` — `<COMPONENT>`
+## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
+
+**Title rule:** `BUILD_CONTRACT_TITLE` = exact **Contract Title** from the governing `BUILD_CONTRACT` / `BUILD_CONTRACT.instance.md` (Section 1). For zero-shot contracts whose H1 is `# Build Contract: Name`, use `Name` (e.g. `04-consentchain/BUILD_CONTRACT.md` → `ConsentChain`). `COMPONENT` = governed component or subsystem this run touched (must stay in the H1 for scanning).
 
 **Contract instance:** `<path/to/BUILD_CONTRACT.instance.md>`  
 **Run id / commit:** `<shortsha or tag>`

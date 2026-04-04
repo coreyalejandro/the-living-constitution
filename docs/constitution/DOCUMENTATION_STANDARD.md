@@ -1,31 +1,27 @@
+---
+document_type: "Constitutional"
+id: "DOC-CONST-001"
+repo_scope: "Cross-Repo"
+authority_level: "L4"
+truth_rank: 1
+status: "Active"
+canonical_path: "docs/constitution/DOCUMENTATION_STANDARD.md"
+next_file: "docs/constitution/CANONICAL_PATHS.md"
+last_verified:
+  commit: "af9dfb8"
+  timestamp: "2026-04-04T12:00:00Z"
+metadata:
+  est_time_minutes: 45
+  cognitive_load: "High"
+  requires_interruption_buffer: true
+navigation:
+  parent_index: "docs/INDEX.md"
+  hierarchy_level: "TLC > Constitution > Documentation Standard"
+---
+
 <!-- markdownlint-disable MD013 -->
 
 # DOCUMENTATION_STANDARD
-
-- Document Type: Constitutional
-- Document ID: DOC-CONST-001
-- Repo Scope: Cross-Repo
-- Audience: Maintainers, Contributors, Operators, Reviewers, Auditors, Automation
-- Primary Purpose: Define the mandatory documentation standard for The Living Constitution (TLC), governed satellite repos, and dual-topology products.
-- Use This When: Creating, modifying, migrating, validating, reviewing, or generating documentation artifacts.
-- Do Not Use This For: Task execution instructions, architecture explanation, or evidence reporting.
-- Authority Level: L4
-- Source of Truth Rank: 1
-- Canonical Path: `docs/constitution/DOCUMENTATION_STANDARD.md`
-- Requires:
-  - `docs/constitution/CANONICAL_PATHS.md`
-  - `docs/constitution/ROOT_DOC_ALLOWLIST.md`
-  - `docs/constitution/DOC_TRUTH_HIERARCHY.md`
-  - `docs/constitution/TERMINOLOGY.md`
-- Produces: Documentation governance rules and enforcement requirements
-- Next File: `docs/constitution/CANONICAL_PATHS.md`
-- Related Files:
-  - `docs/constitution/ROOT_DOC_ALLOWLIST.md`
-  - `docs/constitution/DOC_TRUTH_HIERARCHY.md`
-  - `docs/constitution/TERMINOLOGY.md`
-- Last Verified Against:
-  - Repo commit: `<TO_BE_FILLED_BY_REPO>`
-  - Verification doc: `docs/evidence/VERIFICATION_MATRIX.md`
 
 ## 1. Purpose
 
@@ -242,8 +238,8 @@ Purpose: prove what was done, what passed, what failed, and against which standa
 Examples:
 
 - `docs/evidence/EVIDENCE_MAP.md`
-- `docs/evidence/VERIFICATION_MATRIX.md`
-- `verification/`
+- `docs/evidence/verification/<record>.md` (commit-bound verification records)
+- `verification/` (repo-level claim matrix and runs)
 
 No other major document type is allowed unless added by constitutional amendment.
 

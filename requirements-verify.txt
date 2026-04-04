@@ -1,2 +1,4 @@
 # Used by scripts/verify_governance_chain.py (JSON Schema validation).
 jsonschema>=4.22.0
+# Used by scripts/verify_document_constitution.py (YAML frontmatter).
+pyyaml>=6.0.0

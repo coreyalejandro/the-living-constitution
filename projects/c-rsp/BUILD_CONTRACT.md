@@ -327,7 +327,7 @@ Requires Tier 2 plus:
 ---
 ## 16. Output Format
 
-**Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Kanban board first**, then constitutional anchor, then **V&T Statement** (no long prose before the board).
+**Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Title block first** (`# C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}` + subtitle `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`), then **Kanban board**, then constitutional anchor, then **V&T Statement** (no long prose before the board).
 
 **V&T constitutional basis:**
 

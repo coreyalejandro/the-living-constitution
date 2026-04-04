@@ -39,6 +39,19 @@ jobs:
       - name: Install Python verification dependencies
         run: pip install -r requirements-verify.txt
 
+      - name: Verify documentation constitution (MVDS + frontmatter + root allowlist)
+        run: python3 scripts/verify_document_constitution.py --root .
+
+      - name: Documentation compliance score
+        run: python3 scripts/compliance_score_docs.py --root . --json-out verification/docs_compliance.json
+
+      - name: Upload documentation compliance artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-compliance-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verification/docs_compliance.json
+          if-no-files-found: error
+
       # INVARIANT_42: aggregate_status() can differ between developer machines and CI (e.g. cross-repo
       # subprocess). Re-render on the runner so committed STATUS matches CI aggregate before checks.
       - name: Render STATUS surface (CI parity)

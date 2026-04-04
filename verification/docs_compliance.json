@@ -1,0 +1,16 @@
+{
+  "contract_version": "1.0.0",
+  "mvds_label": "MVDS-1.0",
+  "mvds": {
+    "present": 16,
+    "required": 16,
+    "percent": 100.0
+  },
+  "full_compliance": {
+    "present": 19,
+    "required": 19,
+    "percent": 100.0
+  },
+  "missing_mvds": [],
+  "missing_extended": []
+}

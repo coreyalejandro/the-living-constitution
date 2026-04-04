@@ -1,0 +1,17 @@
+{
+  "registry_version": "1.0.0",
+  "updated": "2026-04-04T00:00:00Z",
+  "repos": [
+    {
+      "repo_name": "the-living-constitution",
+      "binding_status": "bound",
+      "last_audit_date": "2026-04-04",
+      "contract_version": "1.0.0",
+      "contract_id": "tlc-docsys-constitutionalization-001",
+      "mvds_status": "complete",
+      "compliance_score_path": "verification/docs_compliance.json",
+      "governance_path": "governance/",
+      "notes": "TLC core; live governance under top-level governance/ only."
+    }
+  ]
+}

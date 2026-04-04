@@ -1,0 +1,61 @@
+{
+  "lock_version": "1.0.0",
+  "deployment_note": "TLC core root governance/ copy; canonical template definitions remain under projects/c-rsp/.",
+  "base_template": {
+    "path": "projects/c-rsp/BUILD_CONTRACT.md",
+    "version": "1.0.0"
+  },
+  "profile_overlay": {
+    "path": "projects/c-rsp/PASS8_TEMPLATE.md",
+    "version": "1.0.0"
+  },
+  "schema": {
+    "path": "projects/c-rsp/contract-schema.json",
+    "version": "1.0.0"
+  },
+  "invariant_sets": {
+    "global_template": {
+      "source": "projects/c-rsp/BUILD_CONTRACT.md",
+      "version": "1.0.0",
+      "note": "INVARIANT_TERM_01 through INVARIANT_REC_01 as listed in master template section 0 and 8."
+    },
+    "profile_satellite_pass8": {
+      "source": "projects/c-rsp/PASS8_TEMPLATE.md",
+      "version": "1.0.0",
+      "ids": [
+        "INVARIANT_SAT_01",
+        "INVARIANT_SAT_02",
+        "INVARIANT_SAT_03",
+        "INVARIANT_SAT_04",
+        "INVARIANT_SAT_05",
+        "INVARIANT_SAT_06",
+        "INVARIANT_SAT_07",
+        "INVARIANT_SAT_08",
+        "INVARIANT_SAT_09"
+      ]
+    }
+  },
+  "verifier": {
+    "class": "satellite-verifier",
+    "version": "1.0.0",
+    "scope": {
+      "includes_topology_project_scan": false,
+      "excludes_script": "verify_project_topology.py",
+      "unless": "TLC-style projects/ overlays adopted with documented justification",
+      "primary_commands": [
+        "python3 scripts/verify_governance_chain.py --root .",
+        "python3 scripts/verify_institutionalization.py --root ."
+      ]
+    }
+  },
+  "dependency_graph": {
+    "parent_constitutional_source": "the-living-constitution",
+    "linked_repos": [],
+    "shared_profiles": ["PASS8_TEMPLATE.md"],
+    "drift_detection_cadence": "weekly"
+  },
+  "integrity": {
+    "content_sha256": null,
+    "note": "Optional: populate with deterministic hash of pinned artifacts for audit-grade lockfiles."
+  }
+}

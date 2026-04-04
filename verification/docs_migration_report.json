@@ -1,0 +1,72 @@
+{
+  "generated": "2026-04-04T17:16:33.267037+00:00",
+  "root_markdown": [
+    {
+      "name": "CLAUDE.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "ChatGPT-AI Governance Frameworks.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "HANDOFF.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "MASTER_PROJECT_INVENTORY.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "README.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "STATUS.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "THE_LIVING_CONSTITUTION.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "delegated-whistling-cherny.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    },
+    {
+      "name": "openmemory.md",
+      "class": "root_candidate",
+      "note": "If substantive, move under docs/<taxonomy>/; keep README.md at root."
+    }
+  ],
+  "docs_without_frontmatter": [
+    "docs/2026-03-29_BLIND-MANS-TEST.md",
+    "docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md",
+    "docs/2026-03-29_DOCUMENTATION-GOVERNANCE-RULE.md",
+    "docs/2026-03-29_TLC-PROJECT-REPORT.md",
+    "docs/front-door/EXECUTION_ROADMAP.md",
+    "docs/front-door/FRONT_DOOR_STRATEGY.md",
+    "docs/front-door/GOLDEN_DIAGRAM_SET.md",
+    "docs/front-door/GOLDEN_README_BLUEPRINT.md",
+    "docs/front-door/INFORMATION_ARCHITECTURE.md",
+    "docs/front-door/PUBLIC_POSITIONING.md",
+    "docs/front-door/README.md",
+    "docs/front-door/SEQUENCING_DECISION.md",
+    "docs/front-door/UI_MVP_READINESS_REPORT.md",
+    "docs/front-door/UI_STRATEGY.md",
+    "docs/prompts/ZERO_SHOT_BUILD_CONTRACT__EMPIRICAL_GUARD.md",
+    "docs/prompts/ZERO_SHOT_BUILD_CONTRACT__EPISTEMIC_GUARD.md",
+    "docs/prompts/ZERO_SHOT_BUILD_CONTRACT__FROSTBYTE_ETL.md",
+    "docs/prompts/ZERO_SHOT_BUILD_CONTRACT__HUMAN_GUARD.md",
+    "docs/prompts/ZERO_SHOT_BUILD_CONTRACT__THE_LIVING_CONSTITUTION.md"
+  ],
+  "suggested_moves": []
+}

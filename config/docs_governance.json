@@ -1,0 +1,47 @@
+{
+  "contract_version": "1.0.0",
+  "mvds_label": "MVDS-1.0",
+  "staleness": {
+    "max_age_days": 90,
+    "fail_ci_on_stale": false,
+    "emit_github_annotations": true
+  },
+  "header_tiers": {
+    "full": [
+      "Constitutional",
+      "Operational",
+      "Instructional",
+      "Evidence",
+      "Architectural"
+    ],
+    "minimal": ["Navigational", "Index", "README"]
+  },
+  "forbidden_live_governance_paths": [
+    "docs/governance/BUILD_CONTRACT.instance.md",
+    "docs/governance/governance-template.lock.json",
+    "docs/governance/GOVERNANCE_BINDING.md"
+  ],
+  "mvds_paths": [
+    "README.md",
+    "docs/INDEX.md",
+    "docs/constitution/DOCUMENTATION_STANDARD.md",
+    "docs/constitution/CANONICAL_PATHS.md",
+    "docs/constitution/ROOT_DOC_ALLOWLIST.md",
+    "docs/constitution/DOC_TRUTH_HIERARCHY.md",
+    "docs/constitution/TERMINOLOGY.md",
+    "governance/README.md",
+    "governance/BUILD_CONTRACT.instance.md",
+    "governance/governance-template.lock.json",
+    "governance/GOVERNANCE_BINDING.md",
+    "docs/operations/BOOTSTRAP.md",
+    "docs/operations/VERIFY.md",
+    "docs/operations/ROLLBACK.md",
+    "docs/evidence/EVIDENCE_MAP.md",
+    "docs/HELP.md"
+  ],
+  "full_compliance_extra_paths": [
+    "docs/constitution/AMENDMENT_PROCESS.md",
+    "docs/constitution/DOCUMENTATION_CHANGELOG.md",
+    "docs/instructions/FIRST_RUN.md"
+  ]
+}

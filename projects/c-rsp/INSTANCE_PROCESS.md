@@ -18,6 +18,10 @@ Instantiate governance through a fixed-shape, schema-validated, profile-derived 
 9. Record lifecycle transition evidence on the declared truth surface.
 10. Promote only when acceptance criteria and truth-surface evidence are satisfied and frozen-context rules allow verified claims.
 
+### Outcome report (required)
+
+Emit each execution summary from `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`: **H1** `C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}`, **H2** `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`, then Kanban, anchor, V&T. `BUILD_CONTRACT_TITLE` must match the governing contract’s title (instance Section 1, or zero-shot `# Build Contract: …` tail).
+
 ### Profile / topology branching
 
 | Topology Mode   | Verifier class             | Typical extra checks                          |
