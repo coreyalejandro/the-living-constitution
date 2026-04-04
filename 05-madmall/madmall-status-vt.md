@@ -146,6 +146,8 @@ This is the Right to Truth applied to a system that does not yet exist. The plan
 
 V&T Statement
 Exists: MADMall status document with 4 planning artifacts inventoried, 6 design decisions documented, 10 code/infrastructure gaps enumerated, 6 research/validation gaps enumerated, dependency chain mapped, 6 risks registered with mitigations, timeline with calibrated confidence, ConsentChain comparison matrix
+Verified against: Paths and artifact list in this repository at document revision; ConsentChain comparison row reflects stated repo status only, not a live audit of the ConsentChain submodule or remote.
+Not claimed: Guaranteed milestone dates; hackathon occurrence or rules; ConsentChain or MADMall future state beyond what this document explicitly describes; any production, security, or compliance warranty.
 Non-existent: MADMall codebase, repository, prototype, data models, API routes, UI components, seed data, CI/CD, deployment, user research, clinical advisory review, HIPAA review, security audit, accessibility audit
 Unverified: Hackathon date and format, ConsentChain completion timeline, clinical advisor availability, HIPAA applicability to planned prototype scope
 Functional status: Status document is COMPLETE. MADMall itself is PENDING — no code exists. All claims are calibrated to Tier 1 (convention) assurance.

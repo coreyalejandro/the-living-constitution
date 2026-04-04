@@ -1,396 +1,344 @@
 # 📜 C-RSP Build Contract Template
-
 ## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
 
-## Overview
-
-Below is a **fully refactored C-RSP template** redesigned explicitly as a **framework template (not an executable contract)**. It incorporates all recommended improvements:
-
-* mandatory vs optional labeling
-* template prompt vs example separation
-* invariant / conflict / acceptance taxonomies
-* author guidance embedded
-* completion quality enforcement
-* contract class support
-* N/A-with-reason pattern
-* corrected naming + consistency
-* clear distinction between template vs instance authority
-
-This is now a **meta-specification template** for generating high-quality executable contracts.
+> **Template Status:** Framework template only. Not executable until instantiated with all required fields, profile overlays, acceptance criteria, schema validation, and lifecycle controls.
 
 ---
+## 0. Template Governance
 
-## Steps
+- **Template Class:** Constitutional master template
+- **Canonical Expansion:** Constitutionally-Regulated Single Pass
+- **Invalidation Rule:** Any alternate expansion of C-RSP is governance drift and invalidates the contract instance.
+- **Instance Requirement:** This template is not executable by itself. Every run must produce or reference an instantiated contract artifact.
+- **Schema Authority:** `contract-schema.json` is the canonical machine-readable definition of contract shape.
 
-### New Template
+### Global Constitutional Invariants
 
-````markdown
-# 📜 C-RSP Build Contract Template
-## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
+- **INVARIANT_TERM_01:** The canonical expansion of `C-RSP` must be exactly `Constitutionally-Regulated Single Pass`.
+- **INVARIANT_SCHEMA_01:** Every executable instance must preserve the exact canonical section order, IDs, titles, and required fields defined by the contract schema.
+- **INVARIANT_EXEC_01:** No unresolved placeholders may remain in an executable instance.
+- **INVARIANT_EXEC_02:** Acceptance criteria must be concrete, objective, and testable.
+- **INVARIANT_EXEC_03:** Preflight must pass before promotion.
+- **INVARIANT_EXEC_04:** Topology mode and verifier class must be consistent.
+- **INVARIANT_EXEC_05:** Authoritative truth surface must be declared.
+- **INVARIANT_CTRL_01:** Any contract class capable of high-impact side effects, external execution, destructive mutation, identity/policy changes, or regulated enforcement must define explicit stop/override controls, authority to invoke them, safe-state behavior, and recovery procedure.
+- **INVARIANT_LIFE_01:** Contract state transitions must follow the allowed state machine and emit evidence-bearing transition events.
+- **INVARIANT_REC_01:** Tier-2+ contracts must define rollback and recovery semantics sufficient to return the governed system to a declared safe state after interruption or halt.
 
----
+### Global Halt Conditions
 
-## TEMPLATE METADATA
+The contract must halt if any of the following occur:
 
-* **Template Version:** v2.1.0
-* **Template Role:** Meta-specification framework for generating executable build contracts
-* **Intended Use:** Authoring deterministic, governance-aligned contracts
-* **Applicable Domains:** Software / Data / ML / Infra / Safety Systems
-* **Contract Classes Supported:**
-  - Application Build
-  - Data Pipeline
-  - Evaluation Pipeline
-  - Infrastructure Provisioning
-  - Migration
-  - Safety Enforcement Layer
-  - Research Workflow
-
-> **Template Rule:** This document defines structure, completion standards, and governance grammar.  
-> It is NOT executable until fully instantiated with concrete values.
-
----
-
-## STATUS
-
-* **Status:** [DRAFT | SPEC-COMPLETE | PREFLIGHT-READY | EXECUTION-READY | EXECUTED | VERIFIED | BREACHED]
-* **Contract Version:** [vX.X.X]
-
----
-
-## COMPLETION STANDARD (MANDATORY)
-
-A contract instance is INVALID if it contains:
-
-- unresolved placeholders `[ ... ]`
-- vague or non-concrete nouns
-- unverifiable claims
-- missing verification methods
-- undefined conflict resolutions
-- evidence references without paths
-- contradictions across sections
+1. non-canonical C-RSP terminology is detected
+2. schema shape differs from the canonical schema
+3. unresolved placeholders remain in an executable instance
+4. topology mode is undeclared or contradictory
+5. verifier class and topology mode do not align
+6. required acceptance criteria are absent
+7. preflight fails
+8. required truth surface is missing
+9. required stop/override semantics are absent for an applicable risk class
+10. illegal lifecycle transition is attempted
+11. required rollback semantics are absent for Tier-2+
 
 ---
+## 1. Contract Identity
 
-## FIELD SYNTAX CONVENTIONS
-
-- `[Required Value]`
-- `(Choose one: A | B | C)`
-- `N/A — reason required`
-- `Example:` indicates non-binding sample
-
----
-
-## 1. IDENTITY & DOMAIN
-
-**Requirement Level:** REQUIRED
-
-**Template Prompt:** Define the system identity and governing purpose.
-
-* **System Role:** [Concrete system description]
-* **Contract Class:** (Choose one from metadata list)
-* **TLC Domain:** (Choose: Epistemic | Human | Cognitive | Empirical)
-* **Primary Objective:** [Single sentence describing system law]
-
-<!-- Author Guidance:
-Use exact system type. Avoid aspirational language.
-Objective must be testable or observable.
--->
+- **Contract Title:** [REQUIRED]
+- **Contract ID:** [REQUIRED]
+- **Version:** [REQUIRED]
+- **Schema Version:** [REQUIRED]
+- **Status:** Draft | Active | Frozen | Superseded
+- **Adoption Tier:** Tier-1-MVG | Tier-2-Operational | Tier-3-Constitutional
+- **System Role:** [REQUIRED]
+- **Primary Objective:** [REQUIRED]
+- **Scope Boundary:** [REQUIRED]
+- **Not Claimed:** [REQUIRED]
 
 ---
+## 2. Contract Topology + Profile
 
-## 2. CURRENT STATE & ENVIRONMENT (BASELINE)
+- **Topology Mode:** TLC-Core | Satellite | Dual-Topology
+- **Profile Type:** Core | Satellite | Integrated Component | Standalone Application | Dual-Topology
+- **Profile Overlay Source:** [path or N/A]
+- **Verifier Class:** core-verifier | satellite-verifier | dual-topology-verifier
+- **Authoritative Truth Surface:** [exact files]
+- **Instance Artifact Path:** [REQUIRED]
+- **Governance Lock Path:** `governance-template.lock.json`
 
-**Requirement Level:** REQUIRED
+### 2A. Profile Merge Rule
 
-**Template Prompt:** Define the verified starting state.
+The base constitutional template governs all contract instances. Overlay profiles may specialize only the following:
 
-* **Verified Assets (Must Exist):**
-  - [Exact file paths]
-* **Must NOT Exist:**
-  - [Forbidden artifacts]
-* **Generated Artifacts (Expected):**
-  - [Outputs of build]
+- required file inventories
+- verifier scope
+- topology-specific promotion rules
+- CI workflow requirements
+- component-specific evidence requirements
+- bounded customization blocks inside approved schema slots
+- domain-specific payload inside customization zones
 
-* **Hermetic Baseline Policy:**
-  - [Describe cleaning strategy OR N/A — reason]
+Overlay profiles may **not** override:
 
-* **Hard Dependencies:**
-  - **Runtime:** [Exact versions]
-  - **Core Packages:** [Pinned versions]
+- canonical C-RSP terminology
+- contract invalidation rules
+- conflict severity classes
+- acceptance criteria requirement
+- preflight requirement
+- truth-discipline requirement
+- halt matrix semantics
+- core section order, names, or IDs
 
----
+### 2B. Instance Rule
 
-### 2A. Dependency Policy
+A contract is executable only when all of the following exist:
 
-**Requirement Level:** REQUIRED
+1. base template fields are fully instantiated
+2. referenced overlay profile fields are fully instantiated
+3. unresolved placeholders are absent
+4. acceptance criteria are concrete
+5. generated artifacts and evidence paths are declared
+6. preflight passes
+7. schema validation passes
+8. lifecycle state transition guards are satisfied
 
-* **Conflict Resolution Rule:** [Define]
-* **Availability Rule:** [Exact fallback OR "halt"]
-* **Vulnerability Rule:** [Define CVE policy]
-
-<!-- Author Guidance:
-Do not allow implicit upgrades unless explicitly defined.
--->
-
----
-
-### 2B. Target Environment Profile
-
-**Requirement Level:** CONDITIONAL
-
-* **OS / Platform:** [e.g., Linux x86_64]
-* **Hardware Constraints:** [e.g., AVX2 | GPU | N/A — reason]
-
----
-
-## 3. EXECUTION LOGIC (SINGLE-PASS PATH)
-
-**Requirement Level:** REQUIRED
-
-**Template Prompt:** Define ordered execution steps.
-
-**Allowed Forms:**
-- Layered (Hexagonal)
-- Pipeline
-- DAG
-- Event-driven
-- Migration
-- Service bootstrap
-
-**Execution Steps:**
-
-1. [Step 1]
-2. [Step 2]
-3. [Step N]
+If any of the above are missing, the contract is invalid.
 
 ---
+## 3. Baseline State
 
-### 3A. Decision Closure
-
-**Requirement Level:** REQUIRED
-
-* **Allowed Decisions:**
-  - [Explicit list]
-* **Prohibited Decisions:**
-  - [Explicit list]
-* **Default on Ambiguity:** [HALT | PROCEED WITH RULE]
-* **Retry Policy:** [Allowed | Forbidden]
+- **Existing Repo / System:** [REQUIRED]
+- **Baseline Commit / Anchor:** [REQUIRED]
+- **Verified Existing Assets:** [REQUIRED]
+- **Known Constraints:** [REQUIRED]
+- **Known Gaps:** [REQUIRED]
+- **Legacy Migration Context:** [REQUIRED or N/A]
 
 ---
+## 4. Dependencies and Inputs
 
-## 4. CONSTITUTIONAL INVARIANTS
+- **Required Inputs:** [REQUIRED]
+- **External Dependencies:** [REQUIRED]
+- **Governance Dependencies:** [REQUIRED]
+- **Forbidden Assumptions:** [REQUIRED]
+- **Dependency Policy:** All dependencies must be explicitly named; implicit dependency assumptions are invalid.
 
----
+### 4A. Cross-Repo Governance Dependency Graph
 
-### 4A. Invariant Categories (TEMPLATE TAXONOMY)
+Every Tier-2+ contract must declare linked governance relationships:
 
-* Isolation Boundary
-* Type / Schema Discipline
-* Determinism / Idempotency
-* Environment Constraints
-* Security / Network Policy
-* Licensing / Compliance
-* Data Handling / Privacy
-* Observability / Evidence
-
----
-
-### 4B. Project-Specific Invariants
-
-**Requirement Level:** REQUIRED
-
-* **INVARIANT_TERM_01 — C-RSP Canonical Expansion Authority:** The term **C-RSP** must only expand to **Constitutionally-Regulated Single Pass** executable prompt. Prohibited expansions (including Contractually Constrained, Contractually Restrained, Constitutionally Constrained, and variants combining those phrases with deterministic / executable / prompt language as canonical meaning) must not appear as authoritative terminology unless explicitly marked: `Deprecated historical terminology — not authoritative`.
-* **INVARIANT_01:** [Define]
-* **INVARIANT_02:** [Define]
-* **INVARIANT_N:** [Define]
-
-<!-- Author Guidance:
-Each invariant must be enforceable and testable.
--->
+- **Parent Constitutional Source:** [REQUIRED]
+- **Shared Overlay Profiles:** [REQUIRED or none]
+- **Dual-Topology Linked Repos:** [REQUIRED or none]
+- **Satellite Dependents:** [REQUIRED or none]
+- **Drift Detection Scope:** [REQUIRED]
 
 ---
+## 5. Risk + Control Classification
 
-## 5. CONFLICT RESOLUTION MATRIX
+- **Risk Class:** Low | Moderate | High | Critical
+- **Side-Effect Class:** None | Internal | External | Destructive | Regulated
+- **External Action Scope:** [REQUIRED]
+- **Stop/Override Required:** Yes | No
+- **Recovery Mode:** Manual | Assisted | Automated | N/A
 
-**Requirement Level:** REQUIRED
+### 5A. Conditional Stop / Override Rule
 
-### Conflict Categories (Template)
+If `Risk Class ∈ {High, Critical}` or `Side-Effect Class ∈ {External, Destructive, Regulated}`, then:
 
-- Dependency Conflict
-- Schema Conflict
-- Architecture Conflict
-- Runtime / Infra Conflict
-- Security / Compliance Conflict
-- Verification Conflict
-- Truth-State Conflict
-- Contract Drift
-- Terminology Authority Conflict
-
----
-
-### Resolution Table
-
-| Conflict Type | Protocol | Severity | Action |
-|---------------|----------|----------|--------|
-| Terminology Authority Conflict | If C-RSP is expanded using any non-canonical phrase, halt and restore the canonical expansion. | Critical | Halt |
-| [Type] | [Resolution] | [Critical/Warning] | [Halt/Continue] |
+- stop/override semantics are mandatory
+- a safe-state definition is mandatory
+- a rollback/recovery section is mandatory
+- failure to define them blocks promotion
 
 ---
+## 6. Execution Model
 
-## 6. ACCEPTANCE CRITERIA (THE GAVEL)
+- **Execution Mode:** Single-pass deterministic build contract
+- **Decision Closure Rule:** No open-ended branch points inside executable sections
+- **Fallback Rule:** Any unresolved ambiguity triggers halt or explicit escalation
+- **Generated Artifacts:** [REQUIRED]
+- **Promotion Target:** [REQUIRED]
 
----
+### 6A. Dual-Topology Rule
 
-### Required Categories
+If `Topology Mode = Dual-Topology`, the contract must define both paths explicitly:
 
-- Functional
-- Verification
-- Safety / Governance
-- Determinism
-- Evidence
+- integrated/internal path
+- standalone/external path
 
----
+No change is complete unless:
 
-### Optional Categories
-
-- Performance
-- Accessibility
-- Security
-- Cost
-- Migration Integrity
+1. both paths are updated, or
+2. the contract explicitly records why one path is intentionally out of scope
 
 ---
+## 7. Lifecycle State Machine
 
-### Criteria Table
+### Allowed States
 
-| ID | Category | Requirement | Verification Method |
-|----|----------|------------|---------------------|
-| AC-GOV-TERM | Governance | All authoritative references expand C-RSP only as **Constitutionally-Regulated Single Pass** executable prompt. | Repository-wide string audit over modified scope; fail if prohibited expansions remain as authoritative terminology. |
-| AC-1 | Functional | [Define] | [Command/Test] |
-| AC-2 | Determinism | [Define] | [Hash comparison] |
+- **Draft**
+- **Active**
+- **Frozen**
+- **Superseded**
 
----
+### Transition Rules
 
-## 7. PRE-FLIGHT VALIDATION (GATEKEEPER)
+- `Draft → Active` requires: no placeholders, schema validation pass, preflight pass, required fields complete
+- `Active → Frozen` requires: acceptance criteria satisfied, evidence recorded, promotion rules satisfied
+- `Frozen → Superseded` requires: successor instance exists and references the superseded contract
+- any invalid transition halts and records an audit event
 
-**Requirement Level:** REQUIRED
+### Transition Evidence
 
-* **Validator Path:** [Path]
-* **Execution Rule:** Must run before build
+Each transition must emit or update:
 
----
-
-### Preflight Checks
-
-- [ ] Environment parity verified
-- [ ] Dependency lock verified
-- [ ] Required assets exist
-- [ ] Forbidden artifacts absent
+- lifecycle transition record
+- associated verifier/preflight report
+- evidence links to the truth surface
 
 ---
+## 8. Invariants
 
-### Cleaning Policy
+### Required Global Invariants
 
-* **Dry Run Required:** YES / NO
-* **Protected Paths:** [List]
-* **Backup Required:** YES / NO
+- **INVARIANT_TERM_01**
+- **INVARIANT_SCHEMA_01**
+- **INVARIANT_EXEC_01**
+- **INVARIANT_EXEC_02**
+- **INVARIANT_EXEC_03**
+- **INVARIANT_EXEC_04**
+- **INVARIANT_EXEC_05**
+- **INVARIANT_CTRL_01**
+- **INVARIANT_LIFE_01**
+- **INVARIANT_REC_01**
 
----
+### Profile Invariants
 
-### Logging
-
-* **Log Path:** `./.c-rsp/CONFLICT_LOG.md`
-
----
-
-## 8. VERIFICATION MAPPING (EVIDENCE MATRIX)
-
-**Requirement Level:** REQUIRED
-
-| Claim | Evidence | Artifact Path |
-|------|----------|--------------|
-| C-RSP canonical terminology is preserved | INVARIANT_TERM_01 entry, Terminology Authority Conflict rule, halt rule, AC-GOV-TERM, and string-audit results | All modified prompt/template/contract files |
-| [Claim] | [Proof] | [Path] |
+[REQUIRED: profile-specific invariants inserted here]
 
 ---
+## 9. Acceptance Criteria
 
-## 9. GOVERNANCE MAPPING
+| ID | Requirement | Verification Method | Pass Condition |
+|---|---|---|---|
+| AC-01 | [REQUIRED] | [REQUIRED] | [REQUIRED] |
+| AC-02 | [REQUIRED] | [REQUIRED] | [REQUIRED] |
+| AC-03 | [REQUIRED] | [REQUIRED] | [REQUIRED] |
 
-**Requirement Level:** REQUIRED
-
-* **Mapping File:** `./.c-rsp/governance-map.json`
-
-Each module must define:
-- constitutional reference
-- invariant mapping
-- verification hook
+All acceptance criteria must be executable, objective, and mapped to evidence.
 
 ---
+## 10. Rollback & Recovery
 
-## 10. VERIFICATION ARTIFACT SCHEMA
-
-**Requirement Level:** REQUIRED
-
-Example:
-
-```json
-{
-  "contract_version": "",
-  "project_name": "",
-  "commit_hash": "",
-  "environment": {},
-  "preflight_passed": true,
-  "acceptance_results": [],
-  "invariants_verified": [],
-  "artifact_hashes": {},
-  "exceptions": []
-}
-```
+- **Safe-State Definition:** [REQUIRED for Tier-2+; otherwise N/A]
+- **Rollback Procedure:** [REQUIRED for Tier-2+; otherwise N/A]
+- **Recovery Authority:** [REQUIRED for Tier-2+; otherwise N/A]
+- **Rollback Evidence Paths:** [REQUIRED for Tier-2+; otherwise N/A]
+- **Partial Execution Handling:** [REQUIRED]
 
 ---
+## 11. Evidence + Truth Surface
 
-## 11. BREACH TAXONOMY
-
-| Code     | Description            |
-| -------- | ---------------------- |
-| BREACH-A | Unauthorized execution |
-| BREACH-B | Invariant violation    |
-| BREACH-C | Unverifiable claim     |
-| BREACH-D | Dependency deviation   |
-| BREACH-E | Non-determinism        |
+- **Primary Evidence Paths:** [REQUIRED]
+- **Generated Reports:** [REQUIRED]
+- **Audit Artifacts:** [REQUIRED]
+- **Evidence Boundary:** [REQUIRED]
+- **Truth Discipline:** Claims in the contract may not exceed evidence declared in the truth surface.
 
 ---
+## 12. Conflict Matrix
 
-## 12. HALT / PROCEED MATRIX
-
-| Condition                   | Severity | Action   |
-| --------------------------- | -------- | -------- |
-| Non-canonical C-RSP expansion detected | Critical | Halt     |
-| Placeholder present         | Critical | Halt     |
-| Lockfile mismatch           | Critical | Halt     |
-| Optional constraint missing | Warning  | Continue |
-
----
-
-## 13. N/A DECLARATION RULE
-
-All omitted sections must be filled as:
-
-`N/A — [explicit reason]`
+| Conflict Type | Example | Severity | Resolution |
+|---|---|---|---|
+| Terminology Authority Conflict | Non-canonical C-RSP expansion | Critical | Halt |
+| Profile Drift Conflict | Overlay contradicts base constitutional rules | Critical | Halt |
+| Topology Misclassification | Satellite treated as TLC-Core or vice versa | Critical | Halt |
+| Incomplete Instance Conflict | Missing required instance fields | Critical | Halt |
+| Evidence Gap Conflict | Claim not anchored to evidence path | High | Block promotion |
+| Verifier Scope Conflict | Wrong verifier class for topology | High | Block promotion |
+| Schema Drift Conflict | Core section shape differs from schema | Critical | Halt |
+| Lifecycle Conflict | Illegal state transition | High | Block promotion |
+| Recovery Conflict | Required rollback semantics missing | High | Block promotion |
 
 ---
+## 13. Halt Matrix
 
-## 14. AUTHOR GUIDELINES (APPENDIX)
+The contract must halt if any of the following occur:
 
-* Use concrete paths and values
-* Avoid vague language
-* Separate current vs intended state
-* Ensure every claim has evidence
-* Prefer measurable verification
-* Record uncertainty explicitly
+- unresolved placeholders remain
+- profile overlay is missing but referenced
+- topology mode is undeclared or contradictory
+- canonical terminology drift is detected
+- verifier class and topology mode do not align
+- required acceptance criteria are absent
+- preflight fails
+- required truth surface is missing
+- schema validation fails
+- illegal lifecycle transition is attempted
+- required rollback semantics are absent for Tier-2+
 
 ---
+## 14. Preflight
 
-## END OF TEMPLATE
+Preflight must verify at minimum:
 
-````
+- no unresolved placeholders
+- canonical terminology only
+- topology mode present
+- profile type present
+- verifier class present
+- instance artifact exists
+- required evidence paths exist or are creatable
+- acceptance criteria table is complete
+- schema validation passes
+- lifecycle declaration is valid
+- risk/control block is present
+
+**Preflight Command(s):** [REQUIRED]
+
+---
+## 15. Adoption Tiers
+
+### Tier 1 — Minimum Viable Governance
+Requires:
+- identity block
+- topology selection
+- canonical terminology
+- placeholder-free instance artifact
+- schema-valid structure
+
+### Tier 2 — Operational
+Requires Tier 1 plus:
+- acceptance criteria
+- risk/control classification
+- CI verifier integration
+- rollback/recovery semantics
+- lifecycle transition evidence
+
+### Tier 3 — Constitutional
+Requires Tier 2 plus:
+- full invariant registry
+- dual-topology support where applicable
+- governance lockfiles
+- evidence ledger and dependency graph
+- audit-grade promotion evidence
+
+---
+## 16. Output Format
+
+All execution summaries must end with:
+
+- **Exists**
+- **Non-existent**
+- **Unverified**
+- **Functional status**
+
+No stronger claim may be made outside that truth surface.
+
+---
+## 17. Instance Declaration
+
+This framework becomes executable only through a fully instantiated contract document, typically:
+
+`BUILD_CONTRACT.instance.md`

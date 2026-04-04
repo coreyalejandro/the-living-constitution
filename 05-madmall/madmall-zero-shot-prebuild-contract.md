@@ -321,6 +321,8 @@ MADMall prototype is NOT Validated until:
 
 V&T Statement
 Exists: Pre-build contract with 6 pre-conditions, vertical slice definition (guided care navigation), 5 Prisma models, 7 API routes, 10 pages, 4 build phases with file outputs and acceptance criteria, success definition, honest scope limitations
+Verified against: Internal consistency of this file (counts, phases, tables); dependency statements not independently reconciled against the ConsentChain repository tip.
+Not claimed: Hackathon-time delivery of all phases; production readiness; HIPAA compliance; real provider or payer connectivity; security or load validation of planned ConsentChain integration; clinical safety of wellness content.
 Non-existent: MADMall codebase, repository, any implementation whatsoever, provider database, ConsentChain SDK completion (dependency), UICare pattern library, clinical advisory input, HIPAA review
 Unverified: Hackathon timeline feasibility (4 phases in 2 days), ConsentChain SDK compatibility with planned integration points, Prisma schema adequacy for care navigation flow, provider matching algorithm quality
 Functional status: Contract is COMPLETE as a pre-build specification. MADMall itself is PENDING — no code exists. Execution depends on ConsentChain reaching Validated status and hackathon event confirmation.

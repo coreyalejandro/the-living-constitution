@@ -99,6 +99,8 @@ Without MADMall, the Commonwealth is an architecture. With MADMall, the Commonwe
 
 V&T Statement
 Exists: MADMall positioning document with problem statement, safety domain mapping, planned capabilities, architecture principles, target user definition, competitive landscape analysis, and Commonwealth integration rationale
+Verified against: Author judgment and general-domain knowledge as stated in the body; no file-backed market study or regulatory opinion attached to this repo.
+Not claimed: Current-market accuracy of competitive landscape; regulatory clearance or licensure for any described capability; roadmap or maturity of named ecosystem projects beyond public/common knowledge; any MADMall implementation.
 Non-existent: MADMall codebase, repository, prototype, UI, data models, API routes, user research, clinical advisory input, regulatory compliance review
 Unverified: Healthcare hackathon date and format, competitive landscape accuracy (based on general knowledge, not current market research), regulatory applicability to planned features
 Functional status: Document is COMPLETE as a positioning artifact. MADMall itself is PENDING — no code exists.
