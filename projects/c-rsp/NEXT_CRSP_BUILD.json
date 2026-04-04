@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0.0",
+  "status": "pending",
+  "next_instance_path": "projects/document-system/BUILD_CONTRACT.instance.md",
+  "contract_id": "tlc-docsys-constitutionalization-001",
+  "notes": "When a session finishes PARTIAL or queues a follow-on build: leave status pending. On new C-RSP session start: set to launched. When AC satisfied: set to idle and clear next_instance_path or point to successor instance."
+}

@@ -327,14 +327,25 @@ Requires Tier 2 plus:
 ---
 ## 16. Output Format
 
+**Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Kanban board first**, then constitutional anchor, then **V&T Statement** (no long prose before the board).
+
+**V&T constitutional basis:**
+
+- **Article I — Right to Truth** (`00-constitution/articles.md`): evidence-bound claims; the V&T block enforces this.
+- **Article III — Verification Before Done** (`00-constitution/articles.md`): completion requires proof against acceptance criteria.
+
 All execution summaries must end with:
 
 - **Exists**
+- **Verified against** (when claims reference artifacts/commits)
+- **Not claimed**
 - **Non-existent**
 - **Unverified**
 - **Functional status**
 
 No stronger claim may be made outside that truth surface.
+
+**Follow-on C-RSP build:** When the Kanban **What’s next** column implies another contract run, record it in `projects/c-rsp/NEXT_CRSP_BUILD.json` (`status: pending`) and run `./scripts/crsp_next_build.sh` to surface the auto-launch instruction for the next session (Section 16 + template must stay aligned).
 
 ---
 ## 17. Instance Declaration

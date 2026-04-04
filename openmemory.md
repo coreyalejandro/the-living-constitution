@@ -20,6 +20,8 @@ Governance overlay / super-repo for Safety Systems Design Commonwealth: constitu
 
 - **`projects/document-system/BUILD_CONTRACT.instance.md`** — Tier-2 C-RSP instance for TLC document-system constitutionalization (tlc-docsys-constitutionalization-001): truth surface lists `docs/constitution/*` companions + `scripts/verify_document_constitution.py` + CI; baseline anchor and schema 1.0.0 recorded in instance; execution artifacts not yet proven until AC table closes.
 
+- **`projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`** — Mandatory C-RSP outcome shape: Kanban board + signals → Article I/III anchor → V&T lines; `NEXT_CRSP_BUILD.json` + `scripts/crsp_next_build.sh` for follow-on session launch instruction. Master `BUILD_CONTRACT.md` Section 16 references this template.
+
 - **`docs/front-door/`** — TLC transition package: front-door strategy, UI strategy, information architecture, sequencing (UI first, teaser video second, integration third), golden README blueprint, golden diagram set (five Mermaid sources under `diagram-sources/`), public positioning, execution roadmap. Indexes `README.md`. Does not supersede `STATUS.json`.
 
 - **`apps/tlc-control-plane/`** — Next.js App Router **MVP**: four panels; **read-only adapters** in `lib/adapters/` read `STATUS.json` (when repo root resolves), `MASTER_PROJECT_INVENTORY.json` for graph slugs, and verification path presence; `lib/tlc-snapshot.ts` is fallback only; `app/page.tsx` uses `force-dynamic` for request-time reads; panels expose truth-source + functional-status badges. Subordinate to `STATUS.json`; no governance writes.
