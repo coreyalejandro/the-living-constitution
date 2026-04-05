@@ -4,18 +4,18 @@ GitHub branch protection is configured in the **repository Settings**, not in gi
 
 ## Status check names to require
 
-In **Settings → Branches → Branch protection rule for `main` → Require status checks to pass**:
+**Repository rulesets** use the **check run `name`** from the API (short form), not the `Workflow / job` label shown in some UIs.
 
-1. **`Verify Living Constitution / verify-structure`**  
-   - Workflow file: `.github/workflows/verify.yml`  
-   - Job id: `verify-structure`
+1. **`verify-structure`** — job in `.github/workflows/verify.yml` (`Verify Living Constitution` workflow).
 
-2. **`FDE Control Plane C-RSP Verify / fde-crsp-verify`**  
-   - Workflow file: `.github/workflows/fde-control-plane-verify.yml`  
-   - Job id: `fde-crsp-verify`  
-   - **Note:** This workflow runs on **every** pull request to `main`. It **executes** `./scripts/run_fde_control_plane_verification.sh` only when the PR touches FDE/C-RSP paths (or on `workflow_dispatch`); otherwise it records a skip and still **passes** so the required check stays green.
+2. **`fde-crsp-verify`** — job in `.github/workflows/fde-control-plane-verify.yml` (`FDE Control Plane C-RSP Verify` workflow).  
+   - Runs on every PR to `main`; executes `./scripts/run_fde_control_plane_verification.sh` only when the PR touches FDE/C-RSP paths (or on `workflow_dispatch`); otherwise skips and still **passes**.
 
-**Exact strings** may vary slightly in the GitHub UI (workflow title / job name). Pick the checks that match the workflow and job names above after one successful run on `main`.
+Confirm names with:
+
+`gh api repos/OWNER/REPO/commits/HEAD/check-runs --jq '.check_runs[].name'`
+
+If merge is blocked while both jobs are green, the ruleset **context** strings likely do not match the API names above — update the ruleset to use **`verify-structure`** and **`fde-crsp-verify`** exactly.
 
 ## Optional
 
@@ -29,8 +29,8 @@ After enabling, open a test PR; both checks should appear and block merge until 
 
 ## Troubleshooting: merge blocked with “2 of 2 required status checks are expected”
 
-If `gh pr merge` fails but both jobs show **pass** on the PR:
+The ruleset **`context`** must equal the **check run `name`** from the API (e.g. `verify-structure`), not always the `Workflow name / job` string.
 
-1. **Ruleset check names must match GitHub’s exact context names.** In **Settings → Rules → Rulesets →** your ruleset → **Require status checks** → remove and **re-add** each check using the **search** list (pick entries that appear **after** a green run on that PR).
-2. **Merge in the GitHub UI** — sometimes the web merge button resolves when the CLI does not.
-3. **Required reviews** — if the ruleset also requires approving reviews, you cannot approve your own PR; use another account or **bypass** (if your role allows).
+1. List names: `gh api repos/<owner>/<repo>/commits/<sha>/check-runs --jq '.check_runs[] | select(.name|test("verify|fde")) | .name'`
+2. **Settings → Rules → Rulesets →** edit → **Required status checks** → use **`verify-structure`** and **`fde-crsp-verify`**.
+3. If the UI only shows long labels, use **GitHub CLI** or REST **PUT** `/repos/{owner}/{repo}/rulesets/{id}` with `context` set to the short names above.
