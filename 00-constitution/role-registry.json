@@ -312,6 +312,19 @@
       ]
     },
     {
+      "path": "scripts/sync_master_project_inventory_from_projects.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
+    },
+    {
       "path": "scripts/governance_failure_injection_tests.py",
       "role": "EXECUTIVE",
       "allowed_actions": [

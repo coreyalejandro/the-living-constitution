@@ -1,0 +1,36 @@
+# Full automation: when a TLC overlay folder under projects/ changes, refresh
+# MASTER_PROJECT_INVENTORY.json + .md from disk (slugs + section 1 table + timestamps).
+# Commit targets repo root inventory only — does not re-trigger on its own (paths: projects/**).
+
+name: Sync master project inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - "feature/**"
+    paths:
+      - "projects/**"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.SUBMODULES_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Sync MASTER_PROJECT_INVENTORY from projects/
+        run: python3 scripts/sync_master_project_inventory_from_projects.py --root .
+
+      - name: Commit inventory updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: sync MASTER_PROJECT_INVENTORY from projects/ [inventory-auto]"
+          file_pattern: MASTER_PROJECT_INVENTORY.json MASTER_PROJECT_INVENTORY.md
