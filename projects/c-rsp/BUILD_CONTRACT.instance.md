@@ -1,7 +1,7 @@
 # BUILD CONTRACT INSTANCE
 ## Constitutionally-Regulated Single Pass Executable Prompt
 
-> **Instance Status:** Draft. Promotion to Active remains blocked until standalone twin path is governance-complete or explicitly carried as `UNRESOLVED REQUIRED INPUT` with no false dual-topology completion claim. Automated structural, schema, and verifier evidence is recorded under `evidence/fde-control-plane/`.
+> **Instance Status:** Draft. Standalone path is **RESOLVED** to `projects/backboardai-fde/` (see `evidence/fde-control-plane/standalone-path-resolution.json`). Promotion to Active remains blocked until lifecycle/preflight gates for **Active** are satisfied (this contract does not claim Active). All verification steps are runnable via `./scripts/run_fde_control_plane_verification.sh`.
 
 ---
 ## 0. Instance Governance
@@ -70,7 +70,7 @@ Executable only when: base template fields instantiated; dual-topology fields in
 - **Baseline Commit / Anchor:** `32acf248b0cfd9fd87436f5b327b26cf100a9a45`
 - **Verified Existing Assets:** Prior instance `CRSP-FDE-CTRL-PLANE-LIFECYCLE-001` artifacts: `docs/fde-control-plane/`, `governance-rules/fde-lifecycle-invariants.yaml`, `schemas/fde-lifecycle.schema.json`, `schemas/blind-man-execution.schema.json`, `evidence/fde-control-plane/` JSON set, `projects/c-rsp/NEXT_CRSP_BUILD.json`.
 - **Known Constraints:** Canonical section order preserved; Blind Man’s Rule binding; automated verification must be evidenced, not assumed.
-- **Known Gaps (pre-gap-closure):** Governance lock pointed at satellite verifier; standalone path unresolved; no executed structural/schema/verifier reports.
+- **Known Gaps (pre-gap-closure):** (Historical) satellite lock, unresolved standalone path, no executed reports — **remediated** by CRSP-FDE-CTRL-PLANE-GAPS-002 execution; see current evidence JSON under `evidence/fde-control-plane/`.
 - **Legacy Migration Context:** Existing FDE control plane work is already authored as a Draft artifact set. This contract is remediation, not greenfield.
 
 ---
@@ -87,7 +87,7 @@ Executable only when: base template fields instantiated; dual-topology fields in
 - **Shared Overlay Profiles:** none
 - **Dual-Topology Linked Repos:**
   - Integrated: `the-living-constitution/projects/c-rsp/`, `the-living-constitution/docs/fde-control-plane/`, `the-living-constitution/governance-rules/`, `the-living-constitution/schemas/`, `the-living-constitution/evidence/fde-control-plane/`
-  - Standalone: recorded in `evidence/fde-control-plane/standalone-path-resolution.json` or `UNRESOLVED REQUIRED INPUT`
+  - Standalone: `the-living-constitution/projects/backboardai-fde/` (evidenced: `evidence/fde-control-plane/standalone-path-resolution.json`; twin contract file `projects/backboardai-fde/BUILD_CONTRACT`)
 - **Satellite Dependents:** none
 - **Drift Detection Scope:** Template vs instance section order; lock vs verifier class; integrated vs standalone artifact sets; evidence vs executed results; `NEXT_CRSP_BUILD.json` vs actual blockers.
 
@@ -118,6 +118,7 @@ Executable only when: base template fields instantiated; dual-topology fields in
   - `projects/c-rsp/BUILD_CONTRACT.instance.md` (this file)
   - `projects/c-rsp/governance-template.lock.json`
   - `projects/c-rsp/NEXT_CRSP_BUILD.json`
+  - `scripts/run_fde_control_plane_verification.sh` (orchestrates resolve + structural + schema + promotion)
   - `scripts/verify_crsp_structure.py`
   - `scripts/verify_fde_control_plane.py`
   - `scripts/resolve_fde_standalone_path.sh`
@@ -134,7 +135,7 @@ Executable only when: base template fields instantiated; dual-topology fields in
 ### 6A. Dual-Topology Rule
 
 - **Integrated path:** `the-living-constitution/projects/c-rsp/`, `docs/fde-control-plane/`, `governance-rules/`, `schemas/`, `evidence/fde-control-plane/`.
-- **Standalone path:** Resolve via `scripts/resolve_fde_standalone_path.sh`; record in this instance, `NEXT_CRSP_BUILD.json`, and `evidence/fde-control-plane/standalone-path-resolution.json`. If not uniquely resolvable, write `UNRESOLVED REQUIRED INPUT` and block promotion.
+- **Standalone path:** **RESOLVED** — `projects/backboardai-fde/` (see `evidence/fde-control-plane/standalone-path-resolution.json`). Re-run `./scripts/run_fde_control_plane_verification.sh` after changing twin `BUILD_CONTRACT` or integrated FDE artifacts so evidence stays current.
 
 ### Blind Man’s Rule (binding)
 
@@ -236,11 +237,10 @@ Preflight verifies: placeholders; terminology; topology; profile; verifier; inst
 **Preflight Command(s):**
 
 ```bash
-python3 scripts/verify_crsp_structure.py --template projects/c-rsp/BUILD_CONTRACT.md --instance projects/c-rsp/BUILD_CONTRACT.instance.md --report evidence/fde-control-plane/structural-diff-report.json
-python3 scripts/verify_fde_control_plane.py --schemas schemas/fde-lifecycle.schema.json schemas/blind-man-execution.schema.json --report evidence/fde-control-plane/schema-validation-report.json
-python3 scripts/verify_fde_control_plane.py --promotion-readiness --lock projects/c-rsp/governance-template.lock.json --report evidence/fde-control-plane/verifier-execution-report.json
-bash scripts/resolve_fde_standalone_path.sh --report evidence/fde-control-plane/standalone-path-resolution.json
+./scripts/run_fde_control_plane_verification.sh
 ```
+
+Equivalent granular commands (same order as the bundle: resolve, structural, schema, promotion) remain documented in `scripts/run_fde_control_plane_verification.sh` and `projects/c-rsp/governance-template.lock.json`. Use `./scripts/run_fde_control_plane_verification.sh --skip-resolve` only when `standalone-path-resolution.json` is unchanged and you need a faster structural/schema/promotion pass.
 
 **Recorded result:** `evidence/fde-control-plane/preflight-report.json`
 

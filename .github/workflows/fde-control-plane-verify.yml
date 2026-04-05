@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - "projects/c-rsp/**"
+      - "projects/backboardai-fde/**"
       - "docs/fde-control-plane/**"
       - "governance-rules/fde-lifecycle-invariants.yaml"
       - "schemas/fde-lifecycle.schema.json"
@@ -13,9 +14,11 @@ on:
       - "scripts/verify_crsp_structure.py"
       - "scripts/verify_fde_control_plane.py"
       - "scripts/resolve_fde_standalone_path.sh"
+      - "scripts/run_fde_control_plane_verification.sh"
   pull_request:
     paths:
       - "projects/c-rsp/**"
+      - "projects/backboardai-fde/**"
       - "docs/fde-control-plane/**"
       - "governance-rules/fde-lifecycle-invariants.yaml"
       - "schemas/fde-lifecycle.schema.json"
@@ -24,6 +27,7 @@ on:
       - "scripts/verify_crsp_structure.py"
       - "scripts/verify_fde_control_plane.py"
       - "scripts/resolve_fde_standalone_path.sh"
+      - "scripts/run_fde_control_plane_verification.sh"
 
 jobs:
   fde-crsp-verify:
@@ -40,28 +44,5 @@ jobs:
       - name: Install verification dependencies
         run: pip install -r requirements-verify.txt
 
-      - name: Structural diff (C-RSP template vs instance)
-        run: |
-          python3 scripts/verify_crsp_structure.py \
-            --template projects/c-rsp/BUILD_CONTRACT.md \
-            --instance projects/c-rsp/BUILD_CONTRACT.instance.md \
-            --report evidence/fde-control-plane/structural-diff-report.json
-
-      - name: Schema validation (FDE schemas + evidence)
-        run: |
-          python3 scripts/verify_fde_control_plane.py \
-            --schemas schemas/fde-lifecycle.schema.json schemas/blind-man-execution.schema.json \
-            --report evidence/fde-control-plane/schema-validation-report.json
-
-      - name: Promotion readiness (dual-topology-verifier)
-        run: |
-          python3 scripts/verify_fde_control_plane.py \
-            --promotion-readiness \
-            --lock projects/c-rsp/governance-template.lock.json \
-            --instance projects/c-rsp/BUILD_CONTRACT.instance.md \
-            --report evidence/fde-control-plane/verifier-execution-report.json
-
-      - name: Standalone path resolution
-        run: |
-          bash scripts/resolve_fde_standalone_path.sh \
-            --report evidence/fde-control-plane/standalone-path-resolution.json
+      - name: Run FDE control plane verification (all steps)
+        run: ./scripts/run_fde_control_plane_verification.sh

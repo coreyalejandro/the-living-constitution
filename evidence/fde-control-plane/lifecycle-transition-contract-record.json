@@ -24,6 +24,6 @@
   },
   "human_ratification": null,
   "unresolved_inputs": [
-    "Standalone twin repo root/path: UNRESOLVED REQUIRED INPUT until governance-complete twin exists"
+    "Optional: explicit external git remote URL for standalone twin if distinct from in-repo projects/backboardai-fde path"
   ]
 }

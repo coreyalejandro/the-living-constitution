@@ -35,7 +35,7 @@
     "governance_lock": "projects/c-rsp/governance-template.lock.json"
   },
   "unresolved_inputs": [
-    "Standalone/external repo root with governance-complete FDE twin artifact mirror: UNRESOLVED REQUIRED INPUT (see standalone-path-resolution.json)"
+    "Optional: separate external repository URL for FDE twin if operations require a git remote beyond projects/backboardai-fde"
   ],
-  "run_status": "gap_closure_draft_executed_verifiers_pending_standalone_twin"
+  "run_status": "gap_closure_draft_automated_verification_bundle_resolved_standalone_path_in_repo"
 }

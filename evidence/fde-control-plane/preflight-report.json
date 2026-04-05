@@ -1,9 +1,13 @@
 {
   "schema_version": "1.0.0",
   "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
-  "preflight_timestamp_utc": "2026-04-05T12:00:00Z",
+  "preflight_timestamp_utc": "2026-04-05T14:00:00Z",
   "preflight_result": "PASS_DRAFT_WITH_EXECUTED_VERIFIERS",
-  "notes": "Structural, schema, and promotion-readiness verifiers executed locally; standalone path remains UNRESOLVED REQUIRED INPUT per standalone-path-resolution.json (blocked promotion to Active).",
+  "automation": {
+    "bundle_script": "scripts/run_fde_control_plane_verification.sh",
+    "ci_workflow": ".github/workflows/fde-control-plane-verify.yml"
+  },
+  "notes": "Single-command preflight: ./scripts/run_fde_control_plane_verification.sh. Standalone path RESOLVED to projects/backboardai-fde per standalone-path-resolution.json.",
   "executed_report_paths": {
     "structural_diff": "evidence/fde-control-plane/structural-diff-report.json",
     "schema_validation": "evidence/fde-control-plane/schema-validation-report.json",
@@ -14,7 +18,7 @@
     "no_generic_placeholders_except_unresolved": {
       "pass": true,
       "method": "instance_review_plus_verifiers",
-      "detail": "Standalone twin remains explicit UNRESOLVED REQUIRED INPUT where not uniquely resolved."
+      "detail": "Standalone path resolved; remaining promotion blockers are contract lifecycle (Draft) not placeholder drift."
     },
     "canonical_terminology_c_rsp": {
       "pass": true,
@@ -40,12 +44,12 @@
     "governance_lock_alignment": {
       "pass": true,
       "path": "projects/c-rsp/governance-template.lock.json",
-      "detail": "Lock verifier.class matches dual-topology-verifier; see verifier-execution-report.json"
+      "detail": "Lock uses verification bundle; verifier-execution-report.json PASS"
     },
     "json_schema_validation": {
       "pass": true,
       "method": "verify_fde_control_plane.py",
-      "detail": "See schema-validation-report.json (jsonschema Draft 2020-12)."
+      "detail": "See schema-validation-report.json"
     },
     "structural_template_conformance": {
       "pass": true,
@@ -54,12 +58,14 @@
     },
     "standalone_twin_path": {
       "pass": true,
-      "detail": "UNRESOLVED REQUIRED INPUT recorded with blocking rationale; no false completion claim."
+      "resolution_status": "RESOLVED",
+      "path": "projects/backboardai-fde",
+      "detail": "evidence/fde-control-plane/standalone-path-resolution.json"
     },
     "blind_mans_rule_explicit": {
       "pass": true,
       "locations": [
-        "projects/c-rsp/BUILD_CONTRACT.instance.md sections 6, 8, 9–11, 13–14",
+        "projects/c-rsp/BUILD_CONTRACT.instance.md",
         "docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md",
         "governance-rules/fde-lifecycle-invariants.yaml"
       ]
