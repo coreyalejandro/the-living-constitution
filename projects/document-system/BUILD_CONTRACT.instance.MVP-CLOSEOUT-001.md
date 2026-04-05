@@ -350,12 +350,14 @@ Canonical governing template: `projects/c-rsp/BUILD_CONTRACT.md`.
 **Non-existent**
 
 - Frozen lifecycle state for this instance — not yet earned until AC satisfied.
-- Completed AC-05 remote CI proof — not yet attached to this issuance.
 
 **Unverified**
 
 - AC-08 badge URL or waiver — **UNRESOLVED REQUIRED INPUT** until maintainer supplies URL or signs waiver file.
-- Post-push GitHub Actions run id — unverified until push occurs.
+
+**Verified (post-issuance execution)**
+
+- AC-05 remote CI: GitHub Actions run `23996150764` **success** on commit `a2fe364`; evidence `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md`.
 
 **Functional status**
 
