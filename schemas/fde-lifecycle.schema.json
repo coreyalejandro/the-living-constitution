@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/schemas/fde-lifecycle.schema.json",
+  "title": "FDE operating lifecycle payload",
+  "description": "Extension shape for STATUS.json and evidence artifacts. Used by CRSP-FDE-CTRL-PLANE-LIFECYCLE-001.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "fde_operating_lifecycle": {
+      "type": "object",
+      "required": ["phase", "contract_id", "schema_version"],
+      "additionalProperties": false,
+      "properties": {
+        "phase": {
+          "type": "string",
+          "enum": ["BUILD", "STABILIZE", "OPERATE"]
+        },
+        "contract_id": {
+          "type": "string",
+          "enum": [
+            "CRSP-FDE-CTRL-PLANE-LIFECYCLE-001",
+            "CRSP-FDE-CTRL-PLANE-GAPS-002"
+          ]
+        },
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "last_transition_evidence_path": {
+          "type": "string",
+          "description": "Repo-relative path to evidence JSON proving last transition."
+        },
+        "unresolved_inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "e.g. UNRESOLVED REQUIRED INPUT for standalone twin path."
+        },
+        "human_ratification": {
+          "type": "string",
+          "description": "Required for STABILIZE to OPERATE; ticket id or maintainer record."
+        },
+        "note": {
+          "type": "string",
+          "description": "Non-normative annotation; not a substitute for required evidence fields."
+        }
+      }
+    }
+  }
+}

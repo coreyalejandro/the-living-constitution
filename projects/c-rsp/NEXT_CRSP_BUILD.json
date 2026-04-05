@@ -1,7 +1,8 @@
 {
   "schema_version": "1.0.0",
   "status": "pending",
-  "next_instance_path": "projects/document-system/BUILD_CONTRACT.instance.md",
-  "contract_id": "tlc-docsys-constitutionalization-001",
-  "notes": "When a session finishes PARTIAL or queues a follow-on build: leave status pending. On new C-RSP session start: set to launched. When AC satisfied: set to idle and clear next_instance_path or point to successor instance."
+  "next_instance_path": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+  "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+  "purpose": "Establish a governance-complete standalone twin repository root for FDE control-plane artifacts and propagate the integrated artifact set to the second topology once standalone-path-resolution.json records a unique RESOLVED path.",
+  "notes": "Gap-closure automation (structural/schema/promotion verifiers) is evidenced. Remaining blocker: standalone_path in evidence/fde-control-plane/standalone-path-resolution.json is UNRESOLVED_REQUIRED_INPUT until a non-placeholder twin exists. When resolved: update instance Sections 2 and 4A; mirror artifacts; refresh evidence; set this register to idle when dual-topology propagation AC close."
 }

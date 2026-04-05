@@ -1,0 +1,29 @@
+{
+  "tool": "verify_fde_control_plane.py",
+  "schema_version": "1.0.0",
+  "overall_schema_validation": "PASS",
+  "details": [
+    {
+      "target": "schemas/fde-lifecycle.schema.json",
+      "kind": "meta_schema",
+      "result": "PASS"
+    },
+    {
+      "target": "schemas/blind-man-execution.schema.json",
+      "kind": "meta_schema",
+      "result": "PASS"
+    },
+    {
+      "schema": "schemas/fde-lifecycle.schema.json",
+      "instance": "evidence/fde-control-plane/lifecycle-transition-contract-record.json",
+      "result": "PASS",
+      "fragment": "fde_operating_lifecycle"
+    },
+    {
+      "schema": "schemas/blind-man-execution.schema.json",
+      "instance": "evidence/fde-control-plane/blind-man-step-sample.json",
+      "result": "PASS"
+    }
+  ],
+  "overall": "PASS"
+}

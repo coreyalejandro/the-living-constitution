@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+  "rollback_events": [],
+  "note": "No rollback executed in this artifact generation run. If rollback is required, populate rollback_events per projects/c-rsp/BUILD_CONTRACT.instance.md Section 10."
+}

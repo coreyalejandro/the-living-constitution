@@ -1,0 +1,67 @@
+name: FDE Control Plane C-RSP Verify
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/c-rsp/**"
+      - "docs/fde-control-plane/**"
+      - "governance-rules/fde-lifecycle-invariants.yaml"
+      - "schemas/fde-lifecycle.schema.json"
+      - "schemas/blind-man-execution.schema.json"
+      - "evidence/fde-control-plane/**"
+      - "scripts/verify_crsp_structure.py"
+      - "scripts/verify_fde_control_plane.py"
+      - "scripts/resolve_fde_standalone_path.sh"
+  pull_request:
+    paths:
+      - "projects/c-rsp/**"
+      - "docs/fde-control-plane/**"
+      - "governance-rules/fde-lifecycle-invariants.yaml"
+      - "schemas/fde-lifecycle.schema.json"
+      - "schemas/blind-man-execution.schema.json"
+      - "evidence/fde-control-plane/**"
+      - "scripts/verify_crsp_structure.py"
+      - "scripts/verify_fde_control_plane.py"
+      - "scripts/resolve_fde_standalone_path.sh"
+
+jobs:
+  fde-crsp-verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install verification dependencies
+        run: pip install -r requirements-verify.txt
+
+      - name: Structural diff (C-RSP template vs instance)
+        run: |
+          python3 scripts/verify_crsp_structure.py \
+            --template projects/c-rsp/BUILD_CONTRACT.md \
+            --instance projects/c-rsp/BUILD_CONTRACT.instance.md \
+            --report evidence/fde-control-plane/structural-diff-report.json
+
+      - name: Schema validation (FDE schemas + evidence)
+        run: |
+          python3 scripts/verify_fde_control_plane.py \
+            --schemas schemas/fde-lifecycle.schema.json schemas/blind-man-execution.schema.json \
+            --report evidence/fde-control-plane/schema-validation-report.json
+
+      - name: Promotion readiness (dual-topology-verifier)
+        run: |
+          python3 scripts/verify_fde_control_plane.py \
+            --promotion-readiness \
+            --lock projects/c-rsp/governance-template.lock.json \
+            --instance projects/c-rsp/BUILD_CONTRACT.instance.md \
+            --report evidence/fde-control-plane/verifier-execution-report.json
+
+      - name: Standalone path resolution
+        run: |
+          bash scripts/resolve_fde_standalone_path.sh \
+            --report evidence/fde-control-plane/standalone-path-resolution.json

@@ -1,0 +1,50 @@
+# FDE lifecycle invariants — CRSP-FDE-CTRL-PLANE-LIFECYCLE-001
+# Truth surface: projects/c-rsp/BUILD_CONTRACT.instance.md
+# Schema: schemas/fde-lifecycle.schema.json, schemas/blind-man-execution.schema.json
+
+version: "1.0.0"
+contract_id: "CRSP-FDE-CTRL-PLANE-LIFECYCLE-001"
+
+blind_mans_rule: |
+  Every instruction, path, transition, file operation, verification step, and recovery step must be
+  executable without reliance on visual inference, unstated spatial assumptions, hidden UI context,
+  or omitted steps. Executable steps must name exact file paths and pass/fail conditions.
+
+lifecycle_invariants:
+  INVARIANT_LIFE_FDE_01:
+    statement: "FDE operating states BUILD, STABILIZE, OPERATE are the only allowed values in fde_operating_lifecycle.phase."
+  INVARIANT_LIFE_FDE_02:
+    statement: "Transition BUILD to OPERATE is forbidden; STABILIZE is mandatory between BUILD and OPERATE."
+  INVARIANT_LIFE_FDE_03:
+    statement: "Each phase transition must reference an evidence artifact path under evidence/fde-control-plane/."
+
+dual_topology_invariants:
+  INVARIANT_DUAL_01:
+    statement: "If topology mode is Dual-Topology, integrated path and standalone path must both be named or standalone marked UNRESOLVED REQUIRED INPUT."
+  INVARIANT_DUAL_02:
+    statement: "No dual-topology completion claim when only integrated path is updated."
+  INVARIANT_DUAL_03:
+    statement: "Follow-on standalone propagation must be registered in projects/c-rsp/NEXT_CRSP_BUILD.json when unresolved."
+
+evidence_invariants:
+  INVARIANT_EVID_01:
+    statement: "Contractization actions produce or update JSON evidence under evidence/fde-control-plane/."
+  INVARIANT_TRUTH_01:
+    statement: "Claims map to file path, evidence path, or UNRESOLVED REQUIRED INPUT."
+
+blind_man_execution_invariants:
+  INVARIANT_BLIND_01:
+    statement: "Blind Man's Rule is explicit in lifecycle spec, invariants, instance execution model, preflight, halt matrix, and rollback."
+  INVARIANT_BLIND_02:
+    statement: "Executable steps name exact artifacts, actors, inputs, outputs, order, halt and success conditions per blind-man-execution.schema.json."
+
+truth_surface_discipline:
+  INVARIANT_STATUS_01:
+    statement: "fde_operating_lifecycle in STATUS.json (when merged) must validate against schemas/fde-lifecycle.schema.json."
+  INVARIANT_TERM_02:
+    statement: "Canonical expansion of C-RSP is exactly Constitutionally-Regulated Single Pass."
+
+global_crossrefs:
+  template: "projects/c-rsp/BUILD_CONTRACT.md"
+  instance: "projects/c-rsp/BUILD_CONTRACT.instance.md"
+  status_json: "STATUS.json"

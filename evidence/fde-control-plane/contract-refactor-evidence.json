@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+  "predecessor_contract_id": "CRSP-FDE-CTRL-PLANE-LIFECYCLE-001",
+  "source_plan_title": "Refactored FDE Control Plane Plan: Constitutionally-Governed Internal Deployment",
+  "preserved_architectural_elements": [
+    "Formal interface contracts (instance, lifecycle truth, blind-man execution, invariants)",
+    "Phased bootstrapping BUILD then STABILIZE then OPERATE",
+    "Dual-topology integrated path listing",
+    "Evidence directory discipline under evidence/fde-control-plane/",
+    "Migration path via NEXT_CRSP_BUILD.json",
+    "Backboard primitive names as conceptual only: LLM_ROUTER, STATE_MANAGER, MEMORY_ENGINE, AGENTIC_RAG"
+  ],
+  "gap_closure_additions": [
+    "scripts/verify_crsp_structure.py — canonical section order vs instance",
+    "scripts/verify_fde_control_plane.py — JSON Schema validation + promotion-readiness",
+    "scripts/resolve_fde_standalone_path.sh — deterministic standalone path resolution",
+    ".github/workflows/fde-control-plane-verify.yml — CI wiring for FDE C-RSP verifiers",
+    "governance-template.lock.json aligned to dual-topology-verifier",
+    "Executed reports: structural-diff-report.json, schema-validation-report.json, verifier-execution-report.json, standalone-path-resolution.json"
+  ],
+  "truth_surface_mapping": {
+    "canonical_template": "projects/c-rsp/BUILD_CONTRACT.md",
+    "instance": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+    "lifecycle_spec": "docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md",
+    "plan_prose": "docs/fde-control-plane/Refactored-FDE-Control-Plane-Plan.md",
+    "invariants": "governance-rules/fde-lifecycle-invariants.yaml",
+    "schemas": [
+      "schemas/fde-lifecycle.schema.json",
+      "schemas/blind-man-execution.schema.json"
+    ],
+    "status_json": "STATUS.json",
+    "outcome_template": "projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md",
+    "next_build": "projects/c-rsp/NEXT_CRSP_BUILD.json",
+    "governance_lock": "projects/c-rsp/governance-template.lock.json"
+  },
+  "unresolved_inputs": [
+    "Standalone/external repo root with governance-complete FDE twin artifact mirror: UNRESOLVED REQUIRED INPUT (see standalone-path-resolution.json)"
+  ],
+  "run_status": "gap_closure_draft_executed_verifiers_pending_standalone_twin"
+}

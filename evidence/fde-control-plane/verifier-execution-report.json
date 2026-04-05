@@ -1,0 +1,22 @@
+{
+  "tool": "verify_fde_control_plane.py",
+  "schema_version": "1.0.0",
+  "overall_schema_validation": "SKIPPED",
+  "details": [],
+  "promotion_readiness_checks": [
+    {
+      "check": "lock_verifier_class",
+      "result": "PASS"
+    },
+    {
+      "check": "instance_mentions_dual_topology_verifier",
+      "result": "PASS"
+    },
+    {
+      "check": "instance_dual_topology_mode",
+      "result": "PASS"
+    }
+  ],
+  "promotion_readiness": "PASS",
+  "overall": "PASS"
+}

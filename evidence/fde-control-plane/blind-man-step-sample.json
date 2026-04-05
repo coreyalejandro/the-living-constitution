@@ -1,0 +1,27 @@
+{
+  "step_id": "fde-verify-sample-001",
+  "actor": "ci_governance_validator",
+  "paths_touched": [
+    "evidence/fde-control-plane/schema-validation-report.json"
+  ],
+  "input_artifacts": [
+    "schemas/fde-lifecycle.schema.json",
+    "schemas/blind-man-execution.schema.json"
+  ],
+  "output_artifacts": [
+    "evidence/fde-control-plane/schema-validation-report.json"
+  ],
+  "ordered_operations": [
+    "Load JSON Schema with jsonschema Draft 2020-12 validator.",
+    "Validate declared evidence instances against each schema target.",
+    "Write PASS or FAIL to schema-validation-report.json."
+  ],
+  "halt_conditions": [
+    "jsonschema.ValidationError on any required field.",
+    "Missing evidence instance when schema target requires it."
+  ],
+  "success_conditions": [
+    "All declared schema targets validate with result PASS.",
+    "Report file written to evidence/fde-control-plane/schema-validation-report.json."
+  ]
+}

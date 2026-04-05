@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+  "preflight_timestamp_utc": "2026-04-05T12:00:00Z",
+  "preflight_result": "PASS_DRAFT_WITH_EXECUTED_VERIFIERS",
+  "notes": "Structural, schema, and promotion-readiness verifiers executed locally; standalone path remains UNRESOLVED REQUIRED INPUT per standalone-path-resolution.json (blocked promotion to Active).",
+  "executed_report_paths": {
+    "structural_diff": "evidence/fde-control-plane/structural-diff-report.json",
+    "schema_validation": "evidence/fde-control-plane/schema-validation-report.json",
+    "promotion_readiness": "evidence/fde-control-plane/verifier-execution-report.json",
+    "standalone_path_resolution": "evidence/fde-control-plane/standalone-path-resolution.json"
+  },
+  "checks": {
+    "no_generic_placeholders_except_unresolved": {
+      "pass": true,
+      "method": "instance_review_plus_verifiers",
+      "detail": "Standalone twin remains explicit UNRESOLVED REQUIRED INPUT where not uniquely resolved."
+    },
+    "canonical_terminology_c_rsp": {
+      "pass": true,
+      "method": "verify_crsp_structure.py_and_instance_headers",
+      "detail": "C-RSP expanded as Constitutionally-Regulated Single Pass only."
+    },
+    "topology_mode": {
+      "pass": true,
+      "value": "Dual-Topology"
+    },
+    "profile_type": {
+      "pass": true,
+      "value": "Dual-Topology"
+    },
+    "verifier_class": {
+      "pass": true,
+      "value": "dual-topology-verifier"
+    },
+    "instance_artifact_path": {
+      "pass": true,
+      "path": "projects/c-rsp/BUILD_CONTRACT.instance.md"
+    },
+    "governance_lock_alignment": {
+      "pass": true,
+      "path": "projects/c-rsp/governance-template.lock.json",
+      "detail": "Lock verifier.class matches dual-topology-verifier; see verifier-execution-report.json"
+    },
+    "json_schema_validation": {
+      "pass": true,
+      "method": "verify_fde_control_plane.py",
+      "detail": "See schema-validation-report.json (jsonschema Draft 2020-12)."
+    },
+    "structural_template_conformance": {
+      "pass": true,
+      "method": "verify_crsp_structure.py",
+      "detail": "See structural-diff-report.json"
+    },
+    "standalone_twin_path": {
+      "pass": true,
+      "detail": "UNRESOLVED REQUIRED INPUT recorded with blocking rationale; no false completion claim."
+    },
+    "blind_mans_rule_explicit": {
+      "pass": true,
+      "locations": [
+        "projects/c-rsp/BUILD_CONTRACT.instance.md sections 6, 8, 9–11, 13–14",
+        "docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md",
+        "governance-rules/fde-lifecycle-invariants.yaml"
+      ]
+    }
+  }
+}

@@ -1,0 +1,689 @@
+# C-RSP Build Contract : Refactor FDE Control Plane Plan into Phase-Shifted FDE Lifecycle Contract — FDE Control Plane
+
+## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
+
+---
+
+## 1. Contract Identity
+
+* **Contract Title:** Refactor FDE Control Plane Plan into Phase-Shifted FDE Lifecycle Contract
+* **Contract ID:** CRSP-FDE-CTRL-PLANE-LIFECYCLE-001
+* **Version:** v1.0.0-draft
+* **Schema Version:** v2.1.0
+* **Status:** Draft
+* **Adoption Tier:** Tier-3-Constitutional
+* **System Role:** Constitutionally-governed contract instance that refactors the existing FDE control-plane design into an executable, lifecycle-governed, dual-topology operating contract for The Living Constitution using Backboard primitives, explicit state transitions, and blind-man-safe execution and evidence discipline.
+* **Primary Objective:** Convert the existing Refactored FDE Control Plane Plan into a fully instantiated, governance-valid, blind-man-safe, dual-topology build contract that governs how FDEs begin as build operators and transition into post-build app owners/operators without ambiguity, skipped steps, hidden assumptions, or unverifiable claims.
+* **Scope Boundary:** This contract governs the next-step refactor of the FDE control-plane plan into executable contract form, including identity, topology classification, lifecycle rules, blind-man-safe sequencing, dual-topology path declaration, evidence surfaces, acceptance criteria, halt controls, and rollback/recovery semantics for the contractized plan artifact and its required supporting governance artifacts. It does not implement the full runtime system, does not deploy Backboard services, does not build application features, and does not claim production enforcement.
+* **Not Claimed:** No claim is made that the runtime FDE control plane exists, that Backboard enforcement is configured, that standalone linked repos are already created, that lifecycle gates are already wired into CI, that semantic-diff engines or authority partitions are implemented, or that any generated artifacts below already exist prior to execution.
+
+---
+
+## 2. Contract Topology + Profile
+
+* **Topology Mode:** Dual-Topology
+* **Profile Type:** Dual-Topology
+* **Profile Overlay Source:** N/A — no separate overlay artifact was provided; dual-topology specialization is instantiated directly inside this contract instance in canonical schema slots only.
+* **Verifier Class:** dual-topology-verifier
+* **Authoritative Truth Surface:**
+
+  * `projects/c-rsp/BUILD_CONTRACT.md`
+  * `projects/c-rsp/BUILD_CONTRACT.instance.md`
+  * `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`
+  * `projects/c-rsp/NEXT_CRSP_BUILD.json`
+  * `STATUS.json`
+  * `docs/fde-control-plane/Refactored-FDE-Control-Plane-Plan.md`
+  * `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md`
+  * `governance-rules/fde-lifecycle-invariants.yaml`
+  * `evidence/fde-control-plane/`
+* **Instance Artifact Path:** `projects/c-rsp/BUILD_CONTRACT.instance.md`
+* **Governance Lock Path:** `governance-template.lock.json`
+
+### 2A. Profile Merge Rule
+
+The base constitutional template governs this contract instance. Dual-topology specialization in this instance is limited to:
+
+* required dual-path file inventories
+* dual-topology verifier scope
+* topology-specific promotion rules
+* topology-specific evidence requirements
+* bounded lifecycle-governance payload inside approved schema slots
+* blind-man-safe execution payload inside approved schema slots
+
+No specialization in this instance overrides:
+
+* canonical C-RSP terminology
+* contract invalidation rules
+* conflict severity classes
+* acceptance criteria requirements
+* preflight requirements
+* truth-discipline requirements
+* halt matrix semantics
+* core section order, names, or IDs
+
+### 2B. Instance Rule
+
+This contract is executable only when all of the following are true:
+
+1. all required base template fields are fully instantiated
+2. all dual-topology fields are fully instantiated or explicitly marked `UNRESOLVED REQUIRED INPUT`
+3. unresolved generic placeholders are absent
+4. acceptance criteria are objective and evidence-mapped
+5. generated artifacts and evidence paths are declared
+6. preflight passes
+7. schema validation passes
+8. lifecycle declaration is valid
+9. blind-man-safe execution requirements are fully specified
+10. no contract step requires inferred visual judgment, spatial guesswork, hidden UI assumptions, or omitted navigation steps
+
+If any of the above are false, the contract is invalid.
+
+---
+
+## 3. Baseline State
+
+* **Existing Repo / System:** `https://github.com/coreyalejandro/the-living-constitution`
+* **Baseline Commit / Anchor:** `UNRESOLVED REQUIRED INPUT` — exact commit SHA or other immutable baseline anchor was not provided in the request or visible page context.
+* **Verified Existing Assets:**
+
+  * `projects/c-rsp/BUILD_CONTRACT.md` exists and defines canonical section order and completion rules. ([GitHub][1])
+  * The Backboard chat page contains an existing document titled `Refactored FDE Control Plane Plan: Constitutionally-Governed Internal Deployment` and associated design content discussing FDE roles, dual-topology, Backboard primitives, lifecycle operation, governance coupling, evidence, and migration path.
+  * `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` is referenced by the canonical template as mandatory output format. ([GitHub][1])
+  * `projects/c-rsp/NEXT_CRSP_BUILD.json` is referenced by the canonical template as the pending follow-on build register. ([GitHub][1])
+  * `STATUS.json` is referenced in the existing FDE plan as the truth surface.
+  * The canonical template requires lifecycle, rollback, evidence, risk/control, acceptance criteria, and dual-topology rules for Tier-2+ / Tier-3 contracts. ([GitHub][1])
+* **Known Constraints:**
+
+  * The contract must preserve canonical section order, names, and IDs. ([GitHub][1])
+  * The user requires the Blind Man’s Rule to be explicit and not implicit.
+  * The user requires no shortcuts, no compressed summary pretending to be a full contract, and no skipped steps.
+  * The exact next-step placeholder in the previous prompt was not replaced with a user-supplied literal task string; this contract therefore instantiates the exact next step from the surrounding explicit request rather than from a pasted bracketed string.
+  * No standalone twin repo path was explicitly supplied for the contractized FDE control-plane artifact.
+  * No immutable baseline commit SHA was supplied.
+* **Known Gaps:**
+
+  * Exact standalone repo path or repo name for the FDE-control-plane twin is missing.
+  * Exact instance file destinations beyond TLC-core are not yet confirmed.
+  * Exact verifier script path is not supplied.
+  * Exact CI workflow file for verifier integration is not supplied.
+  * Exact baseline anchor SHA is missing.
+  * Exact governance lockfile content is not supplied.
+* **Legacy Migration Context:** The baseline plan exists as long-form prose/spec content in Backboard chat context and must be converted into a canonical, executable, constitutional contract artifact without losing its strongest architectural content, especially the useful material on formal contracts, dual-topology semantics, hard gates, evidence, lifecycle, migration path, and operational continuity.
+
+---
+
+## 4. Dependencies and Inputs
+
+* **Required Inputs:**
+
+  * canonical template at `projects/c-rsp/BUILD_CONTRACT.md`
+  * current FDE plan content titled `Refactored FDE Control Plane Plan: Constitutionally-Governed Internal Deployment`
+  * TLC repo root truth-surface conventions
+  * Backboard primitive names used by the plan: `LLM_ROUTER`, `STATE_MANAGER`, `MEMORY_ENGINE`, `AGENTIC_RAG`
+  * any existing `STATUS.json` schema or truth-discipline conventions
+  * any existing governance-rules directory and evidence directory conventions
+  * user requirement that the Blind Man’s Rule be explicit, not inferred
+* **External Dependencies:**
+
+  * GitHub-hosted TLC repo availability for template reference
+  * Backboard platform concept and primitive names as already embedded in the plan
+  * local or CI capability to create markdown/json/yaml artifacts
+  * schema validation tooling suitable for contract and lifecycle JSON/YAML assets
+* **Governance Dependencies:**
+
+  * `projects/c-rsp/BUILD_CONTRACT.md` as authoritative template source ([GitHub][1])
+  * `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` for reporting shape ([GitHub][1])
+  * `projects/c-rsp/NEXT_CRSP_BUILD.json` for follow-on build registration ([GitHub][1])
+  * `STATUS.json` truth-discipline requirement from current FDE plan
+  * governance-rules path for lifecycle/blind-man invariants
+* **Forbidden Assumptions:**
+
+  * do not assume the standalone twin repo already exists
+  * do not assume baseline commit SHA
+  * do not assume Backboard runtime features are deployed exactly as described in prose
+  * do not assume visual/spatial intuition is acceptable for execution
+  * do not assume any omitted step can be “figured out later”
+  * do not assume an operator can infer path relationships from screenshots or broad descriptions
+  * do not assume a contract may compress explicit navigation, file names, truth paths, or decision boundaries
+* **Dependency Policy:** All dependencies must be explicitly named; implicit dependency assumptions are invalid.
+
+### 4A. Cross-Repo Governance Dependency Graph
+
+Every Tier-2+ contract must declare linked governance relationships:
+
+* **Parent Constitutional Source:** `projects/c-rsp/BUILD_CONTRACT.md`
+* **Shared Overlay Profiles:** none
+* **Dual-Topology Linked Repos:**
+
+  * integrated/internal path: `the-living-constitution/docs/fde-control-plane/` and `the-living-constitution/projects/c-rsp/`
+  * standalone/external path: `UNRESOLVED REQUIRED INPUT` — exact standalone repo path for the FDE-control-plane twin was not provided
+* **Satellite Dependents:** none
+* **Drift Detection Scope:**
+
+  * contract instance vs canonical template schema
+  * TLC-core FDE-control-plane plan vs contractized instance
+  * integrated artifact set vs standalone twin artifact set once standalone path is resolved
+  * lifecycle/risk/acceptance/evidence sections vs canonical template completeness requirements
+  * blind-man-safe instructions vs actual execution steps
+
+---
+
+## 5. Risk + Control Classification
+
+* **Risk Class:** High
+* **Side-Effect Class:** Internal
+* **External Action Scope:** Generates or refactors governance artifacts, truth-surface files, lifecycle specs, rules, and evidence definitions that can materially constrain future TLC product execution and future contracts.
+* **Stop/Override Required:** Yes
+* **Recovery Mode:** Assisted
+
+### 5A. Conditional Stop / Override Rule
+
+Because `Risk Class = High`, the following are mandatory:
+
+* stop/override semantics
+* safe-state definition
+* rollback/recovery section
+* explicit authority to invoke stop/override
+* failure to define these blocks promotion
+
+**Stop Authority:**
+
+* human repo owner
+* designated constitutional maintainer
+* dual-topology verifier when preflight fails
+* governance validator in CI if schema or truth-surface checks fail
+
+**Override Authority:**
+
+* human repo owner only, with evidence-bearing rationale committed to override evidence path
+* no model or FDE layer may self-override blind-man-safe requirements, topology requirements, or canonical template rules
+
+**Safe-State Behavior:**
+
+* preserve pre-existing FDE plan artifact
+* preserve canonical template unchanged
+* preserve last schema-valid contract instance only
+* do not promote Draft → Active on any failed preflight
+* do not create partial dual-topology completion claims if one path remains unresolved
+
+---
+
+## 6. Execution Model
+
+* **Execution Mode:** Single-pass deterministic build contract
+* **Decision Closure Rule:** No open-ended branch points inside executable sections
+* **Fallback Rule:** Any unresolved ambiguity triggers halt or explicit escalation
+* **Generated Artifacts:**
+
+  * `projects/c-rsp/BUILD_CONTRACT.instance.md`
+  * `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md`
+  * `governance-rules/fde-lifecycle-invariants.yaml`
+  * `schemas/fde-lifecycle.schema.json`
+  * `schemas/blind-man-execution.schema.json`
+  * `evidence/fde-control-plane/contract-refactor-evidence.json`
+  * `evidence/fde-control-plane/preflight-report.json`
+  * `evidence/fde-control-plane/lifecycle-transition-contract-record.json`
+  * `projects/c-rsp/NEXT_CRSP_BUILD.json`
+* **Promotion Target:** Draft contract instance promoted to Active only after schema validation, preflight pass, evidence-path creatability, dual-topology classification validity, and blind-man-safe completeness verification.
+
+### 6A. Dual-Topology Rule
+
+Because `Topology Mode = Dual-Topology`, both paths are explicitly declared:
+
+* **integrated/internal path:**
+
+  * `the-living-constitution/projects/c-rsp/BUILD_CONTRACT.instance.md`
+  * `the-living-constitution/docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md`
+  * `the-living-constitution/governance-rules/fde-lifecycle-invariants.yaml`
+  * `the-living-constitution/schemas/fde-lifecycle.schema.json`
+  * `the-living-constitution/schemas/blind-man-execution.schema.json`
+  * `the-living-constitution/evidence/fde-control-plane/`
+* **standalone/external path:**
+
+  * `UNRESOLVED REQUIRED INPUT` — exact standalone repo root and path mapping for the FDE control-plane twin were not supplied
+
+No change is complete unless:
+
+1. all integrated/internal artifacts are generated or updated, and
+2. the contract explicitly records why the standalone/external path is temporarily out of scope
+
+**Out-of-Scope Record for This Step:** Standalone path completion is blocked by `UNRESOLVED REQUIRED INPUT` because the exact twin repo or path was not supplied. This contract therefore governs TLC-core artifact generation now and requires the next contract run to complete dual-topology propagation after the standalone path is resolved. This is a recorded incompleteness, not a hidden shortcut.
+
+**Execution Steps:**
+
+1. Read the canonical template at `projects/c-rsp/BUILD_CONTRACT.md` and validate exact section order, required fields, topology rules, lifecycle rules, and Tier-3 requirements against this instance.
+
+2. Read the existing FDE plan content and extract only the strongest, structurally reusable material:
+
+   * formal interface contracts
+   * phased bootstrapping
+   * semantic diff discipline
+   * hard-gate governance
+   * evidence artifacts
+   * lifecycle Build → Stabilize → Operate concept
+   * migration path
+   * operator continuity
+   * cost/risk controls only insofar as they affect current contract semantics
+
+3. Refactor the plan into a contractized artifact set rather than prose:
+
+   * contract instance
+   * lifecycle spec
+   * lifecycle invariants
+   * blind-man execution schema
+   * evidence paths
+
+4. Insert an explicit **Blind Man’s Rule** into the lifecycle spec, invariants, acceptance criteria, preflight, and halt controls using the following constitutional definition:
+
+   **Blind Man’s Rule Definition:**
+   Every instruction, path, transition, file operation, verification step, and recovery step must be executable without reliance on visual inference, unstated spatial assumptions, “obvious next clicks,” hidden context, or memory of omitted steps. The operator must be able to complete the workflow solely from explicit textual instructions, exact file paths, named artifacts, ordered operations, and declared pass/fail conditions. Any step that depends on visual interpretation or skipped navigation is invalid.
+
+5. Create `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md` containing:
+
+   * lifecycle states for the FDE operating model: `BUILD`, `STABILIZE`, `OPERATE`
+   * entry/exit conditions for each state
+   * authority partition by state
+   * transition evidence requirements
+   * blind-man-safe execution rules
+   * no-skip transition rule
+
+6. Create `governance-rules/fde-lifecycle-invariants.yaml` with:
+
+   * lifecycle invariants
+   * dual-topology invariants
+   * evidence invariants
+   * blind-man execution invariants
+   * truth-surface discipline
+
+7. Create `schemas/fde-lifecycle.schema.json` defining lifecycle object shape for use in `STATUS.json` and evidence artifacts.
+
+8. Create `schemas/blind-man-execution.schema.json` defining minimum required fields for any blind-man-safe executable block, including:
+
+   * exact path
+   * exact actor
+   * exact input artifact
+   * exact output artifact
+   * explicit step order
+   * explicit halt condition
+   * explicit success condition
+
+9. Update `projects/c-rsp/BUILD_CONTRACT.instance.md` so that it:
+
+   * preserves canonical template section order exactly
+   * instantiates the current next step without generic placeholders
+   * records unresolved standalone path as `UNRESOLVED REQUIRED INPUT`
+   * preserves the best parts of the previous FDE plan as contractized content rather than summary prose
+
+10. Create `evidence/fde-control-plane/contract-refactor-evidence.json` describing:
+
+* source plan title
+* preserved architectural elements
+* removed non-executable prose elements
+* instantiated truth-surface mapping
+* unresolved inputs
+
+11. Create `evidence/fde-control-plane/preflight-report.json` showing:
+
+* no generic placeholders remain
+* canonical terminology is preserved
+* topology mode is Dual-Topology
+* verifier class is dual-topology-verifier
+* instance artifact path exists or is creatable
+* required evidence paths exist or are creatable
+* lifecycle declaration is valid
+* blind-man-safe sections are present and complete
+
+12. Update or create `projects/c-rsp/NEXT_CRSP_BUILD.json` with status `pending` for the follow-on contract whose sole purpose is resolving the standalone twin path and propagating the integrated artifact set into the standalone topology.
+13. Halt immediately if any canonical section is missing, any template order drift occurs, any blind-man requirement is absent, any generic placeholder remains, or any stronger claim is made than the declared truth surface supports.
+
+### 6B. Blind Man’s Rule Operationalization
+
+This contract explicitly makes the Blind Man’s Rule binding:
+
+* Every executable instruction must name the exact artifact path being read or written.
+* Every state transition must list the evidence artifact that proves the transition.
+* Every verifier step must declare the file or report it reads.
+* Every acceptance criterion must have an objective pass condition.
+* Every rollback step must state the exact artifact restored or invalidated.
+* Any phrase such as “obvious,” “then proceed,” “etc.,” “set up as needed,” “continue similarly,” “wire this up,” or “do the rest” is forbidden in executable sections.
+* Any step requiring visual orientation, screen-position inference, UI guesswork, or omitted intermediate navigation fails the Blind Man’s Rule and invalidates the contract instance.
+* Any dual-topology claim must either name both exact paths or explicitly record one path as `UNRESOLVED REQUIRED INPUT`.
+
+---
+
+## 7. Lifecycle State Machine
+
+### Allowed States
+
+* Draft
+* Active
+* Frozen
+* Superseded
+
+### Transition Rules
+
+* `Draft → Active` requires: no placeholders, schema validation pass, preflight pass, required fields complete, blind-man-safe completeness pass, explicit truth-surface mapping, and no unresolved contradiction between topology mode and declared paths
+* `Active → Frozen` requires: acceptance criteria satisfied, evidence recorded, promotion rules satisfied, and follow-on build registration updated if unresolved dual-topology work remains
+* `Frozen → Superseded` requires: successor instance exists and references the superseded contract
+* any invalid transition halts and records an audit event
+
+### Transition Evidence
+
+Each transition must emit or update:
+
+* lifecycle transition record
+* associated verifier/preflight report
+* evidence links to the truth surface
+* blind-man-safe validation result
+* unresolved-input register if any required input remains unresolved
+
+### Operating Lifecycle Payload Governed by This Contract
+
+In addition to contract-lifecycle states above, this contract governs the FDE operating lifecycle specified in generated artifacts:
+
+* `BUILD`
+* `STABILIZE`
+* `OPERATE`
+
+For the FDE operating lifecycle, the following transition rules are mandatory in generated artifacts:
+
+* `BUILD → STABILIZE` requires:
+
+  * lifecycle spec exists
+  * lifecycle invariants file exists
+  * lifecycle schema exists
+  * blind-man execution schema exists
+  * `STATUS.json` lifecycle extension is defined
+  * authority partition by phase is documented
+  * transition evidence schema is defined
+* `STABILIZE → OPERATE` requires:
+
+  * no unresolved lifecycle placeholders
+  * all lifecycle invariants mapped to acceptance criteria
+  * transition evidence path declared
+  * authority escalation / restriction rules documented
+  * human ratification field defined in lifecycle spec
+* `BUILD → OPERATE` is illegal and must halt
+* any FDE operating lifecycle transition without evidence, explicit success criteria, or blind-man-safe execution rules is illegal and must halt
+
+---
+
+## 8. Invariants
+
+### Required Global Invariants
+
+* INVARIANT_TERM_01
+* INVARIANT_SCHEMA_01
+* INVARIANT_EXEC_01
+* INVARIANT_EXEC_02
+* INVARIANT_EXEC_03
+* INVARIANT_EXEC_04
+* INVARIANT_EXEC_05
+* INVARIANT_CTRL_01
+* INVARIANT_LIFE_01
+* INVARIANT_REC_01
+
+### Profile Invariants
+
+* **INVARIANT_DUAL_01:** If topology mode is `Dual-Topology`, the contract must name both the integrated/internal path and the standalone/external path, or explicitly record the standalone/external path as `UNRESOLVED REQUIRED INPUT` with blocked-completion semantics.
+* **INVARIANT_DUAL_02:** No dual-topology completion claim may be made when only one topology path is known or updated.
+* **INVARIANT_DUAL_03:** Any follow-on propagation requirement for the second topology must be registered in `projects/c-rsp/NEXT_CRSP_BUILD.json`.
+* **INVARIANT_FDE_01:** The refactored contract must preserve the strongest operational content of the original FDE plan: formal contracts, lifecycle transitions, dual-topology awareness, governance hard gates, evidence, and continuity of ownership.
+* **INVARIANT_FDE_02:** The refactored contract must convert prose strategy into executable artifact requirements; descriptive prose alone is insufficient.
+* **INVARIANT_FDE_03:** The generated lifecycle spec must explicitly define the phase-shifted operating model in which the FDE begins as a build operator and transitions into an app owner/operator under governed authority.
+* **INVARIANT_FDE_04:** The generated lifecycle spec must define state-specific authority boundaries for build, stabilize, and operate phases.
+* **INVARIANT_FDE_05:** The generated lifecycle spec must define no-skip transition rules and evidence-bearing transition records for each operating lifecycle transition.
+* **INVARIANT_TRUTH_01:** Every meaningful claim in the contract must map to a file path, evidence path, or explicit `UNRESOLVED REQUIRED INPUT`.
+* **INVARIANT_TRUTH_02:** The contract must not imply that runtime enforcement, Backboard deployment, or standalone repo synchronization already exists.
+* **INVARIANT_BLIND_01:** The Blind Man’s Rule must be explicitly stated in the contract, lifecycle spec, invariants, preflight, acceptance criteria, halt matrix, and rollback/recovery semantics.
+* **INVARIANT_BLIND_02:** Every executable step must contain exact file paths, explicit ordered actions, explicit pass/fail conditions, and explicit artifact names.
+* **INVARIANT_BLIND_03:** Any instruction that depends on visual inference, spatial reasoning, hidden UI assumptions, omitted clicks, or “common sense” navigation is invalid.
+* **INVARIANT_BLIND_04:** Any phrase that compresses missing steps into vague continuations is forbidden in executable sections.
+* **INVARIANT_BLIND_05:** Every state transition and rollback step must be executable from text alone by an operator without visual confirmation.
+* **INVARIANT_STATUS_01:** The contract must define a lifecycle payload suitable for insertion into `STATUS.json`.
+* **INVARIANT_EVID_01:** Every contractization action must produce evidence artifacts under `evidence/fde-control-plane/`.
+* **INVARIANT_REC_02:** Because this is a Tier-3 constitutional contract with internal side effects, rollback and recovery semantics must return the truth surface to the last schema-valid state.
+* **INVARIANT_TERM_02:** The canonical expansion of `C-RSP` in this contract must be exactly `Constitutionally-Regulated Single Pass`.
+
+---
+
+## 9. Acceptance Criteria
+
+| ID    | Requirement                                                                                                 | Verification Method                                                 | Pass Condition                                                                                                                                        |
+| ----- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AC-01 | Canonical section order from `projects/c-rsp/BUILD_CONTRACT.md` is preserved exactly in the instance        | structural diff against canonical section headers                   | All 17 sections exist in canonical order with no renamed or omitted core sections                                                                     |
+| AC-02 | No generic placeholders remain in the executable instance                                                   | placeholder scan                                                    | No unresolved placeholders remain except explicit `UNRESOLVED REQUIRED INPUT` fields                                                                  |
+| AC-03 | Topology mode, profile type, and verifier class are aligned                                                 | manual/automated field consistency check                            | `Dual-Topology`, `Dual-Topology`, and `dual-topology-verifier` are all present and non-contradictory                                                  |
+| AC-04 | The contract preserves the strongest reusable parts of the original FDE plan                                | evidence review against source-plan extraction log                  | Formal contracts, lifecycle, dual-topology, governance hard gates, evidence, and owner/operator transition are all present in contractized form       |
+| AC-05 | The contract explicitly binds the Blind Man’s Rule                                                          | full-text check across sections and generated artifact requirements | Blind Man’s Rule appears explicitly in Execution Model, Invariants, Acceptance Criteria, Preflight, Halt Matrix, and Rollback & Recovery requirements |
+| AC-06 | A lifecycle spec artifact path is declared and content requirements are fully specified                     | artifact inventory + content checklist                              | `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md` is declared with required lifecycle content listed                                        |
+| AC-07 | Lifecycle invariants artifact path is declared and content requirements are fully specified                 | artifact inventory + content checklist                              | `governance-rules/fde-lifecycle-invariants.yaml` is declared with required invariant classes listed                                                   |
+| AC-08 | Lifecycle schema artifact path is declared and content requirements are fully specified                     | artifact inventory + content checklist                              | `schemas/fde-lifecycle.schema.json` is declared and linked to `STATUS.json` lifecycle usage                                                           |
+| AC-09 | Blind-man execution schema artifact path is declared and content requirements are fully specified           | artifact inventory + content checklist                              | `schemas/blind-man-execution.schema.json` is declared with required field list                                                                        |
+| AC-10 | Evidence paths for the refactor are fully declared                                                          | artifact inventory                                                  | Evidence directory and named evidence artifacts are declared under `evidence/fde-control-plane/`                                                      |
+| AC-11 | The contract does not overclaim runtime existence                                                           | truth-surface review                                                | Runtime deployment, Backboard enforcement, and standalone propagation are explicitly marked not claimed or unresolved                                 |
+| AC-12 | Dual-topology incompleteness is recorded rather than hidden                                                 | field review + next-build registration                              | unresolved standalone path is explicitly marked `UNRESOLVED REQUIRED INPUT` and follow-on build is registered                                         |
+| AC-13 | Preflight requirements are concrete and executable                                                          | preflight checklist review                                          | All required checks name exact files/fields/conditions                                                                                                |
+| AC-14 | Risk/control classification includes stop/override semantics                                                | section review                                                      | Stop authority, override authority, safe-state behavior, and recovery mode are all explicit                                                           |
+| AC-15 | Rollback/recovery semantics restore a safe state without ambiguous instructions                             | rollback procedure review                                           | Every rollback step names exact artifacts and no rollback step depends on visual inference                                                            |
+| AC-16 | The contract defines the FDE operating lifecycle transition `BUILD → STABILIZE → OPERATE` with no-skip rule | lifecycle payload review                                            | All three states exist, `BUILD → OPERATE` is explicitly illegal, and transition evidence is required                                                  |
+| AC-17 | `projects/c-rsp/NEXT_CRSP_BUILD.json` is updated for standalone-path resolution                             | artifact declaration review                                         | Follow-on build registration exists with pending status and explicit unresolved-input reference                                                       |
+
+All acceptance criteria are executable, objective, and mapped to evidence.
+
+---
+
+## 10. Rollback & Recovery
+
+* **Safe-State Definition:** The last schema-valid Draft or Active contract instance remains authoritative; the canonical template remains untouched; no generated artifact is treated as active truth unless preflight passes; unresolved standalone topology remains explicitly unresolved rather than implicitly completed.
+* **Rollback Procedure:**
+
+  1. Stop promotion immediately if any preflight or blind-man-safe check fails.
+  2. Preserve the prior valid `projects/c-rsp/BUILD_CONTRACT.instance.md`.
+  3. Discard or quarantine any partial replacement instance that fails schema or section-order validation.
+  4. Invalidate any evidence artifact that references a failed or partial contractization run by writing a failure status into `evidence/fde-control-plane/contract-refactor-evidence.json` or a sibling failure artifact.
+  5. Restore the previous valid versions of:
+
+     * `projects/c-rsp/BUILD_CONTRACT.instance.md`
+     * `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md` if overwritten
+     * `governance-rules/fde-lifecycle-invariants.yaml` if overwritten
+     * `schemas/fde-lifecycle.schema.json` if overwritten
+     * `schemas/blind-man-execution.schema.json` if overwritten
+  6. Regenerate `evidence/fde-control-plane/preflight-report.json` to reflect rollback state.
+  7. Keep `projects/c-rsp/NEXT_CRSP_BUILD.json` pending if unresolved standalone topology remains unresolved.
+  8. Do not mark the contract `Active` after rollback; return to `Draft`.
+* **Recovery Authority:** Human repo owner or designated constitutional maintainer only; no FDE layer may self-recover by relaxing Blind Man’s Rule, lifecycle evidence requirements, or dual-topology declaration requirements.
+* **Rollback Evidence Paths:**
+
+  * `evidence/fde-control-plane/contract-refactor-evidence.json`
+  * `evidence/fde-control-plane/preflight-report.json`
+  * `evidence/fde-control-plane/rollback-report.json`
+  * `evidence/fde-control-plane/failure-audit.json`
+* **Partial Execution Handling:** Any partial execution that creates some but not all required artifacts must be treated as incomplete and non-promotable. Partial artifacts may exist on disk as work product, but the truth surface must continue to point to the last valid contract state. Partial execution is never allowed to silently count as “mostly complete.”
+
+---
+
+## 11. Evidence + Truth Surface
+
+* **Primary Evidence Paths:**
+
+  * `evidence/fde-control-plane/contract-refactor-evidence.json`
+  * `evidence/fde-control-plane/preflight-report.json`
+  * `evidence/fde-control-plane/lifecycle-transition-contract-record.json`
+  * `evidence/fde-control-plane/rollback-report.json`
+  * `evidence/fde-control-plane/failure-audit.json`
+* **Generated Reports:**
+
+  * preflight report
+  * structural section-order validation result
+  * blind-man-safe validation result
+  * unresolved-input register
+  * next-build registration record
+* **Audit Artifacts:**
+
+  * lifecycle transition record for contract state
+  * unresolved-input audit
+  * rollback/failure audit if needed
+  * source-plan extraction record showing preserved vs removed content
+* **Evidence Boundary:** Evidence in this contract is limited to the existence of the canonical template, the visible source FDE plan content, the declared artifact paths, and the declared contract requirements. Evidence does not extend to runtime deployment, Backboard integration correctness, actual repo writes, or standalone twin synchronization unless separately produced.
+* **Truth Discipline:** Claims in the contract may not exceed evidence declared in the truth surface.
+
+---
+
+## 12. Conflict Matrix
+
+| Conflict Type                  | Example                                                                           | Severity | Resolution      |
+| ------------------------------ | --------------------------------------------------------------------------------- | -------: | --------------- |
+| Terminology Authority Conflict | Any expansion of C-RSP other than `Constitutionally-Regulated Single Pass`        | Critical | Halt            |
+| Profile Drift Conflict         | Dual-topology instance omits required second-path handling                        | Critical | Halt            |
+| Topology Misclassification     | Dual-topology work treated as generic core-only completion                        | Critical | Halt            |
+| Incomplete Instance Conflict   | Required field omitted or left as generic placeholder                             | Critical | Halt            |
+| Evidence Gap Conflict          | Contract claims standalone propagation without evidence or resolved path          |     High | Block promotion |
+| Verifier Scope Conflict        | Verifier class not equal to `dual-topology-verifier`                              |     High | Block promotion |
+| Schema Drift Conflict          | Core section shape differs from canonical schema                                  | Critical | Halt            |
+| Lifecycle Conflict             | Illegal `BUILD → OPERATE` or invalid contract-state transition                    |     High | Block promotion |
+| Recovery Conflict              | Required rollback semantics absent or vague                                       |     High | Block promotion |
+| Blind Man Conflict             | Executable step depends on visual inference, skipped navigation, or omitted steps | Critical | Halt            |
+| Truth Surface Conflict         | Stronger claim made than evidence paths support                                   |     High | Block promotion |
+| Standalone Path Conflict       | Dual-topology declared complete while standalone path remains unresolved          | Critical | Halt            |
+
+---
+
+## 13. Halt Matrix
+
+The contract must halt if any of the following occur:
+
+* unresolved placeholders remain
+* profile overlay is missing but referenced
+* topology mode is undeclared or contradictory
+* canonical terminology drift is detected
+* verifier class and topology mode do not align
+* required acceptance criteria are absent
+* preflight fails
+* required truth surface is missing
+* schema validation fails
+* illegal lifecycle transition is attempted
+* required rollback semantics are absent for Tier-2+
+* any executable section violates the Blind Man’s Rule
+* any dual-topology completion claim is made while the standalone path is unresolved
+* any required artifact path is unnamed
+* any step relies on visual inference, spatial guesswork, “obvious next steps,” or omitted navigation
+* any acceptance criterion lacks an objective pass condition
+* any stronger claim is made outside the declared truth surface
+
+---
+
+## 14. Preflight
+
+Preflight must verify at minimum:
+
+* no unresolved placeholders except explicit `UNRESOLVED REQUIRED INPUT`
+* canonical terminology only
+* topology mode present
+* profile type present
+* verifier class present
+* instance artifact exists or is creatable
+* required evidence paths exist or are creatable
+* acceptance criteria table is complete
+* schema validation passes
+* lifecycle declaration is valid
+* risk/control block is present
+* Blind Man’s Rule is explicitly present in:
+
+  * Execution Model
+  * Invariants
+  * Acceptance Criteria
+  * Halt Matrix
+  * Rollback & Recovery requirements
+* `BUILD → STABILIZE → OPERATE` operating lifecycle is explicitly declared
+* `BUILD → OPERATE` is explicitly forbidden
+* standalone twin path is either explicitly named or explicitly marked `UNRESOLVED REQUIRED INPUT`
+* `projects/c-rsp/NEXT_CRSP_BUILD.json` pending record is declared if standalone path remains unresolved
+* no executable instruction contains vague continuation language
+* every executable instruction names exact artifacts, exact outputs, and explicit success conditions
+
+**Preflight Command(s):**
+`UNRESOLVED REQUIRED INPUT` — exact verifier command or script path was not supplied.
+Minimum required future command shape for this contract family:
+
+* schema/section validator against `projects/c-rsp/BUILD_CONTRACT.md`
+* placeholder scanner
+* blind-man-rule scanner
+* truth-surface/path validator
+* dual-topology consistency validator
+
+---
+
+## 15. Adoption Tiers
+
+### Tier 1 — Minimum Viable Governance
+
+Requires:
+
+* identity block
+* topology selection
+* canonical terminology
+* placeholder-free instance artifact
+* schema-valid structure
+
+### Tier 2 — Operational
+
+Requires Tier 1 plus:
+
+* acceptance criteria
+* risk/control classification
+* CI verifier integration
+* rollback/recovery semantics
+* lifecycle transition evidence
+
+### Tier 3 — Constitutional
+
+Requires Tier 2 plus:
+
+* full invariant registry
+* dual-topology support where applicable
+* governance lockfiles
+* evidence ledger and dependency graph
+* audit-grade promotion evidence
+* explicit Blind Man’s Rule enforcement across executable sections and supporting artifacts
+
+---
+
+## 16. Output Format
+
+Mandatory report shape: Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — Title block first (`# C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}` + subtitle `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`), then Kanban board, then constitutional anchor, then V&T Statement (no long prose before the board).
+
+V&T constitutional basis:
+
+* Article I — Right to Truth (`00-constitution/articles.md`): evidence-bound claims; the V&T block enforces this.
+* Article III — Verification Before Done (`00-constitution/articles.md`): completion requires proof against acceptance criteria.
+
+All execution summaries must end with:
+
+* Exists
+* Verified against (when claims reference artifacts/commits)
+* Not claimed
+* Non-existent
+* Unverified
+* Functional status
+
+No stronger claim may be made outside that truth surface.
+
+Follow-on C-RSP build: Record the next contract run in `projects/c-rsp/NEXT_CRSP_BUILD.json` with `status: pending` and purpose: resolve standalone twin repo/path for FDE control-plane artifacts and propagate the integrated artifact set across the second topology without violating dual-topology completeness rules.
+
+---
+
+## 17. Instance Declaration
+
+This framework becomes executable only through this fully instantiated contract document and the generated artifact set declared above. This instance is valid only as a Draft until preflight passes and unresolved inputs are either resolved or formally carried forward with blocked-completion semantics.
+
+---
+
+<!-- ## V&T -->
+
+<!-- * **Exists:** The canonical `projects/c-rsp/BUILD_CONTRACT.md` template exists and defines the authoritative section order, topology/profile fields, lifecycle rules, invariants, rollback requirements, acceptance criteria, and output/V&T discipline used here. ([GitHub][1]) The Backboard page context also contains the source FDE plan material being refactored.
+* **Non-existent:** No verified standalone twin repo/path for this FDE-control-plane contract artifact set was provided; no verified runtime Backboard deployment, no verified implemented lifecycle engine, no verified dual-topology propagation, and no verified completed artifact writes are established by this draft.
+* **Unverified:** Exact baseline commit/anchor, exact verifier command path, exact CI workflow integration path, exact standalone twin repo path, and the existence of any newly declared generated artifacts remain unverified.
+* **Functional status:** This is a substantially expanded, schema-aligned Draft C-RSP contract instance that explicitly operationalizes the Blind Man’s Rule and preserves the strongest parts of the prior FDE plan in contractized form; it is not Active, implemented, or verified until preflight passes and unresolved required inputs are addressed.
+
+[1]: https://github.com/coreyalejandro/the-living-constitution/blob/main/projects/c-rsp/BUILD_CONTRACT.md "the-living-constitution/projects/c-rsp/BUILD_CONTRACT.md at main · coreyalejandro/the-living-constitution · GitHub" -->

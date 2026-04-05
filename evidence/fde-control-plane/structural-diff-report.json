@@ -1,0 +1,10 @@
+{
+  "tool": "verify_crsp_structure.py",
+  "schema_version": "1.0.0",
+  "overall": "PASS",
+  "template_path": "projects/c-rsp/BUILD_CONTRACT.md",
+  "instance_path": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+  "template_section_count": 18,
+  "instance_section_count": 18,
+  "errors": []
+}

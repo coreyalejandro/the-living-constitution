@@ -1,0 +1,11 @@
+{
+  "tool": "resolve_fde_standalone_path.sh",
+  "schema_version": "1.0.0",
+  "resolution_status": "UNRESOLVED_REQUIRED_INPUT",
+  "standalone_path": null,
+  "candidates": [
+    "projects/backboardai-fde"
+  ],
+  "blocking_rationale": "Candidate projects/backboardai-fde exists but contains only an empty BUILD_CONTRACT placeholder; not a governance-complete standalone twin artifact set.",
+  "repo_root": "/Users/coreyalejandro/Projects/the-living-constitution"
+}

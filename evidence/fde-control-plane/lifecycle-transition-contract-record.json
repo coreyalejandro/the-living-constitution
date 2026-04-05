@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+  "contract_lifecycle": {
+    "from_state": "Draft",
+    "to_state": "Draft",
+    "event": "gap_closure_automation_and_evidence_recorded",
+    "timestamp_utc": "2026-04-05T12:00:00Z",
+    "evidence_paths": [
+      "projects/c-rsp/BUILD_CONTRACT.instance.md",
+      "evidence/fde-control-plane/structural-diff-report.json",
+      "evidence/fde-control-plane/schema-validation-report.json",
+      "evidence/fde-control-plane/verifier-execution-report.json",
+      "evidence/fde-control-plane/standalone-path-resolution.json",
+      "evidence/fde-control-plane/preflight-report.json"
+    ]
+  },
+  "fde_operating_lifecycle": {
+    "phase": "BUILD",
+    "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+    "schema_version": "1.0.0",
+    "last_transition_evidence_path": "evidence/fde-control-plane/lifecycle-transition-contract-record.json",
+    "note": "Gap-closure contract adds automated structural/schema/verifier evidence; STABILIZE not executed."
+  },
+  "human_ratification": null,
+  "unresolved_inputs": [
+    "Standalone twin repo root/path: UNRESOLVED REQUIRED INPUT until governance-complete twin exists"
+  ]
+}

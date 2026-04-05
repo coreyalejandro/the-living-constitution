@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
+  "failures": [],
+  "note": "No failure audit entries for this run. Use this file when preflight or promotion halts."
+}

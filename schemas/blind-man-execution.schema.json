@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/schemas/blind-man-execution.schema.json",
+  "title": "Blind-man-safe executable block",
+  "description": "Minimum fields for any executable step block in FDE governance artifacts.",
+  "type": "object",
+  "required": [
+    "step_id",
+    "actor",
+    "input_artifacts",
+    "output_artifacts",
+    "ordered_operations",
+    "halt_conditions",
+    "success_conditions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "step_id": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string",
+      "description": "Exact role or principal, e.g. human_repo_owner, ci_governance_validator."
+    },
+    "paths_touched": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Exact repo-relative paths read or written."
+    },
+    "input_artifacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "output_artifacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "ordered_operations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Explicit ordered steps; no vague continuations."
+    },
+    "halt_conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "success_conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    }
+  }
+}
