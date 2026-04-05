@@ -327,14 +327,20 @@ Requires Tier 2 plus:
 ---
 ## 16. Output Format
 
-**Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Title block first** (`# C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}` + subtitle `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`), then **Kanban board**, then constitutional anchor, then **V&T Statement** (no long prose before the board).
+**Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Title block first** (`# C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}` + subtitle `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`), then **§1 Constitutional anchor**, then **§2 V&T Statement**.
+
+**CONTROL_RULE_KBC_01 (normative for all Tier-2+ instances; cite in `BUILD_CONTRACT.instance.md`):**
+
+1. **Single active BUILD_CONTRACT:** At most one BUILD_CONTRACT instance is the **active execution scope** at a time until that contract is **clear** (all in-scope acceptance criteria for that instance are satisfied by evidence, or a **formal halt** is recorded in the instance halt matrix).
+2. **Kanban-first V&T:** Inside **§2 V&T Statement**, the **Visual board (Kanban)** subsection MUST appear **first**, before **Exists**, **Verified against**, **Not claimed**, **Non-existent**, **Unverified**, or **Functional status**. No long prose before the board; no truth line above the board.
+3. **No terminal “done” while the board is open:** If the Kanban still places required work for **this** contract in **BACKLOG**, **IN PROGRESS**, or **BLOCKED**, the run MUST NOT be treated as complete and MUST NOT stop as if the build were finished—continue until the board is clear for this contract, or record a **formal halt** with evidence. (Follow-on work that is a **different** BUILD_CONTRACT is queued only after the current contract is clear; then use **What’s next** + `NEXT_CRSP_BUILD.json` as below.)
 
 **V&T constitutional basis:**
 
 - **Article I — Right to Truth** (`00-constitution/articles.md`): evidence-bound claims; the V&T block enforces this.
 - **Article III — Verification Before Done** (`00-constitution/articles.md`): completion requires proof against acceptance criteria.
 
-All execution summaries must end with:
+All execution summaries must close **§2 V&T Statement** with the truth lines (after the Kanban):
 
 - **Exists**
 - **Verified against** (when claims reference artifacts/commits)
@@ -345,7 +351,22 @@ All execution summaries must end with:
 
 No stronger claim may be made outside that truth surface.
 
-**Follow-on C-RSP build:** When the Kanban **What’s next** column implies another contract run, record it in `projects/c-rsp/NEXT_CRSP_BUILD.json` (`status: pending`) and run `./scripts/crsp_next_build.sh` to surface the auto-launch instruction for the next session (Section 16 + template must stay aligned).
+**CONTROL_RULE_VT_RIGOR_01 — V&T MUST NOT BE LAZY**
+
+Each of **Exists**, **Verified against**, **Not claimed**, **Non-existent**, **Unverified**, and **Functional status** (§2.2–2.7 in `CRSP_OUTCOME_TEMPLATE.md`) MUST contain **at least one substantive bullet** under that heading for this run (not a heading alone, not “TBD”, not placeholder ellipsis).
+
+| Heading | Minimum rigor |
+|--------|----------------|
+| **Exists** | Every bullet names a **concrete path**, **commit SHA**, **run id**, or **artifact filename** that is present now. |
+| **Verified against** | Every bullet names **how** it was checked (command, CI job, diff, read) and **what** matched (exit code, log line, hash). If no new verification occurred, one bullet states that and why. |
+| **Not claimed** | States what stronger claims are **not** being made; use `Not claimed: none beyond listed Exists` only when true. |
+| **Non-existent** | States what was looked for and **not** found, or `N/A` with one line justifying no absence-check this run. |
+| **Unverified** | Names each item that **cannot** be proven here (e.g. remote-only, secrets, not yet merged). |
+| **Functional status** | **One** sentence tying outcome to Kanban **Build result** or to a **formal halt** id. |
+
+Empty or label-only V&T subsections are **invalid** C-RSP outcomes.
+
+**Follow-on C-RSP build:** When the Kanban **What’s next** implies another contract run **after** the current instance is clear, record it in `projects/c-rsp/NEXT_CRSP_BUILD.json` (`status: pending`) and run `./scripts/crsp_next_build.sh` to surface the auto-launch instruction for the next session (Section 16 + template must stay aligned).
 
 ---
 ## 17. Instance Declaration

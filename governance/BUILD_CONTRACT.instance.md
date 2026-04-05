@@ -29,6 +29,7 @@ This file is the **root-level live governance** copy of the Tier-2 C-RSP instanc
 
 - **Path:** `projects/document-system/BUILD_CONTRACT.instance.md`
 - **Contract ID:** `tlc-docsys-constitutionalization-001`
+- **Execution discipline:** **CONTROL_RULE_KBC_01** (single active BUILD_CONTRACT, Kanban-first V&T, no terminal “done” while the board is open) — full text in that file under **Execution discipline — single BUILD_CONTRACT + Kanban-first V&T**. Master template: `projects/c-rsp/BUILD_CONTRACT.md` Section 16; outcome shape: `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`.
 
 ## What was executed for MVDS + enforcement
 

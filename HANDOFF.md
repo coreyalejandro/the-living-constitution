@@ -3,6 +3,27 @@
 **Date:** 2026-04-04  
 **Status:** **TLC GOVERNANCE FROZEN FOR PRODUCT BUILDOUT** — final stop-condition adjudication (C-RSP v1.0.0) concluded all six capabilities **met**; no residual constitutional gap. **PASS 14** closure remains anchored to run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. **PASS 16** (canonical replay) remains anchored to commit `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3`, CI run `23774969505` **success**.
 
+## 1. Deliverables
+
+| Deliverable | Location / evidence |
+| --- | --- |
+| MVDS + YAML frontmatter | `config/docs_governance.json`, governed files under `docs/`, `governance/` |
+| Constitution companions | `docs/constitution/CANONICAL_PATHS.md`, `ROOT_DOC_ALLOWLIST.md`, `DOC_TRUTH_HIERARCHY.md`, `TERMINOLOGY.md`, `AMENDMENT_PROCESS.md`, `DOCUMENTATION_CHANGELOG.md` |
+| Operations + journeys + SOS | `docs/operations/`, `docs/INDEX.md`, `docs/HELP.md`, `docs/instructions/FIRST_RUN.md` |
+| Evidence map + smoke record | `docs/evidence/EVIDENCE_MAP.md`, `docs/evidence/verification/2026-04-04-docs-governance-smoke.md` |
+| Verifier + compliance + scaffold + migration report | `scripts/verify_document_constitution.py`, `scripts/compliance_score_docs.py`, `scripts/docs/tlc-gen.py`, `scripts/migrate_docs_legacy.py` |
+| CI wiring + compliance artifact | `.github/workflows/verify.yml`, `verification/docs_compliance.json` (generated) |
+| Registry + README + standard | `projects/governance/registry.json`, `README.md`, `docs/constitution/DOCUMENTATION_STANDARD.md` |
+
+## 2. TODO
+
+| TODO | Notes |
+| --- | --- |
+| Full `verify_governance_chain.py` / full repo CI green on a remote runner in this session | Not re-run end-to-end here; confirm on next GitHub Actions run after push |
+| `--apply` migration moves | `scripts/migrate_docs_legacy.py` is report-only; implement guarded `git mv` / mapping if desired |
+| JSON Schema files for frontmatter | Currently validated in Python; add `schemas/` + optional `jsonschema` hook in verifier |
+| External badge URL | Optional; e.g. shields.io pointing at CI or committed `verification/docs_compliance.json` |
+
 ## What Was Just Completed
 
 - **C-RSP documentation governance build (2026-04-04):** Implemented MVDS + typed YAML frontmatter, top-level `governance/` bundle (`README.md`, `BUILD_CONTRACT.instance.md` pointer to `projects/document-system/BUILD_CONTRACT.instance.md`, `governance-template.lock.json`, `GOVERNANCE_BINDING.md`), constitution companions (`CANONICAL_PATHS.md`, `ROOT_DOC_ALLOWLIST.md`, `DOC_TRUTH_HIERARCHY.md`, `TERMINOLOGY.md`, `AMENDMENT_PROCESS.md`, `DOCUMENTATION_CHANGELOG.md`, `docs/constitution/amendments/README.md`), operations (`BOOTSTRAP.md`, `VERIFY.md`, `ROLLBACK.md`), `docs/INDEX.md`, `docs/HELP.md`, `docs/instructions/FIRST_RUN.md`, evidence map + real smoke artifact `docs/evidence/verification/2026-04-04-docs-governance-smoke.md`, `config/docs_governance.json`, `projects/governance/registry.json`, `scripts/verify_document_constitution.py`, `scripts/compliance_score_docs.py`, `scripts/docs/tlc-gen.py`, `scripts/migrate_docs_legacy.py`, `verification/docs_compliance.json` (generated), CI steps + artifact upload in `.github/workflows/verify.yml`, `pyyaml` in `requirements-verify.txt`. Root `README.md` is product-first with org decoder + compliance pointers; `DOCUMENTATION_STANDARD.md` now leads with YAML frontmatter.

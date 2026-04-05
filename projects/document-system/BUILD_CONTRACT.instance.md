@@ -535,6 +535,18 @@ The repo already contains the constitutional master template, status/inventory t
 
 This contract does not claim the document system is already fixed, perfect, propagated to all other repos, or enforced outside TLC-Core today.
 
+### Execution discipline — single BUILD_CONTRACT + Kanban-first V&T
+
+**CONTROL_RULE_KBC_01 — SINGLE ACTIVE BUILD CONTRACT + KANBAN-FIRST V&T + NO TERMINAL "DONE" WHILE THE BOARD IS OPEN**
+
+1. **Single active BUILD_CONTRACT:** Exactly one BUILD_CONTRACT instance is the **active execution scope** at a time until that contract is **clear**—meaning all in-scope acceptance criteria for **this** instance are satisfied by evidence and verifiers required by this instance pass, **or** a **formal halt** is recorded under **Global Halt Conditions** / Section 13 with a named condition and safe-state evidence. Starting a different `BUILD_CONTRACT.instance.md` as active scope before the current one is clear is **not allowed** except where an instance explicitly defines supersession.
+
+2. **Kanban-first V&T:** Every **V&T Statement** (interim or final) MUST follow `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`: the **first** content inside **§2 V&T Statement** MUST be **§2.1 Visual board (Kanban)** (table + signals). No **Exists**, **Verified against**, **Not claimed**, **Non-existent**, **Unverified**, or **Functional status** line may appear **above** the Kanban. Omitting the board or reordering is an **invalid** outcome report.
+
+3. **No stop while required work remains on the board:** If the Kanban shows required scope for **this** contract still in **BACKLOG**, **IN PROGRESS**, or **BLOCKED** (cards that represent unfinished ACs, failing verifiers, or unresolved blockers for **this** instance), the executor MUST NOT treat the run as complete, MUST NOT emit a terminal “build finished” claim, and MUST continue execution, remediation, or explicit handoff within this contract until those columns are clear for required work **or** a formal halt is recorded. **What’s next** may point to a **follow-on** BUILD_CONTRACT only **after** the current contract is clear for its declared scope.
+
+**Cross-reference:** **CONTROL_RULE_DNSW_01** requires continued iteration on recoverable failures until pass or formal halt; **CONTROL_RULE_KBC_01** adds the **visible Kanban** and **single-active-BC** constraints so “stopped” cannot be mistaken for “done” while cards remain. **CONTROL_RULE_VT_RIGOR_01** (`projects/c-rsp/BUILD_CONTRACT.md` Section 16) forbids lazy V&T: each of **Exists** through **Functional status** must carry substantive bullets (paths, methods, explicit disclaimers)—not empty headings.
+
 ### DO NOT STOP WORK Provision
 
 **CONTROL_RULE_DNSW_01 — DO NOT STOP WORK ON RECOVERABLE FAILURE:**
