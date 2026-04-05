@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/coreyalejandro/the-living-constitution/schemas/docs_frontmatter_full.json",
+  "title": "TLC governed Markdown frontmatter (full header tier)",
+  "description": "Use for document_type values listed in config/docs_governance.json header_tiers.full (Constitutional, Operational, Instructional, Evidence, Architectural).",
+  "type": "object",
+  "required": [
+    "document_type",
+    "id",
+    "repo_scope",
+    "authority_level",
+    "truth_rank",
+    "status",
+    "canonical_path",
+    "last_verified",
+    "metadata",
+    "navigation"
+  ],
+  "properties": {
+    "document_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_level": {
+      "type": "string",
+      "minLength": 1
+    },
+    "truth_rank": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_file": {
+      "type": "string"
+    },
+    "last_verified": {
+      "type": "object",
+      "required": ["commit", "timestamp"],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["est_time_minutes", "cognitive_load", "requires_interruption_buffer"],
+      "properties": {
+        "est_time_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cognitive_load": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_interruption_buffer": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "navigation": {
+      "type": "object",
+      "required": ["parent_index", "hierarchy_level"],
+      "properties": {
+        "parent_index": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hierarchy_level": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

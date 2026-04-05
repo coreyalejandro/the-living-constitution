@@ -23,6 +23,15 @@ except ImportError as exc:  # pragma: no cover
     print("ERROR: PyYAML is required: pip install pyyaml", file=sys.stderr)
     raise SystemExit(2) from exc
 
+try:
+    from jsonschema import Draft202012Validator
+except ImportError as exc:  # pragma: no cover
+    print(
+        "ERROR: jsonschema is required: pip install -r requirements-verify.txt",
+        file=sys.stderr,
+    )
+    raise SystemExit(2) from exc
+
 FRONT_MATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*", re.DOTALL | re.MULTILINE)
 OK_TOKEN = "DOCUMENT_CONSTITUTION_OK"
 
@@ -98,6 +107,32 @@ def _parse_frontmatter(path: Path) -> dict[str, Any] | None:
         return {"__parse_error__": True}
 
 
+def _frontmatter_schema_validators(
+    root: Path,
+) -> tuple[Draft202012Validator | None, Draft202012Validator | None, str | None]:
+    """Load Draft 2020-12 validators for minimal and full frontmatter tiers. Returns (min, full, error)."""
+    min_path = root / "schemas" / "docs_frontmatter_minimal.json"
+    full_path = root / "schemas" / "docs_frontmatter_full.json"
+    if not min_path.is_file() or not full_path.is_file():
+        return (
+            None,
+            None,
+            "schemas/docs_frontmatter_minimal.json and schemas/docs_frontmatter_full.json must exist",
+        )
+    try:
+        minimal = json.loads(min_path.read_text(encoding="utf-8"))
+        full_s = json.loads(full_path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(minimal)
+        Draft202012Validator.check_schema(full_s)
+        return (
+            Draft202012Validator(minimal),
+            Draft202012Validator(full_s),
+            None,
+        )
+    except (OSError, json.JSONDecodeError, ValueError) as e:
+        return None, None, f"frontmatter schema load: {e}"
+
+
 def _fail(errors: list[dict[str, Any]], out_path: Path | None) -> None:
     payload = {"ok": False, "errors": errors}
     txt = json.dumps(payload, indent=2)
@@ -119,6 +154,12 @@ def verify(root: Path, fail_on_stale: bool) -> int:
     fail_stale = bool(staleness.get("fail_ci_on_stale", False))
 
     head = _git_head_short(root)
+
+    v_min, v_full, v_schema_err = _frontmatter_schema_validators(root)
+    if v_schema_err:
+        errors.append({"code": "FRONTMATTER_SCHEMA_SETUP", "detail": v_schema_err})
+    tier_full = set(config.get("header_tiers", {}).get("full", []))
+    tier_min = set(config.get("header_tiers", {}).get("minimal", []))
 
     # MVDS paths
     for rel in mvds:
@@ -192,6 +233,45 @@ def verify(root: Path, fail_on_stale: bool) -> int:
         if fm.get("__parse_error__"):
             errors.append({"code": "YAML_PARSE_ERROR", "path": rel})
             continue
+
+        if v_min is not None and v_full is not None:
+            dt_raw = fm.get("document_type")
+            if not isinstance(dt_raw, str) or not dt_raw.strip():
+                errors.append(
+                    {
+                        "code": "FRONTMATTER_SCHEMA_VIOLATION",
+                        "path": rel,
+                        "detail": "document_type must be a non-empty string",
+                    }
+                )
+            else:
+                dts = dt_raw.strip()
+                if dts in tier_full:
+                    validator = v_full
+                elif dts in tier_min:
+                    validator = v_min
+                else:
+                    errors.append(
+                        {
+                            "code": "FRONTMATTER_DOCUMENT_TYPE_UNKNOWN",
+                            "path": rel,
+                            "document_type": dts,
+                            "detail": (
+                                "document_type must appear in header_tiers.full or "
+                                "header_tiers.minimal in config/docs_governance.json"
+                            ),
+                        }
+                    )
+                    validator = None
+                if validator is not None:
+                    for err in validator.iter_errors(fm):
+                        errors.append(
+                            {
+                                "code": "FRONTMATTER_SCHEMA_VIOLATION",
+                                "path": rel,
+                                "detail": err.message,
+                            }
+                        )
 
         cpath = fm.get("canonical_path")
         if isinstance(cpath, str) and cpath != rel:

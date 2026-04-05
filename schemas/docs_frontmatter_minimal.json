@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/coreyalejandro/the-living-constitution/schemas/docs_frontmatter_minimal.json",
+  "title": "TLC governed Markdown frontmatter (minimal header tier)",
+  "description": "Use for document_type values listed in config/docs_governance.json header_tiers.minimal (e.g. Navigational, Index, README). Optional keys beyond the required set are allowed so overlays may add metadata without leaving the minimal tier.",
+  "type": "object",
+  "required": ["document_type", "id", "status", "canonical_path", "last_verified"],
+  "properties": {
+    "document_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_verified": {
+      "type": "object",
+      "required": ["commit", "timestamp"],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "next_file": {
+      "type": "string"
+    },
+    "navigation": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "repo_scope": {
+      "type": "string"
+    },
+    "authority_level": {
+      "type": "string"
+    },
+    "truth_rank": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": true
+}

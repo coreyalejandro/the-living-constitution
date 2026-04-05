@@ -358,6 +358,7 @@ Canonical governing template: `projects/c-rsp/BUILD_CONTRACT.md`.
 **Verified (post-issuance execution)**
 
 - AC-05 remote CI: GitHub Actions run `23996150764` **success** on commit `a2fe364`; evidence `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md`.
+- AC-06 JSON Schemas for governed frontmatter: `schemas/docs_frontmatter_minimal.json`, `schemas/docs_frontmatter_full.json`; verifier integration in `scripts/verify_document_constitution.py`; evidence `docs/evidence/verification/2026-04-05-mvp-ac06-frontmatter-schemas.md`.
 
 **Functional status**
 
