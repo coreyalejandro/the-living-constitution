@@ -29,6 +29,10 @@
 
 ## What Was Just Completed
 
+- **Phase 0 teaser — packaging refresh (2026-04-05):** Removed stray root test file `TESTING123.md`. Ran `npm install`, `npm run package:zip`, and `npm run package:release-zip` in `projects/teaser-video-remotion/` (exit 0); `im-just-a-build-source.zip`, `im-just-a-build-release.zip`, and `verification/RELEASE_ZIP_SHA256.txt` updated. LinkedIn upload / Phase 0 checkbox still manual.
+
+- **MASTER_PROJECT_INVENTORY automation (2026-04-05):** `scripts/sync_master_project_inventory_from_projects.py` syncs `expected_slugs` + `entries` from `projects/` (preserves existing entry objects; new slugs get default TLC overlay rows; updates `meta.generated_at_utc` + section 1 of `MASTER_PROJECT_INVENTORY.md`). `.github/workflows/sync-master-project-inventory.yml` runs on `push` to `main` / `feature/**` when `projects/**` changes (`workflow_dispatch` too): bootstrap, `pip install -r requirements-verify.txt`, sync, `render_status_surface.py`, then `git-auto-commit` on inventory + `STATUS` files. Role-registry + `governance_artifacts.enforcement_scripts` include the new script; ConsentChain submodule `role-registry.json` committed + parent gitlink bumped (`a9b233f`).
+
 - **FDE verification bundle + CI (2026-04-05):** Added `scripts/run_fde_control_plane_verification.sh` (orchestrates resolve → structural → schema → promotion); `.github/workflows/fde-control-plane-verify.yml` now runs the bundle in one step; path filters include `projects/backboardai-fde/**`. Standalone path **RESOLVED** to `projects/backboardai-fde/` with non-empty `BUILD_CONTRACT`. Instance §14 preflight + governance lock `primary_commands` point to the bundle.
 
 - **PR gates + mirror + Cursor format (2026-04-05):** FDE workflow runs on **every** PR to `main`; skips verification when diff has no FDE paths but job still **passes** (required-check friendly). `.github/BRANCH_PROTECTION.md` lists exact status check names for Settings. `scripts/mirror_fde_artifacts.sh` dry-run/`--apply` copies docs/evidence/schemas/governance YAML into twin tree. `.cursor/rules/tlc-universal-response-format.mdc` + `CLAUDE.md` section harden TLC-wide assistant report shape (Kanban, V&T, three ranked next steps).
@@ -58,7 +62,7 @@
 
 ## Recommended Next Steps
 
-- **`projects/teaser-video-remotion/` — publishable release candidate:** Authoritative distributables: `im-just-a-build-source.zip` (governance / source / reproducibility; excludes `dist/`) and `im-just-a-build-release.zip` (rendered MP4 + designated evidence). **Canonical verified identities:** MP4 SHA-256 `35c28f8f0fb82a51ceba7c89415afc91c8dd739dec034eb54982809dfd8cb6ff`; release ZIP SHA-256 `78cc64e96219fffa43058bb79bbf0007efe624ad18cb42edd327b1aaf2d8f05c` (freeze-time; **current** digest after re-package: `projects/teaser-video-remotion/verification/RELEASE_ZIP_SHA256.txt`). Policy: source ZIP excludes `dist/`; release ZIP includes MP4 + evidence; spot-check frames default; cross-machine reproducibility explicitly unverified. Packaging:
+- **`projects/teaser-video-remotion/` — publishable release candidate:** Authoritative distributables: `im-just-a-build-source.zip` (governance / source / reproducibility; excludes `dist/`) and `im-just-a-build-release.zip` (rendered MP4 + designated evidence). **Current** release ZIP digest: `projects/teaser-video-remotion/verification/RELEASE_ZIP_SHA256.txt` (e.g. `dd41863adbaab33410c4e16152308d7aa3e0ee8e72127f5ea6f1d03bd1e2a773` after 2026-04-05 packaging run). Historical freeze-time digests may appear in `RENDER_REPORT.md`. Policy: source ZIP excludes `dist/`; release ZIP includes MP4 + evidence; spot-check frames default; cross-machine reproducibility explicitly unverified. Packaging:
 
 ```bash
 cd projects/teaser-video-remotion

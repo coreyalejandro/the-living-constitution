@@ -1,0 +1,49 @@
+# Full automation: when a TLC overlay folder under projects/ changes, refresh
+# MASTER_PROJECT_INVENTORY.json + .md from disk (slugs + section 1 table + timestamps).
+# Commit targets repo root inventory only — does not re-trigger on its own (paths: projects/**).
+
+name: Sync master project inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - "feature/**"
+    paths:
+      - "projects/**"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.SUBMODULES_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Bootstrap repository
+        run: ./scripts/bootstrap_repo.sh
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python verification dependencies
+        run: pip install -r requirements-verify.txt
+
+      - name: Sync MASTER_PROJECT_INVENTORY from projects/
+        run: python3 scripts/sync_master_project_inventory_from_projects.py --root .
+
+      - name: Render STATUS surface (PASS 10A / INVARIANT_42)
+        run: python3 scripts/render_status_surface.py --root .
+
+      - name: Commit inventory + STATUS updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: sync MASTER_PROJECT_INVENTORY from projects/ [inventory-auto]"
+          file_pattern: MASTER_PROJECT_INVENTORY.json MASTER_PROJECT_INVENTORY.md STATUS.json STATUS.md

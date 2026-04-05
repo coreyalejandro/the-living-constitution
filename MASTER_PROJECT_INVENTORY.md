@@ -1,6 +1,6 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-03-30T19:00:00Z  
+**Generated (UTC):** 2026-04-05T19:11:55Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (census + governance manifest). **PASS 10A current operational status:** canonical `STATUS.json` (rendered mirror `STATUS.md`); regenerate with `python3 scripts/render_status_surface.py --root .`
 
@@ -27,26 +27,30 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
 | ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
-| backboardai-fde | no | no | in-TLC: `projects/backboardai-fde/` (FDE twin; `BUILD_CONTRACT` file, not `.md`) | yes |
-| buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` (contract table + CLAUDE + config) | no |
+| backboardai-fde | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde` | yes |
+| buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` | no |
 | c-rsp | no | yes | *none in contract* | n/a |
-| consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (TLC submodule) | yes |
-| consent-gateway-auth0 | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0` (TLC submodule) | yes |
-| document-system | no | yes | in-TLC: `projects/document-system/` (C-RSP instances) | yes |
-| empirical-guard | yes | yes | `/Users/coreyalejandro/Projects/empirical-guard` (contract Repo Path + CLAUDE + config) | no |
-| epistemic-guard | yes | yes | `/Users/coreyalejandro/Projects/epistemic-guard` (contract Repo Path + CLAUDE + config) | no |
-| evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/tlc-evidence-observatory` | yes |
-| frostbyte-etl | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
-| governance | no | no | in-TLC: `projects/governance/` (`registry.json`; no BUILD_CONTRACT) | yes |
-| human-guard | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/human-guard` | no |
-| im-just-a-build | yes | yes | in-TLC: `projects/im-just-a-build/` | yes |
-| proactive | yes | yes | `/Users/coreyalejandro/Projects/proactive-gitlab-agent` | yes |
-| sandbox-runtime | yes | yes | dual topology: `projects/sandbox-runtime/` + `standalone/tlc-sandbox-app` | yes |
-| sentinelos | yes | yes | `/Users/coreyalejandro/Projects/sentinelos` | yes |
-| teaser-video | yes | yes | in-TLC: `projects/teaser-video/` | yes |
-| teaser-video-remotion | yes | yes | in-TLC: `projects/teaser-video-remotion/` | yes |
-| tlc-control-plane | no | no | dual topology: `projects/tlc-control-plane/` + `standalone/tlc-ui-desktop` | yes |
-| uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system` | yes |
+| consent-gateway-auth0 | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0` | yes |
+| consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` | yes |
+| document-system | no | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system` | yes |
+| empirical-guard | yes | yes | `/Users/coreyalejandro/Projects/empirical-guard` | no |
+| epistemic-guard | yes | yes | `/Users/coreyalejandro/Projects/epistemic-guard` | no |
+| evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/tlc-evidence-observatory/` | yes |
+| frostbyte-etl | no | yes | `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
+| governance | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/governance` | yes |
+| human-guard | no | yes | `/Users/coreyalejandro/Projects/human-guard` | no |
+| im-just-a-build | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/im-just-a-build` | yes |
+| proactive | yes | yes | `/Users/coreyalejandro/Projects/proactive-gitlab-agent/` | yes |
+| sandbox-runtime | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app` | yes |
+| sentinelos | yes | yes | `/Users/coreyalejandro/Projects/sentinelos/` | yes |
+| teaser-video | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video/` | yes |
+| teaser-video-remotion | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video-remotion` | yes |
+| tlc-control-plane | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop` | yes |
+| uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system/` | yes |
+
+**File-level notes (non-exhaustive):**
+
+**File-level notes (non-exhaustive):**
 
 **File-level notes (non-exhaustive):**
 
