@@ -26,3 +26,11 @@ In **Settings → Branches → Branch protection rule for `main` → Require sta
 ## Evidence
 
 After enabling, open a test PR; both checks should appear and block merge until green.
+
+## Troubleshooting: merge blocked with “2 of 2 required status checks are expected”
+
+If `gh pr merge` fails but both jobs show **pass** on the PR:
+
+1. **Ruleset check names must match GitHub’s exact context names.** In **Settings → Rules → Rulesets →** your ruleset → **Require status checks** → remove and **re-add** each check using the **search** list (pick entries that appear **after** a green run on that PR).
+2. **Merge in the GitHub UI** — sometimes the web merge button resolves when the CLI does not.
+3. **Required reviews** — if the ruleset also requires approving reviews, you cannot approve your own PR; use another account or **bypass** (if your role allows).
