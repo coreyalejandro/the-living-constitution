@@ -17,15 +17,19 @@
 
 ## 2. TODO
 
-| TODO | Notes |
+**MVP closeout (`tlc-docsys-mvp-closeout-001`): no open items.** Evidence: `projects/document-system/BUILD_CONTRACT.instance.MVP-CLOSEOUT-001.md` §9; AC-07 waiver `docs/evidence/verification/WAIVER-MVP-AC07.md`; AC-08 README workflow badge; AC-09 this section; AC-10 `projects/governance/registry.json`.
+
+| Item | Status |
 | --- | --- |
-| ~~Full repo CI green on remote~~ | **Done (2026-04-05):** run `23996150764` success on `a2fe364`; see `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md` |
-| `--apply` migration moves | `scripts/migrate_docs_legacy.py` is report-only; implement guarded `git mv` / mapping if desired |
-| ~~JSON Schema files for frontmatter~~ | **Done (2026-04-05):** `schemas/docs_frontmatter_minimal.json`, `schemas/docs_frontmatter_full.json`; verifier uses `jsonschema` — see `docs/evidence/verification/2026-04-05-mvp-ac06-frontmatter-schemas.md` |
-| External badge URL | Optional; e.g. shields.io pointing at CI or committed `verification/docs_compliance.json` |
+| Remote CI | Done — see `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md` |
+| AC-06 JSON Schemas | Done — `docs/evidence/verification/2026-04-05-mvp-ac06-frontmatter-schemas.md` |
+| AC-07 migration `--apply` | **Waived** — `docs/evidence/verification/WAIVER-MVP-AC07.md` |
+| AC-08 compliance / CI visibility | **Done** — badge in `README.md` → `.github/workflows/verify.yml` |
+| Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
 
+- **AC-07–AC-10 MVP closeout (2026-04-05):** AC-07 waiver `docs/evidence/verification/WAIVER-MVP-AC07.md`; AC-08 GitHub Actions badge in `README.md`; AC-09 `HANDOFF.md` §2 closed; AC-10 `projects/governance/registry.json` updated (`mvp_closeout_instance_id`, audit dates, notes). `docs/evidence/EVIDENCE_MAP.md` and `BUILD_CONTRACT.instance.MVP-CLOSEOUT-001.md` V&T updated.
 - **AC-06 frontmatter JSON Schemas (2026-04-05):** Added `schemas/docs_frontmatter_minimal.json` and `schemas/docs_frontmatter_full.json` (Draft 2020-12); `scripts/verify_document_constitution.py` validates parsed YAML with `jsonschema.Draft202012Validator` using `header_tiers` from `config/docs_governance.json`. Evidence: `docs/evidence/verification/2026-04-05-mvp-ac06-frontmatter-schemas.md`; `docs/evidence/EVIDENCE_MAP.md` updated.
 - **ConsentChain submodule + CI (2026-04-05):** Committed synced `00-constitution/role-registry.json` in `projects/consentchain` (`9dacaf7`), bumped parent gitlink (`c9ff9e5`), rendered `STATUS.json`/`STATUS.md` (`a2fe364` — fixes INVARIANT_42 after bump). Pushed `consentchain` and `the-living-constitution` to `origin/main`. `Verify Living Constitution` green on latest push (run `23996150764`). Evidence: `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md`.
 - **Project inventory + PASS 9 (2026-04-05):** Added `document-system` and `governance` to `MASTER_PROJECT_INVENTORY.json` (`expected_slugs` + `entries` with TLC implementation paths for probes). `python3 scripts/verify_project_topology.py --root . --with-governance` and `verify_governance_chain.py` pass; `render_status_surface.py` refreshed `STATUS.json` / `STATUS.md`. `MASTER_PROJECT_INVENTORY.md` section 1 table expanded to **19** slugs (aligned with JSON). Synced `projects/consentchain/00-constitution/role-registry.json` from canonical root to clear `verify_cross_repo_consistency.py` drift (`verify_institutionalization.py` OK). **Submodule:** commit the updated `role-registry.json` inside `consentchain` and bump the parent gitlink when ready.

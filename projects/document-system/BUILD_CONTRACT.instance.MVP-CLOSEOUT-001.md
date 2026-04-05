@@ -349,17 +349,17 @@ Canonical governing template: `projects/c-rsp/BUILD_CONTRACT.md`.
 
 **Non-existent**
 
-- Frozen lifecycle state for this instance — not yet earned until AC satisfied.
-
-**Unverified**
-
-- AC-08 badge URL or waiver — **UNRESOLVED REQUIRED INPUT** until maintainer supplies URL or signs waiver file.
+- Formal **Frozen** lifecycle promotion for this instance — optional; AC table satisfied with evidence on file (2026-04-05).
 
 **Verified (post-issuance execution)**
 
-- AC-05 remote CI: GitHub Actions run `23996150764` **success** on commit `a2fe364`; evidence `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md`.
-- AC-06 JSON Schemas for governed frontmatter: `schemas/docs_frontmatter_minimal.json`, `schemas/docs_frontmatter_full.json`; verifier integration in `scripts/verify_document_constitution.py`; evidence `docs/evidence/verification/2026-04-05-mvp-ac06-frontmatter-schemas.md`.
+- AC-01–AC-04, AC-05: MVDS, verifiers, topology+governance, remote CI — evidence `docs/evidence/verification/2026-04-05-mvp-closeout-ci-run.md` and subsequent green runs on `main`.
+- AC-06 JSON Schemas: `schemas/docs_frontmatter_minimal.json`, `schemas/docs_frontmatter_full.json`; `scripts/verify_document_constitution.py`; evidence `docs/evidence/verification/2026-04-05-mvp-ac06-frontmatter-schemas.md`.
+- AC-07: migration `--apply` **waived** — `docs/evidence/verification/WAIVER-MVP-AC07.md` (maintainer sign-off).
+- AC-08: **README.md** embeds GitHub Actions workflow badge for `verify.yml` (official badge.svg link).
+- AC-09: **HANDOFF.md** §2 TODO cleared — replaced with MVP closeout status table (2026-04-05).
+- AC-10: **projects/governance/registry.json** — `mvds_status` complete, `compliance_score_path` `verification/docs_compliance.json`, `mvp_closeout_instance_id` recorded, notes reference waiver and badge.
 
 **Functional status**
 
-- This contract instance is **materialized and Active** as an executable artifact; execution outcomes remain **unverified** until AC table closes or halt is recorded.
+- AC table **satisfied** for MVP documentation system closeout at repository state recorded by the commits that land this update; remaining work is **optional** (incremental frontmatter for legacy `docs/` files per migration report).

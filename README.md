@@ -5,11 +5,13 @@ status: "Active"
 canonical_path: "README.md"
 next_file: "docs/instructions/FIRST_RUN.md"
 last_verified:
-  commit: "e16c574"
-  timestamp: "2026-04-04T12:00:00Z"
+  commit: "f8c3750"
+  timestamp: "2026-04-05T12:00:00Z"
 ---
 
 # The Living Constitution
+
+[![Verify Living Constitution](https://github.com/coreyalejandro/the-living-constitution/actions/workflows/verify.yml/badge.svg)](https://github.com/coreyalejandro/the-living-constitution/actions/workflows/verify.yml)
 
 ## What this is
 
