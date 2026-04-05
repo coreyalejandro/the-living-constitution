@@ -7,11 +7,11 @@
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
 | `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
-| `head_sha` | `6d0f565ba2b313fd640a1e854618e6bac9993421` |
+| `head_sha` | `ce62c8d993717359a441f519bce61f1225c55476` |
 | `last_verified_commit` | `30805eed1d51ca78107294376c1b783275e484aa` |
 | `last_verified_run_id` | `23774310879` |
 | `tip_state_truth` | `tip_pending` |
-| `workflow_sha` | `43c0d69d69713e3b1070befaf9c6e51cb55b066ac4692b721746e798f434d3ca` |
+| `workflow_sha` | `fb8fbc3e0f603b239e1dcc34f997142fbd5fecbee63b4e802aec6c04fbc6e6cd` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
 | `governance_contract_version` | `v1.9.0` |
@@ -32,7 +32,9 @@
 
 ## Cross-repo consistency (ConsentChain submodule)
 
-- **state:** `aligned`
+- **state:** `drift`
+- **detail:** verify_cross_repo_consistency: FAIL
+  - JSON drift (normalized): 00-constitution/role-registry.json
 
 ## Truth boundary
 

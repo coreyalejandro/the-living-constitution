@@ -336,6 +336,94 @@
       ]
     },
     {
+      "path": "scripts/verify_topology.py",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/verify_ui_governance.py",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/verify_document_constitution.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "verify",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/compliance_score_docs.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/migrate_docs_legacy.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/run_stress_test.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute"
+      ],
+      "forbidden_actions": [
+        "define_invariant"
+      ]
+    },
+    {
+      "path": "scripts/test_halt_circuit.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute"
+      ],
+      "forbidden_actions": [
+        "define_invariant"
+      ]
+    },
+    {
       "path": "scripts/verify_institutionalization.py",
       "role": "JUDICIAL",
       "allowed_actions": [
