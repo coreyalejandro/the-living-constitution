@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Documentation constitution gate (root allowlist, MVDS, frontmatter).
+# Install: ./scripts/install_git_hooks.sh
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+if ! python3 -c "import yaml, jsonschema" 2>/dev/null; then
+  echo "pre-commit: install deps first: pip install -r requirements-verify.txt" >&2
+  exit 1
+fi
+python3 scripts/verify_document_constitution.py --root .
