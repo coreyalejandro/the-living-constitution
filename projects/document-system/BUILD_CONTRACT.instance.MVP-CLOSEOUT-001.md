@@ -91,7 +91,7 @@ A contract is executable only when all of the following exist:
 ## 3. Baseline State
 
 - **Existing Repo / System:** `the-living-constitution` (TLC governance overlay)
-- **Baseline Commit / Anchor:** `4e65226f4bedbcee21d2b659f63b44229f8ac550` (short: `4e65226`)
+- **Baseline Commit / Anchor:** `e16c574f58adc4f7f74ebc49682eee2402d4b5d9` (short: `e16c574`)
 - **Verified Existing Assets:** MVDS paths from `config/docs_governance.json`; `scripts/verify_document_constitution.py`; `scripts/compliance_score_docs.py`; `scripts/docs/tlc-gen.py`; `scripts/migrate_docs_legacy.py`; CI steps for doc verification in `.github/workflows/verify.yml`; `projects/governance/registry.json`; `HANDOFF.md` §1 Deliverables table; `HANDOFF.md` §2 TODO (open items listed there)
 - **Known Constraints:** Remote CI requires push + GitHub; `verify_governance_chain.py` needs `pip install -r requirements-verify.txt` and successful `./scripts/bootstrap_repo.sh` for full pass; submodules may need `SUBMODULES_PAT` in CI; executor may be multi-session—continuation is via Kanban + KBC, not a single chat turn
 - **Known Gaps:** Items in `HANDOFF.md` §2 TODO: full governance chain + remote CI proof; `--apply` migration; JSON Schema for frontmatter; external compliance badge URL
@@ -334,7 +334,7 @@ Canonical governing template: `projects/c-rsp/BUILD_CONTRACT.md`.
 | **Topology mode** | TLC-Core |
 | **Profile type** | Core |
 | **Verifier class** | core-verifier |
-| **Baseline / assets** | Anchor `4e65226f4bedbcee21d2b659f63b44229f8ac550`; MVDS + verifiers + HANDOFF §2 TODO as listed in §3 |
+| **Baseline / assets** | Anchor `e16c574f58adc4f7f74ebc49682eee2402d4b5d9`; MVDS + verifiers + HANDOFF §2 TODO as listed in §3 |
 | **Scope boundary** | §1 Scope Boundary |
 | **Not claimed** | §1 Not Claimed |
 | **Prior dependency** | `projects/document-system/BUILD_CONTRACT.instance.md` (constitutionalization-001); KBC/DNSW/VT rules |
@@ -345,7 +345,7 @@ Canonical governing template: `projects/c-rsp/BUILD_CONTRACT.md`.
 
 **Exists**
 
-- `projects/document-system/BUILD_CONTRACT.instance.MVP-CLOSEOUT-001.md` — this instantiated Tier-2 contract on disk at issuance commit `4e65226f4bedbcee21d2b659f63b44229f8ac550`.
+- `projects/document-system/BUILD_CONTRACT.instance.MVP-CLOSEOUT-001.md` — this instantiated Tier-2 contract on disk at issuance commit `e16c574f58adc4f7f74ebc49682eee2402d4b5d9`.
 
 **Non-existent**
 

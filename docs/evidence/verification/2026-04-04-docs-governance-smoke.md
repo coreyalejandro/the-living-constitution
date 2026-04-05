@@ -8,7 +8,7 @@ status: "Active"
 canonical_path: "docs/evidence/verification/2026-04-04-docs-governance-smoke.md"
 next_file: "docs/evidence/EVIDENCE_MAP.md"
 last_verified:
-  commit: "af9dfb8"
+  commit: "e16c574"
   timestamp: "2026-04-04T12:00:00Z"
 metadata:
   est_time_minutes: 4
@@ -34,7 +34,7 @@ navigation:
 
 ## Commit
 
-- **Recorded HEAD:** `af9dfb893eb31d28c3c380a1c9375fc20206dbee` (short: `af9dfb8`)
+- **Recorded HEAD:** `e16c574f58adc4f7f74ebc49682eee2402d4b5d9` (short: `e16c574`)
 
 ## Result
 

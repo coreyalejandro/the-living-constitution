@@ -5,7 +5,7 @@ status: "Active"
 canonical_path: "README.md"
 next_file: "docs/instructions/FIRST_RUN.md"
 last_verified:
-  commit: "af9dfb8"
+  commit: "e16c574"
   timestamp: "2026-04-04T12:00:00Z"
 ---
 

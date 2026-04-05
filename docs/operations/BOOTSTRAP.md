@@ -8,7 +8,7 @@ status: "Active"
 canonical_path: "docs/operations/BOOTSTRAP.md"
 next_file: "docs/operations/VERIFY.md"
 last_verified:
-  commit: "af9dfb8"
+  commit: "e16c574"
   timestamp: "2026-04-04T12:00:00Z"
 metadata:
   est_time_minutes: 20
@@ -122,5 +122,5 @@ python3 scripts/verify_document_constitution.py --root .
 
 ## Verification signal
 
-> **Last verified (declared):** commit `af9dfb8` at `2026-04-04T12:00:00Z`.  
+> **Last verified (declared):** commit `e16c574` at `2026-04-04T12:00:00Z`.  
 > **Stale rule:** If `git rev-parse --short HEAD` differs, this section is stale until updated — CI emits a warning.
