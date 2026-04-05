@@ -274,6 +274,18 @@
       ]
     },
     {
+      "path": ".github/workflows/fde-control-plane-verify.yml",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "verify"
+      ]
+    },
+    {
       "path": "scripts/append_regression_ledger.py",
       "role": "EXECUTIVE",
       "allowed_actions": [
@@ -332,6 +344,71 @@
       "forbidden_actions": [
         "write",
         "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/verify_crsp_structure.py",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/verify_fde_control_plane.py",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/resolve_fde_standalone_path.sh",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/run_fde_control_plane_verification.sh",
+      "role": "JUDICIAL",
+      "allowed_actions": [
+        "read",
+        "verify"
+      ],
+      "forbidden_actions": [
+        "write",
+        "mutate",
+        "declare_status"
+      ]
+    },
+    {
+      "path": "scripts/mirror_fde_artifacts.sh",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
         "declare_status"
       ]
     },

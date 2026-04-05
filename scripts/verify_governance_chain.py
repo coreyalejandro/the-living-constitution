@@ -640,6 +640,8 @@ def _line_allows_judicial_write(line: str) -> bool:
         "json_path",
         "md_path",
         "out_dir",
+        "args.report",
+        "evidence/fde-control-plane",
         "tmp/",
         "tmp ",
         "tempfile",

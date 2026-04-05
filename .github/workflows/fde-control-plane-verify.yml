@@ -1,8 +1,13 @@
 name: FDE Control Plane C-RSP Verify
 
+# Runs on every PR to main so the job can be a required status check (green when skipped).
+# Executes ./scripts/run_fde_control_plane_verification.sh only when FDE/C-RSP paths change
+# (or on workflow_dispatch).
+
 on:
   workflow_dispatch:
   push:
+    branches: [main, "feature/**"]
     paths:
       - "projects/c-rsp/**"
       - "projects/backboardai-fde/**"
@@ -15,19 +20,9 @@ on:
       - "scripts/verify_fde_control_plane.py"
       - "scripts/resolve_fde_standalone_path.sh"
       - "scripts/run_fde_control_plane_verification.sh"
+      - "scripts/mirror_fde_artifacts.sh"
   pull_request:
-    paths:
-      - "projects/c-rsp/**"
-      - "projects/backboardai-fde/**"
-      - "docs/fde-control-plane/**"
-      - "governance-rules/fde-lifecycle-invariants.yaml"
-      - "schemas/fde-lifecycle.schema.json"
-      - "schemas/blind-man-execution.schema.json"
-      - "evidence/fde-control-plane/**"
-      - "scripts/verify_crsp_structure.py"
-      - "scripts/verify_fde_control_plane.py"
-      - "scripts/resolve_fde_standalone_path.sh"
-      - "scripts/run_fde_control_plane_verification.sh"
+    branches: [main]
 
 jobs:
   fde-crsp-verify:
@@ -36,13 +31,62 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # PR: checkout the head commit so base..head diff matches the PR (not the merge commit).
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - name: Determine if FDE verification should run
+        id: gate
+        run: |
+          set -euo pipefail
+          PATTERN='^(projects/(c-rsp|backboardai-fde)/|docs/fde-control-plane/|governance-rules/fde-lifecycle-invariants\.yaml|schemas/(fde-lifecycle|blind-man)|evidence/fde-control-plane/|scripts/(verify_crsp|verify_fde|resolve_fde|run_fde|mirror_fde))'
+          EVENT="${{ github.event_name }}"
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "reason=workflow_dispatch" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$EVENT" = "pull_request" ]; then
+            git fetch --no-tags --depth=1 origin "${{ github.event.pull_request.base.sha }}" 2>/dev/null || true
+            DIFF=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}")
+          elif [ "$EVENT" = "push" ]; then
+            BEFORE="${{ github.event.before }}"
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              DIFF=$(git diff --name-only --root "${{ github.sha }}")
+            else
+              DIFF=$(git diff --name-only "$BEFORE" "${{ github.sha }}")
+            fi
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "reason=unknown_event" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Changed files:"
+          echo "$DIFF"
+          if echo "$DIFF" | grep -qE "$PATTERN"; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "reason=path_match" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "reason=no_fde_paths" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Skip FDE verification (paths outside FDE/C-RSP scope)
+        if: steps.gate.outputs.run != 'true'
+        run: |
+          echo "Skipping FDE verification: ${{ steps.gate.outputs.reason }}"
+          exit 0
 
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
         with:
           python-version: "3.12"
 
       - name: Install verification dependencies
+        if: steps.gate.outputs.run == 'true'
         run: pip install -r requirements-verify.txt
 
       - name: Run FDE control plane verification (all steps)
+        if: steps.gate.outputs.run == 'true'
         run: ./scripts/run_fde_control_plane_verification.sh

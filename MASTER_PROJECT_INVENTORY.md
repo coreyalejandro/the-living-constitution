@@ -21,12 +21,13 @@ This inventory records what was **verified on disk or in cited files** at genera
 
 ---
 
-## 1. TLC `projects/` overlay (19 slugs)
+## 1. TLC `projects/` overlay (20 slugs)
 
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
 | ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
+| backboardai-fde | no | no | in-TLC: `projects/backboardai-fde/` (FDE twin; `BUILD_CONTRACT` file, not `.md`) | yes |
 | buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` (contract table + CLAUDE + config) | no |
 | c-rsp | no | yes | *none in contract* | n/a |
 | consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (TLC submodule) | yes |
