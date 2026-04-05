@@ -21,7 +21,7 @@ This inventory records what was **verified on disk or in cited files** at genera
 
 ---
 
-## 1. TLC `projects/` overlay (13 folders)
+## 1. TLC `projects/` overlay (19 slugs)
 
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
@@ -31,14 +31,20 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | c-rsp | no | yes | *none in contract* | n/a |
 | consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (TLC submodule) | yes |
 | consent-gateway-auth0 | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0` (TLC submodule) | yes |
+| document-system | no | yes | in-TLC: `projects/document-system/` (C-RSP instances) | yes |
 | empirical-guard | yes | yes | `/Users/coreyalejandro/Projects/empirical-guard` (contract Repo Path + CLAUDE + config) | no |
 | epistemic-guard | yes | yes | `/Users/coreyalejandro/Projects/epistemic-guard` (contract Repo Path + CLAUDE + config) | no |
 | evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/tlc-evidence-observatory` | yes |
 | frostbyte-etl | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
+| governance | no | no | in-TLC: `projects/governance/` (`registry.json`; no BUILD_CONTRACT) | yes |
 | human-guard | no | yes | *not in BUILD_CONTRACT*; config: `/Users/coreyalejandro/Projects/human-guard` | no |
+| im-just-a-build | yes | yes | in-TLC: `projects/im-just-a-build/` | yes |
 | proactive | yes | yes | `/Users/coreyalejandro/Projects/proactive-gitlab-agent` | yes |
+| sandbox-runtime | yes | yes | dual topology: `projects/sandbox-runtime/` + `standalone/tlc-sandbox-app` | yes |
 | sentinelos | yes | yes | `/Users/coreyalejandro/Projects/sentinelos` | yes |
 | teaser-video | yes | yes | in-TLC: `projects/teaser-video/` | yes |
+| teaser-video-remotion | yes | yes | in-TLC: `projects/teaser-video-remotion/` | yes |
+| tlc-control-plane | no | no | dual topology: `projects/tlc-control-plane/` + `standalone/tlc-ui-desktop` | yes |
 | uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system` | yes |
 
 **File-level notes (non-exhaustive):**
@@ -46,10 +52,14 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 - **c-rsp:** Meta **C-RSP template** — not a normal executable build contract; no Repo Path.
 - **c-rsp:** Contains `openmemory.md`; **no** `CLAUDE.md` (differs from base-camp rule for overlays).
 - **consentchain / consent-gateway-auth0:** TLC **git submodules** (see `.gitmodules`).
+- **document-system:** C-RSP instance contracts (e.g. MVP closeout); overlay lives in TLC only.
+- **governance:** Global governed-repo registry (`projects/governance/registry.json`); not a build-contract overlay.
 - **human-guard:** Contract references canonical docs under `docs/prompts/...` in a repository **once created**; TLC overlay does **not** yet declare a `## Repo Path` block (config-only path).
 - **epistemic-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/epistemic-guard` (aligned with `config/projects.ts`).
 - **empirical-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/empirical-guard` (aligned with `config/projects.ts`).
+- **sandbox-runtime / tlc-control-plane:** Dual `PROJECT_TOPOLOGY.json` (integrated + standalone); see inventory `entries[].repo_path_source`.
 - **teaser-video:** Implementation path is **inside TLC** per its `BUILD_CONTRACT.md`.
+- **teaser-video-remotion / im-just-a-build:** In-repo Remotion and related deliverables per each overlay README / contract.
 
 ---
 

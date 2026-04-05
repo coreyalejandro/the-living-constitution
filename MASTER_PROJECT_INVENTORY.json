@@ -239,11 +239,13 @@
       "buildlattice",
       "c-rsp",
       "consentchain",
+      "document-system",
       "consent-gateway-auth0",
       "empirical-guard",
       "epistemic-guard",
       "evidence-observatory",
       "frostbyte-etl",
+      "governance",
       "human-guard",
       "im-just-a-build",
       "proactive",
@@ -274,6 +276,26 @@
         "has_claude_md": false,
         "has_build_contract_md": true,
         "repo_path_source": "none — meta template (C-RSP framework); no Repo Path section"
+      },
+      {
+        "slug": "document-system",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "C-RSP document-system instances; projects/document-system/"
+      },
+      {
+        "slug": "governance",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/governance",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/governance",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "Global governance registry; projects/governance/registry.json"
       },
       {
         "slug": "consentchain",
