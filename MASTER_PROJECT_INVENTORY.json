@@ -236,6 +236,7 @@
   "tlc_projects_overlay": {
     "root_relative": "projects",
     "expected_slugs": [
+      "backboardai-fde",
       "buildlattice",
       "c-rsp",
       "consentchain",
@@ -257,6 +258,16 @@
       "uicare"
     ],
     "entries": [
+      {
+        "slug": "backboardai-fde",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde",
+        "implementation_repo_path_config_ts": null,
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "FDE dual-topology standalone twin in TLC; projects/backboardai-fde/BUILD_CONTRACT; CRSP-FDE-CTRL-PLANE-GAPS-002"
+      },
       {
         "slug": "buildlattice",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/buildlattice",
