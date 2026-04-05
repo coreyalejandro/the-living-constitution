@@ -48,6 +48,11 @@ the-living-constitution/
 
 5. **The Living Constitution governs all work.** Articles I-V apply to every project folder, every build contract, every commit.
 
+## Cursor and assistant report format (TLC-wide)
+
+- **Mandatory shape for AI replies in this repo:** `.cursor/rules/tlc-universal-response-format.mdc` (Kanban table, body, Verification & Truth block, then exactly three ranked next steps as the **last** section). Opt-out only if the user sends `FORMAT: FREE` for that turn.
+- **Required GitHub status checks (configure in repo Settings):** `.github/BRANCH_PROTECTION.md`
+
 ## Project Registry
 
 | Project | Domain | Repo Path | Status |

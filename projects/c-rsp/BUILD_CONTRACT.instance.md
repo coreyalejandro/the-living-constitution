@@ -119,6 +119,7 @@ Executable only when: base template fields instantiated; dual-topology fields in
   - `projects/c-rsp/governance-template.lock.json`
   - `projects/c-rsp/NEXT_CRSP_BUILD.json`
   - `scripts/run_fde_control_plane_verification.sh` (orchestrates resolve + structural + schema + promotion)
+  - `scripts/mirror_fde_artifacts.sh` (optional: sync integrated FDE docs/evidence/schemas into `projects/backboardai-fde/`; dry-run default, `--apply` writes)
   - `scripts/verify_crsp_structure.py`
   - `scripts/verify_fde_control_plane.py`
   - `scripts/resolve_fde_standalone_path.sh`
