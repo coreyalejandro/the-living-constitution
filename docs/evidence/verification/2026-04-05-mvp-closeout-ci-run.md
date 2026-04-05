@@ -16,3 +16,5 @@
 
 - `c9ff9e5` — `chore(submodule): bump consentchain for role-registry PASS 9 sync` — workflow run `23996140819` **success**
 - ConsentChain submodule: `coreyalejandro/consentchain` @ `9dacaf7` — `sync: align role-registry.json with TLC canonical (PASS 9 cross-repo parity)`
+
+**Supplement (this evidence file on `main`):** Commit `e7f9b79` — GitHub Actions run `23996166314` **success** (https://github.com/coreyalejandro/the-living-constitution/actions/runs/23996166314).
