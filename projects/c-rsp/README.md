@@ -22,6 +22,7 @@ If you skip step 1, you risk treating a **helper** or **executed instance** as t
 | Format for run outcomes / V&T reports | `CRSP_OUTCOME_TEMPLATE.md` | **Outcome artifact** |
 | Process notes, PASS 8 profile, examples | `INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, `BUILD_CONTRACT.instance.example.md`, `BUILD_CONTRACT.instance.template.md` | **Helpers only** — not substitutes for the master template |
 | Ergonomic scripts / pointers | `workflows/*` | **Helpers only** |
+| LLM operator prompt + memory (read root index + C-RSP journal) | `AGENT_PROMPT.md`, `openmemory.md` (repo root), `projects/c-rsp/openmemory.md` | **Helpers only** — hybrid model in `AGENT_PROMPT.md` |
 | A real contract for a concrete scope (yours or program work) | `projects/*/BUILD_CONTRACT*`, `instances/*.md`, `BUILD_CONTRACTS/*.md` | **Executed instances** — not reusable templates |
 
 **Conflict rule:** If anything disagrees with **`BUILD_CONTRACT.md`**, the master template wins (unless the repo records a formal supersession).

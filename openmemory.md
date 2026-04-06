@@ -18,6 +18,8 @@ Governance overlay / super-repo for Safety Systems Design Commonwealth: constitu
 
 - **`projects/c-rsp/README.md`** — Operator entry: read **`CANONICAL_ROLE_MAP.md`** first, authority table, safe authoring path, A-1 pointer; prevents mistaking helpers for master template.
 
+- **`projects/c-rsp/openmemory.md`** — C-RSP **append-only execution journal** (per-session entries). **`openmemory.md`** (this root file) remains the TLC-wide index; **`projects/c-rsp/AGENT_PROMPT.md`** documents the hybrid read/append split.
+
 - **`projects/c-rsp/BUILD_CONTRACT.md` (C-RSP-TS-v2.0)** — Meta **C-RSP** **canonical master template**: **Constitutionally-Regulated Single Pass** executable prompt; **Canonical Artifact Role** section defines strict authority order (A-0 / A-0.1 / CRSP-A0-CRSP-FOLDER-CLEANUP-001); includes **INVARIANT_TERM_01** / **INVARIANT_SEM_01–04**, row-5 **non-workflow helpers** (`INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, instance example/template), row-6 **`BUILD_CONTRACTS/*.md`** executed instances; Terminology Authority Conflict row, halt on non-canonical expansion, AC-GOV-TERM, verification mapping row. **`projects/c-rsp/CANONICAL_ROLE_MAP.md`** — single-page role map. **`contract-schema.json`** — `required_core_section_ids`, `band_5_non_workflow_helpers`, `band_6_executed_instance_globs`. Paired doc: `docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md`.
 
 - **`projects/document-system/BUILD_CONTRACT.instance.md`** — Tier-2 C-RSP instance for TLC document-system constitutionalization (tlc-docsys-constitutionalization-001): truth surface lists `docs/constitution/*` companions + `scripts/verify_document_constitution.py` + CI; baseline anchor and schema 1.0.0 recorded in instance; execution artifacts not yet proven until AC table closes.

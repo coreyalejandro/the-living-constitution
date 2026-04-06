@@ -29,6 +29,8 @@
 
 ## What Was Just Completed
 
+- **C-RSP hybrid memory model (2026-04-06):** Seeded `projects/c-rsp/openmemory.md` (append-only C-RSP journal + seed entry). Updated `projects/c-rsp/AGENT_PROMPT.md` (Memory model section, pre-flight reads root `openmemory.md` + `projects/c-rsp/openmemory.md`, session close appends only to `projects/c-rsp/openmemory.md`; fixed heading/list structure). Documented in root `openmemory.md` Components and `projects/c-rsp/README.md` table.
+
 - **PR #4 — sync local main via branch (2026-04-05):** Created `sync/local-main-work`, opened [PR #4](https://github.com/coreyalejandro/the-living-constitution/pull/4) into `main`. Unblocked CI: pushed missing `consentchain` commit so submodule `e487934` resolved; fixed governance (INVENTORY `verify_workflow_sha256` for `verify.yml`, `scripts/doc_root_sensor.py` in `00-constitution/role-registry.json`, `render_status_surface.py`); synced `projects/consentchain/00-constitution/role-registry.json` + bumped submodule (`cecb3d6`). `verify-structure` green; merged at `397a56e`; local `main` fast-forwarded to match `origin/main`.
 
 - **Phase 0 teaser — packaging refresh (2026-04-05):** Removed stray root test file `TESTING123.md`. Ran `npm install`, `npm run package:zip`, and `npm run package:release-zip` in `projects/teaser-video-remotion/` (exit 0); `im-just-a-build-source.zip`, `im-just-a-build-release.zip`, and `verification/RELEASE_ZIP_SHA256.txt` updated. LinkedIn upload / Phase 0 checkbox still manual.
