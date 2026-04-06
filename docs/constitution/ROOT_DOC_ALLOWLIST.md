@@ -8,7 +8,7 @@ status: "Active"
 canonical_path: "docs/constitution/ROOT_DOC_ALLOWLIST.md"
 next_file: "docs/constitution/DOC_TRUTH_HIERARCHY.md"
 last_verified:
-  commit: "3451177"
+  commit: "cb57d6f"
   timestamp: "2026-04-06T01:00:00Z"
 metadata:
   est_time_minutes: 10
