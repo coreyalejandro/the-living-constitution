@@ -29,7 +29,7 @@
 
 ## What Was Just Completed
 
-- **A-1 contract §7–§17 expansion (2026-04-06):** `projects/c-rsp/BUILD_CONTRACTS/CRSP-A1-TAXONOMY-CANONICALIZATION-001.md` now has full lifecycle through instance declaration (v0.2.0, **Draft**); `verify_crsp_structure.py` vs `BUILD_CONTRACT.md` **PASS**; execution of taxonomy edits in truth surfaces remains **not started** until promotion to **Active**.
+- **A-1 contract §7–§17 expansion (2026-04-06):** `projects/c-rsp/BUILD_CONTRACTS/CRSP-A1-TAXONOMY-CANONICALIZATION-001.md` now has full lifecycle through instance declaration (v0.2.0, **Draft**); `verify_crsp_structure.py` vs `BUILD_CONTRACT.md` **PASS**; execution of taxonomy edits in truth surfaces remains **not started** until promotion to **Active**. **Verify Living Constitution** **success** — [`24016834352`](https://github.com/coreyalejandro/the-living-constitution/actions/runs/24016834352) @ `716a268`.
 
 - **ConsentChain submodule + cross-repo CI (2026-04-06):** Copied canonical `00-constitution/role-registry.json` into `projects/consentchain` (submodule `2734827` on `main`) so **`verify_cross_repo_consistency.py`** passes; parent commits `cdde092` (MVDS refresh + gitlink + STATUS) and `0cf3e18` (MVDS bump to clear one-commit STALE lag). **`Verify Living Constitution`** **success** — run [`24016001052`](https://github.com/coreyalejandro/the-living-constitution/actions/runs/24016001052) @ `0cf3e18` (`workflow_dispatch`; feature branch does not auto-run `push` workflow).
 
