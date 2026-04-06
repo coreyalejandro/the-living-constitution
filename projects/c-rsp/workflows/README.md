@@ -11,3 +11,5 @@ This directory holds **ergonomic helpers** (scripts, checklists, or pointers) th
 - Files here **must not** substitute for `projects/c-rsp/contract-schema.json` or `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`.
 
 If a workflow helper conflicts with rows 1–4 of the authority order in the master template, **the master template wins**.
+
+See also **`SCOPE.md`** in this folder (non-canonical mirrors and grep parity).

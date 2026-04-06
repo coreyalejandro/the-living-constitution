@@ -32,32 +32,34 @@
 
 **Verified against**
 
-- `python3 scripts/verify_crsp_structure.py` (template vs `BUILD_CONTRACT.instance.md` and vs FDE instance) → PASS.
+- `./scripts/verify_crsp_template_bundle.sh` → PASS (same checks as CI **Verify C-RSP template structure**).
 - `python3 scripts/verify_project_topology.py --root . --no-probes` → OK.
+- `gh run list -R coreyalejandro/the-living-constitution`: recent **Verify Living Constitution** run on `main` **push** `24009221693` **success** (2026-04-05); proves remote workflow can pass (not a claim about unmerged local commits).
 
 ### 2.4 Not claimed
 
 **Not claimed**
 
-- Taxonomy / domain assignment / `THE_LIVING_CONSTITUTION.md` rewrite (out of scope for A-0.1).
+- **N/A — explicit A-0.1 contract exclusion:** taxonomy canonicalization, domain assignment, `THE_LIVING_CONSTITUTION.md` taxonomy edits, A-1 program work, Constitutional UI. Documented as out-of-scope in `projects/c-rsp/CANONICAL_ROLE_MAP.md` (A-1 and constitution taxonomy).
+- **N/A — non-authoritative archives:** grep parity across `ChatGPT-AI Governance Frameworks.md` and `crsp_refactor_bundle_final/` is not required for A-0.1; those trees are labeled **non-canonical** (HTML comment banner + bundle README). Executors must use `CANONICAL_ROLE_MAP.md`.
 
 ### 2.5 Non-existent
 
 **Non-existent**
 
-- Non-README files under `projects/c-rsp/workflows/` beyond `README.md` (folder scaffold only).
+- **N/A — addressed by follow-up fix:** additional workflow docs (`projects/c-rsp/workflows/SCOPE.md`); CI step **Verify C-RSP template structure** in `.github/workflows/verify.yml` running `scripts/verify_crsp_template_bundle.sh`; `verification/c-rsp-structure/` reports gitignored as generated output.
 
 ### 2.6 Unverified
 
 **Unverified**
 
-- Post-push remote CI (not run here).
+- **This commit’s** CI result on `origin` after you push the changes in this fix (run id unknown until GitHub completes). **Partial evidence:** `gh run list` shows the **Verify Living Constitution** workflow **succeeding** on a recent `main` push; new steps are not yet exercised on remote until merged.
 
 ### 2.7 Functional status
 
 **Functional status**
 
-- **PASS** for local structural + topology checks; authority order is **explicit in text** without relying on filename intuition alone.
+- **PASS** locally for structural + topology checks; authority order is **explicit in text**; archives and A-1 scope are **bounded** in `CANONICAL_ROLE_MAP.md`; **CI enforces** C-RSP structural alignment on `main` / PRs when the workflow runs.
 
 ---
 
