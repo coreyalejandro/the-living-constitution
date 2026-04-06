@@ -10,6 +10,7 @@ This file is the **guided instance template** for C-RSP contract drafting.
 - It must **compile down to** the section order, titles, and semantic rules of the canonical master template.
 - If this file conflicts with the canonical master template, **the master template controls**.
 - **INVARIANT_SEM_02:** This path is explicitly the guided instance template; it must not be treated as the highest-authority reusable C-RSP source.
+- **Helper boundary:** Profile/process files such as `INSTANCE_PROCESS.md` and `PASS8_TEMPLATE.md` (see master **Canonical Artifact Role** row 5) are **not** substitutes for this file or for the master template; they are helpers only.
 
 > **Artifact role (operational):** Guided prompt skeleton only. This file is **not** an executed contract, contains **no** executed-state claims, and must **not** be cited as the active Tier-2+ execution scope for **CONTROL_RULE_KBC_01**. Copy to a new path under `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md`, replace every `{TOKEN}` / `[REQUIRED]` with concrete values, then run schema/preflight checks before execution claims.
 

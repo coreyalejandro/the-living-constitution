@@ -286,7 +286,7 @@
         "path_exists_status": "unknown",
         "has_claude_md": false,
         "has_build_contract_md": true,
-        "repo_path_source": "none — meta template (C-RSP framework); no Repo Path section; semantic authority order CRSP-A0-1: BUILD_CONTRACT.md (1) > BUILD_CONTRACT.instance.md (2) > contract-schema.json (3) > CRSP_OUTCOME_TEMPLATE.md (4) > workflows/* (5) > executed BUILD_CONTRACT* (6); see projects/c-rsp/CANONICAL_ROLE_MAP.md"
+        "repo_path_source": "none — meta template (C-RSP framework); no Repo Path section; semantic authority order CRSP-A0 / CRSP-A0-1: BUILD_CONTRACT.md (1) > BUILD_CONTRACT.instance.md (2) > contract-schema.json (3) > CRSP_OUTCOME_TEMPLATE.md (4) > workflows/* + band-5 non-workflow helpers (5) > executed BUILD_CONTRACT* + instances/*.md + BUILD_CONTRACTS/*.md (6); see projects/c-rsp/CANONICAL_ROLE_MAP.md"
       },
       {
         "slug": "document-system",

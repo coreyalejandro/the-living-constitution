@@ -1,6 +1,6 @@
-# C-RSP canonical role map (A-0.1)
+# C-RSP canonical role map (A-0 + A-0.1)
 
-**Contract:** CRSP-A0-1-SEMANTIC-CANONICALIZATION-001  
+**Contracts:** CRSP-A0-1-SEMANTIC-CANONICALIZATION-001; **CRSP-A0-CRSP-FOLDER-CLEANUP-001** (folder cleanup + non-workflow helper boundaries + `BUILD_CONTRACTS/` convention).  
 **Purpose:** Single reference for **artifact roles** and **authority order** so executors need not infer from filenames alone.
 
 ## Authority order (strict)
@@ -11,8 +11,8 @@
 | 2 | `projects/c-rsp/BUILD_CONTRACT.instance.md` | **Guided instance template** — subordinate; compiles to row 1. |
 | 3 | `projects/c-rsp/contract-schema.json` | **Schema artifact** — structural validation surface. |
 | 4 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | **Outcome artifact** — canonical V&T reporting shape. |
-| 5 | `projects/c-rsp/workflows/*` | **Workflow / router artifacts** — helpers only; not truth surfaces. |
-| 6 | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md` | **Executed project contracts** — scope-specific instances; not reusable templates. |
+| 5 | `projects/c-rsp/workflows/*` **and** `INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, `BUILD_CONTRACT.instance.example.md`, `BUILD_CONTRACT.instance.template.md` (under `projects/c-rsp/`) | **Workflow / profile / example helpers** — peers; helpers only; not truth surfaces. |
+| 6 | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, `projects/c-rsp/BUILD_CONTRACTS/*.md` | **Executed project contracts** — scope-specific instances; not reusable templates. |
 
 **Conflict rule:** Lower-numbered rows prevail over higher-numbered rows when semantics conflict (full prose: `BUILD_CONTRACT.md` **Canonical Artifact Role**).
 

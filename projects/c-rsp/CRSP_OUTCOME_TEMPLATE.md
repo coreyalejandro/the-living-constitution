@@ -9,6 +9,17 @@
 **Contract instance:** `<path/to/executed/BUILD_CONTRACT_or_instance.md>`  
 **Run id / commit:** `<shortsha or tag>`
 
+### Quick V&T lines (minimum contract closure)
+
+Use these six labels verbatim in order when a short closure is required (must still include the Kanban board as §2.1 when using full template):
+
+- **Exists:** {what now exists}
+- **Verified against:** {what was actually verified}
+- **Not claimed:** {what is intentionally not claimed}
+- **Non-existent:** {what does not exist}
+- **Unverified:** {what remains unverified}
+- **Functional status:** {actual status}
+
 ---
 
 ## 1. Constitutional anchor (brief; before V&T)

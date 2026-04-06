@@ -1,6 +1,8 @@
 # Instantiated Process
 ## Single-Instance, Verifier-Backed Governance Execution
 
+**Artifact role:** **Workflow / helper only** — describes an optional authoring process. **Not** the canonical master template (`projects/c-rsp/BUILD_CONTRACT.md`), **not** a truth surface, **not** authoritative over `contract-schema.json` or `CRSP_OUTCOME_TEMPLATE.md`. Same subordination as `projects/c-rsp/workflows/*` (**INVARIANT_SEM_03**).
+
 ### Objective
 
 Instantiate governance through a fixed-shape, schema-validated, profile-derived contract artifact rather than a human mental merge.

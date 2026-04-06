@@ -2,9 +2,10 @@
 
 ## Session Status (as of 2026-04-05)
 
-- **Plan status:** COMPLETE — reviewed; **A-0** and **A-0.1** executed in-repo for the C-RSP template system.
+- **Plan status:** COMPLETE — reviewed; **A-0**, **A-0.1**, and **CRSP-A0-CRSP-FOLDER-CLEANUP-001** executed in-repo for the C-RSP template system.
 - **A-0:** Documentation system overhaul — see `projects/c-rsp/outcomes/CRSP-A0-DOCSYS-OVERHAUL-001.md`.
 - **A-0.1 (CRSP-A0-1-SEMANTIC-CANONICALIZATION-001):** Semantic canonicalization — explicit **authority order** (master > guided instance > schema > outcome > `workflows/*` > executed contracts), vocabulary, and **INVARIANT_SEM_01–04** in `projects/c-rsp/BUILD_CONTRACT.md`; subordinate **Artifact Role** in `BUILD_CONTRACT.instance.md`; `projects/c-rsp/CANONICAL_ROLE_MAP.md`; `projects/c-rsp/workflows/README.md`; aligned `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.*`, `contract-schema.json` (`authority_order_crsp_a0_1`), `CRSP_OUTCOME_TEMPLATE.md` outcome-artifact label. Outcome: `projects/c-rsp/outcomes/CRSP-A0-1-SEMANTIC-CANONICALIZATION-001.md`.
+- **CRSP-A0-CRSP-FOLDER-CLEANUP-001:** Folder cleanup + canonical role normalization — explicit **non-workflow helpers** (`INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, instance example/template) bounded like `workflows/*`; **`projects/c-rsp/BUILD_CONTRACTS/`** for executed C-RSP instances; `contract-schema.json` gains `required_core_section_ids` + `band_5_non_workflow_helpers` / `band_6_executed_instance_globs`; outcome: `projects/c-rsp/outcomes/CRSP-A0-CRSP-FOLDER-CLEANUP-001.md`.
 - **Branch:** `claude/restructure-tlc-enterprise-LxIXt` (develop and push here)
 - **Next action:** (1) Push branch and confirm **Verify Living Constitution** is green (includes C-RSP structural step + artifact `c-rsp-structure-*`), (2) open **A-1** using the gate above and `CANONICAL_ROLE_MAP.md`, (3) run `./scripts/run_fde_control_plane_verification.sh` after pulls if FDE paths change
 

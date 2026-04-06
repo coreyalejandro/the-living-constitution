@@ -44,6 +44,8 @@ the-living-constitution/
 
 3. **Build contracts point to external repos.** This base camp does NOT duplicate code. Each `projects/<name>/BUILD_CONTRACT.md` references the actual repo path where implementation lives.
 
+**C-RSP classification:** Root `projects/<name>/BUILD_CONTRACT*.md` files are **executed instances** or resume-aligned overlays for that scope. They are **not** the C-RSP **canonical master template** (`projects/c-rsp/BUILD_CONTRACT.md`) and must not be mistaken for reusable global templates. Optional executed instances stored under `projects/c-rsp/BUILD_CONTRACTS/` follow the same **executed instance** role (see `projects/c-rsp/CANONICAL_ROLE_MAP.md`).
+
 4. **Verification is mandatory.** Every claim in the resume/cover letter must have a corresponding entry in `verification/MATRIX.md` with evidence.
 
 5. **The Living Constitution governs all work.** Articles I-V apply to every project folder, every build contract, every commit.
@@ -76,8 +78,8 @@ TLC uses **Constitutionally-Regulated Single Pass** (C-RSP) contracts for govern
 | 2 | **Guided instance template** (subordinate to 1) | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
 | 3 | **Schema artifact** | `projects/c-rsp/contract-schema.json` |
 | 4 | **Outcome artifact** (V&T report shape) | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
-| 5 | **Workflow / router artifacts** (helpers only) | `projects/c-rsp/workflows/*` |
-| 6 | **Executed project contracts** (instances, not reusable templates) | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, etc. |
+| 5 | **Workflow / profile helpers** (helpers only; not truth surfaces) | `projects/c-rsp/workflows/*` **and** (same band) `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md` |
+| 6 | **Executed project contracts** (instances, not reusable templates) | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, `projects/c-rsp/BUILD_CONTRACTS/*.md`, etc. |
 
 **FDE control plane (example executed instance):** `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`. **Verification bundle:** `./scripts/run_fde_control_plane_verification.sh`.
 

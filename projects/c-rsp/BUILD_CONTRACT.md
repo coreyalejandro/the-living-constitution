@@ -16,8 +16,10 @@ This file is the **canonical master template** for all Constitutionally-Regulate
 | 2 | `projects/c-rsp/BUILD_CONTRACT.instance.md` | Guided instance template — subordinate drafting aid; must compile to the structure and authority of this file. |
 | 3 | `projects/c-rsp/contract-schema.json` | Schema artifact — machine-readable shape and validation rules for instances. |
 | 4 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Outcome artifact — mandatory V&T reporting shape for C-RSP run summaries. |
-| 5 | `projects/c-rsp/workflows/*` | Workflow / router artifacts — ergonomic helpers only; **not** truth surfaces and **not** authoritative over rows 1–4. |
-| 6 | `projects/*/BUILD_CONTRACT*` and `projects/c-rsp/instances/*.md` | Executed project contracts — scope-specific instances; **not** reusable canonical templates. |
+| 5 | `projects/c-rsp/workflows/*` **and** the profile/process helper files named in **Non-workflow helpers (row 5)** (below) | Workflow / router / profile / example helpers — ergonomic only; **not** truth surfaces and **not** authoritative over rows 1–4. |
+| 6 | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, and `projects/c-rsp/BUILD_CONTRACTS/*.md` | Executed project contracts — scope-specific instances; **not** reusable canonical templates. |
+
+**Non-workflow helpers (row 5 — same subordination as `workflows/*`):** `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md`. These **must not** be cited as the canonical master template or as substitutes for rows 1–4.
 
 **Conflict rule:** If any subordinate file (rows 2–6) conflicts with **this file**, **this file controls** unless the repo records a formal supersession path (e.g. constitutional amendment per `THE_LIVING_CONSTITUTION.md`).
 
@@ -25,7 +27,7 @@ This file is the **canonical master template** for all Constitutionally-Regulate
 
 - **INVARIANT_SEM_01:** The canonical master template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.md`.
 - **INVARIANT_SEM_02:** The guided instance template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.instance.md` and is **subordinate** to the master template.
-- **INVARIANT_SEM_03:** Workflow artifacts under `projects/c-rsp/workflows/` are helpers only and do not constitute governing authority over rows 1–4.
+- **INVARIANT_SEM_03:** Workflow and profile/process helper artifacts under `projects/c-rsp/workflows/` **and** the non-workflow helper paths listed in **Canonical Artifact Role** (row 5) are helpers only and do not constitute governing authority over rows 1–4.
 - **INVARIANT_SEM_04:** Executed project contracts are **instances** for a concrete scope, not reusable canonical templates.
 
 ---
@@ -48,8 +50,8 @@ Authoritative **precedence** among C-RSP template-system files is defined in **C
 | **Guided instance template** | Subordinate drafting scaffold; placeholders only until copied | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
 | **Schema artifact** | JSON validation surface for contract shape | `projects/c-rsp/contract-schema.json` |
 | **Outcome artifact** | Canonical C-RSP run report shape | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
-| **Workflow / router artifacts** | Helpers under `projects/c-rsp/workflows/`; not governing authority | `projects/c-rsp/workflows/*` (see folder README) |
-| **Executed project contracts** | Scope-specific instances | `projects/*/BUILD_CONTRACT.md`, `projects/*/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md`, other `BUILD_CONTRACT*.md` under `projects/` as authored |
+| **Workflow / router / profile helpers** | Helpers under `projects/c-rsp/workflows/` **and** row-5 non-workflow helpers (`INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, instance example/template files); not governing authority | `projects/c-rsp/workflows/*`, `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md` |
+| **Executed project contracts** | Scope-specific instances | `projects/*/BUILD_CONTRACT.md`, `projects/*/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md`, `projects/c-rsp/BUILD_CONTRACTS/*.md`, other `BUILD_CONTRACT*.md` under `projects/` as authored |
 
 ### Global Constitutional Invariants
 
