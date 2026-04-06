@@ -70,7 +70,7 @@ the-living-constitution/
 
 ## C-RSP template system (semantic authority order)
 
-TLC uses **Constitutionally-Regulated Single Pass** (C-RSP) contracts for governed execution. **Authority order is strict** (lower rows do not override higher rows). Full map: `projects/c-rsp/CANONICAL_ROLE_MAP.md`.
+TLC uses **Constitutionally-Regulated Single Pass** (C-RSP) contracts for governed execution. **Authority order is strict** (lower rows do not override higher rows). **How to use the folder (read this first):** `projects/c-rsp/README.md`. Full map: `projects/c-rsp/CANONICAL_ROLE_MAP.md`.
 
 | Order | Artifact | Path |
 |------:|----------|------|
