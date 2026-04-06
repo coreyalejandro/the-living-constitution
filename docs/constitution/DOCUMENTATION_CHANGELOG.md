@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/constitution/DOCUMENTATION_CHANGELOG.md"
 next_file: "docs/INDEX.md"
 last_verified:
-  commit: "e16c574"
-  timestamp: "2026-04-04T20:30:00Z"
+  commit: "71a0913"
+  timestamp: "2026-04-06T12:00:00Z"
 metadata:
   est_time_minutes: 6
   cognitive_load: "Low"
@@ -23,6 +23,7 @@ navigation:
 
 | Date | Commit | Change | Downstream docs to review |
 | --- | --- | --- | --- |
+| 2026-04-06 | 71a0913 | Bulk refresh `last_verified` on MVDS + README (anchor = pre-commit tip) | same |
 | 2026-04-04 | af9dfb8 | MVDS + typed frontmatter + doc verifiers + governance/ bundle | `README.md`, `docs/INDEX.md`, `governance/*`, `docs/operations/*` |
 | 2026-04-04 | 4e65226 | Reconcile `last_verified.commit` with HEAD (stale preflight warnings) | governed frontmatter files |
 | 2026-04-04 | e16c574 | Sync frontmatter `last_verified` to HEAD after follow-on commits | same |
