@@ -24,6 +24,18 @@ Use **this file** as the **single-page authority map** before **A-1** (taxonomy 
 
 **Conflict rule:** Lower-numbered rows prevail over higher-numbered rows when semantics conflict (full prose: `BUILD_CONTRACT.md` **Canonical Artifact Role**).
 
+## Memory surfaces (hybrid — LLM / session continuity)
+
+Read **`projects/c-rsp/AGENT_PROMPT.md`** for full rules. Summary:
+
+| Surface | Path | Role |
+|---------|------|------|
+| TLC index | `openmemory.md` (repo root) | Long-lived project index. |
+| C-RSP journal | `projects/c-rsp/openmemory.md` | Append-only log of C-RSP contract sessions. |
+| System prompt | `projects/c-rsp/AGENT_PROMPT.md` | Helper (row 5) — pre-flight reads and where to append at session close. |
+
+**Invariant:** C-RSP session appends go to **`projects/c-rsp/openmemory.md`** only; the root file is not the C-RSP run log.
+
 ## Vocabulary
 
 | Term | Meaning |
