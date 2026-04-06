@@ -5,8 +5,8 @@ status: "Active"
 canonical_path: "docs/INDEX.md"
 next_file: "docs/instructions/FIRST_RUN.md"
 last_verified:
-  commit: "629a59a"
-  timestamp: "2026-04-06T02:12:01Z"
+  commit: "19ddaff"
+  timestamp: "2026-04-06T02:12:25Z"
 ---
 
 # Documentation index (TLC)

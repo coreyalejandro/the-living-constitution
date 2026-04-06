@@ -1,12 +1,11 @@
 {
   "cross_repo_consistency": {
-    "detail": "verify_cross_repo_consistency: FAIL\n  - JSON drift (normalized): 00-constitution/role-registry.json",
-    "exit_code": 1,
-    "state": "drift"
+    "exit_code": 0,
+    "state": "aligned"
   },
   "escalation_state": "review_required",
   "governance_contract_version": "v1.9.0",
-  "head_sha": "f1e13570e788c0faed9be306d700b4364c7a7f56",
+  "head_sha": "19ddaff5bbc0d9f6ca84e22bc7e9eddad90203a6",
   "historical_state": {
     "ci_remote_record_captured_at_utc": "2026-03-31T01:15:00Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
