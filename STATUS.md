@@ -7,11 +7,11 @@
 |-------|-------|
 | `project` | `coreyalejandro/the-living-constitution` |
 | `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
-| `head_sha` | `89c3fa43545f1f5abb44e4405dc632f253a171da` |
+| `head_sha` | `393f4d5680880930886a240acdb50e73cc313513` |
 | `last_verified_commit` | `30805eed1d51ca78107294376c1b783275e484aa` |
 | `last_verified_run_id` | `23774310879` |
 | `tip_state_truth` | `tip_pending` |
-| `workflow_sha` | `fb8fbc3e0f603b239e1dcc34f997142fbd5fecbee63b4e802aec6c04fbc6e6cd` |
+| `workflow_sha` | `c98fcd3876f086852beed691ff15df392028c739fc8734dfad25ed15c2086fe6` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
 | `governance_contract_version` | `v1.9.0` |
