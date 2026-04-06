@@ -33,3 +33,20 @@
 - **INVARIANT_SEM_02** — Guided instance subordinate to master (row 2).
 - **INVARIANT_SEM_03** — `workflows/` is helpers only.
 - **INVARIANT_SEM_04** — Executed contracts are instances, not canonical templates.
+
+## Non-canonical mirrors (do not use as authority)
+
+| Location | Role |
+|----------|------|
+| `ChatGPT-AI Governance Frameworks.md` | Chat export; banner marks it non-canonical. |
+| `crsp_refactor_bundle_final/projects/c-rsp/` | Portable snapshot; see `crsp_refactor_bundle_final/README.md`. |
+
+Path parity with root `projects/c-rsp/` is **not** maintained automatically. Grep hits in these trees are **historical** unless reconciled to `CANONICAL_ROLE_MAP.md`.
+
+## A-1 and constitution taxonomy (explicit exclusion)
+
+**Not in scope** for A-0 / A-0.1: taxonomy canonicalization, domain assignment, `THE_LIVING_CONSTITUTION.md` edits, or Constitutional UI. Those are separate contracts (e.g. A-1 program); absence here is **contract boundary**, not unmet A-0.1 acceptance.
+
+## CI verification
+
+**Structural:** `scripts/verify_crsp_template_bundle.sh` (also run in `.github/workflows/verify.yml`) compares section titles between the master template and the guided instance + FDE executed instance. **Not automated:** full Markdown validation of §6A ordered-operations table *content* (human review + Blind Man discipline).
