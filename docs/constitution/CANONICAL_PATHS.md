@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/constitution/CANONICAL_PATHS.md"
 next_file: "docs/constitution/ROOT_DOC_ALLOWLIST.md"
 last_verified:
-  commit: "b3ff7ab"
-  timestamp: "2026-04-06T02:11:41Z"
+  commit: "629a59a"
+  timestamp: "2026-04-06T02:12:01Z"
 metadata:
   est_time_minutes: 12
   cognitive_load: "Medium"
