@@ -54,7 +54,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 
 **File-level notes (non-exhaustive):**
 
-- **c-rsp:** Meta **C-RSP template** — not a normal executable build contract; no Repo Path.
+- **c-rsp:** Meta **C-RSP** folder — **start with** `README.md` (how to use the folder without mistaking helpers for the master template); **authority order (strict):** (1) `BUILD_CONTRACT.md` canonical master template, (2) `BUILD_CONTRACT.instance.md` guided instance template (subordinate), (3) `contract-schema.json`, (4) `CRSP_OUTCOME_TEMPLATE.md`, (5) `workflows/*` plus non-workflow helpers (`INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, instance example/template files) — helpers only, (6) executed `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, and `projects/c-rsp/BUILD_CONTRACTS/*.md`. Single reference: `projects/c-rsp/CANONICAL_ROLE_MAP.md`. Not a normal project implementation overlay; no external Repo Path.
 - **c-rsp:** Contains `openmemory.md`; **no** `CLAUDE.md` (differs from base-camp rule for overlays).
 - **consentchain / consent-gateway-auth0:** TLC **git submodules** (see `.gitmodules`).
 - **document-system:** C-RSP instance contracts (e.g. MVP closeout); overlay lives in TLC only.

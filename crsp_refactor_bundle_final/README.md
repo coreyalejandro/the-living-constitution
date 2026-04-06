@@ -19,3 +19,7 @@ Canonical expansion of **C-RSP** in all artifacts: **Constitutionally-Regulated 
 ## Note
 
 This folder is a **portable bundle** for review or copying into `projects/c-rsp/` in the main repo; it is not automatically wired into TLC verifiers until merged.
+
+## Canonical authority (repo root)
+
+Do not treat paths inside this bundle as the live authority surface when the main repo has diverged. **Canonical C-RSP roles and order:** `projects/c-rsp/CANONICAL_ROLE_MAP.md` in **the-living-constitution** root. Historical mentions of `BUILD_CONTRACT.instance.md` in bundle copies may predate A-0 / A-0.1 semantic split (guided template vs executed instances under `projects/c-rsp/instances/`).

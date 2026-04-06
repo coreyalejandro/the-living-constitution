@@ -46,6 +46,9 @@ next-env.d.ts
 verification/runs/*.json
 verification/attestations/*.json
 
+# C-RSP structural diff reports from scripts/verify_crsp_template_bundle.sh
+verification/c-rsp-structure/
+
 # Python
 __pycache__/
 *.pyc

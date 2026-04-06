@@ -1,6 +1,8 @@
 # BUILD CONTRACT INSTANCE
 ## Constitutionally-Regulated Single Pass Executable Prompt
 
+> **Artifact role:** **Example / helper only** — illustrative executed-instance shape for review. **Not** the canonical master template, **not** the guided instance template path (`BUILD_CONTRACT.instance.md`). Subordinate to `projects/c-rsp/BUILD_CONTRACT.md`.
+>
 > **Example only:** Illustrative PASS 8 / ConsentChain-style satellite instance for bundle review. Preflight command names are placeholders unless the repo ships matching scripts.
 
 ---

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "status": "pending",
-  "next_instance_path": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+  "next_instance_path": "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md",
   "contract_id": "CRSP-FDE-CTRL-PLANE-GAPS-002",
   "purpose": "Optional: mirror or diff-verify integrated FDE governance artifacts against projects/backboardai-fde/ on each change; promote Draft→Active only when Article III evidence satisfies all Active gates.",
   "notes": "Automation: ./scripts/run_fde_control_plane_verification.sh. CI: .github/workflows/fde-control-plane-verify.yml. Standalone path RESOLVED in-repo to projects/backboardai-fde per standalone-path-resolution.json."

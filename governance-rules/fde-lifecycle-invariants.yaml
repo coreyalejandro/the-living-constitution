@@ -1,5 +1,6 @@
 # FDE lifecycle invariants — CRSP-FDE-CTRL-PLANE-LIFECYCLE-001
-# Truth surface: projects/c-rsp/BUILD_CONTRACT.instance.md
+# Truth surface (executed): projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md
+# Guided template (workflow only): projects/c-rsp/BUILD_CONTRACT.instance.md
 # Schema: schemas/fde-lifecycle.schema.json, schemas/blind-man-execution.schema.json
 
 version: "1.0.0"
@@ -46,5 +47,6 @@ truth_surface_discipline:
 
 global_crossrefs:
   template: "projects/c-rsp/BUILD_CONTRACT.md"
-  instance: "projects/c-rsp/BUILD_CONTRACT.instance.md"
+  guided_instance_template: "projects/c-rsp/BUILD_CONTRACT.instance.md"
+  executed_instance_fde_gaps: "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md"
   status_json: "STATUS.json"

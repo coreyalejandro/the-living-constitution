@@ -2,10 +2,23 @@
 # C-RSP Build Contract : `<BUILD_CONTRACT_TITLE>` — `<COMPONENT>`
 ## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
 
-**Title rule:** `BUILD_CONTRACT_TITLE` = exact **Contract Title** from the governing `BUILD_CONTRACT` / `BUILD_CONTRACT.instance.md` (Section 1). For zero-shot contracts whose H1 is `# Build Contract: Name`, use `Name` (e.g. `04-consentchain/BUILD_CONTRACT.md` → `ConsentChain`). `COMPONENT` = governed component or subsystem this run touched (must stay in the H1 for scanning).
+**Artifact role:** This file is the **outcome artifact** (canonical C-RSP run reporting shape). **Authority order:** it is subordinate to `projects/c-rsp/BUILD_CONTRACT.md` and `projects/c-rsp/BUILD_CONTRACT.instance.md` as drafting aids; it does not override the master template’s structural or invariant rules. See `projects/c-rsp/CANONICAL_ROLE_MAP.md`.
 
-**Contract instance:** `<path/to/BUILD_CONTRACT.instance.md>`  
+**Title rule:** `BUILD_CONTRACT_TITLE` = exact **Contract Title** from the governing **executed** contract (Section 1) — e.g. `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md`. The file `projects/c-rsp/BUILD_CONTRACT.instance.md` is only the **guided instance template** (placeholders), not an executed contract. For zero-shot contracts whose H1 is `# Build Contract: Name`, use `Name` (e.g. `04-consentchain/BUILD_CONTRACT.md` → `ConsentChain`). `COMPONENT` = governed component or subsystem this run touched (must stay in the H1 for scanning).
+
+**Contract instance:** `<path/to/executed/BUILD_CONTRACT_or_instance.md>`  
 **Run id / commit:** `<shortsha or tag>`
+
+### Quick V&T lines (minimum contract closure)
+
+Use these six labels verbatim in order when a short closure is required (must still include the Kanban board as §2.1 when using full template):
+
+- **Exists:** {what now exists}
+- **Verified against:** {what was actually verified}
+- **Not claimed:** {what is intentionally not claimed}
+- **Non-existent:** {what does not exist}
+- **Unverified:** {what remains unverified}
+- **Functional status:** {actual status}
 
 ---
 
@@ -17,7 +30,7 @@ Mandatory references for **Verification & Truth** discipline:
 |--------|-------------|
 | **Article I — Right to Truth** (`00-constitution/articles.md`) | No claim without evidence; the **V&T Statement** (below) is the enforcement surface for this right. |
 | **Article III — Verification Before Done** (`00-constitution/articles.md`) | Do not treat work as complete without proof; maps to acceptance criteria + verifier output. |
-| **Section 16 Output Format** (`projects/c-rsp/BUILD_CONTRACT.md`) | Kanban-first **V&T**; single active BUILD_CONTRACT until clear; see **CONTROL_RULE_KBC_01** in the active `BUILD_CONTRACT.instance.md`. |
+| **Section 16 Output Format** (`projects/c-rsp/BUILD_CONTRACT.md`) | Kanban-first **V&T**; single active executed contract until clear; see **CONTROL_RULE_KBC_01** in the active **executed** instance file (not the guided template `projects/c-rsp/BUILD_CONTRACT.instance.md`). |
 
 ---
 

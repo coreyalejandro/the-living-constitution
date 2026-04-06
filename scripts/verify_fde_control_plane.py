@@ -18,7 +18,7 @@ except ImportError as e:
     print("jsonschema is required: pip install -r requirements-verify.txt", file=sys.stderr)
     raise SystemExit(2) from e
 
-DEFAULT_INSTANCE = Path("projects/c-rsp/BUILD_CONTRACT.instance.md")
+DEFAULT_INSTANCE = Path("projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md")
 
 
 def load_json(path: Path) -> object:

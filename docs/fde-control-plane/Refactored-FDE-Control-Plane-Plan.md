@@ -20,7 +20,7 @@ Define a constitutionally-governed **FDE (Formal Development Environment) contro
 
 | Contract | Parties | Machine-readable anchor |
 |----------|---------|-------------------------|
-| C-RSP instance | Operator, repo | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
+| C-RSP executed instance | Operator, repo | `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` (guided template: `projects/c-rsp/BUILD_CONTRACT.instance.md`) |
 | Lifecycle truth | STATUS, evidence | `schemas/fde-lifecycle.schema.json` + `STATUS.json` extension (declared in schema; not claimed merged into root `STATUS.json` until executed) |
 | Blind-man execution | Operator, verifiers | `schemas/blind-man-execution.schema.json` |
 | Invariants | CI, maintainers | `governance-rules/fde-lifecycle-invariants.yaml` |
@@ -54,7 +54,7 @@ Define a constitutionally-governed **FDE (Formal Development Environment) contro
 
 ## 6. Evidence
 
-Primary evidence directory: `evidence/fde-control-plane/`. Each contract state transition must produce or update a record listed in the active `BUILD_CONTRACT.instance.md` Section 11.
+Primary evidence directory: `evidence/fde-control-plane/`. Each contract state transition must produce or update a record listed in the active executed instance (e.g. `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`) Section 11.
 
 ---
 

@@ -1,6 +1,8 @@
 # PASS 8 — Satellite Institutionalization Profile
 ## C-RSP Satellite Governance Overlay
 
+> **Artifact role:** **Workflow / profile helper only** — satellite overlay scaffold. **Not** a truth surface; **not** the canonical master template. Subordinate to `projects/c-rsp/BUILD_CONTRACT.md` (same helper boundary as `projects/c-rsp/workflows/*`; **INVARIANT_SEM_03**).
+>
 > **Profile Status:** Overlay profile only. Not executable by itself.
 > **Base Dependency:** Must be instantiated through the constitutional master template in `projects/c-rsp/BUILD_CONTRACT.md`.
 
