@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/constitution/DOC_TRUTH_HIERARCHY.md"
 next_file: "docs/constitution/TERMINOLOGY.md"
 last_verified:
-  commit: "cc0b439"
-  timestamp: "2026-04-06T02:07:33Z"
+  commit: "9249e6a"
+  timestamp: "2026-04-06T02:08:38Z"
 metadata:
   est_time_minutes: 10
   cognitive_load: "Medium"
