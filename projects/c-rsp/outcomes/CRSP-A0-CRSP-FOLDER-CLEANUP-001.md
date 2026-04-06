@@ -49,6 +49,7 @@
 
 - `./scripts/verify_crsp_template_bundle.sh` → **PASS** (template vs guided vs FDE instance structural compare).
 - `python3 -c "import json; json.load(open('projects/c-rsp/contract-schema.json'))"` → **PASS**.
+- GitHub Actions **Verify Living Constitution** run **`24015419165`** on commit **`9b260720beec1e71cb71c732f4e38b2a11b16002` → **success** (full verifier suite including C-RSP structural step).
 
 ### 2.4 Not claimed
 
@@ -66,7 +67,7 @@
 
 **Unverified**
 
-- CI conclusion on `origin` for the exact commit containing this outcome file until a push completes and `Verify Living Constitution` (or equivalent) finishes.
+- Whether **future** commits after `9b26072` pass CI until each is built (not applicable to this outcome’s closure for `9b26072`).
 
 ### 2.7 Functional status
 

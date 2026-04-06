@@ -3,6 +3,14 @@
 **Contracts:** CRSP-A0-1-SEMANTIC-CANONICALIZATION-001; **CRSP-A0-CRSP-FOLDER-CLEANUP-001** (folder cleanup + non-workflow helper boundaries + `BUILD_CONTRACTS/` convention).  
 **Purpose:** Single reference for **artifact roles** and **authority order** so executors need not infer from filenames alone.
 
+## Downstream gate (A-1 and later)
+
+Use **this file** as the **single-page authority map** before **A-1** (taxonomy / constitution alignment), any new C-RSP contract, or any change that could blur template vs helper vs executed instance:
+
+1. Read the **Authority order** table (rows 1–6) and **Conflict rule** in full.
+2. Do **not** treat row **5** (helpers) or row **6** (executed contracts) as the canonical master template (row **1**).
+3. If a proposed change contradicts the table, stop and amend **`projects/c-rsp/BUILD_CONTRACT.md`** first (or record a formal supersession path there).
+
 ## Authority order (strict)
 
 | Order | Path | Role |
@@ -31,7 +39,7 @@
 
 - **INVARIANT_SEM_01** — Master path explicit (row 1).
 - **INVARIANT_SEM_02** — Guided instance subordinate to master (row 2).
-- **INVARIANT_SEM_03** — `workflows/` is helpers only.
+- **INVARIANT_SEM_03** — Row 5 (`workflows/*` and listed non-workflow helpers) is helpers only.
 - **INVARIANT_SEM_04** — Executed contracts are instances, not canonical templates.
 
 ## Non-canonical mirrors (do not use as authority)
