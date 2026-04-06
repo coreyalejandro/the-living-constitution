@@ -301,7 +301,11 @@ def verify(root: Path, fail_on_stale: bool) -> int:
         lv = fm.get("last_verified") or {}
         commit = lv.get("commit") if isinstance(lv, dict) else None
         ts = lv.get("timestamp") if isinstance(lv, dict) else None
-        if head and isinstance(commit, str) and commit.strip():
+        # This file embeds last_verified in its own tree; the commit hash cannot
+        # equal its own short prefix (no non-trivial fixpoint). Skip STALE_COMMIT
+        # for this path only; other governed docs still require alignment with HEAD.
+        skip_self_referential_lv = rel == "docs/constitution/ROOT_DOC_ALLOWLIST.md"
+        if head and isinstance(commit, str) and commit.strip() and not skip_self_referential_lv:
             ca = commit.strip()
             hb = head.strip()
             match = ca[:7] == hb[:7] if len(ca) >= 7 and len(hb) >= 7 else ca == hb
