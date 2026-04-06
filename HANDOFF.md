@@ -1,6 +1,6 @@
 # Agent Handoff: The Living Constitution (base camp)
 
-**Date:** 2026-04-05  
+**Date:** 2026-04-06  
 **Status:** **TLC GOVERNANCE FROZEN FOR PRODUCT BUILDOUT** — final stop-condition adjudication (C-RSP v1.0.0) concluded all six capabilities **met**; no residual constitutional gap. **PASS 14** closure remains anchored to run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. **PASS 16** (canonical replay) remains anchored to commit `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3`, CI run `23774969505` **success**.
 
 ## 1. Deliverables
@@ -28,6 +28,8 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **ConsentChain submodule + cross-repo CI (2026-04-06):** Copied canonical `00-constitution/role-registry.json` into `projects/consentchain` (submodule `2734827` on `main`) so **`verify_cross_repo_consistency.py`** passes; parent commits `cdde092` (MVDS refresh + gitlink + STATUS) and `0cf3e18` (MVDS bump to clear one-commit STALE lag). **`Verify Living Constitution`** **success** — run [`24016001052`](https://github.com/coreyalejandro/the-living-constitution/actions/runs/24016001052) @ `0cf3e18` (`workflow_dispatch`; feature branch does not auto-run `push` workflow).
 
 - **`projects/c-rsp/README.md` + A-1 draft (2026-04-06):** Operator README (read **CANONICAL_ROLE_MAP** first; safe authoring path); **`BUILD_CONTRACTS/CRSP-A1-TAXONOMY-CANONICALIZATION-001.md`** Draft instantiated from master + guided template; MVDS `last_verified` refresh on CI STALE_COMMIT set.
 
