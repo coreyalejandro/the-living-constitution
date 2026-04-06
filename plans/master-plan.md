@@ -6,7 +6,7 @@
 - **A-0:** Documentation system overhaul — see `projects/c-rsp/outcomes/CRSP-A0-DOCSYS-OVERHAUL-001.md`.
 - **A-0.1 (CRSP-A0-1-SEMANTIC-CANONICALIZATION-001):** Semantic canonicalization — explicit **authority order** (master > guided instance > schema > outcome > `workflows/*` > executed contracts), vocabulary, and **INVARIANT_SEM_01–04** in `projects/c-rsp/BUILD_CONTRACT.md`; subordinate **Artifact Role** in `BUILD_CONTRACT.instance.md`; `projects/c-rsp/CANONICAL_ROLE_MAP.md`; `projects/c-rsp/workflows/README.md`; aligned `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.*`, `contract-schema.json` (`authority_order_crsp_a0_1`), `CRSP_OUTCOME_TEMPLATE.md` outcome-artifact label. Outcome: `projects/c-rsp/outcomes/CRSP-A0-1-SEMANTIC-CANONICALIZATION-001.md`.
 - **Branch:** `claude/restructure-tlc-enterprise-LxIXt` (develop and push here)
-- **Next action:** (1) Review A-0 / A-0.1 outcomes, (2) proceed to **A-1** only when satisfied with semantic clarity, (3) run `./scripts/run_fde_control_plane_verification.sh` after pulls if FDE paths change
+- **Next action:** (1) Push branch and confirm **Verify Living Constitution** is green (includes C-RSP structural step + artifact `c-rsp-structure-*`), (2) open **A-1** using the gate above and `CANONICAL_ROLE_MAP.md`, (3) run `./scripts/run_fde_control_plane_verification.sh` after pulls if FDE paths change
 
 ### Key Decisions Made
 - **C-RSP** = Constitutionally-Regulated Single Pass (canonical expansion, no variants)
@@ -96,6 +96,14 @@ A-0 is complete only when all of the following are true:
 **Purpose:** Codify **artifact roles**, **terminology**, and **strict authority order** so executors do not rely on filename intuition.
 
 **Deliverables:** `projects/c-rsp/CANONICAL_ROLE_MAP.md`; **Canonical Artifact Role** section in `projects/c-rsp/BUILD_CONTRACT.md`; **Artifact Role** in `projects/c-rsp/BUILD_CONTRACT.instance.md`; aligned root `CLAUDE.md`, inventory, plan, schema metadata, outcome template header.
+
+### A-1 gate (taxonomy canonicalization — next program step)
+
+**Precondition:** A-0 and A-0.1 complete; semantic authority is unambiguous.
+
+**Mandatory reference:** Before authoring or executing **A-1**, read `projects/c-rsp/CANONICAL_ROLE_MAP.md` and instantiate work using the **canonical master template** (`projects/c-rsp/BUILD_CONTRACT.md`) plus a **new executed contract path** (not the guided template stub). Taxonomy edits must not contradict **INVARIANT_SEM_01–04** or the authority order (master > guided instance > schema > outcome > `workflows/*` > executed contracts).
+
+**Scope reminder:** A-1 addresses taxonomy / domain alignment across truth surfaces; it does not re-litigate A-0.1 role definitions.
 
 ---
 

@@ -43,6 +43,14 @@ jobs:
         run: ./scripts/verify_crsp_template_bundle.sh
         # Section title alignment only (## 0.–## 17.); §6A ordered-operations table content is not Markdown-schema-validated here.
 
+      - name: Upload C-RSP structural diff reports
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c-rsp-structure-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verification/c-rsp-structure/*.json
+          if-no-files-found: error
+
       - name: Verify documentation constitution (MVDS + frontmatter + root allowlist)
         run: python3 scripts/verify_document_constitution.py --root .
 

@@ -49,4 +49,4 @@ Path parity with root `projects/c-rsp/` is **not** maintained automatically. Gre
 
 ## CI verification
 
-**Structural:** `scripts/verify_crsp_template_bundle.sh` (also run in `.github/workflows/verify.yml`) compares section titles between the master template and the guided instance + FDE executed instance. **Not automated:** full Markdown validation of §6A ordered-operations table *content* (human review + Blind Man discipline).
+**Structural:** `scripts/verify_crsp_template_bundle.sh` (also run in `.github/workflows/verify.yml`) compares section titles between the master template and the guided instance + FDE executed instance. Successful runs upload artifact **`c-rsp-structure-<run_id>-<attempt>`** (`verification/c-rsp-structure/*.json`; directory is gitignored locally). **Not automated:** full Markdown validation of §6A ordered-operations table *content* (human review + Blind Man discipline).
