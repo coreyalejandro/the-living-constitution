@@ -211,6 +211,15 @@
     "reject_unresolved_placeholders_in_executable_instances": true,
     "require_canonical_terminology": true,
     "require_stop_override_when_risk_or_side_effect_triggers": true,
-    "require_rollback_recovery_for_tier_2_plus": true
+    "require_rollback_recovery_for_tier_2_plus": true,
+    "blind_man_execution": {
+      "ordered_operations_required_in_executable_instances": true,
+      "halt_conditions_required_in_executable_instances": true,
+      "success_conditions_required_in_executable_instances": true,
+      "major_component_snippets_required_when_material_code_change": true,
+      "guided_template_path": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+      "canonical_master_template_path": "projects/c-rsp/BUILD_CONTRACT.md",
+      "note": "Executable instances must implement Section 6A–6D of the canonical master (Ordered Operations, Halt, Success, Major Component Snippets). The guided template is a workflow artifact and is not an executable instance until copied to an executed path and fully instantiated."
+    }
   }
 }

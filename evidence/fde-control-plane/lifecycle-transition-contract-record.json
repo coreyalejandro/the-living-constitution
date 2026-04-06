@@ -7,7 +7,7 @@
     "event": "gap_closure_automation_and_evidence_recorded",
     "timestamp_utc": "2026-04-05T12:00:00Z",
     "evidence_paths": [
-      "projects/c-rsp/BUILD_CONTRACT.instance.md",
+      "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md",
       "evidence/fde-control-plane/structural-diff-report.json",
       "evidence/fde-control-plane/schema-validation-report.json",
       "evidence/fde-control-plane/verifier-execution-report.json",

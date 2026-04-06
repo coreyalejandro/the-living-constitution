@@ -28,7 +28,8 @@
 * **Authoritative Truth Surface:**
 
   * `projects/c-rsp/BUILD_CONTRACT.md`
-  * `projects/c-rsp/BUILD_CONTRACT.instance.md`
+  * `projects/c-rsp/BUILD_CONTRACT.instance.md` (guided instance template)
+  * `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` (executed FDE gap-closure instance)
   * `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`
   * `projects/c-rsp/NEXT_CRSP_BUILD.json`
   * `STATUS.json`
@@ -36,7 +37,7 @@
   * `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md`
   * `governance-rules/fde-lifecycle-invariants.yaml`
   * `evidence/fde-control-plane/`
-* **Instance Artifact Path:** `projects/c-rsp/BUILD_CONTRACT.instance.md`
+* **Instance Artifact Path:** `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`
 * **Governance Lock Path:** `governance-template.lock.json`
 
 ### 2A. Profile Merge Rule
@@ -215,7 +216,8 @@ Because `Risk Class = High`, the following are mandatory:
 * **Fallback Rule:** Any unresolved ambiguity triggers halt or explicit escalation
 * **Generated Artifacts:**
 
-  * `projects/c-rsp/BUILD_CONTRACT.instance.md`
+  * `projects/c-rsp/BUILD_CONTRACT.instance.md` (guided instance template)
+  * `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` (executed FDE gap-closure instance)
   * `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md`
   * `governance-rules/fde-lifecycle-invariants.yaml`
   * `schemas/fde-lifecycle.schema.json`
@@ -232,7 +234,8 @@ Because `Topology Mode = Dual-Topology`, both paths are explicitly declared:
 
 * **integrated/internal path:**
 
-  * `the-living-constitution/projects/c-rsp/BUILD_CONTRACT.instance.md`
+  * `the-living-constitution/projects/c-rsp/BUILD_CONTRACT.instance.md` (guided instance template)
+  * `the-living-constitution/projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` (executed FDE gap-closure instance)
   * `the-living-constitution/docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md`
   * `the-living-constitution/governance-rules/fde-lifecycle-invariants.yaml`
   * `the-living-constitution/schemas/fde-lifecycle.schema.json`
@@ -307,7 +310,7 @@ No change is complete unless:
    * explicit halt condition
    * explicit success condition
 
-9. Update `projects/c-rsp/BUILD_CONTRACT.instance.md` so that it:
+9. Update the executed FDE instance (`projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`) and guided template (`projects/c-rsp/BUILD_CONTRACT.instance.md`) so that they:
 
    * preserves canonical template section order exactly
    * instantiates the current next step without generic placeholders
@@ -479,12 +482,12 @@ All acceptance criteria are executable, objective, and mapped to evidence.
 * **Rollback Procedure:**
 
   1. Stop promotion immediately if any preflight or blind-man-safe check fails.
-  2. Preserve the prior valid `projects/c-rsp/BUILD_CONTRACT.instance.md`.
+  2. Preserve the prior valid executed instance `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` (and guided template `projects/c-rsp/BUILD_CONTRACT.instance.md` when applicable).
   3. Discard or quarantine any partial replacement instance that fails schema or section-order validation.
   4. Invalidate any evidence artifact that references a failed or partial contractization run by writing a failure status into `evidence/fde-control-plane/contract-refactor-evidence.json` or a sibling failure artifact.
   5. Restore the previous valid versions of:
 
-     * `projects/c-rsp/BUILD_CONTRACT.instance.md`
+     * `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`
      * `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md` if overwritten
      * `governance-rules/fde-lifecycle-invariants.yaml` if overwritten
      * `schemas/fde-lifecycle.schema.json` if overwritten

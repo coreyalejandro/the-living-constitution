@@ -2,23 +2,20 @@
 
 ## Session Status (as of 2026-04-05)
 
-- **Plan status:** COMPLETE — reviewed, awaiting user's external agent review feedback
-- **Execution status:** NOT STARTED — no files modified, no contracts instantiated
+- **Plan status:** COMPLETE — reviewed; **A-0 (C-RSP documentation system overhaul)** executed in-repo: canonical vs guided vs executed roles normalized; see `projects/c-rsp/outcomes/CRSP-A0-DOCSYS-OVERHAUL-001.md`.
+- **Execution status:** A-0 template-system repair **applied** on branch work (see outcome artifact for scope and V&T).
 - **Branch:** `claude/restructure-tlc-enterprise-LxIXt` (develop and push here)
-- **User requested:** Copy this plan into the repo and push so they can access it locally
-- **Blocked by:** Plan mode was active; user needs to exit plan mode or start a new session to execute
-- **Pending feedback:** User said "I'm getting another agent to review it" — review feedback not yet received
-- **Next action:** (1) Exit plan mode, (2) copy this file to `plans/master-plan.md` in repo, (3) commit and push to branch, (4) await review feedback before executing Contract A-1
+- **Next action:** (1) Review A-0 outcome and diffs, (2) proceed to **A-1** only when satisfied that template authority is unambiguous, (3) run `./scripts/run_fde_control_plane_verification.sh` after pulls to refresh FDE evidence if paths change
 
 ### Key Decisions Made
 - **C-RSP** = Constitutionally-Regulated Single Pass (canonical expansion, no variants)
 - **"Canonical tool"** replaces "signature tool"
-- **Front door** = README → STATUS.json (NOT the Golden Sandbox)
+- **Front door** = README → STATUS.json / STATUS.md (NOT the Golden Sandbox)
 - **Golden Sandbox** = execution substrate / guarded ingress
-- **Blind Man's Test** enforced structurally at every tier (not just aspirational)
+- **Blind Man Test** enforced structurally at every tier, with required ordered operations, halt conditions, success conditions, and major-component code snippets when code-bearing components materially change
 - **3 Adoption Tiers** surface as user-facing workflow choice (Quick/Standard/Full)
 - **5 Work Types** (Build/Fix/Refactor/Governance/Discovery) with type-specific starter prompts
-- **CONTROL_RULE_KBC_01**: Single active BUILD_CONTRACT at a time until clear
+- **CONTROL_RULE_KBC_01**: Single active BUILD_CONTRACT at a time until clear; no constitutional execution against a known-bad template system
 
 ### Unresolved Items
 - ChatGPT had a preferred framing the user mentioned but never shared
@@ -37,6 +34,61 @@ TLC (The Living Constitution) is being restructured from a governance meta-repos
 4. **IDE-agnostic execution** — Claude Code primary, Cursor fallback, C-RSP contracts portable across all agents
 
 The immediate trigger: the current constitutional documents (THE_LIVING_CONSTITUTION.md, root CLAUDE.md, MASTER_PROJECT_INVENTORY.*) do not reflect the taxonomy, and until those three surfaces agree, every subsequent contract will drift.
+
+---
+
+## Immediate Next Move: Documentation Overhaul Before Execution
+
+TLC does **not** need another partial contract first. It needs a **document overhaul across the constitutional truth surfaces, the C-RSP template system, and the template folder semantics** before any further execution claims are made.
+
+### Why this is first
+
+The current state has three compounding problems:
+
+1. **Truth-surface drift** — `THE_LIVING_CONSTITUTION.md`, root `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.*`, and the plan are not yet aligned
+2. **Template drift** — `projects/c-rsp/BUILD_CONTRACT.md` and `projects/c-rsp/BUILD_CONTRACT.instance.md` are semantically inverted or unclear in role
+3. **Documentation-system drift** — project contracts, template artifacts, workflow guidance, and constitutional instructions are mixed together in a way that fails the Blind Man Test
+
+### A-0: Documentation System Overhaul (new blocking contract)
+
+**Purpose:** Repair the document system before constitutional refactor execution.
+
+| Contract | Scope | Key Deliverables |
+|---|---|---|
+| **A-0: Documentation System Overhaul** (NEW FIRST MOVE) | Normalize the C-RSP folder, clarify master-template vs. instance-template vs. executed-contract roles, repair naming, and align all governing documentation surfaces | Canonical role map for all C-RSP artifacts; corrected template hierarchy; Blind-Man-Test-compliant template requirements; document census; constitutional truth-surface alignment plan |
+
+### A-0 Target Surfaces
+
+The overhaul must explicitly inventory and reconcile at minimum:
+
+- `README.md`
+- `STATUS.json`
+- `STATUS.md`
+- `THE_LIVING_CONSTITUTION.md`
+- root `CLAUDE.md`
+- `MASTER_PROJECT_INVENTORY.json`
+- `MASTER_PROJECT_INVENTORY.md`
+- `projects/c-rsp/BUILD_CONTRACT.md`
+- `projects/c-rsp/BUILD_CONTRACT.instance.md`
+- `projects/c-rsp/contract-schema.json`
+- `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md`
+- `projects/*/BUILD_CONTRACT*`
+- `projects/*/CLAUDE.md`
+- `plans/master-plan.md`
+
+### A-0 Success Standard
+
+A-0 is complete only when all of the following are true:
+
+1. the role of each governing document is explicit
+2. the template system has a clear hierarchy
+3. the Blind Man Test is encoded structurally in the template system
+4. the documentation system clearly separates:
+   - constitutional truth surfaces
+   - template artifacts
+   - workflow artifacts
+   - executed project contracts
+5. A-1 can be instantiated without guessing which file is authoritative
 
 ---
 
@@ -83,16 +135,17 @@ All work is executed via C-RSP Build Contracts instantiated from `projects/c-rsp
 
 ### Series A: Constitutional Refactor
 
-**Purpose:** Rewrite the three canonical truth surfaces to codify the taxonomy.
+**Purpose:** After A-0 repairs the documentation system, rewrite the canonical truth surfaces to codify the taxonomy.
 
 | Contract | Scope | Key Deliverables |
 |---|---|---|
+| **A-0: Documentation System Overhaul** (NEW FIRST MOVE) | Repair the document system and C-RSP template hierarchy before constitutional execution | Canonical document role map; repaired C-RSP template system; normalized artifact naming/placement; Blind-Man-Test-compliant template requirements |
 | **A-1: Taxonomy Canonicalization** (FIRST MOVE) | Codify Domains/Jurisdictions/Institutions/Projects/Verification layers into THE_LIVING_CONSTITUTION.md, root CLAUDE.md, and MASTER_PROJECT_INVENTORY.* | Updated Article VI (Institutionalization) with taxonomy layers; domain→institution registry in MASTER_PROJECT_INVENTORY.json; CLAUDE.md project registry updated with institutional roles; all three surfaces in agreement |
 | **A-2: C-RSP Template Unification** | Upgrade the default BUILD_CONTRACT template in CLAUDE.md to C-RSP with tiered detail. Kill the prose-only path. | Single unified template; Tier-1 minimum enforces Blind Man's test (ordered operations, halt conditions, success conditions); fill-in-the-blank workflow; detail level chosen at contract start; common contract templates for product side |
 | **A-3: SentinelOS Disposition** | Evaluate SentinelOS: absorb, deprecate, or redefine | Decision document + constitutional amendment if needed; update all references |
 | **A-4: ClarityAI Discovery** | Discover and classify ClarityAI from GitHub; determine domain assignment and institutional role | Classification document; MASTER_PROJECT_INVENTORY.* entry if applicable |
 
-**Critical path:** A-1 must complete first. A-2 through A-4 can run in parallel after A-1.
+**Critical path:** A-0 must complete first. A-1 depends on A-0. A-2 through A-4 may proceed only after the repaired template/document system is in place.
 
 ### Series B: Taxonomy Topography
 
@@ -142,9 +195,12 @@ All work is executed via C-RSP Build Contracts instantiated from `projects/c-rsp
 
 ## Execution Order
 
-```
-A-1 (Taxonomy Canonicalization) ← FIRST MOVE, blocks everything
- ├── A-2 (C-RSP Unification) ← can start after A-1
+```text
+A-0 (Documentation System Overhaul) ← NEW FIRST MOVE, blocks everything
+      │
+      v
+A-1 (Taxonomy Canonicalization) ← depends on repaired template/document system
+ ├── A-2 (C-RSP Unification) ← can continue after A-0; must not drift from A-1
  ├── A-3 (SentinelOS Disposition) ← can start after A-1
  └── A-4 (ClarityAI Discovery) ← can start after A-1
       │
@@ -164,7 +220,58 @@ E-1 through E-3 (Constitutional UI) ← after Series D
 
 ---
 
-## The First Move: Contract A-1
+## The First Move: Contract A-0
+
+**A single C-RSP Build Contract whose only job is to overhaul the documentation system and normalize the constitutional document hierarchy before any taxonomy execution begins.**
+
+### A-0 Objectives
+
+1. Explicitly classify every governing document by role
+2. Normalize the C-RSP template hierarchy:
+   - canonical master template
+   - guided instance template
+   - workflow/router artifacts
+   - executed project contracts
+3. Identify naming/path inversions and document-system drift
+4. Encode Blind-Man-Test structural requirements into the template system
+5. Produce a clean handoff so A-1 can execute against an unambiguous template/document system
+
+### Files to Modify (A-0)
+
+| File | Change |
+|---|---|
+| `plans/master-plan.md` | Update execution order and blocking dependency to A-0 first |
+| `projects/c-rsp/BUILD_CONTRACT.md` | Repair canonical master-template structure and role |
+| `projects/c-rsp/BUILD_CONTRACT.instance.md` | Repair guided instance-template role and ergonomics |
+| `projects/c-rsp/contract-schema.json` | Reconcile schema with required structural Blind-Man-Test fields if needed |
+| `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Ensure output shape matches repaired contract system |
+| `root CLAUDE.md` | Update Zero-Shot Build Contract guidance to point at repaired template hierarchy |
+| `MASTER_PROJECT_INVENTORY.md` | Add or sync any document-system artifact notes if required |
+
+### Files to Read (reference, not modify unless required by contract)
+
+| File | Purpose |
+|---|---|
+| `README.md` | Confirm front-door positioning and governing entrypoint |
+| `STATUS.json` / `STATUS.md` | Confirm operational truth-surface role |
+| `THE_LIVING_CONSTITUTION.md` | Confirm constitutional role and amendment pressure |
+| `projects/*/BUILD_CONTRACT*` | Inventory executed contract patterns and drift |
+| `projects/*/CLAUDE.md` | Inventory local project instruction surfaces |
+| `plans/master-plan.md` | Keep plan aligned with repaired template system |
+
+### A-0 Output
+
+A-0 must produce a normalized document system in which an executor can answer, from text alone:
+
+- which file is the canonical template
+- which file is the guided instance template
+- which files are workflow artifacts
+- which files are executed project contracts
+- what structural fields are required for Blind-Man-Test compliance
+
+## The Second Move: Contract A-1
+
+Only after A-0 is complete:
 
 **A single C-RSP Build Contract whose only job is to canonicalize the taxonomy and topography across three truth surfaces:**
 
@@ -172,7 +279,7 @@ E-1 through E-3 (Constitutional UI) ← after Series D
 2. Root `CLAUDE.md` — Update the Project Registry table to include domain assignment, institutional role (governing body vs. governed project vs. infrastructure), canonical tool name, and topology mode for every project
 3. `MASTER_PROJECT_INVENTORY.json` / `MASTER_PROJECT_INVENTORY.md` — Add `domain_registry` object with institution-to-project mapping, canonical tools, and dual-topology paths
 
-**This contract must be fully instantiated against `projects/c-rsp/BUILD_CONTRACT.md` (all 17 sections) before execution.**
+**A-1 must be instantiated only against the repaired template system created by A-0.**
 
 ### Files to Modify (A-1)
 
@@ -185,261 +292,251 @@ E-1 through E-3 (Constitutional UI) ← after Series D
 | `config/domains.ts` | Add `governingBodies` and `canonicalTool` fields to SafetyDomain interface |
 | `config/projects.ts` | Add `institutionalRole` and `canonicalTool` fields to project entries |
 
-### Files to Read (reference, not modify)
+### Files to Read (A-1 reference)
 
 | File | Purpose |
 |---|---|
-| `projects/c-rsp/BUILD_CONTRACT.md` | Canonical template — contract must conform |
+| `projects/c-rsp/BUILD_CONTRACT.md` | Repaired canonical template |
+| `projects/c-rsp/BUILD_CONTRACT.instance.md` | Repaired guided instance template |
 | `projects/c-rsp/contract-schema.json` | Schema validation |
 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Output format |
 | `00-constitution/invariant-registry.json` | 59 invariants to map to domains |
 | `00-constitution/doctrine-to-invariant.map.json` | Doctrine→invariant relationships |
 | `00-constitution/role-registry.json` | Separation of powers roles |
-| Every `projects/*/BUILD_CONTRACT.md` | Current state of each project |
+| Every `projects/*/BUILD_CONTRACT*` | Current project constitutional role pressure |
+
+### A-1 Output
+
+A-1 must produce three aligned, taxonomy-canonical surfaces and an updated project registry.
 
 ---
 
 ## Verification
 
-After A-1 execution:
-1. `python3 scripts/verify_governance_chain.py --root .` exits 0
-2. `python3 scripts/verify_project_topology.py --root . --with-governance` exits 0
-3. THE_LIVING_CONSTITUTION.md, root CLAUDE.md, and MASTER_PROJECT_INVENTORY.json all reference the same taxonomy layers and domain assignments
-4. No project exists in one surface but not the others (census parity)
-5. The Kanban board for A-1 is clear before any Series B contract is instantiated
+1. `python3 scripts/verify_governance_chain.py --root .` exits 0 after A-1
+2. `python3 scripts/verify_project_topology.py --root . --with-governance` exits 0 after A-1
+3. `projects/c-rsp/BUILD_CONTRACT.md` and `projects/c-rsp/BUILD_CONTRACT.instance.md` have distinct, explicit roles after A-0
+4. THE_LIVING_CONSTITUTION.md, root CLAUDE.md, and MASTER_PROJECT_INVENTORY.json all reference the same taxonomy layers and domain assignments after A-1
+5. No project exists in one surface but not the others (census parity)
+6. The Kanban board for A-0 is clear before A-1 is instantiated, and the Kanban board for A-1 is clear before any Series B contract is instantiated
 
 ---
-
 ---
-
 
 ## C-RSP Golden Workflow Templates (Contract A-2 Detail)
 
 ### Problem
 
-The current `BUILD_CONTRACT.md` template is constitutionally ambitious but operationally weak. It does not reliably pass the Blind Man Test because it allows:
+The current `BUILD_CONTRACT.md` template is a 17-section constitutional master. It's correct but **not ergonomic**: every field says `[REQUIRED]`, there's no guided workflow, and a human or agent filling it out must already know the schema to avoid mistakes. The tier system (Tier-1/2/3) exists in the schema but isn't surfaced as a user-facing choice that controls what they see.
 
-- master-template rules to blur into instance content
-- prose requirements without executable payloads
-- implementation-bearing contracts without component code shape
-- topology claims without paired path discipline
-- tier selection without structural consequences
-- acceptance criteria that are sometimes stronger than the evidence plan
+The Blind Man's Test — "Could someone who has never seen this codebase execute this contract by following the steps in order, knowing when to stop, and knowing what success looks like?" — is the quality bar, but it's not enforced structurally.
 
-The template must be revised so an executor can determine, from text alone:
+### Design: Three Layers
 
-1. what kind of contract this is
-2. what exact artifacts are in scope
-3. what exact steps to perform in order
-4. what code shape is expected for major components
-5. when to halt
-6. how to prove success
-7. what is not being claimed
+```
+┌─────────────────────────────────────────────────┐
+│  Layer 1: WORKFLOW ROUTER (detail chooser)       │
+│  "What kind of work? What tier?"                 │
+│  → Selects template + sets visible sections      │
+├─────────────────────────────────────────────────┤
+│  Layer 2: FILL-IN-THE-BLANK TEMPLATE             │
+│  Per-tier, per-type guided prompts               │
+│  Blind Man's Test enforced at every tier          │
+├─────────────────────────────────────────────────┤
+│  Layer 3: CANONICAL SCHEMA (unchanged)           │
+│  contract-schema.json — immutable 17 sections    │
+│  Workflow templates compile DOWN to this          │
+└─────────────────────────────────────────────────┘
+```
 
-### Design Correction
+Layer 3 (the existing schema) does NOT change. Layers 1 and 2 are new.
 
-The revised C-RSP system has three distinct artifacts and they must never be conflated:
+### Layer 1: Workflow Router
 
-| Artifact | Purpose | May Contain Concrete Project Content? |
+At contract start, two questions determine the template:
+
+**Question 1: What tier of governance?**
+
+| Choice | Visible Sections | Use When |
 |---|---|---|
-| `BUILD_CONTRACT.md` | Canonical master template | No |
-| `BUILD_CONTRACT.instance.md` | Workflow-friendly instance template | Only instance fields, not executed outcomes |
-| Project `BUILD_CONTRACT` / `BUILD_CONTRACT.md` | Fully instantiated executable contract for one task | Yes |
+| **Quick (Tier-1-MVG)** | §1 Identity, §2 Topology, §6 Execution (ops only), §9 Acceptance (pass/fail only), §14 Preflight, §16 Output | Single-file changes, documentation updates, config tweaks, discovery tasks |
+| **Standard (Tier-2-Operational)** | All of Quick + §3 Baseline, §5 Risk, §7 Lifecycle, §10 Rollback, §11 Evidence | Feature builds, refactors, integrations, multi-file changes |
+| **Full (Tier-3-Constitutional)** | All 17 sections | Cross-repo governance, constitutional amendments, new institution creation, dual-topology enforcement |
 
-### Non-Negotiable Structural Fixes
+**Question 2: What type of work?**
 
-#### 1. Blind Man Test becomes a hard structural section, not a principle
-
-Every executable contract, at every tier, must include a required execution payload with:
-
-- **Ordered Operations**
-- **Halt Conditions**
-- **Success Conditions**
-- **Failure Handling**
-
-Every ordered step must contain:
-
-- actor
-- exact action
-- exact input artifact
-- exact output artifact
-- verification method
-- failure response
-
-No vague execution language is permitted in executable sections.
-
-#### 2. Major Component code shape becomes mandatory
-
-If the work type is **Build**, **Fix**, or **Refactor**, and a component is materially changed, the contract must include a dedicated subsection for each major component with:
-
-- component name
-- exact path
-- role
-- interface contract
-- invariant coverage
-- implementation status
-- **real code snippet or structural stub**
-- exact verification command
-- failure signature
-
-This closes the gap where a contract says "build the engine" or "wire the verifier" without showing the expected code shape.
-
-#### 3. Tiering must change what is required, not just what is visible
-
-The tiers are:
-
-| Tier | Name | Required Minimum |
+| Type | Starter Prompts | Blind Man's Emphasis |
 |---|---|---|
-| Tier-1 | Quick / MVG | Identity, topology, execution payload, acceptance, preflight, output |
-| Tier-2 | Standard / Operational | Tier-1 plus baseline, risk, lifecycle, rollback, evidence |
-| Tier-3 | Full / Constitutional | All canonical sections plus dependency graph, invariant completeness, conflict matrix, halt matrix, governance lock |
+| **Build** | "What are you building? What exists now? What does done look like?" | Ordered build steps, file creation sequence, test commands |
+| **Fix** | "What's broken? How do you reproduce it? What does fixed look like?" | Repro steps, root cause, verification command |
+| **Refactor** | "What's changing shape? What must stay the same? How do you prove equivalence?" | Before/after invariants, regression test commands |
+| **Governance** | "What rule is changing? What does it affect? How do you verify compliance?" | Affected surfaces, compliance check commands, amendment procedure |
+| **Discovery** | "What are you investigating? What would you do with the answer? When do you stop?" | Search scope, halt conditions (found/not-found), output artifact |
 
-A lower-tier contract may not silently claim higher-tier completeness.
-
-#### 4. Dual-topology contracts must be fail-closed
-
-If `Topology Mode = Dual-Topology`, the contract must:
-
-- name the integrated path
-- name the standalone path
-- define parity or controlled divergence rules
-- define the verifier scope for both paths
-- block completion claims if one path is unresolved
-- register the blocked follow-on build in `projects/c-rsp/NEXT_CRSP_BUILD.json`
-
-#### 5. Master template and instance template must not contain executed-state language
-
-The master template and the instance template must not contain:
-
-- outcome summaries
-- done-state language
-- project-specific execution claims
-- repo-specific evidence claims unless those are clearly labeled as instance inputs
-
-### Revised Master Template Requirements
-
-The canonical `projects/c-rsp/BUILD_CONTRACT.md` must require these sections in canonical order:
-
-1. Contract Identity  
-2. Contract Topology + Profile  
-3. Baseline State  
-4. Dependencies and Inputs  
-5. Risk + Control Classification  
-6. Execution Model  
-7. Lifecycle State Machine  
-8. Invariants  
-9. Acceptance Criteria  
-10. Rollback & Recovery  
-11. Evidence + Truth Surface  
-12. Conflict Matrix  
-13. Halt Matrix  
-14. Preflight  
-15. Adoption Tiers  
-16. Output Format  
-17. Instance Declaration
-
-### Required Execution Model Substructure
-
-Section 6 must always contain:
-
-#### 6A. Ordered Operations
-
-For each step:
+The router produces a `CONTRACT_WORKFLOW_HEADER` block at the top of the instance:
 
 ```markdown
-- **Step ID:** OP-01
-- **Actor:** human | agent | CI | verifier
-- **Action:** exact command or exact file operation
-- **Inputs:** exact file(s) or artifact(s)
-- **Outputs:** exact file(s), artifact(s), or observable console output
-- **Verify:** exact command, test, diff, or inspection
-- **If Failure:** exact halt, rollback, or escalation action
+<!-- C-RSP Workflow Header -->
+<!-- Tier: Quick | Standard | Full -->
+<!-- Type: Build | Fix | Refactor | Governance | Discovery -->
+<!-- Blind Man's Test: ENFORCED -->
+<!-- Generated: YYYY-MM-DD -->
 ```
 
-#### 6B. Halt Conditions
+### Layer 2: Fill-in-the-Blank Templates
 
-Every halt entry must have:
+Each tier×type combination gets guided prompts instead of raw `[REQUIRED]`. The Blind Man's Test is enforced by requiring three specific subsections in every Execution Model (§6), regardless of tier:
 
-- condition
-- stop reason
-- next action
-
-#### 6C. Success Conditions
-
-Every success entry must be objectively observable.
-
-#### 6D. Major Component Implementation Snippets
-
-Required when `Work Type = Build | Fix | Refactor` and a component is materially affected.
-
-For each major component:
+#### Blind Man's Test Block (mandatory at every tier)
 
 ```markdown
-#### Component: {COMPONENT_NAME}
-- **Path:** {EXACT_PATH}
-- **Role:** {ONE SENTENCE}
-- **Interface Contract:** {INPUTS / OUTPUTS / CALL SURFACE}
-- **Invariant Coverage:** {LIST}
-- **Implementation Status:** Draft | Canonical Example | Production Target
-- **Snippet:**
-```ts
-// real code or structural stub
+## 6. Execution Model
+
+### 6.BMT — Blind Man's Test
+
+#### Ordered Operations
+<!-- List every step in execution order. A person who has never seen this
+     codebase must be able to follow these steps top-to-bottom without
+     judgment calls. If a step requires a decision, it's not ready. -->
+
+1. [Step]: [Exact command or action] → [Expected output]
+2. [Step]: [Exact command or action] → [Expected output]
+3. ...
+
+#### Halt Conditions
+<!-- When must execution STOP? List every condition that means
+     "do not continue, something is wrong." -->
+
+- HALT if: [condition] → [what to do instead]
+- HALT if: [condition] → [what to do instead]
+
+#### Success Conditions
+<!-- How does the executor KNOW they're done? Not "it works" —
+     specific observable outcomes. -->
+
+- SUCCESS when: [observable condition]
+- SUCCESS when: [observable condition]
+- DONE when: ALL success conditions met AND zero halt conditions active
 ```
-- **Verification:** {EXACT_COMMAND}
-- **Failure Signature:** {HOW BREAKAGE PRESENTS}
+
+#### Quick (Tier-1) Fill-in-the-Blank
+
+```markdown
+# C-RSP Instance: [What are you doing, in ≤10 words?]
+
+## 1. Identity
+- **Title:** [name]
+- **ID:** CRSP-[YYYY]-[NNN]
+- **Tier:** Tier-1-MVG
+- **Objective:** [One sentence: what does this accomplish?]
+- **Scope:** [What files/systems are touched?]
+- **Not in scope:** [What are you explicitly NOT doing?]
+
+## 2. Topology
+- **Mode:** [TLC-Core | Satellite | Dual-Topology]
+- **Truth surface:** [Which file is the source of truth for this change?]
+
+## 6. Execution (Blind Man's Test)
+
+### Ordered Operations
+1. ...
+
+### Halt Conditions
+- HALT if: ...
+
+### Success Conditions
+- SUCCESS when: ...
+
+## 9. Acceptance Criteria
+| What | How to check | Pass if |
+|---|---|---|
+| [criterion] | [command or inspection] | [expected result] |
+
+## 14. Preflight
+- [ ] No placeholders remain
+- [ ] Topology declared
+- [ ] Commands in Ordered Operations are copy-pasteable
+
+## 16. Output → CRSP_OUTCOME_TEMPLATE.md
 ```
 
-### Revised Instance Template Requirements
+#### Standard (Tier-2) Fill-in-the-Blank
 
-The workflow-friendly `BUILD_CONTRACT.instance.md` must:
+Includes everything from Quick, plus:
 
-- compile down to the canonical 17-section structure
-- use guided prompts instead of `[REQUIRED]`
-- preserve every required section even when the tier hides detail from the user
-- fill below-tier sections with canonical `N/A — below tier threshold` values rather than omitting them
-- require the Blind Man execution payload at every tier
-- require code snippets for major components when applicable
+```markdown
+## 3. Baseline
+- **Current state:** [What exists RIGHT NOW? Be honest.]
+- **Anchor commit:** [SHA or "HEAD of <branch>"]
+- **Known gaps:** [What's missing or broken that this contract addresses?]
+
+## 5. Risk
+- **Risk class:** [Low | Moderate | High]
+- **Side effects:** [What changes outside the target files?]
+- **Reversible?** [Yes: how | No: why not]
+
+## 7. Lifecycle
+- **Starting state:** Draft
+- **Promotion gate:** [What must be true to mark Active → Frozen?]
+
+## 10. Rollback
+- **Safe state:** [Describe the state to return to if this fails]
+- **Rollback command:** [Exact command: git revert, restore, etc.]
+
+## 11. Evidence
+- **Evidence paths:** [Where does proof live after execution?]
+- **Truth discipline:** [What claims does this contract make, and where is proof?]
+```
+
+#### Full (Tier-3) Fill-in-the-Blank
+
+Includes everything from Standard, plus all remaining sections (§4 Dependencies, §8 Invariants, §12 Conflict Matrix, §13 Halt Matrix) with guided prompts. Same pattern: questions instead of `[REQUIRED]`.
+
+### Workflow File Locations
+
+```
+projects/c-rsp/
+  BUILD_CONTRACT.md              ← Master template (unchanged)
+  contract-schema.json           ← Canonical schema (unchanged)
+  CRSP_OUTCOME_TEMPLATE.md       ← Output format (unchanged)
+  workflows/
+    ROUTER.md                    ← Decision tree for tier + type selection
+    tier-1-quick.template.md     ← Fill-in-the-blank for Tier-1
+    tier-2-standard.template.md  ← Fill-in-the-blank for Tier-2
+    tier-3-full.template.md      ← Fill-in-the-blank for Tier-3
+    type-starters/
+      build.md                   ← Starter prompts for Build type
+      fix.md                     ← Starter prompts for Fix type
+      refactor.md                ← Starter prompts for Refactor type
+      governance.md              ← Starter prompts for Governance type
+      discovery.md               ← Starter prompts for Discovery type
+    blind-mans-test.partial.md   ← Reusable BMT block (included in all tiers)
+```
 
 ### Validation Rule
 
-A C-RSP template or instance is invalid if any of the following are true:
+A workflow template is valid if and only if:
+1. It compiles to a valid `contract-schema.json` instance (sections not surfaced at the chosen tier are filled with canonical defaults or `N/A — below tier threshold`)
+2. The Blind Man's Test block (§6.BMT) has ≥1 ordered operation, ≥1 halt condition, and ≥1 success condition
+3. Every ordered operation has an exact command or action (no "figure out how to...")
+4. Every halt condition has a recovery action (not just "stop")
+5. Every success condition is observable (not "it works" — specific output, exit code, file state)
 
-1. canonical section order is broken
-2. an executable section contains vague continuation language
-3. a material component is changed without a component snippet block
-4. a dual-topology contract names only one path and still claims completion
-5. a success condition is not observable
-6. a halt condition lacks an exact next action
-7. evidence claims exceed the truth surface
-8. a lower-tier contract implies higher-tier guarantees
+### How This Relates to the Plan
 
-### A-2 Deliverables (Corrected)
+- **Contract A-2** builds these workflow templates
+- **Contract A-1** (taxonomy canonicalization) will be the first contract **instantiated using** the Quick workflow (Tier-1, Governance type) — proving the template works
+- All subsequent Series B-E contracts are instantiated through the router
+- The root `CLAUDE.md` Zero-Shot Build Contract Format section gets replaced with a pointer to the router
 
-| Deliverable | Purpose |
-|---|---|
-| `projects/c-rsp/BUILD_CONTRACT.md` | Revised canonical master template |
-| `projects/c-rsp/BUILD_CONTRACT.instance.md` | Revised guided instance template |
-| `projects/c-rsp/workflows/ROUTER.md` | Tier + work-type decision router |
-| `projects/c-rsp/workflows/tier-1-quick.template.md` | Quick workflow template |
-| `projects/c-rsp/workflows/tier-2-standard.template.md` | Standard workflow template |
-| `projects/c-rsp/workflows/tier-3-full.template.md` | Full workflow template |
-| `projects/c-rsp/workflows/partials/blind-mans-test.partial.md` | Required execution payload partial |
-| `projects/c-rsp/workflows/partials/component-snippet.partial.md` | Required major-component snippet partial |
-| `projects/c-rsp/workflows/type-starters/*.md` | Work-type starter prompts |
+---
 
-### Relationship to A-1
+## Key Terminology
 
-Contract **A-1** should not execute against the old template. The corrected sequence is:
-
-1. repair the canonical C-RSP template system
-2. validate that the repaired template passes the Blind Man Test
-3. instantiate A-1 using the repaired instance template
-4. execute A-1 only after template repair is verified
-
-### Key Terminology
-
-- **C-RSP** = Constitutionally-Regulated Single Pass
-- **Canonical tool** = the named component that does the bulk of governance/enforcement work for an institution
-- **Dual-topology** = integrated TLC component plus standalone governed product
-- **Blind Man Test** = text-only executability with no visual inference or omitted steps
-- **Major component snippet** = required code-shape block for any materially changed component
+- **C-RSP** = Constitutionally-Regulated Single Pass (canonical, no variants)
+- **Canonical tool** = the named component that does the bulk of governance/enforcement work for an institution (replaces "signature tool")
+- **Dual-topology** = every institution/product must exist as both integrated TLC component AND standalone product
+- **Governing body / Institution** = the app/agent that governs a domain
+- **Governed entity / Project** = consumer/dev product under institutional governance
+- **Front door** = README → STATUS.json / STATUS.md (NOT the sandbox)
+- **Execution substrate** = Golden Sandbox (guarded ingress for governed apps)

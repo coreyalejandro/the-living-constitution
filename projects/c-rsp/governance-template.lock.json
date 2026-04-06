@@ -20,9 +20,9 @@
       "note": "INVARIANT_TERM_01 through INVARIANT_REC_01 as listed in master template section 0 and 8."
     },
     "fde_dual_topology": {
-      "source": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+      "source": "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md",
       "version": "1.0.0",
-      "note": "INVARIANT_DUAL_01 through INVARIANT_NEXT_01 and profile invariants for FDE control plane gap closure."
+      "note": "INVARIANT_DUAL_01 through INVARIANT_NEXT_01 and profile invariants for FDE control plane gap closure (executed instance; guided template is projects/c-rsp/BUILD_CONTRACT.instance.md)."
     }
   },
   "verifier": {
