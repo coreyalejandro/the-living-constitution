@@ -29,7 +29,7 @@
 
 ## What Was Just Completed
 
-- **C-RSP hybrid memory model (2026-04-06):** Seeded `projects/c-rsp/openmemory.md` (append-only C-RSP journal + seed entry). Updated `projects/c-rsp/AGENT_PROMPT.md` (Memory model section, pre-flight reads root `openmemory.md` + `projects/c-rsp/openmemory.md`, session close appends only to `projects/c-rsp/openmemory.md`; fixed heading/list structure). Documented in root `openmemory.md` Components and `projects/c-rsp/README.md` table.
+- **C-RSP hybrid memory model (2026-04-06):** Seeded `projects/c-rsp/openmemory.md` (append-only C-RSP journal + seed entry). Updated `projects/c-rsp/AGENT_PROMPT.md` (Memory model section, pre-flight reads root `openmemory.md` + `projects/c-rsp/openmemory.md`, session close appends only to `projects/c-rsp/openmemory.md`; fixed heading/list structure). Documented in root `openmemory.md` Components, `projects/c-rsp/README.md` table, and **`CANONICAL_ROLE_MAP.md`** § Memory surfaces (hybrid).
 
 - **PR #4 — sync local main via branch (2026-04-05):** Created `sync/local-main-work`, opened [PR #4](https://github.com/coreyalejandro/the-living-constitution/pull/4) into `main`. Unblocked CI: pushed missing `consentchain` commit so submodule `e487934` resolved; fixed governance (INVENTORY `verify_workflow_sha256` for `verify.yml`, `scripts/doc_root_sensor.py` in `00-constitution/role-registry.json`, `render_status_surface.py`); synced `projects/consentchain/00-constitution/role-registry.json` + bumped submodule (`cecb3d6`). `verify-structure` green; merged at `397a56e`; local `main` fast-forwarded to match `origin/main`.
 
