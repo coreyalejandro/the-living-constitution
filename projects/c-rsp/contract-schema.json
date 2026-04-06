@@ -113,6 +113,26 @@
       "order": 17
     }
   ],
+  "required_core_section_ids": [
+    "template_governance",
+    "contract_identity",
+    "contract_topology_profile",
+    "baseline_state",
+    "dependencies_inputs",
+    "risk_control_classification",
+    "execution_model",
+    "lifecycle_state_machine",
+    "invariants",
+    "acceptance_criteria",
+    "rollback_recovery",
+    "evidence_truth_surface",
+    "conflict_matrix",
+    "halt_matrix",
+    "preflight",
+    "adoption_tiers",
+    "output_format",
+    "instance_declaration"
+  ],
   "customization_zones": [
     "profile_specific_invariants",
     "domain_acceptance_criteria",
@@ -211,6 +231,44 @@
     "reject_unresolved_placeholders_in_executable_instances": true,
     "require_canonical_terminology": true,
     "require_stop_override_when_risk_or_side_effect_triggers": true,
-    "require_rollback_recovery_for_tier_2_plus": true
+    "require_rollback_recovery_for_tier_2_plus": true,
+    "blind_man_execution": {
+      "ordered_operations_required_in_executable_instances": true,
+      "halt_conditions_required_in_executable_instances": true,
+      "success_conditions_required_in_executable_instances": true,
+      "major_component_snippets_required_when_material_code_change": true,
+      "guided_template_path": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+      "canonical_master_template_path": "projects/c-rsp/BUILD_CONTRACT.md",
+      "note": "Executable instances must implement Section 6A–6D of the canonical master (Ordered Operations, Halt, Success, Major Component Snippets). The guided template is a workflow artifact and is not an executable instance until copied to an executed path and fully instantiated."
+    },
+    "authority_order_crsp_a0_1": {
+      "description": "Strict precedence for C-RSP template-system bands; band index 1 is highest. Within band 5, listed helpers are peers (no mutual override). Band 6 lists executed-instance globs (also peers to each other).",
+      "ordered_paths": [
+        "projects/c-rsp/BUILD_CONTRACT.md",
+        "projects/c-rsp/BUILD_CONTRACT.instance.md",
+        "projects/c-rsp/contract-schema.json",
+        "projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md",
+        "projects/c-rsp/workflows/",
+        "projects/*/BUILD_CONTRACT*"
+      ],
+      "band_5_non_workflow_helpers": [
+        "projects/c-rsp/INSTANCE_PROCESS.md",
+        "projects/c-rsp/PASS8_TEMPLATE.md",
+        "projects/c-rsp/BUILD_CONTRACT.instance.example.md",
+        "projects/c-rsp/BUILD_CONTRACT.instance.template.md"
+      ],
+      "band_6_executed_instance_globs": [
+        "projects/*/BUILD_CONTRACT*",
+        "projects/c-rsp/instances/*.md",
+        "projects/c-rsp/BUILD_CONTRACTS/*.md"
+      ],
+      "human_readable_map": "projects/c-rsp/CANONICAL_ROLE_MAP.md",
+      "invariants": [
+        "INVARIANT_SEM_01",
+        "INVARIANT_SEM_02",
+        "INVARIANT_SEM_03",
+        "INVARIANT_SEM_04"
+      ]
+    }
   }
 }

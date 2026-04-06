@@ -21,7 +21,8 @@
   ],
   "truth_surface_mapping": {
     "canonical_template": "projects/c-rsp/BUILD_CONTRACT.md",
-    "instance": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+    "guided_instance_template": "projects/c-rsp/BUILD_CONTRACT.instance.md",
+    "executed_instance": "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md",
     "lifecycle_spec": "docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md",
     "plan_prose": "docs/fde-control-plane/Refactored-FDE-Control-Plane-Plan.md",
     "invariants": "governance-rules/fde-lifecycle-invariants.yaml",

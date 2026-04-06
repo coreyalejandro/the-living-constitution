@@ -27,8 +27,8 @@
     "last_verified_commit": "30805eed1d51ca78107294376c1b783275e484aa",
     "last_remote_qualifying_commit": "30805eed1d51ca78107294376c1b783275e484aa",
     "artifact_name": "governance-verification-runs-23774310879-1",
-    "verify_workflow_sha256": "5f29cef83ef2400f71ce9e0b2dbf1d4c9c12f0d10bef5e71e2650004691eefc2",
-    "verify_workflow_sha256_at_last_remote_run": "5f29cef83ef2400f71ce9e0b2dbf1d4c9c12f0d10bef5e71e2650004691eefc2",
+    "verify_workflow_sha256": "b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8",
+    "verify_workflow_sha256_at_last_remote_run": "b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8",
     "status": "pending",
     "tip_state_truth": "tip_pending",
     "escalation_state": "review_required",
@@ -287,7 +287,7 @@
         "path_exists_status": "unknown",
         "has_claude_md": false,
         "has_build_contract_md": true,
-        "repo_path_source": "none — meta template (C-RSP framework); no Repo Path section"
+        "repo_path_source": "none — meta template (C-RSP framework); operator entry README.md; no Repo Path section; semantic authority order CRSP-A0 / CRSP-A0-1: BUILD_CONTRACT.md (1) > BUILD_CONTRACT.instance.md (2) > contract-schema.json (3) > CRSP_OUTCOME_TEMPLATE.md (4) > workflows/* + band-5 non-workflow helpers (5) > executed BUILD_CONTRACT* + instances/*.md + BUILD_CONTRACTS/*.md (6); see projects/c-rsp/CANONICAL_ROLE_MAP.md"
       },
       {
         "slug": "consent-gateway-auth0",

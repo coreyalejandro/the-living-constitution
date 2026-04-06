@@ -28,7 +28,7 @@ Every instruction, path, transition, file operation, verification step, and reco
 
 ### 2.1 BUILD
 
-- **Entry:** Contract instance exists at `projects/c-rsp/BUILD_CONTRACT.instance.md` in `Draft`, or explicit authorization to extend artifacts.
+- **Entry:** Executed contract instance exists at `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` (or successor path) in `Draft`, or explicit authorization to extend artifacts. The guided template is `projects/c-rsp/BUILD_CONTRACT.instance.md` (not an executed contract until copied and filled).
 - **Exit to STABILIZE requires:**  
   - `docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md` exists (this file).  
   - `governance-rules/fde-lifecycle-invariants.yaml` exists.  
@@ -87,7 +87,7 @@ Each transition must update or create:
 
 ## 6. Contract lifecycle (Draft / Active / Frozen / Superseded)
 
-Separate from FDE operating lifecycle: see `projects/c-rsp/BUILD_CONTRACT.instance.md` Section 7. FDE `OPERATE` does not imply contract `Active` unless contract transition guards are met.
+Separate from FDE operating lifecycle: see the executed instance `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md` Section 7. FDE `OPERATE` does not imply contract `Active` unless contract transition guards are met.
 
 ---
 

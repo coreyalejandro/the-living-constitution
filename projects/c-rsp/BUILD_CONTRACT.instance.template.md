@@ -1,6 +1,8 @@
 # BUILD CONTRACT INSTANCE
 ## Constitutionally-Regulated Single Pass Executable Prompt
 
+> **Artifact role:** **Generator/template helper** — structural scaffold for producing instances. **Not** `projects/c-rsp/BUILD_CONTRACT.md` (canonical master), **not** `BUILD_CONTRACT.instance.md` (guided instance template). Subordinate to the master template.
+>
 > **Instance Status:** Executable only when every `[REQUIRED]` is resolved, schema validation passes, preflight passes, and topology matches verifier class per `contract-schema.json`.
 
 ---

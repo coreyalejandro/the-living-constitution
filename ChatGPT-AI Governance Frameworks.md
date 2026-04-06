@@ -1,4 +1,5 @@
 <!-- markdownlint-disable --><!-- ChatGPT export: Prompt/Response structure, duplicate headings, setext, bare URLs are intentional; see .markdownlintignore -->
+<!-- TLC: Non-canonical archive. Live C-RSP authority: projects/c-rsp/CANONICAL_ROLE_MAP.md — do not treat paths or filenames in this export as current repo truth. -->
 
 # AI Governance Frameworks
 

@@ -4,13 +4,54 @@
 > **Template Status:** Framework template only. Not executable until instantiated with all required fields, profile overlays, acceptance criteria, schema validation, and lifecycle controls.
 
 ---
+## Canonical Artifact Role
+
+This file is the **canonical master template** for all Constitutionally-Regulated Single Pass (C-RSP) contracts. It is the **highest-authority reusable** C-RSP structural source in this repository.
+
+**Authority order (strict; lower rows do not override higher rows):**
+
+| Order | Artifact | Role |
+|------:|----------|------|
+| 1 | `projects/c-rsp/BUILD_CONTRACT.md` (**this file**) | Canonical master template — reusable structure, invariants, execution discipline (e.g. §6 Blind Man). |
+| 2 | `projects/c-rsp/BUILD_CONTRACT.instance.md` | Guided instance template — subordinate drafting aid; must compile to the structure and authority of this file. |
+| 3 | `projects/c-rsp/contract-schema.json` | Schema artifact — machine-readable shape and validation rules for instances. |
+| 4 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Outcome artifact — mandatory V&T reporting shape for C-RSP run summaries. |
+| 5 | `projects/c-rsp/workflows/*` **and** the profile/process helper files named in **Non-workflow helpers (row 5)** (below) | Workflow / router / profile / example helpers — ergonomic only; **not** truth surfaces and **not** authoritative over rows 1–4. |
+| 6 | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, and `projects/c-rsp/BUILD_CONTRACTS/*.md` | Executed project contracts — scope-specific instances; **not** reusable canonical templates. |
+
+**Non-workflow helpers (row 5 — same subordination as `workflows/*`):** `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md`. These **must not** be cited as the canonical master template or as substitutes for rows 1–4.
+
+**Conflict rule:** If any subordinate file (rows 2–6) conflicts with **this file**, **this file controls** unless the repo records a formal supersession path (e.g. constitutional amendment per `THE_LIVING_CONSTITUTION.md`).
+
+**Semantic invariants**
+
+- **INVARIANT_SEM_01:** The canonical master template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.md`.
+- **INVARIANT_SEM_02:** The guided instance template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.instance.md` and is **subordinate** to the master template.
+- **INVARIANT_SEM_03:** Workflow and profile/process helper artifacts under `projects/c-rsp/workflows/` **and** the non-workflow helper paths listed in **Canonical Artifact Role** (row 5) are helpers only and do not constitute governing authority over rows 1–4.
+- **INVARIANT_SEM_04:** Executed project contracts are **instances** for a concrete scope, not reusable canonical templates.
+
+---
 ## 0. Template Governance
 
-- **Template Class:** Constitutional master template
+- **Template Class:** Constitutional **canonical master template** (this file: `projects/c-rsp/BUILD_CONTRACT.md`)
 - **Canonical Expansion:** Constitutionally-Regulated Single Pass
 - **Invalidation Rule:** Any alternate expansion of C-RSP is governance drift and invalidates the contract instance.
-- **Instance Requirement:** This template is not executable by itself. Every run must produce or reference an instantiated contract artifact.
+- **Instance Requirement:** This template is not executable by itself. Every run must produce or reference an instantiated contract artifact (see **Artifact class map** below).
 - **Schema Authority:** `contract-schema.json` is the canonical machine-readable definition of contract shape.
+
+### Artifact class map (non-overlapping roles)
+
+Authoritative **precedence** among C-RSP template-system files is defined in **Canonical Artifact Role** (above). This table classifies **kinds** of artifact; it does not override that order.
+
+| Class | Definition | Examples in TLC |
+|-------|------------|-----------------|
+| **Constitutional truth surfaces** | Repo-wide status, inventory, constitution, and rendered mirrors that state what is true now | `README.md`, `STATUS.json`, `STATUS.md`, `THE_LIVING_CONSTITUTION.md`, root `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.json`, `MASTER_PROJECT_INVENTORY.md`, `plans/master-plan.md` |
+| **Canonical master template** | Single highest reusable C-RSP structure | `projects/c-rsp/BUILD_CONTRACT.md` (this file) |
+| **Guided instance template** | Subordinate drafting scaffold; placeholders only until copied | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
+| **Schema artifact** | JSON validation surface for contract shape | `projects/c-rsp/contract-schema.json` |
+| **Outcome artifact** | Canonical C-RSP run report shape | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
+| **Workflow / router / profile helpers** | Helpers under `projects/c-rsp/workflows/` **and** row-5 non-workflow helpers (`INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, instance example/template files); not governing authority | `projects/c-rsp/workflows/*`, `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md` |
+| **Executed project contracts** | Scope-specific instances | `projects/*/BUILD_CONTRACT.md`, `projects/*/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md`, `projects/c-rsp/BUILD_CONTRACTS/*.md`, other `BUILD_CONTRACT*.md` under `projects/` as authored |
 
 ### Global Constitutional Invariants
 
@@ -154,13 +195,54 @@ If `Risk Class ∈ {High, Critical}` or `Side-Effect Class ∈ {External, Destru
 ---
 ## 6. Execution Model
 
+**Canonical role:** Every **executable** C-RSP instance (Tier-1+ when claiming execution) must implement **Blind Man structural discipline** below. Global **Section 13 Halt Matrix** remains authoritative for halt classes; Sections **6B–6C** are the **instance-local** required articulation of halt, success, and ordered work for **this** contract. **Guided authoring surface** (`projects/c-rsp/BUILD_CONTRACT.instance.md`) is not an executed contract; it is a prompt skeleton only.
+
 - **Execution Mode:** Single-pass deterministic build contract
 - **Decision Closure Rule:** No open-ended branch points inside executable sections
 - **Fallback Rule:** Any unresolved ambiguity triggers halt or explicit escalation
 - **Generated Artifacts:** [REQUIRED]
 - **Promotion Target:** [REQUIRED]
 
-### 6A. Dual-Topology Rule
+### 6A. Ordered Operations (Blind Man Test — mandatory for executable instances)
+
+Every executable instance must define at least one ordered step. Use this table shape (repeat rows per step):
+
+| **Step ID** | **Actor** | **Action** | **Inputs** | **Outputs** | **Verify** | **If Failure** |
+|-------------|-----------|------------|------------|-------------|------------|----------------|
+| OP-01 | human \| agent \| CI \| verifier | Exact command or exact file operation | Exact path(s) or artifact id(s) | Exact path(s), artifact(s), or observable console output | Exact command, diff, test, or inspection | Halt, rollback, or escalation action |
+
+- **OP-ID discipline:** Step IDs must be **stable** within the contract revision (OP-01..OP-n); subordinate checks may use `OP-01a` only when the parent step explicitly declares them.
+
+### 6B. Halt Conditions (instance-local)
+
+| **Condition** | **Stop Reason** | **Next Action** |
+|---------------|-----------------|-----------------|
+| [exact failure state] | [why execution must stop] | [recovery / escalation] |
+
+Executable instances must name at least **one** halt row that is **specific** to this contract (not generic prose alone). Cross-reference **Section 13 (Halt Matrix)** for global halt classes.
+
+### 6C. Success Conditions
+
+- **Success:** [objectively observable pass condition — e.g. verifier exit 0, evidence file updated, AC row satisfied]
+- **Done:** [definition of contract-local closure — e.g. Kanban clear for this scope or formal halt recorded]
+
+### 6D. Major Component Implementation Snippets
+
+For **Build / Fix / Refactor** work that **materially changes** code-bearing components, each affected component must declare:
+
+```markdown
+#### Component: {NAME}
+- **Path:** {EXACT_PATH}
+- **Role:** {one sentence}
+- **Interface Contract:** {inputs/outputs}
+- **Snippet:** real code or structural stub
+- **Verification:** {exact command or inspection}
+- **Failure Signature:** {how breakage surfaces}
+```
+
+If a contract is **Governance / Discovery** only with **no** material code change, **explicitly** state `Major component snippets: N/A — one line justification` in the execution model or acceptance criteria.
+
+### 6E. Dual-Topology Rule
 
 If `Topology Mode = Dual-Topology`, the contract must define both paths explicitly:
 
@@ -329,7 +411,7 @@ Requires Tier 2 plus:
 
 **Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Title block first** (`# C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}` + subtitle `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`), then **§1 Constitutional anchor**, then **§2 V&T Statement**.
 
-**CONTROL_RULE_KBC_01 (normative for all Tier-2+ instances; cite in `BUILD_CONTRACT.instance.md`):**
+**CONTROL_RULE_KBC_01 (normative for all Tier-2+ instances; cite in the active **executed** contract file — e.g. `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md` — not in the guided template `projects/c-rsp/BUILD_CONTRACT.instance.md`):**
 
 1. **Single active BUILD_CONTRACT:** At most one BUILD_CONTRACT instance is the **active execution scope** at a time until that contract is **clear** (all in-scope acceptance criteria for that instance are satisfied by evidence, or a **formal halt** is recorded in the instance halt matrix).
 2. **Kanban-first V&T:** Inside **§2 V&T Statement**, the **Visual board (Kanban)** subsection MUST appear **first**, before **Exists**, **Verified against**, **Not claimed**, **Non-existent**, **Unverified**, or **Functional status**. No long prose before the board; no truth line above the board.
@@ -371,6 +453,9 @@ Empty or label-only V&T subsections are **invalid** C-RSP outcomes.
 ---
 ## 17. Instance Declaration
 
-This framework becomes executable only through a fully instantiated contract document, typically:
+This framework becomes executable only through a **fully instantiated executed contract** (no unresolved `[REQUIRED]` / forbidden placeholders), typically:
 
-`BUILD_CONTRACT.instance.md`
+- **Project overlay:** `projects/<slug>/BUILD_CONTRACT.md` or `projects/<slug>/BUILD_CONTRACT` (repo convention per overlay)
+- **Named C-RSP instance (Tier-3):** `projects/c-rsp/instances/<CONTRACT_ID>.md` when the active work is tracked as a standalone instance file
+
+The file `projects/c-rsp/BUILD_CONTRACT.instance.md` is the **guided instance template** (workflow artifact) only; it is **not** an execution-ready contract until copied, filled, and saved as a separate executed path.

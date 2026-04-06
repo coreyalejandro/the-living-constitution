@@ -11,7 +11,7 @@
 | `last_verified_commit` | `30805eed1d51ca78107294376c1b783275e484aa` |
 | `last_verified_run_id` | `23774310879` |
 | `tip_state_truth` | `tip_pending` |
-| `workflow_sha` | `5f29cef83ef2400f71ce9e0b2dbf1d4c9c12f0d10bef5e71e2650004691eefc2` |
+| `workflow_sha` | `b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
 | `governance_contract_version` | `v1.9.0` |
@@ -32,9 +32,7 @@
 
 ## Cross-repo consistency (ConsentChain submodule)
 
-- **state:** `drift`
-- **detail:** verify_cross_repo_consistency: FAIL
-  - JSON drift (normalized): 00-constitution/role-registry.json
+- **state:** `aligned`
 
 ## Truth boundary
 

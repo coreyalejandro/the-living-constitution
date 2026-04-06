@@ -39,7 +39,7 @@
     },
     "instance_artifact_path": {
       "pass": true,
-      "path": "projects/c-rsp/BUILD_CONTRACT.instance.md"
+      "path": "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md"
     },
     "governance_lock_alignment": {
       "pass": true,
@@ -65,6 +65,7 @@
     "blind_mans_rule_explicit": {
       "pass": true,
       "locations": [
+        "projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md",
         "projects/c-rsp/BUILD_CONTRACT.instance.md",
         "docs/fde-control-plane/BUILD_TO_OPERATE_LIFECYCLE_SPEC.md",
         "governance-rules/fde-lifecycle-invariants.yaml"

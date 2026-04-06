@@ -41,7 +41,7 @@ fi
 echo "==> [2/4] Structural diff (template vs instance)"
 python3 scripts/verify_crsp_structure.py \
   --template projects/c-rsp/BUILD_CONTRACT.md \
-  --instance projects/c-rsp/BUILD_CONTRACT.instance.md \
+  --instance projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md \
   --report evidence/fde-control-plane/structural-diff-report.json
 
 echo "==> [3/4] Schema validation"
@@ -53,7 +53,7 @@ echo "==> [4/4] Promotion readiness (dual-topology-verifier)"
 python3 scripts/verify_fde_control_plane.py \
   --promotion-readiness \
   --lock projects/c-rsp/governance-template.lock.json \
-  --instance projects/c-rsp/BUILD_CONTRACT.instance.md \
+  --instance projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md \
   --report evidence/fde-control-plane/verifier-execution-report.json
 
 echo "==> All FDE control plane verification steps passed."
