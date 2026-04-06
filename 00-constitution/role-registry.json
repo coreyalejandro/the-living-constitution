@@ -453,6 +453,19 @@
       ]
     },
     {
+      "path": "scripts/bump_mvds_last_verified_to_head.py",
+      "role": "EXECUTIVE",
+      "allowed_actions": [
+        "read",
+        "execute",
+        "mutate"
+      ],
+      "forbidden_actions": [
+        "define_invariant",
+        "declare_status"
+      ]
+    },
+    {
       "path": "scripts/compliance_score_docs.py",
       "role": "EXECUTIVE",
       "allowed_actions": [

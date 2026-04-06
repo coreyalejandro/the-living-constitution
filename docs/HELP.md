@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/HELP.md"
 next_file: "docs/operations/BOOTSTRAP.md"
 last_verified:
-  commit: "f22fd8d"
-  timestamp: "2026-04-06T02:09:08Z"
+  commit: "6219250"
+  timestamp: "2026-04-06T02:11:20Z"
 metadata:
   est_time_minutes: 5
   cognitive_load: "Low"
