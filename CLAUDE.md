@@ -66,17 +66,18 @@ the-living-constitution/
 | Portfolio | All 4 Domains | `/Users/coreyalejandro/Projects/coreys-agentic-portfolio` | Live on Vercel |
 | TLC Evidence Observatory | Epistemic/Empirical Safety | `/Users/coreyalejandro/Projects/tlc-evidence-observatory` | Building — zero-shot contract executing |
 
-## C-RSP template system (canonical hierarchy)
+## C-RSP template system (semantic authority order)
 
-TLC uses **Constitutionally-Regulated Single Pass** (C-RSP) contracts for governed execution. Do not confuse these roles:
+TLC uses **Constitutionally-Regulated Single Pass** (C-RSP) contracts for governed execution. **Authority order is strict** (lower rows do not override higher rows). Full map: `projects/c-rsp/CANONICAL_ROLE_MAP.md`.
 
-| Role | Path | Purpose |
-|------|------|---------|
-| **Canonical master template** | `projects/c-rsp/BUILD_CONTRACT.md` | Reusable section order, invariants, Blind Man execution requirements (§6), and output rules. |
-| **Guided instance template** | `projects/c-rsp/BUILD_CONTRACT.instance.md` | Prompt skeleton with `{placeholders}` — **workflow artifact only**; not an executed contract. |
-| **Outcome report shape** | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Mandatory V&T surface for C-RSP run summaries. |
-| **Schema** | `projects/c-rsp/contract-schema.json` | Machine-readable section and validation rules (includes `blind_man_execution` constraints). |
-| **Executed contracts** | `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md`, etc. | Filled, scope-specific contracts; these may cite **CONTROL_RULE_KBC_01** and claim execution state. |
+| Order | Artifact | Path |
+|------:|----------|------|
+| 1 | **Canonical master template** | `projects/c-rsp/BUILD_CONTRACT.md` |
+| 2 | **Guided instance template** (subordinate to 1) | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
+| 3 | **Schema artifact** | `projects/c-rsp/contract-schema.json` |
+| 4 | **Outcome artifact** (V&T report shape) | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
+| 5 | **Workflow / router artifacts** (helpers only) | `projects/c-rsp/workflows/*` |
+| 6 | **Executed project contracts** (instances, not reusable templates) | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, etc. |
 
 **FDE control plane (example executed instance):** `projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`. **Verification bundle:** `./scripts/run_fde_control_plane_verification.sh`.
 

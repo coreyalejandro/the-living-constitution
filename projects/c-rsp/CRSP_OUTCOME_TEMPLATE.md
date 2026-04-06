@@ -2,6 +2,8 @@
 # C-RSP Build Contract : `<BUILD_CONTRACT_TITLE>` — `<COMPONENT>`
 ## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
 
+**Artifact role:** This file is the **outcome artifact** (canonical C-RSP run reporting shape). **Authority order:** it is subordinate to `projects/c-rsp/BUILD_CONTRACT.md` and `projects/c-rsp/BUILD_CONTRACT.instance.md` as drafting aids; it does not override the master template’s structural or invariant rules. See `projects/c-rsp/CANONICAL_ROLE_MAP.md`.
+
 **Title rule:** `BUILD_CONTRACT_TITLE` = exact **Contract Title** from the governing **executed** contract (Section 1) — e.g. `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md`. The file `projects/c-rsp/BUILD_CONTRACT.instance.md` is only the **guided instance template** (placeholders), not an executed contract. For zero-shot contracts whose H1 is `# Build Contract: Name`, use `Name` (e.g. `04-consentchain/BUILD_CONTRACT.md` → `ConsentChain`). `COMPONENT` = governed component or subsystem this run touched (must stay in the H1 for scanning).
 
 **Contract instance:** `<path/to/executed/BUILD_CONTRACT_or_instance.md>`  

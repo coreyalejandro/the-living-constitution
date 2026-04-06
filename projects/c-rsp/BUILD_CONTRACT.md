@@ -4,6 +4,31 @@
 > **Template Status:** Framework template only. Not executable until instantiated with all required fields, profile overlays, acceptance criteria, schema validation, and lifecycle controls.
 
 ---
+## Canonical Artifact Role
+
+This file is the **canonical master template** for all Constitutionally-Regulated Single Pass (C-RSP) contracts. It is the **highest-authority reusable** C-RSP structural source in this repository.
+
+**Authority order (strict; lower rows do not override higher rows):**
+
+| Order | Artifact | Role |
+|------:|----------|------|
+| 1 | `projects/c-rsp/BUILD_CONTRACT.md` (**this file**) | Canonical master template — reusable structure, invariants, execution discipline (e.g. §6 Blind Man). |
+| 2 | `projects/c-rsp/BUILD_CONTRACT.instance.md` | Guided instance template — subordinate drafting aid; must compile to the structure and authority of this file. |
+| 3 | `projects/c-rsp/contract-schema.json` | Schema artifact — machine-readable shape and validation rules for instances. |
+| 4 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Outcome artifact — mandatory V&T reporting shape for C-RSP run summaries. |
+| 5 | `projects/c-rsp/workflows/*` | Workflow / router artifacts — ergonomic helpers only; **not** truth surfaces and **not** authoritative over rows 1–4. |
+| 6 | `projects/*/BUILD_CONTRACT*` and `projects/c-rsp/instances/*.md` | Executed project contracts — scope-specific instances; **not** reusable canonical templates. |
+
+**Conflict rule:** If any subordinate file (rows 2–6) conflicts with **this file**, **this file controls** unless the repo records a formal supersession path (e.g. constitutional amendment per `THE_LIVING_CONSTITUTION.md`).
+
+**Semantic invariants**
+
+- **INVARIANT_SEM_01:** The canonical master template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.md`.
+- **INVARIANT_SEM_02:** The guided instance template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.instance.md` and is **subordinate** to the master template.
+- **INVARIANT_SEM_03:** Workflow artifacts under `projects/c-rsp/workflows/` are helpers only and do not constitute governing authority over rows 1–4.
+- **INVARIANT_SEM_04:** Executed project contracts are **instances** for a concrete scope, not reusable canonical templates.
+
+---
 ## 0. Template Governance
 
 - **Template Class:** Constitutional **canonical master template** (this file: `projects/c-rsp/BUILD_CONTRACT.md`)
@@ -14,12 +39,17 @@
 
 ### Artifact class map (non-overlapping roles)
 
+Authoritative **precedence** among C-RSP template-system files is defined in **Canonical Artifact Role** (above). This table classifies **kinds** of artifact; it does not override that order.
+
 | Class | Definition | Examples in TLC |
 |-------|------------|-----------------|
 | **Constitutional truth surfaces** | Repo-wide status, inventory, constitution, and rendered mirrors that state what is true now | `README.md`, `STATUS.json`, `STATUS.md`, `THE_LIVING_CONSTITUTION.md`, root `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.json`, `MASTER_PROJECT_INVENTORY.md`, `plans/master-plan.md` |
-| **Canonical template artifacts** | Reusable structure and invariants; not executed state | `projects/c-rsp/BUILD_CONTRACT.md` (this file), `projects/c-rsp/contract-schema.json`, `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
-| **Workflow / router artifacts** | Prompt skeletons and pointers; no executed outcomes | `projects/c-rsp/BUILD_CONTRACT.instance.md` (**guided instance template** — placeholders only) |
-| **Executed project contracts** | Fully or partially instantiated contracts for a concrete scope | `projects/*/BUILD_CONTRACT.md`, `projects/*/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md` (named Tier-3 instances), other `BUILD_CONTRACT*.md` under `projects/` as authored |
+| **Canonical master template** | Single highest reusable C-RSP structure | `projects/c-rsp/BUILD_CONTRACT.md` (this file) |
+| **Guided instance template** | Subordinate drafting scaffold; placeholders only until copied | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
+| **Schema artifact** | JSON validation surface for contract shape | `projects/c-rsp/contract-schema.json` |
+| **Outcome artifact** | Canonical C-RSP run report shape | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
+| **Workflow / router artifacts** | Helpers under `projects/c-rsp/workflows/`; not governing authority | `projects/c-rsp/workflows/*` (see folder README) |
+| **Executed project contracts** | Scope-specific instances | `projects/*/BUILD_CONTRACT.md`, `projects/*/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md`, other `BUILD_CONTRACT*.md` under `projects/` as authored |
 
 ### Global Constitutional Invariants
 

@@ -2,10 +2,11 @@
 
 ## Session Status (as of 2026-04-05)
 
-- **Plan status:** COMPLETE — reviewed; **A-0 (C-RSP documentation system overhaul)** executed in-repo: canonical vs guided vs executed roles normalized; see `projects/c-rsp/outcomes/CRSP-A0-DOCSYS-OVERHAUL-001.md`.
-- **Execution status:** A-0 template-system repair **applied** on branch work (see outcome artifact for scope and V&T).
+- **Plan status:** COMPLETE — reviewed; **A-0** and **A-0.1** executed in-repo for the C-RSP template system.
+- **A-0:** Documentation system overhaul — see `projects/c-rsp/outcomes/CRSP-A0-DOCSYS-OVERHAUL-001.md`.
+- **A-0.1 (CRSP-A0-1-SEMANTIC-CANONICALIZATION-001):** Semantic canonicalization — explicit **authority order** (master > guided instance > schema > outcome > `workflows/*` > executed contracts), vocabulary, and **INVARIANT_SEM_01–04** in `projects/c-rsp/BUILD_CONTRACT.md`; subordinate **Artifact Role** in `BUILD_CONTRACT.instance.md`; `projects/c-rsp/CANONICAL_ROLE_MAP.md`; `projects/c-rsp/workflows/README.md`; aligned `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.*`, `contract-schema.json` (`authority_order_crsp_a0_1`), `CRSP_OUTCOME_TEMPLATE.md` outcome-artifact label. Outcome: `projects/c-rsp/outcomes/CRSP-A0-1-SEMANTIC-CANONICALIZATION-001.md`.
 - **Branch:** `claude/restructure-tlc-enterprise-LxIXt` (develop and push here)
-- **Next action:** (1) Review A-0 outcome and diffs, (2) proceed to **A-1** only when satisfied that template authority is unambiguous, (3) run `./scripts/run_fde_control_plane_verification.sh` after pulls to refresh FDE evidence if paths change
+- **Next action:** (1) Review A-0 / A-0.1 outcomes, (2) proceed to **A-1** only when satisfied with semantic clarity, (3) run `./scripts/run_fde_control_plane_verification.sh` after pulls if FDE paths change
 
 ### Key Decisions Made
 - **C-RSP** = Constitutionally-Regulated Single Pass (canonical expansion, no variants)
@@ -89,6 +90,12 @@ A-0 is complete only when all of the following are true:
    - workflow artifacts
    - executed project contracts
 5. A-1 can be instantiated without guessing which file is authoritative
+
+### A-0.1: Semantic canonicalization (substep of A-0 program)
+
+**Purpose:** Codify **artifact roles**, **terminology**, and **strict authority order** so executors do not rely on filename intuition.
+
+**Deliverables:** `projects/c-rsp/CANONICAL_ROLE_MAP.md`; **Canonical Artifact Role** section in `projects/c-rsp/BUILD_CONTRACT.md`; **Artifact Role** in `projects/c-rsp/BUILD_CONTRACT.instance.md`; aligned root `CLAUDE.md`, inventory, plan, schema metadata, outcome template header.
 
 ---
 

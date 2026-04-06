@@ -29,6 +29,8 @@
 
 ## What Was Just Completed
 
+- **A-0.1 semantic canonicalization CRSP-A0-1 (2026-04-05):** Strict **authority order** in `BUILD_CONTRACT.md` (**Canonical Artifact Role**), **Artifact Role** in guided instance template, `projects/c-rsp/CANONICAL_ROLE_MAP.md`, `projects/c-rsp/workflows/README.md` (helpers only), `contract-schema.json` `authority_order_crsp_a0_1`, outcome template role line, `CLAUDE.md` / inventory / plan aligned. Outcome: `projects/c-rsp/outcomes/CRSP-A0-1-SEMANTIC-CANONICALIZATION-001.md`.
+
 - **A-0 C-RSP documentation system overhaul (2026-04-05):** Normalized **canonical master** (`projects/c-rsp/BUILD_CONTRACT.md`), **guided instance template** (`projects/c-rsp/BUILD_CONTRACT.instance.md`) vs **executed** FDE instance (`projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md`). Added §0 artifact class map, §6 Blind Man ordered ops / halt / success / snippets; `contract-schema.json` `blind_man_execution`; updated root `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.md`, `plans/master-plan.md`, `openmemory.md`, FDE docs, twin `projects/backboardai-fde/BUILD_CONTRACT`, governance YAML, evidence JSONs, verifiers. Outcome: `projects/c-rsp/outcomes/CRSP-A0-DOCSYS-OVERHAUL-001.md`.
 
 - **FDE verification bundle + CI (2026-04-05):** Added `scripts/run_fde_control_plane_verification.sh` (orchestrates resolve → structural → schema → promotion); `.github/workflows/fde-control-plane-verify.yml` now runs the bundle in one step; path filters include `projects/backboardai-fde/**`. Standalone path **RESOLVED** to `projects/backboardai-fde/` with non-empty `BUILD_CONTRACT`. Instance §14 preflight + governance lock `primary_commands` point to the bundle.

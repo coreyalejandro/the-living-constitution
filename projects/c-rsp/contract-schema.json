@@ -220,6 +220,24 @@
       "guided_template_path": "projects/c-rsp/BUILD_CONTRACT.instance.md",
       "canonical_master_template_path": "projects/c-rsp/BUILD_CONTRACT.md",
       "note": "Executable instances must implement Section 6A–6D of the canonical master (Ordered Operations, Halt, Success, Major Component Snippets). The guided template is a workflow artifact and is not an executable instance until copied to an executed path and fully instantiated."
+    },
+    "authority_order_crsp_a0_1": {
+      "description": "Strict precedence for C-RSP template-system files; lower indices do not override higher.",
+      "ordered_paths": [
+        "projects/c-rsp/BUILD_CONTRACT.md",
+        "projects/c-rsp/BUILD_CONTRACT.instance.md",
+        "projects/c-rsp/contract-schema.json",
+        "projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md",
+        "projects/c-rsp/workflows/",
+        "projects/*/BUILD_CONTRACT*"
+      ],
+      "human_readable_map": "projects/c-rsp/CANONICAL_ROLE_MAP.md",
+      "invariants": [
+        "INVARIANT_SEM_01",
+        "INVARIANT_SEM_02",
+        "INVARIANT_SEM_03",
+        "INVARIANT_SEM_04"
+      ]
     }
   }
 }
