@@ -2,7 +2,13 @@
 """Set MVDS frontmatter last_verified.commit + timestamp to current HEAD (short) and UTC now.
 
 Replaces the first YAML `last_verified` block matching commit + timestamp (any short hash).
-Optional: sync DOCUMENTATION_CHANGELOG.md table row `| YYYY-MM-DD | <hash> |` for the latest MVDS row."""
+Optional: sync DOCUMENTATION_CHANGELOG.md table row `| YYYY-MM-DD | <hash> |` for the latest MVDS row.
+
+Run after documentation commits that touch governed frontmatter. Short `last_verified.commit`
+cannot equal the embedding commit's own hash (fixpoint); CI may still warn until the *next*
+commit picks up the bumped hash — that is expected (see `verify_document_constitution.py`).
+
+Skips files that already list the current HEAD short hash (avoids timestamp-only loops)."""
 
 from __future__ import annotations
 
