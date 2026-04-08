@@ -4,7 +4,7 @@
 
 **Contract ID:** CRSP-001  
 **Version:** 1.0.0  
-**Status:** Draft  
+**Status:** ACTIVE  
 **Adoption Tier:** Tier-3-Constitutional  
 **Basename:** CRSP-001  
 **Series:** Series A  
