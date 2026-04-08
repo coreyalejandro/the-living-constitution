@@ -1,32 +1,76 @@
 #!/usr/bin/env bash
-# Verify canonical C-RSP master template section alignment against:
-#   - guided instance template
-#   - executed FDE gap-closure instance (when present)
+# AC-007: Paired Artifact Bundle Verification for CRSP-001
+# Verifies that the canonical paired artifacts and evidence files exist and
+# are structurally valid before the Guardian Kernel contract can advance to
+# Active status.
 #
-# Note: verify_crsp_structure.py checks numbered section titles (0–17), not the prose inside
-# Section 6 (e.g. §6A ordered-operations tables). Those remain human-review + contract discipline.
-set -euo pipefail
+# Exit codes: 0 = all checks pass | 1 = one or more checks failed
+
+set -uo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-OUT_DIR="${OUT_DIR:-verification/c-rsp-structure}"
-mkdir -p "$OUT_DIR"
+FAIL=0
 
-TEMPLATE="projects/c-rsp/BUILD_CONTRACT.md"
-GUIDED="projects/c-rsp/BUILD_CONTRACT.instance.md"
-FDE_INSTANCE="projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md"
+pass() { printf '[PASS] %s\n' "$1"; }
+fail() { printf '[FAIL] %s\n' "$1"; FAIL=1; }
 
-echo "==> C-RSP structural verification (template vs instances)"
+# PF-001: CRSP-001.json exists at TLC root
+if [ -f "CRSP-001.json" ]; then
+    pass "PF-001  CRSP-001.json exists"
+else
+    fail "PF-001  CRSP-001.json not found at TLC root"
+fi
 
-python3 scripts/verify_crsp_structure.py \
-  --template "$TEMPLATE" \
-  --instance "$GUIDED" \
-  --report "$OUT_DIR/structural-guided.json"
+# PF-002: CRSP-001.md exists at TLC root
+if [ -f "CRSP-001.md" ]; then
+    pass "PF-002  CRSP-001.md exists"
+else
+    fail "PF-002  CRSP-001.md not found at TLC root"
+fi
 
-python3 scripts/verify_crsp_structure.py \
-  --template "$TEMPLATE" \
-  --instance "$FDE_INSTANCE" \
-  --report "$OUT_DIR/structural-fde-instance.json"
+# PF-003: CRSP-001.json is valid JSON
+if [ -f "CRSP-001.json" ]; then
+    if python3 -c "import json, sys; json.load(open('CRSP-001.json'))" 2>/dev/null; then
+        pass "PF-003  CRSP-001.json is valid JSON"
+    else
+        fail "PF-003  CRSP-001.json failed JSON parse"
+    fi
+else
+    fail "PF-003  CRSP-001.json missing — cannot validate JSON"
+fi
 
-echo "==> C-RSP structural verification PASS"
+# PF-004: CRSP-001.md contains legal disclaimer phrase "legally void"
+if [ -f "CRSP-001.md" ]; then
+    if grep -q "legally void" "CRSP-001.md"; then
+        pass "PF-004  CRSP-001.md contains legal disclaimer (\"legally void\")"
+    else
+        fail "PF-004  CRSP-001.md missing legal disclaimer phrase \"legally void\""
+    fi
+else
+    fail "PF-004  CRSP-001.md missing — cannot check legal disclaimer"
+fi
+
+# PF-005a: verification/crsp_CRSP-001_log.json exists
+if [ -f "verification/crsp_CRSP-001_log.json" ]; then
+    pass "PF-005a verification/crsp_CRSP-001_log.json exists"
+else
+    fail "PF-005a verification/crsp_CRSP-001_log.json not found"
+fi
+
+# PF-005b: verification/crsp_CRSP-001_rationale.md exists
+if [ -f "verification/crsp_CRSP-001_rationale.md" ]; then
+    pass "PF-005b verification/crsp_CRSP-001_rationale.md exists"
+else
+    fail "PF-005b verification/crsp_CRSP-001_rationale.md not found"
+fi
+
+echo "---"
+if [ "$FAIL" -eq 0 ]; then
+    echo "AC-007 PASS — all paired-artifact bundle checks passed"
+    exit 0
+else
+    echo "AC-007 FAIL — one or more checks failed (see [FAIL] lines above)"
+    exit 1
+fi
