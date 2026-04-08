@@ -62,3 +62,4 @@ __pycache__/
 verification/.stress_*.jsonl
 verification/.stress_halt_sentinel
 CLAUDE.md
+AGENTS.md

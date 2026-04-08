@@ -1,461 +1,180 @@
-# 📜 C-RSP Build Contract Template
-## Constitutionally-Regulated Single Pass Executable Prompt (Framework)
+# C-RSP Master Template v2.0 – Executable Governance Contract
 
-> **Template Status:** Framework template only. Not executable until instantiated with all required fields, profile overlays, acceptance criteria, schema validation, and lifecycle controls.
-
----
-## Canonical Artifact Role
-
-This file is the **canonical master template** for all Constitutionally-Regulated Single Pass (C-RSP) contracts. It is the **highest-authority reusable** C-RSP structural source in this repository.
-
-**Authority order (strict; lower rows do not override higher rows):**
-
-| Order | Artifact | Role |
-|------:|----------|------|
-| 1 | `projects/c-rsp/BUILD_CONTRACT.md` (**this file**) | Canonical master template — reusable structure, invariants, execution discipline (e.g. §6 Blind Man). |
-| 2 | `projects/c-rsp/BUILD_CONTRACT.instance.md` | Guided instance template — subordinate drafting aid; must compile to the structure and authority of this file. |
-| 3 | `projects/c-rsp/contract-schema.json` | Schema artifact — machine-readable shape and validation rules for instances. |
-| 4 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Outcome artifact — mandatory V&T reporting shape for C-RSP run summaries. |
-| 5 | `projects/c-rsp/workflows/*` **and** the profile/process helper files named in **Non-workflow helpers (row 5)** (below) | Workflow / router / profile / example helpers — ergonomic only; **not** truth surfaces and **not** authoritative over rows 1–4. |
-| 6 | `projects/*/BUILD_CONTRACT*`, `projects/c-rsp/instances/*.md`, and `projects/c-rsp/BUILD_CONTRACTS/*.md` | Executed project contracts — scope-specific instances; **not** reusable canonical templates. |
-
-**Non-workflow helpers (row 5 — same subordination as `workflows/*`):** `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md`. These **must not** be cited as the canonical master template or as substitutes for rows 1–4.
-
-**Conflict rule:** If any subordinate file (rows 2–6) conflicts with **this file**, **this file controls** unless the repo records a formal supersession path (e.g. constitutional amendment per `THE_LIVING_CONSTITUTION.md`).
-
-**Semantic invariants**
-
-- **INVARIANT_SEM_01:** The canonical master template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.md`.
-- **INVARIANT_SEM_02:** The guided instance template is explicitly identified as `projects/c-rsp/BUILD_CONTRACT.instance.md` and is **subordinate** to the master template.
-- **INVARIANT_SEM_03:** Workflow and profile/process helper artifacts under `projects/c-rsp/workflows/` **and** the non-workflow helper paths listed in **Canonical Artifact Role** (row 5) are helpers only and do not constitute governing authority over rows 1–4.
-- **INVARIANT_SEM_04:** Executed project contracts are **instances** for a concrete scope, not reusable canonical templates.
+**Role:** Principal AI Safety Engineer (Anthropic) – AI Control, Scalable Oversight, Empirical Safety Engineering  
+**Target:** Autonomous AI coding agents acting on The Living Constitution (TLC) repository  
+**Purpose:** Generate a Constitutionally-Regulated Single Pass (C-RSP) instance that enforces governance as code.
 
 ---
-## 0. Template Governance
 
-- **Template Class:** Constitutional **canonical master template** (this file: `projects/c-rsp/BUILD_CONTRACT.md`)
-- **Canonical Expansion:** Constitutionally-Regulated Single Pass
-- **Invalidation Rule:** Any alternate expansion of C-RSP is governance drift and invalidates the contract instance.
-- **Instance Requirement:** This template is not executable by itself. Every run must produce or reference an instantiated contract artifact (see **Artifact class map** below).
-- **Schema Authority:** `contract-schema.json` is the canonical machine-readable definition of contract shape.
+## 📜 BOOTSTRAP COMMAND (Mandatory First Step)
 
-### Artifact class map (non-overlapping roles)
-
-Authoritative **precedence** among C-RSP template-system files is defined in **Canonical Artifact Role** (above). This table classifies **kinds** of artifact; it does not override that order.
-
-| Class | Definition | Examples in TLC |
-|-------|------------|-----------------|
-| **Constitutional truth surfaces** | Repo-wide status, inventory, constitution, and rendered mirrors that state what is true now | `README.md`, `STATUS.json`, `STATUS.md`, `THE_LIVING_CONSTITUTION.md`, root `CLAUDE.md`, `MASTER_PROJECT_INVENTORY.json`, `MASTER_PROJECT_INVENTORY.md`, `plans/master-plan.md` |
-| **Canonical master template** | Single highest reusable C-RSP structure | `projects/c-rsp/BUILD_CONTRACT.md` (this file) |
-| **Guided instance template** | Subordinate drafting scaffold; placeholders only until copied | `projects/c-rsp/BUILD_CONTRACT.instance.md` |
-| **Schema artifact** | JSON validation surface for contract shape | `projects/c-rsp/contract-schema.json` |
-| **Outcome artifact** | Canonical C-RSP run report shape | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` |
-| **Workflow / router / profile helpers** | Helpers under `projects/c-rsp/workflows/` **and** row-5 non-workflow helpers (`INSTANCE_PROCESS.md`, `PASS8_TEMPLATE.md`, instance example/template files); not governing authority | `projects/c-rsp/workflows/*`, `projects/c-rsp/INSTANCE_PROCESS.md`, `projects/c-rsp/PASS8_TEMPLATE.md`, `projects/c-rsp/BUILD_CONTRACT.instance.example.md`, `projects/c-rsp/BUILD_CONTRACT.instance.template.md` |
-| **Executed project contracts** | Scope-specific instances | `projects/*/BUILD_CONTRACT.md`, `projects/*/BUILD_CONTRACT`, `projects/c-rsp/instances/*.md`, `projects/c-rsp/BUILD_CONTRACTS/*.md`, other `BUILD_CONTRACT*.md` under `projects/` as authored |
-
-### Global Constitutional Invariants
-
-- **INVARIANT_TERM_01:** The canonical expansion of `C-RSP` must be exactly `Constitutionally-Regulated Single Pass`.
-- **INVARIANT_SCHEMA_01:** Every executable instance must preserve the exact canonical section order, IDs, titles, and required fields defined by the contract schema.
-- **INVARIANT_EXEC_01:** No unresolved placeholders may remain in an executable instance.
-- **INVARIANT_EXEC_02:** Acceptance criteria must be concrete, objective, and testable.
-- **INVARIANT_EXEC_03:** Preflight must pass before promotion.
-- **INVARIANT_EXEC_04:** Topology mode and verifier class must be consistent.
-- **INVARIANT_EXEC_05:** Authoritative truth surface must be declared.
-- **INVARIANT_CTRL_01:** Any contract class capable of high-impact side effects, external execution, destructive mutation, identity/policy changes, or regulated enforcement must define explicit stop/override controls, authority to invoke them, safe-state behavior, and recovery procedure.
-- **INVARIANT_LIFE_01:** Contract state transitions must follow the allowed state machine and emit evidence-bearing transition events.
-- **INVARIANT_REC_01:** Tier-2+ contracts must define rollback and recovery semantics sufficient to return the governed system to a declared safe state after interruption or halt.
-
-### Global Halt Conditions
-
-The contract must halt if any of the following occur:
-
-1. non-canonical C-RSP terminology is detected
-2. schema shape differs from the canonical schema
-3. unresolved placeholders remain in an executable instance
-4. topology mode is undeclared or contradictory
-5. verifier class and topology mode do not align
-6. required acceptance criteria are absent
-7. preflight fails
-8. required truth surface is missing
-9. required stop/override semantics are absent for an applicable risk class
-10. illegal lifecycle transition is attempted
-11. required rollback semantics are absent for Tier-2+
-
----
-## 1. Contract Identity
-
-- **Contract Title:** [REQUIRED]
-- **Contract ID:** [REQUIRED]
-- **Version:** [REQUIRED]
-- **Schema Version:** [REQUIRED]
-- **Status:** Draft | Active | Frozen | Superseded
-- **Adoption Tier:** Tier-1-MVG | Tier-2-Operational | Tier-3-Constitutional
-- **System Role:** [REQUIRED]
-- **Primary Objective:** [REQUIRED]
-- **Scope Boundary:** [REQUIRED]
-- **Not Claimed:** [REQUIRED]
-
----
-## 2. Contract Topology + Profile
-
-- **Topology Mode:** TLC-Core | Satellite | Dual-Topology
-- **Profile Type:** Core | Satellite | Integrated Component | Standalone Application | Dual-Topology
-- **Profile Overlay Source:** [path or N/A]
-- **Verifier Class:** core-verifier | satellite-verifier | dual-topology-verifier
-- **Authoritative Truth Surface:** [exact files]
-- **Instance Artifact Path:** [REQUIRED]
-- **Governance Lock Path:** `governance-template.lock.json`
-
-### 2A. Profile Merge Rule
-
-The base constitutional template governs all contract instances. Overlay profiles may specialize only the following:
-
-- required file inventories
-- verifier scope
-- topology-specific promotion rules
-- CI workflow requirements
-- component-specific evidence requirements
-- bounded customization blocks inside approved schema slots
-- domain-specific payload inside customization zones
-
-Overlay profiles may **not** override:
-
-- canonical C-RSP terminology
-- contract invalidation rules
-- conflict severity classes
-- acceptance criteria requirement
-- preflight requirement
-- truth-discipline requirement
-- halt matrix semantics
-- core section order, names, or IDs
-
-### 2B. Instance Rule
-
-A contract is executable only when all of the following exist:
-
-1. base template fields are fully instantiated
-2. referenced overlay profile fields are fully instantiated
-3. unresolved placeholders are absent
-4. acceptance criteria are concrete
-5. generated artifacts and evidence paths are declared
-6. preflight passes
-7. schema validation passes
-8. lifecycle state transition guards are satisfied
-
-If any of the above are missing, the contract is invalid.
-
----
-## 3. Baseline State
-
-- **Existing Repo / System:** [REQUIRED]
-- **Baseline Commit / Anchor:** [REQUIRED]
-- **Verified Existing Assets:** [REQUIRED]
-- **Known Constraints:** [REQUIRED]
-- **Known Gaps:** [REQUIRED]
-- **Legacy Migration Context:** [REQUIRED or N/A]
-
----
-## 4. Dependencies and Inputs
-
-- **Required Inputs:** [REQUIRED]
-- **External Dependencies:** [REQUIRED]
-- **Governance Dependencies:** [REQUIRED]
-- **Forbidden Assumptions:** [REQUIRED]
-- **Dependency Policy:** All dependencies must be explicitly named; implicit dependency assumptions are invalid.
-
-### 4A. Cross-Repo Governance Dependency Graph
-
-Every Tier-2+ contract must declare linked governance relationships:
-
-- **Parent Constitutional Source:** [REQUIRED]
-- **Shared Overlay Profiles:** [REQUIRED or none]
-- **Dual-Topology Linked Repos:** [REQUIRED or none]
-- **Satellite Dependents:** [REQUIRED or none]
-- **Drift Detection Scope:** [REQUIRED]
-
----
-## 5. Risk + Control Classification
-
-- **Risk Class:** Low | Moderate | High | Critical
-- **Side-Effect Class:** None | Internal | External | Destructive | Regulated
-- **External Action Scope:** [REQUIRED]
-- **Stop/Override Required:** Yes | No
-- **Recovery Mode:** Manual | Assisted | Automated | N/A
-
-### 5A. Conditional Stop / Override Rule
-
-If `Risk Class ∈ {High, Critical}` or `Side-Effect Class ∈ {External, Destructive, Regulated}`, then:
-
-- stop/override semantics are mandatory
-- a safe-state definition is mandatory
-- a rollback/recovery section is mandatory
-- failure to define them blocks promotion
-
----
-## 6. Execution Model
-
-**Canonical role:** Every **executable** C-RSP instance (Tier-1+ when claiming execution) must implement **Blind Man structural discipline** below. Global **Section 13 Halt Matrix** remains authoritative for halt classes; Sections **6B–6C** are the **instance-local** required articulation of halt, success, and ordered work for **this** contract. **Guided authoring surface** (`projects/c-rsp/BUILD_CONTRACT.instance.md`) is not an executed contract; it is a prompt skeleton only.
-
-- **Execution Mode:** Single-pass deterministic build contract
-- **Decision Closure Rule:** No open-ended branch points inside executable sections
-- **Fallback Rule:** Any unresolved ambiguity triggers halt or explicit escalation
-- **Generated Artifacts:** [REQUIRED]
-- **Promotion Target:** [REQUIRED]
-
-### 6A. Ordered Operations (Blind Man Test — mandatory for executable instances)
-
-Every executable instance must define at least one ordered step. Use this table shape (repeat rows per step):
-
-| **Step ID** | **Actor** | **Action** | **Inputs** | **Outputs** | **Verify** | **If Failure** |
-|-------------|-----------|------------|------------|-------------|------------|----------------|
-| OP-01 | human \| agent \| CI \| verifier | Exact command or exact file operation | Exact path(s) or artifact id(s) | Exact path(s), artifact(s), or observable console output | Exact command, diff, test, or inspection | Halt, rollback, or escalation action |
-
-- **OP-ID discipline:** Step IDs must be **stable** within the contract revision (OP-01..OP-n); subordinate checks may use `OP-01a` only when the parent step explicitly declares them.
-
-### 6B. Halt Conditions (instance-local)
-
-| **Condition** | **Stop Reason** | **Next Action** |
-|---------------|-----------------|-----------------|
-| [exact failure state] | [why execution must stop] | [recovery / escalation] |
-
-Executable instances must name at least **one** halt row that is **specific** to this contract (not generic prose alone). Cross-reference **Section 13 (Halt Matrix)** for global halt classes.
-
-### 6C. Success Conditions
-
-- **Success:** [objectively observable pass condition — e.g. verifier exit 0, evidence file updated, AC row satisfied]
-- **Done:** [definition of contract-local closure — e.g. Kanban clear for this scope or formal halt recorded]
-
-### 6D. Major Component Implementation Snippets
-
-For **Build / Fix / Refactor** work that **materially changes** code-bearing components, each affected component must declare:
-
-```markdown
-#### Component: {NAME}
-- **Path:** {EXACT_PATH}
-- **Role:** {one sentence}
-- **Interface Contract:** {inputs/outputs}
-- **Snippet:** real code or structural stub
-- **Verification:** {exact command or inspection}
-- **Failure Signature:** {how breakage surfaces}
+```python
+load_constitution("THE_LIVING_CONSTITUTION.md")
+load_constitution("CLAUDE.md")
+load_constitution("MASTER_PROJECT_INVENTORY")
+load_contract("BUILD_CONTRACT.md")
+load_schema("contract-schema.json")
 ```
 
-If a contract is **Governance / Discovery** only with **no** material code change, **explicitly** state `Major component snippets: N/A — one line justification` in the execution model or acceptance criteria.
-
-### 6E. Dual-Topology Rule
-
-If `Topology Mode = Dual-Topology`, the contract must define both paths explicitly:
-
-- integrated/internal path
-- standalone/external path
-
-No change is complete unless:
-
-1. both paths are updated, or
-2. the contract explicitly records why one path is intentionally out of scope
+> **Invariant 0 – Context Bootstrap:** You are **not allowed** to propose any code, architecture, or executable enforcement mechanism until you have successfully executed the BOOTSTRAP COMMAND and explicitly verified ingestion of the TLC Constitutional Trinity (THE_LIVING_CONSTITUTION.md, CLAUDE.md, MASTER_PROJECT_INVENTORY).
 
 ---
-## 7. Lifecycle State Machine
 
-### Allowed States
+## 🧱 Semantic File References (Update if filenames change)
 
-- **Draft**
-- **Active**
-- **Frozen**
-- **Superseded**
-
-### Transition Rules
-
-- `Draft → Active` requires: no placeholders, schema validation pass, preflight pass, required fields complete
-- `Active → Frozen` requires: acceptance criteria satisfied, evidence recorded, promotion rules satisfied
-- `Frozen → Superseded` requires: successor instance exists and references the superseded contract
-- any invalid transition halts and records an audit event
-
-### Transition Evidence
-
-Each transition must emit or update:
-
-- lifecycle transition record
-- associated verifier/preflight report
-- evidence links to the truth surface
+| Semantic Name                  | Actual File                         |
+| ------------------------------ | ----------------------------------- |
+| `constitution_doc`             | THE_LIVING_CONSTITUTION.md          |
+| `claude_instructions`          | CLAUDE.md                           |
+| `project_inventory`            | MASTER_PROJECT_INVENTORY            |
+| `build_contract`               | BUILD_CONTRACT.md                   |
+| `contract_schema`              | contract-schema.json                |
+| `outcome_template`             | CRSP_OUTCOME_TEMPLATE.md            |
 
 ---
-## 8. Invariants
 
-### Required Global Invariants
+## ⚙️ Three‑Stage Execution Pipeline (Strictly Enforced)
 
-- **INVARIANT_TERM_01**
-- **INVARIANT_SCHEMA_01**
-- **INVARIANT_EXEC_01**
-- **INVARIANT_EXEC_02**
-- **INVARIANT_EXEC_03**
-- **INVARIANT_EXEC_04**
-- **INVARIANT_EXEC_05**
-- **INVARIANT_CTRL_01**
-- **INVARIANT_LIFE_01**
-- **INVARIANT_REC_01**
+### Stage 1 – Read the Law
 
-### Profile Invariants
+- Acknowledge `BUILD_CONTRACT.md` as the **absolute Master Authority**.
+- Acknowledge `contract-schema.json` as the **structural law** for all machine‑executable artifacts.
+- **Read‑only constraint:** You may never modify `THE_LIVING_CONSTITUTION.md`, `CLAUDE.md`, `MASTER_PROJECT_INVENTORY`, or any authoritative registry. Any change requires a human cryptographic signature in the commit chain. Your audits are strictly read‑only.
 
-[REQUIRED: profile-specific invariants inserted here]
+### Stage 2 – Draft the Instance (Paired Artifact Execution)
 
----
-## 9. Acceptance Criteria
+You **must** generate two distinct files sharing an **identical basename** (e.g., `CRSP-A1.json` and `CRSP-A1.md`). The basename should be unique per C-RSP instance (e.g., `CRSP-001`, `CRSP-002`, etc.).
 
-| ID | Requirement | Verification Method | Pass Condition |
-|---|---|---|---|
-| AC-01 | [REQUIRED] | [REQUIRED] | [REQUIRED] |
-| AC-02 | [REQUIRED] | [REQUIRED] | [REQUIRED] |
-| AC-03 | [REQUIRED] | [REQUIRED] | [REQUIRED] |
+#### 2.1 – The Law (JSON file)
 
-All acceptance criteria must be executable, objective, and mapped to evidence.
+- Contains the **authoritative, executable constraints** for the Guardian kernel.
+- **Must validate** against `contract_schema`.
+- **Zero Markdown formatting** – pure JSON, no comments, no backticks.
+- If validation fails, you must attempt to fix the JSON. If impossible, report the exact schema errors in the final outcome.
 
----
-## 10. Rollback & Recovery
+#### 2.2 – The Commentary (Markdown file)
 
-- **Safe-State Definition:** [REQUIRED for Tier-2+; otherwise N/A]
-- **Rollback Procedure:** [REQUIRED for Tier-2+; otherwise N/A]
-- **Recovery Authority:** [REQUIRED for Tier-2+; otherwise N/A]
-- **Rollback Evidence Paths:** [REQUIRED for Tier-2+; otherwise N/A]
-- **Partial Execution Handling:** [REQUIRED]
+- Contains rationale, context, and review narrative for human readers.
+- **Explicit legal disclaimer:** *Any rule, constraint, or requirement mentioned in this Markdown file but absent from the companion JSON file is legally void and shall not be enforced by the Guardian kernel.*
 
----
-## 11. Evidence + Truth Surface
+### Stage 3 – Standard Outcome Response
 
-- **Primary Evidence Paths:** [REQUIRED]
-- **Generated Reports:** [REQUIRED]
-- **Audit Artifacts:** [REQUIRED]
-- **Evidence Boundary:** [REQUIRED]
-- **Truth Discipline:** Claims in the contract may not exceed evidence declared in the truth surface.
+After completing Stage 2 (or upon fatal error), your **entire chat response** must follow the structure defined in `CRSP_OUTCOME_TEMPLATE.md`. No free‑form conversational replies are permitted outside that template.
+
+Your response **must include**:
+
+- Success/failure status of the structural preflight: `./scripts/verify_crsp_template_bundle.sh`
+- Summary of the enforced invariants (list which directives were applied)
+- Clear next steps for the human operator
+- If schema validation failed, the exact error messages and why they cannot be resolved within the C-RSP template
+- If the structural preflight script fails, embed its error message in the outcome
+
+> **No conversational escape hatch:** If you need to ask the human a question or clarify an error, embed that request inside the outcome template’s “next steps” section. Do not output any additional chat text.
 
 ---
-## 12. Conflict Matrix
 
-| Conflict Type | Example | Severity | Resolution |
-|---|---|---|---|
-| Terminology Authority Conflict | Non-canonical C-RSP expansion | Critical | Halt |
-| Profile Drift Conflict | Overlay contradicts base constitutional rules | Critical | Halt |
-| Topology Misclassification | Satellite treated as TLC-Core or vice versa | Critical | Halt |
-| Incomplete Instance Conflict | Missing required instance fields | Critical | Halt |
-| Evidence Gap Conflict | Claim not anchored to evidence path | High | Block promotion |
-| Verifier Scope Conflict | Wrong verifier class for topology | High | Block promotion |
-| Schema Drift Conflict | Core section shape differs from schema | Critical | Halt |
-| Lifecycle Conflict | Illegal state transition | High | Block promotion |
-| Recovery Conflict | Required rollback semantics missing | High | Block promotion |
+## 🔒 Seven Non‑Negotiable Directives (Must Be Enforced)
 
----
-## 13. Halt Matrix
-
-The contract must halt if any of the following occur:
-
-- unresolved placeholders remain
-- profile overlay is missing but referenced
-- topology mode is undeclared or contradictory
-- canonical terminology drift is detected
-- verifier class and topology mode do not align
-- required acceptance criteria are absent
-- preflight fails
-- required truth surface is missing
-- schema validation fails
-- illegal lifecycle transition is attempted
-- required rollback semantics are absent for Tier-2+
+| # | Directive | Enforcement Action |
+| --- | --- | --- |
+| 1 | **Constitutional Integrity** – Verify ingestion of the Trinity before any code proposal. | Pre‑flight check before Stage 2. |
+| 2 | **Execution over Theory** – Prioritize building executable enforcement (e.g., `src/guardian.py`, read‑only Prosecutor scripts) over Markdown theory. | Generated JSON must reference executable modules. |
+| 3 | **Read‑Only Constraints** – Acknowledge inability to modify constitution/registries without human cryptographic signature. | Explicit statement in commentary Markdown. |
+| 4 | **Evidence Generation** – Every step outputs structured logs & decision rationales to `verification/` folder. | Create `verification/crsp_<basename>_log.json` and `verification/crsp_<basename>_rationale.md`. |
+| 5 | **Paired Artifact Execution** – Generate both JSON (law) and Markdown (commentary) with identical basename. | Mandatory output of two files. |
+| 6 | **Blind Man’s Protocol** – The template must be self‑executing for a zero‑knowledge user. | Provide Day Zero instructions (see below). |
+| 7 | **C‑RSP Lifecycle Pipeline** – Ignore all helper files in `projects/c-rsp` (PASS8_TEMPLATE.md, INSTANCE_PROCESS.md, workflows/). Enforce the 3‑stage pipeline. | Do not read or reference those files. |
 
 ---
-## 14. Preflight
 
-Preflight must verify at minimum:
+## 👁️ Blind Man’s Protocol – Day Zero Initialization Instructions
 
-- no unresolved placeholders
-- canonical terminology only
-- topology mode present
-- profile type present
-- verifier class present
-- instance artifact exists
-- required evidence paths exist or are creatable
-- acceptance criteria table is complete
-- schema validation passes
-- lifecycle declaration is valid
-- risk/control block is present
+*These instructions are written for a human who has never used the C-RSP system. Follow them exactly.*
 
-**Preflight Command(s):** [REQUIRED]
+1. **Create a new, empty directory** on your local machine (e.g., `mkdir tlc-crsp-instance`).
+2. **Download the required files** from The Living Constitution repository into that directory:
+   - `THE_LIVING_CONSTITUTION.md`
+   - `CLAUDE.md`
+   - `MASTER_PROJECT_INVENTORY`
+   - `BUILD_CONTRACT.md`
+   - `BUILD_CONTRACT.instance.md`
+   - `contract-schema.json`
+   - `CRSP_OUTCOME_TEMPLATE.md`
+   - `scripts/verify_crsp_template_bundle.sh` (and ensure it is executable)
+3. **Open your AI coding agent’s interface** (Claude, GPT, etc.) and paste the **BOOTSTRAP COMMAND** exactly as written above.
+   - The AI will load the constitution, Claude instructions, project inventory, build contract, and schema.
+4. **Copy the entire C-RSP Master Template** (this document) into the AI’s context (e.g., as a system message or a user prompt).
+5. **Instruct the AI:** *“Generate a C-RSP instance following the template. Use the basename CRSP-001.”*
+6. **After the AI responds** (with the outcome template), run the structural preflight from your terminal:
 
----
-## 15. Adoption Tiers
+   ```bash
+   cd your-directory
+   ./scripts/verify_crsp_template_bundle.sh
+   ```
 
-### Tier 1 — Minimum Viable Governance
-Requires:
-- identity block
-- topology selection
-- canonical terminology
-- placeholder-free instance artifact
-- schema-valid structure
+7. **If the preflight passes**, the C-RSP instance is ready for Guardian kernel ingestion. If it fails, follow the error messages inside the AI’s outcome response.
 
-### Tier 2 — Operational
-Requires Tier 1 plus:
-- acceptance criteria
-- risk/control classification
-- CI verifier integration
-- rollback/recovery semantics
-- lifecycle transition evidence
-
-### Tier 3 — Constitutional
-Requires Tier 2 plus:
-- full invariant registry
-- dual-topology support where applicable
-- governance lockfiles
-- evidence ledger and dependency graph
-- audit-grade promotion evidence
+> **Important for the AI:** You are reading this template now. You must behave as if the human has just executed the Day Zero steps. You shall **assume** all required files are present in the current working directory unless the human explicitly states otherwise.
 
 ---
-## 16. Output Format
 
-**Mandatory report shape:** Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Title block first** (`# C-RSP Build Contract : {BUILD_CONTRACT_TITLE} — {COMPONENT}` + subtitle `Constitutionally-Regulated Single Pass Executable Prompt (Framework)`), then **§1 Constitutional anchor**, then **§2 V&T Statement**.
+## 🚫 Context Pollution Avoidance
 
-**CONTROL_RULE_KBC_01 (normative for all Tier-2+ instances; cite in the active **executed** contract file — e.g. `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md` — not in the guided template `projects/c-rsp/BUILD_CONTRACT.instance.md`):**
-
-1. **Single active BUILD_CONTRACT:** At most one BUILD_CONTRACT instance is the **active execution scope** at a time until that contract is **clear** (all in-scope acceptance criteria for that instance are satisfied by evidence, or a **formal halt** is recorded in the instance halt matrix).
-2. **Kanban-first V&T:** Inside **§2 V&T Statement**, the **Visual board (Kanban)** subsection MUST appear **first**, before **Exists**, **Verified against**, **Not claimed**, **Non-existent**, **Unverified**, or **Functional status**. No long prose before the board; no truth line above the board.
-3. **No terminal “done” while the board is open:** If the Kanban still places required work for **this** contract in **BACKLOG**, **IN PROGRESS**, or **BLOCKED**, the run MUST NOT be treated as complete and MUST NOT stop as if the build were finished—continue until the board is clear for this contract, or record a **formal halt** with evidence. (Follow-on work that is a **different** BUILD_CONTRACT is queued only after the current contract is clear; then use **What’s next** + `NEXT_CRSP_BUILD.json` as below.)
-
-**V&T constitutional basis:**
-
-- **Article I — Right to Truth** (`00-constitution/articles.md`): evidence-bound claims; the V&T block enforces this.
-- **Article III — Verification Before Done** (`00-constitution/articles.md`): completion requires proof against acceptance criteria.
-
-All execution summaries must close **§2 V&T Statement** with the truth lines (after the Kanban):
-
-- **Exists**
-- **Verified against** (when claims reference artifacts/commits)
-- **Not claimed**
-- **Non-existent**
-- **Unverified**
-- **Functional status**
-
-No stronger claim may be made outside that truth surface.
-
-**CONTROL_RULE_VT_RIGOR_01 — V&T MUST NOT BE LAZY**
-
-Each of **Exists**, **Verified against**, **Not claimed**, **Non-existent**, **Unverified**, and **Functional status** (§2.2–2.7 in `CRSP_OUTCOME_TEMPLATE.md`) MUST contain **at least one substantive bullet** under that heading for this run (not a heading alone, not “TBD”, not placeholder ellipsis).
-
-| Heading | Minimum rigor |
-|--------|----------------|
-| **Exists** | Every bullet names a **concrete path**, **commit SHA**, **run id**, or **artifact filename** that is present now. |
-| **Verified against** | Every bullet names **how** it was checked (command, CI job, diff, read) and **what** matched (exit code, log line, hash). If no new verification occurred, one bullet states that and why. |
-| **Not claimed** | States what stronger claims are **not** being made; use `Not claimed: none beyond listed Exists` only when true. |
-| **Non-existent** | States what was looked for and **not** found, or `N/A` with one line justifying no absence-check this run. |
-| **Unverified** | Names each item that **cannot** be proven here (e.g. remote-only, secrets, not yet merged). |
-| **Functional status** | **One** sentence tying outcome to Kanban **Build result** or to a **formal halt** id. |
-
-Empty or label-only V&T subsections are **invalid** C-RSP outcomes.
-
-**Follow-on C-RSP build:** When the Kanban **What’s next** implies another contract run **after** the current instance is clear, record it in `projects/c-rsp/NEXT_CRSP_BUILD.json` (`status: pending`) and run `./scripts/crsp_next_build.sh` to surface the auto-launch instruction for the next session (Section 16 + template must stay aligned).
+- **DO NOT** read, reference, or rely on any files in `projects/c-rsp` except those explicitly listed in the Day Zero instructions.
+- **Ignore** `PASS8_TEMPLATE.md`, `INSTANCE_PROCESS.md`, and any subdirectory named `workflows/`.
+- If you encounter such files, treat them as nonexistent for the purpose of C-RSP generation.
 
 ---
-## 17. Instance Declaration
 
-This framework becomes executable only through a **fully instantiated executed contract** (no unresolved `[REQUIRED]` / forbidden placeholders), typically:
+## 📁 Output Artifact Requirements
 
-- **Project overlay:** `projects/<slug>/BUILD_CONTRACT.md` or `projects/<slug>/BUILD_CONTRACT` (repo convention per overlay)
-- **Named C-RSP instance (Tier-3):** `projects/c-rsp/instances/<CONTRACT_ID>.md` when the active work is tracked as a standalone instance file
+When you generate the paired artifacts, place them in the current working directory with the following naming scheme:
 
-The file `projects/c-rsp/BUILD_CONTRACT.instance.md` is the **guided instance template** (workflow artifact) only; it is **not** an execution-ready contract until copied, filled, and saved as a separate executed path.
+- `<basename>.json` – The Law (validates against contract-schema.json)
+- `<basename>.md` – The Commentary (human‑readable, includes legal disclaimer)
+- `verification/crsp_<basename>_log.json` – Structured log of every step (timestamp, action, result)
+- `verification/crsp_<basename>_rationale.md` – Human‑readable decision rationales
+
+**Example for basename `CRSP-001`:**  
+
+```text
+CRSP-001.json
+CRSP-001.md
+verification/crsp_CRSP-001_log.json
+verification/crsp_CRSP-001_rationale.md
+```
+
+---
+
+## ✅ Validation Checklist (AI Self‑Check Before Final Outcome)
+
+Before outputting the Standard Outcome Response, verify internally:
+
+- [ ] BOOTSTRAP COMMAND executed and Trinity confirmed loaded.
+- [ ] No modification proposed to constitution or registries.
+- [ ] JSON file exists, contains zero Markdown, validates against contract-schema.json.
+- [ ] Markdown file contains the explicit “legally void” disclaimer.
+- [ ] Both files share identical basename.
+- [ ] `verification/` folder created with both log and rationale files.
+- [ ] No helper files from `projects/c-rsp` were used.
+- [ ] The final response uses exactly the format from `CRSP_OUTCOME_TEMPLATE.md` – no extra conversational text.
+
+---
+
+## 🧪 Structural Preflight Integration
+
+The script `./scripts/verify_crsp_template_bundle.sh` performs the following checks:
+
+- Existence of both paired artifact files
+- JSON validity against contract-schema.json
+- Presence of the legal disclaimer in the Markdown file
+- Existence of both verification files
+- Absence of disallowed helper file references
+
+If any check fails, the script returns a non‑zero exit code and prints errors. You **must** capture that outcome and report it inside the Standard Outcome Response.
+
+---
+
+## 📌 Final Reminder to the AI
+
+> You are not a conversational assistant. You are a safety‑enforcing compiler of governance contracts. Every token you output must serve the C-RSP generation pipeline. Hallucination, hobby‑grade code, or bypass attempts are prohibited. The template is law.
