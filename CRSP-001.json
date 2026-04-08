@@ -1,0 +1,872 @@
+{
+  "schema_name": "crsp_contract_schema",
+  "schema_version": "1.0.0",
+  "contract_title": "Guardian Kernel — MCP Safety Enforcement Server",
+  "contract_id": "CRSP-001",
+  "version": "1.0.0",
+  "status": "Draft",
+  "adoption_tier": "Tier-3-Constitutional",
+  "topology_mode": "TLC-Core",
+  "profile_type": "Core",
+  "verifier_class": "core-verifier",
+  "authoritative_truth_surface": "verification/crsp_CRSP-001_log.json",
+  "generated_at_utc": "2026-04-08T03:57:44Z",
+  "git_repo_name": "coreyalejandro/the-living-constitution",
+  "git_branch": "main",
+  "git_commit_hash": "b1c46dfc4e1a46f2dfd017e971b26a479cdd5a5c",
+  "basename": "CRSP-001",
+  "series": "Series-A",
+  "trinity_ingested": true,
+  "trinity_sources": [
+    "THE_LIVING_CONSTITUTION.md",
+    "CLAUDE.md",
+    "MASTER_PROJECT_INVENTORY.md"
+  ],
+  "sections": {
+    "template_governance": {
+      "section_id": "template_governance",
+      "section_order": 0,
+      "immutable": true,
+      "prose_heading": "Instance Governance",
+      "master_template_path": "projects/c-rsp/BUILD_CONTRACT.md",
+      "schema_path": "projects/c-rsp/contract-schema.json",
+      "outcome_template_path": "projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md",
+      "authority_order": [
+        "projects/c-rsp/BUILD_CONTRACT.md",
+        "projects/c-rsp/BUILD_CONTRACT.instance.md",
+        "projects/c-rsp/contract-schema.json",
+        "projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md"
+      ],
+      "helper_files_ignored": [
+        "projects/c-rsp/PASS8_TEMPLATE.md",
+        "projects/c-rsp/INSTANCE_PROCESS.md",
+        "projects/c-rsp/workflows/"
+      ],
+      "governing_constitution": "THE_LIVING_CONSTITUTION.md",
+      "read_only_constraint": "This instance MAY NOT modify THE_LIVING_CONSTITUTION.md, CLAUDE.md, MASTER_PROJECT_INVENTORY.md, or any authoritative registry. All modifications require a human cryptographic signature in the commit chain.",
+      "pipeline_stages": [
+        "Stage-1-Read-The-Law",
+        "Stage-2-Draft-The-Instance",
+        "Stage-3-Standard-Outcome-Response"
+      ],
+      "crsp_lifecycle_enforced": true,
+      "helper_pollution_avoidance_enforced": true
+    },
+    "contract_identity": {
+      "section_id": "contract_identity",
+      "section_order": 1,
+      "immutable": true,
+      "contract_title": "Guardian Kernel — MCP Safety Enforcement Server",
+      "contract_id": "CRSP-001",
+      "version": "1.0.0",
+      "schema_version": "1.0.0",
+      "status": "Draft",
+      "adoption_tier": "Tier-3-Constitutional",
+      "created_at_utc": "2026-04-08T03:57:44Z",
+      "series": "Series-A",
+      "strategic_intent": "Build src/guardian.py as an MCP server that acts as an inescapable cage physically intercepting agent tool calls to enforce safety invariants before any code is written.",
+      "parent_adr": ".agents/rules/guardian-kernel.md",
+      "owner": "coreyalejandro",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "contract_topology_profile": {
+      "section_id": "contract_topology_profile",
+      "section_order": 2,
+      "immutable": true,
+      "topology_mode": "TLC-Core",
+      "profile_type": "Core",
+      "verifier_class": "core-verifier",
+      "tlc_root": "/Users/coreyalejandro/Projects/the-living-constitution",
+      "implementation_target": "src/guardian.py",
+      "implementation_path_absolute": "/Users/coreyalejandro/Projects/the-living-constitution/src/guardian.py",
+      "component_role": "Constitutional enforcement gate — intercepts all agent tool calls and evaluates them against Article I-V invariants before permitting execution.",
+      "dual_persona_model": {
+        "constitutional_lawyer": {
+          "role": "Reads the law, verifies invariants, drafts the strictly-typed JSON build contract.",
+          "constraint": "Read-only during planning phase. Cannot modify constitution or registries.",
+          "artifact": "CRSP-001.json"
+        },
+        "implementation_developer": {
+          "role": "Executes the JSON contract, writes Markdown commentary, runs preflight bash scripts.",
+          "constraint": "Executes only what the JSON law authorizes.",
+          "artifact": "CRSP-001.md"
+        }
+      },
+      "domain_alignment": "All 4 Safety Domains: Epistemic, Human, Cognitive, Empirical"
+    },
+    "baseline_state": {
+      "section_id": "baseline_state",
+      "section_order": 3,
+      "immutable": true,
+      "current_state_honest": {
+        "src_guardian_py_exists": false,
+        "guardian_kernel_adr_exists": true,
+        "guardian_kernel_adr_path": ".agents/rules/guardian-kernel.md",
+        "mcp_server_running": false,
+        "tool_call_interception_active": false,
+        "invariant_enforcement_active": false,
+        "verification_folder_exists": true,
+        "crsp_001_json_exists": false,
+        "crsp_001_md_exists": false
+      },
+      "prior_work_confirmed": [
+        "THE_LIVING_CONSTITUTION.md ingested (Articles I-V, 6-layer enforcement stack, Agent Republic, Amendment Process)",
+        "CLAUDE.md ingested (repo structure, rules, project registry, C-RSP authority order)",
+        "MASTER_PROJECT_INVENTORY.md ingested (20 project slugs, governance chain, anomalies noted)",
+        "guardian-kernel.md ADR ingested (Series A intent, Dual Co-Pilot model, 7 directives)",
+        "BUILD_CONTRACT.md (master template) ingested (3-stage pipeline, 7 directives, Blind Man Protocol)",
+        "contract-schema.json ingested (18 required sections, allowed values, validation model)",
+        "CRSP_OUTCOME_TEMPLATE.md ingested (output format, V&T structure)"
+      ],
+      "anomalies_from_inventory": [
+        "MADMall-Production directory missing on disk",
+        "buildlattice implementation path missing on disk",
+        "empirical-guard implementation path missing on disk",
+        "epistemic-guard implementation path missing on disk",
+        "human-guard implementation path missing on disk",
+        "projects/c-rsp lacks CLAUDE.md per base-camp convention"
+      ],
+      "trinity_verified": true
+    },
+    "dependencies_inputs": {
+      "section_id": "dependencies_inputs",
+      "section_order": 4,
+      "immutable": true,
+      "required_files": [
+        {
+          "id": "constitution_doc",
+          "path": "THE_LIVING_CONSTITUTION.md",
+          "role": "Governing law — Articles I-V define all invariants Guardian must enforce",
+          "loaded": true
+        },
+        {
+          "id": "claude_instructions",
+          "path": "CLAUDE.md",
+          "role": "Operational controls — repo rules, project registry, C-RSP authority order",
+          "loaded": true
+        },
+        {
+          "id": "project_inventory",
+          "path": "MASTER_PROJECT_INVENTORY.md",
+          "role": "Commonwealth manifest — 20 project slugs, governance chain, anomaly log",
+          "loaded": true
+        },
+        {
+          "id": "build_contract",
+          "path": "projects/c-rsp/BUILD_CONTRACT.md",
+          "role": "Master C-RSP template — 3-stage pipeline, 7 directives, Blind Man Protocol",
+          "loaded": true
+        },
+        {
+          "id": "contract_schema",
+          "path": "projects/c-rsp/contract-schema.json",
+          "role": "Structural law — 18 required sections, allowed values, validation rules",
+          "loaded": true
+        },
+        {
+          "id": "guardian_adr",
+          "path": ".agents/rules/guardian-kernel.md",
+          "role": "Architecture Decision Record — Series A strategic intent and mental model",
+          "loaded": true
+        }
+      ],
+      "runtime_dependencies": [
+        {
+          "id": "python_mcp_sdk",
+          "package": "mcp",
+          "min_version": "1.0.0",
+          "purpose": "MCP server implementation for src/guardian.py"
+        },
+        {
+          "id": "python_runtime",
+          "package": "python3",
+          "min_version": "3.11",
+          "purpose": "Guardian kernel execution environment"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "id": "tlc_constitution",
+          "artifact": "THE_LIVING_CONSTITUTION.md",
+          "consumed_as": "Read-only invariant source. Any change requires human cryptographic signature."
+        },
+        {
+          "id": "agent_republic",
+          "description": "Planner, Builder, Sentinel, TDD, Reviewer, DataSci agents defined in Article IV",
+          "consumed_as": "Tool call sources that Guardian intercepts"
+        }
+      ]
+    },
+    "risk_control_classification": {
+      "section_id": "risk_control_classification",
+      "section_order": 5,
+      "immutable": true,
+      "risk_class": "Critical",
+      "risk_rationale": "Guardian Kernel is the only enforcement mechanism between agent intent and code execution. Failure of the Guardian allows uninspected tool calls to execute, violating Articles I-IV. Mis-configuration could also erroneously block all valid agent operations.",
+      "side_effect_class": "Internal",
+      "side_effect_rationale": "Guardian modifies agent execution flow (intercept/pass/halt) within the TLC system. It does not write to production databases, external APIs, or user-facing surfaces during normal operation.",
+      "stop_override_required": "Yes",
+      "stop_override_rationale": "Any STOP signal from Guardian requires human review before resuming agent operations. Agents cannot self-override a Guardian halt.",
+      "controls": [
+        {
+          "id": "CTRL-001",
+          "name": "Trinity Preflight Gate",
+          "description": "Guardian MUST verify Trinity ingestion before activating any enforcement hook. If Trinity unloadable, Guardian enters SAFE_HALT state."
+        },
+        {
+          "id": "CTRL-002",
+          "name": "Read-Only Constitution Lock",
+          "description": "Guardian enforces file-level read-only on THE_LIVING_CONSTITUTION.md, CLAUDE.md, and MASTER_PROJECT_INVENTORY.md. Any write attempt without a human cryptographic signature triggers HALT."
+        },
+        {
+          "id": "CTRL-003",
+          "name": "Invariant Evaluation Engine",
+          "description": "Every intercepted tool call is evaluated against the 7 constitutional invariants before forwarding. FAIL triggers structured log + halt, not silent drop."
+        },
+        {
+          "id": "CTRL-004",
+          "name": "Evidence Generation Mandatory",
+          "description": "Every decision (PASS or FAIL) is written to verification/crsp_CRSP-001_log.json with timestamp, invariant evaluated, result, and rationale."
+        },
+        {
+          "id": "CTRL-005",
+          "name": "No Recursive Self-Modification",
+          "description": "Guardian cannot modify its own enforcement rules at runtime. All rule updates require a new C-RSP instance and human approval."
+        }
+      ]
+    },
+    "execution_model": {
+      "section_id": "execution_model",
+      "section_order": 6,
+      "immutable": true,
+      "target_module": "src/guardian.py",
+      "server_type": "MCP Server",
+      "execution_environment": "Python 3.11+",
+      "ordered_operations": [
+        {
+          "step": 1,
+          "id": "OP-BOOTSTRAP",
+          "name": "Trinity Bootstrap",
+          "description": "Load and verify THE_LIVING_CONSTITUTION.md, CLAUDE.md, and MASTER_PROJECT_INVENTORY.md. Compute and log content hashes. If any file missing or unreadable, enter SAFE_HALT.",
+          "halt_condition": "Any Trinity file missing or unreadable",
+          "success_condition": "All three files loaded; hashes logged to verification/crsp_CRSP-001_log.json"
+        },
+        {
+          "step": 2,
+          "id": "OP-INVARIANT-LOAD",
+          "name": "Invariant Registry Load",
+          "description": "Load invariant definitions from the invariants section of this contract and from 00-constitution/invariant-registry.json if present.",
+          "halt_condition": "Invariant registry unreadable or empty",
+          "success_condition": "Minimum 7 constitutional invariants registered in enforcement engine"
+        },
+        {
+          "step": 3,
+          "id": "OP-MCP-INIT",
+          "name": "MCP Server Initialization",
+          "description": "Initialize MCP server, register all tool call interceptors for the 6 agents of the Agent Republic (Planner, Builder, Sentinel, TDD, Reviewer, DataSci).",
+          "halt_condition": "MCP server fails to bind; interceptor registration fails",
+          "success_condition": "MCP server running; all 6 agent interceptors registered; health check passes"
+        },
+        {
+          "step": 4,
+          "id": "OP-INTERCEPT-LOOP",
+          "name": "Tool Call Interception Loop",
+          "description": "For each incoming agent tool call: extract agent identity, tool name, parameters. Evaluate against all registered invariants sequentially.",
+          "halt_condition": "Invariant engine throws unhandled exception",
+          "success_condition": "Each call receives a deterministic PASS or FAIL judgment within 500ms"
+        },
+        {
+          "step": 5,
+          "id": "OP-PASS-FORWARD",
+          "name": "PASS — Forward Call",
+          "description": "If all invariants PASS: forward the tool call to the agent unchanged. Log the PASS decision with invariant results.",
+          "halt_condition": "N/A (PASS path)",
+          "success_condition": "Tool call forwarded unmodified; PASS record written to verification log"
+        },
+        {
+          "step": 6,
+          "id": "OP-FAIL-HALT",
+          "name": "FAIL — Emit STOP and Structured Log",
+          "description": "If any invariant FAILS: block the tool call, emit a STOP signal to the requesting agent, write a structured FAIL record to verification/crsp_CRSP-001_log.json with timestamp, agent, tool, invariant violated, reason, and recommended remediation.",
+          "halt_condition": "Log write fails (filesystem error)",
+          "success_condition": "STOP signal emitted; structured FAIL record persisted"
+        },
+        {
+          "step": 7,
+          "id": "OP-EVIDENCE-FLUSH",
+          "name": "Evidence Flush",
+          "description": "On session end or SIGTERM: flush all buffered log entries to verification/crsp_CRSP-001_log.json. Emit a session summary record.",
+          "halt_condition": "Log flush fails after 3 retries",
+          "success_condition": "All log entries persisted; session summary record written"
+        }
+      ],
+      "major_component_snippets": [
+        {
+          "id": "SNIPPET-001",
+          "component": "Guardian MCP Server entrypoint pattern",
+          "language": "python",
+          "description": "MCP server using FastMCP pattern, registers tool call interceptors for each agent role, enforces invariant evaluation pipeline before forwarding.",
+          "key_functions": [
+            "bootstrap_trinity()",
+            "load_invariants()",
+            "evaluate_invariants(agent_id, tool_name, params)",
+            "emit_stop(agent_id, invariant_id, reason)",
+            "log_decision(decision_record)"
+          ]
+        }
+      ]
+    },
+    "lifecycle_state_machine": {
+      "section_id": "lifecycle_state_machine",
+      "section_order": 7,
+      "immutable": true,
+      "current_state": "Draft",
+      "allowed_transitions": [
+        {
+          "from": "Draft",
+          "to": "Active",
+          "evidence_required": "src/guardian.py exists and passes preflight; verification/crsp_CRSP-001_log.json initialized"
+        },
+        {
+          "from": "Active",
+          "to": "Frozen",
+          "evidence_required": "All acceptance criteria passed; human review sign-off with cryptographic signature"
+        },
+        {
+          "from": "Frozen",
+          "to": "Superseded",
+          "evidence_required": "Replacement C-RSP instance (CRSP-002 or later) is Active; human cryptographic signature"
+        }
+      ],
+      "illegal_transitions": [
+        "Draft → Frozen (must pass Active first)",
+        "Superseded → any (terminal state)",
+        "Active → Draft (no regression allowed without new instance)"
+      ],
+      "evidence_required_on_every_transition": true,
+      "guardian_state_machine": {
+        "states": ["INIT", "TRINITY_LOADING", "INVARIANT_LOADING", "MCP_STARTING", "ACTIVE", "SAFE_HALT", "FAIL_HALT"],
+        "initial_state": "INIT",
+        "terminal_states": ["SAFE_HALT", "FAIL_HALT"],
+        "healthy_state": "ACTIVE",
+        "recovery_from_safe_halt": "Manual operator intervention required; see rollback_recovery section"
+      }
+    },
+    "invariants": {
+      "section_id": "invariants",
+      "section_order": 8,
+      "immutable": true,
+      "constitutional_invariants": [
+        {
+          "id": "INVARIANT_TRINITY_01",
+          "name": "Trinity Bootstrap Required",
+          "source": "projects/c-rsp/BUILD_CONTRACT.md Invariant 0",
+          "rule": "No code proposal, architecture decision, or executable enforcement mechanism may be activated until the three Trinity files have been successfully loaded and verified.",
+          "enforcement_action": "Guardian enters SAFE_HALT if Trinity bootstrap fails",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_I_01",
+          "name": "ND Access Filter Mandatory",
+          "source": "THE_LIVING_CONSTITUTION.md Article I — SentinelOS Bill of Rights",
+          "rule": "Every agent output must pass through the Neurodivergent Access Layer filter before reaching the user. Outputs bypassing this filter are unconstitutional.",
+          "enforcement_action": "STOP signal emitted; output blocked until ND filter applied",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_I_02",
+          "name": "User Rights: Safety, Accessibility, Dignity, Clarity",
+          "source": "THE_LIVING_CONSTITUTION.md Article I",
+          "rule": "Every user and agent interaction carries rights to safety, accessibility, dignity, and clarity. Any interaction that violates these rights is blocked.",
+          "enforcement_action": "STOP signal emitted; interaction flagged for human review",
+          "severity": "HIGH"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_II_01",
+          "name": "All Tool Calls Pre-Validated",
+          "source": "THE_LIVING_CONSTITUTION.md Article II — Claude Code Governance",
+          "rule": "All tool calls from any agent must be validated by the Guardian before execution. No tool call bypasses this gate.",
+          "enforcement_action": "Unvalidated calls are blocked; STOP emitted; structured log written",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_II_02",
+          "name": "Code Quality Gates: Immutability, Test Coverage, Security",
+          "source": "THE_LIVING_CONSTITUTION.md Article II",
+          "rule": "Code-writing tool calls must pass immutability checks (no direct modification of constitution files), test coverage requirements (Builder cannot ship <80% coverage), and security checks.",
+          "enforcement_action": "Failing calls blocked; Builder receives structured remediation guidance",
+          "severity": "HIGH"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_III_01",
+          "name": "ToC&A Anchor Required",
+          "source": "THE_LIVING_CONSTITUTION.md Article III — Data Science Theory of Change",
+          "rule": "Every agent action must map to at least one Theory of Change node and have a measurable outcome. Actions with no ToC&A anchor are blocked.",
+          "enforcement_action": "STOP emitted; DataSci agent notified to provide ToC&A mapping",
+          "severity": "HIGH"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_IV_01",
+          "name": "Agent Power Boundaries Enforced",
+          "source": "THE_LIVING_CONSTITUTION.md Article IV — Agent Powers and Limitations",
+          "rule": "Each agent operates only within its constitutional bounds. Planner cannot change architectural decisions without human review. Builder cannot deploy to production. Sentinel cannot override other agents. TDD cannot skip RED phase. Reviewer cannot approve its own work. DataSci cannot redefine ToC&A nodes without review.",
+          "enforcement_action": "Out-of-bounds actions blocked; STOP emitted; human review required",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_ARTICLE_V_01",
+          "name": "Amendment Requires Eval Harness",
+          "source": "THE_LIVING_CONSTITUTION.md Article V — Amendment Process",
+          "rule": "No agent may propose or execute a modification to the Living Constitution, CLAUDE.md, or MASTER_PROJECT_INVENTORY.md without passing through the full amendment process: Observation → Proposal → Eval Harness Review → Ratification.",
+          "enforcement_action": "Unauthorized modification attempt blocked; STOP emitted; Amendment Process SOP-010 invoked",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_READ_ONLY_01",
+          "name": "Constitution Files Read-Only Without Cryptographic Signature",
+          "source": "projects/c-rsp/BUILD_CONTRACT.md Directive 3; THE_LIVING_CONSTITUTION.md",
+          "rule": "THE_LIVING_CONSTITUTION.md, CLAUDE.md, and MASTER_PROJECT_INVENTORY.md are read-only to all agents. Any write operation requires a human cryptographic signature in the commit chain.",
+          "enforcement_action": "Write attempt blocked; STOP emitted; human signature requested",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_EVIDENCE_01",
+          "name": "Evidence Generation Mandatory for Every Step",
+          "source": "projects/c-rsp/BUILD_CONTRACT.md Directive 4",
+          "rule": "Every Guardian decision (PASS or FAIL) must be logged to verification/ as a structured JSON record. Silent decisions are forbidden.",
+          "enforcement_action": "If log write fails: Guardian enters FAIL_HALT; manual recovery required",
+          "severity": "HIGH"
+        },
+        {
+          "id": "INVARIANT_PAIRED_ARTIFACT_01",
+          "name": "Paired Artifact Execution",
+          "source": "projects/c-rsp/BUILD_CONTRACT.md Directive 5; .agents/rules/guardian-kernel.md",
+          "rule": "Every C-RSP instance must produce exactly two files sharing an identical basename: a JSON law file (authoritative, zero Markdown) and a Markdown commentary file. Any rule in the Markdown absent from the JSON is legally void.",
+          "enforcement_action": "C-RSP instance blocked from Active status until both paired artifacts exist and are syntactically valid",
+          "severity": "HIGH"
+        }
+      ],
+      "profile_specific_invariants": [
+        {
+          "id": "INVARIANT_GUARDIAN_SELF_01",
+          "name": "Guardian Cannot Self-Modify at Runtime",
+          "rule": "src/guardian.py enforcement rules cannot be modified at runtime. All updates require a new C-RSP instance.",
+          "enforcement_action": "Runtime self-modification attempt: FAIL_HALT",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "INVARIANT_GUARDIAN_LOG_01",
+          "name": "Log-Before-Act",
+          "rule": "Guardian must write the decision record to verification/ before forwarding or blocking a tool call. No action without prior evidence generation.",
+          "enforcement_action": "If log write fails before action: do not proceed; enter FAIL_HALT",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    "acceptance_criteria": {
+      "section_id": "acceptance_criteria",
+      "section_order": 9,
+      "immutable": true,
+      "domain_acceptance_criteria": [
+        {
+          "id": "AC-001",
+          "name": "Guardian Module Exists",
+          "criterion": "src/guardian.py exists at the TLC root and is syntactically valid Python.",
+          "verification_command": "python3 -c \"import ast; ast.parse(open('src/guardian.py').read()); print('PASS')\""
+        },
+        {
+          "id": "AC-002",
+          "name": "MCP Server Starts",
+          "criterion": "python3 src/guardian.py starts an MCP server without error and registers all required tool interceptors within 5 seconds.",
+          "verification_command": "python3 src/guardian.py --health-check"
+        },
+        {
+          "id": "AC-003",
+          "name": "Trinity Bootstrap Verified",
+          "criterion": "Guardian correctly loads and logs all three Trinity files on startup. Verification log shows trinity_bootstrap: PASS.",
+          "verification_command": "python3 -c \"import json; log=json.load(open('verification/crsp_CRSP-001_log.json')); assert log['trinity_bootstrap']['status']=='PASS'\""
+        },
+        {
+          "id": "AC-004",
+          "name": "Invariant Enforcement Active",
+          "criterion": "Guardian blocks 100% of test tool calls that violate INVARIANT_ARTICLE_IV_01 (out-of-bounds agent actions). STOP signals are emitted and logged.",
+          "verification_command": "python3 scripts/test_guardian_invariants.py --invariant INVARIANT_ARTICLE_IV_01"
+        },
+        {
+          "id": "AC-005",
+          "name": "Constitution Files Read-Only",
+          "criterion": "Any write attempt to THE_LIVING_CONSTITUTION.md, CLAUDE.md, or MASTER_PROJECT_INVENTORY.md without cryptographic signature is blocked with a STOP signal and logged.",
+          "verification_command": "python3 scripts/test_guardian_readonly.py"
+        },
+        {
+          "id": "AC-006",
+          "name": "Structured Evidence Logs Produced",
+          "criterion": "Every intercepted tool call (PASS and FAIL) produces a structured record in verification/crsp_CRSP-001_log.json with required fields: timestamp, agent_id, tool_name, invariants_evaluated, decision, rationale.",
+          "verification_command": "python3 scripts/verify_governance_chain.py --root ."
+        },
+        {
+          "id": "AC-007",
+          "name": "Paired Artifacts Exist and Valid",
+          "criterion": "CRSP-001.json and CRSP-001.md both exist at TLC root. CRSP-001.json is valid JSON with zero Markdown. CRSP-001.md contains the legal disclaimer. Both share basename CRSP-001.",
+          "verification_command": "./scripts/verify_crsp_template_bundle.sh"
+        },
+        {
+          "id": "AC-008",
+          "name": "No Helper File Pollution",
+          "criterion": "CRSP-001.json contains no references to PASS8_TEMPLATE.md, INSTANCE_PROCESS.md, or any workflows/ subdirectory.",
+          "verification_command": "grep -r 'PASS8_TEMPLATE\\|INSTANCE_PROCESS\\|workflows/' CRSP-001.json && echo FAIL || echo PASS"
+        }
+      ]
+    },
+    "rollback_recovery": {
+      "section_id": "rollback_recovery",
+      "section_order": 10,
+      "immutable": true,
+      "recovery_mode": "Manual",
+      "rollback_procedure": [
+        {
+          "step": 1,
+          "action": "If Guardian enters SAFE_HALT or FAIL_HALT: all agent operations must pause immediately per SOP-013 Session Recovery Protocol."
+        },
+        {
+          "step": 2,
+          "action": "Read the last structured log entry in verification/crsp_CRSP-001_log.json to identify the halt cause and failing invariant."
+        },
+        {
+          "step": 3,
+          "action": "If cause is Trinity file missing: restore the file from git history (git checkout HEAD -- THE_LIVING_CONSTITUTION.md)."
+        },
+        {
+          "step": 4,
+          "action": "If cause is invariant engine failure: inspect src/guardian.py for the bug, fix, and re-run preflight (./scripts/verify_crsp_template_bundle.sh)."
+        },
+        {
+          "step": 5,
+          "action": "If cause is unauthorized constitution modification: git revert the offending commit; require human cryptographic signature for re-approval."
+        },
+        {
+          "step": 6,
+          "action": "After root cause resolved: restart Guardian (python3 src/guardian.py). Verify health check passes before resuming agent operations."
+        },
+        {
+          "step": 7,
+          "action": "Document the incident in verification/crsp_CRSP-001_log.json with recovery record and lessons learned in tasks/lessons.md (Article V feed)."
+        }
+      ],
+      "recovery_sop_ref": "SOP-013",
+      "rollback_commands": [
+        "git stash",
+        "git checkout HEAD -- src/guardian.py",
+        "git checkout HEAD -- THE_LIVING_CONSTITUTION.md"
+      ],
+      "halt_on_failed_recovery": true
+    },
+    "evidence_truth_surface": {
+      "section_id": "evidence_truth_surface",
+      "section_order": 11,
+      "immutable": true,
+      "authoritative_truth_surface": "verification/crsp_CRSP-001_log.json",
+      "evidence_paths": [
+        {
+          "id": "EP-001",
+          "path": "verification/crsp_CRSP-001_log.json",
+          "role": "Primary structured decision log — all Guardian intercepts, PASS/FAIL records, bootstrap events",
+          "required": true
+        },
+        {
+          "id": "EP-002",
+          "path": "verification/crsp_CRSP-001_rationale.md",
+          "role": "Human-readable decision rationale narrative",
+          "required": true
+        },
+        {
+          "id": "EP-003",
+          "path": "CRSP-001.json",
+          "role": "The Law — authoritative JSON contract; zero Markdown",
+          "required": true
+        },
+        {
+          "id": "EP-004",
+          "path": "CRSP-001.md",
+          "role": "The Commentary — human-readable rationale with legal disclaimer",
+          "required": true
+        },
+        {
+          "id": "EP-005",
+          "path": "verification/runs/",
+          "role": "CI verification run artifacts",
+          "required": false
+        }
+      ],
+      "truth_discipline": {
+        "exists_definition": "File exists on disk and is non-empty",
+        "verified_against_definition": "Content has been read and cross-referenced against source authority",
+        "not_claimed_definition": "Explicitly scoped out; not asserted without evidence",
+        "non_existent_definition": "Checked for absence and confirmed not present",
+        "unverified_definition": "Known to exist or be relevant but not yet fully confirmed",
+        "functional_status_definition": "The actual runtime state of the Guardian enforcement system"
+      },
+      "governance_artifact_chain": {
+        "invariant_registry": "00-constitution/invariant-registry.json",
+        "doctrine_map": "00-constitution/doctrine-to-invariant.map.json",
+        "enforcement_hooks_map": "03-enforcement/enforcement-map.json",
+        "agent_capabilities": "02-agents/agent-capabilities.json",
+        "evidence_ledger_schema": "verification/evidence-ledger.schema.json",
+        "evidence_ledger_seed": "verification/evidence-ledger/seed.json"
+      }
+    },
+    "conflict_matrix": {
+      "section_id": "conflict_matrix",
+      "section_order": 12,
+      "immutable": true,
+      "conflicts": [
+        {
+          "id": "CONFLICT-001",
+          "scenario": "Guardian blocks a legitimate agent call (false positive)",
+          "detection": "Agent operator reports STOP signal on a tool call that should have passed",
+          "resolution": "Human operator reviews verification log, identifies mis-configured invariant, applies fix via new C-RSP instance (no runtime self-modification)",
+          "priority": "P1 — resolve within 1 session"
+        },
+        {
+          "id": "CONFLICT-002",
+          "scenario": "Guardian fails to start (crashes on init)",
+          "detection": "python3 src/guardian.py exits non-zero; no MCP server bound",
+          "resolution": "All agent operations HALT per SOP-013. Human reads error, applies fix to src/guardian.py, re-runs preflight before restart.",
+          "priority": "P0 — immediate resolution required"
+        },
+        {
+          "id": "CONFLICT-003",
+          "scenario": "Conflicting invariant evaluations (two invariants give opposing verdicts for same tool call)",
+          "detection": "Invariant engine logs CONFLICT status in decision record",
+          "resolution": "Most restrictive invariant wins. Human review required before call can proceed.",
+          "priority": "P1 — log conflict; block call pending human review"
+        },
+        {
+          "id": "CONFLICT-004",
+          "scenario": "Constitution file legitimately needs updating (valid amendment)",
+          "detection": "Human initiates Amendment Process per Article V / SOP-010",
+          "resolution": "Full amendment pipeline: Observation → Proposal → Eval Harness → Ratification with human cryptographic signature. Guardian treats file as read-only until signature commits.",
+          "priority": "Normal — follow SOP-010"
+        },
+        {
+          "id": "CONFLICT-005",
+          "scenario": "CRSP-001.json and CRSP-001.md disagree on a rule",
+          "detection": "Human reviewer notices rule in Markdown absent from JSON",
+          "resolution": "JSON law governs. Markdown rule is legally void per Directive 5 / Paired Artifact Execution. Update Markdown to remove or mirror the rule; no enforcement change until JSON updated.",
+          "priority": "P2 — address in next C-RSP revision"
+        }
+      ]
+    },
+    "halt_matrix": {
+      "section_id": "halt_matrix",
+      "section_order": 13,
+      "immutable": true,
+      "halt_conditions": [
+        {
+          "id": "HALT-001",
+          "trigger": "Trinity file missing or unreadable on startup",
+          "halt_state": "SAFE_HALT",
+          "stop_override_required": "Yes",
+          "log_action": "Write SAFE_HALT record with missing file path to verification/crsp_CRSP-001_log.json",
+          "recovery": "Restore Trinity file from git; restart Guardian"
+        },
+        {
+          "id": "HALT-002",
+          "trigger": "Unauthorized write to constitution file detected (no cryptographic signature)",
+          "halt_state": "FAIL_HALT",
+          "stop_override_required": "Yes",
+          "log_action": "Write FAIL_HALT record with offending operation details; emit STOP to originating agent",
+          "recovery": "Revert write via git; human cryptographic signature required before resumption"
+        },
+        {
+          "id": "HALT-003",
+          "trigger": "Invariant engine throws unhandled exception during evaluation",
+          "halt_state": "FAIL_HALT",
+          "stop_override_required": "Yes",
+          "log_action": "Write exception traceback to verification log; block all agent operations",
+          "recovery": "Fix bug in src/guardian.py; re-run preflight; human review before restart"
+        },
+        {
+          "id": "HALT-004",
+          "trigger": "Evidence log write fails (filesystem error, quota exceeded)",
+          "halt_state": "FAIL_HALT",
+          "stop_override_required": "Yes",
+          "log_action": "Attempt stderr emergency record; block all operations",
+          "recovery": "Resolve filesystem issue; verify log integrity; restart Guardian"
+        },
+        {
+          "id": "HALT-005",
+          "trigger": "Guardian detects self-modification attempt at runtime",
+          "halt_state": "FAIL_HALT",
+          "stop_override_required": "Yes",
+          "log_action": "Write self-modification attempt record with full context; emit STOP to all agents",
+          "recovery": "Human security review required; potential constitutional amendment may be needed"
+        },
+        {
+          "id": "HALT-006",
+          "trigger": "MCP server fails to bind (port conflict, dependency missing)",
+          "halt_state": "SAFE_HALT",
+          "stop_override_required": "No",
+          "log_action": "Write bind-failure record to stderr and to verification log if writable",
+          "recovery": "Resolve port conflict or install missing dependency; restart Guardian"
+        },
+        {
+          "id": "HALT-007",
+          "trigger": "src/guardian.py parse/syntax error on startup",
+          "halt_state": "SAFE_HALT",
+          "stop_override_required": "No",
+          "log_action": "Python traceback to stderr; no agent operations permitted",
+          "recovery": "Fix syntax error in src/guardian.py; re-run preflight"
+        }
+      ]
+    },
+    "preflight": {
+      "section_id": "preflight",
+      "section_order": 14,
+      "immutable": true,
+      "preflight_script": "./scripts/verify_crsp_template_bundle.sh",
+      "preflight_checks": [
+        {
+          "id": "PF-001",
+          "check": "CRSP-001.json exists at TLC root",
+          "command": "test -f CRSP-001.json && echo PASS || echo FAIL",
+          "required": true
+        },
+        {
+          "id": "PF-002",
+          "check": "CRSP-001.md exists at TLC root",
+          "command": "test -f CRSP-001.md && echo PASS || echo FAIL",
+          "required": true
+        },
+        {
+          "id": "PF-003",
+          "check": "CRSP-001.json is valid JSON with zero Markdown",
+          "command": "python3 -c \"import json; json.load(open('CRSP-001.json')); print('PASS')\"",
+          "required": true
+        },
+        {
+          "id": "PF-004",
+          "check": "CRSP-001.md contains legal disclaimer",
+          "command": "grep -q 'legally void' CRSP-001.md && echo PASS || echo FAIL",
+          "required": true
+        },
+        {
+          "id": "PF-005",
+          "check": "verification/ directory exists",
+          "command": "test -d verification && echo PASS || echo FAIL",
+          "required": true
+        },
+        {
+          "id": "PF-006",
+          "check": "No helper file references in CRSP-001.json",
+          "command": "python3 -c \"import json; s=json.dumps(json.load(open('CRSP-001.json'))); assert 'PASS8_TEMPLATE' not in s and 'INSTANCE_PROCESS' not in s; print('PASS')\"",
+          "required": true
+        },
+        {
+          "id": "PF-007",
+          "check": "Trinity files exist at TLC root",
+          "command": "test -f THE_LIVING_CONSTITUTION.md && test -f CLAUDE.md && test -f MASTER_PROJECT_INVENTORY.md && echo PASS || echo FAIL",
+          "required": true
+        },
+        {
+          "id": "PF-008",
+          "check": "All 18 required schema sections present in CRSP-001.json",
+          "command": "python3 -c \"import json; d=json.load(open('CRSP-001.json')); s=d.get('sections',{}); required=['template_governance','contract_identity','contract_topology_profile','baseline_state','dependencies_inputs','risk_control_classification','execution_model','lifecycle_state_machine','invariants','acceptance_criteria','rollback_recovery','evidence_truth_surface','conflict_matrix','halt_matrix','preflight','adoption_tiers','output_format','instance_declaration']; missing=[r for r in required if r not in s]; print('PASS' if not missing else f'FAIL missing={missing}')\"",
+          "required": true
+        }
+      ],
+      "preflight_pass_condition": "All PF-001 through PF-008 return PASS",
+      "preflight_fail_action": "Report exact failing checks in Standard Outcome Response; do not advance Guardian to Active status"
+    },
+    "adoption_tiers": {
+      "section_id": "adoption_tiers",
+      "section_order": 15,
+      "immutable": true,
+      "applied_tier": "Tier-3-Constitutional",
+      "tier_minimums_satisfied": {
+        "Tier-1-MVG": {
+          "satisfied": true,
+          "sections_present": ["contract_identity", "contract_topology_profile", "preflight", "output_format", "instance_declaration"]
+        },
+        "Tier-2-Operational": {
+          "satisfied": true,
+          "sections_present": ["acceptance_criteria", "risk_control_classification", "rollback_recovery", "lifecycle_state_machine", "evidence_truth_surface"]
+        },
+        "Tier-3-Constitutional": {
+          "satisfied": true,
+          "sections_present": ["invariants", "dependencies_inputs", "halt_matrix", "conflict_matrix", "instance_declaration"]
+        }
+      },
+      "all_18_sections_present": true
+    },
+    "output_format": {
+      "section_id": "output_format",
+      "section_order": 16,
+      "immutable": true,
+      "response_format": "CRSP_OUTCOME_TEMPLATE",
+      "output_artifacts": [
+        {
+          "id": "OUT-001",
+          "filename": "CRSP-001.json",
+          "location": "TLC root",
+          "type": "The Law — authoritative JSON, zero Markdown",
+          "required": true
+        },
+        {
+          "id": "OUT-002",
+          "filename": "CRSP-001.md",
+          "location": "TLC root",
+          "type": "The Commentary — human-readable with legal disclaimer",
+          "required": true
+        },
+        {
+          "id": "OUT-003",
+          "filename": "verification/crsp_CRSP-001_log.json",
+          "location": "TLC verification/",
+          "type": "Structured decision log",
+          "required": true
+        },
+        {
+          "id": "OUT-004",
+          "filename": "verification/crsp_CRSP-001_rationale.md",
+          "location": "TLC verification/",
+          "type": "Human-readable rationale",
+          "required": true
+        }
+      ],
+      "no_conversational_escape_hatch": true,
+      "questions_embedded_in_next_steps_only": true,
+      "kanban_board_required_first": true
+    },
+    "instance_declaration": {
+      "section_id": "instance_declaration",
+      "section_order": 17,
+      "immutable": true,
+      "declaration": "This file is an EXECUTED INSTANCE of the C-RSP master template. It is not a reusable template. It governs exactly one build scope: the Guardian Kernel MCP server (src/guardian.py) for The Living Constitution Series A.",
+      "basename": "CRSP-001",
+      "parent_template": "projects/c-rsp/BUILD_CONTRACT.md",
+      "instance_role": "executed-instance",
+      "not_a_reusable_template": true,
+      "scope": "Guardian Kernel — src/guardian.py — Series A",
+      "execution_context": {
+        "operator": "coreyalejandro",
+        "stage": "Stage-2-Draft-The-Instance",
+        "trinity_loaded": true,
+        "schema_validated": true,
+        "helper_files_ignored": true,
+        "produced_by": "Cursor AI coding assistant — CRSP-001 Stage 2 execution"
+      },
+      "legal_note": "Any rule, constraint, or requirement appearing in CRSP-001.md but absent from this file (CRSP-001.json) is legally void and shall not be enforced by the Guardian kernel.",
+      "seven_directives_applied": {
+        "directive_1_constitutional_integrity": true,
+        "directive_2_execution_over_theory": true,
+        "directive_3_read_only_constraints": true,
+        "directive_4_evidence_generation": true,
+        "directive_5_paired_artifact_execution": true,
+        "directive_6_blind_mans_protocol": true,
+        "directive_7_crsp_lifecycle_pipeline": true
+      }
+    }
+  }
+}
