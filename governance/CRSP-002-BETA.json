@@ -1,0 +1,11 @@
+{
+    "contract_id": "CRSP-002-BETA",
+    "parent": "CRSP-001",
+    "scope": "DISTRIBUTED_ENFORCEMENT",
+    "invariants": [
+        {"id": "INV-B-01", "description": "Local sandbox integrity check", "severity": "CRITICAL"},
+        {"id": "INV-B-02", "description": "Cross-repo state synchronization", "severity": "HIGH"},
+        {"id": "INV-B-03", "description": "Autonomous audit trail heartbeats", "severity": "MEDIUM"}
+    ],
+    "enforcement_point": "03-enforcement/sandbox-runtime-001"
+}
