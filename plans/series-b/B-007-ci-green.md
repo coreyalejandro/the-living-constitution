@@ -17,3 +17,7 @@
   `ATTESTATION_RUN_ID` + `ATTESTATION_REPOSITORY` fallback env vars and
   confirmed `verify_attestation.py` success against
   `verification/attestations/local-b007-1.json`.
+- Fixed CI failure-injection harness drift by retargeting two PASS7 cases in
+  `scripts/governance_failure_injection_tests.py` to
+  `render_status_surface.py --check` as status-surface drift checks when
+  `ci_provenance` values are mutated without regenerating `STATUS.json`/`STATUS.md`.
