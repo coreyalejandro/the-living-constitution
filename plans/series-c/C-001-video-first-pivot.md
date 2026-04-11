@@ -1,5 +1,11 @@
 # C-001: Video-First Pivot
 
+## Executable Contract Source
+
+- Canonical executable instance:
+  `plans/series-c/BUILD_CONTRACT.instance.C-001-video-first-pivot.md`
+- This page is a human summary; execution authority is the C-RSP instance above.
+
 ## Goal
 
 - Set a post-B007 direction where video impact is a first-class objective.

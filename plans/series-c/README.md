@@ -4,6 +4,9 @@ Series C is the post-B007 pivot: move from governance stabilization to
 high-impact fellowship visibility, with teaser-video-remotion as the primary
 execution surface.
 
+Execution baseline follows the C-RSP template via:
+`plans/series-c/BUILD_CONTRACT.instance.C-001-video-first-pivot.md`.
+
 ## Contracts Overview
 
 1. C-001: Video-first pivot and project boundary changes.
