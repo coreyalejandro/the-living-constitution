@@ -21,3 +21,5 @@ Automation and strict sequencing:
 3. C-003: Teaser-video-remotion excellence pass (awe-grade creative + technical quality).
 4. C-004: Fellowship spotlight launch package (distribution + evidence).
 5. C-010: cOS-TLC Golden PRD v6 adaptation (machine-actionable translation layer).
+6. C-011: CRSP-001 re-verification through executable acceptance gates.
+7. C-012: CRSP-001 lifecycle promotion guardrails and evidence sync.
