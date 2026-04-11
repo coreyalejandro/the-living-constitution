@@ -128,6 +128,8 @@ def aggregate_status(root: Path) -> Dict[str, Any]:
     out: Dict[str, Any] = {
         "schema_version": "1.1.0",
         "project": project,
+        "series": "B",
+        "status": "active",
         "head_sha": head,
         "last_verified_commit": str(cp.get("last_verified_commit") or ""),
         "last_verified_run_id": str(cp.get("last_verified_run_id") or ""),
@@ -177,6 +179,8 @@ def render_markdown_from_status(data: Dict[str, Any]) -> str:
     ]
     rows = [
         ("project", data.get("project")),
+        ("series", data.get("series")),
+        ("status", data.get("status")),
         ("verification_target", data.get("verification_target")),
         ("head_sha", data.get("head_sha")),
         ("last_verified_commit", data.get("last_verified_commit")),
