@@ -1,7 +1,7 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-04-11  
-**Status:** **Series B execution active** — B-003 merged and tagged; B-004 README rewrite drafted on branch `series-b/b-004-readme-rewrite` with PR #18 open for review.
+**Status:** **Series B execution active** — B-004 merged/tagged; B-005 consolidation branch active with PR #19 open.
 
 ## 1. Deliverables
 
@@ -29,7 +29,9 @@
 
 ## What Was Just Completed
 
-- **B-004 README rewrite (2026-04-11):** Reframed root `README.md` as a research-first landing page, added explicit "Built Now vs Specified / Target State" table, retained status-truth discipline pointing to `STATUS.json`, and recorded execution notes in `plans/series-b/B-004-readme-rewrite.md`. Branch pushed as `series-b/b-004-readme-rewrite`; PR opened: [#18](https://github.com/coreyalejandro/the-living-constitution/pull/18). Local verification run: `python3 scripts/verify_document_constitution.py --root .` (OK with expected stale warnings) and `python3 scripts/compliance_score_docs.py --root . --json-out verification/docs_compliance.json` (100%).
+- **B-005 consolidate projects (2026-04-11):** Added `projects/README.md` to explicitly separate in-repo runtime folders from specification-first overlays, with reproducible classification criteria (`src/` or `app/` required for runtime class). Updated `plans/series-b/B-005-consolidate-projects.md` execution notes. Branch: `series-b/b-005-consolidate-projects`; PR opened: [#19](https://github.com/coreyalejandro/the-living-constitution/pull/19). Verification run: `python3 scripts/verify_document_constitution.py --root .` (OK, expected stale warnings only).
+
+- **B-004 README rewrite (2026-04-11):** Reframed root `README.md` as a research-first landing page, added explicit "Built Now vs Specified / Target State" table, retained status-truth discipline pointing to `STATUS.json`, and recorded execution notes in `plans/series-b/B-004-readme-rewrite.md`. PR [#18](https://github.com/coreyalejandro/the-living-constitution/pull/18) merged to `main` at commit `5ed9029`; tag pushed: `b-004-readme-rewrite-5ed9029`.
 
 - **C-RSP hybrid memory model (2026-04-06):** Seeded `projects/c-rsp/openmemory.md` (append-only C-RSP journal + seed entry). Updated `projects/c-rsp/AGENT_PROMPT.md` (Memory model section, pre-flight reads root `openmemory.md` + `projects/c-rsp/openmemory.md`, session close appends only to `projects/c-rsp/openmemory.md`; fixed heading/list structure). Documented in root `openmemory.md` Components, `projects/c-rsp/README.md` table, and **`CANONICAL_ROLE_MAP.md`** § Memory surfaces (hybrid).
 
