@@ -1,0 +1,145 @@
+{
+  "schema_name": "crsp_contract_schema",
+  "schema_version": "1.0.0",
+  "contract_title": "Guardian Kernel AC-003 — Evidence Logging Implementation",
+  "contract_id": "CRSP-001-AC-003",
+  "version": "1.0.0",
+  "status": "Draft",
+  "adoption_tier": "Tier-2-Operational",
+  "topology_mode": "TLC-Core",
+  "profile_type": "Operational",
+  "verifier_class": "operational-verifier",
+  "authoritative_truth_surface": "verification/crsp_CRSP-001-AC-003_log.json",
+  "generated_at_utc": "2026-04-11T14:52:00Z",
+  "git_repo_name": "coreyalejandro/the-living-constitution",
+  "git_branch": "main",
+  "basename": "CRSP-001-AC-003",
+  "series": "CRSP-001",
+  "trinity_ingested": true,
+  "parent_contract": "CRSP-001",
+  "parent_contract_path": "CRSP-001.json",
+  "sections": {
+    "contract_identity": {
+      "section_id": "contract_identity",
+      "section_order": 1,
+      "immutable": true,
+      "contract_title": "Guardian Kernel AC-003 — Evidence Logging Implementation",
+      "contract_id": "CRSP-001-AC-003",
+      "version": "1.0.0",
+      "schema_version": "1.0.0",
+      "status": "Draft",
+      "adoption_tier": "Tier-2-Operational",
+      "created_at_utc": "2026-04-11T14:52:00Z",
+      "series": "CRSP-001",
+      "strategic_intent": "Implement evidence logging per INVARIANT_EVIDENCE_01: Every Guardian decision (PASS or FAIL) must be logged to verification/ as structured JSON. Silent decisions are forbidden.",
+      "owner": "coreyalejandro",
+      "supersedes": null,
+      "superseded_by": null
+    },
+    "baseline_state": {
+      "section_id": "baseline_state",
+      "section_order": 3,
+      "immutable": true,
+      "current_state_honest": {
+        "src_guardian_py_exists": true,
+        "bootstrap_trinity_implemented": true,
+        "health_check_passes": true,
+        "evidence_logging_implemented": false,
+        "verification_log_initialized": false,
+        "ac_003_complete": false
+      },
+      "prior_work_confirmed": [
+        "CRSP-001-IMPLEMENT completed: src/guardian.py exists with bootstrap_trinity()",
+        "AC-001 verified: Syntax validation passes",
+        "AC-002 verified: --health-check returns PASS with Trinity files present",
+        "Trinity files located at: THE_LIVING_CONSTITUTION.md, CLAUDE.md, MASTER_PROJECT_INVENTORY.md"
+      ],
+      "dependencies_met": true
+    },
+    "execution_model": {
+      "section_id": "execution_model",
+      "section_order": 6,
+      "immutable": true,
+      "target_module": "src/guardian.py",
+      "execution_environment": "Python 3.11+",
+      "ordered_operations": [
+        {
+          "step": 1,
+          "id": "OP-LOG-INIT",
+          "name": "Initialize Evidence Ledger",
+          "description": "Create verification/crsp_CRSP-001_log.json with proper structure. If exists, append to array.",
+          "halt_condition": "Cannot write to verification/ directory",
+          "success_condition": "Log file exists and is valid JSON array"
+        },
+        {
+          "step": 2,
+          "id": "OP-LOG-WRITE",
+          "name": "Log Trinity Bootstrap Result",
+          "description": "Write structured record with: timestamp (ISO 8601), operation='OP-BOOTSTRAP', trinity_bootstrap status, invariants_evaluated=['INVARIANT_TRINITY_01'], decision='PASS'|'FAIL'",
+          "halt_condition": "Log write fails after 3 retries",
+          "success_condition": "Record persisted to verification/crsp_CRSP-001_log.json"
+        },
+        {
+          "step": 3,
+          "id": "OP-LOG-VERIFY",
+          "name": "Verify Log Readable",
+          "description": "Read back log and verify last entry matches what was written",
+          "halt_condition": "Log read returns corrupted data",
+          "success_condition": "Round-trip verification passes"
+        }
+      ]
+    },
+    "acceptance_criteria": {
+      "section_id": "acceptance_criteria",
+      "section_order": 9,
+      "immutable": true,
+      "domain_acceptance_criteria": [
+        {
+          "id": "AC-003",
+          "name": "Evidence Logging Active",
+          "criterion": "Running src/guardian.py creates or appends to verification/crsp_CRSP-001_log.json with structured bootstrap record",
+          "verification_command": "python3 -c \"import json; log=json.load(open('verification/crsp_CRSP-001_log.json')); assert isinstance(log, list); assert log[-1]['operation']=='OP-BOOTSTRAP'; assert log[-1]['trinity_bootstrap']['status']=='PASS'; print('AC-003: PASS')\""
+        }
+      ]
+    },
+    "evidence_truth_surface": {
+      "section_id": "evidence_truth_surface",
+      "section_order": 11,
+      "immutable": true,
+      "authoritative_truth_surface": "verification/crsp_CRSP-001-AC-003_log.json",
+      "evidence_paths": [
+        {
+          "id": "EP-001",
+          "path": "verification/crsp_CRSP-001_log.json",
+          "role": "Primary structured decision log for Guardian kernel",
+          "required": true
+        },
+        {
+          "id": "EP-002",
+          "path": "verification/crsp_CRSP-001-AC-003_log.json",
+          "role": "This contract's execution evidence",
+          "required": true
+        }
+      ]
+    },
+    "instance_declaration": {
+      "section_id": "instance_declaration",
+      "section_order": 17,
+      "immutable": true,
+      "declaration": "This file is an EXECUTED INSTANCE of the C-RSP master template. It governs exactly one build scope: implementing evidence logging for CRSP-001 Guardian Kernel AC-003.",
+      "basename": "CRSP-001-AC-003",
+      "parent_template": "projects/c-rsp/BUILD_CONTRACT.md",
+      "instance_role": "executed-instance",
+      "not_a_reusable_template": true,
+      "scope": "Guardian Kernel AC-003 — Evidence Logging",
+      "execution_context": {
+        "operator": "coreyalejandro",
+        "stage": "Stage-2-Draft-The-Instance",
+        "trinity_loaded": true,
+        "schema_validated": true,
+        "helper_files_ignored": true
+      },
+      "legal_note": "Any rule in CRSP-001-AC-003.md absent from CRSP-001-AC-003.json is legally void."
+    }
+  }
+}
