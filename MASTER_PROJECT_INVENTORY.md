@@ -1,6 +1,6 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-04-05T19:11:55Z  
+**Generated (UTC):** 2026-04-11T12:16:14Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (census + governance manifest). **PASS 10A current operational status:** canonical `STATUS.json` (rendered mirror `STATUS.md`); regenerate with `python3 scripts/render_status_surface.py --root .`
 
@@ -28,7 +28,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
 | ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
 | backboardai-fde | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde` | yes |
-| buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` | no |
+| buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` | yes |
 | c-rsp | no | yes | *none in contract* | n/a |
 | consent-gateway-auth0 | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0` | yes |
 | consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` | yes |
@@ -47,10 +47,6 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | teaser-video-remotion | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video-remotion` | yes |
 | tlc-control-plane | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop` | yes |
 | uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system/` | yes |
-
-**File-level notes (non-exhaustive):**
-
-**File-level notes (non-exhaustive):**
 
 **File-level notes (non-exhaustive):**
 

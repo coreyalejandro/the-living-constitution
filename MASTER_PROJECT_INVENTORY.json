@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-04-05T19:11:55Z",
+    "generated_at_utc": "2026-04-11T12:16:14Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -27,7 +27,7 @@
     "last_verified_commit": "30805eed1d51ca78107294376c1b783275e484aa",
     "last_remote_qualifying_commit": "30805eed1d51ca78107294376c1b783275e484aa",
     "artifact_name": "governance-verification-runs-23774310879-1",
-    "verify_workflow_sha256": "b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8",
+    "verify_workflow_sha256": "9d5296c156da23426ed48b3db9dd112b441754503e8b638bc6b6a17278e5ab29",
     "verify_workflow_sha256_at_last_remote_run": "b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8",
     "status": "pending",
     "tip_state_truth": "tip_pending",
@@ -273,8 +273,8 @@
         "slug": "buildlattice",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/buildlattice",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/buildlattice",
-        "path_exists_probe": false,
-        "path_exists_status": "missing_on_disk",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
         "repo_path_source": "Rollout #3 (B.1) — TLC overlay projects/buildlattice; implementation `/Users/coreyalejandro/Projects/buildlattice` (BUILD_CONTRACT + config/projects.ts); buildlattice_overlay_script"

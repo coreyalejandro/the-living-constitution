@@ -1,7 +1,7 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-04-11  
-**Status:** **Series B execution active** — B-004 merged/tagged; B-005 consolidation branch active with PR #19 open.
+**Status:** **Series B execution active** — B-004 through B-006 merged/tagged; B-007 is next.
 
 ## 1. Deliverables
 
@@ -28,6 +28,8 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **B-006 fellowship surface (2026-04-11):** Renamed `01-anthropic/` to `research/` and updated fellowship-facing docs to first-person narrative framing. Updated execution notes in `plans/series-b/B-006-fellowship-surface.md`. PR [#20](https://github.com/coreyalejandro/the-living-constitution/pull/20) merged to `main` at commit `7e8b2bb`; tag pushed: `b-006-fellowship-surface-7e8b2bb`.
 
 - **B-005 consolidate projects (2026-04-11):** Added `projects/README.md` to explicitly separate in-repo runtime folders from specification-first overlays, with reproducible classification criteria (`src/` or `app/` required for runtime class). Updated `plans/series-b/B-005-consolidate-projects.md` execution notes. Branch: `series-b/b-005-consolidate-projects`; PR opened: [#19](https://github.com/coreyalejandro/the-living-constitution/pull/19). Verification run: `python3 scripts/verify_document_constitution.py --root .` (OK, expected stale warnings only).
 
