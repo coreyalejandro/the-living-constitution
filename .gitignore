@@ -57,6 +57,7 @@ __pycache__/
 .playwright-mcp/
 /AGENTS.md
 /CLAUDE.md
+!/CLAUDE.md
 
 # Sandbox stress harness (local sentinel + JSONL; regenerate on test runs)
 verification/.stress_*.jsonl
