@@ -3,13 +3,13 @@
 
 ### What This Document Is
 
-A complete architectural summary of the Safety Systems Design Commonwealth: a constitutional governance-as-code platform for AI safety. This document is written for Anthropic reviewers evaluating the system's design coherence, not its marketing appeal.
+I provide a complete architectural summary of the Safety Systems Design Commonwealth: a constitutional governance-as-code platform for AI safety. I wrote this document for Anthropic reviewers evaluating design coherence, not marketing language.
 
 ---
 
 ## The Commonwealth: Five Layers
 
-The system is called the **Safety Systems Design Commonwealth**. It is a political metaphor applied to software with structural precision. Five layers, each with a clear analogy and a clear implementation.
+I call the system the **Safety Systems Design Commonwealth**. It is a political metaphor applied to software with structural precision. I organize it into five layers, each with a clear analogy and implementation surface.
 
 ```
 Layer 1: The Living Constitution    (Supreme law — Articles I-V)

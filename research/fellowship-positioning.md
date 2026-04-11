@@ -7,7 +7,7 @@ This is not a critique of Constitutional AI. This is an Amendment.
 
 The U.S. Constitution was ratified in 1787. It established structure: separation of powers, federalism, legislative process. Two years later, the Bill of Rights was ratified -- not because the Constitution was wrong, but because it was incomplete. It enumerated the rights of the people that the original structure had not addressed.
 
-Anthropic named its approach Constitutional AI. The Living Constitution proposes its first Amendment: a governance-as-code framework that adds structure, rights enumeration, separation of powers, and a formal amendment process to the constitutional metaphor that Anthropic originated.
+Anthropic named its approach Constitutional AI. I frame the Living Constitution as a first Amendment: a governance-as-code framework that adds structure, rights enumeration, separation of powers, and a formal amendment process to the constitutional metaphor Anthropic originated.
 
 ---
 
@@ -50,13 +50,13 @@ Anthropic's model spec addresses general safety. The Living Constitution's Defau
 
 ---
 
-### What Corey Brings to Anthropic
+### What I Bring to Anthropic
 
 **Domain expertise in governance-as-code.** Not governance-as-documentation. The Living Constitution is not a whitepaper describing how governance should work. It is a working system where CLAUDE.md files enforce constitutional articles, SentinelOS checks invariants at API boundaries, and PROACTIVE detects epistemic violations in production merge requests (212/212 tests passing, submitted to GitLab AI Hackathon).
 
 **A real product under constitutional governance.** MADMall-Production is a virtual luxury mall and teaching clinic for Black women living with Graves' disease — a healthcare product where constitutional governance is not theoretical. ConsentChain gates every data collection action. PROACTIVE validates every ML claim. UICare monitors cognitive load for chronically ill users. The governance framework is tested against a production application serving a real, underserved population.
 
-**Lived experience as the Default User.** Corey is neurodivergent (autism, bipolar I, ADHD, OCD). The Default User Doctrine is not an academic exercise in accessibility. It is a specification written by someone who has been harmed by systems designed for the median user. This perspective is rare in AI safety research and directly relevant to Anthropic's mission of building AI that benefits all of humanity.
+**Lived experience as the Default User.** I am neurodivergent (autism, bipolar I, ADHD, OCD). The Default User Doctrine is not an academic exercise in accessibility. I wrote it from direct experience with systems designed for the median user. I apply that perspective to build safety work that serves the full user distribution.
 
 **Systems architecture thinking.** The Commonwealth is not a single project. It is a governed system of seven interconnected products across four safety domains, with constitutional enforcement at every layer. Building this requires the same architectural discipline as enterprise-scale safety engineering -- domain decomposition, separation of concerns, invariant enforcement, and honest status reporting.
 
@@ -66,7 +66,7 @@ Anthropic's model spec addresses general safety. The Living Constitution's Defau
 
 ### The Fellowship Contribution
 
-During the fellowship, Corey would contribute to Anthropic's safety research in these areas:
+During the fellowship, I would contribute to Anthropic's safety research in these areas:
 
 1. **Model specification stress testing.** Using the Living Constitution's invariant framework to systematically test model spec compliance at runtime, not just training time.
 

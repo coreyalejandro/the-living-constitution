@@ -1,7 +1,7 @@
 # Evidence Ledger
 ## What Is Proven, What Is Partial, What Is Pending
 
-This ledger documents every material claim about the Safety Systems Design Commonwealth. Each entry states the claim, the evidence available, and the honest status. No inflation. No hedging. Binary or bounded.
+I use this ledger to document every material claim about the Safety Systems Design Commonwealth. Each entry states the claim, the available evidence, and the honest status. No inflation. No hedging. Binary or bounded.
 
 ---
 
@@ -133,8 +133,8 @@ This ledger documents every material claim about the Safety Systems Design Commo
 | X1 | GitHub repos | GitHub API returned 257 repos (verified 2026-03-25). Resume claims ~340 — discrepancy likely due to API pagination or org repos not counted. Use 257 as verified floor. | Partial (257 verified; 340 unverified) |
 | X2 | Rapid prototyping (<8hr build cycles) | Git commit timestamps across repos | Pending analysis |
 | X3 | Zero-shot build contract methodology | `projects/*/BUILD_CONTRACT.md` files in this repo | Proven |
-| X4 | Stanford education | Corey's background | Proven (external credential) |
-| X5 | Neurodivergent (autism, bipolar I, ADHD, OCD) | Corey's lived experience | Proven (self-reported) |
+| X4 | Stanford education | My academic background | Proven (external credential) |
+| X5 | Neurodivergent (autism, bipolar I, ADHD, OCD) | My lived experience | Proven (self-reported) |
 
 ---
 

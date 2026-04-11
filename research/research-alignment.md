@@ -2,7 +2,7 @@
 
 ## How TLC Aligns with Anthropic Research
 
-This document maps specific components of the Safety Systems Design Commonwealth to specific areas of Anthropic's published research. Every alignment claim references documented work on both sides. No implied endorsement.
+In this document, I map specific components of the Safety Systems Design Commonwealth to specific areas of Anthropic's published research. Every alignment claim references documented work on both sides. No implied endorsement.
 
 ---
 
