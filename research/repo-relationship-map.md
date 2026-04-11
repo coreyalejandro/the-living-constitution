@@ -1,6 +1,8 @@
 # Repo Relationship Map
 ## How All Repositories Relate Under TLC Governance
 
+I use this map to explain how my repositories connect under TLC governance and where constitutional authority is applied.
+
 ---
 
 ## The Governance Hierarchy
