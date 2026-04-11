@@ -1,7 +1,7 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-04-11  
-**Status:** **Series B execution active** — B-004 through B-006 merged/tagged; B-007 is next.
+**Status:** **Series C active (orchestrated)** — C-001 completed with hard gates; C-002 is now active via auto-next progression. Priority remains video extraction and teaser-video-remotion excellence.
 
 ## 1. Deliverables
 
@@ -28,6 +28,10 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **Series C orchestration hard-gates + CRSP lane (2026-04-11):** Added deterministic contract automation with `scripts/series_contract_orchestrator.py`, `plans/series-c/CONTRACT_STATE.json`, `plans/series-c/run-next-contract.sh`, and `plans/series-c/LOW_CAPABILITY_AGENT_PLAYBOOK.md`. Added CRSP-focused contracts `C-011` and `C-012`. Executed controlled completion for `C-001` through orchestrator gates and auto-activated `C-002` as the active contract.
+
+- **Series B closure + Series C kickoff (2026-04-11):** B-007 merged via PR [#21](https://github.com/coreyalejandro/the-living-constitution/pull/21) at `6805c55` and tagged `b-007-ci-green-6805c55`. Started Series C planning with `plans/series-c/README.md`, `C-001-video-first-pivot.md`, `C-002-extract-video-repos.md`, `C-003-teaser-video-remotion-excellence.md`, and `C-010-cos-tlc-golden-prd-v6-adaptation.md`. Updated `projects/README.md` to mark video surfaces as planned extraction targets and set `teaser-video-remotion` as priority.
 
 - **B-006 fellowship surface (2026-04-11):** Renamed `01-anthropic/` to `research/` and updated fellowship-facing docs to first-person narrative framing. Updated execution notes in `plans/series-b/B-006-fellowship-surface.md`. PR [#20](https://github.com/coreyalejandro/the-living-constitution/pull/20) merged to `main` at commit `7e8b2bb`; tag pushed: `b-006-fellowship-surface-7e8b2bb`.
 
