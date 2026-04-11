@@ -1,0 +1,67 @@
+{
+  "series_id": "Series-B",
+  "series_title": "Fellowship-Ready Refactor",
+  "purpose": "Transform the-living-constitution from a governance-documentation repo into a first-class AI safety research artifact that demonstrates Corey Alejandro's original contributions to runtime constitutional governance for agentic AI systems. Every contract preserves the author's voice, POV, and lived-experience authority. No fabrication. No inflation. Make the real work undeniable.",
+  "branch": "claude/refactor-repo-voice-UEFMp",
+  "execution_model": "Sequential. Each contract is a standalone zero-shot prompt. Any model (Haiku, Gemini Flash, GPT-4o-mini, Sonnet, Opus) can execute any contract. Each contract reads specific files, produces specific outputs, and writes a completion marker. The next contract checks for the previous marker before starting.",
+  "voice_constraint": "NON-NEGOTIABLE: The author's voice is direct, raw, neurodivergent-first, governance-obsessed, and unapologetically Black. Do not sanitize, academicize, or flatten it. The voice IS the differentiator. Write like the author writes — not like a research paper, not like corporate documentation.",
+  "contracts": [
+    {
+      "id": "CRSP-B-001",
+      "title": "Fix Broken Invariants",
+      "file": "CRSP-B-001-fix-broken-invariants.md",
+      "depends_on": null,
+      "completion_marker": "plans/series-b/.done-B-001",
+      "estimated_model_tier": "any"
+    },
+    {
+      "id": "CRSP-B-002",
+      "title": "Real Test Suite",
+      "file": "CRSP-B-002-real-test-suite.md",
+      "depends_on": "CRSP-B-001",
+      "completion_marker": "plans/series-b/.done-B-002",
+      "estimated_model_tier": "any"
+    },
+    {
+      "id": "CRSP-B-003",
+      "title": "Clean THE_LIVING_CONSTITUTION.md",
+      "file": "CRSP-B-003-clean-constitution.md",
+      "depends_on": "CRSP-B-001",
+      "completion_marker": "plans/series-b/.done-B-003",
+      "estimated_model_tier": "any"
+    },
+    {
+      "id": "CRSP-B-004",
+      "title": "README Rewrite (Research-First)",
+      "file": "CRSP-B-004-readme-rewrite.md",
+      "depends_on": "CRSP-B-003",
+      "completion_marker": "plans/series-b/.done-B-004",
+      "estimated_model_tier": "mid"
+    },
+    {
+      "id": "CRSP-B-005",
+      "title": "Consolidate Dead-Weight Project Folders",
+      "file": "CRSP-B-005-consolidate-projects.md",
+      "depends_on": "CRSP-B-001",
+      "completion_marker": "plans/series-b/.done-B-005",
+      "estimated_model_tier": "any"
+    },
+    {
+      "id": "CRSP-B-006",
+      "title": "Fellowship-Ready Surface",
+      "file": "CRSP-B-006-fellowship-surface.md",
+      "depends_on": ["CRSP-B-004", "CRSP-B-005"],
+      "completion_marker": "plans/series-b/.done-B-006",
+      "estimated_model_tier": "mid"
+    },
+    {
+      "id": "CRSP-B-007",
+      "title": "CI Green + Final Verification",
+      "file": "CRSP-B-007-ci-green.md",
+      "depends_on": ["CRSP-B-001", "CRSP-B-002", "CRSP-B-003", "CRSP-B-004", "CRSP-B-005", "CRSP-B-006"],
+      "completion_marker": "plans/series-b/.done-B-007",
+      "estimated_model_tier": "any"
+    }
+  ],
+  "dependency_graph": "B-001 -> B-002, B-003, B-005 (parallel eligible) -> B-004 (after B-003) -> B-006 (after B-004 + B-005) -> B-007 (after all)"
+}
