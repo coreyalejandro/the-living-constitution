@@ -17,15 +17,16 @@ This contract includes 25+ pytest tests covering the following components:
 ## Inventory and Progress
 
 - Target test count: **25+**
-- Current implemented count: **20**
+- Current implemented count: **27**
 - Current files:
   - `tests/series_b/test_b002_components_smoke.py` (5 tests)
   - `tests/series_b/test_b002_guardian_jail_edges.py` (8 tests)
   - `tests/series_b/test_b002_sandbox_evidence_paths.py` (7 tests)
+  - `tests/series_b/test_b002_taxonomy_regression_fixtures.py` (7 tests)
 
 ## Batches
 
 - Batch 1 (done): smoke coverage across Guardian, Sandbox, Jail, Evidence, Taxonomy.
 - Batch 2 (done): deeper Guardian and Jail edge-case coverage.
 - Batch 3 (done): Sandbox engine loop and evidence-log write-path scenarios.
-- Batch 4 (next): taxonomy breach/failure-mode shape assertions and regression fixtures.
+- Batch 4 (done): taxonomy breach/failure-mode shape assertions and regression fixtures.
