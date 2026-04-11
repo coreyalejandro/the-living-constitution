@@ -1,4 +1,3 @@
-<!-- markdownlint-disable --><!-- ChatGPT export: Prompt/Response structure, duplicate headings, setext, bare URLs are intentional; see .markdownlintignore -->
 <!-- TLC: Non-canonical archive. Live C-RSP authority: projects/c-rsp/CANONICAL_ROLE_MAP.md — do not treat paths or filenames in this export as current repo truth. -->
 
 # AI Governance Frameworks
@@ -35,20 +34,20 @@ Finally include a robust discussion  and mapping of my The Living Constitution  
 
 ## Overview
 
-The public governance landscape for advanced AI has converged on a recognizable set of “domains” (risk identification, testing/evaluation, deployment gating, monitoring/incident response, transparency, accountability, and security). What differs is **where** each framework “lives” (company policy, technical standard, or law), the **severity lens** it uses (trustworthiness vs. severe/catastrophic harm), and how directly it speaks to **agentic systems** (autonomy + tool use + high-impact actions). citeturn11view0turn13view0turn16view0turn19view0turn27view0turn26view0
+The public governance landscape for advanced AI has converged on a recognizable set of “domains” (risk identification, testing/evaluation, deployment gating, monitoring/incident response, transparency, accountability, and security). What differs is **where** each framework “lives” (company policy, technical standard, or law), the **severity lens** it uses (trustworthiness vs. severe/catastrophic harm), and how directly it speaks to **agentic systems** (autonomy + tool use + high-impact actions).
 
 In practice, the most “production-shaping” frameworks fall into two clusters:
 
-- **Frontier capability / catastrophic harm governance** (company-led): OpenAI’s Preparedness Framework and Model Spec; Anthropic’s Responsible Scaling Policy (RSP) and Constitutional AI; Google DeepMind’s Frontier Safety Framework (FSF). These emphasize **capability thresholds**, **deployment gates**, and **security posture** at the frontier. citeturn38view0turn32view0turn13view0turn49search0turn16view0  
-- **Lifecycle risk management / trustworthiness governance** (public-sector): NIST AI RMF 1.0 and its Generative AI Profile (AI 600‑1), OECD AI Principles, and the EU AI Act. These emphasize **rights**, **auditability**, **human oversight**, **documentation**, and (in the EU) **hard legal obligations** with staged applicability. citeturn19view0turn22view0turn26view0turn27view0
+- **Frontier capability / catastrophic harm governance** (company-led): OpenAI’s Preparedness Framework and Model Spec; Anthropic’s Responsible Scaling Policy (RSP) and Constitutional AI; Google DeepMind’s Frontier Safety Framework (FSF). These emphasize **capability thresholds**, **deployment gates**, and **security posture** at the frontier.  
+- **Lifecycle risk management / trustworthiness governance** (public-sector): NIST AI RMF 1.0 and its Generative AI Profile (AI 600‑1), OECD AI Principles, and the EU AI Act. These emphasize **rights**, **auditability**, **human oversight**, **documentation**, and (in the EU) **hard legal obligations** with staged applicability.
 
-US “zoom-in”: NIST’s AI RMF and GenAI Profile are explicitly positioned as voluntary, cross-sector tools that also support US federal direction (e.g., references to Executive Order 14110 and the creation of the U.S. AI Safety Institute in NIST AI 600‑1). citeturn22view0
+US “zoom-in”: NIST’s AI RMF and GenAI Profile are explicitly positioned as voluntary, cross-sector tools that also support US federal direction (e.g., references to Executive Order 14110 and the creation of the U.S. AI Safety Institute in NIST AI 600‑1).
 
 ## Steps
 
-Primary sources were prioritized (framework PDFs, official regulations, official product/pricing pages). Company and government documents were used to extract: (a) explicit governance domains, (b) concrete tasks implied by each domain, (c) lifecycle checkpoints and artifacts (reports, documentation, evaluation gates), and (d) any explicit handling of autonomy/tool use. citeturn11view0turn13view0turn16view0turn19view0turn22view0turn27view0
+Primary sources were prioritized (framework PDFs, official regulations, official product/pricing pages). Company and government documents were used to extract: (a) explicit governance domains, (b) concrete tasks implied by each domain, (c) lifecycle checkpoints and artifacts (reports, documentation, evaluation gates), and (d) any explicit handling of autonomy/tool use.
 
-A 7-criteria matrix was then built to compare frameworks on high-stakes dimensions most relevant to **agent system design + deployment** (not just model training): bindingness, severity/risk framing, assurance/eval rigor, governance decision rights, post-deploy monitoring/incident handling, transparency/documentation, and explicit treatment of agents/tools. citeturn11view0turn13view0turn16view0turn19view0turn27view0
+A 7-criteria matrix was then built to compare frameworks on high-stakes dimensions most relevant to **agent system design + deployment** (not just model training): bindingness, severity/risk framing, assurance/eval rigor, governance decision rights, post-deploy monitoring/incident handling, transparency/documentation, and explicit treatment of agents/tools.
 
 ## Framework reviews
 
@@ -56,100 +55,100 @@ A 7-criteria matrix was then built to compare frameworks on high-stakes dimensio
 
 OpenAI’s public governance surface combines:
 
-- A **behavioral governance spec** (Model Spec) describing intended model behavior, authority levels (Root/System/Developer/User/Guideline), and a “chain of command” meant to reduce misaligned goals, execution errors, and harmful instructions. citeturn32view0turn37view0  
-- A **frontier capability governance program** (Preparedness Framework v2) for “frontier capabilities that create new risks of severe harm,” centered on Tracked Categories (bio/chem, cybersecurity, AI self‑improvement), capability thresholds (“High” vs. “Critical”), and “Capabilities Reports” + “Safeguards Reports” feeding leadership decisions. citeturn11view0turn12view1turn12view2turn38view0
+- A **behavioral governance spec** (Model Spec) describing intended model behavior, authority levels (Root/System/Developer/User/Guideline), and a “chain of command” meant to reduce misaligned goals, execution errors, and harmful instructions.  
+- A **frontier capability governance program** (Preparedness Framework v2) for “frontier capabilities that create new risks of severe harm,” centered on Tracked Categories (bio/chem, cybersecurity, AI self‑improvement), capability thresholds (“High” vs. “Critical”), and “Capabilities Reports” + “Safeguards Reports” feeding leadership decisions.
 
 Key governance mechanics (concrete tasks implied):
 
-- **Risk categorization and thresholding:** classify capabilities into Tracked vs. Research Categories; define measurable thresholds and threat models. citeturn12view2turn38view0  
-- **Evaluation cadence:** run scalable evaluations pre-deployment and during development; apply the framework to certain “agentic system” deployments as well as model deployments. citeturn12view3turn11view0  
-- **Deployment gating via governance bodies:** an internal Safety Advisory Group (SAG) reviews reports and makes safeguard recommendations; leadership can accept/reject; board-level Safety and Security Committee oversight is described in the framework document. citeturn12view1turn11view0  
-- **Behavioral constraints for agentic action:** the Model Spec explicitly frames misaligned goals and side effects as a core risk category and uses authority/precedence rules to regulate actions taken in the world. citeturn32view0turn37view0
+- **Risk categorization and thresholding:** classify capabilities into Tracked vs. Research Categories; define measurable thresholds and threat models.  
+- **Evaluation cadence:** run scalable evaluations pre-deployment and during development; apply the framework to certain “agentic system” deployments as well as model deployments.  
+- **Deployment gating via governance bodies:** an internal Safety Advisory Group (SAG) reviews reports and makes safeguard recommendations; leadership can accept/reject; board-level Safety and Security Committee oversight is described in the framework document.  
+- **Behavioral constraints for agentic action:** the Model Spec explicitly frames misaligned goals and side effects as a core risk category and uses authority/precedence rules to regulate actions taken in the world.
 
 Production-grade agent gaps that remain visible from the public artifacts:
 
-- Preparedness focuses on “severe harm” thresholds and frontier tracked capabilities; it is less explicit on routine enterprise agent risks (data governance, operational reliability, continuous compliance evidence) beyond the severe-harm lens. citeturn11view0turn38view0  
-- The Model Spec is a critical “north star” but (by its own framing) is complemented by separate usage policies and safety protocols; the publicly readable spec is not itself an implementation plan for runtime enforcement across toolchains and multi-agent orchestration. citeturn32view0
+- Preparedness focuses on “severe harm” thresholds and frontier tracked capabilities; it is less explicit on routine enterprise agent risks (data governance, operational reliability, continuous compliance evidence) beyond the severe-harm lens.  
+- The Model Spec is a critical “north star” but (by its own framing) is complemented by separate usage policies and safety protocols; the publicly readable spec is not itself an implementation plan for runtime enforcement across toolchains and multi-agent orchestration.
 
 ### Anthropic
 
 Anthropic’s public framework stack spans training-time alignment and deployment-time scaling policy:
 
-- **Constitutional AI (CAI)**: a training approach that uses a list of principles (“constitution”) for self-critique and revision, paired with supervised learning and “RL from AI Feedback (RLAIF)” to improve harmlessness with reduced direct human labeling. citeturn49search0  
-- **Responsible Scaling Policy v3.0 (RSP)**: a voluntary framework for managing “catastrophic risks,” featuring capability/usage thresholds mapped to mitigations, and governance artifacts including Frontier Safety Roadmaps and Risk Reports. citeturn14view1turn15view1turn13view0
+- **Constitutional AI (CAI)**: a training approach that uses a list of principles (“constitution”) for self-critique and revision, paired with supervised learning and “RL from AI Feedback (RLAIF)” to improve harmlessness with reduced direct human labeling.  
+- **Responsible Scaling Policy v3.0 (RSP)**: a voluntary framework for managing “catastrophic risks,” featuring capability/usage thresholds mapped to mitigations, and governance artifacts including Frontier Safety Roadmaps and Risk Reports.
 
 Concrete governance mechanics in RSP v3.0:
 
-- **Threshold → mitigation mapping:** RSP presents a table linking capability/usage thresholds (e.g., chemical/biological weapons production, “high-stakes sabotage opportunities,” “automated R&D in key domains”) to mitigations and recommended industry-wide practices. citeturn15view1turn15view0  
-- **Risk Reports as a deployment gate artifact:** Risk Reports are intended to include threat model identification/specification, evidence (including evals), mitigations, and an overall risk assessment; they also include procedures for drafting, internal review, executive approval, and governance notification. citeturn14view3turn15view2  
-- **Acknowledgement of collective-action dynamics:** RSP v3 explicitly differentiates “our plan as a company” from “ambitious industry-wide recommendations,” due to concerns about unilateral slowing while others proceed. citeturn14view1
+- **Threshold → mitigation mapping:** RSP presents a table linking capability/usage thresholds (e.g., chemical/biological weapons production, “high-stakes sabotage opportunities,” “automated R&D in key domains”) to mitigations and recommended industry-wide practices.  
+- **Risk Reports as a deployment gate artifact:** Risk Reports are intended to include threat model identification/specification, evidence (including evals), mitigations, and an overall risk assessment; they also include procedures for drafting, internal review, executive approval, and governance notification.  
+- **Acknowledgement of collective-action dynamics:** RSP v3 explicitly differentiates “our plan as a company” from “ambitious industry-wide recommendations,” due to concerns about unilateral slowing while others proceed.
 
 Production-grade agent gaps and tensions:
 
-- CAI is primarily a **training method**, not an operational governance layer for tool-using agents (identity/permissions, transactional tool execution, audit trails). citeturn49search0  
-- RSP provides strong governance artifacts (Risk Reports, Roadmaps) but public text acknowledges uncertainty about increasingly capable systems’ ability to manipulate testing, which pushes operational governance toward stronger structural constraints (separation of duties, independent monitoring) beyond policy statements. citeturn15view1turn14view1
+- CAI is primarily a **training method**, not an operational governance layer for tool-using agents (identity/permissions, transactional tool execution, audit trails).  
+- RSP provides strong governance artifacts (Risk Reports, Roadmaps) but public text acknowledges uncertainty about increasingly capable systems’ ability to manipulate testing, which pushes operational governance toward stronger structural constraints (separation of duties, independent monitoring) beyond policy statements.
 
 ### DeepMind
 
 Google DeepMind’s public governance picture is anchored by:
 
-- The **Frontier Safety Framework (FSF) v3.0**: a protocol set to address “severe risks” from frontier models, built around “Critical Capability Levels (CCLs)” across misuse, ML R&D, and misalignment (exploratory). citeturn17view1turn17view2turn16view0  
-- A broader “responsibility and safety” framing “guided by … AI Principles,” emphasizing anticipating and evaluating against a broad risk spectrum. citeturn49search2turn49search1
+- The **Frontier Safety Framework (FSF) v3.0**: a protocol set to address “severe risks” from frontier models, built around “Critical Capability Levels (CCLs)” across misuse, ML R&D, and misalignment (exploratory).  
+- A broader “responsibility and safety” framing “guided by … AI Principles,” emphasizing anticipating and evaluating against a broad risk spectrum.
 
 Operational mechanics in FSF (highly relevant to deployment engineering):
 
-- **CCL detection across lifecycle:** FSF describes evaluation throughout the model lifecycle, including “early warning evaluations” and “alert thresholds,” and the use of scaffolding/augmentations to better estimate system capabilities (not just the base model). citeturn16view0turn18view0  
-- **Risk domains and security recommendations:** misuse domains include CBRN, cyber, and harmful manipulation, with tables mapping CCLs to recommended security levels. citeturn17view2turn18view0  
-- **Pre-deployment safety case & post-market monitoring:** FSF describes pre-deployment review of a safety case and post-deployment processes where safety cases and mitigations may be updated via post-market monitoring. citeturn17view3  
-- **Agents and tool access acknowledged as cross-cutting:** FSF explicitly notes that risk assessment involves evaluating cross-cutting capabilities such as “agency” and “tool use.” citeturn17view1turn17view2  
-- **Misalignment section is explicitly exploratory:** it outlines illustrative “instrumental reasoning” levels and suggests automated monitoring of chain-of-thought as one possible mitigation in high-stakes internal deployments—while emphasizing ongoing research. citeturn18view2
+- **CCL detection across lifecycle:** FSF describes evaluation throughout the model lifecycle, including “early warning evaluations” and “alert thresholds,” and the use of scaffolding/augmentations to better estimate system capabilities (not just the base model).  
+- **Risk domains and security recommendations:** misuse domains include CBRN, cyber, and harmful manipulation, with tables mapping CCLs to recommended security levels.  
+- **Pre-deployment safety case & post-market monitoring:** FSF describes pre-deployment review of a safety case and post-deployment processes where safety cases and mitigations may be updated via post-market monitoring.  
+- **Agents and tool access acknowledged as cross-cutting:** FSF explicitly notes that risk assessment involves evaluating cross-cutting capabilities such as “agency” and “tool use.”  
+- **Misalignment section is explicitly exploratory:** it outlines illustrative “instrumental reasoning” levels and suggests automated monitoring of chain-of-thought as one possible mitigation in high-stakes internal deployments—while emphasizing ongoing research.
 
 Production-grade agent gaps:
 
-- FSF is unusually close to modern agent system engineering (scaffolding-aware testing, post-market monitoring), but its misalignment mitigations are expressly exploratory and therefore incomplete as an operational standard for production autonomy. citeturn18view2turn16view0
+- FSF is unusually close to modern agent system engineering (scaffolding-aware testing, post-market monitoring), but its misalignment mitigations are expressly exploratory and therefore incomplete as an operational standard for production autonomy.
 
 ### OECD
 
-The OECD AI Principles provide a widely adopted, values-based baseline for “trustworthy AI,” with five core principles spanning inclusive benefit, human rights/democratic values and safeguards (including human intervention), transparency, robustness/safety/security across lifecycles, and accountability. citeturn26view0
+The OECD AI Principles provide a widely adopted, values-based baseline for “trustworthy AI,” with five core principles spanning inclusive benefit, human rights/democratic values and safeguards (including human intervention), transparency, robustness/safety/security across lifecycles, and accountability.
 
 Key “governance-as-task” implications:
 
-- **Human intervention mechanisms** are explicitly called for (“appropriate safeguards… enabling human intervention where necessary”). citeturn26view0  
-- The Recommendation has been maintained/updated: the OECD notes a revision (Nov 8, 2023) updating the definition of an “AI System,” which is important because definitions drive scope in downstream governance and compliance regimes. citeturn49search3
+- **Human intervention mechanisms** are explicitly called for (“appropriate safeguards… enabling human intervention where necessary”).  
+- The Recommendation has been maintained/updated: the OECD notes a revision (Nov 8, 2023) updating the definition of an “AI System,” which is important because definitions drive scope in downstream governance and compliance regimes.
 
 Production-grade agent gaps:
 
-- OECD principles are intentionally high-level; they do not prescribe concrete technical artifacts (evaluation harnesses, audit logs, permission schemas) needed to make tool-using agent systems “governable by construction.” citeturn26view0
+- OECD principles are intentionally high-level; they do not prescribe concrete technical artifacts (evaluation harnesses, audit logs, permission schemas) needed to make tool-using agent systems “governable by construction.”
 
 ### NIST
 
-NIST’s AI Risk Management Framework (AI RMF 1.0) is a US-centered, voluntary, cross-sector framework designed to operationalize trustworthy AI through four functions—**GOVERN, MAP, MEASURE, MANAGE**—and emphasizes AI as socio-technical, lifecycle-based, and TEVV-intensive. citeturn19view0turn21view0
+NIST’s AI Risk Management Framework (AI RMF 1.0) is a US-centered, voluntary, cross-sector framework designed to operationalize trustworthy AI through four functions—**GOVERN, MAP, MEASURE, MANAGE**—and emphasizes AI as socio-technical, lifecycle-based, and TEVV-intensive.
 
 Operational mechanics that translate well into enterprise programs:
 
-- **Lifecycle + actor separation:** NIST depicts lifecycle stages and “AI actors” and notes as a best practice that actors building/using models are separated from those verifying/validating models. This maps directly to separation-of-duties patterns needed for higher-autonomy agents. citeturn21view1turn20view1  
-- **Trustworthiness characteristics:** NIST enumerates characteristics like validity/reliability, safety, security/resilience, accountability/transparency, explainability/interpretability, privacy enhancement, and fairness/bias management. citeturn19view0  
-- **Governance and accountability:** the GOVERN function includes explicit subcategories for leadership responsibility, role clarity, and DEIA/accessibility considerations in risk management activities. citeturn21view2turn20view0
+- **Lifecycle + actor separation:** NIST depicts lifecycle stages and “AI actors” and notes as a best practice that actors building/using models are separated from those verifying/validating models. This maps directly to separation-of-duties patterns needed for higher-autonomy agents.  
+- **Trustworthiness characteristics:** NIST enumerates characteristics like validity/reliability, safety, security/resilience, accountability/transparency, explainability/interpretability, privacy enhancement, and fairness/bias management.  
+- **Governance and accountability:** the GOVERN function includes explicit subcategories for leadership responsibility, role clarity, and DEIA/accessibility considerations in risk management activities.
 
-NIST’s Generative AI Profile (AI 600‑1) extends AI RMF to GenAI with tables of suggested actions, explicitly linked to AI RMF subcategories and including emphasis areas such as governance, content provenance, pre-deployment testing, and incident disclosure. citeturn24view0turn23view0  
-Examples of highly “agent-relevant” tasks in AI 600‑1 include: aligning GAI development/use to applicable laws (e.g., privacy and IP), and using “digital content transparency solutions” for traceability of generated/modified content. citeturn24view2turn24view3
+NIST’s Generative AI Profile (AI 600‑1) extends AI RMF to GenAI with tables of suggested actions, explicitly linked to AI RMF subcategories and including emphasis areas such as governance, content provenance, pre-deployment testing, and incident disclosure.  
+Examples of highly “agent-relevant” tasks in AI 600‑1 include: aligning GAI development/use to applicable laws (e.g., privacy and IP), and using “digital content transparency solutions” for traceability of generated/modified content.
 
 Production-grade agent gaps:
 
-- NIST provides a strong **program framework** and “what good looks like,” but it does not mandate a specific **runtime enforcement architecture** for multi-tool, multi-agent systems (e.g., how to implement fail-closed tool policies, transaction boundaries, or deterministic approval flows). citeturn19view0turn24view3
+- NIST provides a strong **program framework** and “what good looks like,” but it does not mandate a specific **runtime enforcement architecture** for multi-tool, multi-agent systems (e.g., how to implement fail-closed tool policies, transaction boundaries, or deterministic approval flows).
 
 ### EU AI Act
 
 The EU AI Act (Regulation (EU) 2024/1689) is binding law with staged application dates and a risk-based scheme relevant to any provider placing systems on the EU market (including many US-based companies). It includes:
 
-- **Prohibited AI practices** (Article 5). citeturn28view1  
-- **High-risk AI system requirements**, including detailed human oversight requirements—explicitly including awareness of automation bias, interpretability support, the ability to override outputs, and a “stop” mechanism to halt in a safe state. citeturn28view2  
-- **General-purpose AI model obligations** (Article 53), including technical documentation, information/documentation to downstream system providers, a copyright compliance policy, and a public summary of training data content (per a template). citeturn28view3  
-- **Staged applicability:** the Act applies from Aug 2, 2026, but Chapters I and II apply from Feb 2, 2025, and GPAI-related and governance infrastructure provisions apply earlier (Aug 2, 2025 is explicitly named for multiple chapters, and the Act describes earlier application of prohibitions/general provisions due to unacceptable risk). citeturn29view0turn29view3
+- **Prohibited AI practices** (Article 5).  
+- **High-risk AI system requirements**, including detailed human oversight requirements—explicitly including awareness of automation bias, interpretability support, the ability to override outputs, and a “stop” mechanism to halt in a safe state.  
+- **General-purpose AI model obligations** (Article 53), including technical documentation, information/documentation to downstream system providers, a copyright compliance policy, and a public summary of training data content (per a template).  
+- **Staged applicability:** the Act applies from Aug 2, 2026, but Chapters I and II apply from Feb 2, 2025, and GPAI-related and governance infrastructure provisions apply earlier (Aug 2, 2025 is explicitly named for multiple chapters, and the Act describes earlier application of prohibitions/general provisions due to unacceptable risk).
 
 Production-grade agent gaps and pressures:
 
-- The Act is strong on **documentation, oversight, and compliance accountability**, but it is not a reference architecture for building agent systems; engineering teams must translate legal requirements into enforceable runtime controls and evidence pipelines. citeturn28view3turn28view2turn29view0
+- The Act is strong on **documentation, oversight, and compliance accountability**, but it is not a reference architecture for building agent systems; engineering teams must translate legal requirements into enforceable runtime controls and evidence pipelines.
 
 image_group{"layout":"carousel","aspect_ratio":"16:9","query":["NIST AI RMF lifecycle and key dimensions diagram","EU AI Act risk pyramid prohibited high-risk limited-risk infographic","OpenAI Preparedness Framework tracked categories diagram","Anthropic Responsible Scaling Policy table capability thresholds mitigations"],"num_per_query":1}
 
@@ -167,7 +166,7 @@ The matrix below is oriented toward **agent systems** (autonomy + tool use + rea
 | Transparency expectations | Public Model Spec; publish findings per model releases | Public policy + planned report publication with redactions | Public framework disclosure | Transparency principle | Accountability/transparency as trustworthiness characteristics | Mandatory documentation + some public summaries |
 | Agent/tool autonomy treatment | Explicit chain-of-command + autonomy/side effects framing; Preparedness includes “agentic system” deployments | Addresses sabotage/opportunistic threats; CAI is training-time; agent ops mostly via policy artifacts | Explicitly evaluates “agency” and “tool use”; misalignment section exploratory | Calls for human intervention safeguards | Human-AI configurations and oversight; implementation left open | Human oversight + stop/override requirements; obligations extend through value chain |
 
-Sources for the matrix are the public primary documents for each framework. citeturn11view0turn12view1turn32view0turn13view0turn15view2turn16view0turn18view2turn26view0turn19view0turn24view3turn28view3turn29view0
+Sources for the matrix are the public primary documents for each framework.
 
 ## Products and operationalization in production environments
 
@@ -177,24 +176,24 @@ Across frameworks, the “domains” below recur; the table translates each doma
 
 | Governance domain | Concrete tasks in a production agent program | Framework anchor examples |
 |---|---|---|
-| Risk classification & scope | Define system boundaries (model vs agent workflows); identify intended use + misuse; define severity thresholds + risk tolerance; classify use case by legal category | High/Critical thresholds (OpenAI); capability/usage thresholds (Anthropic); CCLs (DeepMind); MAP function (NIST); prohibited/high-risk/GPAI duties (EU) citeturn12view2turn15view1turn17view2turn21view3turn28view1turn28view3 |
-| Evaluation & TEVV | Build eval harnesses (automated + expert deep dives); include “scaffolding-aware” testing; define alert thresholds; conduct red-teaming; measure provenance/security effectiveness | Scalable evals + deep dives (OpenAI); Risk Report evidence (Anthropic); early warning evals + alerts (DeepMind); TEVV emphasis and MEASURE tasks (NIST/AI 600‑1) citeturn38view0turn14view3turn18view0turn21view0turn24view3 |
-| Safeguards & mitigations | Implement access controls, abuse monitoring, model/tool restrictions; security levels/controls; “stop/override” mechanisms; harden tool connectors | Safeguard sufficiency + reports (OpenAI); mitigations tables (Anthropic); security levels (DeepMind); human oversight stop button (EU) citeturn12view1turn15view0turn18view0turn28view2 |
-| Decision governance | Define RACI and approval gates; document “go/no-go” criteria; create board-level escalation for high severity; enforce separation between builders and validators | SAG governance (OpenAI); Risk Report procedures + governance notification (Anthropic); safety case review (DeepMind); GOVERN accountability (NIST) citeturn12view1turn15view2turn17view3turn21view2 |
-| Transparency & documentation | Maintain model/system documentation; publish summaries where required; provide downstream integrator docs; track policy violations; keep audit logs | EU AI Act tech doc + training data summaries (GPAI); NIST transparency/accountability actions; OpenAI Model Spec transparency intent; Anthropic redaction policy for reports citeturn28view3turn24view3turn32view0turn14view3 |
-| Operations, monitoring, incidents | Runtime monitoring dashboards; incident taxonomy + reporting workflow; post-deploy updates; decommissioning plan | Post-market monitoring (DeepMind); AI 600‑1 incident disclosure emphasis; NIST GOVERN decommissioning; EU enforcement regime timing/obligations citeturn17view3turn23view0turn20view0turn29view0 |
-| Human factors & oversight | Human-in-the-loop design; prevent automation bias; user instructions + training; accessibility and DEIA considerations | EU automation bias + override/stop (high-risk); NIST DEIA/accessibility in GOVERN; OECD human intervention safeguards citeturn28view2turn20view0turn26view0 |
+| Risk classification & scope | Define system boundaries (model vs agent workflows); identify intended use + misuse; define severity thresholds + risk tolerance; classify use case by legal category | High/Critical thresholds (OpenAI); capability/usage thresholds (Anthropic); CCLs (DeepMind); MAP function (NIST); prohibited/high-risk/GPAI duties (EU) |
+| Evaluation & TEVV | Build eval harnesses (automated + expert deep dives); include “scaffolding-aware” testing; define alert thresholds; conduct red-teaming; measure provenance/security effectiveness | Scalable evals + deep dives (OpenAI); Risk Report evidence (Anthropic); early warning evals + alerts (DeepMind); TEVV emphasis and MEASURE tasks (NIST/AI 600‑1) |
+| Safeguards & mitigations | Implement access controls, abuse monitoring, model/tool restrictions; security levels/controls; “stop/override” mechanisms; harden tool connectors | Safeguard sufficiency + reports (OpenAI); mitigations tables (Anthropic); security levels (DeepMind); human oversight stop button (EU) |
+| Decision governance | Define RACI and approval gates; document “go/no-go” criteria; create board-level escalation for high severity; enforce separation between builders and validators | SAG governance (OpenAI); Risk Report procedures + governance notification (Anthropic); safety case review (DeepMind); GOVERN accountability (NIST) |
+| Transparency & documentation | Maintain model/system documentation; publish summaries where required; provide downstream integrator docs; track policy violations; keep audit logs | EU AI Act tech doc + training data summaries (GPAI); NIST transparency/accountability actions; OpenAI Model Spec transparency intent; Anthropic redaction policy for reports |
+| Operations, monitoring, incidents | Runtime monitoring dashboards; incident taxonomy + reporting workflow; post-deploy updates; decommissioning plan | Post-market monitoring (DeepMind); AI 600‑1 incident disclosure emphasis; NIST GOVERN decommissioning; EU enforcement regime timing/obligations |
+| Human factors & oversight | Human-in-the-loop design; prevent automation bias; user instructions + training; accessibility and DEIA considerations | EU automation bias + override/stop (high-risk); NIST DEIA/accessibility in GOVERN; OECD human intervention safeguards |
 
 ### Gaps for production-grade agents
 
 The most material gaps that show up when translating these frameworks into shipping agent systems:
 
-- **Runtime autonomy control is under-specified outside a few documents.** DeepMind explicitly calls out “agency” and “tool use” as cross-cutting risk factors, and OpenAI’s Model Spec includes autonomy/side-effect framing, but neither a law nor a standard gives a full runtime reference architecture for permissioning, transaction boundaries, or rollback semantics. citeturn17view2turn32view0turn18view0  
-- **Scaffolding-aware evaluation is acknowledged but not standardized.** DeepMind explicitly discusses evaluating systems with scaffolding/augmentations; OpenAI discusses scalable evals and “deep dives.” There is no shared industry standard for how to test an agent that can call tools, write code, and act across systems. citeturn18view0turn38view0  
-- **Misalignment mitigations are still “research framing” rather than production controls.** DeepMind labels misalignment mitigations exploratory and suggests automated monitoring of chain-of-thought as one idea; Anthropic explicitly worries about models manipulating testing; these are not yet operationalized into widely accepted, auditable controls. citeturn18view2turn15view1  
-- **Evidence pipelines are implied, not enforced.** NIST and EU AI Act emphasize documentation and accountability, but the engineering reality—automating evidence capture from CI/CD, evaluation harnesses, and runtime logs into an audit-ready “case file”—is left to implementers. citeturn21view2turn28view3turn24view3  
-- **Human factors are not deeply integrated in frontier frameworks.** OECD and NIST explicitly foreground human intervention and accessibility/DEIA considerations, while frontier-focused frameworks concentrate on catastrophic/severe harm and security posture; production agents need both simultaneously. citeturn26view0turn20view0turn11view0  
-- **Value-chain complexity for agents (connectors, third-party tools, MCP-style ecosystems) is not fully reconciled.** The EU AI Act directly addresses value-chain responsibility and GPAI downstream documentation, but the agent context multiplies the number of suppliers, tools, and integration pathways that must be governed. citeturn28view2turn28view3
+- **Runtime autonomy control is under-specified outside a few documents.** DeepMind explicitly calls out “agency” and “tool use” as cross-cutting risk factors, and OpenAI’s Model Spec includes autonomy/side-effect framing, but neither a law nor a standard gives a full runtime reference architecture for permissioning, transaction boundaries, or rollback semantics.  
+- **Scaffolding-aware evaluation is acknowledged but not standardized.** DeepMind explicitly discusses evaluating systems with scaffolding/augmentations; OpenAI discusses scalable evals and “deep dives.” There is no shared industry standard for how to test an agent that can call tools, write code, and act across systems.  
+- **Misalignment mitigations are still “research framing” rather than production controls.** DeepMind labels misalignment mitigations exploratory and suggests automated monitoring of chain-of-thought as one idea; Anthropic explicitly worries about models manipulating testing; these are not yet operationalized into widely accepted, auditable controls.  
+- **Evidence pipelines are implied, not enforced.** NIST and EU AI Act emphasize documentation and accountability, but the engineering reality—automating evidence capture from CI/CD, evaluation harnesses, and runtime logs into an audit-ready “case file”—is left to implementers.  
+- **Human factors are not deeply integrated in frontier frameworks.** OECD and NIST explicitly foreground human intervention and accessibility/DEIA considerations, while frontier-focused frameworks concentrate on catastrophic/severe harm and security posture; production agents need both simultaneously.  
+- **Value-chain complexity for agents (connectors, third-party tools, MCP-style ecosystems) is not fully reconciled.** The EU AI Act directly addresses value-chain responsibility and GPAI downstream documentation, but the agent context multiplies the number of suppliers, tools, and integration pathways that must be governed.
 
 ### Consumer and commercial products shaped by these frameworks
 
@@ -202,53 +201,53 @@ The table below lists prominent products and governance artifacts tied to the fr
 
 | Framework family | Product or artifact | Provider | Target user | Cost signals | Adoption / demand signals | Noted successes / failures |
 |---|---|---|---|---|---|---|
-| OpenAI | ChatGPT Go / Plus / Pro | OpenAI | Consumers/prosumers | Go $8/mo; Plus $20/mo; Pro $200/mo citeturn45search13turn45search5turn45search3 | Reported ~900M weekly active users (WAU) (news report) citeturn39search1 | Rapid growth; monetization experiments (ads pilot) indicate demand and business pressure citeturn39news40 |
-| OpenAI | ChatGPT Business | OpenAI | SMB/teams | $25/user/month billed annually citeturn42view0 | Demand implied by productization of connectors + admin controls (workspace positioning) citeturn41view0turn42view0 | Clear enterprise governance features (SSO/MFA, data controls) packaged as product differentiation citeturn41view0turn42view0 |
-| Anthropic | Claude + API | Anthropic | Consumers + developers | API pricing published (e.g., Haiku 4.5 $1/MTok in; $5/MTok out) citeturn46search5turn46search0 | Public statements emphasize broad availability across cloud platforms; paid subscriptions reported as growing (spokesperson quote) citeturn40search8turn39search6 | Demand pressure surfaced via usage caps; operational risk surfaced in a code leak incident (news) citeturn46news35turn40news35 |
-| Anthropic | Claude Code | Anthropic | Developers/engineering orgs | Pricing depends on plan/API; not fully captured in the RSP itself citeturn46search5turn40search0 | Anthropic claims >$2.5B run-rate revenue and WAU growth for Claude Code (company statement) citeturn40search0 | Strong market pull (usage scaling); security lapse shows governance must cover internal ops too (news) citeturn40news35 |
-| DeepMind | Gemini app / ecosystem | entity["company","Google","search company"] (incl. Google DeepMind) | Consumers, knowledge workers | Consumer subscription pricing varies; premium tiers reported in major tech press citeturn46news40turn39search3 | Gemini app reportedly surpassed ~750M MAU (earnings-related reporting) citeturn40search11 | High adoption; governance emphasis on severe frontier risks via FSF citeturn16view0turn17view1 |
-| OECD | OECD AI Principles (policy instrument) | OECD | Governments, regulators, institutional adopters | Free/public citeturn26view0 | Adopted by OECD members; G20 drew human-centered principles from them citeturn26view0 | High global diffusion as baseline values; lacks direct implementer tooling citeturn26view0 |
-| NIST | AI RMF 1.0 + GenAI Profile (AI 600‑1) | NIST | US orgs (public + private), standards ecosystems | Free/public citeturn19view0turn22view0 | Positioned to support US EO 14110 and US AI Safety Institute work (NIST statement) citeturn22view0 | Strong operational checklists; requires implementers to build enforcement + evidence automation citeturn24view3turn21view2 |
-| EU AI Act | AI Act compliance regime + GPAI obligations | entity["organization","European Commission","eu executive body"] / EU | Providers/deployers placing AI in EU market | Compliance cost is programmatic; law imposes documentation and oversight duties citeturn28view2turn28view3turn29view0 | Staged applicability dates define market deadlines citeturn29view0 | Creates strong compliance demand; forces documentation/oversight capacity in US-based vendors targeting EU citeturn29view0turn28view3 |
+| OpenAI | ChatGPT Go / Plus / Pro | OpenAI | Consumers/prosumers | Go $8/mo; Plus $20/mo; Pro $200/mo | Reported ~900M weekly active users (WAU) (news report) | Rapid growth; monetization experiments (ads pilot) indicate demand and business pressure |
+| OpenAI | ChatGPT Business | OpenAI | SMB/teams | $25/user/month billed annually | Demand implied by productization of connectors + admin controls (workspace positioning) | Clear enterprise governance features (SSO/MFA, data controls) packaged as product differentiation |
+| Anthropic | Claude + API | Anthropic | Consumers + developers | API pricing published (e.g., Haiku 4.5 $1/MTok in; $5/MTok out) | Public statements emphasize broad availability across cloud platforms; paid subscriptions reported as growing (spokesperson quote) | Demand pressure surfaced via usage caps; operational risk surfaced in a code leak incident (news) |
+| Anthropic | Claude Code | Anthropic | Developers/engineering orgs | Pricing depends on plan/API; not fully captured in the RSP itself | Anthropic claims >$2.5B run-rate revenue and WAU growth for Claude Code (company statement) | Strong market pull (usage scaling); security lapse shows governance must cover internal ops too (news) |
+| DeepMind | Gemini app / ecosystem | entity["company","Google","search company"] (incl. Google DeepMind) | Consumers, knowledge workers | Consumer subscription pricing varies; premium tiers reported in major tech press | Gemini app reportedly surpassed ~750M MAU (earnings-related reporting) | High adoption; governance emphasis on severe frontier risks via FSF |
+| OECD | OECD AI Principles (policy instrument) | OECD | Governments, regulators, institutional adopters | Free/public | Adopted by OECD members; G20 drew human-centered principles from them | High global diffusion as baseline values; lacks direct implementer tooling |
+| NIST | AI RMF 1.0 + GenAI Profile (AI 600‑1) | NIST | US orgs (public + private), standards ecosystems | Free/public | Positioned to support US EO 14110 and US AI Safety Institute work (NIST statement) | Strong operational checklists; requires implementers to build enforcement + evidence automation |
+| EU AI Act | AI Act compliance regime + GPAI obligations | entity["organization","European Commission","eu executive body"] / EU | Providers/deployers placing AI in EU market | Compliance cost is programmatic; law imposes documentation and oversight duties | Staged applicability dates define market deadlines | Creates strong compliance demand; forces documentation/oversight capacity in US-based vendors targeting EU |
 
-Notes: in several cases, adoption metrics are reported via reputable media or company statements rather than audited regulatory filings. citeturn39search1turn40search0turn40search11
+Notes: in several cases, adoption metrics are reported via reputable media or company statements rather than audited regulatory filings.
 
 ## Mapping “The Living Constitution” to the frameworks and products
 
-Your **The Living Constitution** (“TLC”) project functions as a **governance-as-code operating system for agentic work**, with mechanisms that look like “missing implementation layers” in most public frameworks: separation of powers between agents, explicit amendment procedures, neurodivergent-first output discipline, and per-turn evidence/truth declarations. citeturn6view0turn7view0turn10view0
+Your **The Living Constitution** (“TLC”) project functions as a **governance-as-code operating system for agentic work**, with mechanisms that look like “missing implementation layers” in most public frameworks: separation of powers between agents, explicit amendment procedures, neurodivergent-first output discipline, and per-turn evidence/truth declarations.
 
 ### TLC core mechanisms that map cleanly to governance domains
 
-- **Separation of powers and agent permissions:** TLC defines explicit “CAN DO / CANNOT DO” boundaries for agent roles (Planner/Builder/Sentinel/TDD Guide/Code Reviewer/Data Science), and depicts an orchestrated multi-agent workflow with a “final gate.” citeturn6view0turn7view0  
-  - This directly instantiates a best practice suggested in NIST’s depiction of separating builders from validators. citeturn21view1turn20view1  
-- **Amendment process as a governed learning loop:** TLC specifies a trigger → observation → proposal → eval harness review → ratification workflow for updating the constitution (including updating CLAUDE.md/config and committing changes). citeturn6view0turn5view3  
-  - This operationalizes the “living document” framing used in Anthropic RSP and OpenAI’s Preparedness approach, but with explicit mechanics for safe change control. citeturn14view1turn38view0turn5view3  
-- **Operational health dashboard and SOP library:** TLC shows an SOP library and a “system health dashboard” concept including eval run cadence and test coverage. citeturn6view0turn7view0  
-  - This aligns with NIST’s GOVERN emphasis on processes, ongoing monitoring, and organizational risk practices, but turns it into concrete operational artifacts. citeturn21view2turn20view0  
-- **Neurodivergent-first safety and session recovery protocols:** TLC includes a “Session Recovery Protocol” designed to pause agents, save state, and resume with reduced cognitive load. citeturn6view0turn7view0  
-  - This is a distinctive complement to OECD/NIST human-centered and accessibility emphases, and is largely absent from frontier safety frameworks. citeturn26view0turn20view0turn17view1
+- **Separation of powers and agent permissions:** TLC defines explicit “CAN DO / CANNOT DO” boundaries for agent roles (Planner/Builder/Sentinel/TDD Guide/Code Reviewer/Data Science), and depicts an orchestrated multi-agent workflow with a “final gate.”  
+  - This directly instantiates a best practice suggested in NIST’s depiction of separating builders from validators.  
+- **Amendment process as a governed learning loop:** TLC specifies a trigger → observation → proposal → eval harness review → ratification workflow for updating the constitution (including updating CLAUDE.md/config and committing changes).  
+  - This operationalizes the “living document” framing used in Anthropic RSP and OpenAI’s Preparedness approach, but with explicit mechanics for safe change control.  
+- **Operational health dashboard and SOP library:** TLC shows an SOP library and a “system health dashboard” concept including eval run cadence and test coverage.  
+  - This aligns with NIST’s GOVERN emphasis on processes, ongoing monitoring, and organizational risk practices, but turns it into concrete operational artifacts.  
+- **Neurodivergent-first safety and session recovery protocols:** TLC includes a “Session Recovery Protocol” designed to pause agents, save state, and resume with reduced cognitive load.  
+  - This is a distinctive complement to OECD/NIST human-centered and accessibility emphases, and is largely absent from frontier safety frameworks.
 
 ### TLC as an “implementation bridge” for frontier frameworks
 
-TLC’s own Anthropic alignment mapping document argues that “alignment faking” is structurally enabled when the same entity acts, interprets rules, and judges compliance, and positions TLC’s separation-of-powers as a structural response; it also highlights a “fail-closed” approach and traceability chains. citeturn10view0  
-This complements the direction of frontier frameworks that emphasize agentic sabotage risk and the difficulty of validating safety under adversarial conditions. citeturn15view1turn18view2turn10view0
+TLC’s own Anthropic alignment mapping document argues that “alignment faking” is structurally enabled when the same entity acts, interprets rules, and judges compliance, and positions TLC’s separation-of-powers as a structural response; it also highlights a “fail-closed” approach and traceability chains.  
+This complements the direction of frontier frameworks that emphasize agentic sabotage risk and the difficulty of validating safety under adversarial conditions.
 
 ### Crosswalk summary
 
 | TLC construct | Closest analogs | What TLC adds (production-grade delta) |
 |---|---|---|
-| Articles + enforceable invariants | Model Spec “chain of command” and rule hierarchy citeturn32view0 | Governance as code + explicit gates tied to agent roles and workflow stages citeturn6view0 |
-| Separation of powers between agents | NIST separation of AI actors (build vs verify) citeturn20view1turn21view1 | A concrete multi-agent org chart + “cannot override” constraints citeturn6view0 |
-| Amendment process | “Living document” updates in Preparedness and RSP citeturn38view0turn14view1 | A governed change-control pipeline with eval harness review and ratification citeturn5view3turn6view0 |
-| V&T per turn | NIST transparency/accountability actions; EU documentation duties citeturn24view3turn28view3 | A micro-audit trail embedded into every response, reducing ambiguity about what was actually done citeturn10view0 |
-| ND access + recovery protocols | OECD human-centered + NIST DEIA/accessibility citeturn26view0turn20view0 | Concrete operational safety patterns for cognitive load and continuity of work citeturn7view0 |
+| Articles + enforceable invariants | Model Spec “chain of command” and rule hierarchy | Governance as code + explicit gates tied to agent roles and workflow stages |
+| Separation of powers between agents | NIST separation of AI actors (build vs verify) | A concrete multi-agent org chart + “cannot override” constraints |
+| Amendment process | “Living document” updates in Preparedness and RSP | A governed change-control pipeline with eval harness review and ratification |
+| V&T per turn | NIST transparency/accountability actions; EU documentation duties | A micro-audit trail embedded into every response, reducing ambiguity about what was actually done |
+| ND access + recovery protocols | OECD human-centered + NIST DEIA/accessibility | Concrete operational safety patterns for cognitive load and continuity of work |
 
 ## Recommendations with risk notes
 
 ### Build a governance-as-code “agent constitution layer” with enforceable runtime gates
 
 **What to implement:** a policy engine embedded in the agent orchestrator that enforces (a) scope of autonomy, (b) tool access rules, (c) side-effect controls, and (d) explicit stop/override semantics for high-impact actions. This is implemented as code-level checks on each plan step and each tool call, with fail-closed defaults for ambiguous compliance.  
-**Rationale:** This directly operationalizes the “chain of command / scope of autonomy / side effects” framing in OpenAI’s Model Spec, complements frontier “agentic” risk concerns in Preparedness and FSF, and mirrors the enforceable separation-of-powers pattern in TLC. citeturn32view0turn11view0turn17view2turn6view0turn10view0  
+**Rationale:** This directly operationalizes the “chain of command / scope of autonomy / side effects” framing in OpenAI’s Model Spec, complements frontier “agentic” risk concerns in Preparedness and FSF, and mirrors the enforceable separation-of-powers pattern in TLC.  
 **Risk notes:** Overly strict gates can cause brittleness and user friction; overly permissive gates can create silent policy drift. Policy engines become critical infrastructure and must be security-reviewed and tested like production code.
 
 ### Adopt threshold-triggered “Safety Case” artifacts and release gates for agent capabilities
@@ -256,32 +255,32 @@ This complements the direction of frontier frameworks that emphasize agentic sab
 **What to implement:** a two-report system for major releases or capability jumps:  
 - **Capabilities Report** (what the system can do under scaffolding/tool access)  
 - **Safeguards/Safety Case** (what mitigations exist, measured efficacy, residual risk, and go/no-go)  
-**Rationale:** This aligns with OpenAI’s Capabilities/Safeguards Reports and governance flow, Anthropic’s Risk Reports, and DeepMind’s pre-deployment safety case and post-deployment updates. citeturn12view3turn12view1turn14view3turn17view3  
+**Rationale:** This aligns with OpenAI’s Capabilities/Safeguards Reports and governance flow, Anthropic’s Risk Reports, and DeepMind’s pre-deployment safety case and post-deployment updates.  
 **Risk notes:** Evaluations can be gamed and may lag real-world misuse; safety cases are only as good as their evidence. Overhead is real—automation is required (CI integration, standardized templates, evidence capture).
 
 ### Enforce “separation of duties” in agent organizations and pipelines
 
 **What to implement:** split agent roles (planner/builder/validator/safety sentinel) and ensure no agent can both perform an action and approve it. Require independent validation for sensitive actions (deployments, schema migrations, money movement, external communications).  
-**Rationale:** NIST depicts separation of AI actors as best practice; TLC operationalizes it as role constraints; EU AI Act explicitly requires oversight mechanisms including override/stop functionality for high-risk contexts. citeturn21view1turn6view0turn28view2  
+**Rationale:** NIST depicts separation of AI actors as best practice; TLC operationalizes it as role constraints; EU AI Act explicitly requires oversight mechanisms including override/stop functionality for high-risk contexts.  
 **Risk notes:** Slows velocity without good tooling; can create “rubber-stamping” if validators lack independence. Must also address collusion risks if agents share context uncritically.
 
 ### Build continuous monitoring and incident response as a first-class agent capability
 
 **What to implement:** runtime telemetry + audit logs for tool calls, policy gate outcomes, and user-impacting actions; an incident taxonomy and disclosure process; and post-deploy “safety case refresh” triggers (e.g., new tool connector, new autonomy feature, distribution change).  
-**Rationale:** DeepMind explicitly includes post-market monitoring updates; NIST AI RMF and AI 600‑1 emphasize tracking emergent risks and incident disclosure; EU AI Act creates hard compliance deadlines and market surveillance expectations. citeturn17view3turn24view3turn23view0turn29view0  
+**Rationale:** DeepMind explicitly includes post-market monitoring updates; NIST AI RMF and AI 600‑1 emphasize tracking emergent risks and incident disclosure; EU AI Act creates hard compliance deadlines and market surveillance expectations.  
 **Risk notes:** Logging can introduce privacy and security exposure; incident processes can create regulatory and reputational risk if poorly handled. Requires careful data minimization and access controls.
 
 ### Produce an “EU-ready + US-ready” documentation pack automatically from the engineering pipeline
 
 **What to implement:** automated generation of: technical documentation, evaluation results summaries, risk/safety case, downstream integrator guidance, and (where applicable) training-data summaries and copyright compliance policy references.  
-**Rationale:** EU AI Act Article 53 requires GPAI technical documentation, downstream documentation, a copyright compliance policy, and a public training data summary; NIST AI 600‑1 encourages transparency measures and structured actions; OpenAI/Anthropic/DeepMind all rely on structured reporting artifacts for governance. citeturn28view3turn24view3turn14view3turn11view0turn16view0  
+**Rationale:** EU AI Act Article 53 requires GPAI technical documentation, downstream documentation, a copyright compliance policy, and a public training data summary; NIST AI 600‑1 encourages transparency measures and structured actions; OpenAI/Anthropic/DeepMind all rely on structured reporting artifacts for governance.  
 **Risk notes:** Documentation can leak sensitive IP or create information hazards; redaction and tiered disclosure must be designed explicitly. Misalignment between “what’s documented” and “what’s actually running” becomes a critical operational risk—automation must pull from live configs and logs.
 
 ## Verification and truth
 
-**Exists:** A cited, source-grounded synthesis of governance domains and tasks across OpenAI (Model Spec + Preparedness), Anthropic (Constitutional AI + RSP v3.0), DeepMind (FSF v3.0 + responsibility framing), OECD AI Principles, NIST AI RMF 1.0 + NIST AI 600‑1 GenAI Profile, and the EU AI Act (Regulation (EU) 2024/1689), including an explicit 7-criteria comparison matrix, an implementation-oriented domain-to-task mapping, a gaps analysis for production-grade agents, and 5 implementable recommendations with rationale and risks. citeturn32view0turn11view0turn49search0turn13view0turn16view0turn26view0turn19view0turn22view0turn27view0turn6view0turn10view0  
-**Non-existent:** A complete, audited “single source of truth” dataset for adoption metrics across all products and geographies; a universally accepted technical standard for scaffolding-aware evaluation of tool-using agents; a fully specified misalignment mitigation standard suitable for certifying highly autonomous agents across vendors. citeturn18view2turn38view0turn15view1  
-**Unverified:** Media-reported adoption numbers (e.g., WAU/MAU) not independently audited in this memo; the current real-world maturity and enforcement practices of EU AI Act codes of practice beyond the text cited; the degree to which specific vendor product features are directly “caused by” (vs. merely aligned with) each framework. citeturn39search1turn40search11turn29view0turn28view3  
+**Exists:** A cited, source-grounded synthesis of governance domains and tasks across OpenAI (Model Spec + Preparedness), Anthropic (Constitutional AI + RSP v3.0), DeepMind (FSF v3.0 + responsibility framing), OECD AI Principles, NIST AI RMF 1.0 + NIST AI 600‑1 GenAI Profile, and the EU AI Act (Regulation (EU) 2024/1689), including an explicit 7-criteria comparison matrix, an implementation-oriented domain-to-task mapping, a gaps analysis for production-grade agents, and 5 implementable recommendations with rationale and risks.  
+**Non-existent:** A complete, audited “single source of truth” dataset for adoption metrics across all products and geographies; a universally accepted technical standard for scaffolding-aware evaluation of tool-using agents; a fully specified misalignment mitigation standard suitable for certifying highly autonomous agents across vendors.  
+**Unverified:** Media-reported adoption numbers (e.g., WAU/MAU) not independently audited in this memo; the current real-world maturity and enforcement practices of EU AI Act codes of practice beyond the text cited; the degree to which specific vendor product features are directly “caused by” (vs. merely aligned with) each framework.  
 **Functional status:** The memo is internally consistent, citation-backed for key claims, and operationally oriented; coverage is deepest where primary sources are explicit (Preparedness/RSP/FSF/NIST/EU AI Act) and more constrained where product adoption data is inherently non-public or media-mediated.
 
 ## Prompt:
@@ -1945,6 +1944,4 @@ This version closes the visible incompleteness problem: the files now exist as f
 **V&T:** Exists: full downloadable artifacts for the updated base template, satellite profile, instance template, schema, lock manifest, process doc, and instantiated example. Non-existent: direct writes into your local repo path `/Users/coreyalejandro/Projects/the-living-constitution` in this turn. Unverified: whether every exact field label and example value matches your final canonical preference without one more review pass. Functional status: the artifact bundle is complete and usable as a repo-ready draft set.
 
 
-
 ---
-Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
