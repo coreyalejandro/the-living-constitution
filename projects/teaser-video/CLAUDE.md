@@ -1,6 +1,6 @@
 # Project Constitution: Teaser Video
 
-## Parent: [The Living Constitution (TLC)](file:///Users/coreyalejandro/Projects/the-living-constitution/CLAUDE.md)
+## Parent: [The Living Constitution (TLC)](../../CLAUDE.md)
 
 ## ⚖️ Operational Invariants
 

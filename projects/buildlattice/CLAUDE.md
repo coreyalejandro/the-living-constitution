@@ -8,7 +8,7 @@
 | **Type** | Execution Governance Engine |
 | **Safety Domain** | Empirical Safety |
 | **Status** | `prototype` |
-| **Repo Path** | `/Users/coreyalejandro/Projects/buildlattice` |
+| **Repo Path** | `../buildlattice` (sibling of this repository root) |
 
 ## Purpose
 

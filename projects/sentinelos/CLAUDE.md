@@ -3,7 +3,7 @@
 ## What This Is
 
 Build contract and governance overlay for SentinelOS — the invariant enforcement platform.
-Implementation lives at: `/Users/coreyalejandro/Projects/sentinelos/`
+Implementation lives at: `../sentinelos/` (sibling of this repository root)
 
 ## Architecture
 

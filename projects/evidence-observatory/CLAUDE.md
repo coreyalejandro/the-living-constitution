@@ -35,4 +35,4 @@ How can heterogeneous real-world AI interaction artifacts be converted into admi
 
 ## Repo
 
-/Users/coreyalejandro/Projects/tlc-evidence-observatory/
+`../tlc-evidence-observatory/` (sibling of this repository root)

@@ -3,7 +3,7 @@
 ## What This Is
 
 Build contract and governance overlay for UICare-System — Developer Safety Monitor.
-Implementation lives at: `/Users/coreyalejandro/Projects/uicare-system/`
+Implementation lives at: `../uicare-system/` (sibling of this repository root)
 
 ## Domain
 

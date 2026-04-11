@@ -441,6 +441,7 @@ Each tier×type combination gets guided prompts instead of raw `[REQUIRED]`. The
 # C-RSP Instance: [What are you doing, in ≤10 words?]
 
 ## 1. Identity
+
 - **Title:** [name]
 - **ID:** CRSP-[YYYY]-[NNN]
 - **Tier:** Tier-1-MVG
@@ -449,6 +450,7 @@ Each tier×type combination gets guided prompts instead of raw `[REQUIRED]`. The
 - **Not in scope:** [What are you explicitly NOT doing?]
 
 ## 2. Topology
+
 - **Mode:** [TLC-Core | Satellite | Dual-Topology]
 - **Truth surface:** [Which file is the source of truth for this change?]
 
@@ -464,16 +466,19 @@ Each tier×type combination gets guided prompts instead of raw `[REQUIRED]`. The
 - SUCCESS when: ...
 
 ## 9. Acceptance Criteria
+
 | What | How to check | Pass if |
 |---|---|---|
 | [criterion] | [command or inspection] | [expected result] |
 
 ## 14. Preflight
+
 - [ ] No placeholders remain
 - [ ] Topology declared
 - [ ] Commands in Ordered Operations are copy-pasteable
 
 ## 16. Output → CRSP_OUTCOME_TEMPLATE.md
+
 ```
 
 #### Standard (Tier-2) Fill-in-the-Blank
@@ -482,24 +487,29 @@ Includes everything from Quick, plus:
 
 ```markdown
 ## 3. Baseline
+
 - **Current state:** [What exists RIGHT NOW? Be honest.]
 - **Anchor commit:** [SHA or "HEAD of <branch>"]
 - **Known gaps:** [What's missing or broken that this contract addresses?]
 
 ## 5. Risk
+
 - **Risk class:** [Low | Moderate | High]
 - **Side effects:** [What changes outside the target files?]
 - **Reversible?** [Yes: how | No: why not]
 
 ## 7. Lifecycle
+
 - **Starting state:** Draft
 - **Promotion gate:** [What must be true to mark Active → Frozen?]
 
 ## 10. Rollback
+
 - **Safe state:** [Describe the state to return to if this fails]
 - **Rollback command:** [Exact command: git revert, restore, etc.]
 
 ## 11. Evidence
+
 - **Evidence paths:** [Where does proof live after execution?]
 - **Truth discipline:** [What claims does this contract make, and where is proof?]
 ```

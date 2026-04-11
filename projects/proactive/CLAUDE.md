@@ -3,7 +3,7 @@
 ## What This Is
 
 Build contract and governance overlay for PROACTIVE — Constitutional AI Safety Agent.
-Implementation lives at: `/Users/coreyalejandro/Projects/proactive-gitlab-agent/`
+Implementation lives at: `../proactive-gitlab-agent/` (sibling of this repository root)
 
 ## Domain
 

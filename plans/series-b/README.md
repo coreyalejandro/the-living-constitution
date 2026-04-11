@@ -3,6 +3,7 @@
 This document provides an overview of all 7 Series B contracts.
 
 ## Contracts Overview
+
 1. B-001: Fixes broken invariants in the CLAUDE and STATUS files.
 2. B-002: Implements a real test suite with 25+ pytest tests for multiple systems.
 3. B-003: Cleans up the constitution by removing unnecessary XML artifacts.

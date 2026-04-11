@@ -8,7 +8,7 @@
 | **Type** | D4 Empirical Safety integrated domain engine |
 | **Safety Domain** | Empirical Safety |
 | **Status** | `planned` |
-| **Repo Path** | `/Users/coreyalejandro/Projects/empirical-guard` |
+| **Repo Path** | `../empirical-guard` (sibling of this repository root) |
 
 ## Purpose
 

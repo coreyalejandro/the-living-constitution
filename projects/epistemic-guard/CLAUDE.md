@@ -8,7 +8,7 @@
 | **Type** | D1 Epistemic Safety integrated domain engine |
 | **Safety Domain** | Epistemic Safety |
 | **Status** | `planned` |
-| **Repo Path** | `/Users/coreyalejandro/Projects/epistemic-guard` |
+| **Repo Path** | `../epistemic-guard` (sibling of this repository root) |
 
 ## Purpose
 
