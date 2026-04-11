@@ -1,7 +1,7 @@
 # Agent Handoff: The Living Constitution (base camp)
 
-**Date:** 2026-04-06  
-**Status:** **TLC GOVERNANCE FROZEN FOR PRODUCT BUILDOUT** — final stop-condition adjudication (C-RSP v1.0.0) concluded all six capabilities **met**; no residual constitutional gap. **PASS 14** closure remains anchored to run `23774310879` and commit `30805eed1d51ca78107294376c1b783275e484aa`. **PASS 16** (canonical replay) remains anchored to commit `4c38fa9659bdb016bf5cf1b3b9a429df70aab9f3`, CI run `23774969505` **success**.
+**Date:** 2026-04-11  
+**Status:** **Series B execution active** — B-003 merged and tagged; B-004 README rewrite drafted on branch `series-b/b-004-readme-rewrite` with PR #18 open for review.
 
 ## 1. Deliverables
 
@@ -28,6 +28,8 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **B-004 README rewrite (2026-04-11):** Reframed root `README.md` as a research-first landing page, added explicit "Built Now vs Specified / Target State" table, retained status-truth discipline pointing to `STATUS.json`, and recorded execution notes in `plans/series-b/B-004-readme-rewrite.md`. Branch pushed as `series-b/b-004-readme-rewrite`; PR opened: [#18](https://github.com/coreyalejandro/the-living-constitution/pull/18). Local verification run: `python3 scripts/verify_document_constitution.py --root .` (OK with expected stale warnings) and `python3 scripts/compliance_score_docs.py --root . --json-out verification/docs_compliance.json` (100%).
 
 - **C-RSP hybrid memory model (2026-04-06):** Seeded `projects/c-rsp/openmemory.md` (append-only C-RSP journal + seed entry). Updated `projects/c-rsp/AGENT_PROMPT.md` (Memory model section, pre-flight reads root `openmemory.md` + `projects/c-rsp/openmemory.md`, session close appends only to `projects/c-rsp/openmemory.md`; fixed heading/list structure). Documented in root `openmemory.md` Components, `projects/c-rsp/README.md` table, and **`CANONICAL_ROLE_MAP.md`** § Memory surfaces (hybrid).
 
