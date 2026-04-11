@@ -13,11 +13,32 @@ last_verified:
 
 [![Verify Living Constitution](https://github.com/coreyalejandro/the-living-constitution/actions/workflows/verify.yml/badge.svg)](https://github.com/coreyalejandro/the-living-constitution/actions/workflows/verify.yml)
 
-## What this is
+## Research-First Landing
 
-This repository is the **governance overlay** for the Safety Systems Design Commonwealth: the constitutional specification, zero-shot build contracts under `projects/`, verification evidence, and coordination so every claim stays aligned with what the repos actually contain. It is documentation and governance infrastructure first; product application code lives in sibling repositories.
+This repository is a governance and research control plane, not a monolithic app.
+It houses constitutional specifications, evidence rules, build contracts, and
+verification automation used to govern work across the Commonwealth.
 
-## How this repo is organized
+Start here if your goal is understanding and evidence:
+
+- `THE_LIVING_CONSTITUTION.md` — constitutional source text.
+- `STATUS.json` — authoritative current status surface (machine truth).
+- `MASTER_PROJECT_INVENTORY.json` — project census and governance artifact map.
+- `docs/operations/VERIFY.md` — operator verification flow.
+- `verification/MATRIX.md` — claim-to-evidence ledger.
+
+## Honest Status: Built vs Specified
+
+| Surface | Built Now (verified in repo) | Specified / Target State |
+| --- | --- | --- |
+| Constitutional specification | `THE_LIVING_CONSTITUTION.md` and constitutional companion docs exist and are versioned. | Continue iterative refinement via amendment process and governed updates. |
+| Governance automation | CI `verify.yml` and verifier scripts under `scripts/` are implemented in-repo; operational state is tracked in CI evidence and `STATUS.json`. | Maintain full green verification chain as changes land. |
+| Status truth surface | `STATUS.json` and deterministic `STATUS.md` renderer exist (`scripts/render_status_surface.py`). | Keep status aligned with inventory, CI provenance, and truth-boundary policy. |
+| Project overlays and contracts | `projects/` contains per-project overlays/build contracts and C-RSP artifacts. | Keep contracts current with real implementation state and evidence. |
+| Application implementations | Most product/runtime implementations live in sibling repos or submodules; this repo is primarily governance overlay. | Continue governed execution in target repos without overstating completion in this repo. |
+| Research and evidence synthesis | Evidence docs and policy artifacts exist in `docs/` and `verification/`. | Expand with stronger cross-project evidence bundles and reproducible audits. |
+
+## Repo Map
 
 | Area | Role |
 | --- | --- |
@@ -25,15 +46,19 @@ This repository is the **governance overlay** for the Safety Systems Design Comm
 | `docs/constitution/` | Documentation law (taxonomy, paths, allowlist, truth hierarchy) |
 | `docs/operations/` | Executable operator procedures (bootstrap, verify, rollback) |
 | `docs/evidence/` | Evidence maps and verification records |
-| `governance/` | **Live** C-RSP governance artifacts (instance, lock, binding) — not under `docs/` |
+| `governance/` | Live C-RSP governance artifacts (instance, lock, binding) |
 | `projects/` | Per-project build contracts and overlays |
 | `verification/` | Claim-to-evidence surfaces and verifier outputs |
-| `scripts/` | Automation including `verify_document_constitution.py` |
-| `STATUS.json` / `STATUS.md` | Authoritative current status (PASS 10A); README does not replace them |
+| `scripts/` | Automation and verifiers |
+| `STATUS.json` / `STATUS.md` | Current status truth surface (authoritative = `STATUS.json`) |
 
-**Quick start routing:** `docs/instructions/FIRST_RUN.md` → `docs/operations/BOOTSTRAP.md` → `docs/operations/VERIFY.md`.
+## Operator Routing
 
-**Lost?** Open `docs/HELP.md`.
+- First run: `docs/instructions/FIRST_RUN.md`
+- Bootstrap: `docs/operations/BOOTSTRAP.md`
+- Verify: `docs/operations/VERIFY.md`
+- Recovery: `docs/operations/ROLLBACK.md`
+- Help index: `docs/HELP.md`
 
 ## Governance and compliance
 
@@ -44,14 +69,14 @@ This repository is the **governance overlay** for the Safety Systems Design Comm
 
 **Compliance summary:** MVDS and extended paths are defined in `config/docs_governance.json`. Run `python3 scripts/compliance_score_docs.py --root .` for a computed score (not hand-waved).
 
-## Current repo status (authoritative)
+## Status Discipline
 
-**Do not** assert operational status here independently of the status surface:
+Do not treat this README as the canonical status source:
 
 - Read [`STATUS.md`](STATUS.md) (human mirror) or authoritative [`STATUS.json`](STATUS.json).
 - Regenerate after inventory or policy changes: `python3 scripts/render_status_surface.py --root .`
 
-## Verification bootstrap
+## Verification Bootstrap
 
 Before running full verification:
 
