@@ -9,15 +9,15 @@
 | `series` | `B` |
 | `status` | `active` |
 | `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
-| `head_sha` | `1a4b18bf5d22da3478ced36bdad5fe07b1cc6a52` |
+| `head_sha` | `7e8b2bb0294dbbb37841be0a984333bf072c307a` |
 | `last_verified_commit` | `30805eed1d51ca78107294376c1b783275e484aa` |
 | `last_verified_run_id` | `23774310879` |
 | `tip_state_truth` | `tip_pending` |
-| `workflow_sha` | `b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8` |
+| `workflow_sha` | `9d5296c156da23426ed48b3db9dd112b441754503e8b638bc6b6a17278e5ab29` |
 | `escalation_state` | `review_required` |
 | `reviewer_status` | `pending` |
 | `governance_contract_version` | `v1.9.0` |
-| `inventory_meta_generated_at_utc` | `2026-04-05T19:11:55Z` |
+| `inventory_meta_generated_at_utc` | `2026-04-11T12:16:14Z` |
 
 ## Immutable truth anchor (PASS 11)
 

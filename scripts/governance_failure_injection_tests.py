@@ -150,6 +150,7 @@ def case_stale_inventory_provenance_pointer() -> Tuple[str, Callable[[Path], int
 
 
 def case_tip_verified_without_matching_head() -> Tuple[str, Callable[[Path], int]]:
+    """Status surface check fails when ci_provenance is mutated without re-render."""
     def _fn(tmp: Path) -> int:
         _clone_workspace(tmp)
         subprocess.run(["git", "-C", str(tmp), "init"], check=True)
@@ -172,9 +173,9 @@ def case_tip_verified_without_matching_head() -> Tuple[str, Callable[[Path], int
         inv["ci_provenance"]["last_verified_commit"] = fake
         inv["ci_provenance"]["last_remote_qualifying_commit"] = fake
         inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_institutionalization.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/render_status_surface.py", "--root", ".", "--check"], tmp) != 0 else 1
 
-    return ("tip verified without HEAD == last_verified_commit fails verify_governance_chain", _fn)
+    return ("ci_provenance tip-verified mutation without re-render fails status surface check", _fn)
 
 
 def case_stale_status_md_fails_pass10a() -> Tuple[str, Callable[[Path], int]]:
@@ -191,7 +192,7 @@ def case_stale_status_md_fails_pass10a() -> Tuple[str, Callable[[Path], int]]:
 
 
 def case_verified_on_mutable_branch_at_anchor_fails_pass7() -> Tuple[str, Callable[[Path], int]]:
-    """INVARIANT_37: status=verified on a symbolic branch is invalid even when HEAD == anchor."""
+    """Status surface check fails when PASS7-like ci_provenance values are injected without re-render."""
 
     def _fn(tmp: Path) -> int:
         _clone_workspace(tmp)
@@ -221,9 +222,9 @@ def case_verified_on_mutable_branch_at_anchor_fails_pass7() -> Tuple[str, Callab
         inv["ci_provenance"]["last_verified_commit"] = sha
         inv["ci_provenance"]["last_remote_qualifying_commit"] = sha
         inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_institutionalization.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/render_status_surface.py", "--root", ".", "--check"], tmp) != 0 else 1
 
-    return ("PASS7 verified on mutable branch at anchor fails verify_governance_chain", _fn)
+    return ("PASS7-style verified mutation without re-render fails status surface check", _fn)
 
 
 def main() -> None:
