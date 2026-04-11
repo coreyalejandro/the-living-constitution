@@ -33,6 +33,21 @@ def _load_json(path: Path) -> Dict[str, Any]:
     return data
 
 
+def _series_status_from_existing_status_json(root: Path) -> Tuple[str, str]:
+    """Use series/status from STATUS.json on disk when re-aggregating (not from inventory)."""
+    default_series, default_status = "B", "active"
+    path = root / "STATUS.json"
+    if not path.is_file():
+        return default_series, default_status
+    try:
+        existing = _load_json(path)
+    except (OSError, ValueError, JSONDecodeError):
+        return default_series, default_status
+    series = str(existing.get("series") or "").strip() or default_series
+    status = str(existing.get("status") or "").strip() or default_status
+    return series, status
+
+
 def _git_head(root: Path) -> str:
     r = subprocess.run(
         ["git", "-C", str(root), "rev-parse", "HEAD"],
@@ -125,9 +140,13 @@ def aggregate_status(root: Path) -> Dict[str, Any]:
     if vac and vat:
         truth_anchor = {"type": "git_tag", "value": vat, "commit": vac}
 
+    series_val, status_val = _series_status_from_existing_status_json(root)
+
     out: Dict[str, Any] = {
         "schema_version": "1.1.0",
         "project": project,
+        "series": series_val,
+        "status": status_val,
         "head_sha": head,
         "last_verified_commit": str(cp.get("last_verified_commit") or ""),
         "last_verified_run_id": str(cp.get("last_verified_run_id") or ""),
@@ -177,6 +196,8 @@ def render_markdown_from_status(data: Dict[str, Any]) -> str:
     ]
     rows = [
         ("project", data.get("project")),
+        ("series", data.get("series")),
+        ("status", data.get("status")),
         ("verification_target", data.get("verification_target")),
         ("head_sha", data.get("head_sha")),
         ("last_verified_commit", data.get("last_verified_commit")),

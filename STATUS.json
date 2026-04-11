@@ -1,12 +1,11 @@
 {
   "cross_repo_consistency": {
-    "detail": "verify_cross_repo_consistency: FAIL\n  - JSON drift (normalized): 00-constitution/role-registry.json",
-    "exit_code": 1,
-    "state": "drift"
+    "exit_code": 0,
+    "state": "aligned"
   },
   "escalation_state": "review_required",
   "governance_contract_version": "v1.9.0",
-  "head_sha": "5f907e27d70bdfbad05d3525a15e0aa783ac356a",
+  "head_sha": "1a4b18bf5d22da3478ced36bdad5fe07b1cc6a52",
   "historical_state": {
     "ci_remote_record_captured_at_utc": "2026-03-31T01:15:00Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
@@ -19,6 +18,8 @@
   "project": "coreyalejandro/the-living-constitution",
   "reviewer_status": "pending",
   "schema_version": "1.1.0",
+  "series": "B",
+  "status": "active",
   "tip_state_truth": "tip_pending",
   "truth_anchor": {
     "commit": "e56fc0753955901ee18bca44ae73181f9999b9db",

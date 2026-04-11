@@ -39,6 +39,7 @@ These exact names may exist at repository root:
 - ChatGPT-AI Governance Frameworks.md
 - delegated-whistling-cherny.md
 - AGENTS.md
+- CRSP-001.md
 
 ## Regex allowlist (root path basename)
 

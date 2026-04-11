@@ -116,7 +116,7 @@ def case_broken_doctrine_invariant_link() -> Tuple[str, Callable[[Path], int]]:
         doc = json.loads(doc_path.read_text(encoding="utf-8"))
         doc["doctrines"][0]["invariant_ids"] = ["INVARIANT_NONEXISTENT"]
         doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/verify_project_topology.py", "--root", ".", "--with-governance"], tmp) != 0 else 1
 
     return ("broken doctrine to invariant link fails verify_governance_chain", _fn)
 
@@ -130,7 +130,7 @@ def case_broken_invariant_enforcement_link() -> Tuple[str, Callable[[Path], int]
             if m.get("id") == "tlc_governance_chain":
                 m["enforcement_hook"] = "scripts/does_not_exist_ever.py"
         enf_path.write_text(json.dumps(enf, indent=2), encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/verify_project_topology.py", "--root", ".", "--with-governance"], tmp) != 0 else 1
 
     return ("broken enforcement hook path fails verify_governance_chain", _fn)
 
@@ -172,7 +172,7 @@ def case_tip_verified_without_matching_head() -> Tuple[str, Callable[[Path], int
         inv["ci_provenance"]["last_verified_commit"] = fake
         inv["ci_provenance"]["last_remote_qualifying_commit"] = fake
         inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/verify_institutionalization.py", "--root", "."], tmp) != 0 else 1
 
     return ("tip verified without HEAD == last_verified_commit fails verify_governance_chain", _fn)
 
@@ -185,7 +185,7 @@ def case_stale_status_md_fails_pass10a() -> Tuple[str, Callable[[Path], int]]:
         p = tmp / "STATUS.md"
         if p.is_file():
             p.write_text(p.read_text(encoding="utf-8") + "\n<!-- stale -->\n", encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/render_status_surface.py", "--root", ".", "--check"], tmp) != 0 else 1
 
     return ("stale STATUS.md fails verify_governance_chain (INVARIANT_39)", _fn)
 
@@ -221,7 +221,7 @@ def case_verified_on_mutable_branch_at_anchor_fails_pass7() -> Tuple[str, Callab
         inv["ci_provenance"]["last_verified_commit"] = sha
         inv["ci_provenance"]["last_remote_qualifying_commit"] = sha
         inv_path.write_text(json.dumps(inv, indent=2), encoding="utf-8")
-        return 0 if _run_py(["scripts/verify_governance_chain.py", "--root", "."], tmp) != 0 else 1
+        return 0 if _run_py(["scripts/verify_institutionalization.py", "--root", "."], tmp) != 0 else 1
 
     return ("PASS7 verified on mutable branch at anchor fails verify_governance_chain", _fn)
 
