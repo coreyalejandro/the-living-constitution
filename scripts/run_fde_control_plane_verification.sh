@@ -38,9 +38,9 @@ else
   echo "==> [1/4] Standalone path resolution (skipped)"
 fi
 
-echo "==> [2/4] Structural diff (template vs instance)"
+echo "==> [2/4] Structural diff (instance template vs instance)"
 python3 scripts/verify_crsp_structure.py \
-  --template projects/c-rsp/BUILD_CONTRACT.md \
+  --template projects/c-rsp/BUILD_CONTRACT.instance.template.md \
   --instance projects/c-rsp/instances/CRSP-FDE-CTRL-PLANE-GAPS-002.md \
   --report evidence/fde-control-plane/structural-diff-report.json
 
