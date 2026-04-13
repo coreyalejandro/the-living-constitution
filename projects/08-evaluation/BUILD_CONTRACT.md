@@ -4,7 +4,7 @@
 
 `projects/08-evaluation/` contains the evaluation package (`tlc_evals/`), dataset artifacts (`datasets/`), evaluation specifications (`eval_specs/`), and supporting documentation (`README.md`, `evidence_summary.md`, `failure_taxonomy.md`, `pattern_analysis.md`, `pyproject.toml`).
 
-Phase 4-6 execution artifacts are not yet present in `projects/08-evaluation/verification/`.
+`projects/08-evaluation/verification/` now contains full-cycle EVAL-001 evidence artifacts, including phase checkpoints, evaluation results, recurrence analysis, and CI signal output.
 
 ## 2. Target State (What This Contract Enables)
 

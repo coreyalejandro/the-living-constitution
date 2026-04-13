@@ -6,7 +6,7 @@
 ## tlc-evals: Automated Evaluation Library
 
 | Component | Location | Status |
-|---|---|---|
+| --- | --- | --- |
 | Package root | `08-evaluation/tlc_evals/` | Installed (`pip install -e .`) |
 | Core types | `core/types.py` | `EvalCase`, `EvalResult`, `EvalSummary`, all enums |
 | Anthropic SDK sampler | `core/sampler.py` | Sync + async + Batch API |
@@ -24,6 +24,7 @@
 | README | `08-evaluation/README.md` | Full documentation |
 
 **Smoke test results (pattern-only):**
+
 - 15 cases across F1, F2, F4 — 8/15 passed (53.3%) correctly detecting built-in failures
 - `tlc-evals check` CLI verified working
 - YAML suite loading verified working
@@ -60,6 +61,8 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **Evidence Observatory truth-surface reconciliation + CI wiring (2026-04-13):** Repointed `projects/evidence-observatory/` and `config/projects.ts` to the canonical in-repo implementation at `projects/08-evaluation/`, updated `projects/README.md`, `projects/08-evaluation/README.md`, `projects/08-evaluation/tlc_evals/datasets/loader.py`, and `tests/series_b/test_b002_taxonomy_regression_fixtures.py` to remove stale root-path references, added Guardian/EVAL-001 verification steps to `.github/workflows/verify.yml`, regenerated `MASTER_PROJECT_INVENTORY.*` and `STATUS.*`, and restored AC-006-compatible decision logging in `verification/crsp_CRSP-001_log.json`.
 
 - **Guardian compliance commands implemented (2026-04-13):** Extended `src/guardian.py` with `--verify-evidence`, `--schema`, `--check-compliance`, and `--evidence-dir` flags. Added JSON Schema validation via `jsonschema` and EVAL-001 compliance adjudication against `projects/08-evaluation/verification/`. Added schema file `projects/c-rsp/schemas/evidence_schema.json` and verified commands now return `PASS` for both evidence validation and compliance checks.
 

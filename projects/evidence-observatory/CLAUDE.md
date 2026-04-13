@@ -35,4 +35,4 @@ How can heterogeneous real-world AI interaction artifacts be converted into admi
 
 ## Repo
 
-`../tlc-evidence-observatory/` (sibling of this repository root)
+`../08-evaluation/` (canonical in-repo implementation path)

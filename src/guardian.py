@@ -37,7 +37,7 @@ PROTECTED_FILES = {
     "MASTER_PROJECT_INVENTORY.md",
 }
 VERIFICATION_DIR = REPO_ROOT / "verification"
-LOG_PATH = VERIFICATION_DIR / "guardian-log.json"
+LOG_PATH = REPO_ROOT / TRINITY_HASHES_LOG
 
 
 class GuardianState(str, Enum):
@@ -239,7 +239,9 @@ def evaluate_invariants(agent_id: str, tool_name: str, params: dict[str, Any]) -
             "decision": decision,
             "agent_id": agent_id,
             "tool_name": tool_name,
+            "invariants_evaluated": [item["invariant_id"] for item in invariant_results],
             "violated_invariants": violated,
+            "rationale": verdict["rationale"],
         }
     )
     return verdict

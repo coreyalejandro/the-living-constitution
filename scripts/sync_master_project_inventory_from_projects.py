@@ -26,7 +26,7 @@ from typing import Any, Dict, List, Tuple
 SECTION1_END = re.compile(
     r"^## 1\. TLC `projects/` overlay \(\d+ slugs\)\s*\r?\n"
     r"[\s\S]*?"
-    r"(?=^\*\*File-level notes)",
+    r"(?=^- \*\*)",
     re.MULTILINE,
 )
 
@@ -126,12 +126,18 @@ def build_inventory_payload(root: Path) -> Tuple[Dict[str, Any], List[str], List
         else:
             new_entries.append(default_entry(root, slug))
 
+    prior_slugs = list(overlay.get("expected_slugs") or [])
+    prior_entries = prior
+    root_str = str(root.resolve())
+
     overlay["expected_slugs"] = slugs
     overlay["entries"] = new_entries
+    meta["tlc_root"] = root_str
 
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    meta["generated_at_utc"] = now
-    meta["tlc_root"] = str(root.resolve())
+    if prior_slugs != slugs or prior_entries != new_entries or str(meta.get("tlc_root") or "") != root_str:
+        meta["generated_at_utc"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    else:
+        meta["generated_at_utc"] = str(meta.get("generated_at_utc") or "")
 
     return data, slugs, new_entries
 
