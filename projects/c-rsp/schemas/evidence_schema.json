@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-living-constitution.local/projects/c-rsp/schemas/evidence_schema.json",
+  "title": "C-RSP Evidence Schema (EVAL-001)",
+  "type": "object",
+  "anyOf": [
+    {
+      "required": [
+        "status"
+      ]
+    },
+    {
+      "required": [
+        "status",
+        "timestamp"
+      ]
+    },
+    {
+      "required": [
+        "contract_id",
+        "status"
+      ]
+    },
+    {
+      "required": [
+        "evidence_hash",
+        "status"
+      ]
+    }
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "phase": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "status": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "evidence_hash": {
+      "type": "string"
+    },
+    "previous_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "current_hash": {
+      "type": "string"
+    },
+    "build_contract_hash": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

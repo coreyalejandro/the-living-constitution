@@ -1,7 +1,39 @@
 # Agent Handoff: The Living Constitution (base camp)
 
-**Date:** 2026-04-11  
-**Status:** **Series C active (orchestrated)** — C-001 completed with hard gates; C-002 is now active via auto-next progression. Priority remains video extraction and teaser-video-remotion excellence.
+**Date:** 2026-04-12
+**Status:** **08-evaluation — `tlc-evals` library delivered and operational.**
+
+## tlc-evals: Automated Evaluation Library
+
+| Component | Location | Status |
+|---|---|---|
+| Package root | `08-evaluation/tlc_evals/` | Installed (`pip install -e .`) |
+| Core types | `core/types.py` | `EvalCase`, `EvalResult`, `EvalSummary`, all enums |
+| Anthropic SDK sampler | `core/sampler.py` | Sync + async + Batch API |
+| Constitutional AI judge | `core/judge.py` | Claude-as-judge, extended thinking, CAI loop |
+| Eval runner | `core/runner.py` | Sequential, concurrent, full-suite |
+| F1–F5 evaluators | `evals/f1_*` → `evals/f5_*` | 26 built-in cases grounded in FC-001–FC-018 |
+| I1–I6 invariant checkers | `invariants/i1_*` → `invariants/i6_*` | Deterministic pattern checkers |
+| InvariantChecker | `invariants/checker.py` | Orchestrates all 6 invariants |
+| Graders | `graders/` | Pattern, Model, CAI, Calibration |
+| V&T reporter | `reporters/vt_reporter.py` | Living Constitution canonical format |
+| SARIF reporter | `reporters/sarif_reporter.py` | CI/CD integration (GitHub Code Scanning) |
+| Console reporter | `reporters/console_reporter.py` | Rich terminal display |
+| CLI | `tlc_evals/cli.py` | `tlc-evals run/check/suite/report` |
+| YAML specs | `eval_specs/` | f2_phantom_completion.yaml, invariant_suite.yaml |
+| README | `08-evaluation/README.md` | Full documentation |
+
+**Smoke test results (pattern-only):**
+- 15 cases across F1, F2, F4 — 8/15 passed (53.3%) correctly detecting built-in failures
+- `tlc-evals check` CLI verified working
+- YAML suite loading verified working
+- JSON + V&T + SARIF reporters verified functional
+
+**To activate model grading:** set `ANTHROPIC_API_KEY` and remove `--pattern-only`.
+
+---
+
+**Previous status (Series C):** **Series C active (orchestrated)** — C-002 completed with hard gates; C-003 is now active via auto-next progression. Priority was teaser-video-remotion excellence.
 
 ## 1. Deliverables
 
@@ -28,6 +60,14 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **Guardian compliance commands implemented (2026-04-13):** Extended `src/guardian.py` with `--verify-evidence`, `--schema`, `--check-compliance`, and `--evidence-dir` flags. Added JSON Schema validation via `jsonschema` and EVAL-001 compliance adjudication against `projects/08-evaluation/verification/`. Added schema file `projects/c-rsp/schemas/evidence_schema.json` and verified commands now return `PASS` for both evidence validation and compliance checks.
+
+- **EVAL-001 full-cycle evidence + commit (2026-04-13):** Replaced placeholder BUILD hash references with concrete digest `5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df`, generated phase artifacts in `projects/08-evaluation/verification/` (`topology_validation_*`, `suite_config_*`, `dataset_validation_*`, `eval_results_*`, `recurrence_analysis_*`, `ci_signal_*`, `checkpoint_phase*_*.json`), and updated `crsp_EVAL-001_log.json` with compliance bit and hash-chain pointer. Committed as `c9d7e39` with message `CONSTITUTIONAL(08-evaluation): Activate EVAL-001 C-RSP instance`.
+
+- **EVAL-001 C-RSP bootstrap artifacts created (2026-04-12):** Added `projects/08-evaluation/BUILD_CONTRACT.md`, `projects/08-evaluation/crsp_EVAL-001_contract.md`, and `projects/08-evaluation/verification/crsp_EVAL-001_log.json` to activate constitutional Evidence Observatory scaffolding under the migrated `projects/08-evaluation/` path. Ran `python3 src/guardian.py --health-check` with output `PASS`; staged the new C-RSP artifacts alongside existing evaluation migration files.
+
+- **Series C C-002 extraction contract completed (2026-04-11):** Initialized standalone repositories at `/Users/coreyalejandro/Projects/im-just-a-build`, `/Users/coreyalejandro/Projects/teaser-video`, and `/Users/coreyalejandro/Projects/teaser-video-remotion` with initial extraction commits. Updated `MASTER_PROJECT_INVENTORY.json` paths for these slugs to standalone locations, regenerated `MASTER_PROJECT_INVENTORY.md`, `STATUS.json`, and `STATUS.md`, and enforced C-002 completion gates in `plans/series-c/CONTRACT_STATE.json`. Executed orchestrator completion (`complete --id C-002`) and auto-activated `C-003`.
 
 - **Series C orchestration hard-gates + CRSP lane (2026-04-11):** Added deterministic contract automation with `scripts/series_contract_orchestrator.py`, `plans/series-c/CONTRACT_STATE.json`, `plans/series-c/run-next-contract.sh`, and `plans/series-c/LOW_CAPABILITY_AGENT_PLAYBOOK.md`. Added CRSP-focused contracts `C-011` and `C-012`. Executed controlled completion for `C-001` through orchestrator gates and auto-activated `C-002` as the active contract.
 
@@ -90,17 +130,16 @@
 
 ## Recommended Next Steps
 
-- **`projects/teaser-video-remotion/` — publishable release candidate:** Authoritative distributables: `im-just-a-build-source.zip` (governance / source / reproducibility; excludes `dist/`) and `im-just-a-build-release.zip` (rendered MP4 + designated evidence). **Current** release ZIP digest: `projects/teaser-video-remotion/verification/RELEASE_ZIP_SHA256.txt` (e.g. `dd41863adbaab33410c4e16152308d7aa3e0ee8e72127f5ea6f1d03bd1e2a773` after 2026-04-05 packaging run). Historical freeze-time digests may appear in `RENDER_REPORT.md`. Policy: source ZIP excludes `dist/`; release ZIP includes MP4 + evidence; spot-check frames default; cross-machine reproducibility explicitly unverified. Packaging:
+- **Execute C-003 excellence pass in standalone repo:** Run all creative/technical upgrades in `/Users/coreyalejandro/Projects/teaser-video-remotion` so TLC remains governance-first while the video runtime evolves at full speed. Keep C-003 evidence mirrored back into TLC contracts and status surfaces.
 
 ```bash
-cd projects/teaser-video-remotion
+cd /Users/coreyalejandro/Projects/teaser-video-remotion
 npm run package:zip
 npm run package:release-zip
 ```
 
-- Execute product work under **maintenance-mode governance** (no new open-ended governance passes unless a future gap is explicitly raised).
+- Publish remotes for the three extracted repos and then remove mirrored runtime copies from TLC as the final C-002 cleanup step.
 - Keep `MASTER_PROJECT_INVENTORY.json` and `ci_provenance` aligned with `.github/workflows/verify.yml` when workflow changes.
-- For mutable `main` tip-state claims, follow `verification/tip-state-policy.json`.
 
 ## Quick Reference
 
