@@ -1,0 +1,12 @@
+{
+  "contract_id": "EVAL-001",
+  "phase": 3,
+  "timestamp": "2026-04-13T03:48:05.750785Z",
+  "build_contract_hash": "sha256:5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df",
+  "dataset": "datasets/failure_cases.json",
+  "record_count": 18,
+  "invalid_records": [],
+  "status": "PASS",
+  "previous_hash": "sha256:fe45b5f5744444ea5fcc384a5be86524a668b41b3fa3366a8b6cf2a295c7e309",
+  "current_hash": "sha256:f667ba8023fa9e59282474d2469e8a980ac196ad296a5fb7ec40f350b2d00d70"
+}

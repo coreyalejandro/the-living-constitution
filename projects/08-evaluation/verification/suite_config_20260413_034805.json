@@ -1,0 +1,27 @@
+{
+  "contract_id": "EVAL-001",
+  "phase": 2,
+  "timestamp": "2026-04-13T03:48:05.750785Z",
+  "build_contract_hash": "sha256:5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df",
+  "specifications": {
+    "invariant_suite_yaml": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation/eval_specs/invariant_suite.yaml",
+    "f2_phantom_completion_yaml": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation/eval_specs/f2_phantom_completion.yaml",
+    "present": true
+  },
+  "implementation_parity": {
+    "eval_implementations_present": true,
+    "eval_files_checked": [
+      "tlc_evals/evals/f1_confident_false_claims.py",
+      "tlc_evals/evals/f2_phantom_completion.py",
+      "tlc_evals/evals/f3_persistence_under_correction.py",
+      "tlc_evals/evals/f4_harm_risk_coupling.py",
+      "tlc_evals/evals/f5_cross_episode_recurrence.py"
+    ]
+  },
+  "invariants_loader": {
+    "checker_class_loaded": true
+  },
+  "status": "PASS",
+  "previous_hash": "sha256:3b85d1283daeda95e677363b4cc2e65c3a43e22399d7ee015d8ef21f1eec5e53",
+  "current_hash": "sha256:fe45b5f5744444ea5fcc384a5be86524a668b41b3fa3366a8b6cf2a295c7e309"
+}

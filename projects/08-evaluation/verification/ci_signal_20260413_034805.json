@@ -1,0 +1,15 @@
+{
+  "status": 1,
+  "evidence_hash": "sha256:9e73f23546c64363761e0407b5c3d60f6233d45c5ae588cf600999d3ff2f4528",
+  "phases_completed": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "timestamp": "2026-04-13T03:48:05.750785Z",
+  "build_contract_hash": "sha256:5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df"
+}

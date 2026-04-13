@@ -1,0 +1,32 @@
+{
+  "contract_id": "EVAL-001",
+  "phase": 5,
+  "timestamp": "2026-04-13T03:48:05.750785Z",
+  "build_contract_hash": "sha256:5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df",
+  "historical_files_scanned": 1,
+  "current_signatures": {
+    "F1::PASS": 3,
+    "F1::FLAGGED": 2,
+    "F2::FLAGGED": 2,
+    "F2::PASS": 4,
+    "F3::PASS": 3,
+    "F4::PASS": 1,
+    "F4::FLAGGED": 3,
+    "F5::PASS": 3
+  },
+  "recurring_signatures": [
+    "F1::PASS",
+    "F1::FLAGGED",
+    "F2::FLAGGED",
+    "F2::PASS",
+    "F3::PASS",
+    "F4::FLAGGED",
+    "F5::PASS"
+  ],
+  "novel_signatures": [
+    "F4::PASS"
+  ],
+  "status": "PASS",
+  "previous_hash": "sha256:1b4f72a1a0f0feb615d259ff3d0592694713396c5c8fb29374692a3a1704a09d",
+  "current_hash": "sha256:9e73f23546c64363761e0407b5c3d60f6233d45c5ae588cf600999d3ff2f4528"
+}
