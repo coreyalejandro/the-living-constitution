@@ -40,6 +40,7 @@ These exact names may exist at repository root:
 - delegated-whistling-cherny.md
 - AGENTS.md
 - CRSP-001.md
+- CRSP-001-AC-003.md
 
 ## Regex allowlist (root path basename)
 

@@ -62,6 +62,8 @@
 
 ## What Was Just Completed
 
+- **PR #22 verify-structure unblock (2026-04-13):** Added `CRSP-001-AC-003.md` to `docs/constitution/ROOT_DOC_ALLOWLIST.md` so `python3 scripts/verify_document_constitution.py --root .` no longer fails with `ROOT_MARKDOWN_DENIED` against the root commentary companion. Re-ran the document constitution verifier and the topology/governance verification path locally with success.
+
 - **Markdownlint cleanup for active truth surfaces (2026-04-13):** Fixed Markdown formatting warnings in `HANDOFF.md`, `MASTER_PROJECT_INVENTORY.md`, `projects/08-evaluation/README.md`, and `projects/evidence-observatory/BUILD_CONTRACT.md` by normalizing table separator spacing, adding required blank lines around lists/headings/tables, and adding `text` language tags to previously unlabeled fenced code blocks. Re-ran lint diagnostics on the touched files with no remaining warnings.
 
 - **Evidence Observatory truth-surface reconciliation + CI wiring (2026-04-13):** Repointed `projects/evidence-observatory/` and `config/projects.ts` to the canonical in-repo implementation at `projects/08-evaluation/`, updated `projects/README.md`, `projects/08-evaluation/README.md`, `projects/08-evaluation/tlc_evals/datasets/loader.py`, and `tests/series_b/test_b002_taxonomy_regression_fixtures.py` to remove stale root-path references, added Guardian/EVAL-001 verification steps to `.github/workflows/verify.yml`, regenerated `MASTER_PROJECT_INVENTORY.*` and `STATUS.*`, and restored AC-006-compatible decision logging in `verification/crsp_CRSP-001_log.json`.
