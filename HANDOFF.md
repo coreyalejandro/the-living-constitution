@@ -1,6 +1,6 @@
 # Agent Handoff: The Living Constitution (base camp)
 
-**Date:** 2026-04-12
+**Date:** 2026-04-13
 **Status:** **08-evaluation — `tlc-evals` library delivered and operational.**
 
 ## tlc-evals: Automated Evaluation Library
@@ -61,6 +61,8 @@
 | Future work (non-blocking) | Optional guarded `git mv` in `migrate_docs_legacy.py`; incremental frontmatter for legacy `docs/` files listed in `verification/docs_migration_report.json` |
 
 ## What Was Just Completed
+
+- **Markdownlint cleanup for active truth surfaces (2026-04-13):** Fixed Markdown formatting warnings in `HANDOFF.md`, `MASTER_PROJECT_INVENTORY.md`, `projects/08-evaluation/README.md`, and `projects/evidence-observatory/BUILD_CONTRACT.md` by normalizing table separator spacing, adding required blank lines around lists/headings/tables, and adding `text` language tags to previously unlabeled fenced code blocks. Re-ran lint diagnostics on the touched files with no remaining warnings.
 
 - **Evidence Observatory truth-surface reconciliation + CI wiring (2026-04-13):** Repointed `projects/evidence-observatory/` and `config/projects.ts` to the canonical in-repo implementation at `projects/08-evaluation/`, updated `projects/README.md`, `projects/08-evaluation/README.md`, `projects/08-evaluation/tlc_evals/datasets/loader.py`, and `tests/series_b/test_b002_taxonomy_regression_fixtures.py` to remove stale root-path references, added Guardian/EVAL-001 verification steps to `.github/workflows/verify.yml`, regenerated `MASTER_PROJECT_INVENTORY.*` and `STATUS.*`, and restored AC-006-compatible decision logging in `verification/crsp_CRSP-001_log.json`.
 
