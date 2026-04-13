@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-04-11T12:16:14Z",
+    "generated_at_utc": "2026-04-13T07:51:47Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -226,6 +226,11 @@
       "scripts/verify_attestation.py"
     ],
     "ci_verification_commands": [
+      "python3 src/guardian.py --health-check",
+      "python3 scripts/test_guardian_invariants.py --invariant INVARIANT_ARTICLE_IV_01",
+      "python3 scripts/test_guardian_readonly.py",
+      "python3 src/guardian.py --verify-evidence projects/08-evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json",
+      "python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/08-evaluation/verification",
       "python3 scripts/verify_project_topology.py --root . --with-governance",
       "python3 scripts/verify_governance_chain.py --root .",
       "python3 scripts/verify_institutionalization.py --root .",
@@ -237,6 +242,7 @@
   "tlc_projects_overlay": {
     "root_relative": "projects",
     "expected_slugs": [
+      "08-evaluation",
       "backboardai-fde",
       "buildlattice",
       "c-rsp",
@@ -259,6 +265,16 @@
       "uicare"
     ],
     "entries": [
+      {
+        "slug": "08-evaluation",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "auto-sync: TLC overlay projects/08-evaluation/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
       {
         "slug": "backboardai-fde",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde",
@@ -341,13 +357,13 @@
       },
       {
         "slug": "evidence-observatory",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/tlc-evidence-observatory/",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/tlc-evidence-observatory",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+        "repo_path_source": "Semantic overlay projects/evidence-observatory/ delegates to canonical in-repo implementation at projects/08-evaluation (BUILD_CONTRACT.md Repo Path + config/projects.ts)"
       },
       {
         "slug": "frostbyte-etl",
@@ -381,13 +397,13 @@
       },
       {
         "slug": "im-just-a-build",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/im-just-a-build",
-        "implementation_repo_path_config_ts": null,
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/im-just-a-build",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/im-just-a-build",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "TLC in-repo deliverable; Remotion package sibling to teaser-video; BUILD_CONTRACT.md"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror"
       },
       {
         "slug": "proactive",
@@ -421,23 +437,23 @@
       },
       {
         "slug": "teaser-video",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video/",
-        "implementation_repo_path_config_ts": null,
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/teaser-video",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/teaser-video",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "BUILD_CONTRACT.md Repo Path (in-TLC)"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/teaser-video; TLC folder retained as transitional mirror"
       },
       {
         "slug": "teaser-video-remotion",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video-remotion",
-        "implementation_repo_path_config_ts": null,
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/teaser-video-remotion",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/teaser-video-remotion",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "TLC in-repo Remotion 4 package; see projects/teaser-video-remotion/README.md"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror"
       },
       {
         "slug": "tlc-control-plane",
@@ -535,11 +551,6 @@
     {
       "project": "Portfolio",
       "repo_path": "/Users/coreyalejandro/Projects/coreys-agentic-portfolio",
-      "path_exists_probe": true
-    },
-    {
-      "project": "TLC Evidence Observatory",
-      "repo_path": "/Users/coreyalejandro/Projects/tlc-evidence-observatory",
       "path_exists_probe": true
     }
   ],

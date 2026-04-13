@@ -1,0 +1,24 @@
+{
+  "contract_id": "EVAL-001",
+  "phase": 1,
+  "timestamp": "2026-04-13T03:48:05.750785Z",
+  "build_contract_hash": "sha256:5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df",
+  "checks": {
+    "directories": {
+      "datasets": true,
+      "eval_specs": true,
+      "tlc_evals": true
+    },
+    "files": {
+      "pyproject.toml": true,
+      "README.md": true,
+      "evidence_summary.md": true,
+      "failure_taxonomy.md": true,
+      "pattern_analysis.md": true
+    }
+  },
+  "missing": [],
+  "status": "PASS",
+  "previous_hash": null,
+  "current_hash": "sha256:3b85d1283daeda95e677363b4cc2e65c3a43e22399d7ee015d8ef21f1eec5e53"
+}

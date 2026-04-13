@@ -92,7 +92,7 @@ export const COMMONWEALTH_PROJECTS: readonly CommonwealthProject[] = [
     name: "TLC Evidence Observatory",
     domainIds: ["epistemic", "empirical"],
     status: "prototype",
-    repoPath: "/Users/coreyalejandro/Projects/tlc-evidence-observatory",
+    repoPath: "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
     resumeClaim:
       "Prototype — forensic ingest pipeline, SHA-256 chain of custody, append-only evidence records",
   },

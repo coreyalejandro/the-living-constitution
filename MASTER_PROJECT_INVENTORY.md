@@ -1,6 +1,6 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-04-11T12:16:14Z  
+**Generated (UTC):** 2026-04-13T07:51:47Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (census + governance manifest). **PASS 10A current operational status:** canonical `STATUS.json` (rendered mirror `STATUS.md`); regenerate with `python3 scripts/render_status_surface.py --root .`
 
@@ -21,12 +21,13 @@ This inventory records what was **verified on disk or in cited files** at genera
 
 ---
 
-## 1. TLC `projects/` overlay (20 slugs)
+## 1. TLC `projects/` overlay (21 slugs)
 
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
 | ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
+| 08-evaluation | no | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation` | yes |
 | backboardai-fde | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde` | yes |
 | buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` | yes |
 | c-rsp | no | yes | *none in contract* | n/a |
@@ -35,16 +36,16 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | document-system | no | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system` | yes |
 | empirical-guard | yes | yes | `/Users/coreyalejandro/Projects/empirical-guard` | no |
 | epistemic-guard | yes | yes | `/Users/coreyalejandro/Projects/epistemic-guard` | no |
-| evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/tlc-evidence-observatory/` | yes |
+| evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation` | yes |
 | frostbyte-etl | no | yes | `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
 | governance | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/governance` | yes |
 | human-guard | no | yes | `/Users/coreyalejandro/Projects/human-guard` | no |
-| im-just-a-build | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/im-just-a-build` | yes |
+| im-just-a-build | yes | yes | `/Users/coreyalejandro/Projects/im-just-a-build` | yes |
 | proactive | yes | yes | `/Users/coreyalejandro/Projects/proactive-gitlab-agent/` | yes |
 | sandbox-runtime | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app` | yes |
 | sentinelos | yes | yes | `/Users/coreyalejandro/Projects/sentinelos/` | yes |
-| teaser-video | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video/` | yes |
-| teaser-video-remotion | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/teaser-video-remotion` | yes |
+| teaser-video | yes | yes | `/Users/coreyalejandro/Projects/teaser-video` | yes |
+| teaser-video-remotion | yes | yes | `/Users/coreyalejandro/Projects/teaser-video-remotion` | yes |
 | tlc-control-plane | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop` | yes |
 | uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system/` | yes |
 
@@ -58,9 +59,9 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 - **human-guard:** Contract references canonical docs under `docs/prompts/...` in a repository **once created**; TLC overlay does **not** yet declare a `## Repo Path` block (config-only path).
 - **epistemic-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/epistemic-guard` (aligned with `config/projects.ts`).
 - **empirical-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/empirical-guard` (aligned with `config/projects.ts`).
+- **evidence-observatory:** Semantic overlay `projects/evidence-observatory/` now delegates to the canonical in-repo implementation at `projects/08-evaluation/`.
 - **sandbox-runtime / tlc-control-plane:** Dual `PROJECT_TOPOLOGY.json` (integrated + standalone); see inventory `entries[].repo_path_source`.
-- **teaser-video:** Implementation path is **inside TLC** per its `BUILD_CONTRACT.md`.
-- **teaser-video-remotion / im-just-a-build:** In-repo Remotion and related deliverables per each overlay README / contract.
+- **teaser-video / teaser-video-remotion / im-just-a-build:** Inventory now points to standalone repositories under `/Users/coreyalejandro/Projects/`; TLC copies remain transitional mirrors until remote publication and cleanup complete.
 
 ---
 
@@ -94,9 +95,6 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | UICare-System | `.../uicare-system` | exists |
 | Docen | `.../docen` | exists |
 | Portfolio | `.../coreys-agentic-portfolio` | exists |
-| TLC Evidence Observatory | `.../tlc-evidence-observatory` | exists |
-
----
 
 ## 5. `scripts/verify_consentchain_family.py` expectations
 

@@ -45,6 +45,21 @@ jobs:
       - name: Install Python verification dependencies
         run: pip install -r requirements-verify.txt
 
+      - name: Guardian health check
+        run: python3 src/guardian.py --health-check
+
+      - name: Guardian invariant enforcement acceptance
+        run: python3 scripts/test_guardian_invariants.py --invariant INVARIANT_ARTICLE_IV_01
+
+      - name: Guardian read-only enforcement acceptance
+        run: python3 scripts/test_guardian_readonly.py
+
+      - name: Verify EVAL-001 evidence schema and compliance
+        run: |
+          set -euo pipefail
+          python3 src/guardian.py --verify-evidence projects/08-evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json
+          python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/08-evaluation/verification
+
       - name: Verify C-RSP template structure (guided + FDE executed instance)
         run: ./scripts/verify_crsp_template_bundle.sh
         # Section title alignment only (## 0.–## 17.); §6A ordered-operations table content is not Markdown-schema-validated here.

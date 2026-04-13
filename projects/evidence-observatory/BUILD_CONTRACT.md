@@ -1,12 +1,13 @@
 # Build Contract: TLC Evidence Observatory
 
 ## Research Question
+
 How can heterogeneous real-world AI interaction artifacts be converted into admissible, auditable, and reproducible case files that support measurement of model failures?
 
 ## The 10 Pillars
 
 | # | Pillar | Responsibility |
-|---|--------|---------------|
+| --- | --- | --- |
 | 1 | Forensic Ingest | Accept raw artifacts (screenshots, chat exports, API logs, text) with full provenance metadata |
 | 2 | Normalization | Convert heterogeneous inputs into a unified canonical schema without modifying originals |
 | 3 | Event Extraction | Identify discrete events (claims, state assertions, contradictions) within normalized artifacts |
@@ -21,6 +22,7 @@ How can heterogeneous real-world AI interaction artifacts be converted into admi
 ## First Slice Scope
 
 Three failure classes for end-to-end demonstration:
+
 - **unsupported_claim** — Model asserts a fact without evidence or citation
 - **fabricated_state** — Model describes a system state that does not match reality
 - **contradiction** — Model makes two incompatible claims within the same interaction
@@ -36,7 +38,7 @@ Three failure classes for end-to-end demonstration:
 ## Deliverable Standard
 
 | Deliverable | Acceptance Criteria |
-|-------------|-------------------|
+| --- | --- |
 | Python pipeline | Ingest through Prevention pillars functional; accepts at least 3 input formats (screenshot, chat export, text) |
 | Case files | Structured JSON case files with provenance metadata, constitutional violation mapping, and severity |
 | Benchmarks | At least 3 benchmarks generated from seed data covering the 3 first-slice failure classes |
@@ -46,4 +48,5 @@ Three failure classes for end-to-end demonstration:
 | Documentation | README, architecture doc, research methodology — all reflecting actual (not aspirational) state |
 
 ## Repo Path
-`/Users/coreyalejandro/Projects/tlc-evidence-observatory/`
+
+`/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation/`
