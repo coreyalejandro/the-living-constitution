@@ -1,3 +1,7 @@
+<!-- GENERATED FILE: edit JSON source instead.
+     source: docs_json/sources/crsp_EVAL-001_contract.json
+-->
+
 # C-RSP Instance Contract: EVAL-001
 
 ## 1. Constitutional Context

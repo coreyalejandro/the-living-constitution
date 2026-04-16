@@ -1,3 +1,7 @@
+<!-- GENERATED FILE: edit JSON source instead.
+     source: docs_json/sources/BUILD_CONTRACT.json
+-->
+
 # Build Contract: EVAL-001 Evidence Observatory
 
 ## 1. Current State (Honest)

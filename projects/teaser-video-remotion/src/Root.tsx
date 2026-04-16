@@ -1,71 +1,58 @@
 import React from 'react';
-import {AbsoluteFill, Composition, useCurrentFrame} from 'remotion';
+import { Composition } from 'remotion';
+import { MainScene } from './scenes/MainScene'; // Your Boondocks Hustler
+import { OldSchoolScene } from './scenes/OldSchoolScene'; // The original flat video
+import { KimiScene } from './scenes/KimiScene'; // Placeholder for Kimi's version
+import { VeoScene } from './scenes/VeoScene'; // Placeholder for Veo's version
 import {
-  ACT1_END,
-  ACT2_END,
-  ACT3_END,
   VIDEO_DURATION_FRAMES,
   VIDEO_FPS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from './composition/VideoConfig';
-import {Act1Concept} from './scenes/Act1Concept';
-import {Act2Mechanism} from './scenes/Act2Mechanism';
-import {Act3Pillars} from './scenes/Act3Pillars';
-import {Act4Validation} from './scenes/Act4Validation';
-import {CaptionCard} from './components/CaptionCard';
-import {SiliconHill} from './components/SiliconHill';
-import {getCaptionForFrame} from './lib/lyrics';
-import {palette} from './lib/palette';
-
-const ImJustABuild: React.FC = () => {
-  const frame = useCurrentFrame();
-  const caption = getCaptionForFrame(frame);
-
-  let hill: 'dawn' | 'mechanism' | 'grid' | 'clear' = 'dawn';
-  if (frame <= ACT1_END) {
-    hill = 'dawn';
-  } else if (frame <= ACT2_END) {
-    hill = 'mechanism';
-  } else if (frame <= ACT3_END) {
-    hill = 'grid';
-  } else {
-    hill = 'clear';
-  }
-
-  return (
-    <AbsoluteFill style={{backgroundColor: palette.cream}}>
-      <SiliconHill frame={frame} variant={hill} />
-      {frame <= ACT1_END ? <Act1Concept frame={frame} /> : null}
-      {frame > ACT1_END && frame <= ACT2_END ? (
-        <Act2Mechanism frame={frame} />
-      ) : null}
-      {frame > ACT2_END && frame <= ACT3_END ? (
-        <Act3Pillars frame={frame} />
-      ) : null}
-      {frame > ACT3_END ? <Act4Validation frame={frame} /> : null}
-      {caption ? (
-        <CaptionCard
-          line1={caption.line1}
-          line2={caption.line2}
-          frame={frame}
-        />
-      ) : null}
-    </AbsoluteFill>
-  );
-};
 
 export const Root: React.FC = () => {
-  return (
-    <>
-      <Composition
-        id="ImJustABuild"
-        component={ImJustABuild}
-        durationInFrames={VIDEO_DURATION_FRAMES}
-        fps={VIDEO_FPS}
-        width={VIDEO_WIDTH}
-        height={VIDEO_HEIGHT}
-      />
-    </>
-  );
+    return (
+        <>
+            {/* 1. THE LEAD: The Revolutionary Hustler (Boondocks Style) */}
+            <Composition
+                id="ImJustABuild"
+                component={MainScene}
+                durationInFrames={VIDEO_DURATION_FRAMES}
+                fps={VIDEO_FPS}
+                width={VIDEO_WIDTH}
+                height={VIDEO_HEIGHT}
+            />
+
+            {/* 2. THE RETRO: The Original Flat Video (Preserved) */}
+            <Composition
+                id="OldSchoolBuild"
+                component={OldSchoolScene}
+                durationInFrames={300}
+                fps={30}
+                width={1080}
+                height={1920}
+            />
+
+            {/* 3. THE KIMI: Porting Kimi's Cultural Nuance */}
+            <Composition
+                id="KimiRemix"
+                component={KimiScene}
+                durationInFrames={720}
+                fps={12}
+                width={1080}
+                height={1080}
+            />
+
+            {/* 4. THE VEO: The Cinematic High-End Counterpart */}
+            <Composition
+                id="VeoCinematic"
+                component={VeoScene}
+                durationInFrames={144} // 6 seconds of high-end Veo footage
+                fps={24}
+                width={1280}
+                height={720}
+            />
+        </>
+    );
 };

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "kit_id": "tlc-onboarding-agent-kit",
+  "authority_model": "portable_non_authoritative",
+  "canonical_source": {
+    "path": "projects/c-rsp/AGENT_PROMPT.md",
+    "role": "Helper in C-RSP authority row 5 (not canonical template authority)."
+  },
+  "purpose": "Portable onboarding instructions for satellite agents while preserving TLC authority boundaries.",
+  "startup_checklist": [
+    {
+      "step": 1,
+      "action": "Read TLC SST map.",
+      "path": "config/sst-map.json",
+      "required": true
+    },
+    {
+      "step": 2,
+      "action": "Read C-RSP authority map before any contract work.",
+      "path": "projects/c-rsp/CANONICAL_ROLE_MAP.md",
+      "required": true
+    },
+    {
+      "step": 3,
+      "action": "Read C-RSP README start-here steps.",
+      "path": "projects/c-rsp/README.md",
+      "required": true
+    },
+    {
+      "step": 4,
+      "action": "Load agent helper prompt for execution guardrails.",
+      "path": "projects/c-rsp/AGENT_PROMPT.md",
+      "required": true
+    },
+    {
+      "step": 5,
+      "action": "Read first-run operational baseline.",
+      "path": "docs/instructions/FIRST_RUN.md",
+      "required": true
+    }
+  ],
+  "non_overwrite_rule": {
+    "description": "Portable onboarding content must not redefine or supersede TLC canonical paths.",
+    "forbidden": [
+      "Declaring portable kit files as canonical sources for constitutional or C-RSP template authority.",
+      "Overriding authority order defined in projects/c-rsp/CANONICAL_ROLE_MAP.md."
+    ]
+  },
+  "expected_outputs": [
+    "Agent identifies canonical truth surfaces before execution.",
+    "Agent can distinguish helper prompts from canonical contract authority.",
+    "Agent reports V&T claims against canonical files, not portable mirrors."
+  ]
+}

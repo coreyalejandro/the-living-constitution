@@ -17,7 +17,7 @@ Automation and strict sequencing:
 ## Contracts Overview
 
 1. C-001: Video-first pivot and project boundary changes.
-2. C-002: Extract video projects from TLC into standalone repos.
+2. C-002: Extract video projects from TLC into standalone repos (initialized; inventory remap active).
 3. C-003: Teaser-video-remotion excellence pass (awe-grade creative + technical quality).
 4. C-004: Fellowship spotlight launch package (distribution + evidence).
 5. C-010: cOS-TLC Golden PRD v6 adaptation (machine-actionable translation layer).

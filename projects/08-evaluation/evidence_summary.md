@@ -1,3 +1,7 @@
+<!-- GENERATED FILE: edit JSON source instead.
+     source: docs_json/sources/evidence_summary.json
+-->
+
 # Evidence Summary
 
 ## Overview

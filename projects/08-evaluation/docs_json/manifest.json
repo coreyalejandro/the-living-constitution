@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "project": "08-evaluation",
+  "documents": [
+    {
+      "document_id": "EVAL-README",
+      "source_json": "docs_json/sources/README.json",
+      "output_markdown": "README.md"
+    },
+    {
+      "document_id": "EVAL-BUILD-CONTRACT",
+      "source_json": "docs_json/sources/BUILD_CONTRACT.json",
+      "output_markdown": "BUILD_CONTRACT.md"
+    },
+    {
+      "document_id": "EVAL-CRSP-CONTRACT",
+      "source_json": "docs_json/sources/crsp_EVAL-001_contract.json",
+      "output_markdown": "crsp_EVAL-001_contract.md"
+    },
+    {
+      "document_id": "EVAL-EVIDENCE-SUMMARY",
+      "source_json": "docs_json/sources/evidence_summary.json",
+      "output_markdown": "evidence_summary.md"
+    },
+    {
+      "document_id": "EVAL-FAILURE-TAXONOMY",
+      "source_json": "docs_json/sources/failure_taxonomy.json",
+      "output_markdown": "failure_taxonomy.md"
+    },
+    {
+      "document_id": "EVAL-PATTERN-ANALYSIS",
+      "source_json": "docs_json/sources/pattern_analysis.json",
+      "output_markdown": "pattern_analysis.md"
+    }
+  ]
+}

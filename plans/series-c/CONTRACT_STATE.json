@@ -20,17 +20,24 @@
       "title": "Extract Video Repositories from TLC",
       "file": "plans/series-c/C-002-extract-video-repos.md",
       "instance_file": "",
-      "status": "active",
-      "completion_gates": [],
-      "activated_at_utc": "2026-04-11T13:05:13Z"
+      "status": "complete",
+      "completion_gates": [
+        "python3 -c \"from pathlib import Path; roots=[Path('/Users/coreyalejandro/Projects/im-just-a-build'), Path('/Users/coreyalejandro/Projects/teaser-video'), Path('/Users/coreyalejandro/Projects/teaser-video-remotion')]; raise SystemExit(1 if any(not p.is_dir() for p in roots) else 0)\"",
+        "python3 -c \"from pathlib import Path; roots=[Path('/Users/coreyalejandro/Projects/im-just-a-build/.git'), Path('/Users/coreyalejandro/Projects/teaser-video/.git'), Path('/Users/coreyalejandro/Projects/teaser-video-remotion/.git')]; raise SystemExit(1 if any(not p.exists() for p in roots) else 0)\"",
+        "python3 -c \"import json; d=json.load(open('MASTER_PROJECT_INVENTORY.json')); by={e['slug']:e for e in d['tlc_projects_overlay']['entries']}; checks={'im-just-a-build':'/Users/coreyalejandro/Projects/im-just-a-build','teaser-video':'/Users/coreyalejandro/Projects/teaser-video','teaser-video-remotion':'/Users/coreyalejandro/Projects/teaser-video-remotion'}; raise SystemExit(1 if any(by[s].get('implementation_repo_path_build_contract')!=p for s,p in checks.items()) else 0)\"",
+        "python3 scripts/verify_project_topology.py --root . --with-governance"
+      ],
+      "activated_at_utc": "2026-04-11T13:05:13Z",
+      "completed_at_utc": "2026-04-11T13:14:19Z"
     },
     {
       "id": "C-003",
       "title": "Teaser-Video-Remotion Excellence Pass",
       "file": "plans/series-c/C-003-teaser-video-remotion-excellence.md",
       "instance_file": "",
-      "status": "queued",
-      "completion_gates": []
+      "status": "active",
+      "completion_gates": [],
+      "activated_at_utc": "2026-04-11T13:14:19Z"
     },
     {
       "id": "C-004",

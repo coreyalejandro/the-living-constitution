@@ -10,6 +10,7 @@
 - **Next action:** (1) **Done** — **Verify Living Constitution** green on `9b26072` (run `24015419165`, workflow_dispatch). (2) Open **A-1** only after **`projects/c-rsp/README.md`** (how to use this folder) and **`projects/c-rsp/CANONICAL_ROLE_MAP.md`** (**Downstream gate**). Draft instance: **`projects/c-rsp/BUILD_CONTRACTS/CRSP-A1-TAXONOMY-CANONICALIZATION-001.md`**. (3) Run `./scripts/run_fde_control_plane_verification.sh` after pulls if FDE paths change.
 
 ### Key Decisions Made
+
 - **C-RSP** = Constitutionally-Regulated Single Pass (canonical expansion, no variants)
 - **"Canonical tool"** replaces "signature tool"
 - **Front door** = README → STATUS.json / STATUS.md (NOT the Golden Sandbox)
@@ -20,6 +21,7 @@
 - **CONTROL_RULE_KBC_01**: Single active BUILD_CONTRACT at a time until clear; no constitutional execution against a known-bad template system
 
 ### Unresolved Items
+
 - ChatGPT had a preferred framing the user mentioned but never shared
 - ClarityAI discovery (needs GitHub access to coreyalejandro/clarity-ai) — deferred to Contract A-4
 - SentinelOS disposition — deferred to Contract A-3

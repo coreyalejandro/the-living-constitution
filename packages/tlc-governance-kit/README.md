@@ -5,10 +5,11 @@ Reusable package extracted from **The Living Constitution** for satellite reposi
 ## Contents
 
 | Path | Purpose |
-|------|---------|
+| --- | --- |
 | `constitution/` | `invariant-registry.json`, `doctrine-to-invariant.map.json`, `invariants/F*.md` |
 | `enforcement/` | `enforcement-map.tlc-reference.json` (full TLC map), `enforcement-map.satellite.json` (no topology/consentchain-family modules) |
 | `agents/` | `agent-capabilities.json` |
+| `onboarding/` | `onboarding-agent-kit.json` and `sst-bindings.json` for portable startup + SST binding guidance |
 | `verification/` | JSON Schemas, policies (`tip-state-policy.json`, `pass7-branch-verification-policy.json`, `review-escalation-policy.json`), template `GOVERNANCE_SYSTEM_CARD.md`, `MATRIX.md` |
 | `scripts/` | `verify_governance_chain.py` (**inventory-driven CI parity**), `verify_institutionalization.py`, `append_regression_ledger.py`, `ci_self_verify_governance_artifact.py`, `governance_failure_injection_tests.py`, `tip_state_helpers.py` |
 | `requirements-verify.txt` | `jsonschema` for Draft 2020-12 validation |
@@ -25,3 +26,9 @@ Satellite repos use the same relative paths as TLC by default: `00-constitution/
 ## Contract
 
 See `projects/c-rsp/PASS8_TEMPLATE.md` in the Living Constitution repo.
+
+## Authority boundary
+
+This package is portable and useful for replication, but it is not TLC's
+global source of truth. Canonical authority remains in TLC root and C-RSP
+canonical paths (see `config/sst-map.json`).

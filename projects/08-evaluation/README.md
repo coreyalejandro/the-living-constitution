@@ -1,3 +1,7 @@
+<!-- GENERATED FILE: edit JSON source instead.
+     source: docs_json/sources/README.json
+-->
+
 # tlc-evals
 
 **Automated evaluation library for The Living Constitution.**

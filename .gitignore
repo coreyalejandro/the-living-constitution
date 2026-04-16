@@ -52,14 +52,14 @@ verification/c-rsp-structure/
 # Python
 __pycache__/
 *.pyc
+*.egg-info/
 
 # Playwright MCP artifacts (screenshots, recordings, etc.)
 .playwright-mcp/
-/AGENTS.md
-/CLAUDE.md
-!/CLAUDE.md
+
+# Local failure reports emitted by verifiers (transient)
+verification/docs_constitution_failure.json
 
 # Sandbox stress harness (local sentinel + JSONL; regenerate on test runs)
 verification/.stress_*.jsonl
 verification/.stress_halt_sentinel
-AGENTS.md

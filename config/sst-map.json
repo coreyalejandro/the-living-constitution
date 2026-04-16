@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "title": "TLC Federated Single Source of Truth Map",
+  "model": "federated_sst",
+  "note": "TLC uses one canonical source per artifact class, not one file for everything.",
+  "artifact_classes": [
+    {
+      "class_id": "constitution",
+      "canonical_path": "THE_LIVING_CONSTITUTION.md",
+      "description": "Highest-order constitutional specification."
+    },
+    {
+      "class_id": "crsp_master_template",
+      "canonical_path": "projects/c-rsp/BUILD_CONTRACT.md",
+      "description": "Canonical C-RSP reusable template authority."
+    },
+    {
+      "class_id": "crsp_authority_map",
+      "canonical_path": "projects/c-rsp/CANONICAL_ROLE_MAP.md",
+      "description": "Single-page authority ordering for C-RSP artifacts."
+    },
+    {
+      "class_id": "project_status_surface",
+      "canonical_path": "STATUS.json",
+      "description": "Canonical current-state status aggregate for the base camp."
+    },
+    {
+      "class_id": "project_inventory",
+      "canonical_path": "MASTER_PROJECT_INVENTORY.json",
+      "description": "Canonical slug registry and topology inventory."
+    },
+    {
+      "class_id": "invariant_registry",
+      "canonical_path": "00-constitution/invariant-registry.json",
+      "description": "Canonical invariant catalog and metadata."
+    },
+    {
+      "class_id": "evidence_observatory_docs",
+      "canonical_path": "projects/08-evaluation/docs_json/sources/*.json",
+      "description": "Canonical doc bodies for 08-evaluation managed docs."
+    }
+  ],
+  "non_authoritative_mirrors": [
+    {
+      "path": "crsp_refactor_bundle_final/projects/c-rsp/",
+      "reason": "Portable snapshot; explicitly non-canonical."
+    },
+    {
+      "path": "packages/tlc-governance-kit/",
+      "reason": "Portable replication kit for satellites; not TLC truth authority."
+    }
+  ]
+}

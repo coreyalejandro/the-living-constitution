@@ -25,3 +25,13 @@
 - TLC no longer hosts runtime source for the three video folders.
 - All three are referenced as external implementation repositories.
 - Verification and CI remain green after extraction.
+
+## Execution Notes (Current Pass)
+
+1. Standalone repositories were initialized at:
+   - `/Users/coreyalejandro/Projects/im-just-a-build`
+   - `/Users/coreyalejandro/Projects/teaser-video`
+   - `/Users/coreyalejandro/Projects/teaser-video-remotion`
+2. Each standalone path has an initialized `.git` history and a first extraction commit.
+3. `MASTER_PROJECT_INVENTORY.json` is updated so these folders resolve to external implementation paths.
+4. TLC mirrors are intentionally retained during this pass to avoid destructive loss before remote publication and cross-repo CI wiring.

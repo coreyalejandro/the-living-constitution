@@ -1,3 +1,7 @@
+<!-- GENERATED FILE: edit JSON source instead.
+     source: docs_json/sources/failure_taxonomy.json
+-->
+
 # Failure Taxonomy
 
 ## Source

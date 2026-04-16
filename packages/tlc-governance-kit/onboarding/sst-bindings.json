@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "binding_id": "tlc-portable-sst-bindings",
+  "source_of_truth_pointer": "config/sst-map.json",
+  "portable_policy": {
+    "portable_kit_is_sst": false,
+    "must_reference_canonical_paths": true
+  },
+  "bindings": [
+    {
+      "artifact_class": "constitution",
+      "canonical_path": "THE_LIVING_CONSTITUTION.md",
+      "portable_fallback": "constitution/invariants/F*.md",
+      "fallback_note": "Fallback is guidance only; constitutional authority remains in TLC."
+    },
+    {
+      "artifact_class": "agent_capabilities",
+      "canonical_path": "02-agents/agent-capabilities.json",
+      "portable_fallback": "agents/agent-capabilities.json",
+      "fallback_note": "Portable copy supports replication; canonical updates should originate in TLC."
+    },
+    {
+      "artifact_class": "crsp_authority_map",
+      "canonical_path": "projects/c-rsp/CANONICAL_ROLE_MAP.md",
+      "portable_fallback": "none",
+      "fallback_note": "No mirror should declare independent C-RSP authority order."
+    }
+  ]
+}

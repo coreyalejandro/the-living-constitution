@@ -78,6 +78,9 @@ jobs:
       - name: Documentation compliance score
         run: python3 scripts/compliance_score_docs.py --root . --json-out verification/docs_compliance.json
 
+      - name: Verify 08-evaluation JSON-canonical docs are in sync
+        run: python3 projects/08-evaluation/scripts/json_docs.py check
+
       - name: Upload documentation compliance artifact
         uses: actions/upload-artifact@v4
         with:

@@ -1,3 +1,7 @@
+<!-- GENERATED FILE: edit JSON source instead.
+     source: docs_json/sources/pattern_analysis.json
+-->
+
 # Pattern Analysis
 
 ## Cross-Cutting Patterns Across Failure Cases
