@@ -450,5 +450,437 @@
     ],
     "violated_invariants": [],
     "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.070710+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "reviewer",
+    "tool_name": "approve_own_work",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.072030+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "reviewer",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.072533+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.072884+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "planner",
+    "tool_name": "deploy_production",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.073178+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "planner",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.073442+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "deploy",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.073704+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "builder",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.073988+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "sentinel",
+    "tool_name": "override_agent",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.074259+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "sentinel",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.074604+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "tdd",
+    "tool_name": "skip_red_phase",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.074973+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "tdd",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.075419+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "reviewer",
+    "tool_name": "approve_own_work",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.075802+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "reviewer",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.076164+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "datasci",
+    "tool_name": "redefine_toca_nodes",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_IV_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.076514+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "datasci",
+    "invariant_violated": "INVARIANT_ARTICLE_IV_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.076933+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "planner",
+    "tool_name": "read_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.077285+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.077626+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "sentinel",
+    "tool_name": "read_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.077956+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "tdd",
+    "tool_name": "read_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.078280+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "reviewer",
+    "tool_name": "read_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.078675+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "datasci",
+    "tool_name": "read_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.345128+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.345700+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "builder",
+    "invariant_violated": "INVARIANT_READ_ONLY_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.346137+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "planner",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.347109+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "planner",
+    "invariant_violated": "INVARIANT_READ_ONLY_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.347539+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "datasci",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.347897+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "datasci",
+    "invariant_violated": "INVARIANT_READ_ONLY_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.348255+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "sentinel",
+    "tool_name": "edit_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.348616+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "sentinel",
+    "invariant_violated": "INVARIANT_ARTICLE_III_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "SAFE_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.348971+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "sentinel",
+    "invariant_violated": "INVARIANT_READ_ONLY_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.349332+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "reviewer",
+    "tool_name": "str_replace",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "rationale": "blocked by constitutional invariant"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.349702+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "reviewer",
+    "invariant_violated": "INVARIANT_ARTICLE_III_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "SAFE_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.350072+00:00",
+    "operation": "OP-FAIL-HALT",
+    "signal": "STOP",
+    "agent_id": "reviewer",
+    "invariant_violated": "INVARIANT_READ_ONLY_01",
+    "reason": "blocked by constitutional invariant",
+    "halt_state": "FAIL_HALT"
+  },
+  {
+    "timestamp": "2026-04-21T20:15:23.350448+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed"
   }
 ]
