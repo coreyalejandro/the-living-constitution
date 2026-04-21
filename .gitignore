@@ -50,6 +50,9 @@ verification/attestations/*.json
 # C-RSP structural diff reports from scripts/verify_crsp_template_bundle.sh
 verification/c-rsp-structure/
 
+# Local / transient outputs (blueprints, scratch artifacts; not canonical repo truth)
+outputs/
+
 # Python
 __pycache__/
 *.pyc
