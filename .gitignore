@@ -29,14 +29,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# OpenMemory - IDE/Assistant specific rules
-.cursor/rules/openmemory.mdc
-
 # macOS
 .DS_Store
 
-# Cursor / IDE artifacts
-.cursor/
+# Cursor / IDE: track `.cursor/rules/*.mdc` (shared agent rules + search indexing); ignore rest of `.cursor/`
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+# OpenMemory: optional machine-local overrides — keep out of git if you use it that way
+.cursor/rules/openmemory.mdc
 
 # Claude Code ephemeral worktrees (never gitlink into TLC)
 .claude/worktrees/
@@ -63,3 +64,5 @@ verification/docs_constitution_failure.json
 # Sandbox stress harness (local sentinel + JSONL; regenerate on test runs)
 verification/.stress_*.jsonl
 verification/.stress_halt_sentinel
+CLAUDE.md
+AGENTS.md

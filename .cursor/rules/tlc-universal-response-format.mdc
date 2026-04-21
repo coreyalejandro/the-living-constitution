@@ -1,0 +1,47 @@
+---
+description: "TLC universal assistant report format — Kanban, V&T, ranked next steps (mandatory for all replies)"
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# TLC Universal Response Format (NON-NEGOTIABLE)
+
+**Scope:** Every assistant message in this workspace (`the-living-constitution` / TLC), for **any** task or question, unless the user explicitly opts out for that turn with a phrase such as `FORMAT: FREE`.
+
+**Who drives:** Irrelevant. Model, agent, or human — the **report shape** is fixed.
+
+## Required section order (do not reorder)
+
+1. **`## Kanban`**  
+   - A **markdown table** with exactly these four columns (headers verbatim):  
+     `| **BACKLOG** | **IN PROGRESS** | **BLOCKED** | **DONE** |`  
+   - Each cell: short bullets or `—` if empty.  
+   - Content must reflect the **current** task/repo state when applicable; if not applicable, state `N/A` in one line inside the table.
+
+2. **Body**  
+   - Main answer: headings, code blocks, lists as needed.
+
+3. **Verification & Truth block**  
+   - Immediately before the final section, include **exactly these six lines** as **bold labels** with substantive content on the same or following line(s):  
+     - **Exists**  
+     - **Verified against**  
+     - **Not claimed**  
+     - **Non-existent**  
+     - **Unverified**  
+     - **Functional status**  
+   - Align with Article I / III truth discipline; no stronger claim than evidence.
+
+4. **`### Next steps (ranked)`** — **must be the last section of the message**  
+   - Exactly **three** numbered items: `1.`, `2.`, `3.`  
+   - Ordered by **importance** (highest first).  
+   - Each item: **plain language**, **concise**, include **rationale** (one short sentence why it matters).
+
+## Constraints
+
+- Do not omit the Kanban table for “small” questions unless `FORMAT: FREE`.  
+- Do not place marketing fluff, engagement bait, or sign-off paragraphs **after** the three ranked next steps.  
+- If the user requests a different format for a single turn, they must use `FORMAT: FREE` or equivalent; otherwise apply this rule.
+
+## Conflict with other rules
+
+If another instruction conflicts, **this file governs report shape** for TLC; substance still follows constitution, OpenMemory, and project rules.

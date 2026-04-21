@@ -4,8 +4,8 @@
   "canonical_rule": "All managed documentation content is sourced from docs_json/sources/*.json.",
   "render_rule": "Markdown files listed in docs_json/manifest.json are generated artifacts and should not be edited manually.",
   "commands": {
-    "bootstrap": "python3 projects/08-evaluation/scripts/json_docs.py bootstrap",
-    "render": "python3 projects/08-evaluation/scripts/json_docs.py render",
-    "check": "python3 projects/08-evaluation/scripts/json_docs.py check"
+    "bootstrap": "python3 projects/evaluation/scripts/json_docs.py bootstrap",
+    "render": "python3 projects/evaluation/scripts/json_docs.py render",
+    "check": "python3 projects/evaluation/scripts/json_docs.py check"
   }
 }

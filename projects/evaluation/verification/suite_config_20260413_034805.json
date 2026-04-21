@@ -4,8 +4,8 @@
   "timestamp": "2026-04-13T03:48:05.750785Z",
   "build_contract_hash": "sha256:5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df",
   "specifications": {
-    "invariant_suite_yaml": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation/eval_specs/invariant_suite.yaml",
-    "f2_phantom_completion_yaml": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation/eval_specs/f2_phantom_completion.yaml",
+    "invariant_suite_yaml": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation/eval_specs/invariant_suite.yaml",
+    "f2_phantom_completion_yaml": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation/eval_specs/f2_phantom_completion.yaml",
     "present": true
   },
   "implementation_parity": {

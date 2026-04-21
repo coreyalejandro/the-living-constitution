@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-JSON-canonical document management for 08-evaluation.
+JSON-canonical document management for evaluation.
 
 This keeps JSON as the source of truth while still generating markdown
 compatibility files required by humans and existing tooling.

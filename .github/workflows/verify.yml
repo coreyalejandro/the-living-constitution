@@ -57,8 +57,8 @@ jobs:
       - name: Verify EVAL-001 evidence schema and compliance
         run: |
           set -euo pipefail
-          python3 src/guardian.py --verify-evidence projects/08-evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json
-          python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/08-evaluation/verification
+          python3 src/guardian.py --verify-evidence projects/evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json
+          python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/evaluation/verification
 
       - name: Verify C-RSP template structure (guided + FDE executed instance)
         run: ./scripts/verify_crsp_template_bundle.sh
@@ -78,8 +78,8 @@ jobs:
       - name: Documentation compliance score
         run: python3 scripts/compliance_score_docs.py --root . --json-out verification/docs_compliance.json
 
-      - name: Verify 08-evaluation JSON-canonical docs are in sync
-        run: python3 projects/08-evaluation/scripts/json_docs.py check
+      - name: Verify evaluation JSON-canonical docs are in sync
+        run: python3 projects/evaluation/scripts/json_docs.py check
 
       - name: Upload documentation compliance artifact
         uses: actions/upload-artifact@v4

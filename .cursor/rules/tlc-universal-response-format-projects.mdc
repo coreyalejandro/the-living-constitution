@@ -1,0 +1,41 @@
+---
+description: "TLC universal assistant report format — projects/** hardening shim"
+globs: ["projects/**"]
+alwaysApply: true
+---
+
+# TLC Universal Response Format — projects/** (HARDENED)
+
+This rule intentionally duplicates `tlc-universal-response-format.mdc` but scopes it
+specifically to `projects/**` as a defense-in-depth measure.
+
+## Required section order (do not reorder)
+
+1. **`## Kanban`**
+   - A **markdown table** with exactly these four columns (headers verbatim):
+     `| **BACKLOG** | **IN PROGRESS** | **BLOCKED** | **DONE** |`
+   - Each cell: short bullets or `—` if empty.
+   - Content must reflect the **current** task/repo state when applicable; if not applicable, state `N/A` in one line inside the table.
+
+2. **Body**
+   - Main answer: headings, code blocks, lists as needed.
+
+3. **Verification & Truth block**
+   - Immediately before the final section, include **exactly these six lines** as **bold labels** with substantive content on the same or following line(s):
+     - **Exists**
+     - **Verified against**
+     - **Not claimed**
+     - **Non-existent**
+     - **Unverified**
+     - **Functional status**
+   - No stronger claim than evidence.
+
+4. **`### Next steps (ranked)`** — **must be the last section of the message**
+   - Exactly **three** numbered items: `1.`, `2.`, `3.`
+   - Ordered by **importance** (highest first).
+   - Each item: concise, includes a one-sentence rationale.
+
+## Constraints
+
+- Do not omit the Kanban table unless the user explicitly opts out with `FORMAT: FREE` (or equivalent).
+- Do not add content after the three ranked next steps.

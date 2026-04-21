@@ -1,13 +1,13 @@
 # Agent Handoff: The Living Constitution (base camp)
 
 **Date:** 2026-04-13
-**Status:** **08-evaluation — `tlc-evals` library delivered and operational.**
+**Status:** **evaluation — `tlc-evals` library delivered and operational.**
 
 ## tlc-evals: Automated Evaluation Library
 
 | Component | Location | Status |
 | --- | --- | --- |
-| Package root | `08-evaluation/tlc_evals/` | Installed (`pip install -e .`) |
+| Package root | `evaluation/tlc_evals/` | Installed (`pip install -e .`) |
 | Core types | `core/types.py` | `EvalCase`, `EvalResult`, `EvalSummary`, all enums |
 | Anthropic SDK sampler | `core/sampler.py` | Sync + async + Batch API |
 | Constitutional AI judge | `core/judge.py` | Claude-as-judge, extended thinking, CAI loop |
@@ -21,7 +21,7 @@
 | Console reporter | `reporters/console_reporter.py` | Rich terminal display |
 | CLI | `tlc_evals/cli.py` | `tlc-evals run/check/suite/report` |
 | YAML specs | `eval_specs/` | f2_phantom_completion.yaml, invariant_suite.yaml |
-| README | `08-evaluation/README.md` | Full documentation |
+| README | `evaluation/README.md` | Full documentation |
 
 **Smoke test results (pattern-only):**
 
@@ -62,21 +62,21 @@
 
 ## What Was Just Completed
 
-- **Portable onboarding kit + SST map added (2026-04-15):** Added federated SST registry `config/sst-map.json` to define canonical source-of-truth paths by artifact class (constitution, C-RSP master, authority map, status, inventory, invariant registry, and 08-evaluation JSON doc sources). Extended `packages/tlc-governance-kit/` with `onboarding/onboarding-agent-kit.json` and `onboarding/sst-bindings.json` so portable onboarding can reference canonical TLC authority without becoming canonical itself. Updated `packages/tlc-governance-kit/README.md` to document the onboarding kit and explicit authority boundary.
+- **Portable onboarding kit + SST map added (2026-04-15):** Added federated SST registry `config/sst-map.json` to define canonical source-of-truth paths by artifact class (constitution, C-RSP master, authority map, status, inventory, invariant registry, and evaluation JSON doc sources). Extended `packages/tlc-governance-kit/` with `onboarding/onboarding-agent-kit.json` and `onboarding/sst-bindings.json` so portable onboarding can reference canonical TLC authority without becoming canonical itself. Updated `packages/tlc-governance-kit/README.md` to document the onboarding kit and explicit authority boundary.
 
-- **08-evaluation JSON-canonical docs bridge (2026-04-15):** Added `projects/08-evaluation/scripts/json_docs.py` with `bootstrap`, `render`, and `check` commands; created canonical source inventory at `projects/08-evaluation/docs_json/manifest.json`; bootstrapped six source documents under `projects/08-evaluation/docs_json/sources/*.json`; marked managed markdown files (`README.md`, `BUILD_CONTRACT.md`, `crsp_EVAL-001_contract.md`, `evidence_summary.md`, `failure_taxonomy.md`, `pattern_analysis.md`) as generated bridges with source banners; added schema `projects/08-evaluation/schemas/json_canonical_doc.schema.json`; and wired CI enforcement in `.github/workflows/verify.yml` via `python3 projects/08-evaluation/scripts/json_docs.py check`.
+- **evaluation JSON-canonical docs bridge (2026-04-15):** Added `projects/evaluation/scripts/json_docs.py` with `bootstrap`, `render`, and `check` commands; created canonical source inventory at `projects/evaluation/docs_json/manifest.json`; bootstrapped six source documents under `projects/evaluation/docs_json/sources/*.json`; marked managed markdown files (`README.md`, `BUILD_CONTRACT.md`, `crsp_EVAL-001_contract.md`, `evidence_summary.md`, `failure_taxonomy.md`, `pattern_analysis.md`) as generated bridges with source banners; added schema `projects/evaluation/schemas/json_canonical_doc.schema.json`; and wired CI enforcement in `.github/workflows/verify.yml` via `python3 projects/evaluation/scripts/json_docs.py check`.
 
 - **PR #22 verify-structure unblock (2026-04-13):** Added `CRSP-001-AC-003.md` to `docs/constitution/ROOT_DOC_ALLOWLIST.md` so `python3 scripts/verify_document_constitution.py --root .` no longer fails with `ROOT_MARKDOWN_DENIED` against the root commentary companion. Re-ran the document constitution verifier and the topology/governance verification path locally with success.
 
-- **Markdownlint cleanup for active truth surfaces (2026-04-13):** Fixed Markdown formatting warnings in `HANDOFF.md`, `MASTER_PROJECT_INVENTORY.md`, `projects/08-evaluation/README.md`, and `projects/evidence-observatory/BUILD_CONTRACT.md` by normalizing table separator spacing, adding required blank lines around lists/headings/tables, and adding `text` language tags to previously unlabeled fenced code blocks. Re-ran lint diagnostics on the touched files with no remaining warnings.
+- **Markdownlint cleanup for active truth surfaces (2026-04-13):** Fixed Markdown formatting warnings in `HANDOFF.md`, `MASTER_PROJECT_INVENTORY.md`, `projects/evaluation/README.md`, and `projects/evidence-observatory/BUILD_CONTRACT.md` by normalizing table separator spacing, adding required blank lines around lists/headings/tables, and adding `text` language tags to previously unlabeled fenced code blocks. Re-ran lint diagnostics on the touched files with no remaining warnings.
 
-- **Evidence Observatory truth-surface reconciliation + CI wiring (2026-04-13):** Repointed `projects/evidence-observatory/` and `config/projects.ts` to the canonical in-repo implementation at `projects/08-evaluation/`, updated `projects/README.md`, `projects/08-evaluation/README.md`, `projects/08-evaluation/tlc_evals/datasets/loader.py`, and `tests/series_b/test_b002_taxonomy_regression_fixtures.py` to remove stale root-path references, added Guardian/EVAL-001 verification steps to `.github/workflows/verify.yml`, regenerated `MASTER_PROJECT_INVENTORY.*` and `STATUS.*`, and restored AC-006-compatible decision logging in `verification/crsp_CRSP-001_log.json`.
+- **Evidence Observatory truth-surface reconciliation + CI wiring (2026-04-13):** Repointed `projects/evidence-observatory/` and `config/projects.ts` to the canonical in-repo implementation at `projects/evaluation/`, updated `projects/README.md`, `projects/evaluation/README.md`, `projects/evaluation/tlc_evals/datasets/loader.py`, and `tests/series_b/test_b002_taxonomy_regression_fixtures.py` to remove stale root-path references, added Guardian/EVAL-001 verification steps to `.github/workflows/verify.yml`, regenerated `MASTER_PROJECT_INVENTORY.*` and `STATUS.*`, and restored AC-006-compatible decision logging in `verification/crsp_CRSP-001_log.json`.
 
-- **Guardian compliance commands implemented (2026-04-13):** Extended `src/guardian.py` with `--verify-evidence`, `--schema`, `--check-compliance`, and `--evidence-dir` flags. Added JSON Schema validation via `jsonschema` and EVAL-001 compliance adjudication against `projects/08-evaluation/verification/`. Added schema file `projects/c-rsp/schemas/evidence_schema.json` and verified commands now return `PASS` for both evidence validation and compliance checks.
+- **Guardian compliance commands implemented (2026-04-13):** Extended `src/guardian.py` with `--verify-evidence`, `--schema`, `--check-compliance`, and `--evidence-dir` flags. Added JSON Schema validation via `jsonschema` and EVAL-001 compliance adjudication against `projects/evaluation/verification/`. Added schema file `projects/c-rsp/schemas/evidence_schema.json` and verified commands now return `PASS` for both evidence validation and compliance checks.
 
-- **EVAL-001 full-cycle evidence + commit (2026-04-13):** Replaced placeholder BUILD hash references with concrete digest `5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df`, generated phase artifacts in `projects/08-evaluation/verification/` (`topology_validation_*`, `suite_config_*`, `dataset_validation_*`, `eval_results_*`, `recurrence_analysis_*`, `ci_signal_*`, `checkpoint_phase*_*.json`), and updated `crsp_EVAL-001_log.json` with compliance bit and hash-chain pointer. Committed as `c9d7e39` with message `CONSTITUTIONAL(08-evaluation): Activate EVAL-001 C-RSP instance`.
+- **EVAL-001 full-cycle evidence + commit (2026-04-13):** Replaced placeholder BUILD hash references with concrete digest `5b3f5aefda194314f3b4ea8ef5826a92fb75e86908538197e04378db50bf37df`, generated phase artifacts in `projects/evaluation/verification/` (`topology_validation_*`, `suite_config_*`, `dataset_validation_*`, `eval_results_*`, `recurrence_analysis_*`, `ci_signal_*`, `checkpoint_phase*_*.json`), and updated `crsp_EVAL-001_log.json` with compliance bit and hash-chain pointer. Committed as `c9d7e39` with message `CONSTITUTIONAL(evaluation): Activate EVAL-001 C-RSP instance`.
 
-- **EVAL-001 C-RSP bootstrap artifacts created (2026-04-12):** Added `projects/08-evaluation/BUILD_CONTRACT.md`, `projects/08-evaluation/crsp_EVAL-001_contract.md`, and `projects/08-evaluation/verification/crsp_EVAL-001_log.json` to activate constitutional Evidence Observatory scaffolding under the migrated `projects/08-evaluation/` path. Ran `python3 src/guardian.py --health-check` with output `PASS`; staged the new C-RSP artifacts alongside existing evaluation migration files.
+- **EVAL-001 C-RSP bootstrap artifacts created (2026-04-12):** Added `projects/evaluation/BUILD_CONTRACT.md`, `projects/evaluation/crsp_EVAL-001_contract.md`, and `projects/evaluation/verification/crsp_EVAL-001_log.json` to activate constitutional Evidence Observatory scaffolding under the migrated `projects/evaluation/` path. Ran `python3 src/guardian.py --health-check` with output `PASS`; staged the new C-RSP artifacts alongside existing evaluation migration files.
 
 - **Series C C-002 extraction contract completed (2026-04-11):** Initialized standalone repositories at `/Users/coreyalejandro/Projects/im-just-a-build`, `/Users/coreyalejandro/Projects/teaser-video`, and `/Users/coreyalejandro/Projects/teaser-video-remotion` with initial extraction commits. Updated `MASTER_PROJECT_INVENTORY.json` paths for these slugs to standalone locations, regenerated `MASTER_PROJECT_INVENTORY.md`, `STATUS.json`, and `STATUS.md`, and enforced C-002 completion gates in `plans/series-c/CONTRACT_STATE.json`. Executed orchestrator completion (`complete --id C-002`) and auto-activated `C-003`.
 

@@ -1,0 +1,33 @@
+---
+description: "Canonical YAML frontmatter for Cursor project rules (.mdc) in this repo"
+globs: [".cursor/rules/**/*.mdc"]
+alwaysApply: true
+---
+
+# Cursor rules: frontmatter (canonical for TLC)
+
+Every **new or edited** rule file under `.cursor/rules/` should start with YAML frontmatter so Cursor can scope and prioritize the rule correctly.
+
+## Required keys (use unless you have a deliberate exception)
+
+| Key | Purpose |
+| --- | --- |
+| `description` | Short human-readable summary (shown in rule pickers / reviews). |
+| `globs` | Array of path globs; rule applies when those paths are in scope. Use `["**/*"]` for workspace-wide behavior. |
+| `alwaysApply` | `true` if the rule should be included without relying only on file hits; pair with `globs` per project needs. |
+
+## Example (copy and edit)
+
+```yaml
+---
+description: "One-line summary of what this rule enforces"
+globs: ["**/*"]
+alwaysApply: true
+---
+```
+
+## Notes
+
+- Prefer **one concern per file**; split long rules instead of one giant block.
+- **Overlap on purpose:** `tlc-universal-response-format.mdc` is global (`**/*`); `tlc-universal-response-format-projects.mdc` repeats the same report shape for `projects/**` as defense-in-depth—do not delete one without an explicit decision.
+- If a rule must stay **machine-local only**, add its path under `.gitignore` (this repo keeps `.cursor/rules/openmemory.mdc` ignored).

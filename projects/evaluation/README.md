@@ -72,7 +72,7 @@ tlc_evals/
 ## Installation
 
 ```bash
-cd projects/08-evaluation
+cd projects/evaluation
 pip install -e ".[dev]"
 ```
 

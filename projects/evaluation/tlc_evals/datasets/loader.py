@@ -1,7 +1,7 @@
 """
 Dataset loader — loads existing TLC evidence corpus into EvalCase format.
 
-Bridges the canonical datasets in projects/08-evaluation/datasets/ and
+Bridges the canonical datasets in projects/evaluation/datasets/ and
 tests/failure_modes/ into the tlc_evals type system.
 """
 

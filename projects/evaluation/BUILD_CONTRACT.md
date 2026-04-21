@@ -6,9 +6,9 @@
 
 ## 1. Current State (Honest)
 
-`projects/08-evaluation/` contains the evaluation package (`tlc_evals/`), dataset artifacts (`datasets/`), evaluation specifications (`eval_specs/`), and supporting documentation (`README.md`, `evidence_summary.md`, `failure_taxonomy.md`, `pattern_analysis.md`, `pyproject.toml`).
+`projects/evaluation/` contains the evaluation package (`tlc_evals/`), dataset artifacts (`datasets/`), evaluation specifications (`eval_specs/`), and supporting documentation (`README.md`, `evidence_summary.md`, `failure_taxonomy.md`, `pattern_analysis.md`, `pyproject.toml`).
 
-`projects/08-evaluation/verification/` now contains full-cycle EVAL-001 evidence artifacts, including phase checkpoints, evaluation results, recurrence analysis, and CI signal output.
+`projects/evaluation/verification/` now contains full-cycle EVAL-001 evidence artifacts, including phase checkpoints, evaluation results, recurrence analysis, and CI signal output.
 
 ## 2. Target State (What This Contract Enables)
 
@@ -18,7 +18,7 @@ EVAL-001 operates as the constitutional Evidence Observatory for machine-verifia
 
 This contract governs:
 
-1. Topology validation for `projects/08-evaluation/` assets
+1. Topology validation for `projects/evaluation/` assets
 2. Eval spec loading and implementation parity checks
 3. Dataset schema/integrity validation
 4. Evaluation execution with provenance and metric outputs
@@ -49,15 +49,15 @@ Out of scope:
 
 Required assets:
 
-- `projects/08-evaluation/datasets/failure_cases.json`
-- `projects/08-evaluation/eval_specs/invariant_suite.yaml`
-- `projects/08-evaluation/eval_specs/f2_phantom_completion.yaml`
-- `projects/08-evaluation/tlc_evals/` (all subpackages)
-- `projects/08-evaluation/pyproject.toml`
-- `projects/08-evaluation/README.md`
-- `projects/08-evaluation/evidence_summary.md`
-- `projects/08-evaluation/failure_taxonomy.md`
-- `projects/08-evaluation/pattern_analysis.md`
+- `projects/evaluation/datasets/failure_cases.json`
+- `projects/evaluation/eval_specs/invariant_suite.yaml`
+- `projects/evaluation/eval_specs/f2_phantom_completion.yaml`
+- `projects/evaluation/tlc_evals/` (all subpackages)
+- `projects/evaluation/pyproject.toml`
+- `projects/evaluation/README.md`
+- `projects/evaluation/evidence_summary.md`
+- `projects/evaluation/failure_taxonomy.md`
+- `projects/evaluation/pattern_analysis.md`
 
 ## 6. Evidence Required
 

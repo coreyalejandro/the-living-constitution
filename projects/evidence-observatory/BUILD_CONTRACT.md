@@ -49,4 +49,4 @@ Three failure classes for end-to-end demonstration:
 
 ## Repo Path
 
-`/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation/`
+`/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation/`

@@ -12,7 +12,7 @@
 - `CLAUDE.md`
 - `MASTER_PROJECT_INVENTORY.md`
 
-**Project Authority:** `projects/08-evaluation/BUILD_CONTRACT.md` (BUILD-EVAL-001)  
+**Project Authority:** `projects/evaluation/BUILD_CONTRACT.md` (BUILD-EVAL-001)  
 **C-RSP Protocol Version:** 2.0  
 **Invariant Registry:** `projects/c-rsp/invariant_registry.json` (read-only reference)
 
@@ -21,7 +21,7 @@ EVAL-001 constitutes the Evidence Observatory, responsible for machine-verifiabl
 
 ## 2. Master Source of Truth
 
-**Primary Source:** `BUILD-EVAL-001` (`projects/08-evaluation/BUILD_CONTRACT.md`)  
+**Primary Source:** `BUILD-EVAL-001` (`projects/evaluation/BUILD_CONTRACT.md`)  
 **Relationship:** This C-RSP instance derives scope, boundaries, and acceptance criteria from the master contract. Any conflict defers to BUILD-EVAL-001.
 
 **Canonical References:**
@@ -291,7 +291,7 @@ In addition to BUILD-EVAL-001 Section 9, HALT on:
 **Verification Commands:**
 
 ```bash
-python3 src/guardian.py --verify-evidence projects/08-evaluation/verification/
+python3 src/guardian.py --verify-evidence projects/evaluation/verification/
 python3 src/guardian.py --check-compliance EVAL-001
 cat verification/crsp_EVAL-001_log.json | jq '.status'
 ```
@@ -304,8 +304,8 @@ cat verification/crsp_EVAL-001_log.json | jq '.status'
 
 **Historical Context:**
 
-- Prior state: improvised governance under root `08-evaluation/`
-- EVAL-001 state: constitutionalized governance under `projects/08-evaluation/`
+- Prior state: improvised governance under root `evaluation/`
+- EVAL-001 state: constitutionalized governance under `projects/evaluation/`
 
 ## 14. V&T Statement (Verified and True)
 

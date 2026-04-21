@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-04-13T07:51:47Z",
+    "generated_at_utc": "2026-04-21T09:15:50Z",
     "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "04-consentchain/REGISTRY_PATH_MIGRATION.md"
@@ -229,8 +229,8 @@
       "python3 src/guardian.py --health-check",
       "python3 scripts/test_guardian_invariants.py --invariant INVARIANT_ARTICLE_IV_01",
       "python3 scripts/test_guardian_readonly.py",
-      "python3 src/guardian.py --verify-evidence projects/08-evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json",
-      "python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/08-evaluation/verification",
+      "python3 src/guardian.py --verify-evidence projects/evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json",
+      "python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/evaluation/verification",
       "python3 scripts/verify_project_topology.py --root . --with-governance",
       "python3 scripts/verify_governance_chain.py --root .",
       "python3 scripts/verify_institutionalization.py --root .",
@@ -242,7 +242,6 @@
   "tlc_projects_overlay": {
     "root_relative": "projects",
     "expected_slugs": [
-      "08-evaluation",
       "backboardai-fde",
       "buildlattice",
       "c-rsp",
@@ -251,6 +250,7 @@
       "document-system",
       "empirical-guard",
       "epistemic-guard",
+      "evaluation",
       "evidence-observatory",
       "frostbyte-etl",
       "governance",
@@ -265,16 +265,6 @@
       "uicare"
     ],
     "entries": [
-      {
-        "slug": "08-evaluation",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
-        "path_exists_probe": true,
-        "path_exists_status": "present",
-        "has_claude_md": false,
-        "has_build_contract_md": true,
-        "repo_path_source": "auto-sync: TLC overlay projects/08-evaluation/ (scripts/sync_master_project_inventory_from_projects.py)"
-      },
       {
         "slug": "backboardai-fde",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde",
@@ -356,14 +346,24 @@
         "repo_path_source": "Rollout #5 (B.5) — TLC overlay projects/epistemic-guard; implementation `/Users/coreyalejandro/Projects/epistemic-guard` (BUILD_CONTRACT Repo Path + CLAUDE.md + config/projects.ts); epistemic_guard_overlay_script"
       },
       {
+        "slug": "evaluation",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "auto-sync: TLC overlay projects/evaluation/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
+      {
         "slug": "evidence-observatory",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Semantic overlay projects/evidence-observatory/ delegates to canonical in-repo implementation at projects/08-evaluation (BUILD_CONTRACT.md Repo Path + config/projects.ts)"
+        "repo_path_source": "Semantic overlay projects/evidence-observatory/ delegates to canonical in-repo implementation at projects/evaluation (BUILD_CONTRACT.md Repo Path + config/projects.ts)"
       },
       {
         "slug": "frostbyte-etl",

@@ -16,7 +16,7 @@ An audit of the `the-living-constitution` base camp repository on 2026-03-29 fou
 
 - `THE_LIVING_CONSTITUTION.md` and `00-constitution/constitution.md` both claim to define the constitutional framework — neither references the other as canonical.
 - `00-constitution/articles.md` contains Article I-V implementation mapping tables that do not appear in `THE_LIVING_CONSTITUTION.md`.
-- Failure taxonomy exists in three locations: `projects/08-evaluation/failure_taxonomy.md`, `projects/08-evaluation/datasets/failure_cases.json`, and inline within `THE_LIVING_CONSTITUTION.md` Section 4.
+- Failure taxonomy exists in three locations: `projects/evaluation/failure_taxonomy.md`, `projects/evaluation/datasets/failure_cases.json`, and inline within `THE_LIVING_CONSTITUTION.md` Section 4.
 - Invariant definitions exist in both `00-constitution/invariants/*.md` (individual files per invariant) and `THE_LIVING_CONSTITUTION.md` (inline summary).
 - Build contracts reference file paths that do not exist in the session-accessible file tree.
 - No document declares itself as the canonical source for its subject matter.
@@ -46,7 +46,7 @@ Every project and sub-project maintains a **Canonical Document Registry** (CDR) 
 |---------|---------------|-------|---------------|
 | Constitutional specification | `THE_LIVING_CONSTITUTION.md` | Constitutional Operator | 2026-03-29 |
 | Articles I-V (full text) | `00-constitution/articles.md` | Constitutional Operator | 2026-03-29 |
-| Failure taxonomy F1-F5 | `projects/08-evaluation/failure_taxonomy.md` | Constitutional Operator | 2026-03-29 |
+| Failure taxonomy F1-F5 | `projects/evaluation/failure_taxonomy.md` | Constitutional Operator | 2026-03-29 |
 | Invariant definitions I1-I6 | `00-constitution/invariants/` | Constitutional Operator | 2026-03-29 |
 | Sprint tracker | `tasks/todo.md` | Constitutional Operator | 2026-03-29 |
 | Amendment log | `tasks/lessons.md` | Constitutional Operator | 2026-03-29 |
@@ -67,9 +67,9 @@ Every project and sub-project maintains a **Canonical Document Registry** (CDR) 
 
 Every technical subject (architecture, API spec, schema definition, failure taxonomy, invariant definition, build contract, design system, SOP) has exactly one file that is its canonical source. That file's path is recorded in the project's CDR.
 
-**Passes:** Failure taxonomy F1-F5 is defined in `projects/08-evaluation/failure_taxonomy.md`. The inline summary in `THE_LIVING_CONSTITUTION.md` Section 4 says: "See `projects/08-evaluation/failure_taxonomy.md` for the complete failure taxonomy. Summary: F1 (Confident False Claims), F2 (Phantom Completion), F3 (Persistence Under Correction), F4 (Harm-Risk Coupling), F5 (Cross-Episode Recurrence)."
+**Passes:** Failure taxonomy F1-F5 is defined in `projects/evaluation/failure_taxonomy.md`. The inline summary in `THE_LIVING_CONSTITUTION.md` Section 4 says: "See `projects/evaluation/failure_taxonomy.md` for the complete failure taxonomy. Summary: F1 (Confident False Claims), F2 (Phantom Completion), F3 (Persistence Under Correction), F4 (Harm-Risk Coupling), F5 (Cross-Episode Recurrence)."
 
-**Fails:** Failure taxonomy F1-F5 is fully defined in both `projects/08-evaluation/failure_taxonomy.md` and `THE_LIVING_CONSTITUTION.md` Section 4, with different levels of detail and no cross-reference.
+**Fails:** Failure taxonomy F1-F5 is fully defined in both `projects/evaluation/failure_taxonomy.md` and `THE_LIVING_CONSTITUTION.md` Section 4, with different levels of detail and no cross-reference.
 
 ### DGR-2: No Content Duplication
 
@@ -105,7 +105,7 @@ The following patterns in any Commonwealth document are automatic DGR violations
 |---------|----------|---------|
 | Same subject defined in two files with different content | DGR-1 | Invariant I3 defined differently in `invariants/I3.md` and `THE_LIVING_CONSTITUTION.md` |
 | Full-paragraph restatement of canonical content | DGR-2 | Build contract restates the entire Census Doctrine instead of citing `00-constitution/constitution.md` |
-| Reference without file path | DGR-3 | "See the failure taxonomy" without specifying `projects/08-evaluation/failure_taxonomy.md` |
+| Reference without file path | DGR-3 | "See the failure taxonomy" without specifying `projects/evaluation/failure_taxonomy.md` |
 | "As discussed" / "as mentioned" / "per our earlier work" | DGR-3 | "As discussed, the pipeline has 5 layers" |
 | Document with no `Last Verified` date and no CDR entry | DGR-4 | Any markdown file created more than 7 days ago with no verification trail |
 | File not registered in the project CDR | DGR-1 | A new `ARCHITECTURE.md` created in a project root without a CDR entry |
@@ -184,7 +184,7 @@ DGR is proposed as **Doctrine 5 — Single Source of Truth.** It joins the four 
 
 **Because:** An 88-file audit of the TLC base camp repo found multiple conflicting sources for the same subjects (failure taxonomy, invariants, articles, project registry). This has caused agent confusion, status inflation, and instruction drift. DGR eliminates the root cause: unregistered, duplicated, and unreferenced documentation.
 
-**Evidence:** The 88-file audit of 2026-03-29. Specific conflicts: `THE_LIVING_CONSTITUTION.md` vs `00-constitution/constitution.md` (overlapping constitutional definitions), `projects/08-evaluation/failure_taxonomy.md` vs inline definitions in the main spec (divergent failure descriptions), `00-constitution/invariants/*.md` vs inline invariant summaries (different levels of detail with no cross-reference).
+**Evidence:** The 88-file audit of 2026-03-29. Specific conflicts: `THE_LIVING_CONSTITUTION.md` vs `00-constitution/constitution.md` (overlapping constitutional definitions), `projects/evaluation/failure_taxonomy.md` vs inline definitions in the main spec (divergent failure descriptions), `00-constitution/invariants/*.md` vs inline invariant summaries (different levels of detail with no cross-reference).
 
 **Preventing:** F1 (Confident False Claims from reading an outdated non-canonical source), F2 (Phantom Completion from referencing a document that describes planned rather than actual state), F3 (Instruction Drift from agents reading different files for the same subject).
 

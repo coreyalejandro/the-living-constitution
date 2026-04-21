@@ -49,7 +49,7 @@ def test_doctrine_and_article_invariants_exist_in_registry() -> None:
 
 def test_doctrine_failure_classes_are_defined_in_failure_taxonomy() -> None:
     doctrine_map = _load_json("00-constitution/doctrine-to-invariant.map.json")
-    taxonomy_md = (REPO_ROOT / "projects/08-evaluation/failure_taxonomy.md").read_text(
+    taxonomy_md = (REPO_ROOT / "projects/evaluation/failure_taxonomy.md").read_text(
         encoding="utf-8"
     )
     known_failure_classes = set(re.findall(r"^## (F\d+):", taxonomy_md, flags=re.MULTILINE))

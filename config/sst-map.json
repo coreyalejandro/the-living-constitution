@@ -36,8 +36,8 @@
     },
     {
       "class_id": "evidence_observatory_docs",
-      "canonical_path": "projects/08-evaluation/docs_json/sources/*.json",
-      "description": "Canonical doc bodies for 08-evaluation managed docs."
+      "canonical_path": "projects/evaluation/docs_json/sources/*.json",
+      "description": "Canonical doc bodies for evaluation managed docs."
     }
   ],
   "non_authoritative_mirrors": [

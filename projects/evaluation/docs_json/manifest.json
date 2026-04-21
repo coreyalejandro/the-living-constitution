@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "project": "08-evaluation",
+  "project": "evaluation",
   "documents": [
     {
       "document_id": "EVAL-README",
