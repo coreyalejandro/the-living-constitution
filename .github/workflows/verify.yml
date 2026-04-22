@@ -162,6 +162,17 @@ jobs:
           set -euo pipefail
           python3 scripts/verify_governance_chain.py --root .
 
+      - name: Verify TLC governance-v2 refactor integrity
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_tlc_governance_v2.py --root .
+
+      - name: Generate governance-v2 scope claim evidence
+        run: |
+          set -euo pipefail
+          python3 scripts/generate_governance_v2_scope_evidence.py --root .
+          python3 scripts/verify_governance_v2_scope_claim.py --root .
+
       - name: Append regression ledger (CI recorded run)
         if: success()
         run: python3 scripts/append_regression_ledger.py

@@ -227,6 +227,143 @@ def case_verified_on_mutable_branch_at_anchor_fails_pass7() -> Tuple[str, Callab
     return ("PASS7-style verified mutation without re-render fails status surface check", _fn)
 
 
+def case_tlc_governance_v2_verifier_passes_clean_spec() -> Tuple[str, Callable[[Path], int]]:
+    """New governance-v2 verifier should pass against unmodified canonical refactor spec."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        code = _run_py(["scripts/verify_tlc_governance_v2.py", "--root", "."], tmp)
+        return 0 if code == 0 else 1
+
+    return ("tlc governance v2 verifier passes on clean spec", _fn)
+
+
+def case_tlc_governance_v2_weight_corruption_fails() -> Tuple[str, Callable[[Path], int]]:
+    """Corrupting dimension weights should fail deterministic governance-v2 verification."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        spec_path = tmp / "governance" / "tlc-governance-v2.refactor.json"
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        dims = spec["intent_monitor"]["dimensions"]
+        # Deliberately break the invariant that weights sum to 1.0.
+        dims["safety"]["weight"] = 0.5
+        dims["scope"]["weight"] = 0.3
+        dims["ethics"]["weight"] = 0.2
+        dims["transparency"]["weight"] = 0.2
+        spec_path.write_text(json.dumps(spec, indent=2), encoding="utf-8")
+        code = _run_py(["scripts/verify_tlc_governance_v2.py", "--root", "."], tmp)
+        return 0 if code != 0 else 1
+
+    return ("tlc governance v2 verifier fails on corrupted dimension weights", _fn)
+
+
+def case_tlc_governance_v2_missing_gap_fails() -> Tuple[str, Callable[[Path], int]]:
+    """Removing one required GAP card ID should fail governance-v2 verification."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        spec_path = tmp / "governance" / "tlc-governance-v2.refactor.json"
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        gaps = [g for g in spec.get("gap_cards", []) if g.get("id") != "GAP-6"]
+        spec["gap_cards"] = gaps
+        spec_path.write_text(json.dumps(spec, indent=2), encoding="utf-8")
+        code = _run_py(["scripts/verify_tlc_governance_v2.py", "--root", "."], tmp)
+        return 0 if code != 0 else 1
+
+    return ("tlc governance v2 verifier fails on missing required gap card", _fn)
+
+
+def case_scope_claim_verifier_passes_generated_artifact() -> Tuple[str, Callable[[Path], int]]:
+    """Generated governance-v2 scope artifact should pass claim verifier."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        generate_code = _run_py(["scripts/generate_governance_v2_scope_evidence.py", "--root", "."], tmp)
+        if generate_code != 0:
+            return 1
+        verify_code = _run_py(["scripts/verify_governance_v2_scope_claim.py", "--root", "."], tmp)
+        return 0 if verify_code == 0 else 1
+
+    return ("scope claim verifier passes generated artifact", _fn)
+
+
+def case_scope_claim_verifier_rejects_all_impl_artifact() -> Tuple[str, Callable[[Path], int]]:
+    """Claim verifier must fail if artifact says all six are runtime-implemented."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        art_dir = tmp / "verification" / "runs"
+        art_dir.mkdir(parents=True, exist_ok=True)
+        artifact_path = art_dir / "99999999T999999Z-governance-v2-scope.json"
+        fake_gaps = []
+        for gap_id in ("GAP-1", "GAP-2", "GAP-3", "GAP-4", "GAP-5", "GAP-6"):
+            fake_gaps.append(
+                {
+                    "gap_id": gap_id,
+                    "runtime_implemented_end_to_end": True,
+                    "missing_required_paths": [],
+                    "runtime_evidence_payload_valid": True,
+                }
+            )
+        payload = {
+            "claim_text": "I am not claiming all six governance gaps are runtime-implemented end-to-end.",
+            "claim_supported_by_repo_state": True,
+            "all_six_runtime_implemented_end_to_end": True,
+            "gaps": fake_gaps,
+            "summary": {
+                "runtime_implemented_count": 6,
+                "not_runtime_implemented_count": 0,
+            },
+        }
+        artifact_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        verify_code = _run_py(
+            ["scripts/verify_governance_v2_scope_claim.py", "--root", ".", "--artifact", str(artifact_path)],
+            tmp,
+        )
+        return 0 if verify_code != 0 else 1
+
+    return ("scope claim verifier rejects all-implemented artifact", _fn)
+
+
+def case_scope_claim_verifier_rejects_wrong_claim_text() -> Tuple[str, Callable[[Path], int]]:
+    """Claim verifier must fail if canonical claim text is altered."""
+
+    def _fn(tmp: Path) -> int:
+        _clone_workspace(tmp)
+        art_dir = tmp / "verification" / "runs"
+        art_dir.mkdir(parents=True, exist_ok=True)
+        artifact_path = art_dir / "99999999T999998Z-governance-v2-scope.json"
+        fake_gaps = []
+        for gap_id in ("GAP-1", "GAP-2", "GAP-3", "GAP-4", "GAP-5", "GAP-6"):
+            fake_gaps.append(
+                {
+                    "gap_id": gap_id,
+                    "runtime_implemented_end_to_end": False,
+                    "missing_required_paths": ["missing/path"],
+                    "runtime_evidence_payload_valid": False,
+                }
+            )
+        payload = {
+            "claim_text": "I am not claiming all six governance gaps are complete in production.",
+            "claim_supported_by_repo_state": True,
+            "all_six_runtime_implemented_end_to_end": False,
+            "gaps": fake_gaps,
+            "summary": {
+                "runtime_implemented_count": 0,
+                "not_runtime_implemented_count": 6,
+            },
+        }
+        artifact_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        verify_code = _run_py(
+            ["scripts/verify_governance_v2_scope_claim.py", "--root", ".", "--artifact", str(artifact_path)],
+            tmp,
+        )
+        return 0 if verify_code != 0 else 1
+
+    return ("scope claim verifier rejects non-canonical claim text", _fn)
+
+
 def main() -> None:
     cases: List[Tuple[str, Callable[[Path], int]]] = [
         case_invalid_artifact_schema(),
@@ -238,6 +375,12 @@ def main() -> None:
         case_stale_status_md_fails_pass10a(),
         case_tip_verified_without_matching_head(),
         case_verified_on_mutable_branch_at_anchor_fails_pass7(),
+        case_tlc_governance_v2_verifier_passes_clean_spec(),
+        case_tlc_governance_v2_weight_corruption_fails(),
+        case_tlc_governance_v2_missing_gap_fails(),
+        case_scope_claim_verifier_passes_generated_artifact(),
+        case_scope_claim_verifier_rejects_all_impl_artifact(),
+        case_scope_claim_verifier_rejects_wrong_claim_text(),
     ]
     failed = 0
     with tempfile.TemporaryDirectory() as td:

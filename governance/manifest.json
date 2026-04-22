@@ -1,12 +1,15 @@
 {
     "series": "B",
-    "phase": "Sovereign Orchestration",
-    "timestamp": "2026-04-09T05:29:09.971400Z",
-    "status": "INITIALIZED",
+    "phase": "Sovereign Orchestration + Governance V2 Refactor",
+    "timestamp": "2026-04-22T00:00:00Z",
+    "status": "REFACTOR_IN_PROGRESS",
     "directives": [
         "DECENTRALIZED_INVARIANT_CHECKING",
         "CROSS_REPO_ENFORCEMENT",
-        "AUTONOMOUS_AUDIT_TRAILS"
+        "AUTONOMOUS_AUDIT_TRAILS",
+        "INTENT_MONITOR_RULE_FORMALIZATION",
+        "GAP_CLOSURE_TRACKING"
     ],
-    "binding_contract": "CRSP-002-BETA"
+    "binding_contract": "CRSP-002-BETA",
+    "governance_v2_refactor_spec": "governance/tlc-governance-v2.refactor.json"
 }
