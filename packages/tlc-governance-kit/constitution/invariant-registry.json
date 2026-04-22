@@ -3,8 +3,8 @@
   "registry_id": "tlc-governance-invariants",
   "source_constitution": "THE_LIVING_CONSTITUTION.md",
   "summary_docs": [
-    "00-constitution/constitution.md",
-    "00-constitution/articles.md"
+    "governance/constitution/core/constitution.md",
+    "governance/constitution/core/articles.md"
   ],
   "invariants": [
     {
@@ -12,7 +12,7 @@
       "category": "Type / Schema Discipline",
       "description": "Every constitutional doctrine or operative governance rule referenced as binding must map to at least one machine-readable invariant or enforcement artifact.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (doctrine map completeness)",
-      "evidence_path_or_rule": "00-constitution/doctrine-to-invariant.map.json lists doctrines/articles with non-empty invariant_ids",
+      "evidence_path_or_rule": "governance/constitution/core/doctrine-to-invariant.map.json lists doctrines/articles with non-empty invariant_ids",
       "breach_taxonomy": "BREACH-A"
     },
     {
@@ -44,7 +44,7 @@
       "category": "Isolation Boundary",
       "description": "Agent definitions must declare explicit allowed actions, forbidden actions, and required output constraints in machine-readable form where agent specifications exist.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (agent-capabilities.json schema)",
-      "evidence_path_or_rule": "02-agents/agent-capabilities.json",
+      "evidence_path_or_rule": "governance/agents/core/agent-capabilities.json",
       "breach_taxonomy": "BREACH-F"
     },
     {
@@ -52,7 +52,7 @@
       "category": "Observability / Evidence",
       "description": "Enforcement under 03-enforcement must include at least one executable verification path that can fail on governance drift.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py; CI workflow step",
-      "evidence_path_or_rule": "03-enforcement/enforcement-map.json lists executable hooks; scripts return non-zero on failure",
+      "evidence_path_or_rule": "governance/enforcement/core/enforcement-map.json lists executable hooks; scripts return non-zero on failure",
       "breach_taxonomy": "BREACH-C"
     },
     {
@@ -116,7 +116,7 @@
       "category": "Type / Schema Discipline",
       "description": "Doctrine to invariant to enforcement to evidence to inventory chain must be referentially complete with no dangling nodes.",
       "enforcement_mechanism": "scripts/verify_governance_chain.py (full-chain referential checks)",
-      "evidence_path_or_rule": "00-constitution/doctrine-to-invariant.map.json; 03-enforcement/enforcement-map.json; MASTER_PROJECT_INVENTORY.json#governance_artifacts",
+      "evidence_path_or_rule": "governance/constitution/core/doctrine-to-invariant.map.json; governance/enforcement/core/enforcement-map.json; MASTER_PROJECT_INVENTORY.json#governance_artifacts",
       "breach_taxonomy": "BREACH-A"
     },
     {
@@ -307,27 +307,27 @@
   "failure_class_artifacts": [
     {
       "id": "F1",
-      "markdown": "00-constitution/invariants/F1-confident-false-claims.md",
+      "markdown": "governance/constitution/core/invariants/F1-confident-false-claims.md",
       "domain": "Epistemic Safety"
     },
     {
       "id": "F2",
-      "markdown": "00-constitution/invariants/F2-phantom-completion.md",
+      "markdown": "governance/constitution/core/invariants/F2-phantom-completion.md",
       "domain": "Epistemic Safety"
     },
     {
       "id": "F3",
-      "markdown": "00-constitution/invariants/F3-persistence-under-correction.md",
+      "markdown": "governance/constitution/core/invariants/F3-persistence-under-correction.md",
       "domain": "Cognitive Safety"
     },
     {
       "id": "F4",
-      "markdown": "00-constitution/invariants/F4-harm-risk-coupling.md",
+      "markdown": "governance/constitution/core/invariants/F4-harm-risk-coupling.md",
       "domain": "Human Safety"
     },
     {
       "id": "F5",
-      "markdown": "00-constitution/invariants/F5-cross-episode-recurrence.md",
+      "markdown": "governance/constitution/core/invariants/F5-cross-episode-recurrence.md",
       "domain": "Epistemic Safety"
     }
   ]

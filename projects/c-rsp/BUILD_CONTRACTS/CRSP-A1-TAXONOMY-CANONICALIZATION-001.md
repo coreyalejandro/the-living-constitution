@@ -49,7 +49,7 @@ Per master §2B. This instance is invalid until placeholders are resolved, prefl
 - **Existing Repo / System:** `/Users/coreyalejandro/Projects/the-living-constitution`
 - **Baseline Commit / Anchor:** Record at execution start (`git rev-parse HEAD`).
 - **Verified Existing Assets:** A-0 / A-0.1 / CRSP-A0-CRSP-FOLDER-CLEANUP-001 complete; `CANONICAL_ROLE_MAP.md` and `projects/c-rsp/README.md` describe roles.
-- **Known Constraints:** Taxonomy must stay consistent with `00-constitution/invariant-registry.json` and role separation of powers.
+- **Known Constraints:** Taxonomy must stay consistent with `governance/constitution/core/invariant-registry.json` and role separation of powers.
 - **Known Gaps:** Draft — domain registry shape and Article VI text must be finalized in execution.
 - **Legacy Migration Context:** N/A
 
@@ -58,7 +58,7 @@ Per master §2B. This instance is invalid until placeholders are resolved, prefl
 
 - **Required Inputs:** Master plan §A-1 (Files to Modify / Read); `projects/c-rsp/README.md`; `CANONICAL_ROLE_MAP.md`; `BUILD_CONTRACT.md`; `contract-schema.json` — **Dependencies**
 - **External Dependencies:** none
-- **Governance Dependencies:** `00-constitution/invariant-registry.json`, `00-constitution/role-registry.json`, `00-constitution/doctrine-to-invariant.map.json`
+- **Governance Dependencies:** `governance/constitution/core/invariant-registry.json`, `governance/constitution/core/role-registry.json`, `governance/constitution/core/doctrine-to-invariant.map.json`
 - **Forbidden Assumptions:** Do not treat helpers as master template; do not assign domains without evidence.
 
 ### 4A. Cross-Repo Governance Dependency Graph
@@ -260,7 +260,7 @@ Tier 2 plus: full §8 invariant binding; evidence + conflict/halt matrices; audi
 
 **Mandatory report shape:** `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — **Title block first**, then Kanban, constitutional anchor, then **§2 V&T Statement** with **CONTROL_RULE_KBC_01** and **CONTROL_RULE_VT_RIGOR_01** honored in the saved executed copy.
 
-**V&T constitutional basis:** Article I — Right to Truth; Article III — Verification Before Done (`00-constitution/articles.md`).
+**V&T constitutional basis:** Article I — Right to Truth; Article III — Verification Before Done (`governance/constitution/core/articles.md`).
 
 ---
 ## 17. Instance Declaration

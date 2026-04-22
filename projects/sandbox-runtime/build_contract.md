@@ -8,7 +8,7 @@
 - **INVARIANT_04:** `src/jail.py` — path boundary under `projects/sandbox-runtime/` and `standalone/tlc-sandbox-app/`; whitelisted imports (`math`, `json`, `time`) for `safe_exec_script`.
 - **Halt plane:** `src/governance_connector.py` reads repo-root `STATUS.json`; if `sandbox_operational_state` is `OFF` or `QUARANTINE`, process exits with log `HALT_BY_CONSTITUTIONAL_AUTHORITY` (stderr). If your workflow regenerates `STATUS.json` via `scripts/render_status_surface.py`, coordinate how that key is preserved or use env/sentinel halt (`TLC_HALT_AUTHORITY`, `TLC_HALT_SENTINEL_FILE`) for tests without mutating the rendered surface.
 - **INVARIANT_06:** `verification/SANDBOX_LOG.md` — Gold Star ledger (timestamp, actor, action, result, SHA-256 of `THE_LIVING_CONSTITUTION.md`).
-- **R&D loop:** `propose_invariant.py` writes drafts under `03-enforcement/drafts/`.
+- **R&D loop:** `propose_invariant.py` writes drafts under `governance/enforcement/core/drafts/`.
 
 ## Target State (What Governance Claims)
 

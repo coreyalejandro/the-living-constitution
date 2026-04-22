@@ -44,6 +44,6 @@ export const VERIFICATION_STREAM_ENTRIES = [
 export const SYSTEM_GRAPH_NODES = [
   { id: "projects", label: "projects/", kind: "overlay" },
   { id: "verification", label: "verification/", kind: "evidence" },
-  { id: "constitution", label: "00-constitution/", kind: "law" },
+  { id: "constitution", label: "governance/constitution/core/", kind: "law" },
   { id: "docs-front-door", label: "docs/front-door/", kind: "documentation" },
 ] as const;

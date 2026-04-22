@@ -3,7 +3,7 @@
 verify_ui_governance.py — TLC Control Plane UI (control-plane-001) governance binding.
 
 Read-only checks: jail allows control-plane roots; app.py forbids os/subprocess;
-enforcement-map lists every invariant in 00-constitution/invariant-registry.json and
+enforcement-map lists every invariant in governance/constitution/core/invariant-registry.json and
 references that registry path.
 """
 
@@ -73,7 +73,7 @@ def main() -> int:
         print("ERROR: app.py must not import os or subprocess", file=sys.stderr)
         return 1
 
-    reg_path = root / "00-constitution" / "invariant-registry.json"
+    reg_path = root / "governance" / "constitution" / "core" / "invariant-registry.json"
     expected_ids = _expected_invariant_ids(reg_path)
 
     em_path = root / "projects" / "tlc-control-plane" / "governance" / "enforcement-map.json"
@@ -82,10 +82,10 @@ def main() -> int:
         return 1
     em: Dict[str, Any] = _load_json(em_path)
     ref = em.get("canonical_invariant_registry_ref")
-    if ref != "00-constitution/invariant-registry.json":
+    if ref != "governance/constitution/core/invariant-registry.json":
         print(
             f"ERROR: enforcement-map canonical_invariant_registry_ref must be "
-            f"00-constitution/invariant-registry.json (got {ref!r})",
+            f"governance/constitution/core/invariant-registry.json (got {ref!r})",
             file=sys.stderr,
         )
         return 1

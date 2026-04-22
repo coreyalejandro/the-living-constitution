@@ -37,106 +37,106 @@
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/CLAUDE.md",
+      "detail": "Found required file: projects/consentchain-pack/core/CLAUDE.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/CLAUDE.md"
+      "path": "projects/consentchain-pack/core/CLAUDE.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/BUILD_CONTRACT.md",
+      "detail": "Found required file: projects/consentchain-pack/core/BUILD_CONTRACT.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/BUILD_CONTRACT.md"
+      "path": "projects/consentchain-pack/core/BUILD_CONTRACT.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/ARCHITECTURE.md",
+      "detail": "Found required file: projects/consentchain-pack/core/ARCHITECTURE.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/ARCHITECTURE.md"
+      "path": "projects/consentchain-pack/core/ARCHITECTURE.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/REPO_TOPOLOGY.md",
+      "detail": "Found required file: projects/consentchain-pack/core/REPO_TOPOLOGY.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/REPO_TOPOLOGY.md"
+      "path": "projects/consentchain-pack/core/REPO_TOPOLOGY.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/COMPONENT_REGISTRY.json",
+      "detail": "Found required file: projects/consentchain-pack/core/COMPONENT_REGISTRY.json",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/COMPONENT_REGISTRY.json"
+      "path": "projects/consentchain-pack/core/COMPONENT_REGISTRY.json"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/CRYPTO_SPEC.md",
+      "detail": "Found required file: projects/consentchain-pack/core/CRYPTO_SPEC.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/CRYPTO_SPEC.md"
+      "path": "projects/consentchain-pack/core/CRYPTO_SPEC.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/THREAT_MODEL.md",
+      "detail": "Found required file: projects/consentchain-pack/core/THREAT_MODEL.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/THREAT_MODEL.md"
+      "path": "projects/consentchain-pack/core/THREAT_MODEL.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/EMPIRICAL_SAFETY.md",
+      "detail": "Found required file: projects/consentchain-pack/core/EMPIRICAL_SAFETY.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/EMPIRICAL_SAFETY.md"
+      "path": "projects/consentchain-pack/core/EMPIRICAL_SAFETY.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/EVAL_PLAN.md",
+      "detail": "Found required file: projects/consentchain-pack/core/EVAL_PLAN.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/EVAL_PLAN.md"
+      "path": "projects/consentchain-pack/core/EVAL_PLAN.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/VERIFICATION.md",
+      "detail": "Found required file: projects/consentchain-pack/core/VERIFICATION.md",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/VERIFICATION.md"
+      "path": "projects/consentchain-pack/core/VERIFICATION.md"
     },
     {
       "name": "required-file",
       "status": "PASS",
-      "detail": "Found required file: 04-consentchain/REPO_MAP.json",
+      "detail": "Found required file: projects/consentchain-pack/core/REPO_MAP.json",
       "repo": "TLC",
       "command": null,
-      "path": "04-consentchain/REPO_MAP.json"
+      "path": "projects/consentchain-pack/core/REPO_MAP.json"
     },
     {
       "name": "cross-repo-reference",
       "status": "PASS",
-      "detail": "04-consentchain/REPO_MAP.json includes required entries.",
+      "detail": "projects/consentchain-pack/core/REPO_MAP.json includes required entries.",
       "repo": null,
       "command": null,
-      "path": "04-consentchain/REPO_MAP.json"
+      "path": "projects/consentchain-pack/core/REPO_MAP.json"
     },
     {
       "name": "cross-repo-reference",
       "status": "PASS",
-      "detail": "04-consentchain/COMPONENT_REGISTRY.json includes required entries.",
+      "detail": "projects/consentchain-pack/core/COMPONENT_REGISTRY.json includes required entries.",
       "repo": null,
       "command": null,
-      "path": "04-consentchain/COMPONENT_REGISTRY.json"
+      "path": "projects/consentchain-pack/core/COMPONENT_REGISTRY.json"
     },
     {
       "name": "submodule-check",

@@ -316,9 +316,9 @@ Only after A-0 is complete:
 | `projects/c-rsp/BUILD_CONTRACT.instance.md` | Repaired guided instance template |
 | `projects/c-rsp/contract-schema.json` | Schema validation |
 | `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` | Output format |
-| `00-constitution/invariant-registry.json` | 59 invariants to map to domains |
-| `00-constitution/doctrine-to-invariant.map.json` | Doctrine→invariant relationships |
-| `00-constitution/role-registry.json` | Separation of powers roles |
+| `governance/constitution/core/invariant-registry.json` | 59 invariants to map to domains |
+| `governance/constitution/core/doctrine-to-invariant.map.json` | Doctrine→invariant relationships |
+| `governance/constitution/core/role-registry.json` | Separation of powers roles |
 | Every `projects/*/BUILD_CONTRACT*` | Current project constitutional role pressure |
 
 ### A-1 Output

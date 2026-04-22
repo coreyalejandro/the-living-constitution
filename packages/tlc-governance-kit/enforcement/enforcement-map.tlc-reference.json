@@ -51,7 +51,7 @@
     },
     {
       "id": "tlc_project_topology",
-      "constitutional_reference": "00-constitution/constitution.md#Census Doctrine",
+      "constitutional_reference": "governance/constitution/core/constitution.md#Census Doctrine",
       "invariant_ids": ["INVARIANT_03", "INVARIANT_10"],
       "enforcement_hook": "scripts/verify_project_topology.py",
       "evidence_hook": "MASTER_PROJECT_INVENTORY.json",
@@ -60,7 +60,7 @@
     },
     {
       "id": "consentchain_family",
-      "constitutional_reference": "03-enforcement/consentchain-mapping.md",
+      "constitutional_reference": "governance/enforcement/core/consentchain-mapping.md",
       "invariant_ids": ["INVARIANT_06"],
       "enforcement_hook": "scripts/verify_consentchain_family.py",
       "evidence_hook": "verification/consentchain-family/report.json",
@@ -89,7 +89,7 @@
     },
     {
       "id": "tlc_institutionalization",
-      "constitutional_reference": "00-constitution/doctrine-to-invariant.map.json#ARTICLE_VI",
+      "constitutional_reference": "governance/constitution/core/doctrine-to-invariant.map.json#ARTICLE_VI",
       "invariant_ids": [
         "INVARIANT_22",
         "INVARIANT_23",

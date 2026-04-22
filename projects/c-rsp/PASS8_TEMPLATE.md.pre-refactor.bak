@@ -4,11 +4,11 @@ Use this contract when institutionalizing C-RSP governance in a **satellite** re
 
 ## 1. Minimal required files
 
-- `00-constitution/invariant-registry.json` — INVARIANT_01 through INVARIANT_37  
-- `00-constitution/doctrine-to-invariant.map.json`  
-- `00-constitution/invariants/F1–F5` markdown (failure-class artifacts referenced by registry)  
-- `03-enforcement/enforcement-map.json` — use kit `enforcement-map.satellite.json` as a base; every invariant id must appear in some module  
-- `02-agents/agent-capabilities.json`  
+- `governance/constitution/core/invariant-registry.json` — INVARIANT_01 through INVARIANT_37  
+- `governance/constitution/core/doctrine-to-invariant.map.json`  
+- `governance/constitution/core/invariants/F1–F5` markdown (failure-class artifacts referenced by registry)  
+- `governance/enforcement/core/enforcement-map.json` — use kit `enforcement-map.satellite.json` as a base; every invariant id must appear in some module  
+- `governance/agents/core/agent-capabilities.json`  
 - `verification/evidence-ledger.schema.json`, `verification/evidence-ledger/seed.json`  
 - `verification/governance-verification.template.json`, `verification/governance-verification-run.schema.json`  
 - `verification/ci-remote-evidence/record.json`  

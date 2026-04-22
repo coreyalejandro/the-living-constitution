@@ -41,10 +41,10 @@ The Verification Matrix shows 21 of 24 resume claims verified, 1 partial (GitHub
 
 ## V&T Statement
 
-**Exists:** This report, sourced entirely from files in the `the-living-constitution` repository. THE_LIVING_CONSTITUTION.md (full spec). 00-constitution/articles.md (Articles I-V with implementation mapping). 00-constitution/constitution.md (summary with doctrines). config/projects.ts (13 projects registered). config/domains.ts (4 safety domains). verification/MATRIX.md (24 claims tracked). tasks/todo.md (sprint tracker). 08-evaluation/ (failure taxonomy F1-F5, evidence summary, pattern analysis, 18 failure cases). 11 BUILD_CONTRACT.md files across projects/.
+**Exists:** This report, sourced entirely from files in the `the-living-constitution` repository. THE_LIVING_CONSTITUTION.md (full spec). governance/constitution/core/articles.md (Articles I-V with implementation mapping). governance/constitution/core/constitution.md (summary with doctrines). config/projects.ts (13 projects registered). config/domains.ts (4 safety domains). verification/MATRIX.md (24 claims tracked). tasks/todo.md (sprint tracker). 08-evaluation/ (failure taxonomy F1-F5, evidence summary, pattern analysis, 18 failure cases). 11 BUILD_CONTRACT.md files across projects/.
 
 **Non-existent:** Tier 2 machine-checkable enforcement of constitutional rules. Formal proofs (Tier 3). Data Scientist agent instruction file. Runtime SentinelOS enforcement.
 
-**Unverified:** Whether all agent instruction files still exist at declared paths. Whether truth-status sync is current across all repos. Whether THE_LIVING_CONSTITUTION.md and 00-constitution/constitution.md are in sync.
+**Unverified:** Whether all agent instruction files still exist at declared paths. Whether truth-status sync is current across all repos. Whether THE_LIVING_CONSTITUTION.md and governance/constitution/core/constitution.md are in sync.
 
 **Functional status:** Governance framework is complete and enforced at Tier 1 (convention). Commonwealth projects range from deployed to planned. Verification matrix is 87.5% verified (21/24). System is operational but Tier 2 automation is the primary gap.

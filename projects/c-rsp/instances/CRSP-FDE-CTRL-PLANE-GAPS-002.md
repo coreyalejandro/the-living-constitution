@@ -262,7 +262,7 @@ This instance is Tier-3.
 
 Mandatory report shape: `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — title block first, then Kanban, then constitutional anchor, then V&T Statement.
 
-**V&T constitutional basis:** Article I — Right to Truth; Article III — Verification Before Done (`00-constitution/articles.md`).
+**V&T constitutional basis:** Article I — Right to Truth; Article III — Verification Before Done (`governance/constitution/core/articles.md`).
 
 Execution summaries close with: Exists; Verified against; Not claimed; Non-existent; Unverified; Functional status.
 

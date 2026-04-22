@@ -4,7 +4,7 @@
 
 **Artifact role:** This file is the **outcome artifact** (canonical C-RSP run reporting shape). **Authority order:** it is subordinate to `projects/c-rsp/BUILD_CONTRACT.md` and `projects/c-rsp/BUILD_CONTRACT.instance.md` as drafting aids; it does not override the master template’s structural or invariant rules. See `projects/c-rsp/CANONICAL_ROLE_MAP.md`.
 
-**Title rule:** `BUILD_CONTRACT_TITLE` = exact **Contract Title** from the governing **executed** contract (Section 1) — e.g. `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md`. The file `projects/c-rsp/BUILD_CONTRACT.instance.md` is only the **guided instance template** (placeholders), not an executed contract. For zero-shot contracts whose H1 is `# Build Contract: Name`, use `Name` (e.g. `04-consentchain/BUILD_CONTRACT.md` → `ConsentChain`). `COMPONENT` = governed component or subsystem this run touched (must stay in the H1 for scanning).
+**Title rule:** `BUILD_CONTRACT_TITLE` = exact **Contract Title** from the governing **executed** contract (Section 1) — e.g. `projects/<slug>/BUILD_CONTRACT.md`, `projects/<slug>/BUILD_CONTRACT`, or `projects/c-rsp/instances/<CONTRACT_ID>.md`. The file `projects/c-rsp/BUILD_CONTRACT.instance.md` is only the **guided instance template** (placeholders), not an executed contract. For zero-shot contracts whose H1 is `# Build Contract: Name`, use `Name` (e.g. `projects/consentchain-pack/core/BUILD_CONTRACT.md` → `ConsentChain`). `COMPONENT` = governed component or subsystem this run touched (must stay in the H1 for scanning).
 
 **Contract instance:** `<path/to/executed/BUILD_CONTRACT_or_instance.md>`  
 **Run id / commit:** `<shortsha or tag>`
@@ -28,8 +28,8 @@ Mandatory references for **Verification & Truth** discipline:
 
 | Source | Requirement |
 |--------|-------------|
-| **Article I — Right to Truth** (`00-constitution/articles.md`) | No claim without evidence; the **V&T Statement** (below) is the enforcement surface for this right. |
-| **Article III — Verification Before Done** (`00-constitution/articles.md`) | Do not treat work as complete without proof; maps to acceptance criteria + verifier output. |
+| **Article I — Right to Truth** (`governance/constitution/core/articles.md`) | No claim without evidence; the **V&T Statement** (below) is the enforcement surface for this right. |
+| **Article III — Verification Before Done** (`governance/constitution/core/articles.md`) | Do not treat work as complete without proof; maps to acceptance criteria + verifier output. |
 | **Section 16 Output Format** (`projects/c-rsp/BUILD_CONTRACT.md`) | Kanban-first **V&T**; single active executed contract until clear; see **CONTROL_RULE_KBC_01** in the active **executed** instance file (not the guided template `projects/c-rsp/BUILD_CONTRACT.instance.md`). |
 
 ---

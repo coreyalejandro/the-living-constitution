@@ -7,5 +7,5 @@
         {"id": "INV-B-02", "description": "Cross-repo state synchronization", "severity": "HIGH"},
         {"id": "INV-B-03", "description": "Autonomous audit trail heartbeats", "severity": "MEDIUM"}
     ],
-    "enforcement_point": "03-enforcement/sandbox-runtime-001"
+    "enforcement_point": "governance/enforcement/core/sandbox-runtime-001"
 }

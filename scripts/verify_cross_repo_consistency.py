@@ -32,18 +32,36 @@ from tip_state_helpers import (  # noqa: E402
 )
 
 
-JSON_RELPATHS: Tuple[str, ...] = (
-    "00-constitution/invariant-registry.json",
-    "00-constitution/doctrine-to-invariant.map.json",
-    "00-constitution/role-registry.json",
-    "03-enforcement/enforcement-map.json",
-    "verification/evidence-ledger.schema.json",
-    "verification/governance-verification-run.schema.json",
-    "verification/regression-ledger.schema.json",
-    "verification/governance-verification.template.json",
-    "verification/tip-state-policy.json",
-    "verification/review-escalation-policy.json",
-    "verification/pass7-branch-verification-policy.json",
+JSON_COMPARE_PATHS: Tuple[Tuple[str, str], ...] = (
+    (
+        "governance/constitution/core/invariant-registry.json",
+        "00-constitution/invariant-registry.json",
+    ),
+    (
+        "governance/constitution/core/doctrine-to-invariant.map.json",
+        "00-constitution/doctrine-to-invariant.map.json",
+    ),
+    (
+        "governance/constitution/core/role-registry.json",
+        "00-constitution/role-registry.json",
+    ),
+    (
+        "governance/enforcement/core/enforcement-map.json",
+        "03-enforcement/enforcement-map.json",
+    ),
+    ("verification/evidence-ledger.schema.json", "verification/evidence-ledger.schema.json"),
+    (
+        "verification/governance-verification-run.schema.json",
+        "verification/governance-verification-run.schema.json",
+    ),
+    ("verification/regression-ledger.schema.json", "verification/regression-ledger.schema.json"),
+    (
+        "verification/governance-verification.template.json",
+        "verification/governance-verification.template.json",
+    ),
+    ("verification/tip-state-policy.json", "verification/tip-state-policy.json"),
+    ("verification/review-escalation-policy.json", "verification/review-escalation-policy.json"),
+    ("verification/pass7-branch-verification-policy.json", "verification/pass7-branch-verification-policy.json"),
 )
 
 MATRIX_HEADER_EXPECTED = (
@@ -83,11 +101,11 @@ def _parse_args() -> argparse.Namespace:
 def _resolve_canonical_root(canonical_root: Path, target_root: Path) -> Path:
     """Prefer explicit path; if missing, allow ConsentChain-as-submodule under TLC (../.. from target)."""
     c = canonical_root.resolve()
-    marker = c / "00-constitution" / "invariant-registry.json"
+    marker = c / "governance" / "constitution" / "core" / "invariant-registry.json"
     if marker.is_file():
         return c
     alt = target_root.resolve().parent.parent
-    alt_m = alt / "00-constitution" / "invariant-registry.json"
+    alt_m = alt / "governance" / "constitution" / "core" / "invariant-registry.json"
     if alt_m.is_file():
         print(
             f"verify_cross_repo_consistency: using TLC root fallback {alt} (canonical path {c!s} not found)",
@@ -182,23 +200,23 @@ def main() -> int:
 
     _check_verification_anchors(canon, target, errors)
 
-    for rel in JSON_RELPATHS:
-        a = canon / rel
-        b = target / rel
+    for canon_rel, target_rel in JSON_COMPARE_PATHS:
+        a = canon / canon_rel
+        b = target / target_rel
         if not a.is_file():
-            errors.append(f"canonical missing: {rel}")
+            errors.append(f"canonical missing: {canon_rel}")
             continue
         if not b.is_file():
-            errors.append(f"target missing: {rel}")
+            errors.append(f"target missing: {target_rel}")
             continue
         try:
             ja = _load_json(a)
             jb = _load_json(b)
         except (OSError, json.JSONDecodeError, ValueError) as e:
-            errors.append(f"{rel}: read/parse error: {e}")
+            errors.append(f"{canon_rel} <-> {target_rel}: read/parse error: {e}")
             continue
         if _norm_json(ja) != _norm_json(jb):
-            errors.append(f"JSON drift (normalized): {rel}")
+            errors.append(f"JSON drift (normalized): {canon_rel} <-> {target_rel}")
 
     for name in ("verification/MATRIX.md", "verification/GOVERNANCE_SYSTEM_CARD.md"):
         a = canon / name

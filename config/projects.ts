@@ -42,7 +42,7 @@ export const COMMONWEALTH_PROJECTS: readonly CommonwealthProject[] = [
     resumeClaim:
       "Partial, ~1,500 LOC TypeScript, invariant enforcement platform",
   },
-  // ConsentChain repoPath: see 04-consentchain/REGISTRY_PATH_MIGRATION.md (TLC submodule vs prior sibling checkout).
+  // ConsentChain repoPath: see projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md (TLC submodule vs prior sibling checkout).
   {
     id: "consentchain",
     name: "ConsentChain",
@@ -92,7 +92,7 @@ export const COMMONWEALTH_PROJECTS: readonly CommonwealthProject[] = [
     name: "TLC Evidence Observatory",
     domainIds: ["epistemic", "empirical"],
     status: "prototype",
-    repoPath: "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+    repoPath: "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
     resumeClaim:
       "Prototype — forensic ingest pipeline, SHA-256 chain of custody, append-only evidence records",
   },

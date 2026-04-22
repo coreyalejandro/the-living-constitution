@@ -13,7 +13,7 @@
 | D1 | `diagram-sources/system-context.mmd` | TLC repo in context of Commonwealth and external evidence | External reviewer, Commonwealth projects, TLC governance overlay, open interfaces |
 | D2 | `diagram-sources/control-plane-architecture.mmd` | Major governance artifacts and flows | `STATUS.json`, verification chain, build contracts, invariant registry pointers |
 | D3 | `diagram-sources/execution-loop.mmd` | Human and CI execution loop | Bootstrap, verifiers, attestation, maintenance-mode |
-| D4 | `diagram-sources/system-graph.mmd` | Nodes for domains and key repo areas | Domains, `projects/`, `verification/`, `00-constitution/` |
+| D4 | `diagram-sources/system-graph.mmd` | Nodes for domains and key repo areas | Domains, `projects/`, `verification/`, `governance/constitution/core/` |
 | D5 | `diagram-sources/ui-layout.mmd` | Four-panel UI layout | **system graph**, **status/truth panel**, **execution pane**, **verification stream** |
 
 ## Mermaid source ownership

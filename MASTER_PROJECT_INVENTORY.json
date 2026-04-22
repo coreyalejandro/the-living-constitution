@@ -2,10 +2,10 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-04-13T07:51:47Z",
-    "registry_path_migration_ref": "04-consentchain/REGISTRY_PATH_MIGRATION.md",
+    "generated_at_utc": "2026-04-22T16:16:17Z",
+    "registry_path_migration_ref": "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
-      "04-consentchain/REGISTRY_PATH_MIGRATION.md"
+      "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
     ],
     "tlc_root": "/Users/coreyalejandro/Projects/the-living-constitution",
     "sources": [
@@ -15,7 +15,7 @@
       "config/projects.ts COMMONWEALTH_PROJECTS",
       "per-overlay BUILD_CONTRACT.md Repo Path sections where present",
       "scripts/verify_consentchain_family.py embedded paths",
-      "04-consentchain/REGISTRY_PATH_MIGRATION.md"
+      "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
     ],
     "notes": [
       "Paths are absolute where recorded; unknown or not applicable use explicit null or unknown token.",
@@ -40,11 +40,11 @@
     "contract_version": "v1.9.0",
     "description": "Canonical machine-readable governance chain (C-RSP / TLC); verified by scripts/verify_governance_chain.py",
     "canonical_paths": {
-      "invariant_registry": "00-constitution/invariant-registry.json",
-      "doctrine_to_invariant_map": "00-constitution/doctrine-to-invariant.map.json",
-      "role_registry": "00-constitution/role-registry.json",
-      "enforcement_map": "03-enforcement/enforcement-map.json",
-      "agent_capabilities": "02-agents/agent-capabilities.json",
+      "invariant_registry": "governance/constitution/core/invariant-registry.json",
+      "doctrine_to_invariant_map": "governance/constitution/core/doctrine-to-invariant.map.json",
+      "role_registry": "governance/constitution/core/role-registry.json",
+      "enforcement_map": "governance/enforcement/core/enforcement-map.json",
+      "agent_capabilities": "governance/agents/core/agent-capabilities.json",
       "evidence_ledger_schema": "verification/evidence-ledger.schema.json",
       "evidence_ledger_seed": "verification/evidence-ledger/seed.json",
       "governance_verification_template": "verification/governance-verification.template.json",
@@ -74,31 +74,31 @@
     "artifact_manifest": [
       {
         "canonical_key": "invariant_registry",
-        "relative_path": "00-constitution/invariant-registry.json",
+        "relative_path": "governance/constitution/core/invariant-registry.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": "gov-ledger-invariant-registry"
       },
       {
         "canonical_key": "doctrine_to_invariant_map",
-        "relative_path": "00-constitution/doctrine-to-invariant.map.json",
+        "relative_path": "governance/constitution/core/doctrine-to-invariant.map.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": "gov-ledger-doctrine-map"
       },
       {
         "canonical_key": "role_registry",
-        "relative_path": "00-constitution/role-registry.json",
+        "relative_path": "governance/constitution/core/role-registry.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": null
       },
       {
         "canonical_key": "enforcement_map",
-        "relative_path": "03-enforcement/enforcement-map.json",
+        "relative_path": "governance/enforcement/core/enforcement-map.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": null
       },
       {
         "canonical_key": "agent_capabilities",
-        "relative_path": "02-agents/agent-capabilities.json",
+        "relative_path": "governance/agents/core/agent-capabilities.json",
         "verification_status": "verified",
         "evidence_ledger_record_id": null
       },
@@ -229,8 +229,8 @@
       "python3 src/guardian.py --health-check",
       "python3 scripts/test_guardian_invariants.py --invariant INVARIANT_ARTICLE_IV_01",
       "python3 scripts/test_guardian_readonly.py",
-      "python3 src/guardian.py --verify-evidence projects/08-evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json",
-      "python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/08-evaluation/verification",
+      "python3 src/guardian.py --verify-evidence projects/evaluation/verification --schema projects/c-rsp/schemas/evidence_schema.json",
+      "python3 src/guardian.py --check-compliance EVAL-001 --evidence-dir projects/evaluation/verification",
       "python3 scripts/verify_project_topology.py --root . --with-governance",
       "python3 scripts/verify_governance_chain.py --root .",
       "python3 scripts/verify_institutionalization.py --root .",
@@ -242,21 +242,27 @@
   "tlc_projects_overlay": {
     "root_relative": "projects",
     "expected_slugs": [
-      "08-evaluation",
+      "adapters",
       "backboardai-fde",
       "buildlattice",
       "c-rsp",
       "consent-gateway-auth0",
       "consentchain",
+      "consentchain-pack",
       "document-system",
       "empirical-guard",
       "epistemic-guard",
+      "evaluation",
+      "evaluation-pack",
       "evidence-observatory",
       "frostbyte-etl",
       "governance",
       "human-guard",
+      "human-safety",
       "im-just-a-build",
+      "madmall",
       "proactive",
+      "public-profiles",
       "sandbox-runtime",
       "sentinelos",
       "teaser-video",
@@ -266,14 +272,14 @@
     ],
     "entries": [
       {
-        "slug": "08-evaluation",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+        "slug": "adapters",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/adapters",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/adapters",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": false,
-        "has_build_contract_md": true,
-        "repo_path_source": "auto-sync: TLC overlay projects/08-evaluation/ (scripts/sync_master_project_inventory_from_projects.py)"
+        "has_build_contract_md": false,
+        "repo_path_source": "auto-sync: TLC overlay projects/adapters/ (scripts/sync_master_project_inventory_from_projects.py)"
       },
       {
         "slug": "backboardai-fde",
@@ -326,6 +332,16 @@
         "repo_path_source": "BUILD_CONTRACT.md Repo Path; TLC git submodule projects/consentchain"
       },
       {
+        "slug": "consentchain-pack",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain-pack",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain-pack",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "auto-sync: TLC overlay projects/consentchain-pack/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
+      {
         "slug": "document-system",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system",
@@ -356,14 +372,34 @@
         "repo_path_source": "Rollout #5 (B.5) — TLC overlay projects/epistemic-guard; implementation `/Users/coreyalejandro/Projects/epistemic-guard` (BUILD_CONTRACT Repo Path + CLAUDE.md + config/projects.ts); epistemic_guard_overlay_script"
       },
       {
+        "slug": "evaluation",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": true,
+        "repo_path_source": "auto-sync: TLC overlay projects/evaluation/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
+      {
+        "slug": "evaluation-pack",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation-pack",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation-pack",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "auto-sync: TLC overlay projects/evaluation-pack/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
+      {
         "slug": "evidence-observatory",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
         "path_exists_probe": true,
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Semantic overlay projects/evidence-observatory/ delegates to canonical in-repo implementation at projects/08-evaluation (BUILD_CONTRACT.md Repo Path + config/projects.ts)"
+        "repo_path_source": "Semantic overlay projects/evidence-observatory/ delegates to canonical in-repo implementation at projects/evaluation (BUILD_CONTRACT.md Repo Path + config/projects.ts)"
       },
       {
         "slug": "frostbyte-etl",
@@ -396,6 +432,16 @@
         "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
       },
       {
+        "slug": "human-safety",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/human-safety",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/human-safety",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "auto-sync: TLC overlay projects/human-safety/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
+      {
         "slug": "im-just-a-build",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/im-just-a-build",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/im-just-a-build",
@@ -406,6 +452,16 @@
         "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror"
       },
       {
+        "slug": "madmall",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/madmall",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/madmall",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "auto-sync: TLC overlay projects/madmall/ (scripts/sync_master_project_inventory_from_projects.py)"
+      },
+      {
         "slug": "proactive",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/proactive-gitlab-agent/",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/proactive-gitlab-agent",
@@ -414,6 +470,16 @@
         "has_claude_md": true,
         "has_build_contract_md": true,
         "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      },
+      {
+        "slug": "public-profiles",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/public-profiles",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/public-profiles",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": false,
+        "has_build_contract_md": false,
+        "repo_path_source": "auto-sync: TLC overlay projects/public-profiles/ (scripts/sync_master_project_inventory_from_projects.py)"
       },
       {
         "slug": "sandbox-runtime",
@@ -479,12 +545,12 @@
   },
   "tlc_other_roots": [
     {
-      "path_relative": "04-consentchain",
+      "path_relative": "projects/consentchain-pack/core",
       "role": "consentchain_constitutional_pack",
       "relationship_to_projects_consentchain": "distinct_overlay — canonical pack vs projects/consentchain build contract overlay; see openmemory.md"
     },
     {
-      "path_relative": "05-madmall",
+      "path_relative": "projects/madmall/core",
       "role": "planning_and_vt_docs_only",
       "implementation_repo_path": null,
       "repo_path_status": "unknown — madmall-status-vt.md states no repository exists yet"
@@ -557,7 +623,7 @@
   "consentchain_family_script": {
     "script_relative": "scripts/verify_consentchain_family.py",
     "expects_tlc_relative_paths": [
-      "04-consentchain/CLAUDE.md",
+      "projects/consentchain-pack/core/CLAUDE.md",
       "projects/consentchain",
       "projects/consent-gateway-auth0"
     ],
