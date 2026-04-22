@@ -13,7 +13,8 @@ Next.js App Router UI for the **TLC AI Governance System** (The Living Constitut
 | System graph | **Scaffold-only** fallback — static node list from `lib/tlc-snapshot.ts` | Static scaffold |
 | Execution pane | **Partial** — roadmap bullets + read-only fields from loaded `STATUS.json` | Documentation-backed |
 | Verification stream | **Partial** — lists known paths; checks file presence when root resolves | File-backed evidence / static |
-| Live CI telemetry | **Not implemented** — not presented as a real-time stream | N/A |
+| Live CI telemetry | **Working** when `verification/ci-remote-evidence/record.json` resolves — shows latest and prior CI run (run ID, commit, conclusion, timestamp) | `verification/ci-remote-evidence/record.json` → file-backed evidence |
+| Live CI telemetry | **Scaffold-only** fallback when repo root or record file not resolved | Static scaffold |
 
 ## Run locally
 
