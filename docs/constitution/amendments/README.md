@@ -5,8 +5,8 @@ status: "Active"
 canonical_path: "docs/constitution/amendments/README.md"
 next_file: "docs/constitution/AMENDMENT_PROCESS.md"
 last_verified:
-  commit: "096f144"
-  timestamp: "2026-04-22T17:09:59Z"
+  commit: "af7ec64"
+  timestamp: "2026-04-22T17:19:18Z"
 ---
 
 # Amendment drafts

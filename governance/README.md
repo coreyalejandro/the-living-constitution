@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "governance/README.md"
 next_file: "docs/INDEX.md"
 last_verified:
-  commit: "096f144"
-  timestamp: "2026-04-22T17:09:59Z"
+  commit: "af7ec64"
+  timestamp: "2026-04-22T17:18:24Z"
 metadata:
   est_time_minutes: 8
   cognitive_load: "Low"
