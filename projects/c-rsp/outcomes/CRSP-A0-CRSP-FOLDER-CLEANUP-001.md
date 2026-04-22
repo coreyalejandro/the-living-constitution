@@ -12,8 +12,8 @@
 
 | Source | Requirement |
 |--------|-------------|
-| **Article I — Right to Truth** (`00-constitution/articles.md`) | Claims in this outcome are scoped to files edited and commands run in this cleanup pass. |
-| **Article III — Verification Before Done** (`00-constitution/articles.md`) | Structural verification via `scripts/verify_crsp_template_bundle.sh` where applicable. |
+| **Article I — Right to Truth** (`governance/constitution/core/articles.md`) | Claims in this outcome are scoped to files edited and commands run in this cleanup pass. |
+| **Article III — Verification Before Done** (`governance/constitution/core/articles.md`) | Structural verification via `scripts/verify_crsp_template_bundle.sh` where applicable. |
 | **Section 16 Output Format** (`projects/c-rsp/BUILD_CONTRACT.md`) | Kanban-first **V&T** per this template; no narrative after **Functional status**. |
 
 ---

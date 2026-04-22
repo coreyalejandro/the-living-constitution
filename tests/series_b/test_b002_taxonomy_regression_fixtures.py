@@ -12,7 +12,7 @@ def _load_json(rel: str) -> dict:
 
 
 def test_invariant_registry_ids_are_unique_and_well_formed() -> None:
-    registry = _load_json("00-constitution/invariant-registry.json")
+    registry = _load_json("governance/constitution/core/invariant-registry.json")
     invariants = registry["invariants"]
     ids = [item["id"] for item in invariants]
     assert len(ids) == len(set(ids))
@@ -20,7 +20,7 @@ def test_invariant_registry_ids_are_unique_and_well_formed() -> None:
 
 
 def test_registry_breach_taxonomy_and_failure_modes_are_populated() -> None:
-    registry = _load_json("00-constitution/invariant-registry.json")
+    registry = _load_json("governance/constitution/core/invariant-registry.json")
     for invariant in registry["invariants"]:
         assert re.fullmatch(r"BREACH-[A-Z]", invariant["breach_taxonomy"])
         assert isinstance(invariant["failure_mode"], str)
@@ -28,8 +28,8 @@ def test_registry_breach_taxonomy_and_failure_modes_are_populated() -> None:
 
 
 def test_doctrine_and_article_invariants_exist_in_registry() -> None:
-    doctrine_map = _load_json("00-constitution/doctrine-to-invariant.map.json")
-    registry = _load_json("00-constitution/invariant-registry.json")
+    doctrine_map = _load_json("governance/constitution/core/doctrine-to-invariant.map.json")
+    registry = _load_json("governance/constitution/core/invariant-registry.json")
     registry_ids = {item["id"] for item in registry["invariants"]}
 
     doctrine_ids = {
@@ -48,8 +48,8 @@ def test_doctrine_and_article_invariants_exist_in_registry() -> None:
 
 
 def test_doctrine_failure_classes_are_defined_in_failure_taxonomy() -> None:
-    doctrine_map = _load_json("00-constitution/doctrine-to-invariant.map.json")
-    taxonomy_md = (REPO_ROOT / "projects/08-evaluation/failure_taxonomy.md").read_text(
+    doctrine_map = _load_json("governance/constitution/core/doctrine-to-invariant.map.json")
+    taxonomy_md = (REPO_ROOT / "projects/evaluation/failure_taxonomy.md").read_text(
         encoding="utf-8"
     )
     known_failure_classes = set(re.findall(r"^## (F\d+):", taxonomy_md, flags=re.MULTILINE))
@@ -65,7 +65,7 @@ def test_doctrine_failure_classes_are_defined_in_failure_taxonomy() -> None:
 
 
 def test_enforcement_module_hooks_point_to_existing_paths() -> None:
-    enforcement_map = _load_json("03-enforcement/enforcement-map.json")
+    enforcement_map = _load_json("governance/enforcement/core/enforcement-map.json")
     for module in enforcement_map["modules"]:
         hook = module.get("enforcement_hook")
         assert isinstance(hook, str) and hook.strip()
@@ -73,14 +73,14 @@ def test_enforcement_module_hooks_point_to_existing_paths() -> None:
 
 
 def test_risk_bindings_cover_all_registry_invariants() -> None:
-    registry = _load_json("00-constitution/invariant-registry.json")
-    enforcement_map = _load_json("03-enforcement/enforcement-map.json")
+    registry = _load_json("governance/constitution/core/invariant-registry.json")
+    enforcement_map = _load_json("governance/enforcement/core/enforcement-map.json")
     registry_ids = {item["id"] for item in registry["invariants"]}
     risk_binding_ids = set(enforcement_map["invariant_risk_bindings"].keys())
     assert registry_ids.issubset(risk_binding_ids)
 
 
 def test_invariant_39_binding_targets_governance_chain_verifier() -> None:
-    enforcement_map = _load_json("03-enforcement/enforcement-map.json")
+    enforcement_map = _load_json("governance/enforcement/core/enforcement-map.json")
     hook = enforcement_map["invariant_risk_bindings"]["INVARIANT_39"]["verification_hook"]
     assert "verify_governance_chain.py" in hook

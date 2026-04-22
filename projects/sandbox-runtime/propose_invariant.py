@@ -2,7 +2,7 @@
 """
 R&D reinforcement loop: propose a draft invariant for the Constitutional Architect.
 
-Writes a markdown file under ``03-enforcement/drafts/`` at the TLC repository root.
+Writes a markdown file under ``governance/enforcement/core/drafts/`` at the TLC repository root.
 """
 
 from __future__ import annotations
@@ -48,7 +48,7 @@ def main() -> None:
     args = p.parse_args()
 
     root = discover_tlc_root()
-    drafts = root / "03-enforcement" / "drafts"
+    drafts = root / "governance" / "enforcement" / "core" / "drafts"
     drafts.mkdir(parents=True, exist_ok=True)
 
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")

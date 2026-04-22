@@ -48,20 +48,20 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 DEFAULT_CONFIG: Dict[str, Any] = {
     "project_family": "ConsentChain",
     "tlc": {
-        "project_folder": "04-consentchain",
+        "project_folder": "projects/consentchain-pack/core",
         "projects_folder": "projects",
         "required_files": [
-            "04-consentchain/CLAUDE.md",
-            "04-consentchain/BUILD_CONTRACT.md",
-            "04-consentchain/ARCHITECTURE.md",
-            "04-consentchain/REPO_TOPOLOGY.md",
-            "04-consentchain/COMPONENT_REGISTRY.json",
-            "04-consentchain/CRYPTO_SPEC.md",
-            "04-consentchain/THREAT_MODEL.md",
-            "04-consentchain/EMPIRICAL_SAFETY.md",
-            "04-consentchain/EVAL_PLAN.md",
-            "04-consentchain/VERIFICATION.md",
-            "04-consentchain/REPO_MAP.json",
+            "projects/consentchain-pack/core/CLAUDE.md",
+            "projects/consentchain-pack/core/BUILD_CONTRACT.md",
+            "projects/consentchain-pack/core/ARCHITECTURE.md",
+            "projects/consentchain-pack/core/REPO_TOPOLOGY.md",
+            "projects/consentchain-pack/core/COMPONENT_REGISTRY.json",
+            "projects/consentchain-pack/core/CRYPTO_SPEC.md",
+            "projects/consentchain-pack/core/THREAT_MODEL.md",
+            "projects/consentchain-pack/core/EMPIRICAL_SAFETY.md",
+            "projects/consentchain-pack/core/EVAL_PLAN.md",
+            "projects/consentchain-pack/core/VERIFICATION.md",
+            "projects/consentchain-pack/core/REPO_MAP.json",
         ],
     },
     "repos": [
@@ -128,11 +128,11 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         "require_component_registry_entries": True,
         "require_references": [
             {
-                "file": "04-consentchain/REPO_MAP.json",
+                "file": "projects/consentchain-pack/core/REPO_MAP.json",
                 "must_include_keys": ["consentchain", "consent-gateway-auth0"],
             },
             {
-                "file": "04-consentchain/COMPONENT_REGISTRY.json",
+                "file": "projects/consentchain-pack/core/COMPONENT_REGISTRY.json",
                 "must_include_keys": ["consentchain", "consent-gateway-auth0"],
             },
         ],

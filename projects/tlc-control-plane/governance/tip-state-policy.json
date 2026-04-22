@@ -34,8 +34,8 @@
     "STATUS.md",
     "scripts/render_status_surface.py",
     "verification/closed-epistemics-open-interfaces-policy.json",
-    "00-constitution/invariant-registry.json",
-    "03-enforcement/enforcement-map.json"
+    "governance/constitution/core/invariant-registry.json",
+    "governance/enforcement/core/enforcement-map.json"
   ],
   "protected_surface_globs": ["verification/*.schema.json"],
   "qualifying_remote_run": {

@@ -27,7 +27,7 @@ TRINITY_FILES = [
 ]
 TRINITY_HASHES_LOG = "verification/crsp_CRSP-001_log.json"
 DEFAULT_EVAL_EVIDENCE_SCHEMA = "projects/c-rsp/schemas/evidence_schema.json"
-DEFAULT_EVAL_EVIDENCE_DIR = "projects/08-evaluation/verification"
+DEFAULT_EVAL_EVIDENCE_DIR = "projects/evaluation/verification"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WRITE_TOOLS = {"write_file", "edit_file", "str_replace"}
 READ_ONLY_TOOLS = {"read_file"}

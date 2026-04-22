@@ -72,7 +72,7 @@
     },
     {
       "id": "c_rsp_institutionalization",
-      "constitutional_reference": "00-constitution/doctrine-to-invariant.map.json",
+      "constitutional_reference": "governance/constitution/core/doctrine-to-invariant.map.json",
       "invariant_ids": [
         "INVARIANT_22",
         "INVARIANT_23",

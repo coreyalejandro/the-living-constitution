@@ -10,7 +10,7 @@
       "MASTER_PROJECT_INVENTORY.json",
       "verification/ci-remote-evidence/record.json",
       "verification/regression-ledger/ledger.json",
-      "00-constitution/invariant-registry.json"
+      "governance/constitution/core/invariant-registry.json"
     ],
     "rule": "No repository file other than STATUS.json may assert authoritative current repo status; other documents may summarize or link but must not contradict STATUS.json + inventory + committed evidence."
   },

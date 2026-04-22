@@ -43,7 +43,13 @@ def test_evidence_ledger_constitution_hash_matches_file_digest() -> None:
 
 
 def test_taxonomy_registry_has_invariants_and_expected_shape() -> None:
-    registry_path = REPO_ROOT / "00-constitution" / "invariant-registry.json"
+    registry_path = (
+        REPO_ROOT
+        / "governance"
+        / "constitution"
+        / "core"
+        / "invariant-registry.json"
+    )
     payload = json.loads(registry_path.read_text(encoding="utf-8"))
     assert payload["schema_version"] == "1.0.0"
     invariants = payload.get("invariants")

@@ -19,11 +19,11 @@
 
 The satellite instance must define or generate all of the following:
 
-- `00-constitution/invariant-registry.json`
-- `00-constitution/doctrine-to-invariant.map.json`
-- `00-constitution/invariants/F1–F5.md`
-- `03-enforcement/enforcement-map.json`
-- `02-agents/agent-capabilities.json`
+- `governance/constitution/core/invariant-registry.json`
+- `governance/constitution/core/doctrine-to-invariant.map.json`
+- `governance/constitution/core/invariants/F1–F5.md`
+- `governance/enforcement/core/enforcement-map.json`
+- `governance/agents/core/agent-capabilities.json`
 - `verification/evidence-ledger.schema.json`
 - `verification/evidence-ledger/seed.json`
 - `verification/governance-verification.template.json`

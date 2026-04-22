@@ -122,8 +122,8 @@ Guardian Kernel build. They are pre-existing conditions in the Commonwealth.
 - That the five missing implementation paths have been resolved
 - That the preflight script `./scripts/verify_crsp_template_bundle.sh` has
   been executed (it may not yet exist)
-- That `00-constitution/invariant-registry.json` and
-  `03-enforcement/enforcement-map.json` are synchronized with this contract's
+- That `governance/constitution/core/invariant-registry.json` and
+  `governance/enforcement/core/enforcement-map.json` are synchronized with this contract's
   invariant list
 
 ---
@@ -135,7 +135,7 @@ Guardian Kernel build. They are pre-existing conditions in the Commonwealth.
 2. **Run preflight:** `./scripts/verify_crsp_template_bundle.sh`
 3. **Verify each acceptance criterion** (AC-001 through AC-008) in order
 4. **Advance contract to Active** with human sign-off once all AC pass
-5. **Cross-reference invariant registry:** confirm `00-constitution/invariant-registry.json`
+5. **Cross-reference invariant registry:** confirm `governance/constitution/core/invariant-registry.json`
    lists all 11 invariants from this contract
 
 ---

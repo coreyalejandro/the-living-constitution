@@ -257,7 +257,7 @@
           "step": 2,
           "id": "OP-INVARIANT-LOAD",
           "name": "Invariant Registry Load",
-          "description": "Load invariant definitions from the invariants section of this contract and from 00-constitution/invariant-registry.json if present.",
+          "description": "Load invariant definitions from the invariants section of this contract and from governance/constitution/core/invariant-registry.json if present.",
           "halt_condition": "Invariant registry unreadable or empty",
           "success_condition": "Minimum 7 constitutional invariants registered in enforcement engine"
         },
@@ -609,10 +609,10 @@
         "functional_status_definition": "The actual runtime state of the Guardian enforcement system"
       },
       "governance_artifact_chain": {
-        "invariant_registry": "00-constitution/invariant-registry.json",
-        "doctrine_map": "00-constitution/doctrine-to-invariant.map.json",
-        "enforcement_hooks_map": "03-enforcement/enforcement-map.json",
-        "agent_capabilities": "02-agents/agent-capabilities.json",
+        "invariant_registry": "governance/constitution/core/invariant-registry.json",
+        "doctrine_map": "governance/constitution/core/doctrine-to-invariant.map.json",
+        "enforcement_hooks_map": "governance/enforcement/core/enforcement-map.json",
+        "agent_capabilities": "governance/agents/core/agent-capabilities.json",
         "evidence_ledger_schema": "verification/evidence-ledger.schema.json",
         "evidence_ledger_seed": "verification/evidence-ledger/seed.json"
       }

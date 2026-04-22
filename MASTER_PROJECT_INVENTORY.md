@@ -1,6 +1,6 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-04-13T07:51:47Z  
+**Generated (UTC):** 2026-04-22T16:16:17Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (census + governance manifest). **PASS 10A current operational status:** canonical `STATUS.json` (rendered mirror `STATUS.md`); regenerate with `python3 scripts/render_status_surface.py --root .`
 
@@ -10,7 +10,7 @@
 
 **PASS 6 closure (historical):** Qualifying remote runs `23748772543` (code commit `5e13e09`) and `23749268730` (evidence commit `a0d548f`) both satisfy INVARIANT_31. `record.json` points at the latest green run `23749268730` / `a0d548f`. Regression ledger rows record `tip_state_truth` for those runs. **PASS 7:** `ci_provenance` on a development branch tip stays `tip_pending` without implying the last green run is false; checkout the tag or detached anchor to assert inventory `tip_verified` (INVARIANT_37).
 
-**Registry path migration (ConsentChain):** `04-consentchain/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
+**Registry path migration (ConsentChain):** `projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md` — also referenced as `meta.registry_path_migration_ref` in the JSON. Proof (abbreviated):
 
 | Surface | Prior | Current |
 | ------- | ----- | ------- |
@@ -21,27 +21,33 @@ This inventory records what was **verified on disk or in cited files** at genera
 
 ---
 
-## 1. TLC `projects/` overlay (21 slugs)
+## 1. TLC `projects/` overlay (27 slugs)
 
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
 | ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
-| 08-evaluation | no | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation` | yes |
+| adapters | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/adapters` | yes |
 | backboardai-fde | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde` | yes |
 | buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` | yes |
 | c-rsp | no | yes | *none in contract* | n/a |
 | consent-gateway-auth0 | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consent-gateway-auth0` | yes |
 | consentchain | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` | yes |
+| consentchain-pack | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain-pack` | yes |
 | document-system | no | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/document-system` | yes |
 | empirical-guard | yes | yes | `/Users/coreyalejandro/Projects/empirical-guard` | no |
 | epistemic-guard | yes | yes | `/Users/coreyalejandro/Projects/epistemic-guard` | no |
-| evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/08-evaluation` | yes |
+| evaluation | no | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation` | yes |
+| evaluation-pack | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation-pack` | yes |
+| evidence-observatory | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation` | yes |
 | frostbyte-etl | no | yes | `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
 | governance | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/governance` | yes |
 | human-guard | no | yes | `/Users/coreyalejandro/Projects/human-guard` | no |
+| human-safety | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/human-safety` | yes |
 | im-just-a-build | yes | yes | `/Users/coreyalejandro/Projects/im-just-a-build` | yes |
+| madmall | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/madmall` | yes |
 | proactive | yes | yes | `/Users/coreyalejandro/Projects/proactive-gitlab-agent/` | yes |
+| public-profiles | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/public-profiles` | yes |
 | sandbox-runtime | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app` | yes |
 | sentinelos | yes | yes | `/Users/coreyalejandro/Projects/sentinelos/` | yes |
 | teaser-video | yes | yes | `/Users/coreyalejandro/Projects/teaser-video` | yes |
@@ -59,7 +65,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 - **human-guard:** Contract references canonical docs under `docs/prompts/...` in a repository **once created**; TLC overlay does **not** yet declare a `## Repo Path` block (config-only path).
 - **epistemic-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/epistemic-guard` (aligned with `config/projects.ts`).
 - **empirical-guard:** TLC overlay declares `## Repo Path` and `CLAUDE.md` **Repo Path** → `/Users/coreyalejandro/Projects/empirical-guard` (aligned with `config/projects.ts`).
-- **evidence-observatory:** Semantic overlay `projects/evidence-observatory/` now delegates to the canonical in-repo implementation at `projects/08-evaluation/`.
+- **evidence-observatory:** Semantic overlay `projects/evidence-observatory/` now delegates to the canonical in-repo implementation at `projects/evaluation/`.
 - **sandbox-runtime / tlc-control-plane:** Dual `PROJECT_TOPOLOGY.json` (integrated + standalone); see inventory `entries[].repo_path_source`.
 - **teaser-video / teaser-video-remotion / im-just-a-build:** Inventory now points to standalone repositories under `/Users/coreyalejandro/Projects/`; TLC copies remain transitional mirrors until remote publication and cleanup complete.
 
@@ -69,8 +75,8 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 
 | Path | Role |
 | --- | --- |
-| `04-consentchain/` | ConsentChain **constitutional pack** (architecture, crypto, maps, etc.). Distinct from `projects/consentchain/` submodule. |
-| `05-madmall/` | MADMall **planning / V&T** documents only. Status docs state **no** implementation repository yet. |
+| `projects/consentchain-pack/core/` | ConsentChain **constitutional pack** (architecture, crypto, maps, etc.). Distinct from `projects/consentchain/` submodule. |
+| `projects/madmall/core/` | MADMall **planning / V&T** documents only. Status docs state **no** implementation repository yet. |
 
 ---
 
@@ -102,7 +108,7 @@ The script is configured for TLC-relative paths including:
 
 - `projects/consentchain` (git submodule)
 - `projects/consent-gateway-auth0` (git submodule)
-- files under `04-consentchain/`
+- files under `projects/consentchain-pack/core/`
 
 `.gitmodules` must list both submodule paths when `require_submodule_entries` is enabled in the script config.
 
@@ -173,10 +179,10 @@ Implementation checkout for EpistemicGuard remains `/Users/coreyalejandro/Projec
 
 | Artifact | Path |
 | -------- | ---- |
-| Invariant registry | `00-constitution/invariant-registry.json` |
-| Doctrine / article → invariant map | `00-constitution/doctrine-to-invariant.map.json` |
-| Enforcement hooks map | `03-enforcement/enforcement-map.json` |
-| Agent capabilities (JSON) | `02-agents/agent-capabilities.json` |
+| Invariant registry | `governance/constitution/core/invariant-registry.json` |
+| Doctrine / article → invariant map | `governance/constitution/core/doctrine-to-invariant.map.json` |
+| Enforcement hooks map | `governance/enforcement/core/enforcement-map.json` |
+| Agent capabilities (JSON) | `governance/agents/core/agent-capabilities.json` |
 | Evidence ledger schema | `verification/evidence-ledger.schema.json` |
 | Evidence ledger seed | `verification/evidence-ledger/seed.json` |
 | Governance verification template | `verification/governance-verification.template.json` |
@@ -200,7 +206,7 @@ Exit non-zero on drift between disk and `MASTER_PROJECT_INVENTORY.json` (see scr
 
 ## V&T
 
-**Exists (verified present):** `MASTER_PROJECT_INVENTORY.md`, `MASTER_PROJECT_INVENTORY.json`, `scripts/verify_project_topology.py`, `scripts/verify_governance_chain.py`, `governance_artifacts` and paths in section 9; TLC `projects/` thirteen slugs; `04-consentchain/`, `05-madmall/`; cited sibling probes as stated.  
+**Exists (verified present):** `MASTER_PROJECT_INVENTORY.md`, `MASTER_PROJECT_INVENTORY.json`, `scripts/verify_project_topology.py`, `scripts/verify_governance_chain.py`, `governance_artifacts` and paths in section 9; TLC `projects/` thirteen slugs; `projects/consentchain-pack/core/`, `projects/madmall/core/`; cited sibling probes as stated.  
 **Verified against:** `python3 scripts/verify_governance_chain.py --root .`; filesystem listings and cited config/contract sources.  
 **Not claimed:** Full JSON Schema validation of every ledger field (stdlib checks `evidence_state` enum only); future repo layouts; equivalence of similarly named folders; completeness of every doc under each overlay.  
 **Functional status:** Topology and governance verifiers exit non-zero on drift; governance verifier enforces inventory JSON/MD timestamp sync (INVARIANT_04) and canonical governance file presence.

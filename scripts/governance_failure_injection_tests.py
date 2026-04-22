@@ -112,7 +112,7 @@ def case_missing_artifact_dir() -> Tuple[str, Callable[[Path], int]]:
 def case_broken_doctrine_invariant_link() -> Tuple[str, Callable[[Path], int]]:
     def _fn(tmp: Path) -> int:
         _clone_workspace(tmp)
-        doc_path = tmp / "00-constitution" / "doctrine-to-invariant.map.json"
+        doc_path = tmp / "governance" / "constitution" / "core" / "doctrine-to-invariant.map.json"
         doc = json.loads(doc_path.read_text(encoding="utf-8"))
         doc["doctrines"][0]["invariant_ids"] = ["INVARIANT_NONEXISTENT"]
         doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
@@ -124,7 +124,7 @@ def case_broken_doctrine_invariant_link() -> Tuple[str, Callable[[Path], int]]:
 def case_broken_invariant_enforcement_link() -> Tuple[str, Callable[[Path], int]]:
     def _fn(tmp: Path) -> int:
         _clone_workspace(tmp)
-        enf_path = tmp / "03-enforcement" / "enforcement-map.json"
+        enf_path = tmp / "governance" / "enforcement" / "core" / "enforcement-map.json"
         enf = json.loads(enf_path.read_text(encoding="utf-8"))
         for m in enf.get("modules", []):
             if m.get("id") == "tlc_governance_chain":

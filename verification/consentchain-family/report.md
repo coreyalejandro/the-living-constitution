@@ -27,79 +27,79 @@
 
 ### required-file — PASS
 - **Repo:** `TLC`
-- **Path:** `04-consentchain/CLAUDE.md`
+- **Path:** `projects/consentchain-pack/core/CLAUDE.md`
 
-> Found required file: 04-consentchain/CLAUDE.md
-
-### required-file — PASS
-- **Repo:** `TLC`
-- **Path:** `04-consentchain/BUILD_CONTRACT.md`
-
-> Found required file: 04-consentchain/BUILD_CONTRACT.md
+> Found required file: projects/consentchain-pack/core/CLAUDE.md
 
 ### required-file — PASS
 - **Repo:** `TLC`
-- **Path:** `04-consentchain/ARCHITECTURE.md`
+- **Path:** `projects/consentchain-pack/core/BUILD_CONTRACT.md`
 
-> Found required file: 04-consentchain/ARCHITECTURE.md
-
-### required-file — PASS
-- **Repo:** `TLC`
-- **Path:** `04-consentchain/REPO_TOPOLOGY.md`
-
-> Found required file: 04-consentchain/REPO_TOPOLOGY.md
+> Found required file: projects/consentchain-pack/core/BUILD_CONTRACT.md
 
 ### required-file — PASS
 - **Repo:** `TLC`
-- **Path:** `04-consentchain/COMPONENT_REGISTRY.json`
+- **Path:** `projects/consentchain-pack/core/ARCHITECTURE.md`
 
-> Found required file: 04-consentchain/COMPONENT_REGISTRY.json
-
-### required-file — PASS
-- **Repo:** `TLC`
-- **Path:** `04-consentchain/CRYPTO_SPEC.md`
-
-> Found required file: 04-consentchain/CRYPTO_SPEC.md
+> Found required file: projects/consentchain-pack/core/ARCHITECTURE.md
 
 ### required-file — PASS
 - **Repo:** `TLC`
-- **Path:** `04-consentchain/THREAT_MODEL.md`
+- **Path:** `projects/consentchain-pack/core/REPO_TOPOLOGY.md`
 
-> Found required file: 04-consentchain/THREAT_MODEL.md
-
-### required-file — PASS
-- **Repo:** `TLC`
-- **Path:** `04-consentchain/EMPIRICAL_SAFETY.md`
-
-> Found required file: 04-consentchain/EMPIRICAL_SAFETY.md
+> Found required file: projects/consentchain-pack/core/REPO_TOPOLOGY.md
 
 ### required-file — PASS
 - **Repo:** `TLC`
-- **Path:** `04-consentchain/EVAL_PLAN.md`
+- **Path:** `projects/consentchain-pack/core/COMPONENT_REGISTRY.json`
 
-> Found required file: 04-consentchain/EVAL_PLAN.md
-
-### required-file — PASS
-- **Repo:** `TLC`
-- **Path:** `04-consentchain/VERIFICATION.md`
-
-> Found required file: 04-consentchain/VERIFICATION.md
+> Found required file: projects/consentchain-pack/core/COMPONENT_REGISTRY.json
 
 ### required-file — PASS
 - **Repo:** `TLC`
-- **Path:** `04-consentchain/REPO_MAP.json`
+- **Path:** `projects/consentchain-pack/core/CRYPTO_SPEC.md`
 
-> Found required file: 04-consentchain/REPO_MAP.json
+> Found required file: projects/consentchain-pack/core/CRYPTO_SPEC.md
+
+### required-file — PASS
+- **Repo:** `TLC`
+- **Path:** `projects/consentchain-pack/core/THREAT_MODEL.md`
+
+> Found required file: projects/consentchain-pack/core/THREAT_MODEL.md
+
+### required-file — PASS
+- **Repo:** `TLC`
+- **Path:** `projects/consentchain-pack/core/EMPIRICAL_SAFETY.md`
+
+> Found required file: projects/consentchain-pack/core/EMPIRICAL_SAFETY.md
+
+### required-file — PASS
+- **Repo:** `TLC`
+- **Path:** `projects/consentchain-pack/core/EVAL_PLAN.md`
+
+> Found required file: projects/consentchain-pack/core/EVAL_PLAN.md
+
+### required-file — PASS
+- **Repo:** `TLC`
+- **Path:** `projects/consentchain-pack/core/VERIFICATION.md`
+
+> Found required file: projects/consentchain-pack/core/VERIFICATION.md
+
+### required-file — PASS
+- **Repo:** `TLC`
+- **Path:** `projects/consentchain-pack/core/REPO_MAP.json`
+
+> Found required file: projects/consentchain-pack/core/REPO_MAP.json
 
 ### cross-repo-reference — PASS
-- **Path:** `04-consentchain/REPO_MAP.json`
+- **Path:** `projects/consentchain-pack/core/REPO_MAP.json`
 
-> 04-consentchain/REPO_MAP.json includes required entries.
+> projects/consentchain-pack/core/REPO_MAP.json includes required entries.
 
 ### cross-repo-reference — PASS
-- **Path:** `04-consentchain/COMPONENT_REGISTRY.json`
+- **Path:** `projects/consentchain-pack/core/COMPONENT_REGISTRY.json`
 
-> 04-consentchain/COMPONENT_REGISTRY.json includes required entries.
+> projects/consentchain-pack/core/COMPONENT_REGISTRY.json includes required entries.
 
 ### submodule-check — PASS
 - **Path:** `.gitmodules`

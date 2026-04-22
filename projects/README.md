@@ -16,7 +16,7 @@ repository (including git submodules vendored at this path):
 | --- | --- |
 | `consent-gateway-auth0` | Submodule with app runtime (`app/`, `package.json`) |
 | `consentchain` | Submodule with app runtime (`app/`, `package.json`) |
-| `08-evaluation` | In-repo Python evaluation runtime (`tlc_evals/`, `pyproject.toml`) |
+| `evaluation` | In-repo Python evaluation runtime (`tlc_evals/`, `pyproject.toml`) |
 | `teaser-video-remotion` | Transitional in-repo runtime mirror (`src/`, `package.json`) |
 | `sandbox-runtime` | In-repo Python runtime (`src/`) |
 | `tlc-control-plane` | In-repo runtime source (`src/`) |
@@ -32,7 +32,7 @@ and inventory records.
 `human-guard`, `proactive`, `sentinelos`, `teaser-video`, `uicare`.
 
 `evidence-observatory` remains the semantic governance overlay for the canonical
-implementation now housed at `projects/08-evaluation/`.
+implementation now housed at `projects/evaluation/`.
 
 `teaser-video-remotion` is still listed above because TLC currently retains a
 live runtime mirror while Series C extraction finalization is in progress.

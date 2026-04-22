@@ -703,7 +703,7 @@ TLC itself must maintain:
 | Sprint tracker | `tasks/todo.md` | Current work items |
 | Verification matrix | `verification/MATRIX.md` | Claim → evidence mapping |
 | SOP Library | `docs/sops/` | 15 SOPs (full text, deferred) |
-| Governance articles | `00-constitution/` | Article-level specifications |
+| Governance articles | `governance/constitution/core/` | Article-level specifications |
 | Subsystem contracts | `projects/[id]/BUILD_CONTRACT.md` | Per-project governance |
 
 ---

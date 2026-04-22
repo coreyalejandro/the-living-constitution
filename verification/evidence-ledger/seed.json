@@ -7,7 +7,7 @@
       "subject": "Canonical governance invariant registry present and parseable",
       "evidence_state": "verified",
       "evidence_ref": [
-        "00-constitution/invariant-registry.json",
+        "governance/constitution/core/invariant-registry.json",
         "scripts/verify_governance_chain.py"
       ],
       "verification_output": "JSON parse + registry field checks",
@@ -19,7 +19,7 @@
       "subject": "Doctrine/article to invariant mapping covers binding doctrines",
       "evidence_state": "verified",
       "evidence_ref": [
-        "00-constitution/doctrine-to-invariant.map.json",
+        "governance/constitution/core/doctrine-to-invariant.map.json",
         "scripts/verify_governance_chain.py"
       ],
       "verification_output": "Doctrine entries non-empty invariant_ids",
@@ -103,8 +103,8 @@
       "evidence_state": "verified",
       "evidence_ref": [
         "scripts/verify_governance_chain.py",
-        "00-constitution/doctrine-to-invariant.map.json",
-        "03-enforcement/enforcement-map.json"
+        "governance/constitution/core/doctrine-to-invariant.map.json",
+        "governance/enforcement/core/enforcement-map.json"
       ],
       "verification_output": "Full-chain checks in verify_governance_chain.py",
       "related_invariant_ids": ["INVARIANT_14"],

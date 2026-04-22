@@ -28,6 +28,6 @@ The system enforces five constitutional roles:
 - **Record** — stores evidence (ledgers, remote CI records, verification run artifacts, family reports).
 - **Interface** — exposes declared truth (`STATUS.json` / `STATUS.md`, `MATRIX.md`, this card).
 
-No component may define, execute, verify, and declare truth simultaneously. Violations fail verification (`INVARIANT_45` through `INVARIANT_50`). The formal mapping lives in `00-constitution/role-registry.json`; static leakage checks run in `scripts/verify_governance_chain.py`.
+No component may define, execute, verify, and declare truth simultaneously. Violations fail verification (`INVARIANT_45` through `INVARIANT_50`). The formal mapping lives in `governance/constitution/core/role-registry.json`; static leakage checks run in `scripts/verify_governance_chain.py`.
 
 **Contract:** C-RSP institutionalization + tip-state + PASS 7 branch policy + closed/open epistemic boundary + PASS 10B separation of powers v1.7.0.

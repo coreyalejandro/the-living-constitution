@@ -658,8 +658,8 @@ Mandatory report shape: Use `projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md` — Title 
 
 V&T constitutional basis:
 
-* Article I — Right to Truth (`00-constitution/articles.md`): evidence-bound claims; the V&T block enforces this.
-* Article III — Verification Before Done (`00-constitution/articles.md`): completion requires proof against acceptance criteria.
+* Article I — Right to Truth (`governance/constitution/core/articles.md`): evidence-bound claims; the V&T block enforces this.
+* Article III — Verification Before Done (`governance/constitution/core/articles.md`): completion requires proof against acceptance criteria.
 
 All execution summaries must end with:
 

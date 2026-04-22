@@ -348,10 +348,10 @@ git checkout HEAD -- THE_LIVING_CONSTITUTION.md
 
 **Governance artifact chain:**
 
-- Invariant registry: `00-constitution/invariant-registry.json`
-- Doctrine map: `00-constitution/doctrine-to-invariant.map.json`
-- Enforcement hooks map: `03-enforcement/enforcement-map.json`
-- Agent capabilities: `02-agents/agent-capabilities.json`
+- Invariant registry: `governance/constitution/core/invariant-registry.json`
+- Doctrine map: `governance/constitution/core/doctrine-to-invariant.map.json`
+- Enforcement hooks map: `governance/enforcement/core/enforcement-map.json`
+- Agent capabilities: `governance/agents/core/agent-capabilities.json`
 
 ---
 

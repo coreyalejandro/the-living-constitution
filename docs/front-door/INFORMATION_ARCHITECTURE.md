@@ -12,7 +12,7 @@
 | --- | --- | --- |
 | Operational status | `STATUS.json` | Single authoritative current-status artifact (PASS 10A). |
 | Human mirror | `STATUS.md` | Generated only via `scripts/render_status_surface.py`. |
-| Constitutional law | `THE_LIVING_CONSTITUTION.md`, `00-constitution/` | Not altered by front-door work. |
+| Constitutional law | `THE_LIVING_CONSTITUTION.md`, `governance/constitution/core/` | Not altered by front-door work. |
 | This IA document | Descriptive | Describes intended UX and routes; does not override JSON. |
 
 ## Route map (control-plane app)

@@ -3,7 +3,7 @@
   "map_id": "tlc-doctrine-to-invariant",
   "source_prose": [
     "THE_LIVING_CONSTITUTION.md",
-    "00-constitution/constitution.md"
+    "governance/constitution/core/constitution.md"
   ],
   "doctrines": [
     {

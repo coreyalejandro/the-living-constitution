@@ -20,7 +20,7 @@ Reusable package extracted from **The Living Constitution** for satellite reposi
 
 ## Layout
 
-Satellite repos use the same relative paths as TLC by default: `00-constitution/`, `02-agents/`, `03-enforcement/`, `verification/`, `MASTER_PROJECT_INVENTORY.json`, `MASTER_PROJECT_INVENTORY.md`.
+Satellite repos use the same relative paths as TLC by default: `governance/constitution/core/`, `governance/agents/core/`, `governance/enforcement/core/`, `verification/`, `MASTER_PROJECT_INVENTORY.json`, `MASTER_PROJECT_INVENTORY.md`.
 
 ## Contract
 
