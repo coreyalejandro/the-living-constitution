@@ -5,8 +5,8 @@ status: "Active"
 canonical_path: "README.md"
 next_file: "docs/instructions/FIRST_RUN.md"
 last_verified:
-  commit: "2b5c6ac"
-  timestamp: "2026-04-22T16:40:40Z"
+  commit: "096f144"
+  timestamp: "2026-04-22T17:09:59Z"
 ---
 
 # The Living Constitution

@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/operations/VERIFY.md"
 next_file: "docs/evidence/EVIDENCE_MAP.md"
 last_verified:
-  commit: "71a0913"
-  timestamp: "2026-04-06T12:00:00Z"
+  commit: "096f144"
+  timestamp: "2026-04-22T17:09:59Z"
 metadata:
   est_time_minutes: 25
   cognitive_load: "High"
@@ -51,7 +51,7 @@ python3 scripts/render_status_surface.py --root .
 
 > Command exits 0.
 
-**Failure path:** Open `STATUS.json` schema hints in repo root docs; if blocked, `docs/HELP.md`.
+**Failure path:** If `STATUS.json` does not exist yet, run Step 1 first. If Step 1 still fails, open schema hints in repo root docs; if blocked, `docs/HELP.md`.
 
 ---
 
@@ -108,6 +108,12 @@ python3 scripts/verify_governance_chain.py --root .
 > Exit code 0.
 
 **Failure path:** Read `verification/runs/*-governance.json` for structured failures.
+
+---
+
+## Emergency override path
+
+Use `docs/operations/EMERGENCY_MAIN_OVERRIDE.md` only when protected `main` rules prevent incident response timelines and normal PR flow cannot satisfy recovery time.
 
 ---
 
