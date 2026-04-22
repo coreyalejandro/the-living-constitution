@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "governance/GOVERNANCE_BINDING.md"
 next_file: "governance/README.md"
 last_verified:
-  commit: "af7ec64"
-  timestamp: "2026-04-22T17:18:24Z"
+  commit: "7f42c11"
+  timestamp: "2026-04-22T17:54:13Z"
 metadata:
   est_time_minutes: 5
   cognitive_load: "Low"
