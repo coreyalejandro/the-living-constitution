@@ -39,6 +39,8 @@ TLC is the governance overlay for the Safety Systems Design Commonwealth. This f
 | --- | --- |
 | Understand repo journeys and indexes | `docs/INDEX.md` |
 | Run verification | `docs/operations/VERIFY.md` |
+| Review the governance-v2 refactor plan | `governance/tlc-governance-v2.refactor.json` |
+| Verify governance-v2 refactor integrity | `scripts/verify_tlc_governance_v2.py` |
 | Read the full Tier-2 instance (all sections) | `projects/document-system/BUILD_CONTRACT.instance.md` |
 | See binding rules only | `governance/GOVERNANCE_BINDING.md` |
 | Get unstuck | `docs/HELP.md` |
@@ -50,3 +52,5 @@ TLC is the governance overlay for the Safety Systems Design Commonwealth. This f
 | `governance/BUILD_CONTRACT.instance.md` | Present |
 | `governance/governance-template.lock.json` | Present |
 | `governance/GOVERNANCE_BINDING.md` | Present |
+| `governance/tlc-governance-v2.refactor.json` | Present |
+| `python3 scripts/verify_tlc_governance_v2.py --root .` | Exit 0 |
