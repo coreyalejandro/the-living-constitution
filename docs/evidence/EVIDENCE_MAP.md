@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/evidence/EVIDENCE_MAP.md"
 next_file: "docs/operations/VERIFY.md"
 last_verified:
-  commit: "096f144"
-  timestamp: "2026-04-22T17:09:59Z"
+  commit: "af7ec64"
+  timestamp: "2026-04-22T17:18:47Z"
 metadata:
   est_time_minutes: 8
   cognitive_load: "Low"
