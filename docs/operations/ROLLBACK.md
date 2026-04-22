@@ -8,8 +8,8 @@ status: "Active"
 canonical_path: "docs/operations/ROLLBACK.md"
 next_file: "docs/evidence/EVIDENCE_MAP.md"
 last_verified:
-  commit: "71a0913"
-  timestamp: "2026-04-06T12:00:00Z"
+  commit: "096f144"
+  timestamp: "2026-04-22T17:09:59Z"
 metadata:
   est_time_minutes: 15
   cognitive_load: "Medium"
