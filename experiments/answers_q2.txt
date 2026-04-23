@@ -1,0 +1,76 @@
+QUESTION 2: What caused the French Revolution?
+============================================================
+BID ANSWER:
+# What Caused the French Revolution? (Using Backward Instructional Design)
+
+## Step 1: Identify the Audience & Prior Knowledge
+**Who:** High school history students
+**What they know:** Basic facts about monarchy, taxes, and social hierarchy
+
+---
+
+## Step 2: Define the Final Takeaway
+**Students must understand:** The French Revolution resulted from a **perfect storm** of interconnected crises—financial collapse, Enlightenment ideas, social inequality, and weak leadership—that made the existing system unsustainable.
+
+---
+
+## Step 3: Build Backwards from the Takeaway
+
+### **Level 3 (The Takeaway)**
+A system breaks when: demands for change + inability to adapt + loss of faith in leadership = revolution
+
+### **Level 2 (Supporting Pillars)**
+Four major causes worked together:
+
+1. **Financial Crisis** → Government bankruptcy from wars and overspending
+2. **Enlightenment Ideas** → People questioned why absolute monarchy was necessary
+3. **Social Inequality** → Common people paid taxes; nobles and clergy didn't
+4. **Weak Leadership** → King Louis XVI couldn't fix problems or make hard decisions
+
+### **Level 1 (Basic Building Blocks)**
+- **What is absolute monarchy?** One person (the king) has all power
+- **What is the Third Estate?** Commoners who had no political voice
+- **What are taxes?** Money people must give to the government
+- **What is debt?** When you owe more money than you have
+- **What are Enlightenment ideas?** New thoughts that humans have rights and should help govern themselves
+
+---
+
+## The Connection
+Without the financial crisis alone → no revolution. Without Enlightenment ideas alone → people wouldn't imagine alternatives. Without inequality alone → people might accept their role. But **all four together** made the old system impossible to maintain.
+
+============================================================
+COT ANSWER:
+# Chain of Thought Analysis: Causes of the French Revolution
+
+Let me break down the major factors that led to the French Revolution (1789):
+
+## Step 1: Economic Crisis
+- France faced severe debt and financial problems
+- Expensive wars (especially American Revolution support) drained the treasury
+- Famine and poor harvests increased food prices and poverty
+- The tax system was unfair—common people paid most taxes while nobility and clergy were exempt
+
+## Step 2: Social Inequality (The Estate System)
+- Society was divided into three estates: clergy, nobility, and commoners
+- The Third Estate (commoners) had little power despite being the majority
+- Rigid class structure prevented social mobility
+- Growing middle class (bourgeoisie) resented their lack of political influence
+
+## Step 3: Political Mismanagement
+- King Louis XVI was weak and indecisive
+- Government was inefficient and corrupt
+- Enlightenment ideas about democracy and individual rights challenged absolute monarchy
+- People questioned the divine right of kings
+
+## Step 4: Food Shortages and Starvation
+- Bread prices skyrocketed
+- Mass hunger created desperation among the poor
+- This sparked riots and unrest
+
+## Step 5: Inspiration from Other Revolutions
+- American Revolution (1776) showed that revolution could succeed
+- Enlightenment philosophers (Voltaire, Rousseau) inspired revolutionary thinking
+
+## Final Answer:
+The French Revolution was caused by a combination of **economic crisis, unfair taxation, rigid social inequality, weak leadership, food shortages, and Enlightenment ideals**. These factors together created widespread discontent that exploded into revolution in 1789.

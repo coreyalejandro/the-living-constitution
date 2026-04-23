@@ -106,7 +106,7 @@ jobs:
         run: |
           echo "=== Checking project folders ==="
           FAIL=0
-          for project in sentinelos proactive consentchain uicare teaser-video; do
+          for project in sentinelos proactive consentchain uicare teaser-video-remotion; do
             if [ ! -f "projects/$project/CLAUDE.md" ]; then
               echo "FAIL: projects/$project/CLAUDE.md missing"
               FAIL=1
