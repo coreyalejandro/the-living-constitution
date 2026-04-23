@@ -12,7 +12,7 @@
 |-------|------|--------------|--------------|-----------------|
 | P0 | Documentation package | All `docs/front-door/*.md`, diagram sources | Baseline files readable; no constitutional edits | Missing required file paths |
 | P1 | Control-plane scaffold | `apps/tlc-control-plane/` minimal App Router UI | Node and pnpm available; no repo-wide dependency conflict | Unresolvable scaffold deps: docs-only completion |
-| P2 | Teaser video | `projects/teaser-video/` per contract | P0 narrative stable | Contract blockers in teaser project |
+| P2 | Teaser video | `projects/teaser-video-remotion/` per contract | P0 narrative stable | Contract blockers in teaser project |
 | P3 | Integration | Live verification and graph bindings | P1 UI patterns, CI agreements | Secrets or policy gaps: halt until resolved |
 
 ## Dependencies

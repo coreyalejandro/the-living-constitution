@@ -1,6 +1,6 @@
 # Master Project Inventory (Phase 0)
 
-**Generated (UTC):** 2026-04-22T16:16:17Z  
+**Generated (UTC):** 2026-04-22T20:19:37Z  
 **TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (census + governance manifest). **PASS 10A current operational status:** canonical `STATUS.json` (rendered mirror `STATUS.md`); regenerate with `python3 scripts/render_status_surface.py --root .`
 
@@ -21,13 +21,12 @@ This inventory records what was **verified on disk or in cited files** at genera
 
 ---
 
-## 1. TLC `projects/` overlay (27 slugs)
+## 1. TLC `projects/` overlay (23 slugs)
 
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
 | Slug | `CLAUDE.md` | `BUILD_CONTRACT.md` | Implementation path (primary source) | Exists on disk (probe) |
 | ---- | ----------- | ------------------- | ------------------------------------ | ----------------------- |
-| adapters | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/adapters` | yes |
 | backboardai-fde | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde` | yes |
 | buildlattice | yes | yes | `/Users/coreyalejandro/Projects/buildlattice` | yes |
 | c-rsp | no | yes | *none in contract* | n/a |
@@ -43,14 +42,11 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | frostbyte-etl | no | yes | `/Users/coreyalejandro/Projects/frostbyte-etl` | yes |
 | governance | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/governance` | yes |
 | human-guard | no | yes | `/Users/coreyalejandro/Projects/human-guard` | no |
-| human-safety | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/human-safety` | yes |
 | im-just-a-build | yes | yes | `/Users/coreyalejandro/Projects/im-just-a-build` | yes |
 | madmall | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/madmall` | yes |
 | proactive | yes | yes | `/Users/coreyalejandro/Projects/proactive-gitlab-agent/` | yes |
-| public-profiles | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/projects/public-profiles` | yes |
 | sandbox-runtime | yes | yes | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app` | yes |
 | sentinelos | yes | yes | `/Users/coreyalejandro/Projects/sentinelos/` | yes |
-| teaser-video | yes | yes | `/Users/coreyalejandro/Projects/teaser-video` | yes |
 | teaser-video-remotion | yes | yes | `/Users/coreyalejandro/Projects/teaser-video-remotion` | yes |
 | tlc-control-plane | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop` | yes |
 | uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system/` | yes |

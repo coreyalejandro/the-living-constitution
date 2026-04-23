@@ -450,5 +450,1032 @@
     ],
     "violated_invariants": [],
     "rationale": "all invariants passed"
+  },
+  {
+    "timestamp": "2026-04-22T19:15:49.417617+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "review_required": false,
+    "review_reasons": []
+  },
+  {
+    "timestamp": "2026-04-22T19:15:49.724239+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ]
+  },
+  {
+    "timestamp": "2026-04-22T19:15:50.026498+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ]
+  },
+  {
+    "timestamp": "2026-04-22T19:19:28.505348+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:28.819337+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:29.129490+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:29.446308+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:29.752264+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:38.680576+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:39.128060+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:39.446133+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:39.744255+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:40.027993+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:19:40.316612+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:52:11.557051+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "semgraph engine unavailable: No module named 'apps'"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:52:51.605003+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-df49ed93ead8.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "apps/tlc-control-plane"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:53:43.141230+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:53:43.234569+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:53:43.325219+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:53:43.426239+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-df49ed93ead8.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "apps/tlc-control-plane"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:53:43.525201+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-b5170777711f.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "src"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:10.645504+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:10.737861+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:10.833114+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:10.949874+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-df49ed93ead8.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "apps/tlc-control-plane"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:11.067689+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-b5170777711f.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "src"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:11.330088+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:11.585600+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:11.855777+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "advisory"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:12.121042+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T19:54:12.381250+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T20:19:48.228845+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T20:19:48.325561+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T20:19:48.422014+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T20:19:48.527288+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-df49ed93ead8.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "apps/tlc-control-plane"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T20:19:48.637806+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-b5170777711f.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "src"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T21:28:20.910782+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T21:28:21.344876+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "FAIL",
+      "error": "ImpactReport artifact missing: /Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/DOES-NOT-EXIST.json"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=FAIL)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T21:28:21.695190+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "FAIL",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "rationale": "blocked: strict semgraph mode requires valid ImpactReport evidence",
+    "semgraph": {
+      "status": "MISSING",
+      "error": "impact_report_evidence not provided"
+    },
+    "semgraph_auto_generated": false,
+    "review_required": true,
+    "review_reasons": [
+      "write tool without valid semgraph ImpactReport evidence (status=MISSING)"
+    ],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T21:28:22.215038+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-df49ed93ead8.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "apps/tlc-control-plane"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
+  },
+  {
+    "timestamp": "2026-04-22T21:28:22.632131+00:00",
+    "operation": "OP-INTERCEPT-LOOP",
+    "decision": "PASS",
+    "agent_id": "builder",
+    "tool_name": "write_file",
+    "invariants_evaluated": [
+      "INVARIANT_ARTICLE_IV_01",
+      "INVARIANT_ARTICLE_III_01",
+      "INVARIANT_READ_ONLY_01",
+      "INVARIANT_SEMGRAPH_EVIDENCE_01"
+    ],
+    "violated_invariants": [],
+    "rationale": "all invariants passed",
+    "semgraph": {
+      "status": "PASS",
+      "artifact": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/runs/ImpactReport-auto-b5170777711f.json",
+      "schema": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/ImpactReport.schema.json",
+      "auto_generated": true,
+      "source_root": "src"
+    },
+    "semgraph_auto_generated": true,
+    "review_required": false,
+    "review_reasons": [],
+    "enforcement_mode": "strict"
   }
 ]

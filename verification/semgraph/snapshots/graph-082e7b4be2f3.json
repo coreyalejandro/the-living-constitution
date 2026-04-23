@@ -1,0 +1,32 @@
+{
+  "edges": {
+    "src/guardian.py": []
+  },
+  "graph_version": "0.2.0",
+  "nodes": [
+    "src/guardian.py"
+  ],
+  "repo_root": "/Users/coreyalejandro/Projects/the-living-constitution",
+  "source_root": "src",
+  "symbols_by_file": {
+    "src/guardian.py": [
+      "function:_coerce_repo_path",
+      "function:verify_impact_report",
+      "class:GuardianState",
+      "function:bootstrap_trinity",
+      "function:log_trinity_bootstrap",
+      "class:GuardianMCP",
+      "method:GuardianMCP.__init__",
+      "method:GuardianMCP.initialize",
+      "method:GuardianMCP.health_check",
+      "function:load_invariants",
+      "function:_append_log",
+      "function:evaluate_invariants",
+      "function:emit_stop",
+      "function:_load_json",
+      "function:verify_evidence",
+      "function:check_eval001_compliance",
+      "function:main"
+    ]
+  }
+}

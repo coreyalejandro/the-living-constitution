@@ -1,0 +1,54 @@
+{
+  "$id": "verification/semgraph/ShadowDrift.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShadowDrift",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version",
+    "snapshot_sha",
+    "policy_sha",
+    "unbound_clusters",
+    "orphan_units",
+    "cross_domain_edges",
+    "severity"
+  ],
+  "properties": {
+    "report_version": { "type": "string" },
+    "snapshot_sha": { "type": "string" },
+    "policy_sha": { "type": "string" },
+    "unbound_clusters": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "orphan_units": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cross_domain_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from_domain", "to_domain", "edge_kind", "count"],
+        "properties": {
+          "from_domain": { "$ref": "#/$defs/safety_domain_id" },
+          "to_domain": { "$ref": "#/$defs/safety_domain_id" },
+          "edge_kind": { "type": "string" },
+          "count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["none", "advisory", "review_required", "halt"]
+    }
+  },
+  "$defs": {
+    "safety_domain_id": {
+      "type": "string",
+      "enum": ["epistemic", "human", "cognitive", "empirical"]
+    }
+  }
+}
+
