@@ -11,7 +11,7 @@
 Build order is explicitly:
 
 1. **UI first** — Establish the TLC control-plane shell and documentation package so identity, IA, and panel semantics exist before dependent media or integrations.  
-2. **Teaser video second** — Produce the Remotion deliverable under `projects/teaser-video/` per its build contract after the front-door UI and docs stabilize the narrative and sequencing language.  
+2. **Teaser video second** — Produce the Remotion deliverable under `projects/teaser-video-remotion/` per its build contract after the front-door UI and docs stabilize the narrative and sequencing language.  
 3. **Product-surface integration third** — Connect live verification feeds, dynamic graphs, and project actions only after the static governance story and teaser asset exist.
 
 ## Rationale
@@ -25,7 +25,7 @@ Build order is explicitly:
 | Phase | Current state | Intended state |
 | --- | --- | --- |
 | UI first | Scaffold and `docs/front-door/` package delivered | Hardened UI with approved data bindings |
-| Teaser video second | Project exists under `projects/teaser-video/` | Completed render aligned to contracts |
+| Teaser video second | Project exists under `projects/teaser-video-remotion/` | Completed render aligned to contracts |
 | Integration third | Not in scope for this contract | Wired streams and graph sources |
 
 ## Verification hook

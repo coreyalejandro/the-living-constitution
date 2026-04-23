@@ -12,6 +12,7 @@ any code is written.
 import argparse
 import hashlib
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from enum import Enum
@@ -29,6 +30,8 @@ TRINITY_HASHES_LOG = "verification/crsp_CRSP-001_log.json"
 DEFAULT_EVAL_EVIDENCE_SCHEMA = "projects/c-rsp/schemas/evidence_schema.json"
 DEFAULT_EVAL_EVIDENCE_DIR = "projects/evaluation/verification"
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 WRITE_TOOLS = {"write_file", "edit_file", "str_replace"}
 READ_ONLY_TOOLS = {"read_file"}
 PROTECTED_FILES = {
@@ -38,6 +41,121 @@ PROTECTED_FILES = {
 }
 VERIFICATION_DIR = REPO_ROOT / "verification"
 LOG_PATH = REPO_ROOT / TRINITY_HASHES_LOG
+SEMGRAPH_IMPACT_SCHEMA = REPO_ROOT / "verification/semgraph/ImpactReport.schema.json"
+
+
+def _coerce_repo_path(raw: str) -> Path:
+    p = Path(raw).expanduser()
+    if p.is_absolute():
+        return p
+    return (REPO_ROOT / p).resolve()
+
+
+def _infer_source_root(target_path: str) -> str:
+    """Infer a reasonable source_root for a target file path.
+
+    - `apps/<name>/...` -> `apps/<name>`
+    - `projects/<name>/...` -> `projects/<name>`
+    - `<top>/...` -> `<top>`
+    - bare filename -> `src`
+    """
+    parts = [p for p in target_path.split("/") if p and p != "."]
+    if not parts:
+        return "src"
+    if parts[0] in {"apps", "projects", "packages"} and len(parts) >= 2:
+        return f"{parts[0]}/{parts[1]}"
+    if len(parts) >= 2:
+        return parts[0]
+    return "src"
+
+
+def auto_generate_impact_report(target_path: str, source_root: str | None = None) -> dict[str, Any]:
+    """Auto-generate a schema-valid ImpactReport for a single target path.
+
+    Used when a write tool arrives without `impact_report_evidence`. This is
+    intentionally fail-soft: any exception returns a MISSING status so the
+    caller falls back to the advisory/strict code path.
+    """
+    if not target_path:
+        return {"status": "MISSING", "error": "no target path supplied"}
+
+    inferred = source_root or _infer_source_root(target_path)
+    if not (REPO_ROOT / inferred).exists():
+        return {
+            "status": "MISSING",
+            "error": f"inferred source_root does not exist: {inferred}",
+        }
+
+    try:
+        from apps.tlc_semgraph.api.cli import single_file_cmd  # type: ignore
+    except Exception as exc:
+        return {"status": "MISSING", "error": f"semgraph engine unavailable: {exc}"}
+
+    try:
+        report_path = single_file_cmd(target_path, inferred, 2)
+    except Exception as exc:
+        return {"status": "MISSING", "error": f"auto-generation failed: {exc}"}
+
+    result = verify_impact_report(report_path)
+    result["auto_generated"] = True
+    result["artifact"] = report_path.as_posix() if isinstance(report_path, Path) else str(report_path)
+    result["source_root"] = inferred
+    return result
+
+
+def verify_impact_report(artifact_path: Path) -> dict[str, Any]:
+    """
+    Validate a semgraph ImpactReport run artifact (envelope or data) against the
+    canonical schema at `verification/semgraph/ImpactReport.schema.json`.
+    """
+    artifact_path = artifact_path.resolve()
+    if not artifact_path.exists() or not artifact_path.is_file():
+        return {
+            "status": "FAIL",
+            "error": f"ImpactReport artifact missing: {artifact_path}",
+        }
+    if not SEMGRAPH_IMPACT_SCHEMA.exists():
+        return {
+            "status": "FAIL",
+            "error": f"ImpactReport schema missing: {SEMGRAPH_IMPACT_SCHEMA}",
+        }
+
+    try:
+        schema = _load_json(SEMGRAPH_IMPACT_SCHEMA)
+    except Exception as exc:
+        return {"status": "FAIL", "error": f"Cannot load schema: {exc}"}
+
+    validator = Draft202012Validator(schema)
+
+    try:
+        payload = _load_json(artifact_path)
+    except json.JSONDecodeError as exc:
+        return {"status": "FAIL", "error": f"Invalid JSON: {exc}"}
+
+    # Accept either:
+    # - envelope: {"schema":"ImpactReport","data":{...}}
+    # - direct data: {...ImpactReport...}
+    if isinstance(payload, dict) and "data" in payload and "schema" in payload:
+        data = payload.get("data")
+        schema_name = payload.get("schema")
+        if schema_name != "ImpactReport":
+            return {
+                "status": "FAIL",
+                "error": f"Unexpected schema name: {schema_name!r}",
+            }
+    else:
+        data = payload
+
+    errors = list(validator.iter_errors(data))
+    if errors:
+        return {
+            "status": "FAIL",
+            "error": "Schema validation failed",
+            "error_count": len(errors),
+            "first_error": errors[0].message,
+        }
+
+    return {"status": "PASS", "artifact": str(artifact_path), "schema": str(SEMGRAPH_IMPACT_SCHEMA)}
 
 
 class GuardianState(str, Enum):
@@ -223,14 +341,74 @@ def evaluate_invariants(agent_id: str, tool_name: str, params: dict[str, Any]) -
             }
         )
 
+    semgraph_evidence_raw = str(params.get("impact_report_evidence", "")).strip()
+    semgraph_evidence_result: dict[str, Any] | None = None
+    semgraph_auto_generated = False
+    if tool_name not in READ_ONLY_TOOLS:
+        if semgraph_evidence_raw:
+            semgraph_evidence_result = verify_impact_report(_coerce_repo_path(semgraph_evidence_raw))
+        else:
+            target_path = str(params.get("path", "")).strip()
+            auto_disabled = os.environ.get("TLC_GUARDIAN_AUTOGEN_DISABLED", "").strip() in {"1", "true", "TRUE"}
+            if target_path and not auto_disabled and tool_name in WRITE_TOOLS:
+                semgraph_evidence_result = auto_generate_impact_report(target_path)
+                semgraph_auto_generated = bool(semgraph_evidence_result.get("auto_generated"))
+            else:
+                semgraph_evidence_result = {
+                    "status": "MISSING",
+                    "error": "impact_report_evidence not provided",
+                }
+
+    review_required = False
+    review_reasons: list[str] = []
+    if tool_name in WRITE_TOOLS:
+        if semgraph_evidence_result is None or semgraph_evidence_result.get("status") != "PASS":
+            review_required = True
+            status = (semgraph_evidence_result or {}).get("status", "ABSENT")
+            review_reasons.append(
+                f"write tool without valid semgraph ImpactReport evidence (status={status})"
+            )
+
+    strict_semgraph = os.environ.get("TLC_GUARDIAN_STRICT_SEMGRAPH", "").strip() in {"1", "true", "TRUE"}
+    enforcement_mode = "strict" if strict_semgraph else "advisory"
+    if strict_semgraph and review_required:
+        violated.append("INVARIANT_SEMGRAPH_EVIDENCE_01")
+        invariant_results.append(
+            {
+                "invariant_id": "INVARIANT_SEMGRAPH_EVIDENCE_01",
+                "result": "FAIL",
+                "severity": "HIGH",
+            }
+        )
+    else:
+        invariant_results.append(
+            {
+                "invariant_id": "INVARIANT_SEMGRAPH_EVIDENCE_01",
+                "result": "PASS" if not review_required else "ADVISORY",
+                "severity": "HIGH",
+            }
+        )
+
     decision = "FAIL" if violated else "PASS"
+    if decision == "FAIL" and "INVARIANT_SEMGRAPH_EVIDENCE_01" in violated:
+        rationale = "blocked: strict semgraph mode requires valid ImpactReport evidence"
+    elif decision == "FAIL":
+        rationale = "blocked by constitutional invariant"
+    else:
+        rationale = "all invariants passed"
+
     verdict = {
         "decision": decision,
         "agent_id": agent_id,
         "tool_name": tool_name,
         "violated_invariants": violated,
         "invariant_results": invariant_results,
-        "rationale": "blocked by constitutional invariant" if violated else "all invariants passed",
+        "rationale": rationale,
+        "semgraph": semgraph_evidence_result,
+        "semgraph_auto_generated": semgraph_auto_generated,
+        "review_required": review_required,
+        "review_reasons": review_reasons,
+        "enforcement_mode": enforcement_mode,
     }
     _append_log(
         {
@@ -242,6 +420,11 @@ def evaluate_invariants(agent_id: str, tool_name: str, params: dict[str, Any]) -
             "invariants_evaluated": [item["invariant_id"] for item in invariant_results],
             "violated_invariants": violated,
             "rationale": verdict["rationale"],
+            "semgraph": semgraph_evidence_result,
+            "semgraph_auto_generated": semgraph_auto_generated,
+            "review_required": review_required,
+            "review_reasons": review_reasons,
+            "enforcement_mode": enforcement_mode,
         }
     )
     return verdict
@@ -385,6 +568,18 @@ def main():
     parser.add_argument("--schema", type=str, default=DEFAULT_EVAL_EVIDENCE_SCHEMA)
     parser.add_argument("--check-compliance", type=str, default=None)
     parser.add_argument("--evidence-dir", type=str, default=DEFAULT_EVAL_EVIDENCE_DIR)
+    parser.add_argument("--verify-impact-report", type=str, default=None)
+    parser.add_argument(
+        "--evaluate",
+        type=str,
+        default=None,
+        help="Path to a tool-call JSON file with {agent_id, tool_name, params}.",
+    )
+    parser.add_argument(
+        "--strict-semgraph",
+        action="store_true",
+        help="Opt-in enforcement: missing/invalid semgraph ImpactReport evidence on write tools fails the verdict.",
+    )
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
 
@@ -423,6 +618,53 @@ def main():
             print(json.dumps(result, indent=2))
         print(result["status"])
         sys.exit(0 if result["status"] == "PASS" else 1)
+
+    if args.verify_impact_report:
+        result = verify_impact_report(_coerce_repo_path(args.verify_impact_report))
+        if args.verbose:
+            print(json.dumps(result, indent=2))
+        print(result["status"])
+        sys.exit(0 if result["status"] == "PASS" else 1)
+
+    if args.strict_semgraph:
+        os.environ["TLC_GUARDIAN_STRICT_SEMGRAPH"] = "1"
+
+    if args.evaluate:
+        call_path = _coerce_repo_path(args.evaluate)
+        if not call_path.exists() or not call_path.is_file():
+            print("FAIL")
+            if args.verbose:
+                print(
+                    json.dumps(
+                        {"status": "FAIL", "error": f"Call JSON missing: {call_path}"},
+                        indent=2,
+                    )
+                )
+            sys.exit(1)
+        try:
+            call = _load_json(call_path)
+        except json.JSONDecodeError as exc:
+            print("FAIL")
+            if args.verbose:
+                print(
+                    json.dumps(
+                        {"status": "FAIL", "error": f"Invalid JSON: {exc}"},
+                        indent=2,
+                    )
+                )
+            sys.exit(1)
+
+        agent_id = str(call.get("agent_id", "")).strip() or "unknown"
+        tool_name = str(call.get("tool_name", "")).strip() or "unknown"
+        call_params = call.get("params", {}) or {}
+        if not isinstance(call_params, dict):
+            call_params = {}
+
+        verdict = evaluate_invariants(agent_id, tool_name, call_params)
+        if args.verbose:
+            print(json.dumps(verdict, indent=2, sort_keys=True))
+        print(verdict["decision"])
+        sys.exit(0 if verdict["decision"] == "PASS" else 1)
 
     guardian = GuardianMCP()
     initialized = guardian.initialize()

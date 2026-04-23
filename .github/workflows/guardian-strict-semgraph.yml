@@ -1,0 +1,53 @@
+name: Guardian Strict Semgraph
+
+# Regression gate for Guardian's --strict-semgraph enforcement and ImpactReport
+# auto-generation. Runs the five-scenario harness in
+# scripts/verify_guardian_strict_semgraph.py against the fixtures under
+# verification/semgraph/fixtures/. Any deviation fails the build.
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - "dependabot/**"
+  pull_request:
+    paths:
+      - "src/guardian.py"
+      - "apps/tlc_semgraph/**"
+      - "verification/semgraph/**"
+      - "scripts/verify_guardian_strict_semgraph.py"
+      - ".github/workflows/guardian-strict-semgraph.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  strict-semgraph-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install jsonschema
+
+      - name: Run strict-semgraph regression harness
+        run: python scripts/verify_guardian_strict_semgraph.py
+
+      - name: Upload generated auto-reports (debug)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgraph-auto-reports
+          path: verification/semgraph/runs/ImpactReport-auto-*.json
+          if-no-files-found: ignore

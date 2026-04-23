@@ -1,0 +1,78 @@
+{
+  "$id": "verification/semgraph/ImpactReport.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ImpactReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version",
+    "diff",
+    "direct_units",
+    "ripple_units",
+    "clusters_touched",
+    "domains_touched",
+    "risk",
+    "gaps",
+    "evidence_uri"
+  ],
+  "properties": {
+    "report_version": { "type": "string" },
+    "diff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base", "head"],
+      "properties": {
+        "base": { "type": "string" },
+        "head": { "type": "string" }
+      }
+    },
+    "direct_units": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/unit_ref" }
+    },
+    "ripple_units": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/unit_ref" }
+    },
+    "clusters_touched": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "domains_touched": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/safety_domain_id" }
+    },
+    "risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "constitutional"]
+    },
+    "gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence_uri": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "description": "Optional diagnostic payload for run metadata (non-normative).",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "safety_domain_id": {
+      "type": "string",
+      "enum": ["epistemic", "human", "cognitive", "empirical"]
+    },
+    "unit_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "path"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "type": "string" },
+        "path": { "type": "string" },
+        "symbol": { "type": "string" }
+      }
+    }
+  }
+}
+

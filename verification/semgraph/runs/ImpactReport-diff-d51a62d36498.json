@@ -1,0 +1,28 @@
+{
+  "data": {
+    "clusters_touched": [],
+    "diff": {
+      "base": "7f42c11b9afbb73e146eb04c51504e2e6a527a0a",
+      "head": "c350af4c630d43ccba39ad7896dbca1fc4dcdd07"
+    },
+    "direct_units": [],
+    "domains_touched": [],
+    "evidence_uri": "verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json",
+    "gaps": [
+      "v0 uses file-level import graph only (no function/component units yet).",
+      "Only relative imports are resolved; package imports are ignored in v0."
+    ],
+    "meta": {
+      "changed_files_total": 22,
+      "direct_files_in_graph": 0,
+      "max_depth": 2,
+      "ripple_files_in_graph": 0,
+      "snapshot": "/Users/coreyalejandro/Projects/the-living-constitution/verification/semgraph/snapshots/graph-6700c76c33f9.json",
+      "source_root": "apps/tlc-control-plane"
+    },
+    "report_version": "0.1.0",
+    "ripple_units": [],
+    "risk": "low"
+  },
+  "schema": "ImpactReport"
+}

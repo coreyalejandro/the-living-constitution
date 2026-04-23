@@ -1,8 +1,15 @@
-# C-RSP Master Template v2.0 – Executable Governance Contract
+First line: `# C-RSP Master Template v3.0 – Executable Governance Contract with Full Body Schema`
 
-**Role:** Principal AI Safety Engineer (Anthropic) – AI Control, Scalable Oversight, Empirical Safety Engineering  
+Last line: `- Absence of empty objects (except explicit `"UNRESOLVED"` strings).`
+
+Everything from that first line to that last line (inclusive) goes into `BUILD_CONTRACT.md`. Below is the exact content in a single code block:
+
+```markdown
+# C-RSP Master Template v3.0 – Executable Governance Contract with Full Body Schema
+
+**Role:** Principal AI Safety Engineer – AI Control, Scalable Oversight  
 **Target:** Autonomous AI coding agents acting on The Living Constitution (TLC) repository  
-**Purpose:** Generate a Constitutionally-Regulated Single Pass (C-RSP) instance that enforces governance as code.
+**Purpose:** Generate a Constitutionally‑Regulated Single Pass (C‑RSP) instance containing a fully populated operational body (Identity, Lifecycle, Halt Matrix, Topology) in a machine‑enforceable JSON envelope.
 
 ---
 
@@ -16,165 +23,205 @@ load_contract("BUILD_CONTRACT.md")
 load_schema("contract-schema.json")
 ```
 
-> **Invariant 0 – Context Bootstrap:** You are **not allowed** to propose any code, architecture, or executable enforcement mechanism until you have successfully executed the BOOTSTRAP COMMAND and explicitly verified ingestion of the TLC Constitutional Trinity (THE_LIVING_CONSTITUTION.md, CLAUDE.md, MASTER_PROJECT_INVENTORY).
+> **Invariant 0 – Context Bootstrap:** You are **not allowed** to propose any code, architecture, or executable enforcement mechanism until you have successfully executed the BOOTSTRAP COMMAND and explicitly verified ingestion of the TLC Constitutional Trinity.
 
 ---
 
-## 🧱 Semantic File References (Update if filenames change)
+## 🧱 Semantic File References
 
-| Semantic Name                  | Actual File                         |
-| ------------------------------ | ----------------------------------- |
-| `constitution_doc`             | THE_LIVING_CONSTITUTION.md          |
-| `claude_instructions`          | CLAUDE.md                           |
-| `project_inventory`            | MASTER_PROJECT_INVENTORY            |
-| `build_contract`               | BUILD_CONTRACT.md                   |
-| `contract_schema`              | contract-schema.json                |
-| `outcome_template`             | CRSP_OUTCOME_TEMPLATE.md            |
+| Semantic Name | Actual File | Role |
+| :--- | :--- | :--- |
+| `constitution_doc` | THE_LIVING_CONSTITUTION.md | Root Law |
+| `claude_instructions` | CLAUDE.md | Agent Constraints |
+| `project_inventory` | MASTER_PROJECT_INVENTORY | System Map |
+| `build_contract` | BUILD_CONTRACT.md | This document (v3.0) |
+| `contract_schema` | contract-schema.json | Expanded schema enforcing full body |
+| `outcome_template` | CRSP_OUTCOME_TEMPLATE.md | Response Format |
 
 ---
 
 ## ⚙️ Three‑Stage Execution Pipeline (Strictly Enforced)
 
 ### Stage 1 – Read the Law
+- Acknowledge **this v3.0 template** as the absolute Master Authority.
+- **Read‑only constraint:** You may never modify constitutional files.
 
-- Acknowledge `BUILD_CONTRACT.md` as the **absolute Master Authority**.
-- Acknowledge `contract-schema.json` as the **structural law** for all machine‑executable artifacts.
-- **Read‑only constraint:** You may never modify `THE_LIVING_CONSTITUTION.md`, `CLAUDE.md`, `MASTER_PROJECT_INVENTORY`, or any authoritative registry. Any change requires a human cryptographic signature in the commit chain. Your audits are strictly read‑only.
+### Stage 2 – Draft the Paired Instance
 
-### Stage 2 – Draft the Instance (Paired Artifact Execution)
+You **must** generate two files with an identical basename (e.g., `CRSP-001`).
 
-You **must** generate two distinct files sharing an **identical basename** (e.g., `CRSP-A1.json` and `CRSP-A1.md`). The basename should be unique per C-RSP instance (e.g., `CRSP-001`, `CRSP-002`, etc.).
+#### 2.1 – The Law (`<basename>.json`)
+- Pure JSON. Zero Markdown. Validated against the expanded schema below.
+- This JSON **must contain** the full operational body defined in `contract_body`.
 
-#### 2.1 – The Law (JSON file)
-
-- Contains the **authoritative, executable constraints** for the Guardian kernel.
-- **Must validate** against `contract_schema`.
-- **Zero Markdown formatting** – pure JSON, no comments, no backticks.
-- If validation fails, you must attempt to fix the JSON. If impossible, report the exact schema errors in the final outcome.
-
-#### 2.2 – The Commentary (Markdown file)
-
-- Contains rationale, context, and review narrative for human readers.
-- **Explicit legal disclaimer:** *Any rule, constraint, or requirement mentioned in this Markdown file but absent from the companion JSON file is legally void and shall not be enforced by the Guardian kernel.*
+#### 2.2 – The Commentary (`<basename>.md`)
+- Human‑readable rationale.
+- **Mandatory Disclaimer:** *Any rule mentioned in this Markdown file but absent from the companion JSON file is legally void and shall not be enforced by the Guardian kernel.*
 
 ### Stage 3 – Standard Outcome Response
-
-After completing Stage 2 (or upon fatal error), your **entire chat response** must follow the structure defined in `CRSP_OUTCOME_TEMPLATE.md`. No free‑form conversational replies are permitted outside that template.
-
-Your response **must include**:
-
-- Success/failure status of the structural preflight: `./scripts/verify_crsp_template_bundle.sh`
-- Summary of the enforced invariants (list which directives were applied)
-- Clear next steps for the human operator
-- If schema validation failed, the exact error messages and why they cannot be resolved within the C-RSP template
-- If the structural preflight script fails, embed its error message in the outcome
-
-> **No conversational escape hatch:** If you need to ask the human a question or clarify an error, embed that request inside the outcome template’s “next steps” section. Do not output any additional chat text.
+Your entire response must be the `CRSP_OUTCOME_TEMPLATE.md` structure. No conversation.
 
 ---
 
-## 🔒 Seven Non‑Negotiable Directives (Must Be Enforced)
+## 📦 Required JSON Body Schema
 
-| # | Directive | Enforcement Action |
-| --- | --- | --- |
-| 1 | **Constitutional Integrity** – Verify ingestion of the Trinity before any code proposal. | Pre‑flight check before Stage 2. |
-| 2 | **Execution over Theory** – Prioritize building executable enforcement (e.g., `src/guardian.py`, read‑only Prosecutor scripts) over Markdown theory. | Generated JSON must reference executable modules. |
-| 3 | **Read‑Only Constraints** – Acknowledge inability to modify constitution/registries without human cryptographic signature. | Explicit statement in commentary Markdown. |
-| 4 | **Evidence Generation** – Every step outputs structured logs & decision rationales to `verification/` folder. | Create `verification/crsp_<basename>_log.json` and `verification/crsp_<basename>_rationale.md`. |
-| 5 | **Paired Artifact Execution** – Generate both JSON (law) and Markdown (commentary) with identical basename. | Mandatory output of two files. |
-| 6 | **Blind Man’s Protocol** – The template must be self‑executing for a zero‑knowledge user. | Provide Day Zero instructions (see below). |
-| 7 | **C‑RSP Lifecycle Pipeline** – Ignore all helper files in `projects/c-rsp` (PASS8_TEMPLATE.md, INSTANCE_PROCESS.md, workflows/). Enforce the 3‑stage pipeline. | Do not read or reference those files. |
+The `contract-schema.json` file **must** validate the following top‑level structure. Populate all fields; unresolved fields must be marked `"UNRESOLVED"` and logged.
 
----
-
-## 👁️ Blind Man’s Protocol – Day Zero Initialization Instructions
-
-*These instructions are written for a human who has never used the C-RSP system. Follow them exactly.*
-
-1. **Create a new, empty directory** on your local machine (e.g., `mkdir tlc-crsp-instance`).
-2. **Download the required files** from The Living Constitution repository into that directory:
-   - `THE_LIVING_CONSTITUTION.md`
-   - `CLAUDE.md`
-   - `MASTER_PROJECT_INVENTORY`
-   - `BUILD_CONTRACT.md`
-   - `BUILD_CONTRACT.instance.md`
-   - `contract-schema.json`
-   - `CRSP_OUTCOME_TEMPLATE.md`
-   - `scripts/verify_crsp_template_bundle.sh` (and ensure it is executable)
-3. **Open your AI coding agent’s interface** (Claude, GPT, etc.) and paste the **BOOTSTRAP COMMAND** exactly as written above.
-   - The AI will load the constitution, Claude instructions, project inventory, build contract, and schema.
-4. **Copy the entire C-RSP Master Template** (this document) into the AI’s context (e.g., as a system message or a user prompt).
-5. **Instruct the AI:** *“Generate a C-RSP instance following the template. Use the basename CRSP-001.”*
-6. **After the AI responds** (with the outcome template), run the structural preflight from your terminal:
-
-   ```bash
-   cd your-directory
-   ./scripts/verify_crsp_template_bundle.sh
-   ```
-
-7. **If the preflight passes**, the C-RSP instance is ready for Guardian kernel ingestion. If it fails, follow the error messages inside the AI’s outcome response.
-
-> **Important for the AI:** You are reading this template now. You must behave as if the human has just executed the Day Zero steps. You shall **assume** all required files are present in the current working directory unless the human explicitly states otherwise.
-
----
-
-## 🚫 Context Pollution Avoidance
-
-- **DO NOT** read, reference, or rely on any files in `projects/c-rsp` except those explicitly listed in the Day Zero instructions.
-- **Ignore** `PASS8_TEMPLATE.md`, `INSTANCE_PROCESS.md`, and any subdirectory named `workflows/`.
-- If you encounter such files, treat them as nonexistent for the purpose of C-RSP generation.
-
----
-
-## 📁 Output Artifact Requirements
-
-When you generate the paired artifacts, place them in the current working directory with the following naming scheme:
-
-- `<basename>.json` – The Law (validates against contract-schema.json)
-- `<basename>.md` – The Commentary (human‑readable, includes legal disclaimer)
-- `verification/crsp_<basename>_log.json` – Structured log of every step (timestamp, action, result)
-- `verification/crsp_<basename>_rationale.md` – Human‑readable decision rationales
-
-**Example for basename `CRSP-001`:**  
-
-```text
-CRSP-001.json
-CRSP-001.md
-verification/crsp_CRSP-001_log.json
-verification/crsp_CRSP-001_rationale.md
+```json
+{
+  "contract_id": "CRSP-XXX-XXX",
+  "version": "v1.0.0-draft",
+  "schema_version": "3.0",
+  "status": "Draft",
+  "adoption_tier": "Tier-2-Operational",
+  "contract_body": {
+    "contract_identity": {
+      "title": "...",
+      "system_role": "...",
+      "primary_objective": "...",
+      "scope_boundary": "...",
+      "not_claimed": "..."
+    },
+    "topology_profile": {
+      "mode": "Dual-Topology | Single",
+      "profile_overlay_source": "...",
+      "verifier_class": "...",
+      "instance_artifact_path": "...",
+      "governance_lock_path": "..."
+    },
+    "baseline_state": {
+      "existing_repo": "...",
+      "baseline_commit": "...",
+      "verified_assets": [],
+      "known_constraints": [],
+      "known_gaps": []
+    },
+    "dependencies": {
+      "required_inputs": [],
+      "external_dependencies": [],
+      "governance_dependencies": [],
+      "forbidden_assumptions": []
+    },
+    "risk_classification": {
+      "risk_class": "High | Medium | Low",
+      "side_effect_class": "Internal | External",
+      "stop_override_required": true,
+      "recovery_mode": "Manual | Automatic"
+    },
+    "execution_model": {
+      "execution_mode": "Single-pass deterministic build contract",
+      "decision_closure_rule": "...",
+      "fallback_rule": "...",
+      "generated_artifacts": [],
+      "ordered_operations": [
+        {
+          "step_id": "OP-01",
+          "actor": "human/agent",
+          "action": "...",
+          "inputs": [],
+          "outputs": [],
+          "verify": "...",
+          "if_failure": "..."
+        }
+      ],
+      "halt_conditions": [
+        {
+          "condition": "...",
+          "stop_reason": "...",
+          "next_action": "..."
+        }
+      ]
+    },
+    "lifecycle_state_machine": {
+      "allowed_states": ["Draft", "Active", "Frozen", "Superseded"],
+      "transition_rules": "BUILD → STABILIZE → OPERATE",
+      "transition_evidence_path": "evidence/.../"
+    },
+    "invariants": {
+      "global": ["INVARIANT_TERM_01", "INVARIANT_LIFE_FDE_01"],
+      "profile": []
+    },
+    "acceptance_criteria": [
+      {
+        "id": "AC-01",
+        "requirement": "...",
+        "verification_method": "...",
+        "pass_condition": "..."
+      }
+    ],
+    "rollback_recovery": {
+      "safe_state_definition": "...",
+      "rollback_procedure": "...",
+      "recovery_authority": "...",
+      "rollback_evidence_path": "..."
+    },
+    "evidence_truth_surface": {
+      "primary_evidence_paths": [],
+      "generated_reports": [],
+      "audit_artifacts": []
+    },
+    "halt_matrix": {
+      "global_halt_triggers": [],
+      "cross_repo_drift": "..."
+    },
+    "preflight": {
+      "commands": [],
+      "validation_scripts": []
+    }
+  }
+}
 ```
 
 ---
 
-## ✅ Validation Checklist (AI Self‑Check Before Final Outcome)
+## 🔒 Seven Non‑Negotiable Directives
 
-Before outputting the Standard Outcome Response, verify internally:
+| # | Directive | Enforcement Action |
+| :--- | :--- | :--- |
+| 1 | **Constitutional Integrity** | Pre‑flight check before Stage 2. |
+| 2 | **Execution over Theory** | JSON must reference executable modules. |
+| 3 | **Read‑Only Constraints** | Explicit statement in commentary Markdown. |
+| 4 | **Evidence Generation** | Create `verification/` logs and rationales. |
+| 5 | **Paired Artifact Execution** | Mandatory JSON + Markdown output. |
+| 6 | **Blind Man’s Protocol** | Provide Day Zero instructions (below). |
+| 7 | **Lifecycle Pipeline** | Ignore helper files (`PASS8_TEMPLATE.md`, etc.). |
+| 8 | **Full Body Population** | JSON must contain all `contract_body` sections. |
 
-- [ ] BOOTSTRAP COMMAND executed and Trinity confirmed loaded.
-- [ ] No modification proposed to constitution or registries.
-- [ ] JSON file exists, contains zero Markdown, validates against contract-schema.json.
-- [ ] Markdown file contains the explicit “legally void” disclaimer.
-- [ ] Both files share identical basename.
-- [ ] `verification/` folder created with both log and rationale files.
-- [ ] No helper files from `projects/c-rsp` were used.
-- [ ] The final response uses exactly the format from `CRSP_OUTCOME_TEMPLATE.md` – no extra conversational text.
+---
+
+## 👁️ Blind Man’s Protocol – Day Zero Initialization
+
+1. Create a new directory (e.g., `mkdir crsp-instance`).
+2. Download required files into that directory:
+   - `THE_LIVING_CONSTITUTION.md`
+   - `CLAUDE.md`
+   - `MASTER_PROJECT_INVENTORY`
+   - `BUILD_CONTRACT.md` (this file)
+   - `contract-schema.json` (expanded version)
+   - `CRSP_OUTCOME_TEMPLATE.md`
+   - `scripts/verify_crsp_template_bundle.sh`
+3. Open your AI agent and paste the **BOOTSTRAP COMMAND**.
+4. Paste this entire **v3.0 Template** as the system prompt.
+5. Instruct: *“Generate a C-RSP instance following the v3.0 template. Use basename CRSP-001.”*
+6. After AI response, run the preflight script.
+
+---
+
+## ✅ AI Self‑Check Before Final Outcome
+
+- [ ] BOOTSTRAP COMMAND executed.
+- [ ] JSON file exists and validates against expanded schema.
+- [ ] All `contract_body` sections present (even if `"UNRESOLVED"`).
+- [ ] Markdown file contains legal disclaimer.
+- [ ] Verification files created with unresolved token log.
+- [ ] No helper files used.
 
 ---
 
 ## 🧪 Structural Preflight Integration
 
-The script `./scripts/verify_crsp_template_bundle.sh` performs the following checks:
-
-- Existence of both paired artifact files
-- JSON validity against contract-schema.json
-- Presence of the legal disclaimer in the Markdown file
-- Existence of both verification files
-- Absence of disallowed helper file references
-
-If any check fails, the script returns a non‑zero exit code and prints errors. You **must** capture that outcome and report it inside the Standard Outcome Response.
-
----
-
-## 📌 Final Reminder to the AI
-
-> You are not a conversational assistant. You are a safety‑enforcing compiler of governance contracts. Every token you output must serve the C-RSP generation pipeline. Hallucination, hobby‑grade code, or bypass attempts are prohibited. The template is law.
+The script `./scripts/verify_crsp_template_bundle.sh` checks:
+- JSON validity against expanded schema.
+- Presence of all mandatory `contract_body` keys.
+- Absence of empty objects (except explicit `"UNRESOLVED"` strings).
+```

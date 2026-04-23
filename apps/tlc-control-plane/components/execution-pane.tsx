@@ -35,7 +35,7 @@ export function ExecutionPane({ statusLoad }: Props) {
       </p>
       <ol className="list-decimal space-y-2 pl-5 text-sm text-zinc-300">
         <li>UI first: control-plane shell and docs under docs/front-door/</li>
-        <li>Teaser video second: projects/teaser-video per build contract</li>
+        <li>Teaser video second: projects/teaser-video-remotion per build contract</li>
         <li>
           Product-surface integration third: live verification and project actions
         </li>

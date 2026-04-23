@@ -1,0 +1,153 @@
+{
+  "data": {
+    "clusters_touched": [],
+    "diff": {
+      "base": "HEAD",
+      "head": "WORKING"
+    },
+    "direct_units": [
+      {
+        "id": "src/guardian.py",
+        "kind": "file",
+        "path": "src/guardian.py"
+      },
+      {
+        "id": "src/guardian.py#function:_coerce_repo_path",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:_coerce_repo_path"
+      },
+      {
+        "id": "src/guardian.py#function:_infer_source_root",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:_infer_source_root"
+      },
+      {
+        "id": "src/guardian.py#function:auto_generate_impact_report",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:auto_generate_impact_report"
+      },
+      {
+        "id": "src/guardian.py#function:verify_impact_report",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:verify_impact_report"
+      },
+      {
+        "id": "src/guardian.py#class:GuardianState",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "class:GuardianState"
+      },
+      {
+        "id": "src/guardian.py#function:bootstrap_trinity",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:bootstrap_trinity"
+      },
+      {
+        "id": "src/guardian.py#function:log_trinity_bootstrap",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:log_trinity_bootstrap"
+      },
+      {
+        "id": "src/guardian.py#class:GuardianMCP",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "class:GuardianMCP"
+      },
+      {
+        "id": "src/guardian.py#method:GuardianMCP.__init__",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "method:GuardianMCP.__init__"
+      },
+      {
+        "id": "src/guardian.py#method:GuardianMCP.initialize",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "method:GuardianMCP.initialize"
+      },
+      {
+        "id": "src/guardian.py#method:GuardianMCP.health_check",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "method:GuardianMCP.health_check"
+      },
+      {
+        "id": "src/guardian.py#function:load_invariants",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:load_invariants"
+      },
+      {
+        "id": "src/guardian.py#function:_append_log",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:_append_log"
+      },
+      {
+        "id": "src/guardian.py#function:evaluate_invariants",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:evaluate_invariants"
+      },
+      {
+        "id": "src/guardian.py#function:emit_stop",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:emit_stop"
+      },
+      {
+        "id": "src/guardian.py#function:_load_json",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:_load_json"
+      },
+      {
+        "id": "src/guardian.py#function:verify_evidence",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:verify_evidence"
+      },
+      {
+        "id": "src/guardian.py#function:check_eval001_compliance",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:check_eval001_compliance"
+      },
+      {
+        "id": "src/guardian.py#function:main",
+        "kind": "symbol",
+        "path": "src/guardian.py",
+        "symbol": "function:main"
+      }
+    ],
+    "domains_touched": [],
+    "evidence_uri": "verification/semgraph/runs/ImpactReport-auto-b5170777711f.json",
+    "gaps": [
+      "auto-generated single-file ImpactReport (triggered by Guardian evidence auto-gen)."
+    ],
+    "meta": {
+      "auto_generated": true,
+      "direct_files_in_graph": 1,
+      "ripple_files_in_graph": 1,
+      "single_file_target": "src/guardian.py",
+      "source_root": "src",
+      "target_in_graph": true
+    },
+    "report_version": "0.2.0",
+    "ripple_units": [
+      {
+        "id": "src/guardian.py",
+        "kind": "file",
+        "path": "src/guardian.py"
+      }
+    ],
+    "risk": "low"
+  },
+  "schema": "ImpactReport"
+}

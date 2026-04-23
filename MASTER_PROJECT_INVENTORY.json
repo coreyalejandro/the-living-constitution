@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-04-22T16:16:17Z",
+    "generated_at_utc": "2026-04-22T20:19:37Z",
     "registry_path_migration_ref": "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
@@ -242,7 +242,6 @@
   "tlc_projects_overlay": {
     "root_relative": "projects",
     "expected_slugs": [
-      "adapters",
       "backboardai-fde",
       "buildlattice",
       "c-rsp",
@@ -258,29 +257,16 @@
       "frostbyte-etl",
       "governance",
       "human-guard",
-      "human-safety",
       "im-just-a-build",
       "madmall",
       "proactive",
-      "public-profiles",
       "sandbox-runtime",
       "sentinelos",
-      "teaser-video",
       "teaser-video-remotion",
       "tlc-control-plane",
       "uicare"
     ],
     "entries": [
-      {
-        "slug": "adapters",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/adapters",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/adapters",
-        "path_exists_probe": true,
-        "path_exists_status": "present",
-        "has_claude_md": false,
-        "has_build_contract_md": false,
-        "repo_path_source": "auto-sync: TLC overlay projects/adapters/ (scripts/sync_master_project_inventory_from_projects.py)"
-      },
       {
         "slug": "backboardai-fde",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/backboardai-fde",
@@ -299,7 +285,7 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Rollout #3 (B.1) \u2014 TLC overlay projects/buildlattice; implementation `/Users/coreyalejandro/Projects/buildlattice` (BUILD_CONTRACT + config/projects.ts); buildlattice_overlay_script"
+        "repo_path_source": "Rollout #3 (B.1) — TLC overlay projects/buildlattice; implementation `/Users/coreyalejandro/Projects/buildlattice` (BUILD_CONTRACT + config/projects.ts); buildlattice_overlay_script"
       },
       {
         "slug": "c-rsp",
@@ -309,7 +295,7 @@
         "path_exists_status": "unknown",
         "has_claude_md": false,
         "has_build_contract_md": true,
-        "repo_path_source": "none \u2014 meta template (C-RSP framework); operator entry README.md; no Repo Path section; semantic authority order CRSP-A0 / CRSP-A0-1: BUILD_CONTRACT.md (1) > BUILD_CONTRACT.instance.md (2) > contract-schema.json (3) > CRSP_OUTCOME_TEMPLATE.md (4) > workflows/* + band-5 non-workflow helpers (5) > executed BUILD_CONTRACT* + instances/*.md + BUILD_CONTRACTS/*.md (6); see projects/c-rsp/CANONICAL_ROLE_MAP.md"
+        "repo_path_source": "none — meta template (C-RSP framework); operator entry README.md; no Repo Path section; semantic authority order CRSP-A0 / CRSP-A0-1: BUILD_CONTRACT.md (1) > BUILD_CONTRACT.instance.md (2) > contract-schema.json (3) > CRSP_OUTCOME_TEMPLATE.md (4) > workflows/* + band-5 non-workflow helpers (5) > executed BUILD_CONTRACT* + instances/*.md + BUILD_CONTRACTS/*.md (6); see projects/c-rsp/CANONICAL_ROLE_MAP.md"
       },
       {
         "slug": "consent-gateway-auth0",
@@ -319,7 +305,7 @@
         "path_exists_status": "present",
         "has_claude_md": false,
         "has_build_contract_md": false,
-        "repo_path_source": "Rollout #1 \u2014 TLC git submodule projects/consent-gateway-auth0; REPO_MAP.json"
+        "repo_path_source": "Rollout #1 — TLC git submodule projects/consent-gateway-auth0; REPO_MAP.json"
       },
       {
         "slug": "consentchain",
@@ -359,7 +345,7 @@
         "path_exists_status": "missing_on_disk",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Rollout #4 (B.4) \u2014 TLC overlay projects/empirical-guard; implementation `/Users/coreyalejandro/Projects/empirical-guard` (BUILD_CONTRACT Repo Path + config/projects.ts); empirical_guard_overlay_script"
+        "repo_path_source": "Rollout #4 (B.4) — TLC overlay projects/empirical-guard; implementation `/Users/coreyalejandro/Projects/empirical-guard` (BUILD_CONTRACT Repo Path + config/projects.ts); empirical_guard_overlay_script"
       },
       {
         "slug": "epistemic-guard",
@@ -369,7 +355,7 @@
         "path_exists_status": "missing_on_disk",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Rollout #5 (B.5) \u2014 TLC overlay projects/epistemic-guard; implementation `/Users/coreyalejandro/Projects/epistemic-guard` (BUILD_CONTRACT Repo Path + CLAUDE.md + config/projects.ts); epistemic_guard_overlay_script"
+        "repo_path_source": "Rollout #5 (B.5) — TLC overlay projects/epistemic-guard; implementation `/Users/coreyalejandro/Projects/epistemic-guard` (BUILD_CONTRACT Repo Path + CLAUDE.md + config/projects.ts); epistemic_guard_overlay_script"
       },
       {
         "slug": "evaluation",
@@ -409,7 +395,7 @@
         "path_exists_status": "present",
         "has_claude_md": false,
         "has_build_contract_md": true,
-        "repo_path_source": "config/projects.ts \u2014 BUILD_CONTRACT.md has no Repo Path"
+        "repo_path_source": "config/projects.ts — BUILD_CONTRACT.md has no Repo Path"
       },
       {
         "slug": "governance",
@@ -429,17 +415,7 @@
         "path_exists_status": "missing_on_disk",
         "has_claude_md": false,
         "has_build_contract_md": true,
-        "repo_path_source": "config/projects.ts only \u2014 BUILD_CONTRACT.md has no Repo Path"
-      },
-      {
-        "slug": "human-safety",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/human-safety",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/human-safety",
-        "path_exists_probe": true,
-        "path_exists_status": "present",
-        "has_claude_md": false,
-        "has_build_contract_md": false,
-        "repo_path_source": "auto-sync: TLC overlay projects/human-safety/ (scripts/sync_master_project_inventory_from_projects.py)"
+        "repo_path_source": "config/projects.ts only — BUILD_CONTRACT.md has no Repo Path"
       },
       {
         "slug": "im-just-a-build",
@@ -449,7 +425,7 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror"
       },
       {
         "slug": "madmall",
@@ -472,16 +448,6 @@
         "repo_path_source": "BUILD_CONTRACT.md Repo Path"
       },
       {
-        "slug": "public-profiles",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/projects/public-profiles",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/projects/public-profiles",
-        "path_exists_probe": true,
-        "path_exists_status": "present",
-        "has_claude_md": false,
-        "has_build_contract_md": false,
-        "repo_path_source": "auto-sync: TLC overlay projects/public-profiles/ (scripts/sync_master_project_inventory_from_projects.py)"
-      },
-      {
         "slug": "sandbox-runtime",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-sandbox-app",
@@ -489,7 +455,7 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "TLC Golden Sandbox dual topology \u2014 integrated projects/sandbox-runtime; standalone standalone/tlc-sandbox-app; scripts/verify_topology.py"
+        "repo_path_source": "TLC Golden Sandbox dual topology — integrated projects/sandbox-runtime; standalone standalone/tlc-sandbox-app; scripts/verify_topology.py"
       },
       {
         "slug": "sentinelos",
@@ -502,16 +468,6 @@
         "repo_path_source": "BUILD_CONTRACT.md Repo Path"
       },
       {
-        "slug": "teaser-video",
-        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/teaser-video",
-        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/teaser-video",
-        "path_exists_probe": true,
-        "path_exists_status": "present",
-        "has_claude_md": true,
-        "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/teaser-video; TLC folder retained as transitional mirror"
-      },
-      {
         "slug": "teaser-video-remotion",
         "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/teaser-video-remotion",
         "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/teaser-video-remotion",
@@ -519,7 +475,7 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror"
       },
       {
         "slug": "tlc-control-plane",
@@ -529,7 +485,7 @@
         "path_exists_status": "present",
         "has_claude_md": false,
         "has_build_contract_md": false,
-        "repo_path_source": "TLC Control Plane UI dual topology \u2014 integrated projects/tlc-control-plane; standalone standalone/tlc-ui-desktop; TLC-CONTROL-PLANE-INIT-001; scripts/verify_topology.py --strict"
+        "repo_path_source": "TLC Control Plane UI dual topology — integrated projects/tlc-control-plane; standalone standalone/tlc-ui-desktop; TLC-CONTROL-PLANE-INIT-001; scripts/verify_topology.py --strict"
       },
       {
         "slug": "uicare",
@@ -547,13 +503,13 @@
     {
       "path_relative": "projects/consentchain-pack/core",
       "role": "consentchain_constitutional_pack",
-      "relationship_to_projects_consentchain": "distinct_overlay \u2014 canonical pack vs projects/consentchain build contract overlay; see openmemory.md"
+      "relationship_to_projects_consentchain": "distinct_overlay — canonical pack vs projects/consentchain build contract overlay; see openmemory.md"
     },
     {
       "path_relative": "projects/madmall/core",
       "role": "planning_and_vt_docs_only",
       "implementation_repo_path": null,
-      "repo_path_status": "unknown \u2014 madmall-status-vt.md states no repository exists yet"
+      "repo_path_status": "unknown — madmall-status-vt.md states no repository exists yet"
     }
   ],
   "commonwealth_registry_only": [
@@ -661,12 +617,12 @@
     {
       "path": "/Users/coreyalejandro/Projects/MADMall",
       "exists": true,
-      "relationship_to_claude_madmall_production": "unknown \u2014 different name; not assumed same as MADMall-Production"
+      "relationship_to_claude_madmall_production": "unknown — different name; not assumed same as MADMall-Production"
     },
     {
       "path": "/Users/coreyalejandro/Projects/build-lattice-guard",
       "exists": true,
-      "relationship_to_config_buildlattice": "unknown \u2014 not assumed same as buildlattice repo path"
+      "relationship_to_config_buildlattice": "unknown — not assumed same as buildlattice repo path"
     }
   ],
   "unknowns": [
@@ -675,12 +631,12 @@
     "Implementation repo for c-rsp (meta-template only in TLC)"
   ],
   "anomalies": [
-    "CLAUDE.md lists MADMall-Production at /Users/coreyalejandro/Projects/MADMall-Production \u2014 path missing on disk at inventory time",
-    "config/projects.ts repoPath for buildlattice points to /Users/coreyalejandro/Projects/buildlattice \u2014 path missing on disk at inventory time",
+    "CLAUDE.md lists MADMall-Production at /Users/coreyalejandro/Projects/MADMall-Production — path missing on disk at inventory time",
+    "config/projects.ts repoPath for buildlattice points to /Users/coreyalejandro/Projects/buildlattice — path missing on disk at inventory time",
     "human-guard: config/projects.ts lists repo path; directory absent under ~/Projects at inventory time",
     "empirical-guard: implementation path `/Users/coreyalejandro/Projects/empirical-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
     "epistemic-guard: implementation path `/Users/coreyalejandro/Projects/epistemic-guard` recorded in BUILD_CONTRACT, config/projects.ts, and inventory; directory absent under ~/Projects at inventory time",
-    "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md; governance chain artifacts are repo-root \u2014 see governance_artifacts)"
+    "projects/c-rsp has openmemory.md but no CLAUDE.md (differs from standard overlay rule in CLAUDE.md; governance chain artifacts are repo-root — see governance_artifacts)"
   ],
   "dual_topology_registry": [
     {

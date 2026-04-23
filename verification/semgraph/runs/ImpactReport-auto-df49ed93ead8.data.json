@@ -1,0 +1,36 @@
+{
+  "clusters_touched": [],
+  "diff": {
+    "base": "HEAD",
+    "head": "WORKING"
+  },
+  "direct_units": [
+    {
+      "id": "apps/tlc-control-plane/lib/tlc-snapshot.ts",
+      "kind": "file",
+      "path": "apps/tlc-control-plane/lib/tlc-snapshot.ts"
+    }
+  ],
+  "domains_touched": [],
+  "evidence_uri": "verification/semgraph/runs/ImpactReport-auto-df49ed93ead8.json",
+  "gaps": [
+    "auto-generated single-file ImpactReport (triggered by Guardian evidence auto-gen)."
+  ],
+  "meta": {
+    "auto_generated": true,
+    "direct_files_in_graph": 1,
+    "ripple_files_in_graph": 1,
+    "single_file_target": "apps/tlc-control-plane/lib/tlc-snapshot.ts",
+    "source_root": "apps/tlc-control-plane",
+    "target_in_graph": true
+  },
+  "report_version": "0.2.0",
+  "ripple_units": [
+    {
+      "id": "apps/tlc-control-plane/lib/tlc-snapshot.ts",
+      "kind": "file",
+      "path": "apps/tlc-control-plane/lib/tlc-snapshot.ts"
+    }
+  ],
+  "risk": "low"
+}

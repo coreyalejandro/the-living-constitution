@@ -1,0 +1,30 @@
+{
+  "clusters_touched": [],
+  "diff": {
+    "base": "P1-spike",
+    "head": "P1-spike"
+  },
+  "direct_units": [],
+  "domains_touched": [],
+  "evidence_uri": "verification/semgraph/runs/P1-build-71b8bb50b522.json",
+  "gaps": [
+    "P1 spike only: counts + content hash; no tree-sitter parsing yet.",
+    "No units/edges extracted in this spike."
+  ],
+  "meta": {
+    "aggregate_sha256": "71b8bb50b522ed71ecc5f28b19ac86ab8f7407afc576bb655789732b27cf9e0d",
+    "counts": {
+      "files_go": 0,
+      "files_js": 0,
+      "files_jsx": 0,
+      "files_py": 0,
+      "files_total": 31,
+      "files_ts": 12,
+      "files_tsx": 9
+    },
+    "target_dir": "/Users/coreyalejandro/Projects/the-living-constitution/apps/tlc-control-plane"
+  },
+  "report_version": "0.1.0",
+  "ripple_units": [],
+  "risk": "low"
+}

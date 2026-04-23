@@ -1,0 +1,9 @@
+{
+  "agent_id": "builder",
+  "tool_name": "write_file",
+  "params": {
+    "path": "apps/tlc-control-plane/lib/tlc-snapshot.ts",
+    "toca_anchor": "semgraph-verified",
+    "impact_report_evidence": "verification/semgraph/runs/ImpactReport-diff-d51a62d36498.json"
+  }
+}

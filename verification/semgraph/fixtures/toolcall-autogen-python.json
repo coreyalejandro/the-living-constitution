@@ -1,0 +1,8 @@
+{
+  "agent_id": "builder",
+  "tool_name": "write_file",
+  "params": {
+    "path": "src/guardian.py",
+    "toca_anchor": "semgraph-autogen-python"
+  }
+}
