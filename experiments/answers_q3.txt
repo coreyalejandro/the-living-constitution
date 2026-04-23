@@ -1,0 +1,56 @@
+QUESTION 3: If a train travels 60 mph for 2 hours, how far does it go?
+============================================================
+BID ANSWER:
+# Backward Instructional Design (BID) Approach
+
+## Step 1 – Identify the Audience & Prior Knowledge
+**Who:** A student learning basic distance/speed/time relationships (likely middle school level)
+**What they know:** 
+- Multiplication basics
+- What "mph" means (miles per hour)
+- Concept of time in hours
+
+## Step 2 – Define the Final Takeaway
+**They must understand:** 
+*Distance = Speed × Time* — and be able to apply it to get **120 miles** as the answer.
+
+## Step 3 – Build Backwards from the Takeaway
+
+**Working backwards:**
+
+**Level 4 (The Answer):** 60 mph × 2 hours = **120 miles**
+
+**Level 3 (Why this formula works):** 
+- "mph" means the train covers 60 miles in *each* hour
+- With 2 hours, you get 60 miles twice: 60 + 60 = 120
+
+**Level 2 (What each number represents):**
+- 60 mph = the *rate* (how fast it's going)
+- 2 hours = the *time* (how long it travels)
+- Distance = what we're solving for
+
+**Level 1 (Foundation concept):**
+- Speed tells you how much distance is covered per unit of time
+- More time at the same speed = more total distance
+
+---
+
+**The answer: The train travels 120 miles.**
+
+============================================================
+COT ANSWER:
+# Chain of Thought Solution
+
+**Step 1: Identify what we know**
+- Speed of the train = 60 mph (miles per hour)
+- Time traveled = 2 hours
+
+**Step 2: Recall the distance formula**
+- Distance = Speed × Time
+
+**Step 3: Apply the formula**
+- Distance = 60 mph × 2 hours
+- Distance = 120 miles
+
+**Final Answer:**
+The train travels **120 miles**.
