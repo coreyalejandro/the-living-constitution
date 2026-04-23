@@ -1,10 +1,3 @@
-First line: `# C-RSP Master Template v3.0 – Executable Governance Contract with Full Body Schema`
-
-Last line: `- Absence of empty objects (except explicit `"UNRESOLVED"` strings).`
-
-Everything from that first line to that last line (inclusive) goes into `BUILD_CONTRACT.md`. Below is the exact content in a single code block:
-
-```markdown
 # C-RSP Master Template v3.0 – Executable Governance Contract with Full Body Schema
 
 **Role:** Principal AI Safety Engineer – AI Control, Scalable Oversight  
