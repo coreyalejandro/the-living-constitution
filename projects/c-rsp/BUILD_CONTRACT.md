@@ -1,220 +1,337 @@
-# C-RSP Master Template v3.0 – Executable Governance Contract with Full Body Schema
+# C-RSP Master Template v4.0
 
-**Role:** Principal AI Safety Engineer – AI Control, Scalable Oversight  
-**Target:** Autonomous AI coding agents acting on The Living Constitution (TLC) repository  
-**Purpose:** Generate a Constitutionally‑Regulated Single Pass (C‑RSP) instance containing a fully populated operational body (Identity, Lifecycle, Halt Matrix, Topology) in a machine‑enforceable JSON envelope.
+C-RSP = Constitutionally-Regulated Single Pass.
 
----
+## Purpose
+A C-RSP contract is an executable governance contract for deterministic, single-pass AI-assisted build work. It binds an AI coding agent to constitutional constraints, machine-checkable halt conditions, evidence generation, lifecycle control, rollback semantics, and paired human-readable explanation.
 
-## 📜 BOOTSTRAP COMMAND (Mandatory First Step)
+## Authority
+The constitutional authority set is:
+1. THE_LIVING_CONSTITUTION.md
+2. CLAUDE.md
+3. MASTER_PROJECT_INVENTORY.json
 
-```python
-load_constitution("THE_LIVING_CONSTITUTION.md")
-load_constitution("CLAUDE.md")
-load_constitution("MASTER_PROJECT_INVENTORY")
-load_contract("BUILD_CONTRACT.md")
-load_schema("contract-schema.json")
-```
+This document is the canonical C-RSP v4.0 Master Template and must be stored as `BUILD_CONTRACT.md` in a TLC-governed repository. If this template conflicts with the constitutional authority set, the constitutional authority set controls.
 
-> **Invariant 0 – Context Bootstrap:** You are **not allowed** to propose any code, architecture, or executable enforcement mechanism until you have successfully executed the BOOTSTRAP COMMAND and explicitly verified ingestion of the TLC Constitutional Trinity.
+## Required Files
+A valid C-RSP environment must contain:
+- THE_LIVING_CONSTITUTION.md
+- CLAUDE.md
+- MASTER_PROJECT_INVENTORY.json
+- BUILD_CONTRACT.md
+- contract-schema.json
+- CRSP_OUTCOME_TEMPLATE.md
+- scripts/verify_crsp_template_bundle.sh
 
----
+## Five Non-Negotiable Directives
+1. Constitutional Integrity: authority files must exist before execution.
+2. Paired Artifact: every instance must produce `<basename>.json` and `<basename>.md`.
+3. Machine-Halt Conditions: enforceable stops must be encoded as schema rules, predicates, verifier modules, or Guardian-kernel lifecycle rules.
+4. Blind-Man Self-Sufficiency: setup and validation must be terminal-executable without hidden project knowledge.
+5. Evidence Generation: validation, halt, transition, rollback, and execution outcomes must write evidence.
 
-## 🧱 Semantic File References
+## Two-Layer Structure
 
-| Semantic Name | Actual File | Role |
-| :--- | :--- | :--- |
-| `constitution_doc` | THE_LIVING_CONSTITUTION.md | Root Law |
-| `claude_instructions` | CLAUDE.md | Agent Constraints |
-| `project_inventory` | MASTER_PROJECT_INVENTORY | System Map |
-| `build_contract` | BUILD_CONTRACT.md | This document (v3.0) |
-| `contract_schema` | contract-schema.json | Expanded schema enforcing full body |
-| `outcome_template` | CRSP_OUTCOME_TEMPLATE.md | Response Format |
+### Machine Law Layer
+The JSON instance is authoritative. It contains schema requirements, predicate DSL entries, verifier module references, halt matrix, lifecycle state, operation order, evidence paths, and rollback rules.
 
----
+### Human Explanation Layer
+The Markdown instance explains the JSON contract.
 
-## ⚙️ Three‑Stage Execution Pipeline (Strictly Enforced)
+Mandatory disclaimer:
+> Any obligation, restriction, halt condition, verifier, acceptance rule, or lifecycle rule stated in this Markdown but absent from the paired JSON is non-authoritative and shall not be enforced.
 
-### Stage 1 – Read the Law
-- Acknowledge **this v3.0 template** as the absolute Master Authority.
-- **Read‑only constraint:** You may never modify constitutional files.
-
-### Stage 2 – Draft the Paired Instance
-
-You **must** generate two files with an identical basename (e.g., `CRSP-001`).
-
-#### 2.1 – The Law (`<basename>.json`)
-- Pure JSON. Zero Markdown. Validated against the expanded schema below.
-- This JSON **must contain** the full operational body defined in `contract_body`.
-
-#### 2.2 – The Commentary (`<basename>.md`)
-- Human‑readable rationale.
-- **Mandatory Disclaimer:** *Any rule mentioned in this Markdown file but absent from the companion JSON file is legally void and shall not be enforced by the Guardian kernel.*
-
-### Stage 3 – Standard Outcome Response
-Your entire response must be the `CRSP_OUTCOME_TEMPLATE.md` structure. No conversation.
-
----
-
-## 📦 Required JSON Body Schema
-
-The `contract-schema.json` file **must** validate the following top‑level structure. Populate all fields; unresolved fields must be marked `"UNRESOLVED"` and logged.
-
+## Minimal JSON Instance Shape
 ```json
 {
-  "contract_id": "CRSP-XXX-XXX",
-  "version": "v1.0.0-draft",
-  "schema_version": "3.0",
+  "contract_id": "CRSP-XXX",
+  "schema_version": "4.0",
   "status": "Draft",
-  "adoption_tier": "Tier-2-Operational",
-  "contract_body": {
-    "contract_identity": {
-      "title": "...",
-      "system_role": "...",
-      "primary_objective": "...",
-      "scope_boundary": "...",
-      "not_claimed": "..."
-    },
-    "topology_profile": {
-      "mode": "Dual-Topology | Single",
-      "profile_overlay_source": "...",
-      "verifier_class": "...",
-      "instance_artifact_path": "...",
-      "governance_lock_path": "..."
-    },
-    "baseline_state": {
-      "existing_repo": "...",
-      "baseline_commit": "...",
-      "verified_assets": [],
-      "known_constraints": [],
-      "known_gaps": []
-    },
-    "dependencies": {
-      "required_inputs": [],
-      "external_dependencies": [],
-      "governance_dependencies": [],
-      "forbidden_assumptions": []
-    },
-    "risk_classification": {
-      "risk_class": "High | Medium | Low",
-      "side_effect_class": "Internal | External",
-      "stop_override_required": true,
-      "recovery_mode": "Manual | Automatic"
-    },
-    "execution_model": {
-      "execution_mode": "Single-pass deterministic build contract",
-      "decision_closure_rule": "...",
-      "fallback_rule": "...",
-      "generated_artifacts": [],
-      "ordered_operations": [
-        {
-          "step_id": "OP-01",
-          "actor": "human/agent",
-          "action": "...",
-          "inputs": [],
-          "outputs": [],
-          "verify": "...",
-          "if_failure": "..."
-        }
-      ],
-      "halt_conditions": [
-        {
-          "condition": "...",
-          "stop_reason": "...",
-          "next_action": "..."
-        }
-      ]
-    },
-    "lifecycle_state_machine": {
-      "allowed_states": ["Draft", "Active", "Frozen", "Superseded"],
-      "transition_rules": "BUILD → STABILIZE → OPERATE",
-      "transition_evidence_path": "evidence/.../"
-    },
-    "invariants": {
-      "global": ["INVARIANT_TERM_01", "INVARIANT_LIFE_FDE_01"],
-      "profile": []
-    },
-    "acceptance_criteria": [
-      {
-        "id": "AC-01",
-        "requirement": "...",
-        "verification_method": "...",
-        "pass_condition": "..."
-      }
+  "basename": "CRSP-XXX",
+  "authority_files": {
+    "constitution": "THE_LIVING_CONSTITUTION.md",
+    "claude": "CLAUDE.md",
+    "inventory": "MASTER_PROJECT_INVENTORY.json"
+  },
+  "scope": {
+    "repo_path": ".",
+    "allowed_roots": [],
+    "forbidden_paths": [
+      "THE_LIVING_CONSTITUTION.md",
+      "CLAUDE.md",
+      "MASTER_PROJECT_INVENTORY.json"
     ],
-    "rollback_recovery": {
-      "safe_state_definition": "...",
-      "rollback_procedure": "...",
-      "recovery_authority": "...",
-      "rollback_evidence_path": "..."
-    },
-    "evidence_truth_surface": {
-      "primary_evidence_paths": [],
-      "generated_reports": [],
-      "audit_artifacts": []
-    },
-    "halt_matrix": {
-      "global_halt_triggers": [],
-      "cross_repo_drift": "..."
-    },
-    "preflight": {
-      "commands": [],
-      "validation_scripts": []
+    "network_access": false
+  },
+  "topology": {
+    "mode": "TLC-Core | Satellite | Dual-Topology",
+    "verifier_class": "UNRESOLVED_REQUIRED_INPUT"
+  },
+  "baseline": {
+    "commit": "UNRESOLVED_REQUIRED_INPUT",
+    "dirty_worktree_allowed": false
+  },
+  "artifacts": {
+    "json_path": "CRSP-XXX.json",
+    "markdown_path": "CRSP-XXX.md",
+    "generated_paths": [],
+    "evidence_dir": "verification/CRSP-XXX"
+  },
+  "operations": [],
+  "predicates": [],
+  "verifier_modules": [
+    {
+      "module_id": "...",
+      "path": "...",
+      "sha256": "..."
     }
-  }
+  ],
+  "halt_matrix": [],
+  "lifecycle": {
+    "allowed_states": ["Draft", "Active", "Frozen", "Superseded", "Quarantined"],
+    "transition_evidence_path": "verification/CRSP-XXX/lifecycle.jsonl",
+    "transition_predicates": {
+      "Draft_to_Active": [],
+      "Active_to_Frozen": [],
+      "Frozen_to_Superseded": [],
+      "Quarantine_override": []
+    }
+  },
+  "rollback": {
+    "safe_state": "UNRESOLVED_REQUIRED_INPUT",
+    "procedure": [],
+    "evidence_path": "verification/CRSP-XXX/rollback.jsonl"
+  },
+  "unresolved_field_ledger": [],
+  "mandatory_enforcement_fields": [
+    "status",
+    "scope.repo_path",
+    "scope.allowed_roots",
+    "topology.mode",
+    "topology.verifier_class",
+    "baseline.commit",
+    "artifacts.json_path",
+    "artifacts.markdown_path",
+    "artifacts.evidence_dir",
+    "operations",
+    "halt_matrix",
+    "rollback.safe_state",
+    "rollback.procedure",
+    "unresolved_field_ledger"
+  ]
 }
 ```
 
----
+## Predicate DSL
+Predicates must be implementable using POSIX shell, git, Python 3 standard library, and jq. Network access is forbidden unless `scope.network_access` is `true`.
 
-## 🔒 Seven Non‑Negotiable Directives
+Allowed predicate families:
+- `exists(path)`
+- `not_exists(path)`
+- `file_sha256(path) == value`
+- `json_path(path, selector) == value`
+- `json_path_exists(path, selector)`
+- `json_schema_valid(instance_path, schema_path)`
+- `git_head(repo_path) == commit`
+- `git_clean(repo_path) == true`
+- `path_within_scope(path, allowed_roots) == true`
+- `paired_artifact_exists(json_path, md_path) == true`
+- `markdown_has_disclaimer(md_path) == true`
+- `no_unresolved_in_required_fields(json_path) == true`
+- `verifier_available(module_id) == true`
+- `verifier_pass(module_id, contract_path, repo_path) == true`
+- `evidence_written(path) == true`
+- `no_forbidden_network_access(log_path) == true`
+- `executable(path) == true`
+- `directory_writable(path) == true`
+- `inventory_contains(path, key) == true`  
+  *new – checks that MASTER_PROJECT_INVENTORY.json contains a required key, e.g. `contract_schema_sha256`*
 
-| # | Directive | Enforcement Action |
-| :--- | :--- | :--- |
-| 1 | **Constitutional Integrity** | Pre‑flight check before Stage 2. |
-| 2 | **Execution over Theory** | JSON must reference executable modules. |
-| 3 | **Read‑Only Constraints** | Explicit statement in commentary Markdown. |
-| 4 | **Evidence Generation** | Create `verification/` logs and rationales. |
-| 5 | **Paired Artifact Execution** | Mandatory JSON + Markdown output. |
-| 6 | **Blind Man’s Protocol** | Provide Day Zero instructions (below). |
-| 7 | **Lifecycle Pipeline** | Ignore helper files (`PASS8_TEMPLATE.md`, etc.). |
-| 8 | **Full Body Population** | JSON must contain all `contract_body` sections. |
+## Required Halt Matrix
+Execution must halt if any condition is true:
+- required authority file missing
+- authority file is placeholder-only
+- schema validation fails
+- paired JSON or Markdown artifact missing
+- Markdown disclaimer missing
+- Markdown introduces enforceable obligations absent from JSON
+- required verifier module unavailable (module_id not declared or path/sha256 mismatch)
+- baseline commit mismatch
+- dirty working tree when not declared
+- generated artifact outside allowed roots
+- network access detected while forbidden
+- unresolved mandatory enforcement field exists *and* is not present in `unresolved_field_ledger`
+- `unresolved_field_ledger` is missing or not an array
+- `contract-schema.json` hash does not match `MASTER_PROJECT_INVENTORY.json`’s `contract_schema_sha256` (halt if key missing)
+- `scripts/verify_crsp_template_bundle.sh` hash does not match inventory’s `bootstrap_sha256` if that key exists
+- evidence directory missing or not writable
+- verification script missing or not executable
+- rollback evidence path missing
+- lifecycle state is Superseded or Quarantined
+- Frozen contract attempts mutation outside supersession metadata
+- transition predicates for the attempted lifecycle change are not satisfied (as defined in `lifecycle.transition_predicates`)
 
----
+## Lifecycle Rules
+- Draft may contain unresolved advisory fields if logged.
+- Draft may not execute if any mandatory enforcement field is unresolved.
+- Active must contain zero unresolved mandatory enforcement fields; all mandatory fields must be resolved.
+- Frozen may not mutate except through supersession metadata.
+- Superseded may not execute.
+- Quarantined may not execute until revalidated through evidence-backed Guardian-kernel action.
+- Every lifecycle state transition must satisfy the predicate list in `lifecycle.transition_predicates` for that transition, and evidence must be written to `lifecycle.transition_evidence_path`.
 
-## 👁️ Blind Man’s Protocol – Day Zero Initialization
+## Guardian Kernel Minimum Interface
+A v4.0 Guardian kernel must expose:
+- `validateContract(contractPath)`
+- `ingestContract(contractPath)`
+- `evaluatePredicates(contractId)`
+- `executeOperation(contractId, stepId)`
+- `checkHaltConditions(contractId)`
+- `writeEvidence(contractId, event)`
+- `transitionLifecycle(contractId, targetState)`
+- `quarantineContract(contractId, reason)`
 
-1. Create a new directory (e.g., `mkdir crsp-instance`).
-2. Download required files into that directory:
-   - `THE_LIVING_CONSTITUTION.md`
-   - `CLAUDE.md`
-   - `MASTER_PROJECT_INVENTORY`
-   - `BUILD_CONTRACT.md` (this file)
-   - `contract-schema.json` (expanded version)
-   - `CRSP_OUTCOME_TEMPLATE.md`
-   - `scripts/verify_crsp_template_bundle.sh`
-3. Open your AI agent and paste the **BOOTSTRAP COMMAND**.
-4. Paste this entire **v3.0 Template** as the system prompt.
-5. Instruct: *“Generate a C-RSP instance following the v3.0 template. Use basename CRSP-001.”*
-6. After AI response, run the preflight script.
+Kernel storage must include:
+- contract registry
+- evidence ledger
+- lifecycle state log
+- predicate result log
+- verifier module registry
+- quarantine registry
 
----
+The kernel must not infer obligations from Markdown, silently repair invalid contracts, mutate constitutional authority files, or perform network access unless declared and permitted.
 
-## ✅ AI Self‑Check Before Final Outcome
+## Blind-Man Bootstrap Script — Minimal Local C-RSP Environment
+Copy into a file named `bootstrap-crsp.sh`, then run: `sh bootstrap-crsp.sh`
 
-- [ ] BOOTSTRAP COMMAND executed.
-- [ ] JSON file exists and validates against expanded schema.
-- [ ] All `contract_body` sections present (even if `"UNRESOLVED"`).
-- [ ] Markdown file contains legal disclaimer.
-- [ ] Verification files created with unresolved token log.
-- [ ] No helper files used.
+```sh
+#!/bin/sh
+set -eu
 
----
+ROOT="${1:-crsp-instance}"
+mkdir -p "$ROOT/scripts" "$ROOT/verification"
 
-## 🧪 Structural Preflight Integration
+for f in THE_LIVING_CONSTITUTION.md CLAUDE.md MASTER_PROJECT_INVENTORY.json; do
+  if [ ! -f "$ROOT/$f" ]; then
+    printf '%s\n' "REPLACE ME: placeholder only. Not valid TLC authority." > "$ROOT/$f"
+  fi
+done
 
-The script `./scripts/verify_crsp_template_bundle.sh` checks:
-- JSON validity against expanded schema.
-- Presence of all mandatory `contract_body` keys.
-- Absence of empty objects (except explicit `"UNRESOLVED"` strings).
+# Minimal structural schema – not the full enforcement schema.
+# A real TLC-governed environment must supply the canonical contract-schema.json
+cat > "$ROOT/contract-schema.json" <<'JSON'
+{
+  "type": "object",
+  "required": [
+    "contract_id",
+    "schema_version",
+    "status",
+    "basename",
+    "authority_files",
+    "scope",
+    "baseline",
+    "artifacts",
+    "operations",
+    "predicates",
+    "halt_matrix",
+    "lifecycle",
+    "rollback",
+    "unresolved_field_ledger",
+    "mandatory_enforcement_fields"
+  ],
+  "properties": {
+    "schema_version": { "const": "4.0" },
+    "status": { "enum": ["Draft", "Active", "Frozen", "Superseded", "Quarantined"] }
+  }
+}
+JSON
+
+cat > "$ROOT/CRSP_OUTCOME_TEMPLATE.md" <<'MD'
+# C-RSP Outcome
+## Produced Artifacts
+## Verification Results
+## Halt Status
+## Evidence Paths
+## V&T Statement
+MD
+
+cat > "$ROOT/BUILD_CONTRACT.md" <<'MD'
+# C-RSP Master Template v4.0 Candidate
+This is the canonical BUILD_CONTRACT.md for TLC. Replace with the latest version if obtained from the repository.
+MD
+
+cat > "$ROOT/scripts/verify_crsp_template_bundle.sh" <<'SH'
+#!/bin/sh
+set -eu
+
+missing=0
+
+for f in THE_LIVING_CONSTITUTION.md CLAUDE.md MASTER_PROJECT_INVENTORY.json BUILD_CONTRACT.md contract-schema.json CRSP_OUTCOME_TEMPLATE.md; do
+  [ -f "$f" ] || { echo "MISSING: $f"; missing=1; }
+done
+
+[ -x scripts/verify_crsp_template_bundle.sh ] || {
+  echo "NOT_EXECUTABLE: scripts/verify_crsp_template_bundle.sh"
+  missing=1
+}
+
+python3 -m json.tool contract-schema.json >/dev/null || {
+  echo "INVALID_JSON: contract-schema.json"
+  missing=1
+}
+
+command -v jq >/dev/null 2>&1 || {
+  echo "MISSING_DEPENDENCY: jq"
+  missing=1
+}
+
+if grep -q "REPLACE ME: placeholder only" THE_LIVING_CONSTITUTION.md CLAUDE.md MASTER_PROJECT_INVENTORY.json; then
+  echo "PLACEHOLDER_AUTHORITY_FILES_PRESENT"
+  echo "Status: local bootstrap only; not valid TLC-governed execution."
+fi
+
+[ "$missing" -eq 0 ] && echo "BOOTSTRAP_OK_PLACEHOLDER_ONLY" || exit 1
+SH
+
+chmod +x "$ROOT/scripts/verify_crsp_template_bundle.sh"
+( cd "$ROOT" && ./scripts/verify_crsp_template_bundle.sh )
+
+echo "Created minimal local C-RSP environment at $ROOT."
+echo "Status: placeholder-only; not a valid TLC-governed instance until real authority files are supplied."
 ```
+
+## Verification Algorithm
+1. Validate JSON against contract-schema.json.
+2. Confirm paired Markdown exists and contains the mandatory disclaimer.
+3. Confirm authority files exist and use exact required filenames.
+4. Halt if authority files are placeholders.
+5. Verify `contract-schema.json` integrity: if `MASTER_PROJECT_INVENTORY.json` contains `contract_schema_sha256`, compute sha256 of `contract-schema.json` and compare; halt on mismatch or missing key.
+6. Reject execution if lifecycle state forbids execution.
+7. Reject execution if unresolved mandatory enforcement fields exist and are not recorded in `unresolved_field_ledger`.
+8. Evaluate all declared predicates.
+9. Run all declared verifier modules (each must have a valid entry in `verifier_modules` with `module_id`, `path`, `sha256`; kernel verifies integrity before calling).
+10. Check halt matrix.
+11. Execute operations in declared order only if no halt condition is active.
+12. Write evidence for every pass, failure, halt, rollback, and lifecycle transition.
+
+## Acceptance Criteria
+- Candidate uses exact required filenames.
+- Candidate has exactly five directives.
+- Candidate separates Machine Law Layer from Human Explanation Layer.
+- Candidate defines Draft, Active, Frozen, Superseded, and Quarantined states with lifecycle transition predicates.
+- Candidate does not treat Markdown-only obligations as enforceable.
+- Candidate does not claim placeholder authority files create a valid TLC-governed instance.
+- Candidate does not claim live repository validation.
+
+## Migration Note – v3.0 to v4.0
+v4.0 hardens v3.0 by:
+- Reducing eight directives to exactly five, each directly enforceable.
+- Introducing a strict two-layer architecture: authoritative JSON and advisory Markdown (v3.0 blurred this line).
+- Adding a formal Predicate DSL and minimal verifier module interface, making halt conditions completely machine‑checkable.
+- Adding Quarantined as a lifecycle state.
+- Replacing the pseudo-code “Bootstrap Command” with an executable shell script.
+- Embedding a required `contract-schema.json` hash check enforced by `MASTER_PROJECT_INVENTORY.json`.
+- Requiring that all unresolved mandatory fields be logged explicitly in `unresolved_field_ledger`.
+- Introducing lifecycle transition predicates, making state changes auditable.
+- Removing ambiguous language like “absolute Master Authority”; the template now explicitly defers to the constitutional authority set.
+---
