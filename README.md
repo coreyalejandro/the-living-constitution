@@ -161,6 +161,6 @@ flowchart LR
 
 Three options, ranked by depth.
 
-1. **Read** — Start with [`PROPOSAL.md`](./PROPOSAL.md). The construct definitions in §D are the core of the work.
+1. **Read** — Start with [`PROPOSAL.md`](https://github.com/coreyalejandro/crsp-afs-2026/blob/master/proposal/final_proposal.md). The construct definitions in §D are the core of the work.
 2. **Run** — Follow the *How to run it* section above and put the Contract Window through a 50-turn task. Watch what it surfaces.
 3. **Contribute** — The most valuable open contributions right now are: (a) lay-rater pool recruitment for the legibility test, (b) drift-seeding scenarios for the benchmark, (c) replications of the BID harness against other model providers.
