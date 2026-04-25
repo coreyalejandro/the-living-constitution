@@ -7,7 +7,7 @@
     "migration_docs": [
       "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
     ],
-    "tlc_root": "/Users/coreyalejandro/Projects/the-living-constitution",
+    "tlc_root": "/home/runner/work/the-living-constitution/the-living-constitution",
     "sources": [
       "filesystem: projects/",
       "filesystem: sibling paths under /Users/coreyalejandro/Projects (existence probe)",
