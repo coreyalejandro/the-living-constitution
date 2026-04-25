@@ -1,7 +1,7 @@
 # Master Project Inventory (Phase 0)
 
 **Generated (UTC):** 2026-04-22T20:19:37Z  
-**TLC root:** `/Users/coreyalejandro/Projects/the-living-constitution`  
+**TLC root:** `/home/runner/work/the-living-constitution/the-living-constitution`  
 **Machine-readable:** `MASTER_PROJECT_INVENTORY.json` (census + governance manifest). **PASS 10A current operational status:** canonical `STATUS.json` (rendered mirror `STATUS.md`); regenerate with `python3 scripts/render_status_surface.py --root .`
 
 **Governance chain:** `MASTER_PROJECT_INVENTORY.json` → `governance_artifacts` lists canonical paths, `artifact_manifest` (path + verification_status + evidence linkage), run schema, institutionalization block (regression ledger, review/escalation policy, system card), and `ci_verification_commands` (must match CI). **Executable checks:** `pip install -r requirements-verify.txt` then `python3 scripts/verify_project_topology.py --root . --with-governance`, `python3 scripts/verify_governance_chain.py --root .`, `python3 scripts/verify_institutionalization.py --root .`, and `python3 scripts/verify_cross_repo_consistency.py --canonical-root . --target-root projects/consentchain` (PASS 9); adversarial checks `python3 scripts/governance_failure_injection_tests.py`; run artifacts under `verification/runs/*-governance.json`; scheduled verify workflow per `.github/workflows/verify.yml` `schedule`.
