@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-05-01T21:55:00Z",
+    "generated_at_utc": "2026-05-01T22:00:00Z",
     "registry_path_migration_ref": "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
@@ -27,8 +27,8 @@
     "last_verified_commit": "e5843d879918f97e2ce72690a7c2c502d81d9513",
     "last_remote_qualifying_commit": "e5843d879918f97e2ce72690a7c2c502d81d9513",
     "artifact_name": "governance-verification-runs-25234396495-1",
-    "verify_workflow_sha256": "3db5931f6722dc631aea92a7a0da0892dfd40707bc0d309a65760c189053a5c8",
-    "verify_workflow_sha256_at_last_remote_run": "b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8",
+    "verify_workflow_sha256": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62",
+    "verify_workflow_sha256_at_last_remote_run": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62",
     "status": "verified",
     "tip_state_truth": "tip_verified",
     "escalation_state": "none",
