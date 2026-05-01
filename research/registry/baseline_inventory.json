@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-05-01T19:32:42Z",
+  "contract_id": "TLC-RDI-MVP-001",
+  "milestone": "pre-flight-baseline",
+  "tip_state_truth": "tip_pending",
+  "truth_anchor_tag": "tlc-gov-verified-7f42c11",
+  "head_sha": "cc5a035",
+  "note": "14/14 assumed-present items verified. 26 targets confirmed absent \u2014 no conflicts. Safe to build.",
+  "assumed_present_all_ok": true,
+  "targets_to_build": 26,
+  "evidence_basis": "VERIFIED \u2014 filesystem check run 2026-05-01T19:32Z"
+}

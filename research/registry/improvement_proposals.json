@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-01T19:32:42Z",
+  "note": "Bounded self-improvement proposals. All proposals require human approval before execution.",
+  "approval_gate": "MANDATORY \u2014 no auto-apply to constitutional surfaces",
+  "proposals": []
+}

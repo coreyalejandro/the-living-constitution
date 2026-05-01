@@ -1,0 +1,15 @@
+{
+  "name": "@tlc/research-kernel",
+  "version": "0.1.0",
+  "description": "TLC Research Workbench kernel — experiment schema, eval runner, constitutional critic, improvement proposer, regression gate, provenance tracker.",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3"
+  }
+}

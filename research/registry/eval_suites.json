@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-01T19:32:42Z",
+  "note": "Registry of constitutional eval suites. Populated from tlc_evals library runs.",
+  "suites": [
+    {
+      "id": "F1-F5-invariants",
+      "path": "projects/evaluation/tlc_evals/",
+      "status": "VERIFIED",
+      "last_run": "2026-04-13",
+      "cases": 26,
+      "evidence_basis": "VERIFIED \u2014 212/212 tests passing (VR-V-15C6, 2026-01-24)"
+    }
+  ]
+}
