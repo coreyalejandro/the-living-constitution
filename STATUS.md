@@ -9,7 +9,7 @@
 | `series` | `B` |
 | `status` | `active` |
 | `verification_target` | `b38ce4aceada4219aa17f4084a77dffc091a63f5` |
-| `head_sha` | `9ad80275e558e4bed25c809d5ca90543caac720f` |
+| `head_sha` | `417d90547f142246a676bfb28284083f9cbf325d` |
 | `last_verified_commit` | `b38ce4aceada4219aa17f4084a77dffc091a63f5` |
 | `last_verified_run_id` | `25234781758` |
 | `tip_state_truth` | `tip_verified` |
