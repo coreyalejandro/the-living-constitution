@@ -208,3 +208,31 @@ Non-existent: Runtime data flow between repositories (currently structural gover
 Unverified: Whether all GitHub/GitLab repo URLs are currently accessible. Whether PROACTIVE's GitLab repo is public or private.
 
 Functional status: Relationship map complete. All repos documented with dependencies, domains, and honest status. Coverage gaps identified (Cognitive Safety domain is thin).
+
+---
+
+## Research Layer: cognitive-governance-lab
+
+`cognitive-governance-lab` is not in the product dependency chain above — it is the **research substrate** that TLC governs.
+
+```
+cognitive-governance-lab (RESEARCH SUBSTRATE)
+│
+│  Primary repo for the 4-month Anthropic Fellows research program.
+│  Contains: ContractWindow prototype, BicameralReview engine,
+│  InsightAtrophyIndex, SessionRecorder, pilot datasets, three proposals.
+│  62/62 tests passing.
+│
+│  ROLE BOUNDARY:
+│  TLC governs the arc (enforcement, invariants, audit, evidence).
+│  CGL runs the experiment (hypothesis, data, analysis, publication).
+│
+└── Governed by: THE_LIVING_CONSTITUTION (Articles I-V, invariants I1-I6)
+    Evidence surface: TLC Evidence Observatory
+    Constitutional authority: TLC constitutionalizes the research program
+```
+
+Dependency arrow: `cognitive-governance-lab --> the-living-constitution`
+TLC provides the governance infrastructure. CGL provides the research contribution.
+They are not the same. Do not conflate them in any external communication.
+
