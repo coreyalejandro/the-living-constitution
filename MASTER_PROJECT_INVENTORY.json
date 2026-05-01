@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-05-01T22:00:00Z",
+    "generated_at_utc": "2026-05-01T22:05:00Z",
     "registry_path_migration_ref": "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
@@ -23,18 +23,18 @@
     ]
   },
   "ci_provenance": {
-    "last_verified_run_id": "25234396495",
-    "last_verified_commit": "e5843d879918f97e2ce72690a7c2c502d81d9513",
-    "last_remote_qualifying_commit": "e5843d879918f97e2ce72690a7c2c502d81d9513",
-    "artifact_name": "governance-verification-runs-25234396495-1",
+    "last_verified_run_id": "25234781758",
+    "last_verified_commit": "b38ce4aceada4219aa17f4084a77dffc091a63f5",
+    "last_remote_qualifying_commit": "b38ce4aceada4219aa17f4084a77dffc091a63f5",
+    "artifact_name": "governance-verification-runs-25234781758-1",
     "verify_workflow_sha256": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62",
     "verify_workflow_sha256_at_last_remote_run": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62",
     "status": "verified",
     "tip_state_truth": "tip_verified",
     "escalation_state": "none",
     "reviewer_status": "approved",
-    "verification_anchor_tag": "tlc-gov-verified-e5843d8",
-    "verification_anchor_commit": "e5843d879918f97e2ce72690a7c2c502d81d9513"
+    "verification_anchor_tag": "tlc-gov-verified-b38ce4a",
+    "verification_anchor_commit": "b38ce4aceada4219aa17f4084a77dffc091a63f5"
   },
   "governance_artifacts": {
     "contract_version": "v1.9.0",
