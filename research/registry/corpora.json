@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-01T19:32:42Z",
+  "note": "Registry of authored corpora with provenance and consent metadata.",
+  "provenance_policy": "All corpora must have source, consent_status, and evidence_basis fields.",
+  "corpora": [
+    {
+      "id": "PILOT-SYNTHETIC-001",
+      "description": "10 synthetic pilot sessions PILOT-S001 through PILOT-S010",
+      "source": "cognitive-governance-lab/datasets/pilot/",
+      "consent_status": "synthetic \u2014 no human subjects",
+      "evidence_basis": "CONSTRUCTED \u2014 synthetic sessions only. PENDING empirical validation.",
+      "kappa": 0.6267,
+      "gate_status": "FAILED \u2014 below 0.70 threshold"
+    }
+  ]
+}
