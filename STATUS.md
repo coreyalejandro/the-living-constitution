@@ -9,7 +9,7 @@
 | `series` | `B` |
 | `status` | `active` |
 | `verification_target` | `b38ce4aceada4219aa17f4084a77dffc091a63f5` |
-| `head_sha` | `b38ce4aceada4219aa17f4084a77dffc091a63f5` |
+| `head_sha` | `9ad80275e558e4bed25c809d5ca90543caac720f` |
 | `last_verified_commit` | `b38ce4aceada4219aa17f4084a77dffc091a63f5` |
 | `last_verified_run_id` | `25234781758` |
 | `tip_state_truth` | `tip_verified` |
@@ -17,7 +17,7 @@
 | `escalation_state` | `none` |
 | `reviewer_status` | `approved` |
 | `governance_contract_version` | `v1.9.0` |
-| `inventory_meta_generated_at_utc` | `2026-05-01T22:05:00Z` |
+| `inventory_meta_generated_at_utc` | `2026-05-01T22:15:00Z` |
 
 ## Immutable truth anchor (PASS 11)
 
@@ -34,11 +34,7 @@
 
 ## Cross-repo consistency (ConsentChain submodule)
 
-- **state:** `drift`
-- **detail:** verify_cross_repo_consistency: FAIL
-  - canonical: INVARIANT_51: ANCHOR_TAG_UNRESOLVABLE — git rev-parse 'tlc-gov-verified-b38ce4a^{commit}' failed (fatal: ambiguous argument 'tlc-gov-verified-b38ce4a^{commit}': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]') (BREACH-B)
+- **state:** `aligned`
 
 ## Truth boundary
 

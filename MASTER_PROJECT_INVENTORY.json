@@ -2,7 +2,7 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-05-01T22:05:00Z",
+    "generated_at_utc": "2026-05-01T22:15:00Z",
     "registry_path_migration_ref": "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
@@ -425,7 +425,15 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror"
+        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror",
+        "external_repo": "https://github.com/coreyalejandro/im-just-a-build",
+        "overlay_only": true,
+        "extraction_contract": "C-002",
+        "extracted_at_utc": "2026-05-01T22:15:00Z",
+        "tracked_files": [
+          "BUILD_CONTRACT.md",
+          "CLAUDE.md"
+        ]
       },
       {
         "slug": "madmall",
@@ -475,7 +483,15 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror"
+        "repo_path_source": "Series C C-002 extraction initialized \u2014 standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror",
+        "external_repo": "https://github.com/coreyalejandro/teaser-video-remotion",
+        "overlay_only": true,
+        "extraction_contract": "C-002",
+        "extracted_at_utc": "2026-05-01T22:15:00Z",
+        "tracked_files": [
+          "BUILD_CONTRACT.md",
+          "CLAUDE.md"
+        ]
       },
       {
         "slug": "tlc-control-plane",
