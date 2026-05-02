@@ -36,9 +36,11 @@
       "title": "Teaser-Video-Remotion Excellence Pass",
       "file": "plans/series-c/C-003-teaser-video-remotion-excellence.md",
       "instance_file": "",
-      "status": "active",
+      "status": "void",
       "completion_gates": [],
-      "activated_at_utc": "2026-05-01T22:15:00Z"
+      "activated_at_utc": "2026-05-01T22:15:00Z",
+      "voided_at_utc": "2026-05-02T00:00:00Z",
+      "void_reason": "Based on 2D Remotion trial (Schoolhouse Rock style) which has been retired. Production direction changed to Veo 3.1 cinematic with Lyria 3 Pro audio. 2D source archived to github.com/coreyalejandro/im-just-a-build-2d."
     },
     {
       "id": "C-004",
