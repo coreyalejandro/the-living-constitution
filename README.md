@@ -173,6 +173,118 @@ If you need current state, read:
 
 ---
 
+## System diagrams
+
+Five canonical diagrams for the repo. Sources live in `docs/front-door/diagram-sources/`.
+
+### D1 — System context
+
+```mermaid
+flowchart LR
+  subgraph External["External reviewers"]
+    R[Reviewer / auditor]
+  end
+
+  subgraph Commonwealth["Safety Systems Design Commonwealth"]
+    P[Project repos and implementations]
+  end
+
+  subgraph TLC["TLC governance overlay"]
+    C[Control plane: contracts + verification + constitution]
+    S[Status / truth surface: STATUS.json]
+    O[Open interfaces: exported proofs and schema-valid artifacts]
+  end
+
+  R -->|reads exported evidence| O
+  C --> S
+  P -->|build contracts reference| C
+  C -->|coordinates| P
+```
+
+### D2 — Control-plane architecture
+
+```mermaid
+flowchart TB
+  subgraph Truth["Truth surface"]
+    SJ[STATUS.json authoritative]
+    SM[STATUS.md rendered mirror]
+  end
+
+  subgraph Gov["Governance artifacts"]
+    IR[Invariant registry]
+    RR[Role registry]
+    BC[projects/*/BUILD_CONTRACT.md]
+  end
+
+  subgraph Verify["Verification chain"]
+    VG[verify_governance_chain.py]
+    VT[verify_project_topology.py]
+    VM[verification/MATRIX.md]
+  end
+
+  SJ --> SM
+  BC --> VG
+  IR --> VG
+  VG --> VM
+  VT --> VM
+```
+
+### D3 — Execution loop
+
+```mermaid
+flowchart TD
+  A[Developer clone] --> B[./scripts/bootstrap_repo.sh]
+  B --> C[Local verifiers]
+  C --> D{PASS?}
+  D -->|yes| E[Commit / push]
+  D -->|no| F[Fix governance or evidence]
+  F --> C
+  E --> G[CI: verify workflow]
+  G --> H[Attestation and artifacts]
+  H --> I[Maintenance-mode: no new open-ended pass unless gap raised]
+```
+
+### D4 — System graph
+
+```mermaid
+flowchart LR
+  subgraph Domains["TLC domains"]
+    EPI[Epistemic]
+    EMP[Empirical]
+    HUM[Human]
+    COG[Cognitive]
+  end
+
+  subgraph Repo["Repository areas"]
+    PR[projects/]
+    VER[verification/]
+    CON[governance/constitution/core/]
+    DOC[docs/]
+  end
+
+  EPI --- DOC
+  PR --- VER
+  CON --- VER
+```
+
+### D5 — UI layout
+
+```mermaid
+flowchart TB
+  subgraph Shell["TLC control-plane shell"]
+    SG[System graph panel]
+    ST[Status / truth panel]
+    EX[Execution pane]
+    VS[Verification stream]
+  end
+
+  SG --- ST
+  ST --- EX
+  EX --- VS
+```
+
+---
+
 ## Documentation map
 
 - `THE_LIVING_CONSTITUTION.md` - preamble and articles.
