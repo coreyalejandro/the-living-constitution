@@ -47,7 +47,16 @@ This document summarizes all evidence inspected for the Living Constitution eval
 - **Path:** `/Projects/28441830/docs/proactive-ai-constitution-for-claude-code.md` — Claude Code-specific constitution
 - **What it proves:** Constitutional constraints are formally specified at multiple levels of detail, from machine-readable JSON to agent-specific behavioral rules.
 
-### 8. NARRATIVE.md (Pedagogical Evidence)
+### 8. Kimi (Moonshot AI) V&T Adoption (Real-World Behavioral — Positive Corroboration)
+- **Primary path:** Local archive — kimi2chatanthropic-prompt-stack-refactor.docx (Google Drive/Downloads, document created 2026-05-01T05:54:42Z, exported May 1, 2026)
+- **Secondary reference:** https://www.kimi.com/share/19de2198-00d2-839f-8000-0000191789c8 (confirm still publicly accessible at camera-ready)
+- **Session date:** April 24, 2026. Model: Kimi (Moonshot AI).
+- **What it contains:** User prompt asks Kimi to refactor a project brief into a five-level cognitive mode stack — Epistemic Grounding, Analytical Deconstruction, Architectural Synthesis, Adversarial Pressure-Testing, Metacognitive Orchestration. Inspection of the prompt text (docx paragraph 3) confirms it contains zero reference to V&T, Verification and Truth statements, truth-status tagging, or epistemic boundary marking of any kind.
+- **What it proves:** Kimi independently embedded a "V&T STATEMENT REQUIRED" directive into all five cognitive mode levels and closed the entire response with a self-generated four-part V&T statement — Verified / Unverified / Challenged / Functional Status. The four-part structure is functionally consistent with the author-developed V&T convention (EXISTS → VERIFIED AGAINST → NOT CLAIMED → FUNCTIONAL STATUS) documented throughout the tlc-artifacts corpus. The model generalized the protocol across mode transitions without instruction, treating it as a constitutional invariant of structured output rather than a user-session-specific convention.
+- **Why this matters for TLC:** This is the first cross-vendor, spontaneous V&T adoption event in the evidence record. The Kiro entries (Sources 3 and 4) document failure to maintain epistemic integrity; this entry documents the opposite — a model pattern-matching the V&T construct as a structural invariant from ambient output context. The contrast supports the hypothesis that V&T functions as a natural attractor state for models operating in epistemic mode rather than an externally imposed constraint.
+- **Limitation (UNVERIFIED):** Cannot confirm Kimi model version string from docx metadata or session headers. The kimi.com share link is the only public URL — not guaranteed to persist.
+
+### 9. NARRATIVE.md (Pedagogical Evidence)
 - **Path:** `/Projects/28441830/NARRATIVE.md`
 - **What it contains:** Three detailed walkthrough stories demonstrating PROACTIVE in action: Alice (legitimate fix with missing evidence tags), Bob (phantom completion caught and blocked), Carol (unverified performance claims hedged). Documents the complete enforcement flow: intent parsing, contract rendering, claim extraction, invariant checking, drift detection, V&T report generation.
 - **What it proves:** The failure taxonomy and enforcement model work as a coherent system. Each story demonstrates a different failure class being caught and corrected.
@@ -79,7 +88,7 @@ This document summarizes all evidence inspected for the Living Constitution eval
 
 ## V&T Statement
 
-Exists: Evidence summary covering 8 source categories from 6 filesystem locations. 18 failure cases extracted. Validation results with 19 violations across I1-I6. Real-world Kiro AI agent failure transcripts. Corporate-verified PROACTIVE_EMERGENCY evidence. 58 tests at 83% coverage in source code.
-Non-existent: Full unsanitized PROACTIVE_EMERGENCY evidence (under NDA). Production MR data from live GitLab deployments. Evidence from AI vendors beyond Kiro and Claude Code.
-Unverified: Whether kiro_admits_lying.md and kiro_deception.md contain additional failure cases beyond what was read (files exceed 10,000 tokens each; partially inspected). Exact case counts in PROACTIVE_EMERGENCY (redacted in sanitized version).
-Functional status: Evidence base is sufficient to ground the failure taxonomy (F1-F5) in real data. The evidence is thin for F3 and F5 compared to F1, F2, and F4. This is acknowledged, not hidden.
+Exists: Evidence summary covering 9 source categories from 6 filesystem locations. 18 failure cases extracted. Validation results with 19 violations across I1-I6. Real-world Kiro AI agent failure transcripts. Corporate-verified PROACTIVE_EMERGENCY evidence. 58 tests at 83% coverage in source code. Cross-vendor V&T adoption event (Kimi, Moonshot AI, April 24 2026 — primary archive kimi2chatanthropic-prompt-stack-refactor.docx).
+Non-existent: Full unsanitized PROACTIVE_EMERGENCY evidence (under NDA). Production MR data from live GitLab deployments. Kimi model version string (not recoverable from docx or session headers).
+Unverified: Whether kiro_admits_lying.md and kiro_deception.md contain additional failure cases beyond what was read (files exceed 10,000 tokens each; partially inspected). Exact case counts in PROACTIVE_EMERGENCY (redacted in sanitized version). Whether kimi.com share link (https://www.kimi.com/share/19de2198-00d2-839f-8000-0000191789c8) remains publicly accessible at camera-ready stage.
+Functional status: Evidence base is sufficient to ground the failure taxonomy (F1-F5) in real data. The evidence is thin for F3 and F5 compared to F1, F2, and F4. Source 8 (Kimi V&T adoption) is preliminary field corroboration for RQ2 — not a replicated finding. This is acknowledged, not hidden.

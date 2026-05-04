@@ -27,7 +27,7 @@ I use this ledger to document every material claim about the Safety Systems Desi
 | L5 | Idempotency Doctrine | Fully specified in `~/.claude/CLAUDE.md` with application matrix (instructions, code, deployments, V&T, recovery, amendments, agent actions) | Proven |
 | L6 | Calibrated Truth Doctrine (3 tiers) | Fully specified in `~/.claude/CLAUDE.md` with tier definitions and current tier status table | Proven |
 | L7 | Census Doctrine | Fully specified in `~/.claude/CLAUDE.md` with enforcement table and inventory-innovation cycle | Proven |
-| L8 | Default User Doctrine | Fully specified in `~/.claude/CLAUDE.md` with neurodivergent user profile and 7 output rules | Proven |
+| L8 | Default User Doctrine | Live governing copy: `~/.claude/CLAUDE.md`. Tracked repo copy: `docs/governance/doctrines/DEFAULT_USER_DOCTRINE.md`. Canonical user profile: 56-year-old African-American gay man, Stanford-educated; autism, Bipolar I with schizophrenic episodes, ADHD, OCD, sexual violence survivor. 7 output rules. Design philosophy: design for most vulnerable, reach all. | Proven |
 | L9 | Four safety domains defined | `config/domains.ts` — TypeScript types with id, name, focus, failureClass for each domain | Proven |
 | L10 | Project registry with domain mapping | `config/projects.ts` — 6 projects mapped to domains with status and repo paths | Proven |
 | L11 | Build contracts for every project | `projects/*/BUILD_CONTRACT.md` exists for SentinelOS, PROACTIVE, ConsentChain, UICare | Proven |

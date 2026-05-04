@@ -3,33 +3,33 @@
     "exit_code": 0,
     "state": "aligned"
   },
-  "escalation_state": "review_required",
+  "escalation_state": "none",
   "governance_contract_version": "v1.9.0",
-  "head_sha": "7f42c11b9afbb73e146eb04c51504e2e6a527a0a",
+  "head_sha": "df26b0f89a4cc7811faa66752def7116ce71be46",
   "historical_state": {
-    "ci_remote_record_captured_at_utc": "2026-03-31T01:15:00Z",
+    "ci_remote_record_captured_at_utc": "2026-05-01T22:42:56Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
     "regression_ledger_last_run_id": "23757979228",
     "regression_ledger_last_timestamp_utc": "2026-03-30T17:25:00Z"
   },
-  "inventory_meta_generated_at_utc": "2026-04-22T16:16:17Z",
-  "last_verified_commit": "30805eed1d51ca78107294376c1b783275e484aa",
-  "last_verified_run_id": "23774310879",
+  "inventory_meta_generated_at_utc": "2026-05-01T22:55:00Z",
+  "last_verified_commit": "417d90547f142246a676bfb28284083f9cbf325d",
+  "last_verified_run_id": "25236308029",
   "project": "coreyalejandro/the-living-constitution",
-  "reviewer_status": "pending",
+  "reviewer_status": "approved",
   "schema_version": "1.1.0",
   "series": "B",
   "status": "active",
-  "tip_state_truth": "tip_pending",
+  "tip_state_truth": "tip_verified",
   "truth_anchor": {
-    "commit": "e56fc0753955901ee18bca44ae73181f9999b9db",
+    "commit": "417d90547f142246a676bfb28284083f9cbf325d",
     "type": "git_tag",
-    "value": "tlc-gov-verified-e56fc07"
+    "value": "tlc-gov-verified-417d905"
   },
   "truth_boundary": {
     "policy_reference": "verification/closed-epistemics-open-interfaces-policy.json",
     "reason": "Epistemic closure inside the repo: current operational status is synthesized into STATUS.json from inventory ci_provenance, git HEAD, workflow identity, regression ledger tail, and remote evidence record; STATUS.md is a deterministic render. External parties receive only exported proofs and schema-valid artifacts listed under open_interfaces."
   },
-  "verification_target": "e56fc0753955901ee18bca44ae73181f9999b9db",
-  "workflow_sha": "3db5931f6722dc631aea92a7a0da0892dfd40707bc0d309a65760c189053a5c8"
+  "verification_target": "417d90547f142246a676bfb28284083f9cbf325d",
+  "workflow_sha": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62"
 }

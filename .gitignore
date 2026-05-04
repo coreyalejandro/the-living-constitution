@@ -64,3 +64,10 @@ verification/.stress_*.jsonl
 verification/.stress_halt_sentinel
 AGENTS.md
 CLAUDE.md
+
+# nested node_modules and build artifacts
+**/node_modules/
+**/dist/*.mp4
+**/dist/*.zip
+**/*.zip
+**/im-just-a-build-*.zip

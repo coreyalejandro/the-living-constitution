@@ -2,12 +2,12 @@
   "meta": {
     "phase": "0",
     "inventory_kind": "master_project_inventory",
-    "generated_at_utc": "2026-04-22T20:19:37Z",
+    "generated_at_utc": "2026-05-01T22:55:00Z",
     "registry_path_migration_ref": "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md",
     "migration_docs": [
       "projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md"
     ],
-    "tlc_root": "/Users/coreyalejandro/Projects/the-living-constitution",
+    "tlc_root": "/home/runner/work/the-living-constitution/the-living-constitution",
     "sources": [
       "filesystem: projects/",
       "filesystem: sibling paths under /Users/coreyalejandro/Projects (existence probe)",
@@ -23,18 +23,18 @@
     ]
   },
   "ci_provenance": {
-    "last_verified_run_id": "23774310879",
-    "last_verified_commit": "30805eed1d51ca78107294376c1b783275e484aa",
-    "last_remote_qualifying_commit": "30805eed1d51ca78107294376c1b783275e484aa",
-    "artifact_name": "governance-verification-runs-23774310879-1",
-    "verify_workflow_sha256": "3db5931f6722dc631aea92a7a0da0892dfd40707bc0d309a65760c189053a5c8",
-    "verify_workflow_sha256_at_last_remote_run": "b9ad420dbcc32d24d94c37115efaf60392266feb254c7d81f2ff45e6d0591cf8",
-    "status": "pending",
-    "tip_state_truth": "tip_pending",
-    "escalation_state": "review_required",
-    "reviewer_status": "pending",
-    "verification_anchor_tag": "tlc-gov-verified-e56fc07",
-    "verification_anchor_commit": "e56fc0753955901ee18bca44ae73181f9999b9db"
+    "last_verified_run_id": "25236308029",
+    "last_verified_commit": "417d90547f142246a676bfb28284083f9cbf325d",
+    "last_remote_qualifying_commit": "417d90547f142246a676bfb28284083f9cbf325d",
+    "artifact_name": "governance-verification-runs-25236308029-1",
+    "verify_workflow_sha256": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62",
+    "verify_workflow_sha256_at_last_remote_run": "119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62",
+    "status": "verified",
+    "tip_state_truth": "tip_verified",
+    "escalation_state": "none",
+    "reviewer_status": "approved",
+    "verification_anchor_tag": "tlc-gov-verified-417d905",
+    "verification_anchor_commit": "417d90547f142246a676bfb28284083f9cbf325d"
   },
   "governance_artifacts": {
     "contract_version": "v1.9.0",
@@ -425,7 +425,15 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/im-just-a-build; TLC folder retained as transitional mirror",
+        "external_repo": "https://github.com/coreyalejandro/im-just-a-build",
+        "overlay_only": true,
+        "extraction_contract": "C-002",
+        "extracted_at_utc": "2026-05-01T22:15:00Z",
+        "tracked_files": [
+          "BUILD_CONTRACT.md",
+          "CLAUDE.md"
+        ]
       },
       {
         "slug": "madmall",
@@ -475,7 +483,15 @@
         "path_exists_status": "present",
         "has_claude_md": true,
         "has_build_contract_md": true,
-        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror"
+        "repo_path_source": "Series C C-002 extraction initialized — standalone repo at /Users/coreyalejandro/Projects/teaser-video-remotion; TLC folder retained as transitional mirror",
+        "external_repo": "https://github.com/coreyalejandro/teaser-video-remotion",
+        "overlay_only": true,
+        "extraction_contract": "C-002",
+        "extracted_at_utc": "2026-05-01T22:15:00Z",
+        "tracked_files": [
+          "BUILD_CONTRACT.md",
+          "CLAUDE.md"
+        ]
       },
       {
         "slug": "tlc-control-plane",
@@ -663,5 +679,17 @@
         "phase_2_3_notes": "PASS 8 governance/; SandboxEngine.execute_script(src/app.py); scripts/verify_ui_governance.py; read-only CI vs MASTER_PROJECT_INVENTORY per contract"
       }
     }
-  ]
+  ],
+  "tlc_packages": {
+    "root_relative": "packages/",
+    "packages": [
+      {
+        "slug": "tlc-research-kernel",
+        "path": "packages/tlc-research-kernel",
+        "description": "TLC Research Workbench kernel — typed interfaces for surfacing CGL data in control plane",
+        "added_by": "TLC-RDI-MVP-001 Milestone 1",
+        "added_at_utc": "2026-05-01T20:00:00Z"
+      }
+    ]
+  }
 }

@@ -93,3 +93,31 @@ Non-existent: Formal collaboration or endorsement from Anthropic. Published rese
 Unverified: Whether Anthropic's fellowship program specifically seeks the governance-as-code skillset described here. Whether the failure taxonomy (F1-F5) maps cleanly to Anthropic's internal failure categorization.
 
 Functional status: Positioning document complete. Arguments are grounded in documented system architecture and measured results. No claims exceed what the evidence ledger supports.
+
+---
+
+## Update: cognitive-governance-lab and the Research/Governance Boundary
+
+This document was written before `cognitive-governance-lab` was created. The positioning
+has since sharpened. The role boundary is now explicit:
+
+**The Living Constitution (this repo):** Runtime governance enforcement layer.
+- Guardian Kernel (MCP safety enforcement server)
+- SentinelOS invariant platform (I1-I6 at API boundaries)
+- Evidence Observatory (8-layer evidence chain)
+- Constitutional evaluators, BID harness, Agent Republic
+- Status truth surfaces (STATUS.json, MASTER_PROJECT_INVENTORY.json)
+
+**cognitive-governance-lab:** Research substrate.
+- Contract Window experiment (H1/H2/H3 — Intent Fidelity, Bilateral Repair, Accessibility)
+- Three proposals (I: ConstitutionKit, II: BehaviorScope, III: MonoAgent)
+- Governance-kernel: ContractWindow, BicameralReview, InsightAtrophyIndex, SessionRecorder
+- 62/62 tests passing, synthetic pilot kappa 0.762
+
+**The boundary rule:**
+TLC governs the arc. CGL runs the experiment.
+For any external Anthropic communication: the research contribution is CGL.
+TLC is the evidence that the contribution is buildable, not theoretical.
+Never present TLC as the research contribution. Present it as the enforcement infrastructure
+that makes the CGL research auditable and reproducible — which is itself a research argument.
+

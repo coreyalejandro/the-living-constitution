@@ -7,7 +7,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "research:dev": "next dev",
+    "research:smoke": "cd ../.. && python3 scripts/verify_governance_chain.py --root . && python3 scripts/verify_project_topology.py --root . && python3 src/guardian.py --health-check",
+    "research:eval": "cd ../../projects/evaluation && tlc-evals run --suite eval_specs/invariant_suite.yaml --pattern-only 2>/dev/null || python3 -m tlc_evals.cli check --pattern-only",
+    "research:regression": "cd ../.. && python3 scripts/verify_governance_chain.py --root . && echo 'REGRESSION GATE: governance chain OK'",
+    "research:proposal": "node -e \"console.log('See: research/registry/improvement_proposals.json')\"",
+    "research:verify": "pnpm build && cd ../.. && python3 scripts/verify_governance_chain.py --root . && python3 src/guardian.py --health-check"
   },
   "dependencies": {
     "next": "15.2.9",

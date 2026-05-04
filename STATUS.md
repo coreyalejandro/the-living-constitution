@@ -8,26 +8,26 @@
 | `project` | `coreyalejandro/the-living-constitution` |
 | `series` | `B` |
 | `status` | `active` |
-| `verification_target` | `e56fc0753955901ee18bca44ae73181f9999b9db` |
-| `head_sha` | `7f42c11b9afbb73e146eb04c51504e2e6a527a0a` |
-| `last_verified_commit` | `30805eed1d51ca78107294376c1b783275e484aa` |
-| `last_verified_run_id` | `23774310879` |
-| `tip_state_truth` | `tip_pending` |
-| `workflow_sha` | `3db5931f6722dc631aea92a7a0da0892dfd40707bc0d309a65760c189053a5c8` |
-| `escalation_state` | `review_required` |
-| `reviewer_status` | `pending` |
+| `verification_target` | `417d90547f142246a676bfb28284083f9cbf325d` |
+| `head_sha` | `df26b0f89a4cc7811faa66752def7116ce71be46` |
+| `last_verified_commit` | `417d90547f142246a676bfb28284083f9cbf325d` |
+| `last_verified_run_id` | `25236308029` |
+| `tip_state_truth` | `tip_verified` |
+| `workflow_sha` | `119f0e8e1f206c72a73d12822616d7f237c1016e0560b4d99385710635cc4a62` |
+| `escalation_state` | `none` |
+| `reviewer_status` | `approved` |
 | `governance_contract_version` | `v1.9.0` |
-| `inventory_meta_generated_at_utc` | `2026-04-22T16:16:17Z` |
+| `inventory_meta_generated_at_utc` | `2026-05-01T22:55:00Z` |
 
 ## Immutable truth anchor (PASS 11)
 
 - **type:** `git_tag`
-- **tag:** `tlc-gov-verified-e56fc07`
-- **commit:** `e56fc0753955901ee18bca44ae73181f9999b9db`
+- **tag:** `tlc-gov-verified-417d905`
+- **commit:** `417d90547f142246a676bfb28284083f9cbf325d`
 
 ## Historical / evidence anchors
 
-- **ci_remote_record_captured_at_utc:** `2026-03-31T01:15:00Z`
+- **ci_remote_record_captured_at_utc:** `2026-05-01T22:42:56Z`
 - **regression_ledger_last_commit_sha:** `1a2ef808478b71e8bdbe40c86406ccc180180276`
 - **regression_ledger_last_run_id:** `23757979228`
 - **regression_ledger_last_timestamp_utc:** `2026-03-30T17:25:00Z`

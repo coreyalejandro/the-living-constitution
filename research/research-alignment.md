@@ -160,3 +160,48 @@ Non-existent: Anthropic endorsement or review of these alignments. Published pee
 Unverified: Whether Anthropic's fellowship program priorities match these specific research alignments. Whether the failure taxonomy maps to Anthropic's internal categorization.
 
 Functional status: Research alignment document complete. All claims bounded and honest. Explicit disclaimers prevent overclaiming.
+
+---
+
+## 6. Contract Window Research (cognitive-governance-lab)
+
+This section was added after `cognitive-governance-lab` was created. It documents the
+relationship between TLC's governance infrastructure and the active research program.
+
+### The Research/Governance Boundary
+
+TLC is the enforcement infrastructure. CGL is the research substrate.
+
+| Component | Lives In | Function |
+|-----------|----------|----------|
+| Contract Window prototype | cognitive-governance-lab | Research instrument — experimental condition in H1/H2/H3 |
+| Guardian Kernel | the-living-constitution | Enforcement tool — MCP safety server governing agent calls |
+| InsightAtrophyIndex | cognitive-governance-lab | Research measurement — operationalized in Month 1 |
+| SentinelOS I1-I6 | the-living-constitution | Runtime enforcement — invariants at API boundaries |
+| Evidence Observatory | the-living-constitution | Audit infrastructure — 8-layer evidence chain |
+| BicameralReview engine | cognitive-governance-lab | Research instrument — dual-channel output gate in experiment |
+
+### Alignment with Anthropic R&D
+
+The CGL research program extends TLC's alignment argument in three ways:
+
+1. **Contract Window extends Constitutional AI to runtime.**
+   CAI governs training. The Contract Window governs the session.
+   The TLC-CGL stack completes the stack: training-time (CAI) + runtime (Contract Window).
+
+2. **BehaviorScope bridges behavioral and mechanistic interpretability.**
+   CGL's Contract Window observables (Invariant Status transitions, V&T adoption) become
+   behavioral ground truth for validating mechanistic interpretability findings.
+   This is the missing validation link for sparse autoencoder research.
+
+3. **MonoAgent names architecture-task mismatch as a pre-training safety concern.**
+   Deploying polytropic architecture in monotropic domains is misalignment before the model
+   is trained. MonoAgent is the architecturally correct response.
+
+### What This Document Now Claims for TLC
+
+TLC's role to Anthropic is: **the governance infrastructure that makes the CGL research
+trustworthy, auditable, and reproducible.** It is not the research contribution.
+When presenting to Anthropic reviewers: lead with CGL (the research); introduce TLC as the
+evidence that the intervention is buildable and governed, not theoretical.
+
