@@ -9,7 +9,7 @@
 | `series` | `B` |
 | `status` | `active` |
 | `verification_target` | `417d90547f142246a676bfb28284083f9cbf325d` |
-| `head_sha` | `923a4b22142d7ee5fbdc5e76269110d6e3b348e0` |
+| `head_sha` | `df26b0f89a4cc7811faa66752def7116ce71be46` |
 | `last_verified_commit` | `417d90547f142246a676bfb28284083f9cbf325d` |
 | `last_verified_run_id` | `25236308029` |
 | `tip_state_truth` | `tip_verified` |
@@ -34,9 +34,7 @@
 
 ## Cross-repo consistency (ConsentChain submodule)
 
-- **state:** `drift`
-- **detail:** verify_cross_repo_consistency: FAIL
-  - canonical: INVARIANT_52: ANCHOR_TAG_REMOTE_MISMATCH — git ls-remote origin refs/tags/'tlc-gov-verified-417d905' returned no peeled commit (BREACH-B)
+- **state:** `aligned`
 
 ## Truth boundary
 

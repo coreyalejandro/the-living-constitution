@@ -1,12 +1,11 @@
 {
   "cross_repo_consistency": {
-    "detail": "verify_cross_repo_consistency: FAIL\n  - canonical: INVARIANT_52: ANCHOR_TAG_REMOTE_MISMATCH \u2014 git ls-remote origin refs/tags/'tlc-gov-verified-417d905' returned no peeled commit (BREACH-B)",
-    "exit_code": 1,
-    "state": "drift"
+    "exit_code": 0,
+    "state": "aligned"
   },
   "escalation_state": "none",
   "governance_contract_version": "v1.9.0",
-  "head_sha": "923a4b22142d7ee5fbdc5e76269110d6e3b348e0",
+  "head_sha": "df26b0f89a4cc7811faa66752def7116ce71be46",
   "historical_state": {
     "ci_remote_record_captured_at_utc": "2026-05-01T22:42:56Z",
     "regression_ledger_last_commit_sha": "1a2ef808478b71e8bdbe40c86406ccc180180276",
