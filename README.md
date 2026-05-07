@@ -65,6 +65,34 @@ I am autistic and schizophrenic. The Contract Window started as something I need
 | [`docs/vt/`](./docs/vt) | Verification & Truth status reporting spec | working |
 | [`benchmarks/`](./benchmarks) | Drift-seeded long-session benchmark (in construction) | in-progress |
 
+### System Architecture
+
+The system connects four components: the Contract Window (user-facing), the Model (any frontier LLM), the Runtime Invariants (governance enforcement), and the Evidence Observatory (researcher-facing). Data flows from user intent through the Contract Window into the model, through governance checks, and into a permanent evidence record.
+
+```mermaid
+flowchart TD
+  U["User\ndeclares task in plain language"]
+  CW["apps/contract-window/\nContract Window\nexposes: active task, assumptions, truth-status\nlets user: read, challenge, repair"]
+  M["Model\nClaude / Codex / Gemini"]
+  INV["governance/constitution/core/\nRuntime Invariants\n59 machine-readable invariants\nenforced on every model output"]
+  EO["apps/evidence-observatory/\nEvidence Observatory\n8-layer pipeline\nspan-level traceability"]
+  GT["Governed Transcript\nimmutable, researcher-accessible"]
+  R["Researcher Review\nrubric scoring, contestability analysis"]
+  FLAG["Output Intercepted and Flagged\ninvariant violation surfaced to user"]
+
+  U --> CW
+  CW --> M
+  M --> INV
+  INV -- "all invariants pass" --> EO
+  INV -- "invariant violation detected" --> FLAG
+  FLAG -- "user contests or repairs" --> CW
+  CW --> EO
+  EO --> GT
+  GT --> R
+```
+
+**Reading this diagram without sight:** The user declares a task in plain language inside apps/contract-window, which exposes the active task agreement, current assumptions, and truth-status. The Contract Window sends the task to the Model, which can be Claude, Codex, or Gemini. Every model output passes through the Runtime Invariants in governance/constitution/core, which enforces 59 machine-readable invariants. If all invariants pass, the output is logged to apps/evidence-observatory. If an invariant violation is detected, the output is intercepted and flagged, and the user is shown the violation inside the Contract Window. The user can contest or repair the task. All session data — from the Contract Window and from invariant checks — flows into the Evidence Observatory, which promotes the session to a Governed Transcript with span-level traceability. Researchers access Governed Transcripts for rubric scoring and contestability analysis.
+
 ---
 
 ## How to run it
@@ -103,18 +131,38 @@ Three hypotheses, each falsifiable:
 
 A fourth construct — **Backwards Instructional Design** — is integrated as an experimental condition rather than a separate hypothesis. See [PROPOSAL.md §F](./PROPOSAL.md#f-experimental-design).
 
+The diagram below shows how the four interventions map to the three hypothesis outcomes. Each arrow represents a primary (solid) relationship; secondary relationships run through all three outcomes from every intervention.
+
 ```mermaid
 flowchart LR
-  U["User"] --> CW["Contract Window"]
-  CW --> M["Model"]
-  M --> INV["Runtime invariants"]
-  INV --> O["Output"]
-  O --> U
-  M --> EO["Evidence Observatory"]
-  CW --> EO
-  INV --> EO
-  EO --> R["Researcher review"]
+  subgraph Interventions
+    CW2["Contract Window\napps/contract-window/"]
+    BI["Bilateral Intelligibility\nplain-language assumption exposure"]
+    AI2["Accessibility Invariants\ngovernance/constitution/core/"]
+    BID["Backwards Instructional Design\nBID edgecase harness"]
+  end
+
+  subgraph Outcomes
+    H1["H1: Intent Fidelity\n≥25% fewer drift incidents"]
+    H2["H2: Contestability\n≥2x drift repair rate"]
+    H3["H3: Human Legibility\n≥80% lay comprehension"]
+  end
+
+  CW2 -- "primary" --> H1
+  CW2 -- "secondary" --> H2
+  CW2 -- "secondary" --> H3
+  BI -- "secondary" --> H1
+  BI -- "primary" --> H2
+  BI -- "secondary" --> H3
+  AI2 -- "secondary" --> H1
+  AI2 -- "secondary" --> H2
+  AI2 -- "primary" --> H3
+  BID -- "structural prerequisite" --> H1
+  BID -- "structural prerequisite" --> H2
+  BID -- "structural prerequisite" --> H3
 ```
+
+**Reading this diagram without sight:** Four interventions are listed on the left: Contract Window (apps/contract-window/), Bilateral Intelligibility, Accessibility Invariants (governance/constitution/core/), and Backwards Instructional Design. Three hypothesis outcomes are listed on the right: H1 Intent Fidelity targeting at least 25 percent fewer drift incidents, H2 Contestability targeting at least 2 times the drift repair rate, and H3 Human Legibility targeting at least 80 percent lay comprehension. Contract Window has a primary relationship to H1 and secondary relationships to H2 and H3. Bilateral Intelligibility has a secondary relationship to H1, primary to H2, secondary to H3. Accessibility Invariants has secondary to H1 and H2, primary to H3. Backwards Instructional Design is a structural prerequisite for all three outcomes — it enables the other interventions rather than being independently tested.
 
 ### Intervention × outcome matrix
 
