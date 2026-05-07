@@ -1,0 +1,89 @@
+# .gitlab/duo/flows/claude.yaml
+# PROACTIVE Safety Agent — Claude Code External Agent Flow
+
+name: proactive-claude-agent
+description: >
+  PROACTIVE constitutional safety agent powered by Claude Code.
+  Enforces epistemic reliability invariants (I1-I6) on code review,
+  issue triage, and merge request validation. Posts V&T statements
+  on every action.
+
+# --- Execution Environment ---
+image: node:20-slim
+
+injectGatewayToken: true
+
+variables:
+  GITLAB_HOST: $CI_SERVER_HOST
+
+before_script:
+  - npm install --global @anthropic-ai/claude-code@latest
+  - apt-get update -qq && apt-get install -y -qq git python3 python3-pip > /dev/null 2>&1
+  - pip install -e . --break-system-packages --quiet
+  - git config --global user.name "PROACTIVE Agent"
+  - git config --global user.email "proactive-agent@${CI_SERVER_HOST}"
+
+# --- Triggers ---
+triggers:
+  - event: mention
+    resources:
+      - issue
+      - merge_request
+  - event: assign
+    resources:
+      - issue
+      - merge_request
+  - event: assign_reviewer
+    resources:
+      - merge_request
+
+# --- Prompt ---
+prompt: |
+  You are the PROACTIVE Safety Agent for this GitLab project.
+  Your constitution is defined in CLAUDE.md at the repository root.
+  You MUST read CLAUDE.md before taking any action.
+
+  CONTEXT:
+  - Event: ${AI_FLOW_EVENT_TYPE}
+  - Resource: ${AI_FLOW_RESOURCE_TYPE} #${AI_FLOW_RESOURCE_IID}
+  - Project: ${CI_PROJECT_PATH}
+  - Branch: ${CI_COMMIT_REF_NAME}
+  - User Input: ${AI_FLOW_INPUT}
+
+  DECISION PROTOCOL:
+  1. Read CLAUDE.md to load constitutional constraints
+  2. Parse the user's intent from AI_FLOW_INPUT
+  3. If this is a merge_request: run `pytest tests/ -v` and analyze the diff
+  4. If this is an issue: analyze the description, check for referenced files
+  5. Validate all findings against invariants I1-I6
+  6. Post your response as a comment with a V&T Statement
+
+  FAILURE PROTOCOL (I6 — Fail Closed):
+  If any invariant is violated during analysis:
+  - STOP immediately
+  - Post a comment identifying the violation
+  - Set the job to failed (exit 1)
+  - Do NOT attempt to fix the violation silently
+
+  OUTPUT FORMAT:
+  Always end every comment with:
+```
+  **V&T Statement:**
+  - **EXISTS:** [what you confirmed]
+  - **VERIFIED AGAINST:** [what you checked]
+  - **NOT CLAIMED:** [what remains unknown]
+  - **STATUS:** [current state]
+```
+
+# --- Script ---
+script:
+  - |
+    claude --print \
+      --allowedTools "Read File,Edit File,Create File With Contents,Find Files,List Dir,Grep,Run Git Command,Get Commit Diff,Run Tests,Create Issue,Get Issue,Update Issue,Get Merge Request,Update Merge Request,Create Issue Note,Create Merge Request Note,Get Job Logs,Get Pipeline Errors" \
+      "$AI_FLOW_INPUT"
+
+# --- Failure Handling ---
+allow_failure: false
+
+# --- Timeout ---
+timeout: 10m

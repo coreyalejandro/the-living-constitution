@@ -1,0 +1,39 @@
+# OpenMemory - IDE/Assistant specific rules
+.cursor/rules/openmemory.mdc
+CLAUDE.md
+AGENTS.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Tests / coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Demo media (GitHub file limit 100 MB; host large assets elsewhere)
+proactive-demo/public/*.mp4
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+.idea/
