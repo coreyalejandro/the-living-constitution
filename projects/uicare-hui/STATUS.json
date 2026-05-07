@@ -1,0 +1,34 @@
+{
+  "series": "B",
+  "status": "active",
+  "contract_id": "CRSP-UICARE-HUI-001",
+  "phase": "post-build",
+  "implementation_path": "/Users/coreyalejandro/Projects/uicare-hui",
+  "github_remote": "https://github.com/coreyalejandro/uicare-hui",
+  "tests": {
+    "unit": 57,
+    "governance": 15,
+    "total": 72,
+    "passing": 72,
+    "as_of": "2026-05-07"
+  },
+  "build": {
+    "safety_core": "PASS",
+    "pwa_next_build": "NOT_VERIFIED"
+  },
+  "github_remote_pushed": false,
+  "governance_report_signed": false,
+  "invariants": {
+    "INVARIANT_001": "IMPLEMENTED",
+    "INVARIANT_002": "IMPLEMENTED",
+    "INVARIANT_003": "IMPLEMENTED",
+    "INVARIANT_004": "IMPLEMENTED",
+    "INVARIANT_005": "IMPLEMENTED",
+    "INVARIANT_006": "IMPLEMENTED",
+    "INVARIANT_007": "IMPLEMENTED",
+    "INVARIANT_008": "IMPLEMENTED",
+    "INVARIANT_009": "IMPLEMENTED",
+    "INVARIANT_010": "IMPLEMENTED",
+    "INVARIANT_011": "IMPLEMENTED_CI_LINT_PENDING_RUN"
+  }
+}

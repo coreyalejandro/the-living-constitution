@@ -264,7 +264,8 @@
       "sentinelos",
       "teaser-video-remotion",
       "tlc-control-plane",
-      "uicare"
+      "uicare",
+      "uicare-hui"
     ],
     "entries": [
       {
@@ -512,6 +513,22 @@
         "has_claude_md": true,
         "has_build_contract_md": true,
         "repo_path_source": "BUILD_CONTRACT.md Repo Path"
+      },
+      {
+        "slug": "uicare-hui",
+        "implementation_repo_path_build_contract": "/Users/coreyalejandro/Projects/uicare-hui",
+        "implementation_repo_path_config_ts": "/Users/coreyalejandro/Projects/uicare-hui",
+        "path_exists_probe": true,
+        "path_exists_status": "present",
+        "has_claude_md": true,
+        "has_build_contract_md": true,
+        "repo_path_source": "C-RSP executed instance CRSP-UICARE-HUI-001; projects/uicare-hui overlay",
+        "github_remote": "https://github.com/coreyalejandro/uicare-hui",
+        "github_remote_status": "pending_push",
+        "domain": "Human Safety",
+        "status": "active",
+        "contract_instance": "projects/c-rsp/instances/CRSP-UICARE-HUI-001.md",
+        "notes": "Hexagonal architecture monorepo; packages/safety-core zero-dep; 72/72 tests passing; local commit only 2026-05-07"
       }
     ]
   },

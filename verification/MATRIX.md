@@ -32,14 +32,26 @@ Last updated: 2026-03-31
 | 25 | TLC: Institutionalization layer (scheduled verify, regression ledger, escalation, adversarial tests, system card) | TLC | `.github/workflows/verify.yml`; `verification/regression-ledger/`; `scripts/verify_institutionalization.py`; `verification/GOVERNANCE_SYSTEM_CARD.md` | CI + local scripts per inventory `ci_verification_commands` | VERIFIED | PASS 5 — local verify 2026-03-30 (governance + institutionalization + failure-injection harness) |
 | 26 | TLC: PASS 7 branch policy — mutable tips vs frozen verification targets (INVARIANT_37) | TLC | `verification/pass7-branch-verification-policy.json`; `scripts/tip_state_helpers.py`; `scripts/verify_governance_chain.py` | Local `verify_governance_chain` + failure-injection | VERIFIED | PASS 7 — policy + verifier wired 2026-03-30 |
 | 27 | TLC: C-RSP canonical terminology (Constitutionally-Regulated Single Pass executable prompt) | TLC | `docs/2026-03-29_C-RSP-TERMINOLOGY-STANDARD.md`; `projects/c-rsp/BUILD_CONTRACT.md` (INVARIANT_TERM_01, conflict + halt + AC-GOV-TERM) | String audit: prohibited expansions absent as authoritative phrasing | VERIFIED | Governance normalization 2026-03-31 |
+| 28 | UICare-HUI: Hexagonal Architecture monorepo — packages/safety-core zero runtime deps | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/package.json` | File inspection — dependencies field empty | VERIFIED | package.json has no dependencies key; devDependencies only (vitest, typescript) |
+| 29 | UICare-HUI: 72/72 automated tests passing | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/` | `npm run test` from monorepo root | VERIFIED | 57 unit tests + 15 governance tests — all passing 2026-05-07 |
+| 30 | UICare-HUI: safety-core TypeScript build clean | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/dist/` | `npm run build` exit 0 | VERIFIED | Build exit 0; dist/ produced 2026-05-07 |
+| 31 | UICare-HUI: 11 safety invariants implemented as typed assertions | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/src/invariants.ts` | Code inspection | VERIFIED | INVARIANT_001 through INVARIANT_011 all present as assertion functions |
+| 32 | UICare-HUI: Consent-enforced behavioral monitoring (INVARIANT_001) | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/src/consent/consent-enforcer.ts` | Code inspection + test coverage | VERIFIED | checkConsent() throws on non-GRANTED status; tested in consent-enforcer.test.ts |
+| 33 | UICare-HUI: HARD_BLOCK has no override path (INVARIANT_003) | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/src/safety/override-policy.ts` | Code inspection + test | VERIFIED | evaluateOverride() returns DENIED at HARD_BLOCK; tested in invariants.test.ts |
+| 34 | UICare-HUI: AES-256-GCM encryption adapter | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/apps/pwa/src/lib/encryption.ts` | Code inspection | VERIFIED | Web Crypto API AES-256-GCM encrypt/decrypt present |
+| 35 | UICare-HUI: Local-first offline safety gates (AI failure does not disable gates) | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/src/ports/AIAdvisor.ts` | Code inspection + test | VERIFIED | NULL_AI_ADVISOR exported; gate logic tested with null adapter in action-gate.test.ts |
+| 36 | UICare-HUI: TLC governance overlay registered | UICare-HUI | `projects/uicare-hui/`; `projects/c-rsp/instances/CRSP-UICARE-HUI-001.md`; `MASTER_PROJECT_INVENTORY.json` | File existence + topology verifier | VERIFIED | Overlay files present; verify_project_topology.py exits 0 2026-05-07 |
+| 37 | UICare-HUI: GitHub remote (implementation repo) | UICare-HUI | https://github.com/coreyalejandro/uicare-hui | `gh repo view` | VERIFIED | Remote created and pushed via SSH 2026-05-07; branch main tracking origin/main |
+| 38 | UICare-HUI: CI boundary lint (INVARIANT_011) passes | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/.github/workflows/ci.yml` | `npm run lint:boundaries` exit 0 | VERIFIED | ESLint boundary check exit 0 2026-05-07; safety-core imports confirmed clean |
+| 39 | UICare-HUI: apps/pwa Next.js build clean | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/apps/pwa/` | `next build` exit 0 | VERIFIED | next build exit 0; 4/4 static pages generated; TypeScript types checked 2026-05-07 |
 
 ## Verification Progress
 
-- Total claims: 27
-- Verified: 24
+- Total claims: 39
+- Verified: 38
 - Partial: 1 (GitHub repo count discrepancy)
 - Pending: 1 (SentinelOS build)
 - Failed: 0
 - **Claims requiring resume update**: SentinelOS LOC (1,037 actual, not ~1,500), GitHub repos (257 verified, not ~340)
 
-*Updated 2026-03-31 — added claim 27 (C-RSP canonical terminology per C-RSP-TS-v2.0). Prior: 2026-03-30 — claim 25 (TLC institutionalization PASS 5); claim 26 (PASS 7 branch verification).*
+*Updated 2026-05-07 — added claims 28–39 (UICare-HUI Behavioral Safety System; TLC governance registration). Prior: 2026-03-31 — claim 27 (C-RSP canonical terminology).*

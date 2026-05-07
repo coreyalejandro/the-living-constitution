@@ -1,3 +1,13 @@
+---
+document_type: "README"
+id: "DOC-README-001"
+status: "Active"
+canonical_path: "README.md"
+last_verified:
+  commit: "6a99e68"
+  timestamp: "2026-05-07T16:00:00Z"
+---
+
 # The Living Constitution
 
 **A research apparatus for testing whether AI interactions can be made governable, contestable, and legible — at the interface, in real time, by the people they affect.**

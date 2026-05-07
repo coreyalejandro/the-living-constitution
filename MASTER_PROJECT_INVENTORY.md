@@ -21,7 +21,7 @@ This inventory records what was **verified on disk or in cited files** at genera
 
 ---
 
-## 1. TLC `projects/` overlay (23 slugs)
+## 1. TLC `projects/` overlay (24 slugs)
 
 Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_projects_overlay.expected_slugs`):
 
@@ -50,6 +50,7 @@ Canonical slug list (must match `MASTER_PROJECT_INVENTORY.json` → `tlc_project
 | teaser-video-remotion | yes | yes | `/Users/coreyalejandro/Projects/teaser-video-remotion` | yes |
 | tlc-control-plane | no | no | `/Users/coreyalejandro/Projects/the-living-constitution/standalone/tlc-ui-desktop` | yes |
 | uicare | yes | yes | `/Users/coreyalejandro/Projects/uicare-system/` | yes |
+| uicare-hui | yes | yes | `/Users/coreyalejandro/Projects/uicare-hui` | yes |
 
 **File-level notes (non-exhaustive):**
 
