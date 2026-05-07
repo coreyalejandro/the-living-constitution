@@ -12,6 +12,8 @@ last_verified:
 
 **A research apparatus for testing whether AI interactions can be made governable, contestable, and legible — at the interface, in real time, by the people they affect.**
 
+For a concise reviewer-facing product overview, see [TLC Reviewer PRD](docs/product/TLC_REVIEWER_PRD.md).
+
 ---
 
 ## What this is
