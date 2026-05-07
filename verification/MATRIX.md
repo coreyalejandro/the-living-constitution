@@ -41,7 +41,7 @@ Last updated: 2026-03-31
 | 34 | UICare-HUI: AES-256-GCM encryption adapter | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/apps/pwa/src/lib/encryption.ts` | Code inspection | VERIFIED | Web Crypto API AES-256-GCM encrypt/decrypt present |
 | 35 | UICare-HUI: Local-first offline safety gates (AI failure does not disable gates) | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/src/ports/AIAdvisor.ts` | Code inspection + test | VERIFIED | NULL_AI_ADVISOR exported; gate logic tested with null adapter in action-gate.test.ts |
 | 36 | UICare-HUI: TLC governance overlay registered | UICare-HUI | `projects/uicare-hui/`; `projects/c-rsp/instances/CRSP-UICARE-HUI-001.md`; `MASTER_PROJECT_INVENTORY.json` | File existence + topology verifier | VERIFIED | Overlay files present; verify_project_topology.py exits 0 2026-05-07 |
-| 37 | UICare-HUI: GitHub remote (implementation repo) | UICare-HUI | https://github.com/coreyalejandro/uicare-hui | `gh repo view` | PENDING | Remote not yet created as of 2026-05-07 |
+| 37 | UICare-HUI: GitHub remote (implementation repo) | UICare-HUI | https://github.com/coreyalejandro/uicare-hui | `gh repo view` | VERIFIED | Remote created and pushed via SSH 2026-05-07; branch main tracking origin/main |
 | 38 | UICare-HUI: CI boundary lint (INVARIANT_011) passes | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/.github/workflows/ci.yml` | `npm run lint:boundaries` exit 0 | PENDING | ESLint boundary config written; local run not yet executed |
 | 39 | UICare-HUI: apps/pwa Next.js build clean | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/apps/pwa/` | `next build` exit 0 | PENDING | next build not yet run |
 
