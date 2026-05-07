@@ -42,15 +42,15 @@ Last updated: 2026-03-31
 | 35 | UICare-HUI: Local-first offline safety gates (AI failure does not disable gates) | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/packages/safety-core/src/ports/AIAdvisor.ts` | Code inspection + test | VERIFIED | NULL_AI_ADVISOR exported; gate logic tested with null adapter in action-gate.test.ts |
 | 36 | UICare-HUI: TLC governance overlay registered | UICare-HUI | `projects/uicare-hui/`; `projects/c-rsp/instances/CRSP-UICARE-HUI-001.md`; `MASTER_PROJECT_INVENTORY.json` | File existence + topology verifier | VERIFIED | Overlay files present; verify_project_topology.py exits 0 2026-05-07 |
 | 37 | UICare-HUI: GitHub remote (implementation repo) | UICare-HUI | https://github.com/coreyalejandro/uicare-hui | `gh repo view` | VERIFIED | Remote created and pushed via SSH 2026-05-07; branch main tracking origin/main |
-| 38 | UICare-HUI: CI boundary lint (INVARIANT_011) passes | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/.github/workflows/ci.yml` | `npm run lint:boundaries` exit 0 | PENDING | ESLint boundary config written; local run not yet executed |
-| 39 | UICare-HUI: apps/pwa Next.js build clean | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/apps/pwa/` | `next build` exit 0 | PENDING | next build not yet run |
+| 38 | UICare-HUI: CI boundary lint (INVARIANT_011) passes | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/.github/workflows/ci.yml` | `npm run lint:boundaries` exit 0 | VERIFIED | ESLint boundary check exit 0 2026-05-07; safety-core imports confirmed clean |
+| 39 | UICare-HUI: apps/pwa Next.js build clean | UICare-HUI | `/Users/coreyalejandro/Projects/uicare-hui/apps/pwa/` | `next build` exit 0 | VERIFIED | next build exit 0; 4/4 static pages generated; TypeScript types checked 2026-05-07 |
 
 ## Verification Progress
 
 - Total claims: 39
-- Verified: 36
+- Verified: 38
 - Partial: 1 (GitHub repo count discrepancy)
-- Pending: 4 (SentinelOS build; uicare-hui remote; uicare-hui CI lint; uicare-hui pwa build)
+- Pending: 1 (SentinelOS build)
 - Failed: 0
 - **Claims requiring resume update**: SentinelOS LOC (1,037 actual, not ~1,500), GitHub repos (257 verified, not ~340)
 
