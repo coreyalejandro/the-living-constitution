@@ -1,0 +1,89 @@
+# .gitlab-ci.yml
+# PROACTIVE: Constitutional AI safety agent for epistemic safety enforcement
+#
+# PROACTIVE is a constitutional AI safety agent that catches epistemic failures
+# in merge requests. It extracts claims, validates against six safety invariants
+# (I1-I6), detects scope drift, scores confidence per claim, generates V&T
+# (Verification & Truth) statements, and triages violations by severity.
+#
+# To invoke PROACTIVE on a merge request:
+#   1. Open the MR in GitLab
+#   2. Open Duo Chat and select the PROACTIVE Code Review agent
+#   3. Ask it to review the MR
+#   4. PROACTIVE analyzes claims, enforces invariants, detects drift,
+#      scores confidence, and generates a V&T statement with findings
+#
+# Dependency Structure:
+#   - unit-tests: pip install -e ".[dev]" (base + dev tools for testing)
+#   - proactive-review: pip install -e . (base only, runtime dependencies)
+#
+# Required Secrets:
+#   - ANTHROPIC_API_KEY: Claude API key for LLM evaluations
+#
+# Pipeline Strategy:
+#   - MR pipelines: unit-tests + proactive-review
+#   - Branch pushes: unit-tests (and workflow rules below avoid suppressing runs)
+
+variables:
+  GIT_DEPTH: 5
+  GIT_STRATEGY: fetch
+
+# Run pipelines for merge requests and for branch pushes.
+# Do NOT use `when: never` when $CI_OPEN_MERGE_REQUESTS is set on a branch pipeline:
+# GitLab often creates a branch (push) pipeline first; that rule suppressed the *entire*
+# workflow, so no jobs ran and proactive-review never triggered. MR pipelines still match
+# the first rule; branch pipelines match the second so unit-tests at least run.
+# Prefer creating the MR before follow-up pushes, or use push options:
+#   git push -o merge_request.create -o merge_request.target=main -o merge_request.title="..."
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - test
+  - review
+
+unit-tests:
+  stage: test
+  image: python:3.11-slim
+  script:
+    - pip install -e ".[dev]"
+    - pytest tests/ -v --cov=proactive --cov-report=term-missing
+  coverage: '/TOTAL.*\s+(\d+%)/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    expire_in: 30 days
+
+# PROACTIVE constitutional review — merge request pipelines only.
+proactive-review:
+  stage: review
+  image: python:3.11-slim
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  variables:
+    ANTHROPIC_API_KEY: $ANTHROPIC_API_KEY
+    PROACTIVE_MODEL_CLAIMS: "claude-haiku-4-5-20251001"
+    PROACTIVE_MODEL_INVARIANTS: "claude-haiku-4-5-20251001"
+    PROACTIVE_MODEL_DRIFT: "claude-haiku-4-5-20251001"
+  before_script:
+    - |
+      if [ -z "$ANTHROPIC_API_KEY" ]; then
+        echo "ERROR: ANTHROPIC_API_KEY is required but not set"
+        echo "Please configure ANTHROPIC_API_KEY in project CI/CD variables"
+        exit 1
+      fi
+    - echo "✓ ANTHROPIC_API_KEY is configured"
+  script:
+    - pip install -e .
+    - python -m proactive.cli review-api --output-dir proactive-reports
+  artifacts:
+    paths:
+      - proactive-reports/proactive-report.md
+      - proactive-reports/proactive-report.json
+    expire_in: 90 days
+    when: always
+  allow_failure: false

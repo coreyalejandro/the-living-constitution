@@ -1,0 +1,172 @@
+name: "PROACTIVE MR Triage"
+description: >
+  Automated merge request triage flow powered by the PROACTIVE constitutional
+  safety framework. Runs on every MR event, checks I1-I6 invariants, detects
+  F1-F5 failure classes, assigns severity labels, posts V&T statement comments,
+  and blocks merge on critical violations.
+public: true
+definition:
+  version: v1
+  environment: ambient
+
+  components:
+    - name: "fetch_mr_context"
+      type: DeterministicStepComponent
+      prompt_id: "fetch_context_prompt"
+      inputs:
+        - "context:goal"
+      toolset:
+        - "get_merge_request"
+        - "list_merge_request_diffs"
+
+    - name: "run_proactive_validator"
+      type: AgentComponent
+      prompt_id: "validator_prompt"
+      inputs:
+        - "context:goal"
+        - "fetch_mr_context:output"
+      toolset:
+        - "read_file"
+        - "read_files"
+        - "grep"
+        - "find_files"
+        - "list_dir"
+      ui_log_events:
+        - on_agent_final_answer
+        - on_tool_execution_success
+
+    - name: "score_and_label"
+      type: DeterministicStepComponent
+      prompt_id: "score_prompt"
+      inputs:
+        - "run_proactive_validator:output"
+      toolset:
+        - "update_merge_request"
+
+    - name: "post_review_comment"
+      type: DeterministicStepComponent
+      prompt_id: "comment_prompt"
+      inputs:
+        - "run_proactive_validator:output"
+        - "score_and_label:output"
+      toolset:
+        - "create_merge_request_note"
+
+  prompts:
+    - prompt_id: "fetch_context_prompt"
+      name: "Fetch MR Context"
+      prompt_template:
+        system: |
+          You are a deterministic step that fetches merge request context.
+          Retrieve the MR title, description, diff, and changed files.
+          Return structured JSON with all context needed for PROACTIVE review.
+        user: |
+          Fetch context for the current merge request.
+          {{goal}}
+        placeholder: history
+      unit_primitives: []
+      params:
+        timeout: 60
+
+    - prompt_id: "validator_prompt"
+      name: "PROACTIVE Validator"
+      prompt_template:
+        system: |
+          You are PROACTIVE, a constitutional AI safety agent.
+
+          REVIEW PROTOCOL:
+          1. Read every changed file in the MR diff.
+          2. Extract all verifiable claims from the MR description.
+          3. Check each claim against the Six Invariants (I1-I6).
+          4. Detect all Five Failure Classes (F1-F5).
+          5. Assess drift between stated intent and actual changes.
+          6. Generate a structured review with V&T statement.
+
+          SIX INVARIANTS:
+          I1 - Evidence-First: Every claim carries a confidence tag.
+          I2 - No Phantom Work: Never say done unless artifact exists.
+          I3 - Confidence Requires Verification: High confidence needs proof.
+          I4 - Traceability Mandatory: Link every action to its origin.
+          I5 - Safety Over Fluency: Precise beats smooth.
+          I6 - Fail Closed: On violation, STOP and report.
+
+          FAILURE CLASSES:
+          F1 - Confident False Claims
+          F2 - Phantom Completion
+          F3 - Persistence Under Correction
+          F4 - Harm-Risk Coupling
+          F5 - Cross-Episode Drift
+
+          OUTPUT FORMAT (JSON):
+          {
+            "violations": [{"invariant": "I2", "severity": "ERROR", "message": "...", "suggested_fix": "..."}],
+            "claims": [{"text": "...", "type": "completion", "evidence": "untagged"}],
+            "drift": {"detected": false, "details": ""},
+            "verdict": "BLOCKED|FLAGGED|APPROVED",
+            "trust_score": 0.85
+          }
+
+          Always end with a V&T statement.
+        user: |
+          Review this merge request for epistemic safety:
+          {{goal}}
+          {{fetch_mr_context}}
+        placeholder: history
+      unit_primitives: []
+      params:
+        timeout: 180
+
+    - prompt_id: "score_prompt"
+      name: "Score and Label"
+      prompt_template:
+        system: |
+          You are a deterministic scoring step.
+          Based on the PROACTIVE review output, determine:
+          1. Severity score (0-10)
+          2. Labels to assign (safety-critical, epistemic-risk, phantom-work, proactive-pass)
+          3. Merge action (BLOCK, WARN, ALLOW)
+
+          Scoring rules:
+          - I6 violations -> safety-critical, score 10, BLOCK
+          - I2 ERROR violations -> phantom-work, score 7, BLOCK
+          - I1/I3/I4/I5 violations -> epistemic-risk, score 5-8, WARN
+          - No violations -> proactive-pass, score 0, ALLOW
+
+          Apply the labels to the merge request using update_merge_request.
+        user: |
+          Score and label based on this review:
+          {{run_proactive_validator}}
+        placeholder: history
+      unit_primitives: []
+      params:
+        timeout: 60
+
+    - prompt_id: "comment_prompt"
+      name: "Post Review Comment"
+      prompt_template:
+        system: |
+          You are a deterministic step that posts the PROACTIVE review
+          as a comment on the merge request. Format the review as markdown
+          with the V&T statement at the end. Include severity labels and
+          merge action in the comment.
+        user: |
+          Post this review as a comment on the merge request:
+          Review: {{run_proactive_validator}}
+          Scoring: {{score_and_label}}
+        placeholder: history
+      unit_primitives: []
+      params:
+        timeout: 60
+
+  routers:
+    - from: "fetch_mr_context"
+      to: "run_proactive_validator"
+    - from: "run_proactive_validator"
+      to: "score_and_label"
+    - from: "score_and_label"
+      to: "post_review_comment"
+    - from: "post_review_comment"
+      to: "end"
+
+  flow:
+    entry_point: "fetch_mr_context"
