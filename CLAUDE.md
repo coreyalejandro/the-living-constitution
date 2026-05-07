@@ -64,6 +64,7 @@ the-living-constitution/
 | MADMall-Production | Human/Cognitive/Empirical | `/Users/coreyalejandro/Projects/MADMall-Production` | Partial — infrastructure mature, features Phase 1/4 |
 | ConsentChain | Empirical Safety | `/Users/coreyalejandro/Projects/the-living-constitution/projects/consentchain` (path semantics: `projects/consentchain-pack/core/REGISTRY_PATH_MIGRATION.md`) | Partial |
 | UICare-System | Human Safety | `/Users/coreyalejandro/Projects/uicare-system` | Partial |
+| UICare-HUI | Human Safety | `/Users/coreyalejandro/Projects/uicare-hui` | Active — Phase 0-8 executed; 72/72 tests; local commit; remote pending |
 | Docen | Cognitive Safety | `/Users/coreyalejandro/Projects/docen` | Deployed on GCR |
 | Portfolio | All 4 Domains | `/Users/coreyalejandro/Projects/coreys-agentic-portfolio` | Live on Vercel |
 | TLC Evidence Observatory | Epistemic/Empirical Safety | `/Users/coreyalejandro/Projects/tlc-evidence-observatory` | Building — zero-shot contract executing |
