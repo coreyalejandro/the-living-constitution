@@ -1,14 +1,18 @@
 {
   "project_name": "Professional Skeptic",
   "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
-  "lifecycle_state": "Draft",
+  "lifecycle_state": "Active",
   "standalone_repo": "github.com/coreyalejandro/professional-skeptic",
   "tlc_registration_status": "partial",
   "notes": "TLC registration files created. Standalone repo scaffold built and verified. Awaiting initial commit hash and Vercel deployment verification for Draft-to-Active transition.",
-  "last_verified_at": "2026-05-08",
+  "last_verified_at": "2026-05-08T15:00:03.494223Z",
   "unresolved_required_inputs": [
     "Initial standalone repo commit hash",
     "TLC registration commit hash",
     "Vercel deployment confirmation"
-  ]
+  ],
+  "deployment_status": "live",
+  "production_url": "https://professional-skeptic.vercel.app",
+  "baseline_commit": "237a1671bfff6a9e0d173733e6195f12ce4ac1cf",
+  "pr_merged": "https://github.com/coreyalejandro/the-living-constitution/pull/53"
 }
