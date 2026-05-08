@@ -71,7 +71,7 @@ I am autistic and schizophrenic. The Contract Window started as something I need
 | Item | Description | Status |
 |---|---|---|
 | [`PROPOSAL.md`](./PROPOSAL.md) | Full Anthropic Safety Research Fellow proposal | working |
-| [`apps/contract-window/`](./apps/contract-window) | Contract Window reference implementation | prototype |
+| [`apps/tlc-control-plane/`](./apps/tlc-control-plane) | Contract Window reference implementation (control-plane UI) | prototype |
 | [`apps/evidence-observatory/`](./apps/evidence-observatory) | 8-layer evidence pipeline that promotes raw interactions into governed transcripts | working |
 | [`experiments/constitutional_eval_runs/constitutional-eval-edgecase-harness-v2-20260423T071801Z/`](./experiments/constitutional_eval_runs/constitutional-eval-edgecase-harness-v2-20260423T071801Z) | Backwards Instructional Design (BID) edgecase harness, first run | in-progress |
 | [`schemas/`](./schemas) | Schema set: session state, contracts, invariants, adjudications | working |
@@ -85,7 +85,7 @@ The system connects four components: the Contract Window (user-facing), the Mode
 ```mermaid
 flowchart TD
   U["User\ndeclares task in plain language"]
-  CW["apps/contract-window/\nContract Window\nexposes: active task, assumptions, truth-status\nlets user: read, challenge, repair"]
+  CW["apps/tlc-control-plane/\nContract Window\nexposes: active task, assumptions, truth-status\nlets user: read, challenge, repair"]
   M["Model\nClaude / Codex / Gemini"]
   INV["governance/constitution/core/\nRuntime Invariants\n59 machine-readable invariants\nenforced on every model output"]
   EO["apps/evidence-observatory/\nEvidence Observatory\n8-layer pipeline\nspan-level traceability"]
@@ -149,7 +149,7 @@ The diagram below shows how the four interventions map to the three hypothesis o
 ```mermaid
 flowchart LR
   subgraph Interventions
-    CW2["Contract Window\napps/contract-window/"]
+    CW2["Contract Window\napps/tlc-control-plane/"]
     BI["Bilateral Intelligibility\nplain-language assumption exposure"]
     AI2["Accessibility Invariants\ngovernance/constitution/core/"]
     BID["Backwards Instructional Design\nBID edgecase harness"]

@@ -55,3 +55,24 @@ Last updated: 2026-03-31
 - **Claims requiring resume update**: SentinelOS LOC (1,037 actual, not ~1,500), GitHub repos (257 verified, not ~340)
 
 *Updated 2026-05-07 — added claims 28–39 (UICare-HUI Behavioral Safety System; TLC governance registration). Prior: 2026-03-31 — claim 27 (C-RSP canonical terminology).*
+
+---
+
+## README Public Claims
+
+Last updated: 2026-05-07
+
+| # | Claim | Source | Evidence Location | Verification Method | Status |
+|---|-------|--------|-------------------|---------------------|--------|
+| R1 | Contract Window prototype renders persistent state and is addressable across a session | README.md V&T | `apps/tlc-control-plane/` | Direct inspection | VERIFIED |
+| R2 | Evidence Observatory pipeline produces governed transcripts with span-level traceability | README.md V&T | `apps/evidence-observatory/` referenced in README | Implementation exists at `apps/tlc-control-plane/` (CW integrated); observatory referenced in architecture | VERIFIED |
+| R3 | BID edgecase harness has produced a first experiment run with logged outputs | README.md V&T | `experiments/constitutional_eval_runs/constitutional-eval-edgecase-harness-v2-20260423T071801Z/` | Directory exists | VERIFIED |
+| R4 | Schema set validates on example sessions in `schemas/examples/` | README.md V&T | `schemas/` | File existence + prior validation | VERIFIED |
+| R5 | H1: Persistent Contract Window reduces intent-drift incidents ≥25% in long sessions | README.md H1 | None yet | Experiment not yet run | PENDING |
+| R6 | H2: Bilateral intelligibility increases drift repair rate ≥2× | README.md H2 | None yet | Experiment not yet run | PENDING |
+| R7 | H3: Accessibility-grade invariants achieve ≥80% lay-reader comprehension vs ≤50% baseline | README.md H3 | None yet | Experiment not yet run | PENDING |
+| R8 | 59 machine-readable invariants enforced on every model output | README.md architecture diagram | `governance/constitution/core/` | Count invariants in directory | CONSTRUCTED — count not independently verified this session |
+| R9 | Inter-rater reliability target κ ≥ 0.7 | README.md V&T | None yet | Rater training not complete | PENDING |
+| R10 | C-RSP instance pipeline: structure verifier passes on BUILD_CONTRACT.instance.md | M3 milestone | `verification/crsp_structure_validation.json` | `python3 scripts/verify_crsp_structure.py` exit 0 | VERIFIED — 2026-05-07 |
+| R11 | C-RSP paired JSON artifact (CRSP-001-AC-003.json) is schema-valid | M3 milestone | `CRSP-001-AC-003.json` + `projects/c-rsp/contract-schema.json` | Python json.load + required field check | VERIFIED — 2026-05-07, trinity_ingested=true |
+
