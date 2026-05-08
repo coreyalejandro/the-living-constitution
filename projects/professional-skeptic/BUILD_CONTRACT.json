@@ -1,0 +1,22 @@
+{
+  "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
+  "schema_version": "4.0",
+  "status": "Draft",
+  "topology": "Dual-Topology",
+  "standalone_repo": "github.com/coreyalejandro/professional-skeptic",
+  "tlc_path": "projects/professional-skeptic",
+  "authority_repo": "github.com/coreyalejandro/the-living-constitution",
+  "description": "Professional Skeptic \u2014 C-RSP-governed failure detection agent. Audits AI repos, research claims, and build plans.",
+  "authority_files": {
+    "constitution": "THE_LIVING_CONSTITUTION.md",
+    "claude": "CLAUDE.md",
+    "inventory": "MASTER_PROJECT_INVENTORY.json"
+  },
+  "forbidden_mutations": [
+    "THE_LIVING_CONSTITUTION.md",
+    "CLAUDE.md",
+    "MASTER_PROJECT_INVENTORY.json"
+  ],
+  "lifecycle_state": "Draft",
+  "registered_at": "2026-05-08"
+}
