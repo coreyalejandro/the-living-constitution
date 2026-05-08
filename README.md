@@ -12,6 +12,8 @@ last_verified:
 
 **A research apparatus for testing whether AI interactions can be made governable, contestable, and legible — at the interface, in real time, by the people they affect.**
 
+For a concise reviewer-facing product overview, see [TLC Reviewer PRD](docs/product/TLC_REVIEWER_PRD.md).
+
 ---
 
 ## What this is
@@ -54,6 +56,17 @@ I am autistic and schizophrenic. The Contract Window started as something I need
 ---
 
 ## What you'll find in this repo
+
+### Governance truth surfaces
+
+| File | Purpose |
+|---|---|
+| [`STATUS.json`](./STATUS.json) | Authoritative machine-readable operational status — truth anchor, review state, tip-state truth |
+| [`STATUS.md`](./STATUS.md) | Human-readable mirror of STATUS.json, regenerated deterministically |
+| [`MASTER_PROJECT_INVENTORY.md`](./MASTER_PROJECT_INVENTORY.md) | Full map of governed projects, overlays, repo paths, and known anomalies |
+| [`THE_LIVING_CONSTITUTION.md`](./THE_LIVING_CONSTITUTION.md) | Constitutional specification — Articles I–V, agent powers, amendment logic |
+
+### Research artifacts
 
 | Item | Description | Status |
 |---|---|---|
