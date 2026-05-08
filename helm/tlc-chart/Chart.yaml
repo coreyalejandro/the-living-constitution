@@ -1,0 +1,37 @@
+apiVersion: v2
+name: the-living-constitution
+description: Enterprise-grade Constitutional AI Governance Platform
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+home: https://github.com/coreyalejandro/the-living-constitution
+sources:
+  - https://github.com/coreyalejandro/the-living-constitution
+maintainers:
+  - name: Corey Alejandro
+    email: corey@example.com
+keywords:
+  - constitutional-ai
+  - governance
+  - safety
+  - ai-ethics
+  - monitoring
+annotations:
+  category: AI/ML
+dependencies:
+  - name: postgresql
+    version: 12.x.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+  - name: redis
+    version: 17.x.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+  - name: prometheus
+    version: 23.x.x
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: monitoring.prometheus.enabled
+  - name: grafana
+    version: 6.x.x
+    repository: https://grafana.github.io/helm-charts
+    condition: monitoring.grafana.enabled

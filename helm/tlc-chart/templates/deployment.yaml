@@ -1,0 +1,192 @@
+{{- range $service := list "control-plane" "semgraph" "guardian" }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $service }}
+  namespace: {{ $.Values.global.namespace | default "tlc-production" }}
+  labels:
+    {{- include "tlc.labels" $ | nindent 4 }}
+    app.kubernetes.io/component: {{ $service }}
+spec:
+  {{- if not $.Values.autoscaling.enabled }}
+  replicas: {{ index $.Values.replicaCount $service | default 2 }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "tlc.selectorLabels" $ | nindent 6 }}
+      app.kubernetes.io/component: {{ $service }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") $ | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") $ | sha256sum }}
+        prometheus.io/scrape: "true"
+        prometheus.io/port: {{ if eq $service "control-plane" }}"3000"{{ else if eq $service "semgraph" }}"8000"{{ else }}"8001"{{ end }}
+        prometheus.io/path: "/metrics"
+      labels:
+        {{- include "tlc.selectorLabels" $ | nindent 8 }}
+        app.kubernetes.io/component: {{ $service }}
+    spec:
+      {{- with $.Values.global.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "tlc.serviceAccountName" $ }}
+      securityContext:
+        {{- toYaml $.Values.securityContext | nindent 8 }}
+      containers:
+      - name: {{ $service }}
+        securityContext:
+          {{- toYaml $.Values.podSecurityContext | nindent 10 }}
+        image: "{{ $.Values.image.registry }}/{{ $.Values.image.repository }}-{{ $service }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+        imagePullPolicy: {{ $.Values.image.pullPolicy }}
+        ports:
+        - name: http
+          containerPort: {{ if eq $service "control-plane" }}3000{{ else if eq $service "semgraph" }}8000{{ else }}8001{{ end }}
+          protocol: TCP
+        {{- if eq $service "control-plane" }}
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: http
+          initialDelaySeconds: {{ $.Values.healthChecks.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ $.Values.healthChecks.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ $.Values.healthChecks.livenessProbe.timeoutSeconds }}
+          failureThreshold: {{ $.Values.healthChecks.livenessProbe.failureThreshold }}
+        readinessProbe:
+          httpGet:
+            path: /api/ready
+            port: http
+          initialDelaySeconds: {{ $.Values.healthChecks.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ $.Values.healthChecks.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ $.Values.healthChecks.readinessProbe.timeoutSeconds }}
+          failureThreshold: {{ $.Values.healthChecks.readinessProbe.failureThreshold }}
+        {{- else }}
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: {{ $.Values.healthChecks.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ $.Values.healthChecks.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ $.Values.healthChecks.livenessProbe.timeoutSeconds }}
+          failureThreshold: {{ $.Values.healthChecks.livenessProbe.failureThreshold }}
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+          initialDelaySeconds: {{ $.Values.healthChecks.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ $.Values.healthChecks.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ $.Values.healthChecks.readinessProbe.timeoutSeconds }}
+          failureThreshold: {{ $.Values.healthChecks.readinessProbe.failureThreshold }}
+        {{- end }}
+        resources:
+          {{- toYaml (index $.Values.resources $service) | nindent 10 }}
+        env:
+        - name: NODE_ENV
+          value: {{ $.Values.env.NODE_ENV }}
+        - name: LOG_LEVEL
+          value: {{ $.Values.env.LOG_LEVEL }}
+        - name: METRICS_ENABLED
+          value: {{ $.Values.env.METRICS_ENABLED | quote }}
+        - name: HEALTH_CHECK_ENABLED
+          value: {{ $.Values.env.HEALTH_CHECK_ENABLED | quote }}
+        {{- if eq $service "control-plane" }}
+        - name: PORT
+          value: "3000"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: DATABASE_URL
+        - name: REDIS_URL
+          value: "redis://{{ include "tlc.fullname" $ }}-redis:6379"
+        {{- else if eq $service "semgraph" }}
+        - name: PORT
+          value: "8000"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: DATABASE_URL
+        {{- else if eq $service "guardian" }}
+        - name: PORT
+          value: "8001"
+        - name: GUARDIAN_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: GUARDIAN_API_KEY
+        {{- end }}
+        - name: ANTHROPIC_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: ANTHROPIC_API_KEY
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: OPENAI_API_KEY
+        - name: GOOGLE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: GOOGLE_API_KEY
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: JWT_SECRET
+        - name: ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: ENCRYPTION_KEY
+        - name: SESSION_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "tlc.fullname" $ }}-secret
+              key: SESSION_SECRET
+        {{- if $.Values.constitutional.enabled }}
+        - name: CONSTITUTIONAL_ENABLED
+          value: "true"
+        - name: CONSTITUTIONAL_STRICT_MODE
+          value: {{ $.Values.constitutional.strictMode | quote }}
+        - name: CONSTITUTIONAL_EVALUATION_INTERVAL
+          value: {{ $.Values.constitutional.evaluationInterval }}
+        {{- end }}
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+        {{- if $.Values.persistence.enabled }}
+        - name: data
+          mountPath: /app/data
+        {{- end }}
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: {{ include "tlc.fullname" $ }}-config
+      {{- if $.Values.persistence.enabled }}
+      - name: data
+        persistentVolumeClaim:
+          claimName: {{ include "tlc.fullname" $ }}-{{ $service }}-pvc
+      {{- end }}
+      {{- with $.Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $.Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

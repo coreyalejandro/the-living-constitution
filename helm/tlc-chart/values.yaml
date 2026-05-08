@@ -1,0 +1,274 @@
+# Default values for the-living-constitution
+# This is a YAML-formatted file.
+
+# Global configuration
+global:
+  imageRegistry: ghcr.io
+  imagePullSecrets: []
+  storageClass: ""
+
+# Image configuration
+image:
+  registry: ghcr.io
+  repository: coreyalejandro/the-living-constitution
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+# Replica counts
+replicaCount:
+  controlPlane: 2
+  semgraph: 2
+  guardian: 2
+
+# Service configuration
+service:
+  type: ClusterIP
+  ports:
+    controlPlane: 3000
+    semgraph: 8000
+    guardian: 8001
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  hosts:
+    - host: your-domain.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: control-plane
+        - path: /api/semgraph
+          pathType: Prefix
+          service: semgraph
+        - path: /api/guardian
+          pathType: Prefix
+          service: guardian
+  tls:
+    - secretName: tls-secret
+      hosts:
+        - your-domain.com
+
+# Resource limits and requests
+resources:
+  controlPlane:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  semgraph:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+  guardian:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+
+# Autoscaling configuration
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# Node selector and affinity
+nodeSelector: {}
+tolerations: []
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - the-living-constitution
+        topologyKey: kubernetes.io/hostname
+
+# Security context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+  seccompProfile:
+    type: RuntimeDefault
+
+podSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+    - ALL
+
+# Environment variables
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  METRICS_ENABLED: "true"
+  HEALTH_CHECK_ENABLED: "true"
+
+# Secrets (these should be provided via external secret management)
+secrets:
+  anthropicApiKey: ""
+  openaiApiKey: ""
+  googleApiKey: ""
+  jwtSecret: ""
+  encryptionKey: ""
+  sessionSecret: ""
+  guardianApiKey: ""
+  databasePassword: ""
+
+# Database configuration
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: ""
+    username: tlc_user
+    password: ""
+    database: tlc_db
+  primary:
+    persistence:
+      enabled: true
+      size: 20Gi
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+  metrics:
+    enabled: true
+
+# Redis configuration
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      size: 8Gi
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+  metrics:
+    enabled: true
+
+# Monitoring configuration
+monitoring:
+  enabled: true
+  prometheus:
+    enabled: true
+    retention: 30d
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        memory: 512Mi
+  grafana:
+    enabled: true
+    adminPassword: ""
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+
+# Health checks
+healthChecks:
+  enabled: true
+  livenessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readinessProbe:
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# Persistence
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+# Network policies
+networkPolicy:
+  enabled: true
+  ingress:
+    enabled: true
+  egress:
+    enabled: true
+
+# Pod disruption budget
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+# Service monitor for Prometheus
+serviceMonitor:
+  enabled: true
+  interval: 30s
+  scrapeTimeout: 10s
+
+# Constitutional AI specific configuration
+constitutional:
+  enabled: true
+  evaluationInterval: "1h"
+  strictMode: true
+  invariants:
+    - F1-confident-false-claims
+    - F2-phantom-completion
+    - F3-persistence-under-correction
+    - F4-harm-risk-coupling
+    - F5-cross-episode-recurrence
+
+# Backup configuration
+backup:
+  enabled: true
+  schedule: "0 2 * * *"
+  retention: 30
+
+# Logging configuration
+logging:
+  level: info
+  format: json
+  output: stdout
+
+# Feature flags
+features:
+  semgraphEnabled: true
+  guardianEnabled: true
+  monitoringEnabled: true
+  constitutionalValidation: true
+  performanceMetrics: true

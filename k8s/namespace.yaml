@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tlc-production
+  labels:
+    name: tlc-production
+    environment: production
+    app.kubernetes.io/name: the-living-constitution
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kubernetes
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tlc-monitoring
+  labels:
+    name: tlc-monitoring
+    environment: production
+    app.kubernetes.io/name: the-living-constitution-monitoring
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kubernetes

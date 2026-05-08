@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tlc-config
+  namespace: tlc-production
+  labels:
+    app.kubernetes.io/name: the-living-constitution
+    app.kubernetes.io/component: config
+data:
+  # Application Configuration
+  NODE_ENV: "production"
+  NEXT_TELEMETRY_DISABLED: "1"
+  PYTHONUNBUFFERED: "1"
+  
+  # Database Configuration
+  DATABASE_HOST: "postgres-service"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "tlc_db"
+  DATABASE_USER: "tlc_user"
+  
+  # Redis Configuration
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  
+  # Service URLs
+  CONTROL_PLANE_URL: "http://control-plane-service:3000"
+  SEMGRAPH_URL: "http://semgraph-service:8000"
+  GUARDIAN_URL: "http://guardian-service:8001"
+  
+  # Monitoring Configuration
+  PROMETHEUS_URL: "http://prometheus-service:9090"
+  GRAFANA_URL: "http://grafana-service:3000"
+  
+  # Application Settings
+  LOG_LEVEL: "info"
+  MAX_WORKERS: "4"
+  TIMEOUT_SECONDS: "30"
+  
+  # Constitutional AI Settings
+  CONSTITUTIONAL_MODE: "strict"
+  INVARIANT_ENFORCEMENT: "enabled"
+  GOVERNANCE_VALIDATION: "enabled"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: tlc-production
+  labels:
+    app.kubernetes.io/name: the-living-constitution
+    app.kubernetes.io/component: nginx
+data:
+  nginx.conf: |
+    events {
+        worker_connections 1024;
+    }
+    
+    http {
+        upstream control-plane {
+            server control-plane-service:3000;
+        }
+        
+        upstream semgraph {
+            server semgraph-service:8000;
+        }
+        
+        upstream guardian {
+            server guardian-service:8001;
+        }
+        
+        upstream grafana {
+            server grafana-service:3000;
+        }
+        
+        server {
+            listen 80;
+            server_name _;
+            
+            # Security headers
+            add_header X-Frame-Options DENY;
+            add_header X-Content-Type-Options nosniff;
+            add_header X-XSS-Protection "1; mode=block";
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+            
+            # Main application
+            location / {
+                proxy_pass http://control-plane;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_connect_timeout 30s;
+                proxy_send_timeout 30s;
+                proxy_read_timeout 30s;
+            }
+            
+            # API endpoints
+            location /api/semgraph/ {
+                proxy_pass http://semgraph/;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+            }
+            
+            location /api/guardian/ {
+                proxy_pass http://guardian/;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+            }
+            
+            # Monitoring
+            location /grafana/ {
+                proxy_pass http://grafana/;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+            }
+            
+            # Health checks
+            location /health {
+                access_log off;
+                return 200 "healthy\n";
+                add_header Content-Type text/plain;
+            }
+        }
+    }
