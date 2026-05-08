@@ -1,0 +1,1 @@
+{"event": "rollback_record_initialized", "timestamp": "2026-05-08T16:31:05.136190Z", "contract_id": "CRSP-TLC-TWO-PATHS-REFACTOR-001", "status": "no_rollback_triggered", "safe_state_commit": "85c0c9a9a6f1f4d0f0d54f7d79941c03278b9faa", "note": "All operations completed without halt. No rollback executed."}

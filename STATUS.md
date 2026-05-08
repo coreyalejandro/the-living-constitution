@@ -41,3 +41,54 @@
 Epistemic closure inside the repo: current operational status is synthesized into STATUS.json from inventory ci_provenance, git HEAD, workflow identity, regression ledger tail, and remote evidence record; STATUS.md is a deterministic render. External parties receive only exported proofs and schema-valid artifacts listed under open_interfaces.
 
 Policy: `verification/closed-epistemics-open-interfaces-policy.json`
+
+---
+
+## CRSP-TLC-TWO-PATHS-REFACTOR-001 Truth Surface
+
+> Added by contract CRSP-TLC-TWO-PATHS-REFACTOR-001. These four categories are required by the contract's truth surface specification. They do not replace the authoritative STATUS.json above.
+
+### Exists
+
+- THE_LIVING_CONSTITUTION.md (constitutional specification, Articles I-V)
+- CLAUDE.md (project-level agent behavior overrides)
+- MASTER_PROJECT_INVENTORY.json (governed project registry)
+- projects/c-rsp/BUILD_CONTRACT.md (C-RSP master contract hub)
+- projects/c-rsp/contract-schema.json (JSON schema for C-RSP v4.0)
+- projects/c-rsp/CRSP_OUTCOME_TEMPLATE.md (outcome document template)
+- scripts/verify_crsp_template_bundle.sh (bundle verification script)
+- SentinelOS invariants I1-I6 (defined; see research/evidence-ledger.md entry S2)
+- C-RSP build contract instances (projects/c-rsp/instances/)
+- Contract Window reference implementation (apps/contract-window/)
+- Evidence Observatory pipeline (apps/evidence-observatory/)
+- PROACTIVE epistemic safety agent (212/212 tests passing as of 2026-03-25)
+- BicameralReview engine synthetic pilot (kappa 0.762)
+- Research hypotheses H1, H2, H3 (defined in PROPOSAL.md)
+- Two-path reviewer front-door (docs/front-door/TWO_REVIEWER_PATHS.md)
+
+### Not claimed
+
+- H1, H2, H3 have been empirically validated
+- The Contract Window effect is structural rather than attentional
+- TLC is production-ready
+- TLC is suitable as a production safety layer
+- All 59 runtime invariants are fully enforced
+- CI/CD pipeline passes are verified in this document
+- Security audit has been performed
+- External peer review has been completed
+- The due-diligence report that informed CRSP-TLC-TWO-PATHS-REFACTOR-001 was a complete source-code audit
+- Lay comprehension study has been completed
+- Inter-rater reliability has been established on real (non-synthetic) data
+
+### Unverified
+
+- Full implementation status of invariants I1-I6 beyond definition
+- Implementation status of remaining 53 invariants (governance/constitution/core/invariant-registry.json requires direct inspection)
+- CI/CD current pass status
+- Contract Window effect size and mechanism (structural vs. attentional)
+- Evidence Observatory full layer-by-layer audit
+- External repo (cognitive-governance-lab) current test count and pass status
+
+### Functional status
+
+Research prototype. Core constitutional structure, C-RSP build contracts, Evidence Observatory, and Contract Window reference implementation exist and are partially runnable. Key invariants (I1-I6) are defined and partially enforced. Production hardening has not been performed. TLC is a research apparatus and governance-as-code demonstration. It is not a production safety layer.

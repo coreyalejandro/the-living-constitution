@@ -1,0 +1,16 @@
+{
+  "contract_id": "CRSP-TLC-TWO-PATHS-REFACTOR-001",
+  "generated_at": "2026-05-08T16:31:05.136190Z",
+  "unresolved_fields": [
+    {
+      "field": "verifier_modules[1].sha256",
+      "value": "UNRESOLVED REQUIRED INPUT",
+      "reason": "verify_two_path_front_door.sh does not yet exist and must be created before hashing"
+    },
+    {
+      "field": "verifier_modules[2].sha256",
+      "value": "UNRESOLVED REQUIRED INPUT",
+      "reason": "verify_truth_surface.sh does not yet exist and must be created before hashing"
+    }
+  ]
+}
