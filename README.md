@@ -10,7 +10,7 @@ last_verified:
 
 # The Living Constitution
 
-**A research apparatus for testing whether AI interactions can be made governable, contestable, and legible — at the interface, in real time, by the people they affect.**
+**A research apparatus for testing whether AI interactions can be made governable, contestable, and legible — at the interface, in real time, by the people they affect; it is used across applied AI safety projects to study model behavior and runtime governability in real contexts, and the repo’s tooling and /projects folders correspond to instrumentation and applied research contexts.**
 
 For a concise reviewer-facing product overview, see [TLC Reviewer PRD](docs/product/TLC_REVIEWER_PRD.md).
 
