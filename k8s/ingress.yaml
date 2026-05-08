@@ -1,0 +1,147 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tlc-ingress
+  namespace: tlc-production
+  labels:
+    app.kubernetes.io/name: the-living-constitution
+    app.kubernetes.io/component: ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options DENY;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-XSS-Protection "1; mode=block";
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+      add_header Referrer-Policy "strict-origin-when-cross-origin";
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none';";
+spec:
+  tls:
+  - hosts:
+    - your-domain.com
+    - api.your-domain.com
+    - monitoring.your-domain.com
+    secretName: tls-secret
+  rules:
+  - host: your-domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: control-plane-service
+            port:
+              number: 3000
+      - path: /api/semgraph
+        pathType: Prefix
+        backend:
+          service:
+            name: semgraph-service
+            port:
+              number: 8000
+      - path: /api/guardian
+        pathType: Prefix
+        backend:
+          service:
+            name: guardian-service
+            port:
+              number: 8001
+  - host: api.your-domain.com
+    http:
+      paths:
+      - path: /semgraph
+        pathType: Prefix
+        backend:
+          service:
+            name: semgraph-service
+            port:
+              number: 8000
+      - path: /guardian
+        pathType: Prefix
+        backend:
+          service:
+            name: guardian-service
+            port:
+              number: 8001
+  - host: monitoring.your-domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana-service
+            port:
+              number: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: tlc-network-policy
+  namespace: tlc-production
+  labels:
+    app.kubernetes.io/name: the-living-constitution
+    app.kubernetes.io/component: security
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    - namespaceSelector:
+        matchLabels:
+          name: tlc-monitoring
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: the-living-constitution
+  - ports:
+    - protocol: TCP
+      port: 3000
+    - protocol: TCP
+      port: 8000
+    - protocol: TCP
+      port: 8001
+    - protocol: TCP
+      port: 5432
+    - protocol: TCP
+      port: 6379
+  egress:
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 443
+    - protocol: TCP
+      port: 80
+  - to:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: the-living-constitution
+    ports:
+    - protocol: TCP
+      port: 3000
+    - protocol: TCP
+      port: 8000
+    - protocol: TCP
+      port: 8001
+    - protocol: TCP
+      port: 5432
+    - protocol: TCP
+      port: 6379
