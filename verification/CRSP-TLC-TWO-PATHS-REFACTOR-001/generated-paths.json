@@ -1,0 +1,25 @@
+{
+  "contract_id": "CRSP-TLC-TWO-PATHS-REFACTOR-001",
+  "generated_at": "2026-05-08T16:31:05.136190Z",
+  "paths": [
+    "docs/front-door/TWO_REVIEWER_PATHS.md",
+    "docs/research/RESEARCH_PATH.md",
+    "docs/build/BUILD_PATH.md",
+    "docs/research/VALIDATION_PLAN.md",
+    "docs/governance/RUNTIME_INVARIANTS_INDEX.md",
+    "docs/examples/CONTRACT_WINDOW_EXAMPLES.md",
+    "docs/review/REVIEWER_GUIDE.md",
+    "projects/c-rsp/instances/CRSP-TLC-TWO-PATHS-REFACTOR-001.json",
+    "projects/c-rsp/instances/CRSP-TLC-TWO-PATHS-REFACTOR-001.md",
+    "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/outcome.md",
+    "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/predicate-results.jsonl",
+    "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/lifecycle.jsonl",
+    "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/rollback.jsonl",
+    "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/generated-paths.json",
+    "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/unresolved-field-ledger.json"
+  ],
+  "modified": [
+    "STATUS.md",
+    "README.md"
+  ]
+}

@@ -16,6 +16,22 @@ For a concise reviewer-facing product overview, see [TLC Reviewer PRD](docs/prod
 
 ---
 
+## Two reviewer paths
+
+This repository serves two distinct reviewer purposes. Choose the path that matches why you are here.
+
+**[Research Path](docs/front-door/TWO_REVIEWER_PATHS.md#research-path)** — Evaluate TLC as a hypothesis-driven AI safety research apparatus. Covers H1 (Intent Fidelity), H2 (Bilateral Repair), H3 (Accessibility), Contract Window design, Evidence Observatory, and the honest unverified status of each hypothesis.
+
+**[Build Path](docs/front-door/TWO_REVIEWER_PATHS.md#build-path)** — Evaluate TLC as a runnable constitutional governance-as-code prototype. Covers C-RSP build contracts, runtime invariants, Contract Window reference implementation, verification evidence, and prototype-grade status declaration.
+
+Full routing guide: [docs/front-door/TWO_REVIEWER_PATHS.md](docs/front-door/TWO_REVIEWER_PATHS.md)
+
+Reviewer guide by role (Research / Software Engineer / Product / Safety-Governance / Skeptic): [docs/review/REVIEWER_GUIDE.md](docs/review/REVIEWER_GUIDE.md)
+
+---
+
+---
+
 ## What this is
 
 The Living Constitution (TLC) is a constitutional governance substrate and research apparatus for studying whether AI systems can be made governable, contestable, and legible across different research contexts. Its tools and project folders are not presented as ordinary product-development surfaces; they function as research contexts, instrumentation layers, applied testbeds, or governed project records used to observe model behavior, expose failure modes, and preserve evidence.

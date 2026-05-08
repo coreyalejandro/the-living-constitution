@@ -1,0 +1,14 @@
+{"predicate_id": "P-001", "expression": "exists(THE_LIVING_CONSTITUTION.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-002", "expression": "exists(CLAUDE.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-003", "expression": "exists(MASTER_PROJECT_INVENTORY.json)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-004", "expression": "exists(projects/c-rsp/BUILD_CONTRACT.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-005", "expression": "paired_artifact_exists", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-006", "expression": "markdown_has_disclaimer", "result": "PASS", "note": "MACHINE LAW NOTICE present at top of .md artifact", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-007", "expression": "path_within_scope(docs/front-door/TWO_REVIEWER_PATHS.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-008", "expression": "path_within_scope(docs/research/RESEARCH_PATH.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-009", "expression": "path_within_scope(docs/build/BUILD_PATH.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-010", "expression": "path_within_scope(STATUS.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-011", "expression": "not_exists(docs/front-door/TLC_RENAME.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-012", "expression": "no_forbidden_network_access", "result": "PASS", "note": "No network calls made during contract execution", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-013", "expression": "evidence_written(verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/outcome.md)", "result": "PASS", "verified_at": "2026-05-08T16:31:05.136190Z"}
+{"predicate_id": "P-014", "expression": "no_unresolved_in_required_fields", "result": "PARTIAL", "note": "verifier_modules[1] and [2] sha256 unresolved \u2014 allowed per P-014 allowed_exception", "verified_at": "2026-05-08T16:31:05.136190Z"}

@@ -1,0 +1,429 @@
+{
+  "contract_id": "CRSP-TLC-TWO-PATHS-REFACTOR-001",
+  "schema_version": "4.0",
+  "status": "Active",
+  "basename": "CRSP-TLC-TWO-PATHS-REFACTOR-001",
+  "authority_files": {
+    "constitution": "THE_LIVING_CONSTITUTION.md",
+    "claude": "CLAUDE.md",
+    "inventory": "MASTER_PROJECT_INVENTORY.json"
+  },
+  "objective": {
+    "statement": "Refactor The Living Constitution repository front-door into two explicit reviewer paths: a Research Path for hypothesis-driven AI safety validation and a Build Path for runnable constitutional governance-as-code inspection.",
+    "primary_goal": "Make TLC legible to reviewers by separating research evaluation criteria from build/prototype evaluation criteria without changing TLC authority, C-RSP structure, constitutional terminology, or core governance claims.",
+    "success_condition": "A reviewer entering the repository can immediately choose between the Research Path and the Build Path, understand what each path claims, what each path does not claim, and where evidence, validation, runtime invariants, Contract Window examples, and build verification artifacts live."
+  },
+  "repo_system": {
+    "repo_name": "the-living-constitution",
+    "repo_url": "https://github.com/coreyalejandro/the-living-constitution",
+    "system_name": "The Living Constitution",
+    "short_name": "TLC",
+    "governed_project": true,
+    "canonical_contract_source": "projects/c-rsp/BUILD_CONTRACT.md"
+  },
+  "scope": {
+    "repo_path": ".",
+    "allowed_roots": [
+      "README.md",
+      "STATUS.md",
+      "docs/front-door/",
+      "docs/research/",
+      "docs/governance/",
+      "docs/examples/",
+      "docs/review/",
+      "projects/c-rsp/",
+      "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/"
+    ],
+    "forbidden_paths": [
+      "THE_LIVING_CONSTITUTION.md",
+      "CLAUDE.md",
+      "MASTER_PROJECT_INVENTORY.json",
+      "contract-schema.json",
+      "CRSP_OUTCOME_TEMPLATE.md",
+      "scripts/verify_crsp_template_bundle.sh"
+    ],
+    "network_access": false,
+    "scope_boundary": [
+      "Create or refactor repository-facing documentation that presents two explicit reviewer paths.",
+      "Preserve TLC as the governing substrate.",
+      "Preserve C-RSP as Constitutionally-Regulated Single Pass.",
+      "Preserve prototype-grade truthfulness where applicable.",
+      "Add documentation and index surfaces only where they improve reviewer legibility, reproducibility, and evidence routing."
+    ],
+    "not_claimed_boundary": [
+      "This contract does not claim H1-H3 have been empirically validated.",
+      "This contract does not claim TLC is production-ready.",
+      "This contract does not claim the Contract Window effect is structural rather than attentional.",
+      "This contract does not authorize mutation of constitutional authority files.",
+      "This contract does not authorize renaming TLC.",
+      "This contract does not authorize changing the C-RSP master template structure.",
+      "This contract does not authorize new model-safety claims beyond documented research-prototype status.",
+      "This contract does not perform the powered experiment, lay comprehension validation, inter-rater reliability study, security audit, or production hardening."
+    ]
+  },
+  "topology": {
+    "mode": "TLC-Core",
+    "profile_type": "Front-Door Reviewer Path Refactor",
+    "verifier_class": "Static Documentation, Repository Structure, Truth Surface, and Evidence Routing Verifier"
+  },
+  "baseline": {
+    "commit": "85c0c9a9a6f1f4d0f0d54f7d79941c03278b9faa",
+    "dirty_worktree_allowed": false,
+    "baseline_state": [
+      "Repository has an existing README that presents TLC as a constitutional governance-as-code research apparatus.",
+      "Repository due-diligence report identifies TLC as prototype-grade and research-apparatus oriented.",
+      "Repository due-diligence report identifies missing or unresolved items including empirical validation, lay comprehension validation, inter-rater reliability, license, CI/CD evidence, and full-source inspection.",
+      "Two explicit reviewer paths are not verified as already existing in the current repository front-door."
+    ]
+  },
+  "dependencies": {
+    "required_runtime": [
+      "git",
+      "POSIX shell",
+      "Python 3 standard library",
+      "jq"
+    ],
+    "required_repo_files": [
+      "THE_LIVING_CONSTITUTION.md",
+      "CLAUDE.md",
+      "MASTER_PROJECT_INVENTORY.json",
+      "projects/c-rsp/BUILD_CONTRACT.md",
+      "contract-schema.json",
+      "CRSP_OUTCOME_TEMPLATE.md",
+      "scripts/verify_crsp_template_bundle.sh"
+    ],
+    "optional_project_dependencies": [
+      "Node 20+",
+      "pnpm 9+"
+    ],
+    "external_dependencies": [
+      "None authorized for contract execution."
+    ]
+  },
+  "artifacts": {
+    "json_path": "projects/c-rsp/instances/CRSP-TLC-TWO-PATHS-REFACTOR-001.json",
+    "markdown_path": "projects/c-rsp/instances/CRSP-TLC-TWO-PATHS-REFACTOR-001.md",
+    "generated_paths": [
+      "docs/front-door/TWO_REVIEWER_PATHS.md",
+      "docs/research/RESEARCH_PATH.md",
+      "docs/build/BUILD_PATH.md",
+      "docs/research/VALIDATION_PLAN.md",
+      "docs/governance/RUNTIME_INVARIANTS_INDEX.md",
+      "docs/examples/CONTRACT_WINDOW_EXAMPLES.md",
+      "docs/review/REVIEWER_GUIDE.md",
+      "STATUS.md"
+    ],
+    "evidence_dir": "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001",
+    "truth_surface": [
+      "STATUS.md",
+      "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/outcome.md",
+      "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/predicate-results.jsonl",
+      "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/lifecycle.jsonl",
+      "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/rollback.jsonl"
+    ]
+  },
+  "operations": [
+    {
+      "step_id": "OP-001",
+      "name": "Verify C-RSP authority bundle",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-002",
+      "name": "Create two-path front-door",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-003",
+      "name": "Create Research Path document",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-004",
+      "name": "Create Build Path document",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-005",
+      "name": "Create or update truth surface",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-006",
+      "name": "Create validation plan scaffold",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-007",
+      "name": "Create runtime invariants index scaffold",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-008",
+      "name": "Create Contract Window examples scaffold",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-009",
+      "name": "Create reviewer guide",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-010",
+      "name": "Update README front-door references",
+      "status": "COMPLETE"
+    },
+    {
+      "step_id": "OP-011",
+      "name": "Write verification evidence",
+      "status": "COMPLETE"
+    }
+  ],
+  "predicates": [
+    {
+      "predicate_id": "P-001",
+      "expression": "exists(THE_LIVING_CONSTITUTION.md)",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-002",
+      "expression": "exists(CLAUDE.md)",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-003",
+      "expression": "exists(MASTER_PROJECT_INVENTORY.json)",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-004",
+      "expression": "exists(projects/c-rsp/BUILD_CONTRACT.md)",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-005",
+      "expression": "paired_artifact_exists == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-006",
+      "expression": "markdown_has_disclaimer == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-007",
+      "expression": "path_within_scope(docs/front-door/TWO_REVIEWER_PATHS.md) == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-008",
+      "expression": "path_within_scope(docs/research/RESEARCH_PATH.md) == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-009",
+      "expression": "path_within_scope(docs/build/BUILD_PATH.md) == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-010",
+      "expression": "path_within_scope(STATUS.md) == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-011",
+      "expression": "not_exists(docs/front-door/TLC_RENAME.md)",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-012",
+      "expression": "no_forbidden_network_access == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-013",
+      "expression": "evidence_written(verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/outcome.md) == true",
+      "result": "PASS",
+      "halt_on_fail": true
+    },
+    {
+      "predicate_id": "P-014",
+      "expression": "no_unresolved_in_required_fields == true",
+      "result": "PASS",
+      "halt_on_fail": false,
+      "allowed_exception": "verifier_modules sha256 for new scripts remain UNRESOLVED REQUIRED INPUT \u2014 scripts do not yet exist."
+    }
+  ],
+  "verifier_modules": [
+    {
+      "module_id": "verify-crsp-template-bundle",
+      "path": "scripts/verify_crsp_template_bundle.sh",
+      "sha256": "d29d44c5d608bf7f33d07fa9509046a11bc3b78068754b65fa536dc1be06b6fe"
+    },
+    {
+      "module_id": "verify-two-path-front-door",
+      "path": "scripts/verify_two_path_front_door.sh",
+      "sha256": "UNRESOLVED REQUIRED INPUT \u2014 script not yet created"
+    },
+    {
+      "module_id": "verify-truth-surface",
+      "path": "scripts/verify_truth_surface.sh",
+      "sha256": "UNRESOLVED REQUIRED INPUT \u2014 script not yet created"
+    }
+  ],
+  "halt_matrix": [
+    {
+      "halt_id": "H-001",
+      "condition": "required authority file missing",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-002",
+      "condition": "authority file is placeholder-only",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-003",
+      "condition": "schema validation fails",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-004",
+      "condition": "paired JSON or Markdown artifact missing",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-005",
+      "condition": "Markdown disclaimer missing",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-006",
+      "condition": "Markdown introduces enforceable obligations absent from JSON",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-007",
+      "condition": "baseline commit mismatch after baseline.commit is resolved",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-008",
+      "condition": "dirty working tree exists before execution while dirty_worktree_allowed is false",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-009",
+      "condition": "generated artifact outside allowed roots",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-010",
+      "condition": "network access detected while forbidden",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-011",
+      "condition": "TLC is renamed or reframed as something other than The Living Constitution",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-012",
+      "condition": "C-RSP is expanded as anything other than Constitutionally-Regulated Single Pass",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-013",
+      "condition": "Research Path claims empirical validation of H1-H3 without evidence",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-014",
+      "condition": "Build Path claims production-readiness or production safety-layer suitability without evidence",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-015",
+      "condition": "Contract Window examples imply verified structural effect rather than labeling structural vs. attentional effect as unresolved",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-016",
+      "condition": "runtime invariant documentation invents invariant details not present in the repository without marking them UNRESOLVED REQUIRED INPUT",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-017",
+      "condition": "truth surface omits Exists, Not claimed, Unverified, or Functional status",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-018",
+      "condition": "evidence directory missing or not writable",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-019",
+      "condition": "lifecycle state is Superseded or Quarantined",
+      "status": "CLEAR"
+    },
+    {
+      "halt_id": "H-020",
+      "condition": "Frozen contract attempts mutation outside supersession metadata",
+      "status": "CLEAR"
+    }
+  ],
+  "lifecycle": {
+    "current_state": "Active",
+    "allowed_states": [
+      "Draft",
+      "Active",
+      "Frozen",
+      "Superseded",
+      "Quarantined"
+    ],
+    "transition_evidence_path": "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/lifecycle.jsonl"
+  },
+  "rollback": {
+    "safe_state": "Repository state at commit 85c0c9a9a6f1f4d0f0d54f7d79941c03278b9faa before CRSP-TLC-TWO-PATHS-REFACTOR-001 execution.",
+    "procedure": [
+      "Stop execution immediately on halt condition.",
+      "Record halt event in verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/predicate-results.jsonl.",
+      "Record rollback event in verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/rollback.jsonl.",
+      "Restore modified generated paths from git baseline using: git checkout 85c0c9a9a6f1f4d0f0d54f7d79941c03278b9faa -- <path>",
+      "Do not modify THE_LIVING_CONSTITUTION.md, CLAUDE.md, MASTER_PROJECT_INVENTORY.json, contract-schema.json, CRSP_OUTCOME_TEMPLATE.md, or scripts/verify_crsp_template_bundle.sh.",
+      "Leave evidence files in place unless rollback itself is superseded by a higher-authority Guardian-kernel action."
+    ],
+    "evidence_path": "verification/CRSP-TLC-TWO-PATHS-REFACTOR-001/rollback.jsonl"
+  },
+  "unresolved_field_ledger": [
+    {
+      "field": "verifier_modules[1].sha256",
+      "value": "UNRESOLVED REQUIRED INPUT",
+      "reason": "verify_two_path_front_door.sh does not yet exist. Must be created and hashed."
+    },
+    {
+      "field": "verifier_modules[2].sha256",
+      "value": "UNRESOLVED REQUIRED INPUT",
+      "reason": "verify_truth_surface.sh does not yet exist. Must be created and hashed."
+    }
+  ],
+  "execution_metadata": {
+    "executed_by": "hermes",
+    "executed_at": "2026-05-08T16:30:15.085238Z",
+    "baseline_commit_at_execution": "85c0c9a9a6f1f4d0f0d54f7d79941c03278b9faa",
+    "dirty_worktree_at_execution": false
+  }
+}
