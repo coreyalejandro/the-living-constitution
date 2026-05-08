@@ -1,0 +1,14 @@
+{
+  "project_name": "Professional Skeptic",
+  "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
+  "lifecycle_state": "Draft",
+  "standalone_repo": "github.com/coreyalejandro/professional-skeptic",
+  "tlc_registration_status": "partial",
+  "notes": "TLC registration files created. Standalone repo scaffold built and verified. Awaiting initial commit hash and Vercel deployment verification for Draft-to-Active transition.",
+  "last_verified_at": "2026-05-08",
+  "unresolved_required_inputs": [
+    "Initial standalone repo commit hash",
+    "TLC registration commit hash",
+    "Vercel deployment confirmation"
+  ]
+}
