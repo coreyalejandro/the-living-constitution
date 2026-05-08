@@ -10,7 +10,7 @@ last_verified:
 
 # The Living Constitution
 
-**A research apparatus for testing whether AI interactions can be made governable, contestable, and legible — at the interface, in real time, by the people they affect.**
+**A constitutional governance-as-code research apparatus used across applied AI safety projects to study model behavior, runtime governance, and human-AI interaction under real task pressure — including interface-level contestability, misalignment detection, vulnerable-user safety, consent-aware agent oversight, and evidence-producing research workflows.**
 
 For a concise reviewer-facing product overview, see [TLC Reviewer PRD](docs/product/TLC_REVIEWER_PRD.md).
 
@@ -18,15 +18,19 @@ For a concise reviewer-facing product overview, see [TLC Reviewer PRD](docs/prod
 
 ## What this is
 
-The Living Constitution (TLC) is a working prototype that wraps frontier AI systems (Claude, Codex, Gemini) with a runtime governance layer. It exposes the active task agreement, the system's current assumptions, and its truth-status to the user throughout the interaction — and lets the user read, challenge, and repair them in plain language.
+The Living Constitution (TLC) is a constitutional governance substrate and research apparatus for studying whether AI systems can be made governable, contestable, and legible across different research contexts. Its tools and project folders are not presented as ordinary product-development surfaces; they function as research contexts, instrumentation layers, applied testbeds, or governed project records used to observe model behavior, expose failure modes, and preserve evidence.
 
-It is built to test one specific research question, and to produce instruments other researchers can reuse regardless of what TLC itself shows.
+Regardless of the research context, TLC exposes the active task agreement, the system's current assumptions, and its truth-status to the user throughout the interaction — and lets the user read, challenge, and repair them in plain language.
+
+It is built to test research questions about runtime governance, model behavior, human legibility, and contestability, while producing instruments other researchers can reuse regardless of what TLC itself shows.
 
 ---
 
 ## Why this exists
 
-Long-context AI interactions are now the default. A million-token context window is not safer than an eight-thousand-token one if the user cannot tell when the system has silently drifted from the task they originally asked for. Most safety work targets the model. This work targets the *interface between the model and the human* — where intent is declared, drift accumulates, and contestation either happens or fails to happen.
+Long-context AI interactions are now the default. A million-token context window is not safer than an eight-thousand-token one if the user cannot tell when the system has silently drifted from the task they originally asked for. Most safety work targets the model in isolation. TLC targets the interaction environment around the model — the interface, task contract, assumptions, truth-status, governance checks, and evidence trail — because that is where model behavior becomes consequential to the people using or affected by the system.
+
+This repo is therefore not only a product prototype. It is a research control surface: a place where model behavior can be observed under governed conditions, where misalignment can be surfaced or replicated in bounded applied settings, and where downstream projects such as MadMall/MADMall can test related questions in healthcare-adjacent or vulnerable-user scenarios without collapsing the whole effort into product development.
 
 The audiences this is built for, by name:
 
