@@ -57,6 +57,17 @@ I am autistic and schizophrenic. The Contract Window started as something I need
 
 ## What you'll find in this repo
 
+### Governance truth surfaces
+
+| File | Purpose |
+|---|---|
+| [`STATUS.json`](./STATUS.json) | Authoritative machine-readable operational status — truth anchor, review state, tip-state truth |
+| [`STATUS.md`](./STATUS.md) | Human-readable mirror of STATUS.json, regenerated deterministically |
+| [`MASTER_PROJECT_INVENTORY.md`](./MASTER_PROJECT_INVENTORY.md) | Full map of governed projects, overlays, repo paths, and known anomalies |
+| [`THE_LIVING_CONSTITUTION.md`](./THE_LIVING_CONSTITUTION.md) | Constitutional specification — Articles I–V, agent powers, amendment logic |
+
+### Research artifacts
+
 | Item | Description | Status |
 |---|---|---|
 | [`PROPOSAL.md`](./PROPOSAL.md) | Full Anthropic Safety Research Fellow proposal | working |
