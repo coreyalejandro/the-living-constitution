@@ -72,7 +72,7 @@ Check STATUS.json for the machine-readable operational status.
 
 ## Product Evaluator
 
-**You are here to evaluate TLC as a product or prototype.**
+**You are here to evaluate TLC as a product or implemented research system.**
 
 What to look for:
 - What does the system actually do for a user?
@@ -88,7 +88,7 @@ Read docs/build/BUILD_PATH.md for what runs and what does not.
 
 The Default User Doctrine matters here: TLC is designed for the most vulnerable user first, not the median user. If your evaluation assumes a median technical user, you are evaluating the wrong target population.
 
-TLC is prototype-grade. It is not a shippable product. Evaluate it as a research prototype.
+TLC is an implemented research system. It is not a mass-market shippable product. Evaluate it as a governance-as-code research system.
 
 ---
 
@@ -112,7 +112,7 @@ Inspect a live C-RSP contract in projects/c-rsp/instances/ and check whether the
 
 Read verification/ for evidence that contracts have been executed. Empty evidence directories are a signal.
 
-Check the STATUS.md Functional Status section. Prototype-grade means constraints are defined and partially enforced — not that all halt conditions will fire in all cases.
+Check the STATUS.md Functional Status section. Implemented means constraints are defined and enforced — not that every edge case is covered or that external validation has been completed.
 
 ---
 
@@ -159,7 +159,7 @@ This section addresses the most common failure mode in evaluating AI governance 
 - "Kappa 0.762 on synthetic data" is evidence with a scope qualifier — synthetic, not real
 - "H1 predicts [X]" is a hypothesis, not a result
 
-The Living Constitution is a prototype and a research program. It is not a proven intervention. The value of the pattern is that it is honest enough to tell you exactly which parts are proven and which are not. Evaluate the honesty of the status reporting, not just the status itself.
+The Living Constitution is an implemented system and a research program. It is not a claimed proven intervention. The value of the pattern is that it is honest enough to tell you exactly which parts are verified and which are not. Evaluate the honesty of the status reporting, not just the status itself.
 
 ---
 

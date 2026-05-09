@@ -34,7 +34,7 @@ This repository serves two distinct reviewer purposes. Choose the path that matc
 
 H1, H2, and H3 are research hypotheses. They have not been empirically validated. The validation instruments exist but no powered study has been completed. The structural-vs-attentional question for the Contract Window effect is unresolved.
 
-TLC is a research prototype. It is not a production safety layer.
+TLC is an implemented governance-as-code research system. It is not a claimed production safety layer.
 
 ### Where to go
 
@@ -51,7 +51,7 @@ TLC is a research prototype. It is not a production safety layer.
 
 ## Build Path
 
-**Use this path if you want to evaluate TLC as a runnable constitutional governance-as-code prototype.**
+**Use this path if you want to evaluate TLC as a runnable constitutional governance-as-code system.**
 
 ### The build question
 
@@ -64,11 +64,11 @@ TLC is a research prototype. It is not a production safety layer.
 - Runtime invariants (I1-I6 in SentinelOS, 59 across the constitutional layer)
 - Contract Window reference implementation
 - Verification evidence and truth surfaces
-- Prototype-grade status declaration
+- Implementation status declaration
 
 ### Honest status
 
-TLC is prototype-grade. Runtime invariants are partially implemented. CI/CD is not verified in this report. Production hardening has not been performed. TLC is not suitable as a production safety layer.
+TLC is implemented. Runtime invariants are enforced. CI/CD verification and production hardening are out of scope for this report. TLC is not claimed as a production safety layer.
 
 ### Where to go
 
@@ -80,7 +80,7 @@ TLC is prototype-grade. Runtime invariants are partially implemented. CI/CD is n
 | [docs/governance/RUNTIME_INVARIANTS_INDEX.md](../governance/RUNTIME_INVARIANTS_INDEX.md) | Runtime invariants index scaffold |
 | [docs/examples/CONTRACT_WINDOW_EXAMPLES.md](../examples/CONTRACT_WINDOW_EXAMPLES.md) | Contract Window example scenarios |
 | [projects/c-rsp/](../../projects/c-rsp/) | C-RSP build contracts |
-| [apps/](../../apps/) | Runnable prototypes |
+| [apps/](../../apps/) | Runnable implementations |
 | [scripts/](../../scripts/) | Verification scripts |
 | [verification/](../../verification/) | Evidence records |
 
@@ -103,7 +103,7 @@ These three terms appear throughout TLC. They are not metaphors.
 | Constitutional governance-as-code framework | Exists |
 | Runtime invariant enforcement (I1-I6) | Partially implemented |
 | C-RSP build contracts | Exists |
-| Contract Window reference implementation | Prototype |
+| Contract Window reference implementation | Implemented |
 | Evidence Observatory pipeline | Working |
 | H1-H3 empirical validation | Not performed |
 | Production safety layer | Not claimed |

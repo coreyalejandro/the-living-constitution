@@ -37,7 +37,7 @@ What TLC contains:
 
 What TLC is NOT:
 - The research contribution (that lives in CGL)
-- The experimental instrument (Contract Window prototype lives in CGL)
+- The experimental instrument (Contract Window implementation lives in CGL)
 - The publication target (papers come from CGL)
 - The product roadmap (ConstitutionKit SDK / BehaviorScope / MonoAgent are CGL products)
 
@@ -50,7 +50,7 @@ TLC is the evidence that the research program has enforcement infrastructure beh
 ## cognitive-governance-lab (CGL): Research Substrate
 
 What CGL contains:
-- Contract Window prototype (9/9 tests passing)
+- Contract Window (9/9 tests passing)
 - BicameralReview engine (kappa 0.762 on synthetic pilot)
 - InsightAtrophyIndex (operational, empirical calibration Month 1)
 - SessionRecorder (29/29 tests passing)

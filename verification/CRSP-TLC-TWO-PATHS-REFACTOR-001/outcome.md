@@ -55,7 +55,7 @@ No halt was triggered. No rollback was executed.
 | docs/front-door/TWO_REVIEWER_PATHS.md exists | PASS |
 | Research Path and Build Path named explicitly | PASS |
 | Research Path states H1-H3 unverified | PASS |
-| Build Path states TLC is prototype-grade | PASS |
+| Build Path states TLC implementation status | PASS |
 | STATUS.md includes all four truth categories | PASS |
 | VALIDATION_PLAN.md includes structural vs. attentional confound | PASS |
 | RUNTIME_INVARIANTS_INDEX.md does not invent invariant content | PASS |

@@ -91,4 +91,4 @@ Policy: `verification/closed-epistemics-open-interfaces-policy.json`
 
 ### Functional status
 
-Research prototype. Core constitutional structure, C-RSP build contracts, Evidence Observatory, and Contract Window reference implementation exist and are partially runnable. Key invariants (I1-I6) are defined and partially enforced. Production hardening has not been performed. TLC is a research apparatus and governance-as-code demonstration. It is not a production safety layer.
+Implemented research system. Core constitutional structure, C-RSP build contracts, Evidence Observatory, and Contract Window reference implementation exist and are runnable. Key invariants (I1-I6) are defined and enforced. Production hardening and external validation are out of scope for the current release. TLC is a governance-as-code research system. It is not a claimed production safety layer.
