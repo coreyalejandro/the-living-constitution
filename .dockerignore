@@ -1,0 +1,48 @@
+# .dockerignore — The Living Constitution
+# Keep build context small; never send secrets or dev artifacts to Docker daemon
+
+# Version control
+.git
+.gitignore
+
+# Node / pnpm
+node_modules
+.pnpm-store
+apps/tlc-control-plane/.next
+apps/tlc-control-plane/out
+apps/tlc-control-plane/node_modules
+
+# Python bytecache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv
+venv/
+*.egg-info
+
+# Local env files — secrets MUST NOT enter the image
+.env
+.env.*
+!.env.example
+
+# Dev/test artifacts
+*.log
+*.swp
+*.swo
+.DS_Store
+.idea
+.vscode
+coverage/
+.coverage
+*.test
+*.spec
+
+# CI/monitoring config not needed in container
+.github
+monitoring/grafana
+docs/
+
+# k8s manifests
+k8s/
