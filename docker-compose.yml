@@ -1,9 +1,22 @@
 version: '3.8'
 
+# The Living Constitution — service composition
+# Status: prototype-grade — NOT suitable as a production safety layer
+#
+# Services:
+#   control-plane  — Next.js frontend (port 3000)
+#   guardian       — Python constitutional enforcement API (port 8001)
+#   postgres       — persistent store
+#   redis          — session cache
+#   nginx          — reverse proxy (port 80)
+#
+# Monitoring stack available via --profile monitoring:
+#   prometheus, grafana, loki, promtail
+
 services:
-  # ============================================================================
-  # TLC Control Plane (Next.js Frontend)
-  # ============================================================================
+  # --------------------------------------------------------------------------
+  # TLC Control Plane (Next.js)
+  # --------------------------------------------------------------------------
   control-plane:
     build:
       context: .
@@ -15,106 +28,83 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
-      - DATABASE_URL=postgresql://tlc_user:tlc_password@postgres:5432/tlc_db
-      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GUARDIAN_URL=http://guardian:8001
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      guardian:
+        condition: service_healthy
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+    security_opt:
+      - no-new-privileges:true
     networks:
       - tlc-network
 
-  # ============================================================================
-  # TLC Semantic Graph Service (Python API)
-  # ============================================================================
-  semgraph:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        SERVICE_TYPE: semgraph
-    ports:
-      - "8000:8000"
-    environment:
-      - PYTHONPATH=/app
-      - PYTHONUNBUFFERED=1
-      - DATABASE_URL=postgresql://tlc_user:tlc_password@postgres:5432/tlc_db
-      - REDIS_URL=redis://redis:6379
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-    depends_on:
-      - postgres
-      - redis
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    networks:
-      - tlc-network
-
-  # ============================================================================
-  # Guardian Service (Constitutional AI Enforcement)
-  # ============================================================================
+  # --------------------------------------------------------------------------
+  # Guardian Service (Python constitutional enforcement)
+  # --------------------------------------------------------------------------
   guardian:
     build:
       context: .
-      dockerfile: Dockerfile
-      args:
-        SERVICE_TYPE: semgraph
-    command: ["python", "src/guardian.py", "--server"]
+      dockerfile: docker/guardian.Dockerfile
     ports:
       - "8001:8001"
     environment:
-      - PYTHONPATH=/app
-      - PYTHONUNBUFFERED=1
-      - DATABASE_URL=postgresql://tlc_user:tlc_password@postgres:5432/tlc_db
-      - REDIS_URL=redis://redis:6379
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - GUARDIAN_PORT=8001
-    depends_on:
-      - postgres
-      - redis
+      - PORT=8001
+      - HOST=0.0.0.0
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - GUARDIAN_CORS_ORIGINS=${GUARDIAN_CORS_ORIGINS:-http://localhost:3000}
+      - TLC_GUARDIAN_STRICT_SEMGRAPH=${TLC_GUARDIAN_STRICT_SEMGRAPH:-0}
+      - TLC_GUARDIAN_AUTOGEN_DISABLED=${TLC_GUARDIAN_AUTOGEN_DISABLED:-0}
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
     networks:
       - tlc-network
 
-  # ============================================================================
-  # PostgreSQL Database
-  # ============================================================================
+  # --------------------------------------------------------------------------
+  # PostgreSQL
+  # --------------------------------------------------------------------------
   postgres:
     image: postgres:15-alpine
     environment:
-      - POSTGRES_DB=tlc_db
-      - POSTGRES_USER=tlc_user
-      - POSTGRES_PASSWORD=tlc_password
+      - POSTGRES_DB=${POSTGRES_DB:-tlc_db}
+      - POSTGRES_USER=${POSTGRES_USER:-tlc_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
     ports:
       - "5432:5432"
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tlc_user -d tlc_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tlc_user} -d ${POSTGRES_DB:-tlc_db}"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
       - tlc-network
 
-  # ============================================================================
-  # Redis Cache & Session Store
-  # ============================================================================
+  # --------------------------------------------------------------------------
+  # Redis
+  # --------------------------------------------------------------------------
   redis:
     image: redis:7-alpine
     ports:
@@ -122,6 +112,8 @@ services:
     volumes:
       - redis_data:/data
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -130,71 +122,73 @@ services:
     networks:
       - tlc-network
 
-  # ============================================================================
-  # Nginx Reverse Proxy & Load Balancer
-  # ============================================================================
+  # --------------------------------------------------------------------------
+  # Nginx reverse proxy
+  # --------------------------------------------------------------------------
   nginx:
     image: nginx:alpine
     ports:
       - "80:80"
-      - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    tmpfs:
+      - /var/run/nginx
+      - /var/cache/nginx
     depends_on:
-      - control-plane
-      - semgraph
-      - guardian
+      control-plane:
+        condition: service_started
+      guardian:
+        condition: service_healthy
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     networks:
       - tlc-network
 
-  # ============================================================================
-  # Monitoring & Observability
-  # ============================================================================
+  # --------------------------------------------------------------------------
+  # Monitoring — opt-in with: docker compose --profile monitoring up
+  # --------------------------------------------------------------------------
   prometheus:
     image: prom/prometheus:latest
+    profiles: [monitoring]
     ports:
       - "9090:9090"
     volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--storage.tsdb.retention.time=200h'
-      - '--web.enable-lifecycle'
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=200h
+      - --web.enable-lifecycle
     restart: unless-stopped
     networks:
       - tlc-network
 
   grafana:
     image: grafana/grafana:latest
+    profiles: [monitoring]
     ports:
       - "3001:3000"
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
     depends_on:
       - prometheus
     restart: unless-stopped
     networks:
       - tlc-network
 
-  # ============================================================================
-  # Log Aggregation
-  # ============================================================================
   loki:
     image: grafana/loki:latest
+    profiles: [monitoring]
     ports:
       - "3100:3100"
     volumes:
-      - ./monitoring/loki-config.yml:/etc/loki/local-config.yaml
+      - ./monitoring/loki-config.yml:/etc/loki/local-config.yaml:ro
       - loki_data:/loki
     command: -config.file=/etc/loki/local-config.yaml
     restart: unless-stopped
@@ -203,8 +197,9 @@ services:
 
   promtail:
     image: grafana/promtail:latest
+    profiles: [monitoring]
     volumes:
-      - ./monitoring/promtail-config.yml:/etc/promtail/config.yml
+      - ./monitoring/promtail-config.yml:/etc/promtail/config.yml:ro
       - /var/log:/var/log:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
     command: -config.file=/etc/promtail/config.yml
