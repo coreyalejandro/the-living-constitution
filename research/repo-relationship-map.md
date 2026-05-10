@@ -219,7 +219,7 @@ Functional status: Relationship map complete. All repos documented with dependen
 cognitive-governance-lab (RESEARCH SUBSTRATE)
 │
 │  Primary repo for the 4-month Anthropic Fellows research program.
-│  Contains: ContractWindow prototype, BicameralReview engine,
+│  Contains: ContractWindow implementation, BicameralReview engine,
 │  InsightAtrophyIndex, SessionRecorder, pilot datasets, three proposals.
 │  62/62 tests passing.
 │

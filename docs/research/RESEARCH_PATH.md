@@ -51,7 +51,7 @@ Accessibility-grade: meeting WCAG-adjacent reading-ease and plain-language crite
 The Contract Window is the primary experimental instrument. It is a persistent, user-visible display of the active task agreement: what the system is currently trying to do, what assumptions it is operating under, and what its current truth-status is.
 
 **What is known:**
-- Contract Window prototype exists (9/9 tests passing in cognitive-governance-lab as of last check)
+- Contract Window exists and is verified (9/9 tests passing in cognitive-governance-lab as of last check)
 - Contract Window reference implementation in apps/contract-window/
 - Contract Window is observable: it produces structured state at each interaction
 
@@ -115,7 +115,7 @@ Summary of what has and has not been done:
 | Eval suites registry | research/registry/eval_suites.json | Exists |
 | Evidence ledger | research/evidence-ledger.md | Exists |
 | TLC-CGL boundary document | research/TLC-CGL-BOUNDARY.md | Exists |
-| Contract Window prototype | cognitive-governance-lab (external repo) | Prototype |
+| Contract Window | cognitive-governance-lab (external repo) | Implemented |
 | BicameralReview engine | cognitive-governance-lab (external repo) | Synthetic pilot |
 
 ---

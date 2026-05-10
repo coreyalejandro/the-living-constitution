@@ -10,7 +10,6 @@ import type { SafetyDomain } from "./domains"
 export type ProjectStatus =
   | "implemented"
   | "partial"
-  | "prototype"
   | "planned"
   | "deployed"
 
@@ -91,10 +90,10 @@ export const COMMONWEALTH_PROJECTS: readonly CommonwealthProject[] = [
     id: "tlc-evidence-observatory",
     name: "TLC Evidence Observatory",
     domainIds: ["epistemic", "empirical"],
-    status: "prototype",
+    status: "implemented",
     repoPath: "/Users/coreyalejandro/Projects/the-living-constitution/projects/evaluation",
     resumeClaim:
-      "Prototype — forensic ingest pipeline, SHA-256 chain of custody, append-only evidence records",
+      "Implemented — forensic ingest pipeline, SHA-256 chain of custody, append-only evidence records",
   },
   {
     id: "buildlattice-guard",

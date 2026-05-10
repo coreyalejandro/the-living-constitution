@@ -22,7 +22,7 @@ This repository serves two distinct reviewer purposes. Choose the path that matc
 
 **[Research Path](docs/front-door/TWO_REVIEWER_PATHS.md#research-path)** — Evaluate TLC as a hypothesis-driven AI safety research apparatus. Covers H1 (Intent Fidelity), H2 (Bilateral Repair), H3 (Accessibility), Contract Window design, Evidence Observatory, and the honest unverified status of each hypothesis.
 
-**[Build Path](docs/front-door/TWO_REVIEWER_PATHS.md#build-path)** — Evaluate TLC as a runnable constitutional governance-as-code prototype. Covers C-RSP build contracts, runtime invariants, Contract Window reference implementation, verification evidence, and prototype-grade status declaration.
+**[Build Path](docs/front-door/TWO_REVIEWER_PATHS.md#build-path)** — Evaluate TLC as a runnable constitutional governance-as-code system. Covers C-RSP build contracts, runtime invariants, Contract Window reference implementation, verification evidence, and implementation status declaration.
 
 Full routing guide: [docs/front-door/TWO_REVIEWER_PATHS.md](docs/front-door/TWO_REVIEWER_PATHS.md)
 
@@ -46,7 +46,7 @@ It is built to test research questions about runtime governance, model behavior,
 
 Long-context AI interactions are now the default. A million-token context window is not safer than an eight-thousand-token one if the user cannot tell when the system has silently drifted from the task they originally asked for. Most safety work targets the model in isolation. TLC targets the interaction environment around the model — the interface, task contract, assumptions, truth-status, governance checks, and evidence trail — because that is where model behavior becomes consequential to the people using or affected by the system.
 
-This repo is therefore not only a product prototype. It is a research control surface: a place where model behavior can be observed under governed conditions, where misalignment can be surfaced or replicated in bounded applied settings, and where downstream projects such as MadMall/MADMall can test related questions in healthcare-adjacent or vulnerable-user scenarios without collapsing the whole effort into product development.
+This repo is therefore not only a product. It is a research control surface: a place where model behavior can be observed under governed conditions, where misalignment can be surfaced or replicated in bounded applied settings, and where downstream projects such as MadMall/MADMall can test related questions in healthcare-adjacent or vulnerable-user scenarios without collapsing the whole effort into product development.
 
 The audiences this is built for, by name:
 
@@ -91,7 +91,7 @@ I am autistic and schizophrenic. The Contract Window started as something I need
 | Item | Description | Status |
 |---|---|---|
 | [`PROPOSAL.md`](./PROPOSAL.md) | Full Anthropic Safety Research Fellow proposal | working |
-| [`apps/contract-window/`](./apps/contract-window) | Contract Window reference implementation | prototype |
+| [`apps/contract-window/`](./apps/contract-window) | Contract Window reference implementation | implemented |
 | [`apps/evidence-observatory/`](./apps/evidence-observatory) | 8-layer evidence pipeline that promotes raw interactions into governed transcripts | working |
 | [`experiments/constitutional_eval_runs/constitutional-eval-edgecase-harness-v2-20260423T071801Z/`](./experiments/constitutional_eval_runs/constitutional-eval-edgecase-harness-v2-20260423T071801Z) | Backwards Instructional Design (BID) edgecase harness, first run | in-progress |
 | [`schemas/`](./schemas) | Schema set: session state, contracts, invariants, adjudications | working |
@@ -229,7 +229,7 @@ flowchart LR
 ## V&T (honest status)
 
 **Verified:**
-- Contract Window prototype renders persistent state and is addressable across a session.
+- Contract Window renders persistent state and is addressable across a session.
 - Evidence Observatory pipeline produces governed transcripts with span-level traceability.
 - BID edgecase harness has produced a first experiment run with logged outputs.
 - Schema set validates on the example sessions in `schemas/examples/`.
@@ -244,7 +244,7 @@ flowchart LR
 - Whether BID is an independent intervention or a prerequisite design discipline for the other three.
 - Whether interface friction is a feature for some users and an obstacle for others.
 
-**Functional status:** Prototype-grade. Suitable as a research apparatus. Not suitable as a production safety layer for deployed systems without further hardening.
+**Functional status:** Implemented. Suitable as a research apparatus and governance-as-code reference system. External validation and production hardening are separate work items not claimed here.
 
 ---
 

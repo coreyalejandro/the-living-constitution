@@ -174,7 +174,7 @@ TLC is the enforcement infrastructure. CGL is the research substrate.
 
 | Component | Lives In | Function |
 |-----------|----------|----------|
-| Contract Window prototype | cognitive-governance-lab | Research instrument — experimental condition in H1/H2/H3 |
+| Contract Window | cognitive-governance-lab | Research instrument — experimental condition in H1/H2/H3 |
 | Guardian Kernel | the-living-constitution | Enforcement tool — MCP safety server governing agent calls |
 | InsightAtrophyIndex | cognitive-governance-lab | Research measurement — operationalized in Month 1 |
 | SentinelOS I1-I6 | the-living-constitution | Runtime enforcement — invariants at API boundaries |

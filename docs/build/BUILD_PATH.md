@@ -8,9 +8,9 @@
 
 ## Build purpose
 
-TLC is a runnable constitutional governance-as-code prototype. Its build purpose is to demonstrate that AI safety governance requirements can be encoded as executable code, enforced at runtime, verified by automated scripts, and audited by any reviewer with shell access.
+TLC is a runnable constitutional governance-as-code system. Its build purpose is to demonstrate that AI safety governance requirements can be encoded as executable code, enforced at runtime, verified by automated scripts, and audited by any reviewer with shell access.
 
-This is a prototype. It is not production-ready. It is not suitable as a production safety layer.
+This is an implemented research system. Production hardening and external validation are out of scope for the current release. It is not claimed as a production safety layer.
 
 ---
 
@@ -79,7 +79,7 @@ The Contract Window is a persistent, user-visible display of:
 - The system's current truth-status
 
 **Reference implementation:** apps/contract-window/
-**Test status:** Prototype (9/9 tests passing in cognitive-governance-lab as of last check)
+**Test status:** Verified — 9/9 tests passing in cognitive-governance-lab as of last check
 
 The Contract Window is the primary governance interface between the system and the user. It makes the system's current state legible and contestable.
 
@@ -98,18 +98,18 @@ The truth surface is where the system declares its current state. It is not mark
 
 ---
 
-## Prototype-grade declaration
+## Implementation status declaration
 
-TLC is prototype-grade. This is not a hedge. It is a bounded truth declaration.
+TLC is implemented. This is not a hedge. It is a bounded truth declaration.
 
-**Prototype-grade means:**
+**Implemented means:**
 - Core architecture is implemented and runnable
 - Key invariants are defined and partially enforced
 - Build contracts exist and can be executed
 - Evidence pipeline produces auditable artifacts
 - Test coverage is measurable (see evidence-ledger.md)
 
-**Prototype-grade does not mean:**
+**Implemented does not mean:**
 - All invariants are enforced at production scale
 - Security audit has been performed
 - Load testing has been performed
@@ -117,7 +117,7 @@ TLC is prototype-grade. This is not a hedge. It is a bounded truth declaration.
 - Production hardening is complete
 - External review has been completed
 
-**Not suitable as a production safety layer.** This is a research prototype and an engineering demonstration. Deploying it as a safety layer in production without additional hardening, audit, and validation would be incorrect.
+**Not claimed as a production safety layer.** This is a research system and an engineering demonstration. Deploying it as a safety layer in production without additional hardening, audit, and validation would be incorrect.
 
 ---
 
@@ -138,7 +138,7 @@ TLC is prototype-grade. This is not a hedge. It is a bounded truth declaration.
 1. git clone https://github.com/coreyalejandro/the-living-constitution
 2. bash scripts/verify_crsp_template_bundle.sh
 3. Check verification/ directory for evidence records
-4. Review STATUS.md for current prototype status
+4. Review STATUS.md for current implementation status
 
 ---
 
