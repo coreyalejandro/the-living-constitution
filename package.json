@@ -1,0 +1,9 @@
+{
+  "name": "the-living-constitution",
+  "private": true,
+  "scripts": {
+    "tui": "node src/tui/index.js",
+    "tui:snapshot": "node src/tui/index.js --snapshot",
+    "verify:repo-enhancement": "python3 scripts/verify_repo_enhancement.py"
+  }
+}
