@@ -10,7 +10,7 @@ machine_enforced: false
 
 # Sociotechnical Constitution
 
-This file is a repository-level orientation surface for the sociotechnical governance story around TLC. It is descriptive only. It is **not** the binding constitutional source for the repository and it is **not** a substitute for the executed project constitution at `/home/runner/work/the-living-constitution/the-living-constitution/projects/sociotechnical-constitution/SOCIOTECHNICAL_CONSTITUTION.md`.
+This file is a repository-level orientation surface for the sociotechnical governance story around TLC. It is descriptive only. It is **not** the binding constitutional source for the repository and it is **not** a substitute for the executed project constitution at `projects/sociotechnical-constitution/SOCIOTECHNICAL_CONSTITUTION.md`.
 
 ## Binding sources
 

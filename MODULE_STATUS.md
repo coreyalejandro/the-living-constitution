@@ -10,7 +10,7 @@ machine_enforced: false
 
 # Module Status
 
-This document is a **derived status surface**. It summarizes current repository modules from listed source artifacts. It is **not standalone evidence** and must be checked against `/home/runner/work/the-living-constitution/the-living-constitution/STATUS.json`, `/home/runner/work/the-living-constitution/the-living-constitution/MASTER_PROJECT_INVENTORY.json`, the cited paths below, and fresh command output before any truth-state upgrade.
+This document is a **derived status surface**. It summarizes current repository modules from listed source artifacts. It is **not standalone evidence** and must be checked against `STATUS.json`, `MASTER_PROJECT_INVENTORY.json`, the cited paths below, and fresh command output before any truth-state upgrade.
 
 ## Source metadata
 

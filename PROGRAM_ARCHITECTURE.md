@@ -10,7 +10,7 @@ machine_enforced: false
 
 # Program Architecture
 
-This document is a narrative architecture guide for the repository. It is not a binding or canonical authority. Canonical governance authority remains in `/home/runner/work/the-living-constitution/the-living-constitution/THE_LIVING_CONSTITUTION.md`, and authoritative operational status remains in `/home/runner/work/the-living-constitution/the-living-constitution/STATUS.json`.
+This document is a narrative architecture guide for the repository. It is not a binding or canonical authority. Canonical governance authority remains in `THE_LIVING_CONSTITUTION.md`, and authoritative operational status remains in `STATUS.json`.
 
 ## What this repository contains
 
