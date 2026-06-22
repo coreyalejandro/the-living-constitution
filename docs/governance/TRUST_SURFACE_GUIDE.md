@@ -6,6 +6,17 @@ authority_level: "L4"
 truth_rank: 2
 status: "Active"
 canonical_path: "docs/governance/TRUST_SURFACE_GUIDE.md"
+next_file: "PROGRAM_ARCHITECTURE.md"
+last_verified:
+  commit: "8f275b9"
+  timestamp: "2026-06-22T23:01:11Z"
+metadata:
+  est_time_minutes: 10
+  cognitive_load: "Low"
+  requires_interruption_buffer: false
+navigation:
+  parent_index: "docs/INDEX.md"
+  hierarchy_level: "TLC > Governance > Trust Surface Guide"
 ---
 
 # Trust Surface Guide

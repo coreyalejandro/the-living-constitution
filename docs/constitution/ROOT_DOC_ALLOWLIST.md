@@ -35,6 +35,9 @@ These exact names may exist at repository root:
 - STATUS.md
 - HANDOFF.md
 - MASTER_PROJECT_INVENTORY.md
+- PROGRAM_ARCHITECTURE.md
+- MODULE_STATUS.md
+- SOCIOTECHNICAL_CONSTITUTION.md
 - openmemory.md
 - ChatGPT-AI Governance Frameworks.md
 - delegated-whistling-cherny.md
