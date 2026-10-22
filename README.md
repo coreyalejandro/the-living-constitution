@@ -1,7 +1,7 @@
 ---
 document_type: "README"
 id: "DOC-README-001"
-status: "Active"
+status: "Superseded"
 canonical_path: "README.md"
 last_verified:
   commit: "6a99e68"
@@ -9,6 +9,10 @@ last_verified:
 ---
 
 # The Living Constitution
+
+> **Superseded (archived, read-only).** This is version 1, kept for the record. The current version is
+> **[The Living Constitution 2.0](https://github.com/coreyalejandro/the-living-constitution-2.0)**, which also re-runs
+> the current research results. Some links below point to files that were reorganized into version 2.0.
 
 **A constitutional governance-as-code research apparatus used across applied AI safety projects to study model behavior, runtime governance, and human-AI interaction under real task pressure — including interface-level contestability, misalignment detection, vulnerable-user safety, consent-aware agent oversight, and evidence-producing research workflows.**
 
